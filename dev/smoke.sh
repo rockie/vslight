@@ -17,12 +17,14 @@
 #   ./dev/smoke.sh [--app PATH] [--phase N] [--skip-ui] [--keep]
 #     --app     .app 路径，默认 VSCode-darwin-arm64/VSLight.app，
 #               不存在则回退 VSCodium.app（基线回归用）
-#     --phase   启用到第 N 阶段为止的负向断言（默认 7=全部）：
+#     --phase   启用到第 N 阶段为止的负向断言（默认 8=全部）：
 #               >=2 品牌（vslight 二进制/无 tunnel 二进制/无 reh 产物/bundle id）
 #               >=3 remote.* 前缀为 0 + 无 Remote Explorer 入口
 #               >=4 debug.*/chat.*/notebook.* 前缀为 0 + 无 sessions/agentHost 产物
 #               >=5 Copilot 配置面（product.json 键/schema 计数/asar/命令面板）
 #               >=6 深度瘦身（rg/mxc 平台目录、1ds、notebook-out、telemetry.* 保留）
+#               >=8 Electron 运行时（CFBundleVersion/.npmrc target 一致、LSMinimumSystemVersion、
+#                  剪贴板机器断言、下载落盘 ~/Downloads）
 #     --skip-ui 只跑 L1+L2（无 GUI 环境/CI 用）
 #     --keep    保留临时 profile/workspace（排查用）
 #
@@ -37,7 +39,7 @@
 set -u
 
 APP_PATH=""
-PHASE=7
+PHASE=8
 SKIP_UI=0
 KEEP=0
 while [[ $# -gt 0 ]]; do
@@ -62,6 +64,9 @@ if [[ -z "${APP_PATH}" ]]; then
   fi
 fi
 [[ -d "${APP_PATH}" ]] || { echo "ERROR: app not found: ${APP_PATH}" >&2; exit 3; }
+
+# open -na cannot resolve relative app paths
+APP_PATH="$( cd "$( dirname "${APP_PATH}" )" && pwd )/$( basename "${APP_PATH}" )"
 
 APP_NAME="$( basename "${APP_PATH}" .app )"
 APP_RES="${APP_PATH}/Contents/Resources/app"
@@ -179,10 +184,26 @@ if (( PHASE >= 6 )); then
   TELEMETRY_N="$( count_prefix 'telemetry\.[a-zA-Z]+' )"
   if (( TELEMETRY_N >= 1 )); then pass '"telemetry.*" 注册设置 '"${TELEMETRY_N}"' ≥ 1'; else fail '"telemetry.*" 注册设置丢失'; fi
   if [[ -d "vscode/src" ]]; then
-    if grep -rl 'OneDataSystemAppender\|@microsoft/1ds' vscode/src/ 2>/dev/null | grep -q .; then fail "源码树仍有 1ds 引用"; else pass "源码树无 1ds 引用"; fi
+    # 代码引用口径；uri.perf.data.txt 是 URI 解析性能夹具（内含遥测域名样本串），非引用
+    if grep -rl --include='*.ts' 'OneDataSystemAppender\|@microsoft/1ds' vscode/src/ 2>/dev/null | grep -q .; then fail "源码树仍有 1ds 引用"; else pass "源码树无 1ds 引用"; fi
   else
     skip "源码树不在，1ds 源码断言跳过"
   fi
+fi
+
+# ---- M4 · Electron 运行时（lean-dist §9.1 M4）：期望版本动态读自 vscode/.npmrc
+#      target=（103 号 patch 改版本点后自动跟随），macOS 地板不抬
+if (( PHASE >= 8 )); then
+  ELECTRON_PLIST="${APP_PATH}/Contents/Frameworks/Electron Framework.framework/Resources/Info.plist"
+  if [[ -f "vscode/.npmrc" ]]; then
+    EXPECTED_ELECTRON="$( grep '^target=' vscode/.npmrc | head -1 | cut -d= -f2 | tr -d ' \r"' )"
+    CFV="$( /usr/libexec/PlistBuddy -c 'Print CFBundleVersion' "${ELECTRON_PLIST}" 2>/dev/null )"
+    check "Electron Framework 版本 == .npmrc ${EXPECTED_ELECTRON}" "${EXPECTED_ELECTRON}" "${CFV}"
+  else
+    skip "vscode/.npmrc 不在，Electron 版本断言跳过"
+  fi
+  MINOS="$( /usr/libexec/PlistBuddy -c 'Print LSMinimumSystemVersion' "${APP_PATH}/Contents/Info.plist" 2>/dev/null )"
+  check "LSMinimumSystemVersion == 12.0（macOS 地板不抬）" "12.0" "${MINOS}"
 fi
 
 # =============================================================================
@@ -254,6 +275,9 @@ else
     exit 3
   fi
 
+  # 残留实例会抢焦点/干扰进程名解析（open -na 每发必开新实例）
+  pkill -f "${APP_PATH}" 2>/dev/null; sleep 2
+
   launch_app() { # launch_app [extra-args...]
     pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; sleep 1
     open -na "${APP_PATH}" --args \
@@ -270,7 +294,10 @@ else
           delay 1
         end repeat
         return \"timeout\"
-      end tell" | grep -q ok
+      end tell" | grep -q ok || return 1
+    # open -na 不保证前台；按键注入前必须显式拉到最前
+    osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to set frontmost to true" 2>/dev/null
+    sleep 1
   }
   quit_app() { osascript -e "tell application \"${APP_NAME}\" to quit" 2>/dev/null; sleep 2; pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; }
 
@@ -278,6 +305,15 @@ else
     run_to 30 osascript -e "
       tell application \"System Events\" to tell process \"${APP_NAME}\"
         set hits to UI elements of window 1 whose name contains \"$1\" or description contains \"$1\"
+        return (count of hits) as text
+      end tell" 2>/dev/null | grep -qv '^0$'
+  }
+
+  # 全树 AX 查询（窗口后代全量，慢但确定；用于正向检出与「无匹配命令」证明）
+  ax_find_deep() { # ax_find_deep <needle>
+    run_to 40 osascript -e "
+      tell application \"System Events\" to tell process \"${APP_NAME}\"
+        set hits to every UI element of entire contents of window 1 whose name contains \"$1\" or description contains \"$1\"
         return (count of hits) as text
       end tell" 2>/dev/null | grep -qv '^0$'
   }
@@ -292,50 +328,76 @@ else
 
   if launch_app; then pass "窗口启动"; else fail "90s 内无窗口" ui; fi
 
-  # 正向：编辑并保存（磁盘内容断言）
-  osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to click menu item \"a.txt\" of menu 1 of menu bar item \"File\" of menu bar 1" >/dev/null 2>&1
+  # 正向：编辑并保存（CLI 把 a.txt 开进运行中实例 → 键入 → Cmd+S → 磁盘内容断言）
+  run_to 30 "${BIN}" --user-data-dir "${UDIR}" --extensions-dir "${EDIR}" "${WS}/a.txt" >/dev/null 2>&1
+  sleep 3
   run_to 15 osascript -e "tell application \"System Events\" to keystroke \"vslight-smoke-edit \""
   keystroke_cmd s
   sleep 2
   # 编辑落到哪个文件取决于焦点，断言任一文件被改动即证明编辑链路通
   if grep -rq 'vslight-smoke-edit' "${WS}" 2>/dev/null; then pass "编辑→保存落盘"; else fail "编辑未落盘" ui; fi
 
-  # 正向：终端
+  # 剪贴板机器断言（M4）：pbcopy 写入 → Cmd+V 粘贴进编辑器 → Cmd+S 后磁盘读回一致；
+  # pbpaste 复核 app 未改写剪贴板
+  if (( PHASE >= 8 )); then
+    CLIP_STR="vslight-clip-$( date +%s )"
+    printf '%s' "${CLIP_STR}" | pbcopy
+    keystroke_cmd v
+    sleep 1
+    PBP="$( pbpaste )"
+    [[ "${PBP}" == "${CLIP_STR}" ]] && pass "剪贴板跨进程一致 (pbcopy/pbpaste)" || fail "剪贴板跨进程不一致 (${PBP} != ${CLIP_STR})" ui
+    keystroke_cmd s
+    sleep 2
+    if grep -rq "${CLIP_STR}" "${WS}" 2>/dev/null; then pass "剪贴板粘贴→保存落盘"; else fail "剪贴板粘贴未落盘" ui; fi
+  fi
+
+  # 正向：终端（Cmd+` 打开 → 键入命令 → 产物文件断言终端真的活着）
   keystroke_cmd '`'
-  sleep 3
-  if ax_find "Terminal" || ax_find "终端"; then pass "终端面板打开"; else fail "终端面板未检出" ui; fi
+  sleep 4
+  run_to 20 osascript -e "tell application \"System Events\" to keystroke \"touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r\""
+  for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
+  if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
+
+  # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
+  # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
+  if (( PHASE >= 8 )); then
+    DL_FILE="${HOME}/Downloads/vslight-smoke-download.bin"
+    rm -f "${DL_FILE}"
+    run_to 20 osascript -e "tell application \"System Events\" to keystroke \"curl -sfL --max-time 30 -o ${DL_FILE} https://raw.githubusercontent.com/rockie/vslight/master/LICENSE && echo DL_OK || echo DL_FAIL\r\""
+    for i in {1..35}; do [[ -s "${DL_FILE}" ]] && break; sleep 1; done
+    if [[ -s "${DL_FILE}" ]]; then pass "下载落盘 ~/Downloads（$( wc -c < "${DL_FILE}" | tr -d ' ' ) bytes）"; else fail "下载未落盘 ~/Downloads" ui; fi
+    rm -f "${DL_FILE}"
+  fi
 
   # 正向：Git 视图容器
   keystroke_cmd g shift 2>/dev/null  # cmd+shift+g = Source Control
   sleep 2
-  if ax_find "Source Control" || ax_find "源代码管理"; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
+  if ax_find_deep "Source Control" || ax_find_deep "源代码管理"; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
 
-  # 负向：命令面板无 Remote Explorer / Debug / Chat 入口
-  if (( PHASE >= 3 )); then
+  # 负向：命令面板无 Remote Explorer / Debug / Chat / Copilot 入口。
+  # 证明方式：面板打开后必须出现「无匹配命令」空态文本——既证面板真的打开了，又证无命中
+  no_palette_hits() { # no_palette_hits <query>
     keystroke_cmd p shift
     sleep 1
-    run_to 15 osascript -e 'tell application "System Events" to keystroke "Remote Explorer"'
+    run_to 15 osascript -e "tell application \"System Events\" to keystroke \"$1\""
     sleep 2
-    if ax_find "Remote Explorer"; then fail "命令面板仍有 Remote Explorer" ui; else pass "命令面板无 Remote Explorer"; fi
-    osascript -e 'tell application "System Events" to key code 53' # esc
+    local ok=1
+    if ax_find_deep "No matching commands" || ax_find_deep "没有匹配的命令"; then ok=0; fi
+    osascript -e 'tell application "System Events" to key code 53'
+    sleep 1
+    return ${ok}
+  }
+
+  if (( PHASE >= 3 )); then
+    if no_palette_hits "Remote Explorer"; then pass "命令面板无 Remote Explorer"; else fail "命令面板仍有 Remote Explorer" ui; fi
   fi
   if (( PHASE >= 4 )); then
     for Q in "Debug: Start" "Chat:" "Notebook:"; do
-      keystroke_cmd p shift
-      sleep 1
-      run_to 15 osascript -e "tell application \"System Events\" to keystroke \"$Q\""
-      sleep 2
-      if ax_find "${Q%%:*}"; then fail "命令面板仍命中 ${Q}" ui; else pass "命令面板无 ${Q}"; fi
-      osascript -e 'tell application "System Events" to key code 53'
+      if no_palette_hits "${Q}"; then pass "命令面板无 ${Q}"; else fail "命令面板仍命中 ${Q}" ui; fi
     done
   fi
   if (( PHASE >= 5 )); then
-    keystroke_cmd p shift
-    sleep 1
-    run_to 15 osascript -e 'tell application "System Events" to keystroke "Copilot:"'
-    sleep 2
-    if ax_find "Copilot"; then fail "命令面板仍命中 Copilot:" ui; else pass "命令面板无 Copilot:"; fi
-    osascript -e 'tell application "System Events" to key code 53'
+    if no_palette_hits "Copilot:"; then pass "命令面板无 Copilot:"; else fail "命令面板仍命中 Copilot:" ui; fi
   fi
 
   quit_app

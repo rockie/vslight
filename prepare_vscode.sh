@@ -274,6 +274,10 @@ esac
 
 prune_to_platform_dir "node_modules/@vscode/ripgrep-universal/bin" "${NPM_BIN_PLATFORM}-${VSCODE_ARCH}"
 prune_to_platform_dir "node_modules/@microsoft/mxc-sdk/bin" "${VSCODE_ARCH}"
+
+# declaration maps ship inside published packages; they serve library consumers'
+# editors, not the product — delete so the package contains no .map at all
+find node_modules -name '*.d.ts.map' -delete 2>/dev/null || true
 # }}}
 
 # package.json

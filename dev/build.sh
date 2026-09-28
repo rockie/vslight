@@ -148,6 +148,10 @@ if [[ "${SKIP_BUILD}" == "no" ]]; then
     export CI=true
   fi
 
+  # stray -I paths from the interactive shell env (e.g. homebrew util-linux's uuid.h)
+  # shadow SDK headers and break native module compiles
+  unset CPPFLAGS
+
   . build.sh
 
   if [[ -f "./include_${OS_NAME}.gypi" ]]; then
