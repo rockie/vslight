@@ -5,17 +5,19 @@
 # 【驱动方式】
 #   L1 静态层：直接断言 .app 包内文件存在/不存在（确定性最强）
 #   L2 CLI 层：bin/vslight --version / --list-extensions / --install-extension（open-vsx）
-#   L3 UI 层：macOS AppleScript/JXA —— open -na 启动、System Events 快捷键注入
-#             （Cmd+Shift+P 命令面板、Cmd+` 终端、Cmd+S 保存）、AX 树读取断言
+#   L3 UI 层：macOS AppleScript —— open -na 启动、System Events 快捷键注入
+#             （Cmd+Shift+P 命令面板、Ctrl+` 终端、Cmd+S 保存）+ 窗口截图 Vision OCR
+#             文本断言（macOS 26 的 System Events 读不到 Electron 内容 AX 树，
+#             entire contents 聚合失效，AX 文本断言不可行）
 #             安全硬保险：①每组按键前 frontmost 闸门，VSLight 不在最前立即 exit 2，
 #             一行键不再发；②全部按键 tell process 定向，不裸发 System Events；
 #             ③L3 入口备份剪贴板，trap EXIT 无条件恢复；④启动 3s 拉不到前台
 #             则跳过 L3 并提示需机器空闲窗口（SKIP 不算失败）
 #
 # 【退出码】0=全部通过；1=静态/CLI 硬断言失败；2=UI 层断言失败（含焦点闸门中止）；3=用法/环境错误
-#           （含未授予「辅助功能」权限、app 不存在等）
+#           （含未授予「辅助功能」权限、缺 swiftc、app 不存在等）
 #
-# 【超时】启动 90s；窗口就绪 60s；单步按键注入 15s；扩展安装 120s
+# 【超时】启动 90s；窗口就绪 60s；单步按键注入 20s；扩展安装 120s
 #
 # 【用法】
 #   ./dev/smoke.sh [--app PATH] [--phase N] [--skip-ui] [--keep]
@@ -32,13 +34,13 @@
 #     --skip-ui 只跑 L1+L2（无 GUI 环境/CI 用）
 #     --keep    保留临时 profile/workspace（排查用）
 #
-# 【正向清单】窗口启动 → workbench 渲染完成（AX 元素计数机器断言，防空白窗假绿）→
+# 【正向清单】窗口启动 → workbench 渲染完成（窗口截图 OCR 文本计数，防空白窗假绿）→
 #   编辑文件并保存（磁盘内容断言）→ 命令面板可用 →
-#   终端可开（AX 检出 Terminal 面板）→ Git（vscode.git 内置 + Source Control 入口）→
+#   终端可开（命令产物文件断言）→ Git（vscode.git 内置 + Source Control 入口 OCR 检出）→
 #   open-vsx 装/卸扩展
 # 【负向清单】无 tunnel 二进制；无 reh 产物；无 sessions.desktop.main/agentHostMain 产物；
 #   workbench 产物中 "remote."/"debug."/"chat."/"notebook." 前缀计数为 0；
-#   命令面板无 Remote Explorer / Debug: / Chat: 入口；无空白视图容器（AX 检出）
+#   命令面板无 Remote Explorer / Debug: / Chat: 入口（OCR 检出「无匹配命令」空态）
 # 【保留面回归】终端 ✓ Git ✓ open-vsx ✓ 主题扩展安装 ✓ zh-CN 语言包（菜单出现「文件」）✓
 # =============================================================================
 set -u
@@ -274,13 +276,21 @@ fi
 if (( SKIP_UI == 1 )); then
   echo "== L3 UI 断言（--skip-ui，跳过）=="
 else
-  echo "== L3 UI 断言 (AppleScript/AX) =="
+  echo "== L3 UI 断言 (AppleScript 注入 + 窗口截图 OCR) =="
 
   AX_OK="$( osascript -e 'tell application "System Events" to return UI elements enabled' 2>/dev/null )"
   if [[ "${AX_OK}" != "true" ]]; then
     echo "ERROR: 未授予辅助功能权限（系统设置 → 隐私与安全性 → 辅助功能 → 终端）" >&2
     exit 3
   fi
+
+  # OCR 文本断言工具链（本机实证：macOS 26 的 System Events 读不到 Electron 内容 AX 树，
+  # entire contents 聚合直接失效——改为按 CGWindowID 截窗口 + Vision OCR 读界面文本）
+  command -v swiftc >/dev/null || { echo "ERROR: L3 需要 swiftc（Xcode CLT）编译 OCR 断言工具" >&2; exit 3; }
+  OCR_BIN="${SMOKE_ROOT}/ocr_text"
+  WINID_BIN="${SMOKE_ROOT}/win_id"
+  swiftc -O -o "${OCR_BIN}" dev/ocr_text.swift || { echo "ERROR: ocr_text 编译失败" >&2; exit 3; }
+  swiftc -O -o "${WINID_BIN}" dev/win_id.swift || { echo "ERROR: win_id 编译失败" >&2; exit 3; }
 
   # 残留实例会抢焦点/干扰进程名解析（open -na 每发必开新实例）
   pkill -f "${APP_PATH}" 2>/dev/null; sleep 2
@@ -301,7 +311,6 @@ else
       --user-data-dir "${SMOKE_ROOT}/user-data" \
       --extensions-dir "${SMOKE_ROOT}/extensions" \
       --disable-workspace-trust --skip-welcome --skip-release-notes \
-      --force-renderer-accessibility \
       "$@" "${WS}"
     run_to 90 osascript -e "
       tell application \"System Events\"
@@ -320,36 +329,30 @@ else
   }
   quit_app() { osascript -e "tell application \"${APP_NAME}\" to quit" 2>/dev/null; sleep 2; pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; }
 
-  ax_find() { # ax_find <needle> -> 0 if any UI element name/description contains needle
-    run_to 30 osascript -e "
-      tell application \"System Events\" to tell process \"${APP_NAME}\"
-        set hits to UI elements of window 1 whose name contains \"$1\" or description contains \"$1\"
-        return (count of hits) as text
-      end tell" 2>/dev/null | grep -qv '^0$'
+  capture_window() { # capture_window <out.png> — 按 CGWindowID 截窗口，不受遮挡与 Retina 缩放影响
+    local wid
+    wid="$( "${WINID_BIN}" "${APP_NAME}" )" || return 1
+    screencapture -l "${wid}" -x "$1"
+  }
+  # 窗口 OCR 文本行数：渲染完成的 workbench 有侧栏/状态栏等大量文本，空白窗（渲染崩溃）≈0
+  ocr_window_count() {
+    capture_window "${SMOKE_ROOT}/win.png" || { echo 0; return; }
+    "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | wc -l | tr -d ' '
+  }
+  # 界面文本命中（大小写不敏感：VS Code 视图标题经 CSS text-transform 全部大写绘制）
+  ocr_window_find() { # ocr_window_find <regex>
+    capture_window "${SMOKE_ROOT}/win.png" || return 1
+    "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | grep -qi "$1"
   }
 
-  # 全树 AX 查询（窗口后代全量，慢但确定；用于正向检出与「无匹配命令」证明。
-  # 依赖启动参数 --force-renderer-accessibility 物化渲染进程 AX 树，否则窗口只剩框架元素）
-  ax_find_deep() { # ax_find_deep <needle>
-    run_to 40 osascript -e "
-      tell application \"System Events\" to tell process \"${APP_NAME}\"
-        set hits to (entire contents of window 1 whose name contains \"$1\" or description contains \"$1\")
-        return (count of hits) as text
-      end tell" 2>/dev/null | grep -qv '^0$'
-  }
-
-  # 窗口全量 AX 后代计数：渲染完成的 workbench 有数百个元素，空白窗（渲染崩溃）只剩窗口框架
-  ax_element_count() {
-    run_to 40 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to return (count of (entire contents of window 1)) as text" 2>/dev/null | tr -d ' '
-  }
-
-  keystroke_cmd() { # keystroke_cmd <key> [shift]（硬保险②：进程定向，不裸发 System Events）
+  keystroke_cmd() { # keystroke_cmd <key> [shift|ctrl|ctrlshift]（硬保险②：进程定向，不裸发 System Events）
     require_frontmost
-    if [[ "${2:-}" == "shift" ]]; then
-      osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using {command down, shift down}"
-    else
-      osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using command down"
-    fi
+    case "${2:-}" in
+      shift)     osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using {command down, shift down}" ;;
+      ctrl)      osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using control down" ;;
+      ctrlshift) osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using {control down, shift down}" ;;
+      *)         osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using command down" ;;
+    esac
   }
   type_str() { # type_str <text>
     require_frontmost
@@ -368,9 +371,16 @@ else
   else
     pass "窗口启动"
 
-    # 渲染机器断言：空白窗回归（workbench 未渲染）在此变红，不再依赖目视
-    AXN="$( ax_element_count )"
-    if [[ "${AXN}" =~ ^[0-9]+$ ]] && (( AXN >= 50 )); then pass "workbench 渲染完成（窗口 AX 元素 ${AXN} ≥ 50）"; else fail "窗口疑似空白：AX 元素=${AXN:-查询失败}（workbench 未渲染）" ui; fi
+    # 渲染机器断言：空白窗回归（workbench 未渲染）在此变红，不再依赖目视。
+    # 启动初期可能未绘完，多轮取最大值
+    OCRN=0
+    for i in 1 2 3; do
+      N="$( ocr_window_count )"
+      [[ "${N}" =~ ^[0-9]+$ ]] && (( N > OCRN )) && OCRN=${N}
+      (( OCRN >= 10 )) && break
+      sleep 3
+    done
+    if (( OCRN >= 10 )); then pass "workbench 渲染完成（窗口 OCR 文本 ${OCRN} 行 ≥ 10）"; else fail "窗口疑似空白：OCR 文本 ${OCRN} 行（workbench 未渲染）" ui; fi
 
     # 正向：编辑并保存（CLI 把 a.txt 开进运行中实例 → 键入 → Cmd+S → 磁盘内容断言）
     run_to 30 "${BIN}" --user-data-dir "${UDIR}" --extensions-dir "${EDIR}" "${WS}/a.txt" >/dev/null 2>&1
@@ -395,53 +405,91 @@ else
       if grep -rq "${CLIP_STR}" "${WS}" 2>/dev/null; then pass "剪贴板粘贴→保存落盘"; else fail "剪贴板粘贴未落盘" ui; fi
     fi
 
-    # 正向：终端（Cmd+` 打开 → 键入命令 → 产物文件断言终端真的活着）
-    keystroke_cmd '`'
-    sleep 4
-    type_str "touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r"
-    for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
-    if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
+    # 终端面板开合以 OCR 门控，不用固定 sleep——首开慢时固定 sleep 会把命令打进编辑器
+    term_open_wait() { # 确认终端面板出现；未开则再切一次，仍无则 1
+      local a
+      for a in 1 2 3; do sleep 3; ocr_window_find 'terminal|终端' && return 0; done
+      keystroke_cmd '`' ctrl
+      for a in 1 2 3; do sleep 3; ocr_window_find 'terminal|终端' && return 0; done
+      return 1
+    }
+    term_close_wait() { # 关到面板消失为止（至多两次切换；未开过则第一次切换会打开、第二次关回）
+      local a
+      for a in 1 2; do
+        keystroke_cmd '`' ctrl
+        sleep 2
+        ocr_window_find 'terminal|终端' || return 0
+      done
+      return 1
+    }
 
-    # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
-    # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
-    if (( PHASE >= 8 )); then
-      DL_FILE="${HOME}/Downloads/vslight-smoke-download.bin"
-      rm -f "${DL_FILE}"
-      type_str "curl -sfL --max-time 30 -o ${DL_FILE} https://raw.githubusercontent.com/rockie/vslight/master/LICENSE && echo DL_OK || echo DL_FAIL\r"
-      for i in {1..35}; do [[ -s "${DL_FILE}" ]] && break; sleep 1; done
-      if [[ -s "${DL_FILE}" ]]; then pass "下载落盘 ~/Downloads（$( wc -c < "${DL_FILE}" | tr -d ' ' ) bytes）"; else fail "下载未落盘 ~/Downloads" ui; fi
-      rm -f "${DL_FILE}"
+    # 正向：终端（macOS 切换终端是 Ctrl+`，Cmd+` 是系统窗口循环键；开终端 → 键入命令 → 产物文件断言）
+    keystroke_cmd '`' ctrl
+    if term_open_wait; then
+      type_str "touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r"
+      for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
+      if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
+
+      # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
+      # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
+      if (( PHASE >= 8 )); then
+        DL_FILE="${HOME}/Downloads/vslight-smoke-download.bin"
+        rm -f "${DL_FILE}"
+        type_str "curl -sfL --max-time 30 -o ${DL_FILE} https://raw.githubusercontent.com/rockie/vslight/master/LICENSE && echo DL_OK || echo DL_FAIL\r"
+        for i in {1..35}; do [[ -s "${DL_FILE}" ]] && break; sleep 1; done
+        if [[ -s "${DL_FILE}" ]]; then pass "下载落盘 ~/Downloads（$( wc -c < "${DL_FILE}" | tr -d ' ' ) bytes）"; else fail "下载未落盘 ~/Downloads" ui; fi
+        rm -f "${DL_FILE}"
+      fi
+    else
+      fail "终端面板未打开（OCR 门控两轮未检出）" ui
     fi
 
-    # 正向：Git 视图容器
-    keystroke_cmd g shift  # cmd+shift+g = Source Control
+    # 关掉终端面板再测视图/面板类快捷键——终端持焦时按键进 shell，Ctrl+Shift+G 与
+    # Cmd+Shift+P 都到不了 workbench（本机实证）
+    term_close_wait || note "警告：终端面板未能确认关闭，后续视图断言可能受影响"
+
+    # 正向：Git 视图容器（macOS Source Control 视图是 Ctrl+Shift+G，Cmd+Shift+G 是查找上一个）
+    keystroke_cmd g ctrlshift
     sleep 2
-    if ax_find_deep "Source Control" || ax_find_deep "源代码管理"; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
+    if ocr_window_find 'source control|源代码管理'; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
 
     # 负向：命令面板无 Remote Explorer / Debug / Chat / Copilot 入口。
-    # 证明方式：面板打开后必须出现「无匹配命令」空态文本——既证面板真的打开了，又证无命中
-    no_palette_hits() { # no_palette_hits <query>
-      keystroke_cmd p shift
-      sleep 1
-      type_str "$1"
-      sleep 2
-      local ok=1
-      if ax_find_deep "No matching commands" || ax_find_deep "没有匹配的命令"; then ok=0; fi
-      press_escape
-      sleep 1
-      return ${ok}
+    # VS Code 命令面板是模糊匹配——"Remote Explorer" 也会命中普通 Explorer 命令，
+    # 故不能依赖「无匹配命令」空态；改为：确认面板打开（OCR 检出查询回显行）后，
+    # 断言结果区（回显行以下）无任何包含禁忌词的行。第一次 chord 可能被刚打开的
+    # 视图吞掉，面板未开时重试一次
+    no_palette_hits() { # no_palette_hits <query> <forbidden-regex>
+      local attempt ocr
+      for attempt in 1 2; do
+        keystroke_cmd p shift
+        sleep 2
+        type_str "$1"
+        sleep 2
+        capture_window "${SMOKE_ROOT}/win.png" || return 1
+        ocr="$( "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null )"
+        if grep -qiF "$1" <<< "${ocr}"; then
+          press_escape; sleep 1
+          if awk -v q="$1" 'BEGIN{lq=tolower(q)} {if (!dropped && index(tolower($0), lq)) {dropped=1; next} print}' <<< "${ocr}" | grep -qiE "$2"; then
+            return 1
+          fi
+          return 0
+        fi
+        press_escape
+        sleep 1
+      done
+      return 1
     }
 
     if (( PHASE >= 3 )); then
-      if no_palette_hits "Remote Explorer"; then pass "命令面板无 Remote Explorer"; else fail "命令面板仍有 Remote Explorer" ui; fi
+      if no_palette_hits "Remote Explorer" 'remote explorer'; then pass "命令面板无 Remote Explorer"; else fail "命令面板仍有 Remote Explorer" ui; fi
     fi
     if (( PHASE >= 4 )); then
-      for Q in "Debug: Start" "Chat:" "Notebook:"; do
-        if no_palette_hits "${Q}"; then pass "命令面板无 ${Q}"; else fail "命令面板仍命中 ${Q}" ui; fi
-      done
+      if no_palette_hits "Debug: Start" 'debug'; then pass "命令面板无 Debug: Start"; else fail "命令面板仍命中 Debug: Start" ui; fi
+      if no_palette_hits "Chat:" 'chat'; then pass "命令面板无 Chat:"; else fail "命令面板仍命中 Chat:" ui; fi
+      if no_palette_hits "Notebook:" 'notebook'; then pass "命令面板无 Notebook:"; else fail "命令面板仍命中 Notebook:" ui; fi
     fi
     if (( PHASE >= 5 )); then
-      if no_palette_hits "Copilot:"; then pass "命令面板无 Copilot:"; else fail "命令面板仍命中 Copilot:" ui; fi
+      if no_palette_hits "Copilot:" 'copilot'; then pass "命令面板无 Copilot:"; else fail "命令面板仍命中 Copilot:" ui; fi
     fi
 
     quit_app
