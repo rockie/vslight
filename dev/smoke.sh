@@ -21,6 +21,8 @@
 #               >=2 品牌（vslight 二进制/无 tunnel 二进制/无 reh 产物/bundle id）
 #               >=3 remote.* 前缀为 0 + 无 Remote Explorer 入口
 #               >=4 debug.*/chat.*/notebook.* 前缀为 0 + 无 sessions/agentHost 产物
+#               >=5 Copilot 配置面（product.json 键/schema 计数/asar/命令面板）
+#               >=6 深度瘦身（rg/mxc 平台目录、1ds、notebook-out、telemetry.* 保留）
 #     --skip-ui 只跑 L1+L2（无 GUI 环境/CI 用）
 #     --keep    保留临时 profile/workspace（排查用）
 #
@@ -133,6 +135,53 @@ if (( PHASE >= 4 )); then
     skip "源码树不在（仅产物），chat 降级断言归入 Phase 7 UI 检查"
   else
     fail "chat.disableAIFeatures 未默认开启"
+  fi
+fi
+
+# ---- M2 · Copilot 配置面（lean-dist §9.1 M2）：产物 product.json 键、api proposal 子键、
+#      schema 计数（chat.* 隐藏面 ≤10、copilot 系为 0）、asar 包路径、docs 树
+if (( PHASE >= 5 )); then
+  PROD_JSON="${APP_RES}/product.json"
+  for K in defaultChatAgent trustedExtensionAuthAccess builtInExtensionsEnabledWithAutoUpdates extensionTips extensionImportantTips; do
+    if jq -e "has(\"${K}\")" "${PROD_JSON}" >/dev/null 2>&1; then
+      fail "产物 product.json 仍有 ${K}"
+    else
+      pass "产物 product.json 无 ${K}"
+    fi
+  done
+  COPILOT_KEYS="$( jq -r '[(.extensionEnabledApiProposals // {} | keys[]), (.extensionsEnabledWithApiProposalVersion // [] | .[])] | .[]' "${PROD_JSON}" 2>/dev/null | grep -i copilot || true )"
+  if [[ -n "${COPILOT_KEYS}" ]]; then fail "api proposal 列表仍有 copilot 条目: ${COPILOT_KEYS}"; else pass "api proposal 列表无 copilot 条目"; fi
+  check '"copilot.*" 注册设置为 0' "0" "$( count_prefix 'copilot\.[a-zA-Z]+' )"
+  check '"github.copilot.*" 注册设置为 0' "0" "$( count_prefix 'github\.copilot\.' )"
+  CHAT_N="$( count_prefix 'chat\.[a-zA-Z]+' )"
+  if (( CHAT_N <= 10 )); then pass '"chat.*" 注册设置 '"${CHAT_N}"' ≤ 10（隐藏面基线）'; else fail '"chat.*" 注册设置 '"${CHAT_N}"' > 10'; fi
+  ASAR="${APP_RES}/node_modules.asar"
+  if [[ -f "${ASAR}" ]]; then
+    if grep -aq '@github/copilot\|@vscode/copilot-api' "${ASAR}"; then fail "asar 内仍有 @github/copilot*/@vscode/copilot-api"; else pass "asar 无 @github/copilot*/@vscode/copilot-api"; fi
+  fi
+  if [[ -f "docs/ext-github-copilot.md" ]]; then fail "docs/ext-github-copilot.md 仍存在"; else pass "docs 树无 ext-github-copilot.md"; fi
+fi
+
+# ---- M3 · 深度瘦身（lean-dist §9.1 M3）：rg/mxc 平台目录、1ds、notebook-out、telemetry.* 保留。
+#      平台按本 fork 唯一产物 darwin-arm64 断言
+if (( PHASE >= 6 )); then
+  RG_BIN="${APP_RES}/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin"
+  if [[ -x "${RG_BIN}/darwin-arm64/rg" ]]; then pass "rg 二进制在 (darwin-arm64)"; else fail "rg 二进制缺失 (${RG_BIN}/darwin-arm64/rg)"; fi
+  RG_DIRS="$( ls "${RG_BIN}" 2>/dev/null | tr '\n' ' ' | sed 's/ $//' )"
+  check "rg bin/ 仅本机平台目录" "darwin-arm64" "${RG_DIRS}"
+  MXC_BIN="${APP_RES}/node_modules.asar.unpacked/@microsoft/mxc-sdk/bin"
+  MXC_DIRS="$( ls "${MXC_BIN}" 2>/dev/null | tr '\n' ' ' | sed 's/ $//' )"
+  check "mxc-sdk bin/ 仅 arm64" "arm64" "${MXC_DIRS}"
+  if [[ -f "${ASAR}" ]]; then
+    if grep -aq '1ds-post-js\|1ds-core-js\|applicationinsights-core-js' "${ASAR}"; then fail "asar 内仍有 1ds 遥测 SDK"; else pass "asar 无 1ds 遥测 SDK"; fi
+  fi
+  if find "${APP_RES}/extensions/mermaid-markdown-features" -maxdepth 1 -name 'notebook-out' 2>/dev/null | grep -q .; then fail "mermaid notebook-out 仍在产物"; else pass "产物无 mermaid notebook-out"; fi
+  TELEMETRY_N="$( count_prefix 'telemetry\.[a-zA-Z]+' )"
+  if (( TELEMETRY_N >= 1 )); then pass '"telemetry.*" 注册设置 '"${TELEMETRY_N}"' ≥ 1'; else fail '"telemetry.*" 注册设置丢失'; fi
+  if [[ -d "vscode/src" ]]; then
+    if grep -rl 'OneDataSystemAppender\|@microsoft/1ds' vscode/src/ 2>/dev/null | grep -q .; then fail "源码树仍有 1ds 引用"; else pass "源码树无 1ds 引用"; fi
+  else
+    skip "源码树不在，1ds 源码断言跳过"
   fi
 fi
 
@@ -279,6 +328,14 @@ else
       if ax_find "${Q%%:*}"; then fail "命令面板仍命中 ${Q}" ui; else pass "命令面板无 ${Q}"; fi
       osascript -e 'tell application "System Events" to key code 53'
     done
+  fi
+  if (( PHASE >= 5 )); then
+    keystroke_cmd p shift
+    sleep 1
+    run_to 15 osascript -e 'tell application "System Events" to keystroke "Copilot:"'
+    sleep 2
+    if ax_find "Copilot"; then fail "命令面板仍命中 Copilot:" ui; else pass "命令面板无 Copilot:"; fi
+    osascript -e 'tell application "System Events" to key code 53'
   fi
 
   quit_app

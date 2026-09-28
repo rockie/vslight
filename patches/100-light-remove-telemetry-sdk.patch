@@ -1,0 +1,640 @@
+diff --git a/eslint.config.js b/eslint.config.js
+index bf1d986b..a4971537 100644
+--- a/eslint.config.js
++++ b/eslint.config.js
+@@ -1674,4 +1674,2 @@ export default defineConfig(
+ 						'tas-client', // node module allowed even in /common/
+-						'@microsoft/1ds-core-js', // node module allowed even in /common/
+-						'@microsoft/1ds-post-js', // node module allowed even in /common/
+ 						'@xterm/headless', // node module allowed even in /common/
+@@ -1704,4 +1702,2 @@ export default defineConfig(
+ 						'tas-client', // node module allowed even in /common/
+-						'@microsoft/1ds-core-js', // node module allowed even in /common/
+-						'@microsoft/1ds-post-js', // node module allowed even in /common/
+ 						'@xterm/headless', // node module allowed even in /common/
+diff --git a/package-lock.json b/package-lock.json
+index 797f15e3..c92f1d7d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -12,4 +12,2 @@
+       "dependencies": {
+-        "@microsoft/1ds-core-js": "^3.2.13",
+-        "@microsoft/1ds-post-js": "^3.2.13",
+         "@microsoft/dev-tunnels-connections": "^1.3.41",
+@@ -1625,39 +1623,2 @@
+     },
+-    "node_modules/@microsoft/1ds-core-js": {
+-      "version": "3.2.13",
+-      "resolved": "https://registry.npmjs.org/@microsoft/1ds-core-js/-/1ds-core-js-3.2.13.tgz",
+-      "integrity": "sha512-CluYTRWcEk0ObG5EWFNWhs87e2qchJUn0p2D21ZUa3PWojPZfPSBs4//WIE0MYV8Qg1Hdif2ZTwlM7TbYUjfAg==",
+-      "dependencies": {
+-        "@microsoft/applicationinsights-core-js": "2.8.15",
+-        "@microsoft/applicationinsights-shims": "^2.0.2",
+-        "@microsoft/dynamicproto-js": "^1.1.7"
+-      }
+-    },
+-    "node_modules/@microsoft/1ds-post-js": {
+-      "version": "3.2.13",
+-      "resolved": "https://registry.npmjs.org/@microsoft/1ds-post-js/-/1ds-post-js-3.2.13.tgz",
+-      "integrity": "sha512-HgS574fdD19Bo2vPguyznL4eDw7Pcm1cVNpvbvBLWiW3x4e1FCQ3VMXChWnAxCae8Hb0XqlA2sz332ZobBavTA==",
+-      "dependencies": {
+-        "@microsoft/1ds-core-js": "3.2.13",
+-        "@microsoft/applicationinsights-shims": "^2.0.2",
+-        "@microsoft/dynamicproto-js": "^1.1.7"
+-      }
+-    },
+-    "node_modules/@microsoft/applicationinsights-core-js": {
+-      "version": "2.8.15",
+-      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-2.8.15.tgz",
+-      "integrity": "sha512-yYAs9MyjGr2YijQdUSN9mVgT1ijI1FPMgcffpaPmYbHAVbQmF7bXudrBWHxmLzJlwl5rfep+Zgjli2e67lwUqQ==",
+-      "dependencies": {
+-        "@microsoft/applicationinsights-shims": "2.0.2",
+-        "@microsoft/dynamicproto-js": "^1.1.9"
+-      },
+-      "peerDependencies": {
+-        "tslib": "*"
+-      }
+-    },
+-    "node_modules/@microsoft/applicationinsights-shims": {
+-      "version": "2.0.2",
+-      "resolved": "https://registry.npmjs.org/@microsoft/applicationinsights-shims/-/applicationinsights-shims-2.0.2.tgz",
+-      "integrity": "sha512-PoHEgsnmcqruLNHZ/amACqdJ6YYQpED0KSRe6J7gIJTtpZC1FfFU9b1fmDKDKtFoUSrPzEh1qzO3kmRZP0betg=="
+-    },
+     "node_modules/@microsoft/dev-tunnels-connections": {
+@@ -1764,7 +1725,2 @@
+     },
+-    "node_modules/@microsoft/dynamicproto-js": {
+-      "version": "1.1.9",
+-      "resolved": "https://registry.npmjs.org/@microsoft/dynamicproto-js/-/dynamicproto-js-1.1.9.tgz",
+-      "integrity": "sha512-n1VPsljTSkthsAFYdiWfC+DKzK2WwcRp83Y1YAqdX552BstvsDjft9YXppjUzp11BPsapDoO1LDgrDB0XVsfNQ=="
+-    },
+     "node_modules/@microsoft/mxc-sdk": {
+diff --git a/package.json b/package.json
+index 78fe09c2..472432d9 100644
+--- a/package.json
++++ b/package.json
+@@ -95,4 +95,2 @@
+   "dependencies": {
+-    "@microsoft/1ds-core-js": "^3.2.13",
+-    "@microsoft/1ds-post-js": "^3.2.13",
+     "@microsoft/dev-tunnels-connections": "^1.3.41",
+diff --git a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+index cc36e4e2..b4df56a7 100644
+--- a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
++++ b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+@@ -57,3 +57,3 @@ import { TelemetryLogAppender } from '../../../platform/telemetry/common/telemet
+ import { TelemetryService } from '../../../platform/telemetry/common/telemetryService.js';
+-import { supportsTelemetry, ITelemetryAppender, NullAppender, NullTelemetryService, getPiiPathsFromEnvironment, isInternalTelemetry, isLoggingOnly } from '../../../platform/telemetry/common/telemetryUtils.js';
++import { supportsTelemetry, ITelemetryAppender, NullAppender, NullTelemetryService, getPiiPathsFromEnvironment, isInternalTelemetry } from '../../../platform/telemetry/common/telemetryUtils.js';
+ import { CustomEndpointTelemetryService } from '../../../platform/telemetry/node/customEndpointTelemetryService.js';
+@@ -94,3 +94,2 @@ import { IPolicyService, NullPolicyService } from '../../../platform/policy/comm
+ import { UserDataProfilesService } from '../../../platform/userDataProfile/common/userDataProfileIpc.js';
+-import { OneDataSystemAppender } from '../../../platform/telemetry/node/1dsAppender.js';
+ import { UserDataProfilesCleaner } from './contrib/userDataProfilesCleaner.js';
+@@ -326,7 +325,2 @@ class SharedProcessMain extends Disposable implements IClientConnectionFilter {
+ 			appenders.push(logAppender);
+-			if (!isLoggingOnly(productService, environmentService) && productService.aiConfig?.ariaKey) {
+-				const collectorAppender = new OneDataSystemAppender(requestService, internalTelemetry, 'monacoworkbench', null, productService.aiConfig.ariaKey);
+-				this._register(toDisposable(() => collectorAppender.flush())); // Ensure the 1DS appender is disposed so that it flushes remaining data
+-				appenders.push(collectorAppender);
+-			}
+ 
+diff --git a/src/vs/code/node/cliProcessMain.ts b/src/vs/code/node/cliProcessMain.ts
+index 41d94cc4..f374e8ae 100644
+--- a/src/vs/code/node/cliProcessMain.ts
++++ b/src/vs/code/node/cliProcessMain.ts
+@@ -54,3 +54,2 @@ import { ITelemetryServiceConfig, TelemetryService } from '../../platform/teleme
+ import { supportsTelemetry, NullTelemetryService, getPiiPathsFromEnvironment, isInternalTelemetry, ITelemetryAppender } from '../../platform/telemetry/common/telemetryUtils.js';
+-import { OneDataSystemAppender } from '../../platform/telemetry/node/1dsAppender.js';
+ import { buildTelemetryMessage } from '../../platform/telemetry/node/telemetry.js';
+@@ -252,5 +251,2 @@ class CliMain extends Disposable {
+ 		if (supportsTelemetry(productService, environmentService)) {
+-			if (productService.aiConfig?.ariaKey) {
+-				appenders.push(new OneDataSystemAppender(requestService, isInternal, 'monacoworkbench', null, productService.aiConfig.ariaKey));
+-			}
+ 
+diff --git a/src/vs/platform/agentHost/node/agentHostMicrosoftTelemetry.ts b/src/vs/platform/agentHost/node/agentHostMicrosoftTelemetry.ts
+index 3ab87ab1..5a3ba191 100644
+--- a/src/vs/platform/agentHost/node/agentHostMicrosoftTelemetry.ts
++++ b/src/vs/platform/agentHost/node/agentHostMicrosoftTelemetry.ts
+@@ -8,7 +8,4 @@ import type { IRequestService } from '../../request/common/request.js';
+ import type { ICommonProperties } from '../../telemetry/common/telemetry.js';
+-import { OneDataSystemAppender } from '../../telemetry/node/1dsAppender.js';
+ import type { IAgentHostInternalTelemetryContext, IAgentHostInternalTelemetrySink, TelemetryMeasurements, TelemetryProps } from './agentHostRestrictedTelemetry.js';
+ 
+-// Public instrumentation key shipped as internalLargeStorageAriaKey in extensions/copilot/package.json.
+-const INTERNAL_LARGE_STORAGE_ARIA_KEY = 'ec712b3202c5462fb6877acae7f1f9d7-c19ad55e-3e3c-4f99-984b-827f6d95bd9e-6917';
+ const INTERNAL_EVENT_PREFIX = 'GitHub.copilot-chat';
+@@ -66,3 +63,3 @@ export class AgentHostInternalTelemetrySender extends Disposable implements IAge
+ 		}
+-		const createAppender = this._options.createAppender ?? ((requestService, commonProperties) => new OneDataSystemAppender(requestService, true, INTERNAL_EVENT_PREFIX, commonProperties ?? null, INTERNAL_LARGE_STORAGE_ARIA_KEY));
++		const createAppender = this._options.createAppender ?? (() => ({ log: () => { }, flush: () => Promise.resolve() }));
+ 		this._appender.value ??= new InternalTelemetryAppender(createAppender(this._options.requestService, getInternalCommonProperties(this._options.commonProperties, this._options.extensionVersion), INTERNAL_EVENT_PREFIX));
+@@ -81,3 +78,3 @@ export class AgentHostInternalTelemetrySender extends Disposable implements IAge
+ 		}
+-		const createAppender = this._options.createAppender ?? ((requestService, commonProperties) => new OneDataSystemAppender(requestService, true, INTERNAL_EVENT_PREFIX, commonProperties ?? null, INTERNAL_LARGE_STORAGE_ARIA_KEY));
++		const createAppender = this._options.createAppender ?? (() => ({ log: () => { }, flush: () => Promise.resolve() }));
+ 		this._appender.value ??= new InternalTelemetryAppender(createAppender(this._options.requestService, getInternalCommonProperties(this._options.commonProperties, this._options.extensionVersion), INTERNAL_EVENT_PREFIX));
+diff --git a/src/vs/platform/agentHost/node/agentHostTelemetryService.ts b/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
+index ee037694..e31c95e5 100644
+--- a/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
++++ b/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
+@@ -6,3 +6,3 @@
+ import { hostname, release } from 'os';
+-import { Disposable, isDisposable, toDisposable, type DisposableStore } from '../../../base/common/lifecycle.js';
++import { Disposable, isDisposable, type DisposableStore } from '../../../base/common/lifecycle.js';
+ import { getDevDeviceId, getMachineId, getSqmMachineId } from '../../../base/node/id.js';
+@@ -13,3 +13,2 @@ import { IProductService } from '../../product/common/productService.js';
+ import { IRequestService } from '../../request/common/request.js';
+-import { OneDataSystemAppender } from '../../telemetry/node/1dsAppender.js';
+ import { resolveCommonProperties, verifyMicrosoftInternalDomain } from '../../telemetry/common/commonProperties.js';
+@@ -224,7 +223,2 @@ export async function createAgentHostTelemetryService(options: IAgentHostTelemet
+ 	const loggingOnly = isLoggingOnly(productService, environmentService);
+-	if (!loggingOnly && productService.aiConfig?.ariaKey) {
+-		const collectorAppender = new OneDataSystemAppender(options.requestService, internalTelemetry, 'monacoworkbench', null, productService.aiConfig.ariaKey);
+-		disposables.add(toDisposable(() => { void collectorAppender.flush(); }));
+-		appenders.push(collectorAppender);
+-	}
+ 
+diff --git a/src/vs/platform/telemetry/browser/1dsAppender.ts b/src/vs/platform/telemetry/browser/1dsAppender.ts
+deleted file mode 100644
+index 184da1d0..00000000
+--- a/src/vs/platform/telemetry/browser/1dsAppender.ts
++++ /dev/null
+@@ -1,24 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-import { AbstractOneDataSystemAppender, IAppInsightsCore } from '../common/1dsAppender.js';
+-
+-
+-export class OneDataSystemWebAppender extends AbstractOneDataSystemAppender {
+-	constructor(
+-		isInternalTelemetry: boolean,
+-		eventPrefix: string,
+-		defaultData: { [key: string]: unknown } | null,
+-		iKeyOrClientFactory: string | (() => IAppInsightsCore), // allow factory function for testing
+-	) {
+-		super(isInternalTelemetry, eventPrefix, defaultData, iKeyOrClientFactory);
+-
+-		// If we cannot fetch the endpoint it means it is down and we should not send any telemetry.
+-		// This is most likely due to ad blockers
+-		fetch(this.endPointHealthUrl, { method: 'GET' }).catch(err => {
+-			this._aiCoreOrKey = undefined;
+-		});
+-	}
+-}
+diff --git a/src/vs/platform/telemetry/common/1dsAppender.ts b/src/vs/platform/telemetry/common/1dsAppender.ts
+deleted file mode 100644
+index 0daaabd0..00000000
+--- a/src/vs/platform/telemetry/common/1dsAppender.ts
++++ /dev/null
+@@ -1,160 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-import type { IExtendedConfiguration, IExtendedTelemetryItem, ITelemetryItem, ITelemetryUnloadState } from '@microsoft/1ds-core-js';
+-import type { IChannelConfiguration, IXHROverride, PostChannel } from '@microsoft/1ds-post-js';
+-import { importAMDNodeModule } from '../../../amdX.js';
+-import { onUnexpectedError } from '../../../base/common/errors.js';
+-import { mixin } from '../../../base/common/objects.js';
+-import { isWeb } from '../../../base/common/platform.js';
+-import { ITelemetryAppender, validateTelemetryData } from './telemetryUtils.js';
+-
+-// Interface type which is a subset of @microsoft/1ds-core-js AppInsightsCore.
+-// Allows us to more easily build mock objects for testing as the interface is quite large and we only need a few properties.
+-export interface IAppInsightsCore {
+-	pluginVersionString: string;
+-	track(item: ITelemetryItem | IExtendedTelemetryItem): void;
+-	unload(isAsync: boolean, unloadComplete: (unloadState: ITelemetryUnloadState) => void): void;
+-}
+-
+-const endpointUrl = 'https://mobile.events.data.microsoft.com/OneCollector/1.0';
+-const endpointHealthUrl = 'https://mobile.events.data.microsoft.com/ping';
+-
+-async function getClient(instrumentationKey: string, addInternalFlag?: boolean, xhrOverride?: IXHROverride): Promise<IAppInsightsCore> {
+-	// eslint-disable-next-line local/code-amd-node-module
+-	const oneDs = isWeb ? await importAMDNodeModule<typeof import('@microsoft/1ds-core-js')>('@microsoft/1ds-core-js', 'bundle/ms.core.min.js') : await import('@microsoft/1ds-core-js');
+-	// eslint-disable-next-line local/code-amd-node-module
+-	const postPlugin = isWeb ? await importAMDNodeModule<typeof import('@microsoft/1ds-post-js')>('@microsoft/1ds-post-js', 'bundle/ms.post.min.js') : await import('@microsoft/1ds-post-js');
+-
+-	const appInsightsCore = new oneDs.AppInsightsCore();
+-	const collectorChannelPlugin: PostChannel = new postPlugin.PostChannel();
+-	// Configure the app insights core to send to collector++ and disable logging of debug info
+-	const coreConfig: IExtendedConfiguration = {
+-		instrumentationKey,
+-		endpointUrl,
+-		loggingLevelTelemetry: 0,
+-		loggingLevelConsole: 0,
+-		disableCookiesUsage: true,
+-		disableDbgExt: true,
+-		disableInstrumentationKeyValidation: true,
+-		channels: [[
+-			collectorChannelPlugin
+-		]]
+-	};
+-
+-	if (xhrOverride) {
+-		coreConfig.extensionConfig = {};
+-		// Configure the channel to use a XHR Request override since it's not available in node
+-		const channelConfig: IChannelConfiguration = {
+-			alwaysUseXhrOverride: true,
+-			ignoreMc1Ms0CookieProcessing: true,
+-			httpXHROverride: xhrOverride
+-		};
+-		coreConfig.extensionConfig[collectorChannelPlugin.identifier] = channelConfig;
+-	}
+-
+-	appInsightsCore.initialize(coreConfig, []);
+-
+-	appInsightsCore.addTelemetryInitializer((envelope) => {
+-		// Opt the user out of 1DS data sharing
+-		envelope['ext'] = envelope['ext'] ?? {};
+-		envelope['ext']['web'] = envelope['ext']['web'] ?? {};
+-		envelope['ext']['web']['consentDetails'] = '{"GPC_DataSharingOptIn":false}';
+-
+-		if (addInternalFlag) {
+-			envelope['ext']['utc'] = envelope['ext']['utc'] ?? {};
+-			// Sets it to be internal only based on Windows UTC flagging
+-			envelope['ext']['utc']['flags'] = 0x0000811ECD;
+-		}
+-	});
+-
+-	return appInsightsCore;
+-}
+-
+-// TODO @lramos15 maybe make more in line with src/vs/platform/telemetry/browser/appInsightsAppender.ts with caching support
+-export abstract class AbstractOneDataSystemAppender implements ITelemetryAppender {
+-
+-	protected _aiCoreOrKey: IAppInsightsCore | string | undefined;
+-	private _asyncAiCore: Promise<IAppInsightsCore> | null;
+-	protected readonly endPointUrl = endpointUrl;
+-	protected readonly endPointHealthUrl = endpointHealthUrl;
+-
+-	constructor(
+-		private readonly _isInternalTelemetry: boolean,
+-		private _eventPrefix: string,
+-		private _defaultData: { [key: string]: unknown } | null,
+-		iKeyOrClientFactory: string | (() => IAppInsightsCore), // allow factory function for testing
+-		private _xhrOverride?: IXHROverride
+-	) {
+-		if (!this._defaultData) {
+-			this._defaultData = {};
+-		}
+-
+-		if (typeof iKeyOrClientFactory === 'function') {
+-			this._aiCoreOrKey = iKeyOrClientFactory();
+-		} else {
+-			this._aiCoreOrKey = iKeyOrClientFactory;
+-		}
+-		this._asyncAiCore = null;
+-	}
+-
+-	private _withAIClient(callback: (aiCore: IAppInsightsCore) => void): void {
+-		if (!this._aiCoreOrKey) {
+-			return;
+-		}
+-
+-		if (typeof this._aiCoreOrKey !== 'string') {
+-			callback(this._aiCoreOrKey);
+-			return;
+-		}
+-
+-		if (!this._asyncAiCore) {
+-			this._asyncAiCore = getClient(this._aiCoreOrKey, this._isInternalTelemetry, this._xhrOverride);
+-		}
+-
+-		this._asyncAiCore.then(
+-			(aiClient) => {
+-				callback(aiClient);
+-			},
+-			(err) => {
+-				onUnexpectedError(err);
+-				console.error(err);
+-			}
+-		);
+-	}
+-
+-	log(eventName: string, data?: unknown): void {
+-		if (!this._aiCoreOrKey) {
+-			return;
+-		}
+-		data = mixin(data, this._defaultData);
+-		const validatedData = validateTelemetryData(data);
+-		const name = this._eventPrefix + '/' + eventName;
+-
+-		try {
+-			this._withAIClient((aiClient) => {
+-				aiClient.pluginVersionString = validatedData?.properties.version ?? 'Unknown';
+-				aiClient.track({
+-					name,
+-					baseData: { name, properties: validatedData?.properties, measurements: validatedData?.measurements }
+-				});
+-			});
+-		} catch { }
+-	}
+-
+-	flush(): Promise<void> {
+-		if (this._aiCoreOrKey) {
+-			return new Promise(resolve => {
+-				this._withAIClient((aiClient) => {
+-					aiClient.unload(true, () => {
+-						this._aiCoreOrKey = undefined;
+-						resolve(undefined);
+-					});
+-				});
+-			});
+-		}
+-		return Promise.resolve(undefined);
+-	}
+-}
+diff --git a/src/vs/platform/telemetry/node/1dsAppender.ts b/src/vs/platform/telemetry/node/1dsAppender.ts
+deleted file mode 100644
+index 0fdbbd1a..00000000
+--- a/src/vs/platform/telemetry/node/1dsAppender.ts
++++ /dev/null
+@@ -1,117 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-import type { IPayloadData, IXHROverride } from '@microsoft/1ds-post-js';
+-import { streamToBuffer } from '../../../base/common/buffer.js';
+-import { CancellationToken } from '../../../base/common/cancellation.js';
+-import { IRequestOptions } from '../../../base/parts/request/common/request.js';
+-import { IRequestService, NO_FETCH_TELEMETRY } from '../../request/common/request.js';
+-import { AbstractOneDataSystemAppender, IAppInsightsCore } from '../common/1dsAppender.js';
+-
+-type OnCompleteFunc = (status: number, headers: { [headerName: string]: string }, response?: string) => void;
+-
+-interface IResponseData {
+-	headers: { [headerName: string]: string };
+-	statusCode: number;
+-	responseData: string;
+-}
+-
+-/**
+- * Completes a request to submit telemetry to the server utilizing the request service
+- * @param options The options which will be used to make the request
+- * @param requestService The request service
+- * @returns An object containing the headers, statusCode, and responseData
+- */
+-async function makeTelemetryRequest(options: IRequestOptions, requestService: IRequestService): Promise<IResponseData> {
+-	const response = await requestService.request(options, CancellationToken.None);
+-	const responseData = (await streamToBuffer(response.stream)).toString();
+-	const statusCode = response.res.statusCode ?? 200;
+-	const headers = response.res.headers as Record<string, string>;
+-	return {
+-		headers,
+-		statusCode,
+-		responseData
+-	};
+-}
+-
+-/**
+- * Complete a request to submit telemetry to the server utilizing the https module. Only used when the request service is not available
+- * @param options The options which will be used to make the request
+- * @returns An object containing the headers, statusCode, and responseData
+- */
+-async function makeLegacyTelemetryRequest(options: IRequestOptions): Promise<IResponseData> {
+-	const https = await import('https'); // Lazy due to https://github.com/nodejs/node/issues/59686
+-	const httpsOptions = {
+-		method: options.type,
+-		headers: options.headers
+-	};
+-	const responsePromise = new Promise<IResponseData>((resolve, reject) => {
+-		const req = https.request(options.url ?? '', httpsOptions, res => {
+-			res.on('data', function (responseData) {
+-				resolve({
+-					headers: res.headers as Record<string, string>,
+-					statusCode: res.statusCode ?? 200,
+-					responseData: responseData.toString()
+-				});
+-			});
+-			// On response with error send status of 0 and a blank response to oncomplete so we can retry events
+-			res.on('error', function (err) {
+-				reject(err);
+-			});
+-		});
+-		req.write(options.data, (err) => {
+-			if (err) {
+-				reject(err);
+-			}
+-		});
+-		req.end();
+-	});
+-	return responsePromise;
+-}
+-
+-async function sendPostAsync(requestService: IRequestService | undefined, payload: IPayloadData, oncomplete: OnCompleteFunc) {
+-	const telemetryRequestData = typeof payload.data === 'string' ? payload.data : new TextDecoder().decode(payload.data);
+-	const requestOptions: IRequestOptions = {
+-		type: 'POST',
+-		headers: {
+-			...payload.headers,
+-			'Content-Type': 'application/json',
+-			'Content-Length': Buffer.byteLength(payload.data).toString()
+-		},
+-		url: payload.urlString,
+-		data: telemetryRequestData,
+-		callSite: NO_FETCH_TELEMETRY
+-	};
+-
+-	try {
+-		const responseData = requestService ? await makeTelemetryRequest(requestOptions, requestService) : await makeLegacyTelemetryRequest(requestOptions);
+-		oncomplete(responseData.statusCode, responseData.headers, responseData.responseData);
+-	} catch {
+-		// If it errors out, send status of 0 and a blank response to oncomplete so we can retry events
+-		oncomplete(0, {});
+-	}
+-}
+-
+-
+-export class OneDataSystemAppender extends AbstractOneDataSystemAppender {
+-
+-	constructor(
+-		requestService: IRequestService | undefined,
+-		isInternalTelemetry: boolean,
+-		eventPrefix: string,
+-		defaultData: { [key: string]: unknown } | null,
+-		iKeyOrClientFactory: string | (() => IAppInsightsCore), // allow factory function for testing
+-	) {
+-		// Override the way events get sent since node doesn't have XHTMLRequest
+-		const customHttpXHROverride: IXHROverride = {
+-			sendPOST: (payload: IPayloadData, oncomplete: OnCompleteFunc) => {
+-				// Fire off the async request without awaiting it
+-				sendPostAsync(requestService, payload, oncomplete);
+-			}
+-		};
+-
+-		super(isInternalTelemetry, eventPrefix, defaultData, iKeyOrClientFactory, customHttpXHROverride);
+-	}
+-}
+diff --git a/src/vs/platform/telemetry/test/browser/1dsAppender.test.ts b/src/vs/platform/telemetry/test/browser/1dsAppender.test.ts
+deleted file mode 100644
+index 29acc962..00000000
+--- a/src/vs/platform/telemetry/test/browser/1dsAppender.test.ts
++++ /dev/null
+@@ -1,133 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-import type { ITelemetryItem, ITelemetryUnloadState } from '@microsoft/1ds-core-js';
+-import assert from 'assert';
+-import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+-import { OneDataSystemWebAppender } from '../../browser/1dsAppender.js';
+-import { IAppInsightsCore } from '../../common/1dsAppender.js';
+-
+-class AppInsightsCoreMock implements IAppInsightsCore {
+-	pluginVersionString: string = 'Test Runner';
+-	public events: any[] = [];
+-	public IsTrackingPageView: boolean = false;
+-	public exceptions: any[] = [];
+-
+-	public track(event: ITelemetryItem) {
+-		this.events.push(event.baseData);
+-	}
+-
+-	public unload(isAsync: boolean, unloadComplete: (unloadState: ITelemetryUnloadState) => void): void {
+-		// No-op
+-	}
+-}
+-
+-suite('AIAdapter', () => {
+-	let appInsightsMock: AppInsightsCoreMock;
+-	let adapter: OneDataSystemWebAppender;
+-	const prefix = 'prefix';
+-
+-
+-	teardown(() => {
+-		adapter.flush();
+-	});
+-
+-	ensureNoDisposablesAreLeakedInTestSuite();
+-
+-	setup(() => {
+-		appInsightsMock = new AppInsightsCoreMock();
+-		adapter = new OneDataSystemWebAppender(false, prefix, undefined!, () => appInsightsMock);
+-	});
+-
+-
+-	test('Simple event', () => {
+-		adapter.log('testEvent');
+-
+-		assert.strictEqual(appInsightsMock.events.length, 1);
+-		assert.strictEqual(appInsightsMock.events[0].name, `${prefix}/testEvent`);
+-	});
+-
+-	test('addional data', () => {
+-		adapter = new OneDataSystemWebAppender(false, prefix, { first: '1st', second: 2, third: true }, () => appInsightsMock);
+-		adapter.log('testEvent');
+-
+-		assert.strictEqual(appInsightsMock.events.length, 1);
+-		const [first] = appInsightsMock.events;
+-		assert.strictEqual(first.name, `${prefix}/testEvent`);
+-		assert.strictEqual(first.properties!['first'], '1st');
+-		assert.strictEqual(first.measurements!['second'], 2);
+-		assert.strictEqual(first.measurements!['third'], 1);
+-	});
+-
+-	test('property limits', () => {
+-		let reallyLongPropertyName = 'abcdefghijklmnopqrstuvwxyz';
+-		for (let i = 0; i < 6; i++) {
+-			reallyLongPropertyName += 'abcdefghijklmnopqrstuvwxyz';
+-		}
+-		assert(reallyLongPropertyName.length > 150);
+-
+-		let reallyLongPropertyValue = 'abcdefghijklmnopqrstuvwxyz012345678901234567890123';
+-		for (let i = 0; i < 400; i++) {
+-			reallyLongPropertyValue += 'abcdefghijklmnopqrstuvwxyz012345678901234567890123';
+-		}
+-		assert(reallyLongPropertyValue.length > 8192);
+-
+-		const data = Object.create(null);
+-		data[reallyLongPropertyName] = '1234';
+-		data['reallyLongPropertyValue'] = reallyLongPropertyValue;
+-		adapter.log('testEvent', data);
+-
+-		assert.strictEqual(appInsightsMock.events.length, 1);
+-
+-		for (const prop in appInsightsMock.events[0].properties!) {
+-			assert(prop.length < 150);
+-			assert(appInsightsMock.events[0].properties![prop].length < 8192);
+-		}
+-	});
+-
+-	test('Different data types', () => {
+-		const date = new Date();
+-		adapter.log('testEvent', { favoriteDate: date, likeRed: false, likeBlue: true, favoriteNumber: 1, favoriteColor: 'blue', favoriteCars: ['bmw', 'audi', 'ford'] });
+-
+-		assert.strictEqual(appInsightsMock.events.length, 1);
+-		assert.strictEqual(appInsightsMock.events[0].name, `${prefix}/testEvent`);
+-		assert.strictEqual(appInsightsMock.events[0].properties!['favoriteColor'], 'blue');
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['likeRed'], 0);
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['likeBlue'], 1);
+-		assert.strictEqual(appInsightsMock.events[0].properties!['favoriteDate'], date.toISOString());
+-		assert.strictEqual(appInsightsMock.events[0].properties!['favoriteCars'], JSON.stringify(['bmw', 'audi', 'ford']));
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['favoriteNumber'], 1);
+-	});
+-
+-	test('Nested data', () => {
+-		adapter.log('testEvent', {
+-			window: {
+-				title: 'some title',
+-				measurements: {
+-					width: 100,
+-					height: 200
+-				}
+-			},
+-			nestedObj: {
+-				nestedObj2: {
+-					nestedObj3: {
+-						testProperty: 'test',
+-					}
+-				},
+-				testMeasurement: 1
+-			}
+-		});
+-
+-		assert.strictEqual(appInsightsMock.events.length, 1);
+-		assert.strictEqual(appInsightsMock.events[0].name, `${prefix}/testEvent`);
+-
+-		assert.strictEqual(appInsightsMock.events[0].properties!['window.title'], 'some title');
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['window.measurements.width'], 100);
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['window.measurements.height'], 200);
+-
+-		assert.strictEqual(appInsightsMock.events[0].properties!['nestedObj.nestedObj2.nestedObj3'], JSON.stringify({ 'testProperty': 'test' }));
+-		assert.strictEqual(appInsightsMock.events[0].measurements!['nestedObj.testMeasurement'], 1);
+-	});
+-
+-});
+diff --git a/src/vs/workbench/contrib/debug/node/telemetryApp.ts b/src/vs/workbench/contrib/debug/node/telemetryApp.ts
+index f4d65d3b..43a5c0a1 100644
+--- a/src/vs/workbench/contrib/debug/node/telemetryApp.ts
++++ b/src/vs/workbench/contrib/debug/node/telemetryApp.ts
+@@ -7,5 +7,3 @@ import { Server } from '../../../../base/parts/ipc/node/ipc.cp.js';
+ import { TelemetryAppenderChannel } from '../../../../platform/telemetry/common/telemetryIpc.js';
+-import { OneDataSystemAppender } from '../../../../platform/telemetry/node/1dsAppender.js';
+-
+-const appender = new OneDataSystemAppender(undefined, false, process.argv[2], JSON.parse(process.argv[3]), process.argv[4]);
++const appender = { log: () => { }, flush: () => Promise.resolve() };
+ process.once('exit', () => appender.flush());
+diff --git a/src/vs/workbench/services/telemetry/browser/telemetryService.ts b/src/vs/workbench/services/telemetry/browser/telemetryService.ts
+index 768fc0c3..61ba8300 100644
+--- a/src/vs/workbench/services/telemetry/browser/telemetryService.ts
++++ b/src/vs/workbench/services/telemetry/browser/telemetryService.ts
+@@ -11,3 +11,2 @@ import { IProductService } from '../../../../platform/product/common/productServ
+ import { IStorageService } from '../../../../platform/storage/common/storage.js';
+-import { OneDataSystemWebAppender } from '../../../../platform/telemetry/browser/1dsAppender.js';
+ import { ClassifiedEvent, IGDPRProperty, OmitMetadata, StrictPropertyCheck } from '../../../../platform/telemetry/common/gdprTypings.js';
+@@ -110,4 +109,2 @@ export class TelemetryService extends Disposable implements ITelemetryService {
+ 					appenders.push(remoteTelemetryProvider);
+-				} else {
+-					appenders.push(new OneDataSystemWebAppender(isInternal, 'monacoworkbench', null, productService.aiConfig?.ariaKey));
+ 				}

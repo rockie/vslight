@@ -48,9 +48,7 @@
     "^https:\\/\\/github\\.com\\/[^/]+\\/[^/]+\\/(actions\\/)?workflows\\/.*badge\\.svg"
   ],
   "extensionsEnabledWithApiProposalVersion": [
-    "GitHub.copilot-chat",
     "ms-vscode.vscode-commander",
-    "ms-vscode.vscode-copilot-vision",
     "GitHub.vscode-pull-request-github"
   ],
   "extensionEnabledApiProposals": {
@@ -61,9 +59,6 @@
       "authenticationChallenges"
     ],
     "ms-azuretools.vscode-azureresourcegroups": [
-      "authenticationChallenges"
-    ],
-    "ms-azuretools.vscode-azure-github-copilot": [
       "authenticationChallenges"
     ],
     "ms-azuretools.vscode-dev-azurecloudshell": [
@@ -248,82 +243,6 @@
       "treeItemMarkdownLabel",
       "treeViewMarkdownMessage"
     ],
-    "GitHub.copilot": [
-      "inlineCompletionsAdditions",
-      "devDeviceId"
-    ],
-    "GitHub.copilot-nightly": [
-      "inlineCompletionsAdditions",
-      "devDeviceId"
-    ],
-    "GitHub.copilot-chat": [
-      "agentSessionsWorkspace",
-      "agentsWindowConfiguration",
-      "interactive",
-      "terminalDataWriteEvent",
-      "terminalExecuteCommandEvent",
-      "terminalSelection",
-      "terminalQuickFixProvider",
-      "chatParticipantAdditions",
-      "defaultChatParticipant",
-      "embeddings",
-      "chatProvider",
-      "mappedEditsProvider",
-      "aiRelatedInformation",
-      "aiSettingsSearch",
-      "codeActionAI",
-      "findTextInFiles",
-      "findTextInFiles2",
-      "textSearchProvider",
-      "textSearchProvider2",
-      "activeComment",
-      "commentReveal",
-      "contribSourceControlInputBoxMenu",
-      "contribCommentEditorActionsMenu",
-      "contribCommentThreadAdditionalMenu",
-      "contribCommentsViewThreadMenus",
-      "contribChatEditorInlineGutterMenu",
-      "extensionAffinity",
-      "newSymbolNamesProvider",
-      "findFiles2",
-      "chatReferenceDiagnostic",
-      "extensionsAny",
-      "authLearnMore",
-      "testObserver",
-      "aiTextSearchProvider",
-      "documentFiltersExclusive",
-      "chatParticipantPrivate",
-      "contribDebugCreateConfiguration",
-      "inlineCompletionsAdditions",
-      "chatReferenceBinaryData",
-      "languageModelSystem",
-      "languageModelCapabilities",
-      "languageModelThinkingPart",
-      "languageModelToolSupportsModel",
-      "chatStatusItem",
-      "taskProblemMatcherStatus",
-      "contribLanguageModelToolSets",
-      "textDocumentChangeReason",
-      "resolvers",
-      "taskExecutionTerminal",
-      "dataChannels",
-      "chatSessionsProvider",
-      "chatSessionCustomizationProvider",
-      "devDeviceId",
-      "contribEditorContentMenu",
-      "tokenInformation",
-      "toolInvocationApproveCombination",
-      "chatPromptFiles",
-      "mcpServerDefinitions",
-      "tabInputMultiDiff",
-      "workspaceTrust",
-      "chatHooks",
-      "chatDebug",
-      "environmentPower",
-      "terminalTitle",
-      "languageModelPricing",
-      "chatInputNotification"
-    ],
     "GitHub.remotehub": [
       "contribRemoteHelp",
       "contribMenuBarHome",
@@ -414,11 +333,6 @@
     ],
     "ms-toolsai.datawrangler": [],
     "ms-vscode.vscode-commander": [],
-    "ms-vscode.vscode-websearchforcopilot": [],
-    "ms-vscode.vscode-copilot-vision": [
-      "chatReferenceBinaryData",
-      "codeActionAI"
-    ],
     "ms-autodev.vscode-autodev": [
       "chatParticipantAdditions"
     ],

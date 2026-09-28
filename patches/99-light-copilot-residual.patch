@@ -1,0 +1,3098 @@
+diff --git a/build/gulpfile.extensions.ts b/build/gulpfile.extensions.ts
+index d9e30b27..7ee1cd76 100644
+--- a/build/gulpfile.extensions.ts
++++ b/build/gulpfile.extensions.ts
+@@ -284,9 +284,2 @@ task.task(compileNativeExtensionsBuildTask);
+ 
+-/**
+- * Compiles the built-in copilot extension for the build.
+- * Used by non-CI local builds where copilot is not downloaded as a VSIX.
+- */
+-export const compileCopilotExtensionBuildTask = task.define('compile-copilot-extension-build', () => ext.packageCopilotExtensionStream(false).pipe(gulp.dest('.build')));
+-task.task(compileCopilotExtensionBuildTask);
+-
+ /**
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+index f7690c83..56f7df44 100644
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -105,3 +105,2 @@ const vscodeResourceIncludes = [
+ 	'out-build/vs/platform/accessibilitySignal/browser/media/*.mp3',
+-	'out-build/vs/workbench/contrib/agentsVoice/browser/media/*.mp3',
+ 
+diff --git a/build/lib/copilot.ts b/build/lib/copilot.ts
+deleted file mode 100644
+index 3d9cfbe2..00000000
+--- a/build/lib/copilot.ts
++++ /dev/null
+@@ -1,442 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-import * as fs from 'fs';
+-import * as os from 'os';
+-import * as path from 'path';
+-import { ensureNpmPackage, materializeNpmPackageVersion, type EnsureNpmPackageOptions } from './npmPackage.ts';
+-
+-/**
+- * Options for {@link prepareBuiltInCopilotRipgrepShim}. Extends the npm packing
+- * options with an override for the extension lockfile used to verify natives
+- * fetched for the pinned version (defaults to the repo's copy; overridable in
+- * tests).
+- */
+-export interface PrepareBuiltInCopilotOptions extends EnsureNpmPackageOptions {
+-	extensionLockfilePath?: string;
+-}
+-
+-/**
+- * The platforms that @github/copilot ships platform-specific packages for.
+- * These are the `@github/copilot-{platform}` optional dependency packages.
+- */
+-export const copilotPlatforms = [
+-	'darwin-arm64', 'darwin-x64',
+-	'linux-arm64', 'linux-x64',
+-	'linuxmusl-arm64', 'linuxmusl-x64',
+-	'win32-arm64', 'win32-x64',
+-];
+-
+-/**
+- * Converts VS Code build platform/arch to the values that Node.js reports
+- * at runtime via `process.platform` and `process.arch`.
+- *
+- * The copilot SDK's `loadNativeModule` looks up native binaries under
+- * `prebuilds/${process.platform}-${process.arch}/`, so the directory names
+- * must match these runtime values exactly.
+- */
+-function toNodePlatformArch(platform: string, arch: string): { nodePlatform: string; nodeArch: string } {
+-	// alpine is musl-linux; Node still reports process.platform === 'linux'
+-	let nodePlatform = platform === 'alpine' ? 'linux' : platform;
+-	let nodeArch = arch;
+-
+-	if (arch === 'armhf') {
+-		// VS Code build uses 'armhf'; Node reports process.arch === 'arm'
+-		nodeArch = 'arm';
+-	} else if (arch === 'alpine') {
+-		// Legacy: { platform: 'linux', arch: 'alpine' } means alpine-x64
+-		nodePlatform = 'linux';
+-		nodeArch = 'x64';
+-	}
+-
+-	return { nodePlatform, nodeArch };
+-}
+-
+-/**
+- * The platform-arch directories shipped by @vscode/ripgrep-universal.
+- * These follow Node's `${process.platform}-${process.arch}` naming.
+- * Alpine builds reuse the regular `linux-*` binaries (ripgrep is statically
+- * linked enough to run on both glibc and musl).
+- */
+-const ripgrepUniversalPlatforms = [
+-	'darwin-arm64', 'darwin-x64',
+-	'linux-arm', 'linux-arm64', 'linux-ia32', 'linux-x64',
+-	'linux-ppc64', 'linux-riscv64', 'linux-s390x',
+-	'win32-arm64', 'win32-ia32', 'win32-x64',
+-];
+-
+-const copilotTgrepPlatforms = [
+-	'darwin-arm64', 'darwin-x64',
+-	'linux-arm64', 'linux-x64',
+-	'linuxmusl-arm64', 'linuxmusl-x64',
+-	'win32-arm64', 'win32-x64',
+-];
+-
+-const mxcArchitectures = ['x64', 'arm64'];
+-
+-function toCopilotTgrepPlatformArch(platform: string, arch: string): string {
+-	if (platform === 'alpine') {
+-		return `linuxmusl-${arch}`;
+-	}
+-	if (arch === 'alpine') {
+-		return 'linuxmusl-x64';
+-	}
+-
+-	const { nodePlatform, nodeArch } = toNodePlatformArch(platform, arch);
+-	return `${nodePlatform}-${nodeArch}`;
+-}
+-
+-function toCopilotPackagePlatformArch(platform: string, arch: string): string {
+-	if (platform === 'alpine') {
+-		return `linuxmusl-${arch}`;
+-	}
+-	if (arch === 'alpine') {
+-		return 'linuxmusl-x64';
+-	}
+-
+-	const { nodePlatform, nodeArch } = toNodePlatformArch(platform, arch);
+-	return `${nodePlatform}-${nodeArch}`;
+-}
+-
+-const copilotOptionalNativePayloadDirs = [
+-	'clipboard',
+-	'foundry-local-sdk',
+-	'mxc-bin',
+-	'pvrecorder',
+-	'webview',
+-];
+-
+-function getCopilotOptionalNativePayloadFiles(platform: string): string[] {
+-	const files = [
+-		// Computer Use ships under plugins/computer-use/** in current
+-		// @github/copilot platform packages. Do not productize it.
+-		'plugins/computer-use/**',
+-		'prebuilds/*/computer.node',
+-		'prebuilds/*/keytar.node',
+-		// macOS voice media-pause helper (MediaRemote adapter). Optional and
+-		// nested under prebuilds; keep it out of the product so universal
+-		// merge does not need to special-case the framework binary tree.
+-		'prebuilds/*/mediaremote-adapter/**',
+-	];
+-
+-	if (platform !== 'win32') {
+-		files.push('prebuilds/*/cli-native.node');
+-	}
+-
+-	return files;
+-}
+-
+-/**
+- * Returns a glob filter that strips @microsoft/mxc-sdk `bin/<arch>` payload for
+- * architectures other than the build target. `@microsoft/mxc-sdk` ships a full
+- * set of sandbox binaries for every architecture under `bin/<arch>/`; only the
+- * build target's architecture is needed. Architectures that mxc-sdk does not
+- * ship (e.g. armhf) strip every `bin/<arch>` directory.
+- */
+-export function getMxcExcludeFilter(arch: string): string[] {
+-	const target = mxcArchitectures.includes(arch) ? arch : undefined;
+-	const nonTargetArchitectures = mxcArchitectures.filter(a => a !== target);
+-
+-	return [
+-		'**',
+-		...nonTargetArchitectures.map(a => `!**/node_modules/@microsoft/mxc-sdk/bin/${a}/**`),
+-	];
+-}
+-
+-/**
+- * Returns a glob filter that strips @vscode/ripgrep-universal bin directories
+- * for architectures other than the build target.
+- */
+-export function getRipgrepExcludeFilter(platform: string, arch: string): string[] {
+-	const { nodePlatform, nodeArch } = toNodePlatformArch(platform, arch);
+-	const target = `${nodePlatform}-${nodeArch}`;
+-	const nonTargetPlatforms = ripgrepUniversalPlatforms.filter(p => p !== target);
+-
+-	const excludes = nonTargetPlatforms.map(p => `!**/node_modules/@vscode/ripgrep-universal/bin/${p}/**`);
+-
+-	return ['**', ...excludes];
+-}
+-
+-export function getCopilotTgrepExcludeFilter(platform: string, arch: string): string[] {
+-	const target = toCopilotTgrepPlatformArch(platform, arch);
+-	const nonTargetPlatforms = copilotTgrepPlatforms.filter(p => p !== target);
+-
+-	return [
+-		'**',
+-		...nonTargetPlatforms.map(p => `!**/node_modules/@github/copilot/tgrep/bin/${p}/**`),
+-		...nonTargetPlatforms.map(p => `!**/node_modules/@github/copilot/sdk/tgrep/bin/${p}/**`),
+-	];
+-}
+-
+-/**
+- * Returns a glob filter that strips @github/copilot platform packages
+- * for architectures other than the build target.
+- *
+- * Alpine uses the linuxmusl-* packages. Other platform package names follow
+- * Node's `${process.platform}-${process.arch}` naming. If Copilot does not
+- * ship the computed platform package (for example linux-arm for armhf builds),
+- * this strips every known @github/copilot-* platform package.
+- */
+-export function getCopilotExcludeFilter(platform: string, arch: string): string[] {
+-	const targetPlatformArch = toCopilotPackagePlatformArch(platform, arch);
+-	const nonTargetPlatforms = copilotPlatforms.filter(p => p !== targetPlatformArch);
+-
+-	// Strip wrong-architecture @github/copilot-{platform} packages.
+-	const excludes = nonTargetPlatforms.map(p => `!**/node_modules/@github/copilot-${p}/**`);
+-
+-	return [
+-		'**',
+-		...excludes,
+-		'!**/node_modules/@github/copilot-*/copilot',
+-		'!**/node_modules/@github/copilot-*/copilot.exe',
+-	];
+-}
+-
+-/**
+- * Returns the public @github/copilot package files that must survive
+- * app/remote packaging for the target platform.
+- *
+- * .moduleignore strips all @github/copilot-* platform packages globally.
+- * Re-add the selected runtime package so Agent Host can launch its index.js
+- * entrypoint and load runtime prebuilds. Keep the standalone SEA executable
+- * and optional native payload trees out of the product build.
+- */
+-export function getCopilotRuntimePrebuildFiles(platform: string, arch: string, nodeModulesRoot = 'node_modules'): string[] {
+-	const copilotPackagePlatformArch = toCopilotPackagePlatformArch(platform, arch);
+-	const copilotPlatformPackageDir = path.posix.join(nodeModulesRoot, '@github', `copilot-${copilotPackagePlatformArch}`);
+-
+-	return [
+-		path.posix.join(copilotPlatformPackageDir, '**'),
+-		`!${path.posix.join(copilotPlatformPackageDir, 'copilot')}`,
+-		`!${path.posix.join(copilotPlatformPackageDir, 'copilot.exe')}`,
+-		...copilotOptionalNativePayloadDirs.map(dir => `!${path.posix.join(copilotPlatformPackageDir, dir, '**')}`),
+-		...getCopilotOptionalNativePayloadFiles(platform).map(file => `!${path.posix.join(copilotPlatformPackageDir, file)}`),
+-	];
+-}
+-
+-/**
+- * Ensures the selected @github/copilot-{platform} package is present before
+- * packaging. npm only installs the host-compatible optional dependency, but
+- * VS Code packaging can cross-build targets such as darwin-x64 on arm64 hosts.
+- */
+-export function ensureCopilotPlatformPackage(platform: string, arch: string, nodeModulesRoot = 'node_modules', options: EnsureNpmPackageOptions = {}): void {
+-	const copilotPackagePlatformArch = toCopilotPackagePlatformArch(platform, arch);
+-	if (!copilotPlatforms.includes(copilotPackagePlatformArch)) {
+-		return;
+-	}
+-
+-	const packageName = `@github/copilot-${copilotPackagePlatformArch}`;
+-	ensureNpmPackage(packageName, nodeModulesRoot, options);
+-}
+-
+-/**
+- * Materializes target-platform Copilot CLI SDK files directly inside the built-in copilot extension.
+- *
+- * This is used when copilot is shipped as a built-in extension so startup does
+- * not need to create the shim at runtime. The Copilot VSIX is built once on the
+- * Linux x64 host, so product packaging also restores target-platform SDK
+- * natives from the selected @github/copilot-{platform} package.
+- *
+- * Note: `node-pty` is no longer shimmed. The copilot CLI SDK resolves
+- * `node-pty` from the embedder (VS Code) via `hostRequire` and falls back to
+- * its bundled copy only if that fails.
+- *
+- * Failures throw to fail the build because built-in packaging must guarantee
+- * this artifact is present.
+- */
+-export function prepareBuiltInCopilotRipgrepShim(platform: string, arch: string, builtInCopilotExtensionDir: string, appNodeModulesDir: string, options: PrepareBuiltInCopilotOptions = {}): void {
+-	const { nodePlatform, nodeArch } = toNodePlatformArch(platform, arch);
+-	const platformArch = `${nodePlatform}-${nodeArch}`;
+-	const copilotPackagePlatformArch = toCopilotPackagePlatformArch(platform, arch);
+-	const tgrepPlatformArch = toCopilotTgrepPlatformArch(platform, arch);
+-
+-	const extensionNodeModules = path.join(builtInCopilotExtensionDir, 'node_modules');
+-	const copilotBase = path.join(extensionNodeModules, '@github', 'copilot');
+-	const copilotSdkBase = path.join(copilotBase, 'sdk');
+-	if (!fs.existsSync(copilotSdkBase)) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] Copilot SDK directory not found at ${copilotSdkBase}`);
+-	}
+-	materializeBuiltInCopilotSdkPlatformFiles(copilotPackagePlatformArch, tgrepPlatformArch, copilotBase, appNodeModulesDir, options);
+-	pruneNonTargetCopilotSdkPrebuilds(copilotPackagePlatformArch, path.join(copilotSdkBase, 'prebuilds'), copilotPlatforms);
+-	pruneNonTargetCopilotSdkPrebuilds(tgrepPlatformArch, path.join(copilotSdkBase, path.join('tgrep', 'bin')), copilotTgrepPlatforms);
+-	pruneNonTargetCopilotSdkPrebuilds(tgrepPlatformArch, path.join(copilotBase, path.join('tgrep', 'bin')), copilotTgrepPlatforms);
+-
+-	const ripgrepSource = path.join(appNodeModulesDir, '@vscode', 'ripgrep-universal', 'bin', platformArch);
+-	if (!fs.existsSync(ripgrepSource)) {
+-		const binDir = path.join(appNodeModulesDir, '@vscode', 'ripgrep-universal', 'bin');
+-		let diagnostics: string;
+-		try {
+-			diagnostics = fs.existsSync(binDir)
+-				? `Available bin entries: ${JSON.stringify(fs.readdirSync(binDir))}`
+-				: `bin directory does not exist at ${binDir}`;
+-		} catch (err) {
+-			diagnostics = `Failed to enumerate bin directory: ${err}`;
+-		}
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] ripgrep source not found at ${ripgrepSource} (build platform=${platform}, arch=${arch}, computed platformArch=${platformArch}). ${diagnostics}`);
+-	}
+-
+-	const ripgrepDest = path.join(copilotSdkBase, 'ripgrep', 'bin', platformArch);
+-	const shimMarkerPath = path.join(copilotBase, 'shims.txt');
+-
+-	try {
+-		fs.mkdirSync(ripgrepDest, { recursive: true });
+-		fs.cpSync(ripgrepSource, ripgrepDest, { recursive: true });
+-
+-		fs.writeFileSync(shimMarkerPath, 'Shims created successfully');
+-		console.log(`[prepareBuiltInCopilotRipgrepShim] Materialized ripgrep shim for ${platformArch} in ${builtInCopilotExtensionDir}`);
+-	} catch (err) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] Failed to materialize ripgrep shim for ${platformArch}: ${err}`);
+-	}
+-}
+-
+-function materializeBuiltInCopilotSdkPlatformFiles(copilotPackagePlatformArch: string, tgrepPlatformArch: string, copilotBase: string, appNodeModulesDir: string, options: PrepareBuiltInCopilotOptions = {}): void {
+-	if (!copilotPlatforms.includes(copilotPackagePlatformArch)) {
+-		return;
+-	}
+-
+-	// The SDK JavaScript shipped inside the built-in extension and the native
+-	// `runtime.node` it loads MUST be the same @github/copilot version: the JS
+-	// calls native functions the binary may not export (e.g. a newer CLI that
+-	// removed one), which throws at load. Source the native from a platform
+-	// package matching the EXTENSION's version rather than whatever app-root
+-	// currently has — the extension is intentionally pinned to a fixed CLI
+-	// version for the extension host while the agent host (app-root) keeps
+-	// updating, so the two versions diverge by design.
+-	const extVersion = readCopilotPackageVersion(copilotBase);
+-	const { dir: platformPackageDir, cleanup } = resolveVersionMatchedCopilotPlatformPackage(copilotPackagePlatformArch, extVersion, appNodeModulesDir, options);
+-	try {
+-		const sdkPrebuildsTarget = path.join(copilotBase, 'sdk', 'prebuilds', copilotPackagePlatformArch);
+-		copyRequiredDirectory(
+-			path.join(platformPackageDir, 'prebuilds', copilotPackagePlatformArch),
+-			sdkPrebuildsTarget,
+-			`Copilot SDK native prebuilds for ${copilotPackagePlatformArch}`
+-		);
+-		// Built-in materialization copies the whole prebuilds tree (not the gulp
+-		// exclude globs above), so drop mediaremote-adapter explicitly afterward.
+-		fs.rmSync(path.join(sdkPrebuildsTarget, 'mediaremote-adapter'), { recursive: true, force: true });
+-
+-		if (!copilotTgrepPlatforms.includes(tgrepPlatformArch)) {
+-			return;
+-		}
+-
+-		const tgrepSource = path.join(platformPackageDir, 'tgrep', 'bin', tgrepPlatformArch);
+-		copyRequiredDirectory(
+-			tgrepSource,
+-			path.join(copilotBase, 'tgrep', 'bin', tgrepPlatformArch),
+-			`Copilot tgrep for ${tgrepPlatformArch}`
+-		);
+-		copyRequiredDirectory(
+-			tgrepSource,
+-			path.join(copilotBase, 'sdk', 'tgrep', 'bin', tgrepPlatformArch),
+-			`Copilot SDK tgrep for ${tgrepPlatformArch}`
+-		);
+-	} finally {
+-		cleanup();
+-	}
+-}
+-
+-/**
+- * Resolves a `@github/copilot-{platform}` package directory whose version
+- * matches `extVersion`, so the native copied into the built-in extension always
+- * matches the extension's own SDK JavaScript.
+- *
+- * Prefers the app-root package when it already matches (no extra work), and
+- * otherwise fetches the exact extension version into a temp dir. The extension
+- * is pinned to a fixed CLI version for the extension host while the agent host
+- * (app-root) keeps updating, so app-root will normally NOT match and the fetch
+- * is the expected path once the two versions diverge. The fetched tarball is
+- * verified against the SHA-512 the extension lockfile pins for that version
+- * before extraction; resolution fails closed if that integrity is missing.
+- */
+-function resolveVersionMatchedCopilotPlatformPackage(copilotPackagePlatformArch: string, extVersion: string, appNodeModulesDir: string, options: PrepareBuiltInCopilotOptions): { dir: string; cleanup: () => void } {
+-	const noop = () => { };
+-	const packageName = `@github/copilot-${copilotPackagePlatformArch}`;
+-
+-	const appRootDir = path.join(appNodeModulesDir, '@github', `copilot-${copilotPackagePlatformArch}`);
+-	if (readOptionalPackageVersion(appRootDir) === extVersion) {
+-		return { dir: appRootDir, cleanup: noop };
+-	}
+-
+-	const integrity = resolvePinnedPlatformPackageIntegrity(packageName, extVersion, options);
+-	const staged = fs.mkdtempSync(path.join(os.tmpdir(), 'vscode-copilot-native-'));
+-	try {
+-		const stagedPackageDir = path.join(staged, `copilot-${copilotPackagePlatformArch}`);
+-		materializeNpmPackageVersion(packageName, extVersion, stagedPackageDir, integrity, options);
+-		console.log(`[prepareBuiltInCopilotRipgrepShim] ${packageName} in app-root does not match the built-in extension's @github/copilot@${extVersion}; using the version-matched package instead.`);
+-		return { dir: stagedPackageDir, cleanup: () => fs.rmSync(staged, { recursive: true, force: true }) };
+-	} catch (err) {
+-		fs.rmSync(staged, { recursive: true, force: true });
+-		throw err;
+-	}
+-}
+-
+-/**
+- * Reads the `sha512-...` integrity the built-in extension's lockfile pins for
+- * `packageName` at `extVersion`. Fails closed: a missing lockfile, entry,
+- * version mismatch, or integrity means the fetched native cannot be verified,
+- * so the build must stop rather than ship an unverified binary.
+- */
+-function resolvePinnedPlatformPackageIntegrity(packageName: string, extVersion: string, options: PrepareBuiltInCopilotOptions): string {
+-	const lockfilePath = options.extensionLockfilePath ?? path.join(import.meta.dirname, '..', '..', 'extensions', 'copilot', 'package-lock.json');
+-
+-	let lock: { packages?: Record<string, { version?: string; integrity?: string }> };
+-	try {
+-		lock = JSON.parse(fs.readFileSync(lockfilePath, 'utf8'));
+-	} catch (err) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] Could not read ${lockfilePath} to verify ${packageName}@${extVersion}: ${err instanceof Error ? err.message : String(err)}`);
+-	}
+-
+-	const entry = lock.packages?.[path.posix.join('node_modules', packageName)];
+-	if (!entry) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] ${packageName} is not recorded in ${lockfilePath}; refusing to fetch an unverifiable native.`);
+-	}
+-	if (entry.version !== extVersion) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] ${packageName} is pinned to ${entry.version} in ${lockfilePath} but the built-in extension is @github/copilot@${extVersion}; refusing to fetch an unverifiable native.`);
+-	}
+-	if (!entry.integrity) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] ${packageName}@${extVersion} has no integrity in ${lockfilePath}; refusing to fetch an unverifiable native.`);
+-	}
+-	return entry.integrity;
+-}
+-
+-function readCopilotPackageVersion(copilotBase: string): string {
+-	const version = readOptionalPackageVersion(copilotBase);
+-	if (!version) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] Could not read a version from ${path.join(copilotBase, 'package.json')}`);
+-	}
+-	return version;
+-}
+-
+-function readOptionalPackageVersion(packageDir: string): string | undefined {
+-	try {
+-		const version = JSON.parse(fs.readFileSync(path.join(packageDir, 'package.json'), 'utf8')).version;
+-		return typeof version === 'string' ? version : undefined;
+-	} catch {
+-		return undefined;
+-	}
+-}
+-
+-function copyRequiredDirectory(source: string, target: string, description: string): void {
+-	if (!fs.existsSync(source)) {
+-		throw new Error(`[prepareBuiltInCopilotRipgrepShim] ${description} not found at ${source}`);
+-	}
+-
+-	fs.rmSync(target, { recursive: true, force: true });
+-	fs.mkdirSync(path.dirname(target), { recursive: true });
+-	fs.cpSync(source, target, { recursive: true });
+-}
+-
+-function pruneNonTargetCopilotSdkPrebuilds(targetPlatformArch: string, prebuildsDir: string, platformArchs: string[]): void {
+-	if (!fs.existsSync(prebuildsDir)) {
+-		return;
+-	}
+-
+-	for (const platformArch of platformArchs) {
+-		if (platformArch === targetPlatformArch) {
+-			continue;
+-		}
+-		fs.rmSync(path.join(prebuildsDir, platformArch), { recursive: true, force: true });
+-	}
+-}
+diff --git a/build/lib/extensions.ts b/build/lib/extensions.ts
+index 69c6226f..3a7b98b4 100644
+--- a/build/lib/extensions.ts
++++ b/build/lib/extensions.ts
+@@ -464,29 +464,2 @@ function doPackageLocalExtensionsStream(forWeb: boolean, disableMangle: boolean,
+ 
+-/**
+- * Package the built-in copilot extension specifically.
+- * This is used by non-CI local builds where copilot is not downloaded as a VSIX
+- * but must be compiled from source and included in the build.
+- */
+-export function packageCopilotExtensionStream(disableMangle: boolean): Stream {
+-	const extensionPath = path.join(root, 'extensions', 'copilot');
+-	if (!fs.existsSync(extensionPath)) {
+-		return es.readArray([]);
+-	}
+-
+-	const localExtensionsStream = minifyExtensionResources(
+-		fromLocal(extensionPath, false, disableMangle)
+-			.pipe(rename(p => p.dirname = `extensions/copilot/${p.dirname}`))
+-	);
+-
+-	const productionDependencies = getProductionDependencies('extensions/copilot');
+-	const dependenciesSrc = productionDependencies.map(d => path.relative(root, d)).map(d => [`${d}/**`, `!${d}/**/{test,tests}/**`]).flat();
+-
+-	return es.merge(
+-		localExtensionsStream,
+-		gulp.src(dependenciesSrc, { base: '.' })
+-			.pipe(util2.cleanNodeModules(path.join(root, 'build', '.moduleignore')))
+-			.pipe(util2.cleanNodeModules(path.join(root, 'build', `.moduleignore.${process.platform}`)))
+-	).pipe(util2.setExecutableBit(['**/*.sh']));
+-}
+-
+ export function packageMarketplaceExtensionsStream(forWeb: boolean): Stream {
+diff --git a/build/lib/policies/policyData.jsonc b/build/lib/policies/policyData.jsonc
+index 69e258d2..cdab63ea 100644
+--- a/build/lib/policies/policyData.jsonc
++++ b/build/lib/policies/policyData.jsonc
+@@ -810,47 +810,2 @@
+         },
+-        {
+-            "key": "github.copilot.chat.reviewAgent.enabled",
+-            "name": "CopilotReviewAgent",
+-            "category": "InteractiveSession",
+-            "minimumVersion": "1.104",
+-            "localization": {
+-                "description": {
+-                    "key": "github.copilot.chat.reviewAgent.enabled",
+-                    "value": "Enables the code review agent."
+-                }
+-            },
+-            "type": "boolean",
+-            "default": true,
+-            "included": true
+-        },
+-        {
+-            "key": "github.copilot.chat.reviewSelection.enabled",
+-            "name": "CopilotReviewSelection",
+-            "category": "InteractiveSession",
+-            "minimumVersion": "1.104",
+-            "localization": {
+-                "description": {
+-                    "key": "github.copilot.chat.reviewSelection.enabled",
+-                    "value": "Enables code review on current selection."
+-                }
+-            },
+-            "type": "boolean",
+-            "default": true,
+-            "included": true
+-        },
+-        {
+-            "key": "github.copilot.nextEditSuggestions.enabled",
+-            "name": "CopilotNextEditSuggestions",
+-            "category": "InteractiveSession",
+-            "minimumVersion": "1.99",
+-            "localization": {
+-                "description": {
+-                    "key": "github.copilot.nextEditSuggestions.enabled",
+-                    "value": "Whether to enable next edit suggestions (NES). NES can propose a next edit based on your recent changes."
+-                }
+-            },
+-            "type": "boolean",
+-            "default": true,
+-            "included": true
+-        },
+         {
+diff --git a/cglicenses.json b/cglicenses.json
+index 60fd2209..12df9957 100644
+--- a/cglicenses.json
++++ b/cglicenses.json
+@@ -669,46 +669,2 @@
+ 	},
+-	{
+-		// Reason: License text from https://github.com/github/copilot-cli/blob/master/LICENSE.md
+-		// does not include a copyright statement.
+-		"name": "@github/copilot",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-darwin-arm64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-darwin-x64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-linux-arm64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-linux-x64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-win32-arm64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+-	{
+-		"name": "@github/copilot-win32-x64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc."
+-		]
+-	},
+ 	{
+@@ -1003,18 +959,2 @@
+ 	},
+-	{
+-		// Reason: LICENSE.md at github/copilot-cli does not contain a copyright statement.
+-		// Copyright holder sourced from the GitHub organization (github = GitHub, Inc.).
+-		"name": "@github/copilot-linuxmusl-arm64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc. All rights reserved."
+-		]
+-	},
+-	{
+-		// Reason: LICENSE.md at github/copilot-cli does not contain a copyright statement.
+-		// Copyright holder sourced from the GitHub organization (github = GitHub, Inc.).
+-		"name": "@github/copilot-linuxmusl-x64",
+-		"prependLicenseText": [
+-			"Copyright (c) GitHub, Inc. All rights reserved."
+-		]
+-	},
+ 	{
+@@ -1117,10 +1057,2 @@
+ 	},
+-	{
+-		// Reason: @github/copilot-sdk does not ship a LICENSE file in its npm tarball,
+-		// and ClearlyDefined has not harvested it, so CG emits no license text and the
+-		// on-disk scanner finds nothing. The source repo is public MIT with a LICENSE file.
+-		// Source: https://github.com/github/copilot-sdk/blob/main/LICENSE
+-		"name": "@github/copilot-sdk",
+-		"fullLicenseTextUri": "https://raw.githubusercontent.com/github/copilot-sdk/main/LICENSE"
+-	},
+ 	{
+diff --git a/eslint.config.js b/eslint.config.js
+index 100a343e..bf1d986b 100644
+--- a/eslint.config.js
++++ b/eslint.config.js
+@@ -14,4 +14,2 @@ import stylistic from '@stylistic/eslint-plugin';
+ import * as pluginLocal from './.eslint-plugin-local/index.ts';
+-import * as pluginCopilotLocal from './extensions/copilot/.eslintplugin/index.ts';
+-import pluginImport from 'eslint-plugin-import';
+ import pluginJsdoc from 'eslint-plugin-jsdoc';
+@@ -218,3 +216,2 @@ export default defineConfig(
+ 			'build/lib/test/render.test.ts',
+-			'extensions/copilot/**/*',
+ 			'extensions/debug-auto-launch/src/extension.ts',
+@@ -1536,3 +1533,2 @@ export default defineConfig(
+ 					'allow': [
+-						'@github/copilot-sdk',
+ 						'zod',
+@@ -1683,3 +1679,2 @@ export default defineConfig(
+ 						'@vscode/tree-sitter-wasm', // used by agentHost for command auto-approval
+-						'@vscode/copilot-api', // used by agentHost for Copilot API requests
+ 						'@anthropic-ai/sdk', // used by agentHost for Anthropic API requests
+@@ -1687,3 +1682,2 @@ export default defineConfig(
+ 						'@modelcontextprotocol/sdk/**/*', // used by agentHost for Claude client-tool MCP result types (Phase 10)
+-						'@github/copilot-sdk',
+ 						'zod', // used by agentHost for Claude client-tool MCP input schemas
+@@ -2463,3 +2457,2 @@ export default defineConfig(
+ 			'extensions/**/*.test.ts',
+-			'extensions/copilot/**/*',
+ 		],
+@@ -2547,402 +2540,2 @@ export default defineConfig(
+ 	},
+-	// copilot extension - main sources
+-	{
+-		files: [
+-			'extensions/copilot/src/**/*.{ts,tsx}',
+-			'extensions/copilot/test/**/*.{ts,tsx}',
+-		],
+-		ignores: [
+-			'extensions/copilot/**/.esbuild.ts',
+-			'extensions/copilot/src/extension/completions-core/vscode-node/bridge/src/completionsTelemetryServiceBridge.ts',
+-		],
+-		languageOptions: {
+-			parser: tseslint.parser,
+-		},
+-		plugins: {
+-			'import': fixupPluginRules(pluginImport),
+-			'copilot-local': pluginCopilotLocal,
+-		},
+-		rules: {
+-			'local/code-no-dangerous-type-assertions': 'off',
+-			'local/code-no-any-casts': 'off',
+-			'local/code-no-deep-import-of-internal': 'off',
+-			'no-restricted-imports': [
+-				'warn',
+-				// node: builtins
+-				...builtinModules,
+-				// node: dependencies
+-				'@humanwhocodes/gitignore-to-minimatch',
+-				'@vscode/extension-telemetry',
+-				'applicationinsights',
+-				'ignore',
+-				'isbinaryfile',
+-				'minimatch',
+-				'source-map-support',
+-				'vscode-tas-client',
+-				'web-tree-sitter'
+-			],
+-			'import/no-restricted-paths': [
+-				'warn',
+-				{
+-					zones: [
+-						{
+-							target: '**/common/**',
+-							from: [
+-								'**/vscode/**',
+-								'**/node/**',
+-								'**/vscode-node/**',
+-								'**/worker/**',
+-								'**/vscode-worker/**'
+-							]
+-						},
+-						{
+-							target: '**/vscode/**',
+-							from: [
+-								'**/node/**',
+-								'**/vscode-node/**',
+-								'**/worker/**',
+-								'**/vscode-worker/**'
+-							]
+-						},
+-						{
+-							target: '**/node/**',
+-							from: [
+-								'**/vscode/**',
+-								'**/vscode-node/**',
+-								'**/worker/**',
+-								'**/vscode-worker/**'
+-							]
+-						},
+-						{
+-							target: '**/vscode-node/**',
+-							from: [
+-								'**/worker/**',
+-								'**/vscode-worker/**'
+-							]
+-						},
+-						{
+-							target: '**/worker/**',
+-							from: [
+-								'**/vscode/**',
+-								'**/node/**',
+-								'**/vscode-node/**',
+-								'**/vscode-worker/**'
+-							]
+-						},
+-						{
+-							target: '**/vscode-worker/**',
+-							from: [
+-								'**/node/**',
+-								'**/vscode-node/**'
+-							]
+-						},
+-						{
+-							target: './extensions/copilot/src/',
+-							from: './extensions/copilot/test/'
+-						},
+-						{
+-							target: './extensions/copilot/src/shared-fetch-utils',
+-							from: ['./extensions/copilot/src/extension', './extensions/copilot/src/platform', './extensions/copilot/src/util', './extensions/copilot/src/lib']
+-						},
+-						{
+-							target: './extensions/copilot/src/util',
+-							from: ['./extensions/copilot/src/platform', './extensions/copilot/src/extension']
+-						},
+-						{
+-							target: './extensions/copilot/src/platform',
+-							from: ['./extensions/copilot/src/extension']
+-						},
+-						{
+-							target: ['./extensions/copilot/test', '!./extensions/copilot/test/base/extHostContext/*.ts'],
+-							from: ['**/vscode-node/**', '**/vscode-worker/**']
+-						},
+-						{
+-							target: 'extensions/copilot/src/!(lib)/**',
+-							from: './extensions/copilot/src/lib'
+-						}
+-					]
+-				}
+-			],
+-			'copilot-local/no-instanceof-uri': ['warn'],
+-			'copilot-local/no-test-imports': ['warn'],
+-			'copilot-local/no-runtime-import': [
+-				'warn',
+-				{
+-					test: ['vscode'],
+-					'src/**/common/**/*': ['vscode'],
+-					'src/**/node/**/*': ['vscode']
+-				}
+-			],
+-			'copilot-local/no-funny-filename': ['warn'],
+-			'copilot-local/no-bad-gdpr-comment': ['warn'],
+-			'copilot-local/no-gdpr-event-name-mismatch': ['warn'],
+-			'copilot-local/no-unlayered-files': ['warn'],
+-			'copilot-local/no-restricted-copilot-pr-string': [
+-				'warn',
+-				{
+-					className: 'GitHubPullRequestProviders',
+-					string: 'Generate with Copilot'
+-				}
+-			],
+-			'copilot-local/no-nls-localize': ['warn'],
+-		}
+-	},
+-	// copilot extension - allow node imports in node layer
+-	{
+-		files: [
+-			'extensions/copilot/**/{vscode-node,node}/**/*.ts',
+-			'extensions/copilot/**/{vscode-node,node}/**/*.tsx',
+-		],
+-		rules: {
+-			'no-restricted-imports': 'off'
+-		}
+-	},
+-	// copilot extension - override files (tests, build, etc.)
+-	{
+-		files: [
+-			'extensions/copilot/test/**',
+-			'extensions/copilot/src/vscodeTypes.ts',
+-			'extensions/copilot/script/**',
+-			'extensions/copilot/src/extension/*.d.ts',
+-			'extensions/copilot/build/**',
+-		],
+-		rules: {
+-			'copilot-local/no-unlayered-files': 'off',
+-			'no-restricted-imports': 'off'
+-		}
+-	},
+-	// copilot extension - TSX linebreak rule
+-	{
+-		files: [
+-			'extensions/copilot/src/extension/**/*.tsx',
+-		],
+-		plugins: {
+-			'copilot-local': pluginCopilotLocal,
+-		},
+-		rules: {
+-			'copilot-local/no-missing-linebreak': 'warn'
+-		}
+-	},
+-	// copilot extension - test-only rule
+-	{
+-		files: [
+-			'extensions/copilot/**/*.test.ts',
+-			'extensions/copilot/**/*.test.tsx',
+-		],
+-		plugins: {
+-			'copilot-local': pluginCopilotLocal,
+-		},
+-		rules: {
+-			'copilot-local/no-test-only': 'warn'
+-		}
+-	},
+-	// copilot extension - no-explicit-any
+-	{
+-		files: [
+-			'extensions/copilot/src/**/*.ts',
+-		],
+-		ignores: [
+-			'extensions/copilot/src/util/vs/**/*.ts',
+-			'extensions/copilot/src/**/*.spec.ts',
+-			'extensions/copilot/src/extension/agents/copilotcli/node/nodePtyShim.ts',
+-			'extensions/copilot/src/extension/byok/common/anthropicMessageConverter.ts',
+-			'extensions/copilot/src/extension/byok/common/geminiFunctionDeclarationConverter.ts',
+-			'extensions/copilot/src/extension/byok/common/geminiMessageConverter.ts',
+-			'extensions/copilot/src/extension/byok/vscode-node/anthropicProvider.ts',
+-			'extensions/copilot/src/extension/byok/vscode-node/geminiNativeProvider.ts',
+-			'extensions/copilot/src/extension/byok/vscode-node/ollamaProvider.ts',
+-			'extensions/copilot/src/extension/chatSessions/vscode-node/copilotCloudSessionContentBuilder.ts',
+-			'extensions/copilot/src/extension/chatSessions/vscode-node/copilotCloudSessionsProvider.ts',
+-			'extensions/copilot/src/extension/codeBlocks/node/codeBlockProcessor.ts',
+-			'extensions/copilot/src/extension/codeBlocks/vscode-node/provider.ts',
+-			'extensions/copilot/src/extension/configuration/vscode-node/configurationMigration.ts',
+-			'extensions/copilot/src/extension/context/node/resolvers/genericInlineIntentInvocation.ts',
+-			'extensions/copilot/src/extension/context/node/resolvers/genericPanelIntentInvocation.ts',
+-			'extensions/copilot/src/extension/context/node/resolvers/inlineFixIntentInvocation.ts',
+-			'extensions/copilot/src/extension/context/node/resolvers/promptWorkspaceLabels.ts',
+-			'extensions/copilot/src/extension/contextKeys/vscode-node/contextKeys.contribution.ts',
+-			'extensions/copilot/src/extension/conversation/vscode-node/userActions.ts',
+-			'extensions/copilot/src/extension/extension/vscode/services.ts',
+-			'extensions/copilot/src/extension/inlineChat/node/rendererVisualization.ts',
+-			'extensions/copilot/src/extension/inlineChat/vscode-node/inlineChatCommands.ts',
+-			'extensions/copilot/src/extension/inlineEdits/common/observableWorkspaceRecordingReplayer.ts',
+-			'extensions/copilot/src/extension/inlineEdits/vscode-node/parts/vscodeWorkspace.ts',
+-			'extensions/copilot/src/extension/intents/node/editCodeIntent.ts',
+-			'extensions/copilot/src/extension/intents/node/editCodeStep.ts',
+-			'extensions/copilot/src/extension/intents/node/fixIntent.ts',
+-			'extensions/copilot/src/extension/intents/node/newIntent.ts',
+-			'extensions/copilot/src/extension/intents/node/searchIntent.ts',
+-			'extensions/copilot/src/extension/languageContextProvider/vscode-node/languageContextProviderService.ts',
+-			'extensions/copilot/src/extension/linkify/common/commands.ts',
+-			'extensions/copilot/src/extension/linkify/common/responseStreamWithLinkification.ts',
+-			'extensions/copilot/src/extension/linkify/test/node/util.ts',
+-			'extensions/copilot/src/extension/log/vscode-node/loggingActions.ts',
+-			'extensions/copilot/src/extension/log/vscode-node/requestLogTree.ts',
+-			'extensions/copilot/src/extension/mcp/test/vscode-node/util.ts',
+-			'extensions/copilot/src/extension/mcp/vscode-node/commands.ts',
+-			'extensions/copilot/src/extension/mcp/vscode-node/nuget.ts',
+-			'extensions/copilot/src/extension/onboardDebug/node/copilotDebugWorker/rpc.ts',
+-			'extensions/copilot/src/extension/onboardDebug/node/parseLaunchConfigFromResponse.ts',
+-			'extensions/copilot/src/extension/onboardDebug/vscode-node/copilotDebugCommandHandle.ts',
+-			'extensions/copilot/src/extension/prompt/common/toolCallRound.ts',
+-			'extensions/copilot/src/extension/prompt/node/chatMLFetcher.ts',
+-			'extensions/copilot/src/extension/prompt/node/chatParticipantTelemetry.ts',
+-			'extensions/copilot/src/extension/prompt/node/editGeneration.ts',
+-			'extensions/copilot/src/extension/prompt/node/intents.ts',
+-			'extensions/copilot/src/extension/prompt/node/todoListContextProvider.ts',
+-			'extensions/copilot/src/extension/prompt/vscode-node/endpointProviderImpl.ts',
+-			'extensions/copilot/src/extension/prompt/vscode-node/requestLoggerImpl.ts',
+-			'extensions/copilot/src/extension/prompts/node/agent/promptRegistry.ts',
+-			'extensions/copilot/src/extension/prompts/node/base/promptElement.ts',
+-			'extensions/copilot/src/extension/prompts/node/base/promptRenderer.ts',
+-			'extensions/copilot/src/extension/prompts/node/test/utils.ts',
+-			'extensions/copilot/src/extension/replay/common/chatReplayResponses.ts',
+-			'extensions/copilot/src/extension/replay/node/replayParser.ts',
+-			'extensions/copilot/src/extension/replay/vscode-node/replayDebugSession.ts',
+-			'extensions/copilot/src/extension/review/node/githubReviewAgent.ts',
+-			'extensions/copilot/src/extension/test/node/services.ts',
+-			'extensions/copilot/src/extension/test/vscode-node/extension.test.ts',
+-			'extensions/copilot/src/extension/test/vscode-node/sanity.sanity-test.ts',
+-			'extensions/copilot/src/extension/test/vscode-node/session.test.ts',
+-			'extensions/copilot/src/extension/tools/common/toolSchemaNormalizer.ts',
+-			'extensions/copilot/src/extension/tools/common/toolsService.ts',
+-			'extensions/copilot/src/extension/typescriptContext/common/serverProtocol.ts',
+-			'extensions/copilot/src/extension/typescriptContext/serverPlugin/src/common/baseContextProviders.ts',
+-			'extensions/copilot/src/extension/typescriptContext/serverPlugin/src/common/contextProvider.ts',
+-			'extensions/copilot/src/extension/typescriptContext/serverPlugin/src/common/protocol.ts',
+-			'extensions/copilot/src/extension/typescriptContext/serverPlugin/src/common/typescripts.ts',
+-			'extensions/copilot/src/extension/typescriptContext/serverPlugin/src/common/utils.ts',
+-			'extensions/copilot/src/extension/typescriptContext/vscode-node/inspector.ts',
+-			'extensions/copilot/src/extension/typescriptContext/vscode-node/languageContextService.ts',
+-			'extensions/copilot/src/extension/workspaceRecorder/vscode-node/workspaceListenerService.ts',
+-			'extensions/copilot/src/extension/workspaceSemanticSearch/node/semanticSearchTextSearchProvider.ts',
+-			'extensions/copilot/src/lib/node/chatLibMain.ts',
+-			'extensions/copilot/src/platform/authentication/test/node/simulationTestCopilotTokenManager.ts',
+-			'extensions/copilot/src/platform/chat/common/blockedExtensionService.ts',
+-			'extensions/copilot/src/platform/chunking/common/chunkingEndpointClientImpl.ts',
+-			'extensions/copilot/src/platform/commands/common/mockRunCommandExecutionService.ts',
+-			'extensions/copilot/src/platform/commands/common/runCommandExecutionService.ts',
+-			'extensions/copilot/src/platform/commands/vscode/runCommandExecutionServiceImpl.ts',
+-			'extensions/copilot/src/platform/configuration/common/configurationService.ts',
+-			'extensions/copilot/src/platform/configuration/common/validator.ts',
+-			'extensions/copilot/src/platform/configuration/test/common/inMemoryConfigurationService.ts',
+-			'extensions/copilot/src/platform/configuration/vscode/configurationServiceImpl.ts',
+-			'extensions/copilot/src/platform/customInstructions/common/customInstructionsService.ts',
+-			'extensions/copilot/src/platform/debug/vscode/debugOutputListener.ts',
+-			'extensions/copilot/src/platform/diff/node/diffWorkerMain.ts',
+-			'extensions/copilot/src/platform/editing/common/notebookDocumentSnapshot.ts',
+-			'extensions/copilot/src/platform/editing/common/textDocumentSnapshot.ts',
+-			'extensions/copilot/src/platform/embeddings/common/embeddingsGrouper.ts',
+-			'extensions/copilot/src/platform/embeddings/common/embeddingsIndex.ts',
+-			'extensions/copilot/src/platform/embeddings/common/remoteEmbeddingsComputer.ts',
+-			'extensions/copilot/src/platform/endpoint/node/modelMetadataFetcher.ts',
+-			'extensions/copilot/src/platform/endpoint/test/node/openaiCompatibleEndpoint.ts',
+-			'extensions/copilot/src/platform/env/common/packagejson.ts',
+-			'extensions/copilot/src/platform/extensions/common/extensionsService.ts',
+-			'extensions/copilot/src/platform/filesystem/common/fileSystemService.ts',
+-			'extensions/copilot/src/platform/github/common/githubService.ts',
+-			'extensions/copilot/src/platform/github/common/nullOctokitServiceImpl.ts',
+-			'extensions/copilot/src/platform/inlineEdits/common/dataTypes/edit.ts',
+-			'extensions/copilot/src/platform/inlineEdits/common/dataTypes/textEditLengthHelper/length.ts',
+-			'extensions/copilot/src/platform/inlineEdits/common/editReason.ts',
+-			'extensions/copilot/src/platform/inlineEdits/common/statelessNextEditProvider.ts',
+-			'extensions/copilot/src/platform/inlineEdits/common/utils/observable.ts',
+-			'extensions/copilot/src/platform/languages/common/languageDiagnosticsService.ts',
+-			'extensions/copilot/src/platform/log/common/logExecTime.ts',
+-			'extensions/copilot/src/platform/log/common/logService.ts',
+-			'extensions/copilot/src/platform/log/vscode/outputChannelLogTarget.ts',
+-			'extensions/copilot/src/platform/nesFetch/common/completionsFetchService.ts',
+-			'extensions/copilot/src/platform/nesFetch/node/completionsFetchServiceImpl.ts',
+-			'extensions/copilot/src/platform/networking/common/fetch.ts',
+-			'extensions/copilot/src/platform/networking/common/fetcherService.ts',
+-			'extensions/copilot/src/platform/networking/common/networking.ts',
+-			'extensions/copilot/src/platform/networking/common/openai.ts',
+-			'extensions/copilot/src/platform/networking/node/baseFetchFetcher.ts',
+-			'extensions/copilot/src/platform/networking/node/chatStream.ts',
+-			'extensions/copilot/src/platform/networking/node/fetcherFallback.ts',
+-			'extensions/copilot/src/platform/networking/node/nodeFetchFetcher.ts',
+-			'extensions/copilot/src/platform/networking/node/nodeFetcher.ts',
+-			'extensions/copilot/src/platform/networking/node/stream.ts',
+-			'extensions/copilot/src/platform/networking/node/test/nodeFetcherService.ts',
+-			'extensions/copilot/src/platform/networking/vscode-node/electronFetcher.ts',
+-			'extensions/copilot/src/platform/networking/vscode-node/fetcherServiceImpl.ts',
+-			'extensions/copilot/src/platform/notification/common/notificationService.ts',
+-			'extensions/copilot/src/platform/notification/vscode/notificationServiceImpl.ts',
+-			'extensions/copilot/src/platform/openai/node/fetch.ts',
+-			'extensions/copilot/src/platform/parser/node/nodes.ts',
+-			'extensions/copilot/src/platform/parser/node/parserServiceImpl.ts',
+-			'extensions/copilot/src/platform/parser/node/parserWorker.ts',
+-			'extensions/copilot/src/platform/parser/node/treeSitterQueries.ts',
+-			'extensions/copilot/src/platform/remoteCodeSearch/common/githubCodeSearchService.ts',
+-			'extensions/copilot/src/platform/remoteSearch/node/codeOrDocsSearchClientImpl.ts',
+-			'extensions/copilot/src/platform/review/vscode/reviewServiceImpl.ts',
+-			'extensions/copilot/src/platform/scopeSelection/vscode-node/scopeSelectionImpl.ts',
+-			'extensions/copilot/src/platform/snippy/common/snippyTypes.ts',
+-			'extensions/copilot/src/platform/survey/vscode/surveyServiceImpl.ts',
+-			'extensions/copilot/src/platform/tasks/vscode/tasksService.ts',
+-			'extensions/copilot/src/platform/telemetry/common/failingTelemetryReporter.ts',
+-			'extensions/copilot/src/platform/telemetry/common/telemetryData.ts',
+-			'extensions/copilot/src/platform/telemetry/node/azureInsightsReporter.ts',
+-			'extensions/copilot/src/platform/telemetry/node/spyingTelemetryService.ts',
+-			'extensions/copilot/src/platform/terminal/common/terminalService.ts',
+-			'extensions/copilot/src/platform/terminal/vscode/terminalServiceImpl.ts',
+-			'extensions/copilot/src/platform/test/common/endpointTestFixtures.ts',
+-			'extensions/copilot/src/platform/test/common/testExtensionsService.ts',
+-			'extensions/copilot/src/platform/test/node/extensionContext.ts',
+-			'extensions/copilot/src/platform/test/node/fetcher.ts',
+-			'extensions/copilot/src/platform/test/node/services.ts',
+-			'extensions/copilot/src/platform/test/node/simulationWorkspace.ts',
+-			'extensions/copilot/src/platform/test/node/telemetry.ts',
+-			'extensions/copilot/src/platform/test/node/testWorkbenchService.ts',
+-			'extensions/copilot/src/platform/testing/common/nullWorkspaceMutationManager.ts',
+-			'extensions/copilot/src/platform/thinking/common/thinking.ts',
+-			'extensions/copilot/src/platform/tokenizer/node/tikTokenizerWorker.ts',
+-			'extensions/copilot/src/platform/tokenizer/node/tokenizer.ts',
+-			'extensions/copilot/src/platform/workbench/common/workbenchService.ts',
+-			'extensions/copilot/src/platform/workbench/vscode/workbenchServiceImpt.ts',
+-			'extensions/copilot/src/platform/workspaceChunkSearch/node/nullWorkspaceFileIndex.ts',
+-			'extensions/copilot/src/platform/workspaceChunkSearch/node/tfidfChunkSearch.ts',
+-			'extensions/copilot/src/platform/workspaceChunkSearch/node/workspaceFileIndex.ts',
+-			'extensions/copilot/src/platform/workspaceRecorder/common/resolvedRecording/resolvedRecording.ts',
+-			'extensions/copilot/src/util/common/async.ts',
+-			'extensions/copilot/src/util/common/cache.ts',
+-			'extensions/copilot/src/util/common/chatResponseStreamImpl.ts',
+-			'extensions/copilot/src/util/common/debounce.ts',
+-			'extensions/copilot/src/util/common/debugValueEditorGlobals.ts',
+-			'extensions/copilot/src/util/common/diff.ts',
+-			'extensions/copilot/src/util/common/progress.ts',
+-			'extensions/copilot/src/util/common/test/shims/chatTypes.ts',
+-			'extensions/copilot/src/util/common/test/shims/editing.ts',
+-			'extensions/copilot/src/util/common/test/shims/l10n.ts',
+-			'extensions/copilot/src/util/common/test/shims/notebookDocument.ts',
+-			'extensions/copilot/src/util/common/test/shims/vscodeTypesShim.ts',
+-			'extensions/copilot/src/util/common/test/simpleMock.ts',
+-			'extensions/copilot/src/util/common/timeTravelScheduler.ts',
+-			'extensions/copilot/src/util/common/types.ts',
+-			'extensions/copilot/src/util/node/worker.ts',
+-		],
+-		languageOptions: {
+-			parser: tseslint.parser,
+-		},
+-		plugins: {
+-			'@typescript-eslint': tseslint.plugin,
+-		},
+-		rules: {
+-			'@typescript-eslint/no-explicit-any': [
+-				'warn',
+-				{
+-					'fixToUnknown': true
+-				}
+-			]
+-		}
+-	},
+-	// copilot extension - chatLibMain exception
+-	{
+-		files: [
+-			'extensions/copilot/src/lib/node/chatLibMain.ts',
+-		],
+-		rules: {
+-			'import/no-restricted-paths': 'off'
+-		}
+-	},
+ 	// Allow querySelector/querySelectorAll in test files - it's acceptable for test assertions
+diff --git a/package-lock.json b/package-lock.json
+index b17c205f..797f15e3 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -23,3 +23,2 @@
+         "@vscode/codicons": "^0.0.46-37",
+-        "@vscode/copilot-api": "^0.5.2",
+         "@vscode/deviceid": "^0.1.1",
+@@ -3831,8 +3830,2 @@
+     },
+-    "node_modules/@vscode/copilot-api": {
+-      "version": "0.5.2",
+-      "resolved": "https://registry.npmjs.org/@vscode/copilot-api/-/copilot-api-0.5.2.tgz",
+-      "integrity": "sha512-U+2jyi0/Hpum2ZnED47cVFKgx5+p+thRhOPDKc1+t2PVAzsKlr3aJPKxMeMLOIXGWyLuQcng5BuFvj1vxD1d8w==",
+-      "license": "SEE LICENSE"
+-    },
+     "node_modules/@vscode/deviceid": {
+diff --git a/package.json b/package.json
+index 50295bc5..78fe09c2 100644
+--- a/package.json
++++ b/package.json
+@@ -106,3 +106,2 @@
+     "@vscode/codicons": "^0.0.46-37",
+-    "@vscode/copilot-api": "^0.5.2",
+     "@vscode/deviceid": "^0.1.1",
+diff --git a/remote/package-lock.json b/remote/package-lock.json
+index 848b1915..0221c16d 100644
+--- a/remote/package-lock.json
++++ b/remote/package-lock.json
+@@ -14,3 +14,2 @@
+         "@parcel/watcher": "^2.5.6",
+-        "@vscode/copilot-api": "^0.5.2",
+         "@vscode/deviceid": "^0.1.1",
+@@ -444,8 +443,2 @@
+     },
+-    "node_modules/@vscode/copilot-api": {
+-      "version": "0.5.2",
+-      "resolved": "https://registry.npmjs.org/@vscode/copilot-api/-/copilot-api-0.5.2.tgz",
+-      "integrity": "sha512-U+2jyi0/Hpum2ZnED47cVFKgx5+p+thRhOPDKc1+t2PVAzsKlr3aJPKxMeMLOIXGWyLuQcng5BuFvj1vxD1d8w==",
+-      "license": "SEE LICENSE"
+-    },
+     "node_modules/@vscode/deviceid": {
+diff --git a/remote/package.json b/remote/package.json
+index e232b281..53815f80 100644
+--- a/remote/package.json
++++ b/remote/package.json
+@@ -9,3 +9,2 @@
+     "@parcel/watcher": "^2.5.6",
+-    "@vscode/copilot-api": "^0.5.2",
+     "@vscode/deviceid": "^0.1.1",
+diff --git a/src/typings/copilot-api.d.ts b/src/typings/copilot-api.d.ts
+deleted file mode 100644
+index cf56881a..00000000
+--- a/src/typings/copilot-api.d.ts
++++ /dev/null
+@@ -1,169 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-/**
+- * Ambient type declarations for @vscode/copilot-api.
+- *
+- * The package's .d.ts files use extensionless relative imports which are
+- * incompatible with `moduleResolution: "nodenext"`. This file provides
+- * the subset of types used by the agent host until the package is fixed.
+- */
+-declare module '@vscode/copilot-api' {
+-
+-	export interface IAbortSignal {
+-		readonly aborted: boolean;
+-		addEventListener(type: 'abort', listener: (this: AbortSignal) => void): void;
+-		removeEventListener(type: 'abort', listener: (this: AbortSignal) => void): void;
+-	}
+-
+-	export interface FetchOptions {
+-		callSite: string;
+-		headers?: { [name: string]: string };
+-		body?: BodyInit;
+-		timeout?: number;
+-		json?: unknown;
+-		method?: 'GET' | 'POST' | 'PUT';
+-		signal?: IAbortSignal;
+-		suppressIntegrationId?: boolean;
+-	}
+-
+-	export type MakeRequestOptions = Omit<FetchOptions, 'callSite'> & {
+-		callSite?: string;
+-	};
+-
+-	export interface IFetcherService {
+-		fetch(url: string, options: FetchOptions): Promise<unknown>;
+-	}
+-
+-	export interface IExtensionInformation {
+-		name: string;
+-		sessionId: string;
+-		machineId: string;
+-		deviceId: string;
+-		vscodeVersion: string;
+-		version: string;
+-		buildType: 'dev' | 'prod';
+-	}
+-
+-	export interface CopilotToken {
+-		endpoints: {
+-			api?: string;
+-			telemetry?: string;
+-			proxy?: string;
+-			'origin-tracker'?: string;
+-		};
+-		sku: string;
+-	}
+-
+-	export enum RequestType {
+-		CopilotToken = 'CopilotToken',
+-		ChatCompletions = 'ChatCompletions',
+-		ChatResponses = 'ChatResponses',
+-		ChatMessages = 'ChatMessages',
+-		Models = 'Models',
+-	}
+-
+-	export type RequestMetadata =
+-		| { type: RequestType.CopilotToken }
+-		| { type: RequestType.ChatCompletions | RequestType.ChatResponses | RequestType.ChatMessages | RequestType.Models; isModelLab?: boolean };
+-
+-	export interface IDomainChangeResponse {
+-		capiUrlChanged: boolean;
+-		telemetryUrlChanged: boolean;
+-		dotcomUrlChanged: boolean;
+-		proxyUrlChanged: boolean;
+-	}
+-
+-	export class CAPIClient {
+-		constructor(
+-			extensionInfo: IExtensionInformation,
+-			license: string | undefined,
+-			fetcherService?: IFetcherService,
+-			hmacSecret?: string,
+-			integrationId?: string,
+-		);
+-		updateDomains(copilotToken: CopilotToken | undefined, enterpriseUrlConfig: string | undefined): IDomainChangeResponse;
+-		makeRequest<T>(requestOptions: MakeRequestOptions, requestMetadata: RequestMetadata): Promise<T>;
+-	}
+-
+-	interface CCAModelTokenPriceTier {
+-		input_price?: number;
+-		cache_price?: number;
+-		cache_write_price?: number;
+-		output_price?: number;
+-		context_max?: number;
+-	}
+-
+-	interface CCAModelTokenPrices {
+-		batch_size?: number;
+-		default?: CCAModelTokenPriceTier;
+-		long_context?: CCAModelTokenPriceTier;
+-	}
+-
+-	interface CCAModelBilling {
+-		is_premium: boolean;
+-		multiplier: number;
+-		restricted_to: string[];
+-		token_prices?: CCAModelTokenPrices;
+-	}
+-
+-	interface CCAModelVisionLimits {
+-		max_prompt_image_size: number;
+-		max_prompt_images: number;
+-		supported_media_types: string[];
+-	}
+-
+-	interface CCAModelLimits {
+-		max_context_window_tokens: number;
+-		max_output_tokens: number;
+-		max_prompt_tokens: number;
+-		vision?: CCAModelVisionLimits;
+-	}
+-
+-	interface CCAModelSupports {
+-		max_thinking_budget?: number;
+-		min_thinking_budget?: number;
+-		parallel_tool_calls: boolean;
+-		streaming: boolean;
+-		tool_calls: boolean;
+-		vision: boolean;
+-	}
+-
+-	interface CCAModelCapabilities {
+-		family: string;
+-		limits: CCAModelLimits;
+-		object: string;
+-		supports: CCAModelSupports;
+-		tokenizer: string;
+-		type: string;
+-	}
+-
+-	interface CCAModelPolicy {
+-		state: string;
+-		terms: string;
+-	}
+-
+-	export interface CCAModel {
+-		billing: CCAModelBilling;
+-		capabilities: CCAModelCapabilities;
+-		id: string;
+-		is_chat_default: boolean;
+-		is_chat_fallback: boolean;
+-		model_picker_category: string;
+-		model_picker_enabled: boolean;
+-		model_picker_price_category?: string;
+-		name: string;
+-		object: string;
+-		policy: CCAModelPolicy;
+-		preview: boolean;
+-		/**
+-		 * API endpoints the model supports (e.g. `'/v1/messages'`, `'/chat/completions'`).
+-		 * Anthropic-format models use `'/v1/messages'`.
+-		 */
+-		supported_endpoints: string[] | undefined;
+-		vendor: string;
+-		version: string;
+-	}
+-}
+diff --git a/src/vs/platform/agentHost/node/agentHostBootstrap.ts b/src/vs/platform/agentHost/node/agentHostBootstrap.ts
+index 66d8e40c..d6d8734a 100644
+--- a/src/vs/platform/agentHost/node/agentHostBootstrap.ts
++++ b/src/vs/platform/agentHost/node/agentHostBootstrap.ts
+@@ -31,3 +31,2 @@ import { IAgentSdkDownloader, type IAgentSdkDownloadProgress } from './agentSdkD
+ import { IByokLmBridgeRegistry, NullByokLmBridgeRegistry } from './byokLmBridgeRegistry.js';
+-import { registerPendingEditContentProvider } from './copilot/pendingEditContentStore.js';
+ import { SessionDataService } from './sessionDataService.js';
+@@ -102,3 +101,2 @@ export async function createAgentHostRuntime(options: ICreateAgentHostRuntimeOpt
+ 		infrastructure.add(fileService.registerProvider(Schemas.file, infrastructure.add(new DiskFileSystemProvider(logService))));
+-		infrastructure.add(registerPendingEditContentProvider(fileService));
+ 		const sessionDataService = new SessionDataService(URI.file(environmentService.userDataPath), fileService, logService);
+diff --git a/src/vs/platform/agentHost/node/agentHostPullRequestOperationHandler.ts b/src/vs/platform/agentHost/node/agentHostPullRequestOperationHandler.ts
+index 5c485d5e..46bff56a 100644
+--- a/src/vs/platform/agentHost/node/agentHostPullRequestOperationHandler.ts
++++ b/src/vs/platform/agentHost/node/agentHostPullRequestOperationHandler.ts
+@@ -12,3 +12,3 @@ import { parseChangesetUri } from '../common/changesetUri.js';
+ import { AHP_AUTH_REQUIRED, AHP_SESSION_NOT_FOUND, JsonRpcErrorCodes, ProtocolError } from '../common/state/sessionProtocol.js';
+-import { readSessionGitHubState, readSessionGitState, type ChangesetOperationFollowUp, type ISessionFileDiff, type ISessionWithDefaultChat } from '../common/state/sessionState.js';
++import { readSessionGitHubState, readSessionGitState, type ChangesetOperationFollowUp, type ISessionWithDefaultChat } from '../common/state/sessionState.js';
+ import { ILogService } from '../../log/common/log.js';
+@@ -18,18 +18,2 @@ import { type AutoMergeMethod, type CreatedPullRequest, IAgentHostOctoKitService
+ import type { InvokeChangesetOperationParams, InvokeChangesetOperationResult } from '../common/state/protocol/channels-changeset/commands.js';
+-import { ICopilotApiService, type ICopilotUtilityChatMessage } from './shared/copilotApiService.js';
+-import { buildConversationContext } from '../common/agentHostConversationContext.js';
+-
+-/**
+- * Soft upper bound, in characters, for the conversation context fed to the
+- * utility model when generating a PR title and description. Sized to stay
+- * within the small model's context window while leaving room for the changed
+- * file summary and prompt scaffolding.
+- */
+-const MAX_PR_CONVERSATION_CONTEXT_CHARS = 12_000;
+-
+-/**
+- * Soft upper bound, in characters, for the changed-file summary fed to the
+- * utility model when generating a PR title and description.
+- */
+-const MAX_PR_CHANGE_SUMMARY_CHARS = 4_000;
+ 
+@@ -79,3 +63,2 @@ export class AgentHostPullRequestOperationHandler implements IChangesetOperation
+ 		@IAgentHostGitHubEndpointService private readonly _gitHubEndpointService: IAgentHostGitHubEndpointService,
+-		@ICopilotApiService private readonly _copilotApiService: ICopilotApiService,
+ 		@ILogService private readonly _logService: ILogService,
+@@ -197,6 +180,4 @@ export class AgentHostPullRequestOperationHandler implements IChangesetOperation
+ 
+-		const generated = await this._generateTitleAndDescription(sessionState, branchName, base, branchChanges, signal, token);
+-		this._throwIfCancelled(token);
+-		const title = generated?.title ?? this._formatTitle(branchName);
+-		const body = generated?.description ?? this._formatBody(branchName, base);
++		const title = this._formatTitle(branchName);
++		const body = this._formatBody(branchName, base);
+ 
+@@ -343,147 +324,2 @@ export class AgentHostPullRequestOperationHandler implements IChangesetOperation
+ 
+-	/**
+-	 * Best-effort generation of a PR title and description using the utility
+-	 * model. The model is given the main session conversation (only the
+-	 * markdown text of user requests and agent responses — tool calls,
+-	 * subagents, and reasoning are excluded and the text is character-bounded)
+-	 * along with a summary of the changed files. Returns `undefined` when no
+-	 * Copilot OAuth credential is available or generation fails, so the caller can fall
+-	 * back to the branch-name based title/description. PR creation must never
+-	 * fail just because the model is unavailable.
+-	 */
+-	private async _generateTitleAndDescription(
+-		sessionState: ISessionWithDefaultChat,
+-		branchName: string,
+-		base: string,
+-		branchChanges: readonly ISessionFileDiff[],
+-		signal: AbortSignal,
+-		token: CancellationToken,
+-	): Promise<{ title: string; description: string } | undefined> {
+-		const copilotResource = this._gitHubEndpointService.getCopilotResource();
+-		const authToken = this._authenticationService.getAuthToken({
+-			resource: copilotResource.resource,
+-			scopes: copilotResource.scopes_supported,
+-		});
+-		if (!authToken) {
+-			return undefined;
+-		}
+-
+-		const conversation = buildConversationContext(sessionState.turns, { maxChars: MAX_PR_CONVERSATION_CONTEXT_CHARS });
+-		const changeSummary = this._summarizeDiffsForPrompt(branchChanges);
+-		if (!conversation && !changeSummary) {
+-			return undefined;
+-		}
+-
+-		try {
+-			const raw = await this._copilotApiService.utilityChatCompletion(authToken, {
+-				messages: this._buildTitleAndDescriptionPrompt(branchName, base, conversation, changeSummary),
+-			}, { signal });
+-			this._throwIfCancelled(token);
+-			return this._parseTitleAndDescription(raw);
+-		} catch (err) {
+-			if (token.isCancellationRequested) {
+-				return undefined;
+-			}
+-			this._logService.warn(`[AgentHostPullRequestOperationHandler] Failed to generate PR title and description: ${err instanceof Error ? err.message : String(err)}`);
+-			return undefined;
+-		}
+-	}
+-
+-	private _buildTitleAndDescriptionPrompt(branchName: string, base: string, conversation: string | undefined, changeSummary: string): ICopilotUtilityChatMessage[] {
+-		const userSections: string[] = [
+-			`Branch: ${branchName}`,
+-			`Base branch: ${base}`,
+-		];
+-		if (changeSummary) {
+-			userSections.push(`Changed files:\n${changeSummary}`);
+-		}
+-		if (conversation) {
+-			userSections.push(`Conversation (the request that produced these changes):\n${conversation}`);
+-		}
+-		return [
+-			{
+-				role: 'system',
+-				content: [
+-					'You write clear, concise GitHub pull request titles and descriptions.',
+-					'The first line of your reply is the PR title: a short imperative summary under 72 characters, with no "Title:" prefix, no surrounding quotes, and no markdown heading.',
+-					'After the title, add one blank line, then write the PR description in GitHub-flavored markdown.',
+-					'Summarize what changed and why, grounded in the conversation and changed files. Use a short paragraph and/or bullet points.',
+-					'Do not invent changes that are not supported by the provided context, and do not wrap the whole reply in code fences.',
+-				].join(' '),
+-			},
+-			{
+-				role: 'user',
+-				content: userSections.join('\n\n'),
+-			},
+-		];
+-	}
+-
+-	private _summarizeDiffsForPrompt(diffs: readonly ISessionFileDiff[]): string {
+-		const lines: string[] = [];
+-		let length = 0;
+-		for (const diff of diffs) {
+-			const before = diff.before?.uri;
+-			const after = diff.after?.uri;
+-			const path = after ?? before ?? '(unknown)';
+-			let kind = 'Edit';
+-			if (!before && after) {
+-				kind = 'Create';
+-			} else if (before && !after) {
+-				kind = 'Delete';
+-			} else if (before && after && before !== after) {
+-				kind = 'Rename';
+-			}
+-			const line = `- ${kind}: ${this._displayUri(path)} (+${diff.diff?.added ?? 0} -${diff.diff?.removed ?? 0})`;
+-			lines.push(line);
+-			// `+ 1` accounts for the newline that joins this line to the previous one.
+-			length += line.length + (lines.length > 1 ? 1 : 0);
+-			if (length > MAX_PR_CHANGE_SUMMARY_CHARS) {
+-				lines.push('[file list truncated]');
+-				break;
+-			}
+-		}
+-		return lines.join('\n');
+-	}
+-
+-	private _displayUri(uri: string): string {
+-		try {
+-			const parsed = URI.parse(uri);
+-			return parsed.scheme === 'file' ? parsed.fsPath : parsed.path || uri;
+-		} catch {
+-			return uri;
+-		}
+-	}
+-
+-	private _parseTitleAndDescription(raw: string): { title: string; description: string } | undefined {
+-		let text = raw.trim().replace(/\r\n/g, '\n');
+-		const fenced = /^```(?:markdown|md|text)?\s*([\s\S]*?)\s*```$/i.exec(text);
+-		if (fenced) {
+-			text = fenced[1].trim();
+-		}
+-		if (!text) {
+-			return undefined;
+-		}
+-
+-		const lines = text.split('\n');
+-		let i = 0;
+-		while (i < lines.length && lines[i].trim().length === 0) {
+-			i++;
+-		}
+-		if (i >= lines.length) {
+-			return undefined;
+-		}
+-
+-		const title = lines[i].trim()
+-			.replace(/^#+\s*/, '')
+-			.replace(/^title:\s*/i, '')
+-			.trim()
+-			.replace(/^"(?<inner>.+)"$/, (_match, inner) => inner)
+-			.trim();
+-		if (!title) {
+-			return undefined;
+-		}
+-
+-		const description = lines.slice(i + 1).join('\n').trim().replace(/^description:\s*/i, '').trim();
+-		return { title, description };
+-	}
+ 
+diff --git a/src/vs/platform/agentHost/node/agentHostServices.ts b/src/vs/platform/agentHost/node/agentHostServices.ts
+index 4637e904..503c50e8 100644
+--- a/src/vs/platform/agentHost/node/agentHostServices.ts
++++ b/src/vs/platform/agentHost/node/agentHostServices.ts
+@@ -24,3 +24,2 @@ import { IAgentHostGitStateService } from '../common/agentHostGitStateService.js
+ import { IAgentHostReviewService } from '../common/agentHostReviewService.js';
+-import { CopilotApiService, ICopilotApiService } from './shared/copilotApiService.js';
+ import { AgentHostFileMonitorService, IAgentHostFileMonitorService } from './agentHostFileMonitorService.js';
+@@ -30,3 +29,2 @@ import { AgentSdkDownloader, IAgentSdkDownloader } from './agentSdkDownloader.js
+ import { IByokLmBridgeRegistry } from './byokLmBridgeRegistry.js';
+-import { ByokLmProxyService, IByokLmProxyService, NullByokLmProxyService } from './copilot/byokLmProxyService.js';
+ import { NodeWorkerDiffComputeService } from './diffComputeService.js';
+@@ -96,3 +94,2 @@ export interface IAgentHostCoreServiceInputs {
+ 	readonly gitHubServiceOptions: GitHubServiceOptions;
+-	readonly copilotApiService?: ICopilotApiService;
+ }
+@@ -111,3 +108,2 @@ export function registerAgentHostCoreServices(services: AgentHostServiceCollecti
+ 	registerService(services, ids, IGitHubService, new SyncDescriptor(GitHubService, [inputs.gitHubServiceOptions]));
+-	registerService(services, ids, ICopilotApiService, inputs.copilotApiService ?? new SyncDescriptor(CopilotApiService, [inputs.fetchFn]));
+ 	registerService(services, ids, IAgentHostCustomizationEnablementService, new SyncDescriptor(AgentHostCustomizationEnablementService));
+@@ -140,8 +136,2 @@ export function registerAgentHostHostServices(services: AgentHostServiceCollecti
+ 	registerService(services, ids, IAgentHostWorktreeIsolation, new SyncDescriptor(WorktreeIsolation, [undefined]));
+-	registerService(
+-		services,
+-		ids,
+-		IByokLmProxyService,
+-		inputs.byok.kind === 'renderer' ? new SyncDescriptor(ByokLmProxyService) : new NullByokLmProxyService(),
+-	);
+ 	return ids;
+diff --git a/src/vs/platform/agentHost/node/agentHostTelemetryService.ts b/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
+index 7b20e8f3..ee037694 100644
+--- a/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
++++ b/src/vs/platform/agentHost/node/agentHostTelemetryService.ts
+@@ -7,4 +7,2 @@ import { hostname, release } from 'os';
+ import { Disposable, isDisposable, toDisposable, type DisposableStore } from '../../../base/common/lifecycle.js';
+-import { joinPath } from '../../../base/common/resources.js';
+-import { URI } from '../../../base/common/uri.js';
+ import { getDevDeviceId, getMachineId, getSqmMachineId } from '../../../base/node/id.js';
+@@ -59,4 +57,2 @@ export class AgentHostTelemetryService extends Disposable implements IAgentHostT
+ 		private readonly _restricted?: IAgentHostRestrictedTelemetry,
+-		copilotSdkVersion?: string,
+-		copilotRuntimeVersion?: string,
+ 		initialTelemetryLevel: TelemetryLevel = TelemetryLevel.USAGE,
+@@ -68,10 +64,2 @@ export class AgentHostTelemetryService extends Disposable implements IAgentHostT
+ 		}
+-		if (copilotSdkVersion) {
+-			// __GDPR__COMMON__ "common.copilotSdkVersion" : { "classification": "SystemMetaData", "purpose": "PerformanceAndHealth", "comment": "The version of the Copilot SDK used by the Agent Host process." }
+-			this._delegate.setCommonProperty('common.copilotSdkVersion', copilotSdkVersion);
+-		}
+-		if (copilotRuntimeVersion) {
+-			// __GDPR__COMMON__ "common.copilotRuntimeVersion" : { "classification": "SystemMetaData", "purpose": "PerformanceAndHealth", "comment": "The version of the Copilot runtime used by the Agent Host process." }
+-			this._delegate.setCommonProperty('common.copilotRuntimeVersion', copilotRuntimeVersion);
+-		}
+ 	}
+@@ -220,17 +208,4 @@ export function isAgentHostTelemetryService(telemetryService: ITelemetryService)
+ 
+-async function resolveCopilotExtensionVersion(environmentService: INativeEnvironmentService, fileService: IFileService, logService: ILogService): Promise<string | undefined> {
+-	if (!environmentService.builtinExtensionsPath) {
+-		return undefined;
+-	}
+-	try {
+-		const manifest = JSON.parse((await fileService.readFile(joinPath(URI.file(environmentService.builtinExtensionsPath), 'copilot', 'package.json'))).value.toString()) as { version?: unknown };
+-		return typeof manifest.version === 'string' ? manifest.version : undefined;
+-	} catch (error) {
+-		logService.debug(`[agentHostTelemetry] Failed to resolve Copilot extension version: ${error instanceof Error ? error.message : String(error)}`);
+-		return undefined;
+-	}
+-}
+-
+ export async function createAgentHostTelemetryService(options: IAgentHostTelemetryServiceOptions): Promise<IAgentHostTelemetryService> {
+-	const { environmentService, productService, fileService, loggerService, logService, disposables } = options;
++	const { environmentService, productService, loggerService, logService, disposables } = options;
+ 	if (options.disableTelemetry || !loggerService || !supportsTelemetry(productService, environmentService)) {
+@@ -275,3 +250,3 @@ export async function createAgentHostTelemetryService(options: IAgentHostTelemet
+ 
+-	const extensionVersion = loggingOnly ? undefined : await resolveCopilotExtensionVersion(environmentService, fileService, logService);
++	const extensionVersion = undefined;
+ 	const internalSender = loggingOnly ? undefined : disposables.add(new AgentHostInternalTelemetrySender({ requestService: options.requestService, commonProperties, extensionVersion }));
+@@ -279,3 +254,3 @@ export async function createAgentHostTelemetryService(options: IAgentHostTelemet
+ 
+-	return disposables.add(new AgentHostTelemetryService(telemetryService, restricted, productService.copilotVersions?.sdk, productService.copilotVersions?.runtime, initialTelemetryLevel));
++	return disposables.add(new AgentHostTelemetryService(telemetryService, restricted, initialTelemetryLevel));
+ }
+diff --git a/src/vs/platform/agentHost/node/shared/agentBranchNameGenerator.ts b/src/vs/platform/agentHost/node/shared/agentBranchNameGenerator.ts
+index a4d46470..3701b60a 100644
+--- a/src/vs/platform/agentHost/node/shared/agentBranchNameGenerator.ts
++++ b/src/vs/platform/agentHost/node/shared/agentBranchNameGenerator.ts
+@@ -5,4 +5,2 @@
+ 
+-import { ILogService } from '../../../log/common/log.js';
+-import { ICopilotApiService, type ICopilotUtilityChatMessage } from './copilotApiService.js';
+ 
+@@ -16,3 +14,2 @@ const AGENT_BRANCH_SESSION_ID_SUFFIX_LENGTH = 8;
+ const MAX_BRANCH_NAME_HINT_LENGTH = 48;
+-const MIN_GENERATED_BRANCH_NAME_LENGTH = 8;
+ const MAX_BRANCH_NAME_CANDIDATES = 100;
+@@ -44,9 +41,4 @@ export class AgentBranchNameGenerator implements IAgentBranchNameGenerator {
+ 
+-	constructor(
+-		@ICopilotApiService private readonly _copilotApiService: ICopilotApiService,
+-		@ILogService private readonly _logService: ILogService,
+-	) { }
+-
+ 	async generateBranchName(request: IAgentBranchNameGeneratorRequest): Promise<string> {
+-		const branchNameHint = (await this._generateBranchNameHint(request)) ?? getAgentBranchNameHintFromMessage(request.message ?? '');
++		const branchNameHint = getAgentBranchNameHintFromMessage(request.message ?? '');
+ 		return this._buildBranchName(request, branchNameHint);
+@@ -54,61 +46,2 @@ export class AgentBranchNameGenerator implements IAgentBranchNameGenerator {
+ 
+-	private async _generateBranchNameHint(request: IAgentBranchNameGeneratorRequest): Promise<string | undefined> {
+-		const message = request.message?.trim();
+-		if (!message || !request.githubToken) {
+-			return undefined;
+-		}
+-
+-		try {
+-			const rawBranchName = await this._copilotApiService.utilityChatCompletion(request.githubToken, {
+-				messages: this._buildBranchNamePrompt(message),
+-			}, {
+-				signal: request.signal,
+-			});
+-
+-			if (request.signal?.aborted) {
+-				return undefined;
+-			}
+-
+-			let branchName = rawBranchName.trim();
+-			if (branchName.match(/^".*"$/)) {
+-				branchName = branchName.slice(1, -1);
+-			}
+-			if (branchName.includes('can\'t assist with that')) {
+-				return undefined;
+-			}
+-
+-			branchName = normalizeAgentBranchName(branchName).slice(0, MAX_BRANCH_NAME_HINT_LENGTH).replace(/-+$/g, '');
+-			if (branchName.length < MIN_GENERATED_BRANCH_NAME_LENGTH) {
+-				this._logService.warn('Generated branch name is too short after normalization, discarding.');
+-				return undefined;
+-			}
+-
+-			return branchName;
+-		} catch (err) {
+-			this._logService.warn('[AgentBranchNameGenerator] Failed to generate branch name', err);
+-			return undefined;
+-		}
+-	}
+-
+-	private _buildBranchNamePrompt(userRequest: string): ICopilotUtilityChatMessage[] {
+-		return [
+-			{
+-				role: 'system',
+-				content: [
+-					'You are an expert in crafting pithy branch names for Git Repos based on chatbot conversations.',
+-					'You are presented with a chat request, and you reply with a brief branch name that captures the main topic of that request.',
+-					'The branch name should not be wrapped in quotes. It should be between 8-50 characters.',
+-					'Here are some examples of good branch names:',
+-					'- linkedlist-implementation',
+-					'- adding-tree-view',
+-					'- react-usestate-hook-usage',
+-				].join(' '),
+-			},
+-			{
+-				role: 'user',
+-				content: `Please write a brief branch name for the following request:\n\n${userRequest}`,
+-			},
+-		];
+-	}
+-
+ 	private async _buildBranchName(request: IAgentBranchNameGeneratorRequest, branchNameHint: string | undefined): Promise<string> {
+diff --git a/src/vs/platform/agentHost/node/shared/copilotApiService.ts b/src/vs/platform/agentHost/node/shared/copilotApiService.ts
+deleted file mode 100644
+index 2dc3ee35..00000000
+--- a/src/vs/platform/agentHost/node/shared/copilotApiService.ts
++++ /dev/null
+@@ -1,1134 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-
+-import { CAPIClient, RequestType, type CCAModel, type IExtensionInformation } from '@vscode/copilot-api';
+-import { generateUuid } from '../../../../base/common/uuid.js';
+-import { getDevDeviceId, getMachineId } from '../../../../base/node/id.js';
+-import { getInternalOrg } from '../../../assignment/common/assignment.js';
+-import { COPILOT_LICENSE_AGREEMENT } from '../../../endpoint/common/licenseAgreement.js';
+-import { createDecorator } from '../../../instantiation/common/instantiation.js';
+-import { ILogService } from '../../../log/common/log.js';
+-import { IProductService } from '../../../product/common/productService.js';
+-import { IAgentHostGitHubEndpointService } from '../agentHostGitHubEndpointService.js';
+-
+-// #region Types
+-
+-/**
+- * Per-call transport options for all {@link ICopilotApiService} methods.
+- *
+- * `headers` are merged into the outgoing CAPI request before security-
+- * sensitive headers (`Authorization`, `Content-Type`, `X-Request-Id`,
+- * `OpenAI-Intent`), so callers cannot override those.
+- *
+- * `signal` propagates to the outgoing API request but not to the shared
+- * endpoint-discovery request.
+- */
+-export interface ICopilotApiServiceRequestOptions {
+-	readonly headers?: Readonly<Record<string, string>>;
+-	readonly signal?: AbortSignal;
+-
+-	/**
+-	 * Suppress the `Copilot-Integration-Id` header on this request.
+-	 *
+-	 * When unset, `@vscode/copilot-api` derives the integration id from the
+-	 * discovered Copilot SKU: a `no_auth_limited_copilot` SKU maps to
+-	 * `vscode-nl`, which the CAPI backend treats as the limited/no-auth
+-	 * integration and refuses premium models such as `claude-opus-4.7`.
+-	 * Setting this to `true` omits the header so CAPI authorizes against the
+-	 * token's real entitlement. Mirrors the Copilot Chat extension's
+-	 * `ClaudeStreamingPassThroughEndpoint.getEndpointFetchOptions()`.
+-	 */
+-	readonly suppressIntegrationId?: boolean;
+-}
+-
+-/**
+- * One chat message in a {@link ICopilotUtilityChatCompletionRequest}.
+- * Mirrors the OpenAI Chat Completions message shape CAPI accepts.
+- */
+-export interface ICopilotUtilityChatMessage {
+-	readonly role: 'system' | 'user' | 'assistant';
+-	readonly content: string;
+-}
+-
+-/**
+- * Inputs for {@link ICopilotApiService.utilityChatCompletion}.
+- *
+- * Callers own prompt construction — typically a `'system'` rules message
+- * followed by one or more `'user'` messages, matching the Copilot Chat
+- * extension's `copilot-utility-small` prompts (see
+- * `GitCommitMessagePrompt`'s `SystemMessage` + `UserMessage` pair). This
+- * service forwards the messages and returns the assistant text.
+- *
+- * `temperature` defaults to `0.1` (matching the Copilot Chat extension's
+- * default `IConversationOptions.temperature`). `top_p` and the model family
+- * are fixed defaults inside the service. Callers may set `maxTokens` when
+- * their utility flow has a naturally bounded output.
+- */
+-export interface ICopilotUtilityChatCompletionRequest {
+-	readonly messages: readonly ICopilotUtilityChatMessage[];
+-	readonly temperature?: number;
+-	readonly maxTokens?: number;
+-}
+-
+-/**
+- * Subset of the GitHub `copilot_internal/user` response we care about.
+- * Provides CAPI routing and SKU data together with the account metadata used
+- * for restricted and internal telemetry.
+- */
+-interface ICopilotUserResponse {
+-	readonly login?: string;
+-	readonly copilotignore_enabled?: boolean;
+-	readonly restricted_telemetry?: boolean;
+-	readonly analytics_tracking_id?: string;
+-	readonly is_staff?: boolean;
+-	readonly organization_login_list?: readonly string[];
+-	readonly endpoints?: {
+-		readonly api?: string;
+-		readonly telemetry?: string;
+-		readonly proxy?: string;
+-		readonly 'origin-tracker'?: string;
+-	};
+-	readonly access_type_sku?: string;
+-}
+-
+-interface ICachedClient {
+-	readonly capiClient: CAPIClient;
+-	readonly expiresAt: number;
+-	readonly utilityModelIdsByFamily: Map<string, string>;
+-	/** The raw Copilot entitlement SKU returned by `/copilot_internal/user`, when present. */
+-	readonly copilotSku?: string;
+-	/** GitHub login returned by `/copilot_internal/user`, when present. */
+-	readonly login?: string;
+-	/** The CAPI `endpoints.telemetry` base URL discovered for this token, if any. */
+-	readonly telemetryEndpoint?: string;
+-	/** The CAPI `endpoints.api` base URL discovered (or overridden) for this token, if any. */
+-	readonly apiEndpoint?: string;
+-	readonly copilotIgnoreEnabled?: boolean;
+-	readonly restrictedTelemetryEnabled: boolean;
+-	readonly trackingId?: string;
+-	readonly isInternal: boolean;
+-	readonly isVscodeTeamMember: boolean;
+-}
+-
+-/**
+- * Memoized parts of `CAPIClient` construction that don't depend on the user
+- * token. Built once and reused by every per-token client.
+- */
+-interface ICapiBase {
+-	readonly extensionInfo: IExtensionInformation;
+-	readonly userUrl: string;
+-}
+-
+-// #endregion
+-
+-// #region Constants
+-
+-/**
+- * Sentinel {@link CopilotApiError.status} used when the error came from a
+- * mid-stream SSE `event: error` frame rather than an HTTP non-2xx response.
+- * The upstream HTTP status was 200 (the stream had already started); the
+- * real HTTP status is no longer meaningful, so consumers that need an HTTP
+- * status code (e.g. when re-emitting before headers are sent) should not
+- * trust this value. Use `envelope.error.type` instead.
+- */
+-export const COPILOT_API_ERROR_STATUS_STREAMING = 520;
+-
+-/**
+- * Re-resolve the CAPI endpoint discovery this many seconds before the cache
+- * entry's notional expiry. The `/copilot_internal/user` response itself
+- * carries no expiry, so we apply a fixed TTL and refresh ahead of it.
+- */
+-const CAPI_CONTEXT_REFRESH_BUFFER_SECONDS = 5 * 60;
+-
+-/** Conservative TTL for the `/copilot_internal/user` discovery result. */
+-const CAPI_CONTEXT_TTL_SECONDS = 30 * 60;
+-
+-const USER_API_VERSION = '2025-04-01';
+-
+-/**
+- * Test/debug override for the CAPI base URL. When set to a **loopback** URL,
+- * {@link CopilotApiService} skips the `api.github.com/copilot_internal/user`
+- * endpoint-discovery round-trip (which requires a real GitHub token) and routes
+- * every CAPI request — `models`, `responses`, `messages` — straight at this URL
+- * instead. Only ever set by the smoke-test harness (see `setupAgentHostSuite`)
+- * so the agent host's shared CAPI client can talk to the mock LLM server; never
+- * set in production, so normal per-token discovery is unchanged.
+- *
+- * The override is restricted to loopback hosts, plus the reserved
+- * `vscode-smoke.test` host when the smoke proxy marker is present. Subsequent
+- * CAPI calls carry the user's GitHub bearer token, so every other non-loopback
+- * or unparseable value is ignored to prevent token exfiltration.
+- */
+-const CAPI_URL_OVERRIDE_ENV = 'VSCODE_AGENT_HOST_CAPI_URL_OVERRIDE';
+-const CAPI_URL_OVERRIDE_SMOKE_TEST_HOST = 'vscode-smoke.test';
+-const CAPI_URL_OVERRIDE_SMOKE_TEST_ENV = 'VSCODE_SMOKE_TEST_PROXY_HEADER';
+-
+-/** True iff `url` parses and its host is a loopback address (localhost / 127.0.0.0/8 / ::1). */
+-function isLoopbackUrl(url: string): boolean {
+-	let hostname: string;
+-	try {
+-		hostname = new URL(url).hostname;
+-	} catch {
+-		return false;
+-	}
+-	// Strip IPv6 brackets if present (e.g. `[::1]`).
+-	const host = hostname.replace(/^\[|\]$/g, '').toLowerCase();
+-	return host === 'localhost' || host === '::1' || /^127(?:\.\d{1,3}){3}$/.test(host);
+-}
+-
+-function isAllowedCapiUrlOverride(url: string): boolean {
+-	if (isLoopbackUrl(url)) {
+-		return true;
+-	}
+-	if (!process.env[CAPI_URL_OVERRIDE_SMOKE_TEST_ENV]) {
+-		return false;
+-	}
+-	try {
+-		return new URL(url).hostname.toLowerCase() === CAPI_URL_OVERRIDE_SMOKE_TEST_HOST;
+-	} catch {
+-		return false;
+-	}
+-}
+-
+-/**
+- * Default CAPI model family for {@link ICopilotApiService.utilityChatCompletion}.
+- * Matches the Copilot Chat extension's `copilot-utility-small` resolver
+- * (`CopilotUtilitySmallChatEndpoint.capiFamily === CHAT_MODEL.GPT4OMINI`).
+- */
+-const UTILITY_DEFAULT_MODEL_FAMILY = 'gpt-4o-mini';
+-
+-/**
+- * Default `temperature` for utility chat completions. Matches the Copilot
+- * Chat extension's default `IConversationOptions.temperature`.
+- */
+-const UTILITY_DEFAULT_TEMPERATURE = 0.1;
+-
+-/**
+- * Default `top_p` for utility chat completions. Matches the Copilot Chat
+- * extension's default `IConversationOptions.topP`.
+- */
+-const UTILITY_DEFAULT_TOP_P = 1;
+-
+-/**
+- * `OpenAI-Intent` value for utility chat completions. Matches the extension
+- * vocabulary `'conversation-background'` for non-user-initiated utility
+- * calls (chat title generation, commit messages, branch names, etc.).
+- */
+-const UTILITY_INTENT = 'conversation-background';
+-
+-// #endregion
+-
+-// #region Errors
+-
+-/**
+- * Thrown by {@link ICopilotApiService} when CAPI returns an Anthropic-format
+- * API error — either as a non-2xx HTTP response or as a mid-stream
+- * `event: error` SSE frame. Carries enough information for the Phase 2
+- * Claude proxy to re-emit the error passthrough without re-mapping.
+- *
+- * Network/transport failures (connection reset, DNS failure, etc.) are
+- * **not** wrapped as `CopilotApiError` — they propagate as raw `fetch`
+- * rejections so consumers can distinguish API errors from transport errors.
+- */
+-export class CopilotApiError extends Error {
+-
+-	/**
+-	 * @param status HTTP status from the originating CAPI response, or
+-	 *   {@link COPILOT_API_ERROR_STATUS_STREAMING} for mid-stream SSE errors.
+-	 * @param envelope Anthropic-format error envelope. For HTTP errors with a
+-	 *   non-conforming body (plain text, malformed JSON, missing fields) this
+-	 *   is synthesized; for conforming bodies and SSE frames it is the
+-	 *   server's envelope verbatim.
+-	 * @param message Optional override for `Error.message`. Defaults to
+-	 *   `envelope.error.message`. **Never includes auth tokens.**
+-	 */
+-	constructor(
+-		readonly status: number,
+-		readonly envelope: any,
+-		message?: string,
+-	) {
+-		super(message ?? envelope.error.message);
+-		this.name = 'CopilotApiError';
+-	}
+-}
+-
+-/**
+- * Build a {@link CopilotApiError} from a CAPI HTTP response body. If the
+- * body parses as a conforming Anthropic envelope, it is used verbatim;
+- * otherwise a synthetic envelope is constructed with `error.type:
+- * 'api_error'` and the response body as `error.message` (or status text
+- * when the body is empty). The returned error's `message` deliberately
+- * mirrors the original `"<prefix>: <status> <statusText>"` format so
+- * existing log-line consumers continue to read identifiably. `prefix`
+- * defaults to `"CAPI request failed"` (the historical wording for
+- * `messages`); pass `"CAPI models request failed"` for the `models()` path.
+- */
+-function buildCopilotApiHttpError(status: number, statusText: string, bodyText: string, prefix = 'CAPI request failed'): CopilotApiError {
+-	let envelope: any | undefined;
+-	if (bodyText) {
+-		try {
+-			const parsed = JSON.parse(bodyText) as unknown;
+-			if (
+-				parsed && typeof parsed === 'object'
+-				&& (parsed as { type?: unknown }).type === 'error'
+-			) {
+-				const err = (parsed as { error?: unknown }).error;
+-				if (
+-					err && typeof err === 'object'
+-					&& typeof (err as { type?: unknown }).type === 'string'
+-					&& typeof (err as { message?: unknown }).message === 'string'
+-				) {
+-					envelope = parsed;
+-				}
+-			}
+-		} catch {
+-			// non-JSON body — fall through to synthesis
+-		}
+-	}
+-	if (!envelope) {
+-		envelope = {
+-			type: 'error',
+-			error: {
+-				type: 'api_error',
+-				message: bodyText || `${status} ${statusText}`,
+-			},
+-			request_id: null,
+-		};
+-	}
+-	return new CopilotApiError(
+-		status,
+-		envelope,
+-		`${prefix}: ${status} ${statusText} \u2014 ${envelope.error.message}`,
+-	);
+-}
+-
+-// #endregion
+-
+-export type FetchFunction = typeof globalThis.fetch;
+-
+-export const ICopilotApiService = createDecorator<ICopilotApiService>('copilotApiService');
+-
+-/**
+- * Foundational gateway between the agent host and GitHub Copilot's CAPI proxy
+- * for Anthropic-style chat completions and model discovery.
+- *
+- * ## Goals
+- *
+- * 1. **Single source of truth for CAPI auth.** Callers pass a raw GitHub token
+- *    and never deal with endpoint discovery or routing themselves.
+- * 2. **Stable surface for chat agents.** A small, typed API that abstracts the
+- *    underlying `CAPIClient`, SSE framing, and Anthropic event taxonomy so
+- *    feature code can focus on prompting.
+- * 3. **Resource-safe streaming.** Async-generator output that fully releases
+- *    the underlying HTTP connection regardless of how the consumer terminates
+- *    iteration (early `break`, thrown error, abort, or natural end-of-stream).
+- * 4. **Skew- and revocation-tolerant context cache.** Endpoint/sku discovery
+- *    stays cached as long as it's usable and is invalidated immediately on
+- *    `401`/`403` so callers self-heal without restarting the host.
+- *
+- * ## Auth strategy
+- *
+- * The GitHub user token IS the credential. There is no Copilot session-token
+- * mint; we send `Authorization: Bearer <github-token>` directly to CAPI's
+- * `/v1/messages` and `/models` endpoints. This mirrors what the
+- * `@github/copilot` CLI does (see `fetchCopilotUser` and
+- * `CopilotAnthropicClient.createWithOAuthToken` in `github/copilot-agent-runtime`).
+- *
+- * The `endpoints.api` URL CAPI requests are routed to is discovered per-token
+- * by calling `GET /copilot_internal/user` once and caching the result. This
+- * works for both consumer (`api.githubcopilot.com`) and Enterprise
+- * (`api.enterprise.githubcopilot.com`) accounts without configuration.
+- *
+- * ## Non-goals
+- *
+- * - Per-conversation history, retry/backoff, or rate-limit handling. Callers
+- *   own request orchestration.
+- *
+- * ## Concurrency model
+- *
+- * - Each cached entry is a **distinct {@link CAPIClient} instance** with its
+- *   own discovered domain state. Concurrent in-flight requests for two
+- *   different GitHub tokens cannot trample each other's `endpoints.api` —
+- *   token A's request will always route through the client built for A.
+- * - Multiple in-flight requests for the **same** GitHub token share a single
+- *   endpoint-discovery call via the per-token cache map (no thundering herd
+- *   on cold start).
+- * - `AbortSignal` is forwarded to the outgoing API request (messages, models)
+- *   but **not** to the shared discovery call, so cancellation propagates to
+- *   the caller's own request without affecting concurrent callers sharing the
+- *   discovery.
+- *
+- * ## Error semantics
+- *
+- * - Network/transport errors propagate as raw `fetch` rejections (e.g.
+- *   connection reset, DNS failure). Consumers can distinguish them from
+- *   API errors by `instanceof CopilotApiError`.
+- * - Non-2xx responses from CAPI's `messages` and `models` endpoints throw
+- *   {@link CopilotApiError} carrying the HTTP `status` and the parsed
+- *   Anthropic error `envelope` (synthesized if the response body isn't a
+- *   conforming envelope). **Tokens are never embedded in error messages.**
+- * - Streaming `event: error` SSE frames throw {@link CopilotApiError} with
+- *   `status` set to {@link COPILOT_API_ERROR_STATUS_STREAMING} (the upstream
+- *   HTTP status was 200 and is no longer meaningful) and the server-supplied
+- *   error envelope preserved verbatim.
+- * - Failures of the `/copilot_internal/user` discovery call throw plain
+- *   `Error` (not `CopilotApiError`) with a `"Copilot endpoint discovery
+- *   failed: ..."` prefix — it is an implementation detail of this service
+- *   and is not part of the Anthropic-shaped CAPI surface.
+- * - Malformed JSON in an SSE `data:` line is logged and skipped, not thrown.
+- */
+-/**
+- * Restricted/enhanced telemetry context derived from the GitHub `/copilot_internal/user` response.
+- */
+-export interface IRestrictedTelemetryContext {
+-	/** Whether `/copilot_internal/user` enables enhanced/restricted telemetry. */
+-	readonly restrictedTelemetryEnabled: boolean;
+-	/** The Copilot analytics tracking ID, or `undefined` when absent. */
+-	readonly trackingId: string | undefined;
+-	/** The CAPI `endpoints.telemetry` base URL, resolved only when enabled; `undefined` otherwise. */
+-	readonly telemetryEndpoint: string | undefined;
+-	/** Whether the token belongs to a GitHub or Microsoft internal organization. */
+-	readonly isInternal?: boolean;
+-	/** GitHub login returned by `/copilot_internal/user`. */
+-	readonly userName?: string;
+-	/** Whether the token identifies a VS Code team member. */
+-	readonly isVscodeTeamMember?: boolean;
+-	/** Whether content exclusion is enabled; undefined when discovery could not determine it. */
+-	readonly copilotIgnoreEnabled?: boolean;
+-}
+-
+-export interface ICopilotApiService {
+-
+-	readonly _serviceBrand: undefined;
+-
+-	/**
+-	 * Stream a chat completion as raw Anthropic stream events.
+-	 *
+-	 * Yields every `Anthropic.MessageStreamEvent` in the order the server
+-	 * emits them, **including `message_stop` as the last event** before the
+-	 * generator returns. Phase 2 proxy relies on receiving a complete,
+-	 * replayable event stream.
+-	 *
+-	 * @throws on non-2xx status or SSE `error` event.
+-	 */
+-	messages(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): AsyncGenerator<any>;
+-
+-	/**
+-	 * Send a chat completion and return the full aggregated response.
+-	 * @throws on non-2xx status.
+-	 */
+-	messages(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<any>;
+-
+-	/**
+-	 * Count tokens for a hypothetical request.
+-	 *
+-	 * @throws always — `countTokens` is not supported by CAPI in Phase 1.5.
+-	 * Phase 2 proxy maps this to HTTP 501.
+-	 */
+-	countTokens(
+-		githubToken: string,
+-		req: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<any>;
+-
+-	/**
+-	 * List models available to the GitHub user.
+-	 *
+-	 * Each {@link CCAModel} carries a `vendor` (e.g. `'Anthropic'`) and
+-	 * `supported_endpoints` (e.g. `['/v1/messages']`). Callers filtering for
+-	 * Anthropic-format models should match on both fields.
+-	 *
+-	 * Known CAPI values as of 2026-04-30:
+-	 * - `vendor`: `'Anthropic'` (capitalized)
+-	 * - `supported_endpoints`: `'/v1/messages'` for Anthropic chat models
+-	 */
+-	models(githubToken: string, options?: ICopilotApiServiceRequestOptions): Promise<CCAModel[]>;
+-
+-	/**
+-	 * Pass-through to CAPI's OpenAI-shaped Responses endpoint
+-	 * (`{capiBaseUrl}/responses`). Used by `CodexProxyService` to forward
+-	 * `/v1/responses` requests from the Codex CLI without deserializing
+-	 * the body. The caller owns the returned `Response` (its body and any
+-	 * streaming) and is responsible for consuming or aborting it.
+-	 *
+-	 * @throws on non-2xx upstream response.
+-	 */
+-	responses(
+-		githubToken: string,
+-		body: string,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<Response>;
+-
+-	/**
+-	 * Send arbitrary user chat messages through CAPI's `/chat/completions`
+-	 * endpoint and return the assistant text.
+-	 *
+-	 * Uses the supplied GitHub OAuth token directly. This is the same
+-	 * credential flow as the other CAPI model endpoints. Uses the `gpt-4o-mini`
+-	 * model family with `top_p = 1` and `temperature = 0.1` by default
+-	 * (override via `request.temperature`).
+-	 *
+-	 * Non-streaming. Callers own prompt construction and any
+-	 * domain-specific parsing of the returned text.
+-	 *
+-	 * @throws {@link CopilotApiError} on non-2xx CAPI response.
+-	 * @throws plain `Error` when no model in the requested family is
+-	 * available or when the response contains no text content.
+-	 */
+-	utilityChatCompletion(
+-		githubToken: string,
+-		request: ICopilotUtilityChatCompletionRequest,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<string>;
+-
+-	/**
+-	 * Resolve this user's restricted-telemetry context from `/copilot_internal/user`.
+-	 * The telemetry endpoint is returned only when restricted telemetry is enabled.
+-	 */
+-	resolveRestrictedTelemetryContext(githubToken: string): Promise<IRestrictedTelemetryContext>;
+-
+-	/**
+-	 * Resolve the CAPI `endpoints.api` base URL discovered for this GitHub token
+-	 * (or the loopback test override), or `undefined` when discovery hasn't run
+-	 * or failed. The effective CAPI host varies by account (consumer
+-	 * `api.githubcopilot.com` vs. Enterprise / proxy), so callers that need the
+-	 * real host — e.g. to resolve the correct proxy — should prefer this over the
+-	 * hardcoded default.
+-	 */
+-	resolveApiEndpoint(githubToken: string): Promise<string | undefined>;
+-
+-	/** Resolve the GitHub login cached from `/copilot_internal/user`. */
+-	resolveUserLogin?(githubToken: string): Promise<string | undefined>;
+-
+-	/** Resolve the raw Copilot entitlement SKU cached from `/copilot_internal/user`. */
+-	resolveCopilotSku?(githubToken: string): Promise<string | undefined>;
+-}
+-
+-export class CopilotApiService implements ICopilotApiService {
+-
+-	declare readonly _serviceBrand: undefined;
+-
+-	private _capiBasePromise: Promise<ICapiBase> | null = null;
+-	private readonly _clientsByToken = new Map<string, Promise<ICachedClient>>();
+-	private readonly _fetch: FetchFunction;
+-
+-	constructor(
+-		fetchFn: FetchFunction | undefined,
+-		@ILogService private readonly _logService: ILogService,
+-		@IProductService private readonly _productService: IProductService,
+-		@IAgentHostGitHubEndpointService private readonly _gitHubEndpointService: IAgentHostGitHubEndpointService,
+-	) {
+-		this._fetch = fetchFn ?? globalThis.fetch;
+-	}
+-
+-	// #region Public API
+-
+-	messages(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): AsyncGenerator<any>;
+-	messages(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<any>;
+-	messages(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): AsyncGenerator<any> | Promise<any> {
+-		if (request.stream) {
+-			return this._messagesStreaming(githubToken, request, options);
+-		}
+-		return this._messagesNonStreaming(githubToken, request, options);
+-	}
+-
+-	async countTokens(
+-		_githubToken: string,
+-		_req: any,
+-		_options?: ICopilotApiServiceRequestOptions,
+-	): Promise<any> {
+-		throw new Error('countTokens not supported by CAPI');
+-	}
+-
+-	async models(githubToken: string, options?: ICopilotApiServiceRequestOptions): Promise<CCAModel[]> {
+-		const capiClient = await this._getClientForToken(githubToken);
+-
+-		this._logService.debug('[CopilotApiService] GET models');
+-
+-		const response = await capiClient.makeRequest<Response>(
+-			{
+-				method: 'GET',
+-				headers: {
+-					...options?.headers,
+-					'Authorization': `Bearer ${githubToken}`,
+-				},
+-				// Opt-in per request — see
+-				// `ICopilotApiServiceRequestOptions.suppressIntegrationId`.
+-				suppressIntegrationId: options?.suppressIntegrationId,
+-				signal: options?.signal,
+-			},
+-			{ type: RequestType.Models },
+-		);
+-
+-		if (!response.ok) {
+-			if (response.status === 401 || response.status === 403) {
+-				this._invalidateClientForToken(githubToken);
+-			}
+-			const text = await response.text().catch(() => '');
+-			throw buildCopilotApiHttpError(response.status, response.statusText, text, 'CAPI models request failed');
+-		}
+-
+-		const json = await response.json();
+-		return json.data ?? [];
+-	}
+-
+-	async responses(
+-		githubToken: string,
+-		body: string,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<Response> {
+-		const capiClient = await this._getClientForToken(githubToken);
+-		const requestId = generateUuid();
+-
+-		// Parse the request body to log the model being sent (debug aid; failures
+-		// are non-fatal — the body is forwarded byte-for-byte regardless).
+-		let requestModel = '<unknown>';
+-		try {
+-			const parsed = JSON.parse(body);
+-			requestModel = parsed.model ?? '<none>';
+-		} catch { /* ignore parse errors */ }
+-		this._logService.info(`[CopilotApiService] POST responses: requestId=${requestId}, model=${requestModel}`);
+-
+-		const response = await capiClient.makeRequest<Response>(
+-			{
+-				method: 'POST',
+-				headers: {
+-					...options?.headers,
+-					'Content-Type': 'application/json',
+-					'Authorization': `Bearer ${githubToken}`,
+-					'X-Request-Id': requestId,
+-					'OpenAI-Intent': 'conversation',
+-				},
+-				// Opt-in per request — see
+-				// `ICopilotApiServiceRequestOptions.suppressIntegrationId`.
+-				suppressIntegrationId: options?.suppressIntegrationId,
+-				body,
+-				signal: options?.signal,
+-			},
+-			{ type: RequestType.ChatResponses },
+-		);
+-
+-		this._logService.info(`[CopilotApiService] responses status=${response.status}, requestId=${requestId}`);
+-
+-		if (!response.ok) {
+-			if (response.status === 401 || response.status === 403) {
+-				this._invalidateClientForToken(githubToken);
+-			}
+-			const text = await response.text().catch(() => '');
+-			throw buildCopilotApiHttpError(response.status, response.statusText, text, 'CAPI responses request failed');
+-		}
+-		return response;
+-	}
+-
+-	async utilityChatCompletion(
+-		githubToken: string,
+-		request: ICopilotUtilityChatCompletionRequest,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<string> {
+-		const capiClient = await this._getClientForToken(githubToken);
+-		const modelId = await this._resolveUtilityModelId(githubToken, UTILITY_DEFAULT_MODEL_FAMILY);
+-		const requestId = generateUuid();
+-
+-		this._logService.debug('[CopilotApiService] POST chat completions', `model=${modelId} requestId=${requestId}`);
+-
+-		const body = JSON.stringify({
+-			model: modelId,
+-			messages: request.messages.map(m => ({ role: m.role, content: m.content })),
+-			stream: false,
+-			temperature: request.temperature ?? UTILITY_DEFAULT_TEMPERATURE,
+-			top_p: UTILITY_DEFAULT_TOP_P,
+-			max_tokens: request.maxTokens,
+-		});
+-
+-		const response = await capiClient.makeRequest<Response>(
+-			{
+-				method: 'POST',
+-				headers: {
+-					...options?.headers,
+-					'Content-Type': 'application/json',
+-					'Authorization': `Bearer ${githubToken}`,
+-					'X-Request-Id': requestId,
+-					'OpenAI-Intent': UTILITY_INTENT,
+-				},
+-				body,
+-				signal: options?.signal,
+-			},
+-			{ type: RequestType.ChatCompletions },
+-		);
+-
+-		if (!response.ok) {
+-			if (response.status === 401 || response.status === 403) {
+-				this._invalidateClientForToken(githubToken);
+-			}
+-			const text = await response.text().catch(() => '');
+-			throw buildCopilotApiHttpError(response.status, response.statusText, text, 'CAPI chat completion request failed');
+-		}
+-
+-		const json = await response.json() as { choices?: ReadonlyArray<{ message?: { content?: unknown } }> };
+-		const content = json?.choices?.[0]?.message?.content;
+-		if (typeof content !== 'string') {
+-			throw new Error('CAPI chat completion returned no text content');
+-		}
+-		return content;
+-	}
+-
+-	// #endregion
+-
+-	// #region Lazy Init
+-
+-	private _getCapiBase(): Promise<ICapiBase> {
+-		if (!this._capiBasePromise) {
+-			this._capiBasePromise = this._buildCapiBase().catch(err => {
+-				this._capiBasePromise = null;
+-				throw err;
+-			});
+-		}
+-		return this._capiBasePromise;
+-	}
+-
+-	private async _buildCapiBase(): Promise<ICapiBase> {
+-		const [machineId, deviceId] = await Promise.all([
+-			getMachineId(err => this._logService.warn('[CopilotApiService] getMachineId failed', err)),
+-			getDevDeviceId(err => this._logService.warn('[CopilotApiService] getDevDeviceId failed', err)),
+-		]);
+-
+-		const extensionInfo: IExtensionInformation = {
+-			name: 'agent-host',
+-			sessionId: generateUuid(),
+-			machineId,
+-			deviceId,
+-			vscodeVersion: this._productService.version,
+-			version: this._productService.version,
+-			buildType: this._productService.quality === 'stable' ? 'prod' : 'dev',
+-		};
+-
+-		// Copilot endpoint discovery: GET `/copilot_internal/user` on the GitHub API
+-		// host. For GitHub Enterprise the host is derived from `githubEnterpriseUri`
+-		// (via the endpoint service); the response's `endpoints.api` then carries the
+-		// enterprise CAPI base that CAPIClient routes through. Defaults to
+-		// api.github.com when no enterprise URI is set. (GHE Cloud `*.ghe.com` is
+-		// handled; GHE Server on-prem `/copilot_internal` routing is unverified.)
+-		const userUrl = `${this._gitHubEndpointService.getApiBaseUri()}/copilot_internal/user`;
+-
+-		return { extensionInfo, userUrl };
+-	}
+-
+-	// #endregion
+-
+-	// #region Streaming
+-
+-	private async *_messagesStreaming(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): AsyncGenerator<any> {
+-		const response = await this._sendRequest(githubToken, request, true, options);
+-
+-		if (!response.body) {
+-			throw new Error('CAPI response has no body');
+-		}
+-
+-		yield* this._readSSE(response.body);
+-	}
+-
+-	// #endregion
+-
+-	// #region Non-Streaming
+-
+-	private async _messagesNonStreaming(
+-		githubToken: string,
+-		request: any,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<any> {
+-		const response = await this._sendRequest(githubToken, request, false, options);
+-		return response.json() as Promise<any>;
+-	}
+-
+-	// #endregion
+-
+-	// #region Shared Request
+-
+-	private async _sendRequest(
+-		githubToken: string,
+-		request: any,
+-		stream: boolean,
+-		options?: ICopilotApiServiceRequestOptions,
+-	): Promise<Response> {
+-		const capiClient = await this._getClientForToken(githubToken);
+-		const requestId = generateUuid();
+-
+-		this._logService.debug('[CopilotApiService] POST messages', `model=${request.model} stream=${stream} requestId=${requestId}`);
+-
+-		const { system, ...rest } = request;
+-		const body = JSON.stringify({
+-			...rest,
+-			stream,
+-			// CAPI requires system as a text-block array, not a raw string
+-			...(system !== undefined
+-				? { system: typeof system === 'string' ? [{ type: 'text', text: system }] : system }
+-				: {}),
+-		});
+-
+-		const response = await capiClient.makeRequest<Response>(
+-			{
+-				method: 'POST',
+-				headers: {
+-					...options?.headers,
+-					'Content-Type': 'application/json',
+-					'Authorization': `Bearer ${githubToken}`,
+-					'X-Request-Id': requestId,
+-					'X-GitHub-Api-Version': '2026-01-09',
+-					// Should these be parameterized?
+-					'OpenAI-Intent': 'messages-proxy',
+-					'X-Interaction-Type': 'messages-proxy',
+-					// `X-Initiator` (user|agent) is intentionally omitted: the
+-					// user-vs-agent turn origin known to `ClaudeAgentSession` is not
+-					// plumbed across the SDK subprocess to this proxy, so a hardcoded
+-					// value would mislabel most agent-loop traffic. CAPI accepts the
+-					// request without it (the `responses()` and `utilityChatCompletion()`
+-					// paths already omit it). Thread a real per-turn initiator here if
+-					// that signal ever becomes available at the proxy boundary.
+-				},
+-				suppressIntegrationId: options?.suppressIntegrationId,
+-				body,
+-				signal: options?.signal,
+-			},
+-			{ type: RequestType.ChatMessages },
+-		);
+-		if (!response.ok) {
+-			if (response.status === 401 || response.status === 403) {
+-				this._invalidateClientForToken(githubToken);
+-			}
+-			const text = await response.text().catch(() => '');
+-			throw buildCopilotApiHttpError(response.status, response.statusText, text);
+-		}
+-
+-		return response;
+-	}
+-
+-	// #endregion
+-
+-	// #region Per-Token Client
+-
+-	/**
+-	 * Resolve a {@link CAPIClient} that has had its domains updated for the
+-	 * supplied user. Concurrent callers for the same token share one
+-	 * `/copilot_internal/user` discovery via the cache map; callers with
+-	 * different tokens get their **own** `CAPIClient` instance, so the
+-	 * `updateDomains` mutation for token A can never affect a request being
+-	 * dispatched for token B.
+-	 */
+-	private _getClientForToken(githubToken: string): Promise<CAPIClient> {
+-		return this._getEntryForToken(githubToken).then(entry => entry.capiClient);
+-	}
+-
+-	async resolveRestrictedTelemetryContext(githubToken: string): Promise<IRestrictedTelemetryContext> {
+-		const client = await this._getEntryForToken(githubToken);
+-		const telemetryEndpoint = client.restrictedTelemetryEnabled
+-			? client.telemetryEndpoint
+-			: undefined;
+-		return {
+-			restrictedTelemetryEnabled: client.restrictedTelemetryEnabled,
+-			trackingId: client.trackingId,
+-			telemetryEndpoint,
+-			isInternal: client.isInternal,
+-			userName: client.login,
+-			isVscodeTeamMember: client.isVscodeTeamMember,
+-			copilotIgnoreEnabled: client.copilotIgnoreEnabled,
+-		};
+-	}
+-
+-	async resolveApiEndpoint(githubToken: string): Promise<string | undefined> {
+-		return (await this._getEntryForToken(githubToken)).apiEndpoint;
+-	}
+-
+-	async resolveUserLogin(githubToken: string): Promise<string | undefined> {
+-		return (await this._getEntryForToken(githubToken)).login;
+-	}
+-
+-	async resolveCopilotSku(githubToken: string): Promise<string | undefined> {
+-		return (await this._getEntryForToken(githubToken)).copilotSku;
+-	}
+-
+-	private _getEntryForToken(githubToken: string): Promise<ICachedClient> {
+-		const nowSeconds = Date.now() / 1000;
+-		const existing = this._clientsByToken.get(githubToken);
+-		if (existing) {
+-			return existing.then(entry => {
+-				if (entry.expiresAt - nowSeconds > CAPI_CONTEXT_REFRESH_BUFFER_SECONDS) {
+-					return entry;
+-				}
+-				// Stale — evict and recurse to build a fresh entry.
+-				this._clientsByToken.delete(githubToken);
+-				return this._getEntryForToken(githubToken);
+-			}).catch(err => {
+-				// A previous failed build leaked into the cache; evict and rebuild.
+-				this._clientsByToken.delete(githubToken);
+-				throw err;
+-			});
+-		}
+-
+-		// Omit the caller's signal here: a deduped build is shared across
+-		// concurrent callers, so aborting one must not cancel it for the
+-		// others. Each caller still forwards its signal to the API call.
+-		const pending = this._buildClientForToken(githubToken).catch(err => {
+-			this._clientsByToken.delete(githubToken);
+-			throw err;
+-		});
+-		this._clientsByToken.set(githubToken, pending);
+-		return pending;
+-	}
+-
+-	private _invalidateClientForToken(githubToken: string): void {
+-		this._clientsByToken.delete(githubToken);
+-	}
+-
+-	private async _buildClientForToken(githubToken: string): Promise<ICachedClient> {
+-		const { extensionInfo, userUrl } = await this._getCapiBase();
+-		const fetch = this._fetch;
+-		const capiClient = new CAPIClient(extensionInfo, COPILOT_LICENSE_AGREEMENT, {
+-			fetch: (url, options) => fetch(url, {
+-				method: options.method ?? 'GET',
+-				headers: options.headers,
+-				body: options.body,
+-				signal: options.signal as AbortSignal | undefined,
+-			}),
+-		});
+-
+-		this._logService.debug('[CopilotApiService] Discovering CAPI endpoints via /copilot_internal/user');
+-
+-		// Test/debug override: skip api.github.com discovery for an allowed local
+-		// or smoke-proxy URL. Every other non-loopback value is ignored because
+-		// subsequent CAPI calls carry the GitHub bearer token.
+-		const overrideApi = process.env[CAPI_URL_OVERRIDE_ENV];
+-		if (overrideApi) {
+-			if (isAllowedCapiUrlOverride(overrideApi)) {
+-				this._logService.info(`[CopilotApiService] Using CAPI URL override ${overrideApi}; skipping endpoint discovery`);
+-				capiClient.updateDomains({ endpoints: { api: overrideApi, proxy: overrideApi }, sku: '' }, undefined);
+-				return {
+-					capiClient,
+-					expiresAt: Date.now() / 1000 + CAPI_CONTEXT_TTL_SECONDS,
+-					utilityModelIdsByFamily: new Map(),
+-					apiEndpoint: overrideApi,
+-					restrictedTelemetryEnabled: false,
+-					isInternal: false,
+-					isVscodeTeamMember: false,
+-				};
+-			}
+-			this._logService.warn(`[CopilotApiService] Ignoring non-loopback CAPI URL override ${overrideApi}; falling back to normal endpoint discovery`);
+-		}
+-
+-		const response = await this._fetch(userUrl, {
+-			method: 'GET',
+-			headers: {
+-				'Authorization': `Bearer ${githubToken}`,
+-				'Accept': 'application/json',
+-				'X-GitHub-Api-Version': USER_API_VERSION,
+-			},
+-		});
+-
+-		if (!response.ok) {
+-			const text = await response.text().catch(() => '');
+-			throw buildCopilotApiHttpError(response.status, response.statusText, text, 'Copilot endpoint discovery failed');
+-		}
+-
+-		const envelope: ICopilotUserResponse = await response.json();
+-		const internalOrganization = getInternalOrg(envelope.organization_login_list);
+-
+-		capiClient.updateDomains(
+-			{ endpoints: envelope.endpoints ?? {}, sku: envelope.access_type_sku ?? '' },
+-			// Enterprise base URI (e.g. `https://acme.ghe.com`), or `undefined` for
+-			// github.com. The package uses this when routing enterprise CAPI requests.
+-			this._gitHubEndpointService.getEnterpriseUri(),
+-		);
+-
+-		this._logService.debug('[CopilotApiService] CAPI endpoint discovered, api=', envelope.endpoints?.api);
+-
+-		return {
+-			capiClient,
+-			expiresAt: Date.now() / 1000 + CAPI_CONTEXT_TTL_SECONDS,
+-			utilityModelIdsByFamily: new Map(),
+-			copilotSku: envelope.access_type_sku,
+-			login: envelope.login,
+-			telemetryEndpoint: envelope.endpoints?.telemetry,
+-			apiEndpoint: envelope.endpoints?.api,
+-			copilotIgnoreEnabled: envelope.copilotignore_enabled,
+-			restrictedTelemetryEnabled: envelope.restricted_telemetry === true,
+-			trackingId: envelope.analytics_tracking_id,
+-			isInternal: envelope.is_staff === true || internalOrganization !== undefined,
+-			isVscodeTeamMember: internalOrganization === 'vscode',
+-		};
+-	}
+-
+-	/**
+-	 * Resolve the concrete CAPI model id for the supplied family (e.g.
+-	 * `gpt-4o-mini`). Cached with the per-GitHub-token CAPI client so
+-	 * endpoint or authentication invalidation also clears the model id.
+-	 */
+-	private async _resolveUtilityModelId(githubToken: string, modelFamily: string): Promise<string> {
+-		const entry = await this._getEntryForToken(githubToken);
+-		const cached = entry.utilityModelIdsByFamily.get(modelFamily);
+-		if (cached) {
+-			return cached;
+-		}
+-
+-		const models = await this.models(githubToken);
+-		const match = models.find(m => m.capabilities?.family === modelFamily);
+-		if (!match) {
+-			throw new Error(`No CAPI model available for family '${modelFamily}'`);
+-		}
+-
+-		entry.utilityModelIdsByFamily.set(modelFamily, match.id);
+-		return match.id;
+-	}
+-
+-	// #endregion
+-
+-	// #region SSE Parsing
+-
+-	private async *_readSSE(body: ReadableStream<Uint8Array>): AsyncGenerator<any> {
+-		const reader = body.getReader();
+-		const decoder = new TextDecoder();
+-		let buffer = '';
+-
+-		try {
+-			while (true) {
+-				const { done, value } = await reader.read();
+-				if (done) {
+-					break;
+-				}
+-
+-				buffer += decoder.decode(value, { stream: true });
+-				const lines = buffer.split('\n');
+-				buffer = lines.pop() ?? '';
+-
+-				for (const line of lines) {
+-					const event = this._parseDataLine(line);
+-					if (event !== undefined) {
+-						yield event;
+-						if (event.type === 'message_stop') {
+-							return;
+-						}
+-					}
+-				}
+-			}
+-
+-			if (buffer.trim()) {
+-				const event = this._parseDataLine(buffer);
+-				if (event !== undefined) {
+-					yield event;
+-					if (event.type === 'message_stop') {
+-						return;
+-					}
+-				}
+-			}
+-		} finally {
+-			// Cancel the underlying stream so the HTTP connection is released
+-			// even when the consumer abandons the generator early (break, throw,
+-			// abort) or the stream ended on `message_stop` with bytes still in
+-			// flight. `releaseLock` alone leaves the body half-read.
+-			try {
+-				await reader.cancel();
+-			} catch {
+-				// ignore — cancellation is best-effort cleanup
+-			}
+-			reader.releaseLock();
+-		}
+-	}
+-
+-	/**
+-	 * @returns the parsed stream event, or `undefined` to skip the line.
+-	 * @throws on `error` events from the server.
+-	 */
+-	private _parseDataLine(line: string): any | undefined {
+-		if (!line.startsWith('data: ')) {
+-			return undefined;
+-		}
+-
+-		const data = line.slice('data: '.length).trim();
+-
+-		let parsed: unknown;
+-		try {
+-			parsed = JSON.parse(data);
+-		} catch {
+-			this._logService.warn('[CopilotApiService] Failed to parse SSE data:', data);
+-			return undefined;
+-		}
+-
+-		if (typeof parsed !== 'object' || parsed === null) {
+-			return undefined;
+-		}
+-
+-		const record = parsed as Record<string, unknown>;
+-		const type = record.type;
+-		if (typeof type !== 'string') {
+-			return undefined;
+-		}
+-
+-		if (type === 'error') {
+-			// Preserve the upstream envelope verbatim when it conforms to the
+-			// Anthropic shape (so any extra fields propagate to Phase 2's
+-			// passthrough proxy). Fall back to a clean api_error synthesis
+-			// when fields are missing or `error` is unstructured.
+-			const rawError = (parsed as { error?: unknown }).error;
+-			let envelope: any;
+-			if (
+-				rawError && typeof rawError === 'object'
+-				&& typeof (rawError as { type?: unknown }).type === 'string'
+-				&& typeof (rawError as { message?: unknown }).message === 'string'
+-			) {
+-				envelope = parsed as any;
+-			} else {
+-				let errorMessage: string;
+-				if (typeof rawError === 'string') {
+-					errorMessage = rawError;
+-				} else if (typeof (rawError as { message?: unknown } | undefined)?.message === 'string') {
+-					errorMessage = (rawError as { message: string }).message;
+-				} else {
+-					errorMessage = 'Unknown streaming error';
+-				}
+-				envelope = {
+-					type: 'error',
+-					error: { type: 'api_error', message: errorMessage },
+-					request_id: null,
+-				};
+-			}
+-			throw new CopilotApiError(COPILOT_API_ERROR_STATUS_STREAMING, envelope);
+-		}
+-
+-		if (!KNOWN_SSE_EVENT_TYPES.has(type)) {
+-			return undefined;
+-		}
+-
+-		return parsed as any;
+-	}
+-
+-	// #endregion
+-}
+-
+-const KNOWN_SSE_EVENT_TYPES = new Set([
+-	'message_start', 'message_delta', 'message_stop',
+-	'content_block_start', 'content_block_delta', 'content_block_stop',
+-]);
+diff --git a/src/vs/platform/agentHost/node/shared/proxyChatError.ts b/src/vs/platform/agentHost/node/shared/proxyChatError.ts
+index e51ddc00..d84442a1 100644
+--- a/src/vs/platform/agentHost/node/shared/proxyChatError.ts
++++ b/src/vs/platform/agentHost/node/shared/proxyChatError.ts
+@@ -5,4 +5,2 @@
+ 
+-import { CopilotApiError, COPILOT_API_ERROR_STATUS_STREAMING } from './copilotApiService.js';
+-
+ /**
+@@ -56,92 +54,2 @@ export interface IForwardedChatError {
+ 
+-/**
+- * Maps a {@link CopilotApiError} HTTP status (or the mid-stream streaming
+- * sentinel) to the extension's `ChatFetchResponseType` string value. Kept in
+- * sync with the Copilot Chat extension's error classification so the core
+- * formatter produces identical messages.
+- */
+-export function httpStatusToChatFetchType(status: number): string {
+-	switch (status) {
+-		case 402:
+-			return 'quotaExceeded';
+-		case 429:
+-			return 'rateLimited';
+-		case 499:
+-			return 'canceled';
+-		case 400:
+-			return 'badRequest';
+-		case 401:
+-		case 403:
+-			return 'agent_unauthorized';
+-		case 404:
+-			return 'notFound';
+-		default:
+-			return 'failed';
+-	}
+-}
+-
+-/**
+- * Builds a {@link IForwardedChatError} from a {@link CopilotApiError}. The
+- * error's Anthropic envelope carries the upstream message and type, which are
+- * surfaced as `reason`/`capiError` so the core formatter can render the right
+- * message (rate limit, quota, filtered, etc.).
+- */
+-export function buildForwardedChatError(err: CopilotApiError): IForwardedChatError {
+-	const status = err.status === COPILOT_API_ERROR_STATUS_STREAMING ? 502 : err.status;
+-	const requestId = typeof err.envelope.request_id === 'string' ? err.envelope.request_id : '';
+-	// CAPI rate-limit/quota errors carry their fine-grained code in the
+-	// response body (e.g. `{ "error": { "code": "quota_exceeded", ... } }`).
+-	// The proxy synthesizes a non-conforming body into the Anthropic envelope
+-	// as `error.type: 'api_error'` with the raw body as the message, so prefer
+-	// a CAPI code/message parsed out of the message when present.
+-	const capiError = extractCapiError(err.envelope.error.message) ?? { code: err.envelope.error.type, message: err.envelope.error.message };
+-	return {
+-		fetchError: {
+-			type: httpStatusToChatFetchType(status),
+-			reason: capiError.message ?? err.envelope.error.message,
+-			requestId,
+-			capiError,
+-		},
+-	};
+-}
+-
+-/**
+- * Attempts to parse a CAPI-style error body (`{ "error": { "code", "message" } }`)
+- * out of an envelope message string. Returns `undefined` when the message is
+- * not such a JSON payload.
+- */
+-function extractCapiError(message: string): { code?: string; message?: string } | undefined {
+-	let parsed: unknown;
+-	try {
+-		parsed = JSON.parse(message);
+-	} catch {
+-		return undefined;
+-	}
+-	if (!parsed || typeof parsed !== 'object') {
+-		return undefined;
+-	}
+-	const error = (parsed as { error?: unknown }).error;
+-	if (!error || typeof error !== 'object') {
+-		return undefined;
+-	}
+-	const code = (error as { code?: unknown }).code;
+-	const msg = (error as { message?: unknown }).message;
+-	if (typeof code !== 'string' && typeof msg !== 'string') {
+-		return undefined;
+-	}
+-	return {
+-		code: typeof code === 'string' ? code : undefined,
+-		message: typeof msg === 'string' ? msg : undefined,
+-	};
+-}
+-
+-/**
+- * Encodes a {@link IForwardedChatError} as a `VSCODE_PROXY_ERROR:<base64>`
+- * marker string. Base64 survives the SDK's JSON re-encoding without
+- * double-escaping issues.
+- */
+-export function encodeForwardedChatError(forwarded: IForwardedChatError): string {
+-	return `${PROXY_ERROR_PREFIX}${Buffer.from(JSON.stringify(forwarded)).toString('base64')}`;
+-}
+-
+ /**
+@@ -203,30 +111 @@ export function toChatErrorMeta(forwarded: IForwardedChatError): Record<string,
+ 
+-/**
+- * Convenience: decode a {@link IForwardedChatError} from arbitrary error text
+- * and wrap it into the protocol `ErrorInfo._meta` record. Returns `undefined`
+- * when the text carries no {@link PROXY_ERROR_PREFIX} marker, so callers can
+- * spread it onto an `ErrorInfo` without changing behavior for plain errors.
+- */
+-export function tryBuildChatErrorMeta(errorText: string | undefined): Record<string, unknown> | undefined {
+-	const forwarded = tryParseForwardedChatError(errorText);
+-	return forwarded ? toChatErrorMeta(forwarded) : undefined;
+-}
+-
+-/**
+- * Decodes a forwarded {@link PROXY_ERROR_PREFIX} marker out of an error message
+- * and returns the cleaned human-readable message together with the protocol
+- * `ErrorInfo._meta` record. When no marker is present the message is returned
+- * unchanged and `_meta` is omitted, so the result can be spread directly onto
+- * an `ErrorInfo` without changing behavior for plain errors:
+- *
+- * ```ts
+- * error: { errorType: 'CodexError', ...extractForwardedErrorInfo(message) }
+- * ```
+- */
+-export function extractForwardedErrorInfo(message: string): { message: string; _meta?: Record<string, unknown> } {
+-	const forwarded = tryParseForwardedChatError(message);
+-	if (!forwarded) {
+-		return { message };
+-	}
+-	return { message: stripProxyErrorMarker(message), _meta: toChatErrorMeta(forwarded) };
+-}
+diff --git a/src/vs/platform/agentHost/node/shared/worktreeIsolation.ts b/src/vs/platform/agentHost/node/shared/worktreeIsolation.ts
+index e7fd4cfa..b015ebc0 100644
+--- a/src/vs/platform/agentHost/node/shared/worktreeIsolation.ts
++++ b/src/vs/platform/agentHost/node/shared/worktreeIsolation.ts
+@@ -27,3 +27,2 @@ import { AH_META_IS_ARCHIVED_DB_KEY, AH_META_IS_DONE_DB_KEY, ResponsePart, Respo
+ import { AGENT_BRANCH_PREFIX, AgentBranchNameGenerator, IAgentBranchNameGenerator } from './agentBranchNameGenerator.js';
+-import { ICopilotApiService } from './copilotApiService.js';
+ 
+@@ -382,3 +381,3 @@ export class WorktreeIsolation extends Disposable implements IAgentHostWorktreeI
+ 
+-	/** Branch-name generator for worktree sessions; created from {@link ICopilotApiService} unless a test supplies an override. */
++	/** Branch-name generator for worktree sessions; tests may supply an override. */
+ 	private readonly _branchNameGenerator: IAgentBranchNameGenerator;
+@@ -388,3 +387,2 @@ export class WorktreeIsolation extends Disposable implements IAgentHostWorktreeI
+ 		@IAgentHostGitService private readonly _gitService: IAgentHostGitService,
+-		@ICopilotApiService copilotApiService: ICopilotApiService,
+ 		@ISessionDataService private readonly _sessionDataService: ISessionDataService,
+@@ -393,3 +391,3 @@ export class WorktreeIsolation extends Disposable implements IAgentHostWorktreeI
+ 		super();
+-		this._branchNameGenerator = branchNameGenerator ?? new AgentBranchNameGenerator(copilotApiService, this._logService);
++		this._branchNameGenerator = branchNameGenerator ?? new AgentBranchNameGenerator();
+ 	}
+diff --git a/src/vs/platform/agentHost/test/node/agentHostTelemetryService.test.ts b/src/vs/platform/agentHost/test/node/agentHostTelemetryService.test.ts
+index 38870271..146c2cca 100644
+--- a/src/vs/platform/agentHost/test/node/agentHostTelemetryService.test.ts
++++ b/src/vs/platform/agentHost/test/node/agentHostTelemetryService.test.ts
+@@ -6,3 +6,2 @@
+ import assert from 'assert';
+-import { VSBuffer } from '../../../../base/common/buffer.js';
+ import { DisposableStore } from '../../../../base/common/lifecycle.js';
+@@ -20,3 +19,2 @@ import { AgentHostRestrictedTelemetrySender, IAgentHostRestrictedTelemetry, IAge
+ import { AgentHostTelemetryService, createAgentHostTelemetryService, type IAgentHostTelemetryService, updateAgentHostTelemetryLevelFromConfig } from '../../node/agentHostTelemetryService.js';
+-import { AgentHostInternalTelemetrySender } from '../../node/agentHostMicrosoftTelemetry.js';
+ 
+@@ -177,43 +175,5 @@ suite('AgentHostTelemetryService', () => {
+ 
+-	test('uses the built-in Copilot manifest version for internal telemetry', async () => {
+-		const localDisposables = disposables.add(new DisposableStore());
+-		const logService = new NullLogService();
+-		const fileService = localDisposables.add(new FileService(logService));
+-		const fileSystemProvider = localDisposables.add(new InMemoryFileSystemProvider());
+-		localDisposables.add(fileService.registerProvider(Schemas.file, fileSystemProvider));
+-		await fileService.createFolder(URI.file('/extensions/copilot'));
+-		await fileService.writeFile(URI.file('/extensions/copilot/package.json'), VSBuffer.fromString(JSON.stringify({ version: '0.58.0' })));
+-
+-		const service = await createAgentHostTelemetryService({
+-			environmentService: {
+-				isBuilt: true,
+-				disableTelemetry: false,
+-				appRoot: '/app',
+-				extensionsPath: '/extensions',
+-				builtinExtensionsPath: '/extensions',
+-				userHome: URI.file('/home'),
+-				tmpDir: URI.file('/tmp'),
+-				userDataPath: '/user-data',
+-				appSettingsHome: URI.file('/User'),
+-			} as INativeEnvironmentService,
+-			productService: {
+-				_serviceBrand: undefined,
+-				version: '1.130.0',
+-				enableTelemetry: true,
+-				aiConfig: { ariaKey: 'test-key' },
+-			} as IProductService,
+-			fileService,
+-			loggerService: localDisposables.add(new NullLoggerService()),
+-			logService,
+-			disposables: localDisposables,
+-		});
+-		const restricted = (service as unknown as { _restricted: AgentHostRestrictedTelemetrySender })._restricted;
+-		const internalSender = (restricted as unknown as { _internalSink: AgentHostInternalTelemetrySender })._internalSink;
+-
+-		assert.strictEqual((internalSender as unknown as { _options: { extensionVersion: string | undefined } })._options.extensionVersion, '0.58.0');
+-	});
+-
+ 	test('uses the launch telemetry level before a client connects and only becomes more restrictive', () => {
+ 		const delegate = new TestTelemetryService();
+-		const service = disposables.add(new AgentHostTelemetryService(delegate, undefined, undefined, undefined, TelemetryLevel.USAGE));
++		const service = disposables.add(new AgentHostTelemetryService(delegate, undefined, TelemetryLevel.USAGE));
+ 
+@@ -263,12 +223,2 @@ suite('AgentHostTelemetryService', () => {
+ 
+-	test('adds the Copilot SDK and runtime versions as common properties', () => {
+-		const delegate = new TestTelemetryService();
+-		disposables.add(new AgentHostTelemetryService(delegate, undefined, '1.0.9-preview.3', '1.0.78'));
+-
+-		assert.deepStrictEqual(delegate.commonProperties, {
+-			'common.copilotSdkVersion': '1.0.9-preview.3',
+-			'common.copilotRuntimeVersion': '1.0.78',
+-		});
+-	});
+-
+ 	test('updates telemetry level from root config string enum', () => {
+diff --git a/src/vs/platform/agentHost/test/node/e2e/suites/agentHostE2ESuites.ts b/src/vs/platform/agentHost/test/node/e2e/suites/agentHostE2ESuites.ts
+index 42ad596c..d049498a 100644
+--- a/src/vs/platform/agentHost/test/node/e2e/suites/agentHostE2ESuites.ts
++++ b/src/vs/platform/agentHost/test/node/e2e/suites/agentHostE2ESuites.ts
+@@ -25,3 +25,2 @@ import { defineTurnLifecycleTests } from './turnLifecycleSuite.js';
+ import { defineWorkspaceTests } from './workspaceSuite.js';
+-import { defineCopilotCoverageTests } from './copilotCoverageSuite.js';
+ import type { AgentHostE2ETier, IAgentHostE2ETestContext } from './e2eTestContext.js';
+@@ -157,3 +156,2 @@ function defineSuite(config: IAgentHostE2EProviderConfig, options: IDefineOption
+ 			defineCoreTests(context);
+-			defineCopilotCoverageTests(context);
+ 			defineFileOperationsTests(context);
+diff --git a/src/vs/platform/agentHost/test/node/shared/worktreeIsolation.test.ts b/src/vs/platform/agentHost/test/node/shared/worktreeIsolation.test.ts
+index 3ec01b3e..dfb74704 100644
+--- a/src/vs/platform/agentHost/test/node/shared/worktreeIsolation.test.ts
++++ b/src/vs/platform/agentHost/test/node/shared/worktreeIsolation.test.ts
+@@ -19,3 +19,2 @@ import { AH_META_IS_ARCHIVED_DB_KEY, AH_META_IS_DONE_DB_KEY, MessageKind, Respon
+ import { AgentBranchNameGenerator, IAgentBranchNameGenerator } from '../../../node/shared/agentBranchNameGenerator.js';
+-import { ICopilotApiService } from '../../../node/shared/copilotApiService.js';
+ import { buildWorktreeFailureNotification, normalizeWorktreeFailureDiagnostic, SessionWorkingDirectoryMissingError, WorktreeIsolation, getWorktreeName, getWorktreesRoot } from '../../../node/shared/worktreeIsolation.js';
+@@ -23,19 +22,2 @@ import { TestSessionDatabase, createNoopGitService, createSessionDataService } f
+ 
+-/**
+- * Minimal {@link ICopilotApiService} stub for constructing {@link WorktreeIsolation}
+- * in tests. Tests inject their own branch-name generator, so its methods are never called.
+- */
+-function createNullCopilotApiService(): ICopilotApiService {
+-	return {
+-		_serviceBrand: undefined,
+-		messages: (..._args: unknown[]): never => { throw new Error('not implemented'); },
+-		countTokens: async () => { throw new Error('not implemented'); },
+-		models: async () => [],
+-		responses: async () => { throw new Error('not implemented'); },
+-		utilityChatCompletion: async () => { throw new Error('not implemented'); },
+-		resolveRestrictedTelemetryContext: async () => { throw new Error('not implemented'); },
+-		resolveApiEndpoint: async () => undefined,
+-	};
+-}
+-
+ suite('WorktreeIsolation', () => {
+@@ -101,3 +83,2 @@ suite('WorktreeIsolation', () => {
+ 			options?.gitService ?? createGitService(),
+-			createNullCopilotApiService(),
+ 			createSessionDataService(db),
+@@ -401,3 +382,3 @@ suite('WorktreeIsolation', () => {
+ 		const isolation = createIsolation(disposables, {
+-			branchNameGenerator: new AgentBranchNameGenerator(createNullCopilotApiService(), new NullLogService()),
++			branchNameGenerator: new AgentBranchNameGenerator(),
+ 		});
+@@ -433,3 +414,3 @@ suite('WorktreeIsolation', () => {
+ 		const isolation = createIsolation(disposables, {
+-			branchNameGenerator: new AgentBranchNameGenerator(createNullCopilotApiService(), new NullLogService()),
++			branchNameGenerator: new AgentBranchNameGenerator(),
+ 			gitService,
+@@ -478,3 +459,3 @@ suite('WorktreeIsolation', () => {
+ 		const isolation = createIsolation(disposables, {
+-			branchNameGenerator: new AgentBranchNameGenerator(createNullCopilotApiService(), new NullLogService()),
++			branchNameGenerator: new AgentBranchNameGenerator(),
+ 			gitService,
+diff --git a/src/vs/workbench/workbench.desktop.main.ts b/src/vs/workbench/workbench.desktop.main.ts
+index a4406647..66169c27 100644
+--- a/src/vs/workbench/workbench.desktop.main.ts
++++ b/src/vs/workbench/workbench.desktop.main.ts
+@@ -180,5 +180,2 @@ import './contrib/chat/electron-browser/chat.contribution.js';
+ 
+-// Copilot Voice
+-import './contrib/agentsVoice/electron-browser/agentsVoiceNativeCommands.js';
+-
+ // Encryption

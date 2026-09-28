@@ -56,7 +56,7 @@ if [[ "${FILE}" != "../patches/helper/settings.patch" ]]; then
     echo $BASENAME
     echo $DIRNAME
 
-    if [[ "${BASENAME}" =~ ^([0-9])([1-9])(-.*)\.patch$ ]]; then
+    if [[ "${BASENAME}" =~ ^([0-9]{1,2})([0-9])(-.*)\.patch$ ]]; then
       GROUP_ID="${BASH_REMATCH[1]}"
       INDEX="${BASH_REMATCH[2]}"
       ENDNAME="${BASH_REMATCH[3]}"

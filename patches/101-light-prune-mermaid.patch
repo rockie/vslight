@@ -1,0 +1,44 @@
+diff --git a/build/filters.ts b/build/filters.ts
+index 106565b3..cd3cef05 100644
+--- a/build/filters.ts
++++ b/build/filters.ts
+@@ -163,3 +163,2 @@ export const indentationFilter = Object.freeze<string[]>([
+ 	'!extensions/mermaid-markdown-features/markdown-preview-out/*.js',
+-	'!extensions/mermaid-markdown-features/notebook-out/*.js',
+ 	'!extensions/markdown-language-features/media/*.js',
+diff --git a/extensions/mermaid-markdown-features/esbuild.webview.mts b/extensions/mermaid-markdown-features/esbuild.webview.mts
+index 61e543cf..964a2395 100644
+--- a/extensions/mermaid-markdown-features/esbuild.webview.mts
++++ b/extensions/mermaid-markdown-features/esbuild.webview.mts
+@@ -69,13 +69,2 @@ await Promise.all([
+ 	}, process.argv),
+-	// Notebook
+-	run({
+-		entryPoints: {
+-			'index': path.join(previewSrcDir, 'notebook', 'index.ts'),
+-		},
+-		srcDir: previewSrcDir,
+-		outdir: path.join(rootDir, 'notebook-out'),
+-		additionalOptions: {
+-			...mermaidMarkdownBuildOptions,
+-		},
+-	}, process.argv),
+ ]);
+diff --git a/extensions/mermaid-markdown-features/package.json b/extensions/mermaid-markdown-features/package.json
+index 7ab97507..74500a2a 100644
+--- a/extensions/mermaid-markdown-features/package.json
++++ b/extensions/mermaid-markdown-features/package.json
+@@ -187,13 +187,2 @@
+     ],
+-    "notebookRenderer": [
+-      {
+-        "id": "vscode.markdown-it.mermaid-extension",
+-        "displayName": "Markdown-It Mermaid Renderer",
+-        "requiresMessaging": "optional",
+-        "entrypoint": {
+-          "extends": "vscode.markdown-it-renderer",
+-          "path": "./notebook-out/index.js"
+-        }
+-      }
+-    ],
+     "markdown.markdownItPlugins": true,

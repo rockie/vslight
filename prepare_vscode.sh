@@ -110,7 +110,9 @@ jsonTmp=$( jq -s '.[0] * .[1]' product.json ../product.json )
 echo "${jsonTmp}" > product.json && unset jsonTmp
 
 # vslight: key-level deletion (merge has no delete semantics) — server/tunnel/sessions
-# are not part of this product; readers of these keys are nil-safe (checked at 1.135)
+# are not part of this product; readers of these keys are nil-safe (checked at 1.135).
+# defaultChatAgent/trustedExtensionAuthAccess/builtInExtensionsEnabledWithAutoUpdates
+# are upstream-supplied Copilot integration; this product ships no Copilot surface.
 jsonTmp=$( jq 'del(
   .serverApplicationName,
   .serverDataFolderName,
@@ -118,7 +120,10 @@ jsonTmp=$( jq 'del(
   .tunnelApplicationConfig,
   .win32TunnelServiceMutex,
   .win32TunnelMutex,
-  .sessionsWindowAllowedExtensions
+  .sessionsWindowAllowedExtensions,
+  .defaultChatAgent,
+  .trustedExtensionAuthAccess,
+  .builtInExtensionsEnabledWithAutoUpdates
 )' product.json )
 echo "${jsonTmp}" > product.json && unset jsonTmp
 
@@ -149,7 +154,9 @@ for file in ../patches/*.json; do
   fi
 done
 
-for file in ../patches/*.patch; do
+# 3-digit patch numbers break the glob's lexicographic order ("100-" sorts before
+# "91-"); application order must stay numeric-prefix order for patch dependencies.
+for file in $( printf '%s\n' ../patches/*.patch | sort -t/ -k3 -n ); do
   if [[ -f "${file}" ]]; then
     apply_patch "${file}"
   fi
@@ -232,6 +239,41 @@ for i in {1..5}; do # try 5 times
 done
 
 mv .npmrc.bak .npmrc
+# }}}
+
+# {{{ vslight post-npm-ci platform prune — drop non-target platform binaries from
+# installed packages (ripgrep-universal ~51MB, mxc-sdk ~22MB on darwin-arm64).
+# Unlike apply_actions this must not hard-fail: package contents drift with upstream,
+# so a missing package or missing target dir is a warning, not exit 4.
+prune_to_platform_dir() {
+  local base_dir="${1}" keep="${2}"
+
+  if [[ ! -d "${base_dir}" ]]; then
+    echo "platform-prune: skip missing ${base_dir}"
+    return 0
+  fi
+
+  if [[ ! -d "${base_dir}/${keep}" ]]; then
+    echo "platform-prune: WARN target '${keep}' absent in ${base_dir}, left untouched" >&2
+    return 0
+  fi
+
+  for sub in "${base_dir}"/*; do
+    if [[ -d "${sub}" && "${sub##*/}" != "${keep}" ]]; then
+      rm -rf "${sub}"
+      echo "platform-prune: removed ${sub}"
+    fi
+  done
+}
+
+case "${OS_NAME}" in
+  osx) NPM_BIN_PLATFORM="darwin" ;;
+  windows) NPM_BIN_PLATFORM="win32" ;;
+  *) NPM_BIN_PLATFORM="linux" ;;
+esac
+
+prune_to_platform_dir "node_modules/@vscode/ripgrep-universal/bin" "${NPM_BIN_PLATFORM}-${VSCODE_ARCH}"
+prune_to_platform_dir "node_modules/@microsoft/mxc-sdk/bin" "${VSCODE_ARCH}"
 # }}}
 
 # package.json

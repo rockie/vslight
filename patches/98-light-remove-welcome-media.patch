@@ -1,0 +1,9 @@
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+index aac830bd..f7690c83 100644
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -108,4 +108,2 @@ const vscodeResourceIncludes = [
+ 	// Welcome
+-	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/**/*.{svg,png}',
+-	'out-build/vs/workbench/contrib/welcomeOnboarding/browser/media/*.svg',
+ 

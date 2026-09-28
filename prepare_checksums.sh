@@ -16,6 +16,10 @@ cd assets
 
 for FILE in *; do
   if [[ -f "${FILE}" ]]; then
+    case "${FILE}" in
+      *.sha1 | *.sha256) continue ;;
+    esac
+
     sum_file "${FILE}"
   fi
 done

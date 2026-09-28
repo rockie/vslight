@@ -18,12 +18,16 @@ export SHOULD_BUILD_REH_WEB="no"
 export SKIP_ASSETS="yes"
 export SKIP_BUILD="no"
 export SKIP_SOURCE="no"
+export VSLIGHT_DEBUG_BUILD="no"
 export VSCODE_LATEST="no"
 export VSCODE_QUALITY="stable"
 export VSCODE_SKIP_NODE_VERSION_CHECK="yes"
 
-while getopts ":ilops" opt; do
+while getopts ":dilops" opt; do
   case "$opt" in
+    d)
+      export VSLIGHT_DEBUG_BUILD="yes"
+      ;;
     i)
       export ASSETS_REPOSITORY="rockie/vslight-insiders"
       export BINARY_NAME="vslight-insiders"
@@ -83,6 +87,7 @@ echo "SKIP_ASSETS=\"${SKIP_ASSETS}\""
 echo "VSCODE_ARCH=\"${VSCODE_ARCH}\""
 echo "VSCODE_LATEST=\"${VSCODE_LATEST}\""
 echo "VSCODE_QUALITY=\"${VSCODE_QUALITY}\""
+echo "VSLIGHT_DEBUG_BUILD=\"${VSLIGHT_DEBUG_BUILD}\""
 
 if [[ "${SKIP_SOURCE}" == "no" ]]; then
   rm -rf vscode* VSCode*
@@ -136,6 +141,11 @@ if [[ "${SKIP_BUILD}" == "no" ]]; then
     fi
 
     cp ./build/osx/include.gypi ~/.gyp/include.gypi
+  fi
+
+  if [[ "${VSLIGHT_DEBUG_BUILD}" == "no" ]]; then
+    # release builds strip sourcemaps the same way CI builds do (isCI in vscode/build/gulpfile.vscode.ts)
+    export CI=true
   fi
 
   . build.sh
