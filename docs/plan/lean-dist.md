@@ -34,21 +34,21 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-29 00:20 +1000
+- 最近更新：2026-09-29 00:39 +1000
 - 当前进度：1/6 个里程碑完成
-- 当前状态：M1–M3 实现全部完成（98/99/100/101/102 号 patch + prune.json 53 路径 + D3 剪枝 + smoke Phase 5/6 断言），逐层 typecheck 全绿；待 M1–M3 合并构建窗口验证
+- 当前状态：M1–M3 实现与构建验证完成（1.135.06528：zip 178.5MB/-32.2%、app 504MB/-41.3%、.map=0、L1+L2 全绿、open-vsx/zh-CN 安装通过）；唯一共享缺口是 smoke L3 按键注入层——裸 keystroke 只发往前台应用，曾误入用户前台（Page Setup 事件），用户要求修好硬保险并在新对话继续；M1 另余 `-d` repack 验证。构建工具链注意：本机构建须用 node 24.18.0（nvm，macos-alias ABI）且 dev/build.sh 已 unset CPPFLAGS（util-linux uuid.h 遮蔽根因）
 - 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
-- 下一步：M1–M3 合并构建窗口（`dev/build.sh -p`）→ smoke 全量 + 体积账核销 → M4（103 号 patch，需先修 `dev/smoke.sh` L3 剪贴板/下载断言）
-- 当前阻塞：无
-- 代码基线：`1f3b2f1`（dirty：M1–M3 改动未提交）
+- 下一步：smoke.sh L3 焦点硬保险重写（方案与已含部件见 [M1 记录](lean-dist.records/M1.md)「遗留」）→ smoke 全绿 → M1/M2/M3 记完成 → M4 · 103 号 Electron 43.7.5 patch（素材已齐：SHASUMS256 74 行存 /tmp/electron-43.7.5-shasums.txt、commit `5338ed09bfdcf1bbd2e6bab722c2620efe8c4790`、npm integrity 已取）→ M6
+- 当前阻塞：smoke L3 须在用户机器空闲窗口运行（合成按键只发往前台应用）
+- 代码基线：`8ce5143`（M1–M3 实现 + 记录已提交）；smoke.sh L3 加固、prepare_vscode.sh d.ts.map、104 号 patch、dev/build.sh CPPFLAGS 待提交
 
 ### 完成记录
 
 | Milestone | 状态 | 更新时间 | 简要记录 | 实现与验收记录 |
 | --- | --- | --- | --- | --- |
-| M1 | 进行中 | 2026-09-29 00:20 +1000 | 基线已落账；`-d` 旗标、3 位号段、checksum 链修复、98 号 patch 已交付并静态验证；构建窗口未跑 | [M1 记录](lean-dist.records/M1.md) |
-| M2 | 进行中 | 2026-09-29 00:20 +1000 | 主仓库侧 + 99 号 patch 全部切除完成（3098 行 24 文件），prune.json +19，smoke Phase 5 断言就绪；逐层 typecheck 绿；构建窗口未跑 | [M2 记录](lean-dist.records/M2.md) |
-| M3 | 进行中 | 2026-09-29 00:20 +1000 | D3 剪枝 + 100/101/102 号 patch 生成完毕，发现并修复 prepare_vscode.sh 3 位号应用序 bug；逐层 typecheck 绿；构建窗口未跑 | [M3 记录](lean-dist.records/M3.md) |
+| M1 | 进行中 | 2026-09-29 00:39 +1000 | 构建验证基本完成：.map=0、zip 263.6→178.5MB、welcome 媒体空、checksum 链构建期复核 0 新增、CPPFLAGS 根因修复；余 smoke L3（焦点硬保险方案已定）与 `-d` repack 两项 | [M1 记录](lean-dist.records/M1.md) |
+| M2 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs）；104 nil-guards 修复 del() 引发的安装崩溃，open-vsx/zh-CN 安装通过；余 smoke L3 命令面板空态复核 | [M2 记录](lean-dist.records/M2.md) |
+| M3 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；发现并修复 prepare_vscode.sh 应用序 bug；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
 
 ## 0. 需求、范围与决策
