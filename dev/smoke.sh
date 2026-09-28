@@ -7,8 +7,12 @@
 #   L2 CLI 层：bin/vslight --version / --list-extensions / --install-extension（open-vsx）
 #   L3 UI 层：macOS AppleScript/JXA —— open -na 启动、System Events 快捷键注入
 #             （Cmd+Shift+P 命令面板、Cmd+` 终端、Cmd+S 保存）、AX 树读取断言
+#             安全硬保险：①每组按键前 frontmost 闸门，VSLight 不在最前立即 exit 2，
+#             一行键不再发；②全部按键 tell process 定向，不裸发 System Events；
+#             ③L3 入口备份剪贴板，trap EXIT 无条件恢复；④启动 3s 拉不到前台
+#             则跳过 L3 并提示需机器空闲窗口（SKIP 不算失败）
 #
-# 【退出码】0=全部通过；1=静态/CLI 硬断言失败；2=UI 层断言失败；3=用法/环境错误
+# 【退出码】0=全部通过；1=静态/CLI 硬断言失败；2=UI 层断言失败（含焦点闸门中止）；3=用法/环境错误
 #           （含未授予「辅助功能」权限、app 不存在等）
 #
 # 【超时】启动 90s；窗口就绪 60s；单步按键注入 15s；扩展安装 120s
@@ -28,7 +32,8 @@
 #     --skip-ui 只跑 L1+L2（无 GUI 环境/CI 用）
 #     --keep    保留临时 profile/workspace（排查用）
 #
-# 【正向清单】打开窗口 → 编辑文件并保存（磁盘内容断言）→ 命令面板可用 →
+# 【正向清单】窗口启动 → workbench 渲染完成（AX 元素计数机器断言，防空白窗假绿）→
+#   编辑文件并保存（磁盘内容断言）→ 命令面板可用 →
 #   终端可开（AX 检出 Terminal 面板）→ Git（vscode.git 内置 + Source Control 入口）→
 #   open-vsx 装/卸扩展
 # 【负向清单】无 tunnel 二进制；无 reh 产物；无 sessions.desktop.main/agentHostMain 产物；
@@ -215,6 +220,8 @@ EDIR="${SMOKE_ROOT}/extensions"
 WS="${SMOKE_ROOT}/ws"
 mkdir -p "${WS}"
 cleanup() {
+  # L3 的剪贴板机器断言会覆写用户剪贴板；已备份则无条件恢复
+  if (( ${CLIP_SAVED:-0} == 1 )); then printf '%s' "${CLIP_BACKUP}" | pbcopy; fi
   if (( KEEP == 0 )); then
     pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null
     rm -rf "${SMOKE_ROOT}"
@@ -278,12 +285,23 @@ else
   # 残留实例会抢焦点/干扰进程名解析（open -na 每发必开新实例）
   pkill -f "${APP_PATH}" 2>/dev/null; sleep 2
 
-  launch_app() { # launch_app [extra-args...]
+  # 硬保险③：L3 的剪贴板断言会覆写用户剪贴板，入口先备份，trap EXIT 恢复
+  CLIP_BACKUP="$( pbpaste 2>/dev/null )"; CLIP_SAVED=1
+
+  frontmost_ok() { [[ "$( osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to return frontmost" 2>/dev/null )" == "true" ]]; }
+  require_frontmost() { # 硬保险①：任何按键发送前的最后闸门；合成按键只进前台应用，失焦即整体中止
+    frontmost_ok && return 0
+    echo "ERROR: ${APP_NAME} 不在最前，L3 立即中止（后续按键未发送）" >&2
+    exit 2
+  }
+
+  launch_app() { # launch_app [extra-args...] → rc 0=窗口就绪且前台 1=90s无窗口 2=3s拉不到前台
     pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; sleep 1
     open -na "${APP_PATH}" --args \
       --user-data-dir "${SMOKE_ROOT}/user-data" \
       --extensions-dir "${SMOKE_ROOT}/extensions" \
       --disable-workspace-trust --skip-welcome --skip-release-notes \
+      --force-renderer-accessibility \
       "$@" "${WS}"
     run_to 90 osascript -e "
       tell application \"System Events\"
@@ -295,9 +313,10 @@ else
         end repeat
         return \"timeout\"
       end tell" | grep -q ok || return 1
-    # open -na 不保证前台；按键注入前必须显式拉到最前
+    # open -na 不保证前台；按键注入前必须显式拉到最前（硬保险④：拉不到则跳过 L3）
     osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to set frontmost to true" 2>/dev/null
-    sleep 1
+    for i in 1 2 3; do frontmost_ok && return 0; sleep 1; done
+    return 2
   }
   quit_app() { osascript -e "tell application \"${APP_NAME}\" to quit" 2>/dev/null; sleep 2; pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; }
 
@@ -309,106 +328,135 @@ else
       end tell" 2>/dev/null | grep -qv '^0$'
   }
 
-  # 全树 AX 查询（窗口后代全量，慢但确定；用于正向检出与「无匹配命令」证明）
+  # 全树 AX 查询（窗口后代全量，慢但确定；用于正向检出与「无匹配命令」证明。
+  # 依赖启动参数 --force-renderer-accessibility 物化渲染进程 AX 树，否则窗口只剩框架元素）
   ax_find_deep() { # ax_find_deep <needle>
     run_to 40 osascript -e "
       tell application \"System Events\" to tell process \"${APP_NAME}\"
-        set hits to every UI element of entire contents of window 1 whose name contains \"$1\" or description contains \"$1\"
+        set hits to (entire contents of window 1 whose name contains \"$1\" or description contains \"$1\")
         return (count of hits) as text
       end tell" 2>/dev/null | grep -qv '^0$'
   }
 
-  keystroke_cmd() { # keystroke_cmd <key> [shift]
+  # 窗口全量 AX 后代计数：渲染完成的 workbench 有数百个元素，空白窗（渲染崩溃）只剩窗口框架
+  ax_element_count() {
+    run_to 40 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to return (count of (entire contents of window 1)) as text" 2>/dev/null | tr -d ' '
+  }
+
+  keystroke_cmd() { # keystroke_cmd <key> [shift]（硬保险②：进程定向，不裸发 System Events）
+    require_frontmost
     if [[ "${2:-}" == "shift" ]]; then
-      osascript -e "tell application \"System Events\" to keystroke \"$1\" using {command down, shift down}"
+      osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using {command down, shift down}"
     else
-      osascript -e "tell application \"System Events\" to keystroke \"$1\" using command down"
+      osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\" using command down"
     fi
   }
-
-  if launch_app; then pass "窗口启动"; else fail "90s 内无窗口" ui; fi
-
-  # 正向：编辑并保存（CLI 把 a.txt 开进运行中实例 → 键入 → Cmd+S → 磁盘内容断言）
-  run_to 30 "${BIN}" --user-data-dir "${UDIR}" --extensions-dir "${EDIR}" "${WS}/a.txt" >/dev/null 2>&1
-  sleep 3
-  run_to 15 osascript -e "tell application \"System Events\" to keystroke \"vslight-smoke-edit \""
-  keystroke_cmd s
-  sleep 2
-  # 编辑落到哪个文件取决于焦点，断言任一文件被改动即证明编辑链路通
-  if grep -rq 'vslight-smoke-edit' "${WS}" 2>/dev/null; then pass "编辑→保存落盘"; else fail "编辑未落盘" ui; fi
-
-  # 剪贴板机器断言（M4）：pbcopy 写入 → Cmd+V 粘贴进编辑器 → Cmd+S 后磁盘读回一致；
-  # pbpaste 复核 app 未改写剪贴板
-  if (( PHASE >= 8 )); then
-    CLIP_STR="vslight-clip-$( date +%s )"
-    printf '%s' "${CLIP_STR}" | pbcopy
-    keystroke_cmd v
-    sleep 1
-    PBP="$( pbpaste )"
-    [[ "${PBP}" == "${CLIP_STR}" ]] && pass "剪贴板跨进程一致 (pbcopy/pbpaste)" || fail "剪贴板跨进程不一致 (${PBP} != ${CLIP_STR})" ui
-    keystroke_cmd s
-    sleep 2
-    if grep -rq "${CLIP_STR}" "${WS}" 2>/dev/null; then pass "剪贴板粘贴→保存落盘"; else fail "剪贴板粘贴未落盘" ui; fi
-  fi
-
-  # 正向：终端（Cmd+` 打开 → 键入命令 → 产物文件断言终端真的活着）
-  keystroke_cmd '`'
-  sleep 4
-  run_to 20 osascript -e "tell application \"System Events\" to keystroke \"touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r\""
-  for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
-  if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
-
-  # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
-  # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
-  if (( PHASE >= 8 )); then
-    DL_FILE="${HOME}/Downloads/vslight-smoke-download.bin"
-    rm -f "${DL_FILE}"
-    run_to 20 osascript -e "tell application \"System Events\" to keystroke \"curl -sfL --max-time 30 -o ${DL_FILE} https://raw.githubusercontent.com/rockie/vslight/master/LICENSE && echo DL_OK || echo DL_FAIL\r\""
-    for i in {1..35}; do [[ -s "${DL_FILE}" ]] && break; sleep 1; done
-    if [[ -s "${DL_FILE}" ]]; then pass "下载落盘 ~/Downloads（$( wc -c < "${DL_FILE}" | tr -d ' ' ) bytes）"; else fail "下载未落盘 ~/Downloads" ui; fi
-    rm -f "${DL_FILE}"
-  fi
-
-  # 正向：Git 视图容器
-  keystroke_cmd g shift 2>/dev/null  # cmd+shift+g = Source Control
-  sleep 2
-  if ax_find_deep "Source Control" || ax_find_deep "源代码管理"; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
-
-  # 负向：命令面板无 Remote Explorer / Debug / Chat / Copilot 入口。
-  # 证明方式：面板打开后必须出现「无匹配命令」空态文本——既证面板真的打开了，又证无命中
-  no_palette_hits() { # no_palette_hits <query>
-    keystroke_cmd p shift
-    sleep 1
-    run_to 15 osascript -e "tell application \"System Events\" to keystroke \"$1\""
-    sleep 2
-    local ok=1
-    if ax_find_deep "No matching commands" || ax_find_deep "没有匹配的命令"; then ok=0; fi
-    osascript -e 'tell application "System Events" to key code 53'
-    sleep 1
-    return ${ok}
+  type_str() { # type_str <text>
+    require_frontmost
+    run_to 20 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to keystroke \"$1\""
+  }
+  press_escape() {
+    require_frontmost
+    osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to key code 53"
   }
 
-  if (( PHASE >= 3 )); then
-    if no_palette_hits "Remote Explorer"; then pass "命令面板无 Remote Explorer"; else fail "命令面板仍有 Remote Explorer" ui; fi
-  fi
-  if (( PHASE >= 4 )); then
-    for Q in "Debug: Start" "Chat:" "Notebook:"; do
-      if no_palette_hits "${Q}"; then pass "命令面板无 ${Q}"; else fail "命令面板仍命中 ${Q}" ui; fi
-    done
-  fi
-  if (( PHASE >= 5 )); then
-    if no_palette_hits "Copilot:"; then pass "命令面板无 Copilot:"; else fail "命令面板仍命中 Copilot:" ui; fi
-  fi
+  L3_RC=0; launch_app || L3_RC=$?
+  if (( L3_RC == 2 )); then
+    skip "L3 跳过：3s 内未能拉到前台（需机器空闲且屏幕未锁的窗口）"
+  elif (( L3_RC != 0 )); then
+    fail "90s 内无窗口" ui
+  else
+    pass "窗口启动"
 
-  quit_app
+    # 渲染机器断言：空白窗回归（workbench 未渲染）在此变红，不再依赖目视
+    AXN="$( ax_element_count )"
+    if [[ "${AXN}" =~ ^[0-9]+$ ]] && (( AXN >= 50 )); then pass "workbench 渲染完成（窗口 AX 元素 ${AXN} ≥ 50）"; else fail "窗口疑似空白：AX 元素=${AXN:-查询失败}（workbench 未渲染）" ui; fi
+
+    # 正向：编辑并保存（CLI 把 a.txt 开进运行中实例 → 键入 → Cmd+S → 磁盘内容断言）
+    run_to 30 "${BIN}" --user-data-dir "${UDIR}" --extensions-dir "${EDIR}" "${WS}/a.txt" >/dev/null 2>&1
+    sleep 3
+    type_str "vslight-smoke-edit "
+    keystroke_cmd s
+    sleep 2
+    # 编辑落到哪个文件取决于焦点，断言任一文件被改动即证明编辑链路通
+    if grep -rq 'vslight-smoke-edit' "${WS}" 2>/dev/null; then pass "编辑→保存落盘"; else fail "编辑未落盘" ui; fi
+
+    # 剪贴板机器断言（M4）：pbcopy 写入 → Cmd+V 粘贴进编辑器 → Cmd+S 后磁盘读回一致；
+    # pbpaste 复核 app 未改写剪贴板
+    if (( PHASE >= 8 )); then
+      CLIP_STR="vslight-clip-$( date +%s )"
+      printf '%s' "${CLIP_STR}" | pbcopy
+      keystroke_cmd v
+      sleep 1
+      PBP="$( pbpaste )"
+      [[ "${PBP}" == "${CLIP_STR}" ]] && pass "剪贴板跨进程一致 (pbcopy/pbpaste)" || fail "剪贴板跨进程不一致 (${PBP} != ${CLIP_STR})" ui
+      keystroke_cmd s
+      sleep 2
+      if grep -rq "${CLIP_STR}" "${WS}" 2>/dev/null; then pass "剪贴板粘贴→保存落盘"; else fail "剪贴板粘贴未落盘" ui; fi
+    fi
+
+    # 正向：终端（Cmd+` 打开 → 键入命令 → 产物文件断言终端真的活着）
+    keystroke_cmd '`'
+    sleep 4
+    type_str "touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r"
+    for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
+    if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
+
+    # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
+    # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
+    if (( PHASE >= 8 )); then
+      DL_FILE="${HOME}/Downloads/vslight-smoke-download.bin"
+      rm -f "${DL_FILE}"
+      type_str "curl -sfL --max-time 30 -o ${DL_FILE} https://raw.githubusercontent.com/rockie/vslight/master/LICENSE && echo DL_OK || echo DL_FAIL\r"
+      for i in {1..35}; do [[ -s "${DL_FILE}" ]] && break; sleep 1; done
+      if [[ -s "${DL_FILE}" ]]; then pass "下载落盘 ~/Downloads（$( wc -c < "${DL_FILE}" | tr -d ' ' ) bytes）"; else fail "下载未落盘 ~/Downloads" ui; fi
+      rm -f "${DL_FILE}"
+    fi
+
+    # 正向：Git 视图容器
+    keystroke_cmd g shift  # cmd+shift+g = Source Control
+    sleep 2
+    if ax_find_deep "Source Control" || ax_find_deep "源代码管理"; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
+
+    # 负向：命令面板无 Remote Explorer / Debug / Chat / Copilot 入口。
+    # 证明方式：面板打开后必须出现「无匹配命令」空态文本——既证面板真的打开了，又证无命中
+    no_palette_hits() { # no_palette_hits <query>
+      keystroke_cmd p shift
+      sleep 1
+      type_str "$1"
+      sleep 2
+      local ok=1
+      if ax_find_deep "No matching commands" || ax_find_deep "没有匹配的命令"; then ok=0; fi
+      press_escape
+      sleep 1
+      return ${ok}
+    }
+
+    if (( PHASE >= 3 )); then
+      if no_palette_hits "Remote Explorer"; then pass "命令面板无 Remote Explorer"; else fail "命令面板仍有 Remote Explorer" ui; fi
+    fi
+    if (( PHASE >= 4 )); then
+      for Q in "Debug: Start" "Chat:" "Notebook:"; do
+        if no_palette_hits "${Q}"; then pass "命令面板无 ${Q}"; else fail "命令面板仍命中 ${Q}" ui; fi
+      done
+    fi
+    if (( PHASE >= 5 )); then
+      if no_palette_hits "Copilot:"; then pass "命令面板无 Copilot:"; else fail "命令面板仍命中 Copilot:" ui; fi
+    fi
+
+    quit_app
+  fi
 
   # 保留面：zh-CN 界面
   if (( ZH_PACK == 1 )); then
-    if launch_app --locale zh-CN; then
+    ZH_RC=0; launch_app --locale zh-CN || ZH_RC=$?
+    if (( ZH_RC == 2 )); then
+      skip "zh-CN 走查跳过：3s 内未能拉到前台"
+    elif (( ZH_RC != 0 )); then
+      fail "zh-CN 模式启动失败" ui
+    else
       MENUS="$( run_to 30 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to get name of menu bar items of menu bar 1" 2>/dev/null )"
       if grep -q '文件' <<< "${MENUS}"; then pass "zh-CN 界面生效（菜单含「文件」）"; else fail "zh-CN 未生效: ${MENUS}" ui; fi
-    else
-      fail "zh-CN 模式启动失败" ui
     fi
     quit_app
   fi

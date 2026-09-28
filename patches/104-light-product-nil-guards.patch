@@ -39,6 +39,15 @@ index c7cfd2e1..7a855fc4 100644
 +			};
 +		}
  
+diff --git a/src/vs/platform/extensionManagement/common/extensionManagementCLI.ts b/src/vs/platform/extensionManagement/common/extensionManagementCLI.ts
+index f1c3f891..800a5240 100644
+--- a/src/vs/platform/extensionManagement/common/extensionManagementCLI.ts
++++ b/src/vs/platform/extensionManagement/common/extensionManagementCLI.ts
+@@ -388,3 +388,3 @@ export class ExtensionManagementCLI {
+ 	private validateBuiltinExtensionEnabledWithAutoUpdates(extension: ILocalExtension): string | undefined {
+-		if (extension.isBuiltin && this.productService.builtInExtensionsEnabledWithAutoUpdates.some(e => e.toLowerCase() === extension.identifier.id.toLowerCase()) && !extension.forceAutoUpdate) {
++		if (extension.isBuiltin && (this.productService.builtInExtensionsEnabledWithAutoUpdates ?? []).some(e => e.toLowerCase() === extension.identifier.id.toLowerCase()) && !extension.forceAutoUpdate) {
+ 			return localize('builtinAutoUpdate', "Extension '{0}' is a built-in extension and not allowed to be updated in the current product quality '{1}'.", extension.identifier.id, this.productService.quality);
 diff --git a/src/vs/platform/extensionManagement/common/extensionsScannerService.ts b/src/vs/platform/extensionManagement/common/extensionsScannerService.ts
 index 7fea8e5d..aa2f6766 100644
 --- a/src/vs/platform/extensionManagement/common/extensionsScannerService.ts
@@ -48,3 +57,74 @@ index 7fea8e5d..aa2f6766 100644
 -	for (const id of productService.builtInExtensionsEnabledWithAutoUpdates) {
 +	for (const id of productService.builtInExtensionsEnabledWithAutoUpdates ?? []) {
  		const toLowerCaseId = id.toLowerCase();
+diff --git a/src/vs/platform/extensionManagement/node/extensionManagementService.ts b/src/vs/platform/extensionManagement/node/extensionManagementService.ts
+index 0c873add..2332d705 100644
+--- a/src/vs/platform/extensionManagement/node/extensionManagementService.ts
++++ b/src/vs/platform/extensionManagement/node/extensionManagementService.ts
+@@ -945,3 +945,3 @@ export class ExtensionsScanner extends Disposable {
+ 		const staleExtensions = userExtensions.filter(userExtension => {
+-			if (!this.productService.builtInExtensionsEnabledWithAutoUpdates.some(id => id.toLowerCase() === userExtension.identifier.id.toLowerCase())) {
++			if (!(this.productService.builtInExtensionsEnabledWithAutoUpdates ?? []).some(id => id.toLowerCase() === userExtension.identifier.id.toLowerCase())) {
+ 				return false;
+diff --git a/src/vs/workbench/contrib/chat/browser/widget/chatWidget.ts b/src/vs/workbench/contrib/chat/browser/widget/chatWidget.ts
+index 5f4aa0c1..a39f3b34 100644
+--- a/src/vs/workbench/contrib/chat/browser/widget/chatWidget.ts
++++ b/src/vs/workbench/contrib/chat/browser/widget/chatWidget.ts
+@@ -1481,3 +1481,3 @@ export class ChatWidget extends Disposable implements IChatWidget {
+ 				let additionalMessage: string | IMarkdownString | undefined;
+-				if (this.chatEntitlementService.anonymous && !this.chatEntitlementService.sentiment.completed) {
++				if (this.chatEntitlementService.anonymous && !this.chatEntitlementService.sentiment.completed && product.defaultChatAgent) {
+ 					const providers = product.defaultChatAgent.provider;
+diff --git a/src/vs/workbench/contrib/extensions/browser/extensionsWorkbenchService.ts b/src/vs/workbench/contrib/extensions/browser/extensionsWorkbenchService.ts
+index 1719ed28..b7351211 100644
+--- a/src/vs/workbench/contrib/extensions/browser/extensionsWorkbenchService.ts
++++ b/src/vs/workbench/contrib/extensions/browser/extensionsWorkbenchService.ts
+@@ -2875,3 +2875,3 @@ export class ExtensionsWorkbenchService extends Disposable implements IExtension
+ 		const extensionsToUninstall: UninstallExtensionInfo[] = [{ extension: extension.local }];
+-		if (!areSameExtensions(extension.identifier, { id: this.productService.defaultChatAgent.extensionId })) {
++		if (!this.productService.defaultChatAgent || !areSameExtensions(extension.identifier, { id: this.productService.defaultChatAgent.extensionId })) {
+ 			for (const packExtension of this.getAllPackedExtensions(extension, this.local)) {
+diff --git a/src/vs/workbench/services/accounts/browser/defaultAccount.ts b/src/vs/workbench/services/accounts/browser/defaultAccount.ts
+index 73c4245b..2b3a07bb 100644
+--- a/src/vs/workbench/services/accounts/browser/defaultAccount.ts
++++ b/src/vs/workbench/services/accounts/browser/defaultAccount.ts
+@@ -90,25 +90,25 @@ interface IMcpRegistryResponse {
+ 
+-function toDefaultAccountConfig(defaultChatAgent: IDefaultChatAgent): IDefaultAccountConfig {
++function toDefaultAccountConfig(defaultChatAgent: IDefaultChatAgent | undefined): IDefaultAccountConfig {
+ 	return {
+-		preferredExtensions: [
++		preferredExtensions: defaultChatAgent ? [
+ 			defaultChatAgent.chatExtensionId,
+ 			defaultChatAgent.extensionId,
+-		],
++		] : [],
+ 		authenticationProvider: {
+ 			default: {
+-				id: defaultChatAgent.provider.default.id,
+-				name: defaultChatAgent.provider.default.name,
++				id: defaultChatAgent?.provider.default.id ?? '',
++				name: defaultChatAgent?.provider.default.name ?? '',
+ 			},
+ 			enterprise: {
+-				id: defaultChatAgent.provider.enterprise.id,
+-				name: defaultChatAgent.provider.enterprise.name,
++				id: defaultChatAgent?.provider.enterprise.id ?? '',
++				name: defaultChatAgent?.provider.enterprise.name ?? '',
+ 			},
+-			enterpriseProviderConfig: `${defaultChatAgent.completionsAdvancedSetting}.authProvider`,
+-			enterpriseProviderUriSetting: defaultChatAgent.providerUriSetting,
+-			scopes: defaultChatAgent.providerScopes,
++			enterpriseProviderConfig: defaultChatAgent ? `${defaultChatAgent.completionsAdvancedSetting}.authProvider` : '',
++			enterpriseProviderUriSetting: defaultChatAgent?.providerUriSetting ?? '',
++			scopes: defaultChatAgent?.providerScopes ?? [],
+ 		},
+-		entitlementUrl: defaultChatAgent.entitlementUrl,
+-		tokenEntitlementUrl: defaultChatAgent.tokenEntitlementUrl,
+-		mcpRegistryDataUrl: defaultChatAgent.mcpRegistryDataUrl,
+-		managedSettingsUrl: defaultChatAgent.managedSettingsUrl,
++		entitlementUrl: defaultChatAgent?.entitlementUrl ?? '',
++		tokenEntitlementUrl: defaultChatAgent?.tokenEntitlementUrl ?? '',
++		mcpRegistryDataUrl: defaultChatAgent?.mcpRegistryDataUrl ?? '',
++		managedSettingsUrl: defaultChatAgent?.managedSettingsUrl ?? '',
+ 	};
