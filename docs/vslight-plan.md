@@ -209,6 +209,23 @@ export SHOULD_BUILD_CLI="no"      # 复用现成开关（build_cli.sh:3-6 / prep
 由**非实现者**在干净用户目录走完整主路径：安装 → 首启（迁移指引）→ 打开/编辑/搜索/Git/终端 →
 装扩展（open-vsx）→ zh-CN 语言包 → 检查更新 → 卸载。记录落盘。
 
+### lean-dist 增量批次（2026-09 落地，验收证据见 [lean-dist.md](plan/lean-dist.md) 及其 .records/）
+
+- **号段 98–104 已用**：98 welcome 媒体拷贝清单（补 95 漏项）、99 Copilot 残余面（ADR-1 深度：
+  配置面+依赖+孤儿文件+文档，chat 本体保留）、100 1ds 遥测 SDK 摘除、101 mermaid notebook-out
+  （补 94 漏项）、102 dev-tunnels 5 包、103 Electron 42.8.1→43.7.5（ADR-2，macOS 地板 12.0 不变）、
+  104 product.json 键 reader nil-guards（8 处，两轮补强：安装崩溃 + 启动空白窗）。
+- **决策 9 被 D2 取代**：发布构建默认 `export CI=true` 剥离 sourcemap（app 858→504MB），
+  `-d` 调试构建保留；崩溃栈由 `upload_sourcemaps.sh` 发布渠道兜底。
+- **新增 post-npm-ci 剪枝段**（D3）：ripgrep/mxc-sdk 跨平台二进制裁到本机平台
+  （warn-only 幂等，与 prune.json 的 exit-4 语义分治）。
+- **Phase 5 已完成**：bun spike ADR 落盘 `docs/adr/bun-build-toolchain.md`，结论不采纳
+  （domain.bind 根因级实证），CI setup-node 不触碰。
+- **体积账**：app 858→504MB（-41.3%）、zip 263.6→178.5MB（-32.2%）；
+  M4 Electron 43.7.5 后 app 510MB（+6MB 运行时增量）。
+- **smoke（F-06 后续）**：L1 静态 + L2 CLI + L3 UI（AppleScript 注入 + 窗口截图 Vision OCR——
+  macOS 26 读不到 Electron 内容 AX 树的实证绕行；含焦点硬保险与 workbench 渲染机器断言）。
+
 ## 3. 时间线（v2 修正算术，依据入列）
 
 ```

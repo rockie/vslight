@@ -34,13 +34,13 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-29 03:35 +1000
+- 最近更新：2026-09-29 03:45 +1000
 - 当前进度：1/6 个里程碑完成
-- 当前状态：M4 构建窗口完成（BUILD EXIT 0：103 真实重放、43.7.5 headers 重编原生、plist 43.7.5 / LSMinimumSystemVersion 12.0、L1+L2 36 项全绿、锁屏态冷启动无崩溃）；smoke L3 OCR 化重写完成、单项证据齐备；42.8.1 产物已备份 `m1m3-bak/`；两场 L3 全量跑（M1–M3 对备份产物、M4 对新构建）同待 ≥3 分钟解锁空闲窗口，守望 v4 在跑
+- 当前状态：M4 构建窗口完成（BUILD EXIT 0、plist 43.7.5/地板 12.0、L1+L2 36 绿、锁屏态冷启动无崩溃）；M6 已核销四项——干净树重放（M4 真实构建 + 两次 scratch 复演）、体积总账（858→504→510MB，zip 263.6→178.5MB）、故障注入 ×2（prune exit 4 / sumchecker 硬失败，注入后产物已重打包还原）、`docs/vslight-plan.md` 落地标记；两场 L3 全量跑同待 ≥3 分钟解锁空闲窗口（守望 v4 在跑）
 - 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
-- 下一步：守望跑通 M1–M3 smoke 全绿 → M1/M2/M3 记完成 → M4 smoke 全绿 + 窗口/剪贴板/下载走查 → M6
+- 下一步：守望跑通 M1–M3 smoke 全绿 → M1/M2/M3 记完成 → M4 smoke 全绿 + 三项走查 → M4 记完成 → M6 收尾（assets zip 窗口、CI 分支验证）
 - 当前阻塞：L3 全量需 ≥3 分钟解锁空闲窗口（机器夜间锁定；守望 v4 在跑，注意：含 "/VSLight" 的宽泛 pkill 会误杀守望进程，已规避）
-- 代码基线：dirty@cfc8c96（M4 验收记录与快照更新待提交）
+- 代码基线：dirty@98a78aa（M6 记录、vslight-plan.md 落地标记、快照更新待提交）
 
 ### 完成记录
 
@@ -51,6 +51,7 @@
 | M3 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；发现并修复 prepare_vscode.sh 应用序 bug；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
 | M4 | 进行中 | 2026-09-29 03:35 +1000 | 构建窗口完成：BUILD EXIT 0（103 真实重放、43.7.5 原生重编、validateChecksum 过）、plist 43.7.5/地板 12.0、L1+L2 36 项全绿（Electron 断言自动跟随）、锁屏态冷启动无崩溃；余 smoke L3 全绿 + 三项走查（待解锁窗口） | [M4 记录](lean-dist.records/M4.md) |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
+| M6 | 进行中 | 2026-09-29 03:45 +1000 | 已核销：干净树重放（M4 真实构建+两次复演）、体积总账（858→504→510MB）、故障注入×2（exit 4/sumchecker 硬失败）、vslight-plan.md 落地标记；余 smoke 全量（随守望）、assets zip、CI 分支验证 | [M6 记录](lean-dist.records/M6.md) |
 
 ## 0. 需求、范围与决策
 
