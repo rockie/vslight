@@ -34,19 +34,19 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-29 01:35 +1000
+- 最近更新：2026-09-29 01:40 +1000
 - 当前进度：1/6 个里程碑完成
-- 当前状态：空白窗根因已修——M2 删 product.json 键致 `defaultAccount.ts` 启动裸读 `.chatExtensionId`（104 初版漏守卫，M2 记录偏差⑨），104 重写扩至 8 处守卫后同号 1.135.06528 重建验证：窗口完整渲染、renderer 日志干净、L1+L2 全绿 37 项；smoke L3 硬保险①②③④ + workbench 渲染机器断言 + `--force-renderer-accessibility` 已落地（本机实证无 AT 时 Chromium 不物化 AX 树，`ax_find_deep` 此前形同虚设），L3 实跑待机器解锁
+- 当前状态：空白窗根因已修——M2 删 product.json 键致 `defaultAccount.ts` 启动裸读 `.chatExtensionId`（104 初版漏守卫，M2 记录偏差⑨），104 重写扩至 8 处守卫后同号 1.135.06528 重建验证：窗口完整渲染、renderer 日志干净、L1+L2 全绿 37 项；smoke L3 硬保险①②③④ + workbench 渲染机器断言 + `--force-renderer-accessibility` 已落地（本机实证无 AT 时 Chromium 不物化 AX 树，`ax_find_deep` 此前形同虚设）；`-d` repack 已核销（无 CI packing → 71 map，CI 还原 → 0）；L3 实跑是 M1/M2/M3 唯一共享缺口
 - 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
-- 下一步：机器解锁空闲后 smoke L3 全量实跑（校准 AX 元素阈值与查询式）→ `-d` repack（无 CI 单步 packing，验毕 CI=true 还原）→ M1/M2/M3 记完成 → M4 · 103 号 Electron 43.7.5 patch（素材已齐：SHASUMS256 74 行存 /tmp/electron-43.7.5-shasums.txt、commit `5338ed09bfdcf1bbd2e6bab722c2620efe8c4790`、npm integrity 已取）→ M6
+- 下一步：机器解锁空闲后 smoke L3 全量实跑（校准 AX 元素阈值与查询式）→ M1/M2/M3 记完成 → M4 · 103 号 Electron 43.7.5 patch（素材已齐：SHASUMS256 74 行存 /tmp/electron-43.7.5-shasums.txt、commit `5338ed09bfdcf1bbd2e6bab722c2620efe8c4790`、npm integrity 已取）→ M6
 - 当前阻塞：smoke L3 须机器解锁且空闲窗口（合成按键只发往前台应用；屏幕 01:19 已自动锁定）
-- 代码基线：dirty@245b77a（104 patch 重写扩 5 守卫、smoke.sh L3 重写、M1/M2 记录更新待提交）
+- 代码基线：`4455210`（104 重写、smoke L3 重写、记录已提交）；M1/M2 记录 -d 核销与快照更新待提交
 
 ### 完成记录
 
 | Milestone | 状态 | 更新时间 | 简要记录 | 实现与验收记录 |
 | --- | --- | --- | --- | --- |
-| M1 | 进行中 | 2026-09-29 01:35 +1000 | 构建验证基本完成：.map=0、zip 263.6→178.5MB、welcome 媒体空、checksum 链构建期复核 0 新增、CPPFLAGS 根因修复；smoke L3 硬保险①②③④+渲染机器断言已落地、空白窗联动修复后 L1+L2 复跑全绿 37 项；余 L3 实跑校准（待解锁空闲窗口）与 `-d` repack（无 CI 单步 packing 即可） | [M1 记录](lean-dist.records/M1.md) |
+| M1 | 进行中 | 2026-09-29 01:40 +1000 | 构建验证基本完成：.map=0、zip 263.6→178.5MB、welcome 媒体空、checksum 链构建期复核 0 新增、CPPFLAGS 根因修复；smoke L3 硬保险①②③④+渲染机器断言已落地、空白窗联动修复后 L1+L2 复跑全绿 37 项、`-d` repack 已核销（无 CI 71 map / CI 还原 0）；余 L3 实跑校准（待解锁空闲窗口） | [M1 记录](lean-dist.records/M1.md) |
 | M2 | 进行中 | 2026-09-29 01:35 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs）；104 nil-guards 两轮补强：首轮修安装崩溃，次轮修启动空白窗（defaultAccount 等 5 处裸读，全量扫描 11 处安全/5 处必修），同号重建验证窗口完整渲染 + L1+L2 全绿；余 smoke L3 命令面板空态复核 | [M2 记录](lean-dist.records/M2.md) |
 | M3 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；发现并修复 prepare_vscode.sh 应用序 bug；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
