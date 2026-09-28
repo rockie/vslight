@@ -34,19 +34,22 @@
 
 ### 恢复快照
 
-- 最近更新：尚未开始
-- 当前进度：0/6 个里程碑完成
-- 当前状态：尚未开始
-- 最近完成：无
-- 下一步：M1 · 记录体积基线；`dev/build.sh` 加 `-d` 旗标 + 默认 `CI=true` 剥离 sourcemap；`dev/patch.sh` 支持 3 位号段（退出条件见 §10 M1 行）
+- 最近更新：2026-09-29 00:20 +1000
+- 当前进度：1/6 个里程碑完成
+- 当前状态：M1–M3 实现全部完成（98/99/100/101/102 号 patch + prune.json 53 路径 + D3 剪枝 + smoke Phase 5/6 断言），逐层 typecheck 全绿；待 M1–M3 合并构建窗口验证
+- 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
+- 下一步：M1–M3 合并构建窗口（`dev/build.sh -p`）→ smoke 全量 + 体积账核销 → M4（103 号 patch，需先修 `dev/smoke.sh` L3 剪贴板/下载断言）
 - 当前阻塞：无
-- 代码基线：`d6143d210a62847b8c8ce15676fecf92a0180801`（clean）
+- 代码基线：`1f3b2f1`（dirty：M1–M3 改动未提交）
 
 ### 完成记录
 
 | Milestone | 状态 | 更新时间 | 简要记录 | 实现与验收记录 |
 | --- | --- | --- | --- | --- |
-| — | — | — | 尚未开始任何里程碑 | — |
+| M1 | 进行中 | 2026-09-29 00:20 +1000 | 基线已落账；`-d` 旗标、3 位号段、checksum 链修复、98 号 patch 已交付并静态验证；构建窗口未跑 | [M1 记录](lean-dist.records/M1.md) |
+| M2 | 进行中 | 2026-09-29 00:20 +1000 | 主仓库侧 + 99 号 patch 全部切除完成（3098 行 24 文件），prune.json +19，smoke Phase 5 断言就绪；逐层 typecheck 绿；构建窗口未跑 | [M2 记录](lean-dist.records/M2.md) |
+| M3 | 进行中 | 2026-09-29 00:20 +1000 | D3 剪枝 + 100/101/102 号 patch 生成完毕，发现并修复 prepare_vscode.sh 3 位号应用序 bug；逐层 typecheck 绿；构建窗口未跑 | [M3 记录](lean-dist.records/M3.md) |
+| M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
 
 ## 0. 需求、范围与决策
 
