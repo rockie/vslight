@@ -34,13 +34,13 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-29 03:25 +1000
+- 最近更新：2026-09-29 03:35 +1000
 - 当前进度：1/6 个里程碑完成
-- 当前状态：空白窗根因已修（104 扩 8 守卫，同号重建渲染/L1+L2 全绿）；smoke L3 完成 OCR 化重写——AX 死局实证（macOS 26 全局读不到 Electron 内容 AX 树，连 Finder 的 `entire contents` 都返回 0），改 `win_id`+`screencapture -l`+Vision OCR 文本断言；五轮全量跑逐项修复快捷键错配（Ctrl+`/Ctrl+Shift+G）、终端持焦吞键、命令面板模糊匹配（空态断言先天不成立改禁忌词行）、固定 sleep 级联（改 OCR 门控）；L3 单项证据齐备，单次全绿跑待 ≥3 分钟无人窗口；M4 的 103 号 patch 已生成且全序复演 byte-identical
+- 当前状态：M4 构建窗口完成（BUILD EXIT 0：103 真实重放、43.7.5 headers 重编原生、plist 43.7.5 / LSMinimumSystemVersion 12.0、L1+L2 36 项全绿、锁屏态冷启动无崩溃）；smoke L3 OCR 化重写完成、单项证据齐备；42.8.1 产物已备份 `m1m3-bak/`；两场 L3 全量跑（M1–M3 对备份产物、M4 对新构建）同待 ≥3 分钟解锁空闲窗口，守望 v4 在跑
 - 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
-- 下一步：空闲窗口跑通 smoke 单次全绿（守望任务持续重试）→ M1/M2/M3 记完成 → M4 构建窗口（103 已就绪）→ M6
-- 当前阻塞：L3 全量需 ≥3 分钟解锁空闲窗口（机器夜间间歇使用并自动锁屏）
-- 代码基线：dirty@a7a4188（103 patch、M4 记录、smoke.sh OCR 化、dev/ocr_text.swift、dev/win_id.swift 待提交）
+- 下一步：守望跑通 M1–M3 smoke 全绿 → M1/M2/M3 记完成 → M4 smoke 全绿 + 窗口/剪贴板/下载走查 → M6
+- 当前阻塞：L3 全量需 ≥3 分钟解锁空闲窗口（机器夜间锁定；守望 v4 在跑，注意：含 "/VSLight" 的宽泛 pkill 会误杀守望进程，已规避）
+- 代码基线：dirty@cfc8c96（M4 验收记录与快照更新待提交）
 
 ### 完成记录
 
@@ -49,7 +49,7 @@
 | M1 | 进行中 | 2026-09-29 03:25 +1000 | 构建验证基本完成：.map=0、zip 263.6→178.5MB、welcome 媒体空、checksum 链 0 新增、CPPFLAGS 修复、`-d` repack 核销（无 CI 71 map / CI 还原 0）；smoke L3 OCR 化重写完成（AX 死局实证后改 win_id+Vision OCR），硬保险①实战生效（失焦即中止）；L3 单项证据齐备；余单次全绿跑（守望重试中） | [M1 记录](lean-dist.records/M1.md) |
 | M2 | 进行中 | 2026-09-29 01:35 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs）；104 nil-guards 两轮补强：首轮修安装崩溃，次轮修启动空白窗（defaultAccount 等 5 处裸读，全量扫描 11 处安全/5 处必修），同号重建验证窗口完整渲染 + L1+L2 全绿；余 smoke L3 命令面板复核（随 M1 单次全绿跑收口） | [M2 记录](lean-dist.records/M2.md) |
 | M3 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；发现并修复 prepare_vscode.sh 应用序 bug；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
-| M4 | 进行中 | 2026-09-29 03:25 +1000 | 103 号 patch 已生成（5 版本点，官方模板同构；checksums 75 条目、npm integrity 实测）；全序复演 00→104 全部应用成功且 5 文件 byte-identical；余构建窗口 + smoke + 三项走查 | [M4 记录](lean-dist.records/M4.md) |
+| M4 | 进行中 | 2026-09-29 03:35 +1000 | 构建窗口完成：BUILD EXIT 0（103 真实重放、43.7.5 原生重编、validateChecksum 过）、plist 43.7.5/地板 12.0、L1+L2 36 项全绿（Electron 断言自动跟随）、锁屏态冷启动无崩溃；余 smoke L3 全绿 + 三项走查（待解锁窗口） | [M4 记录](lean-dist.records/M4.md) |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
 
 ## 0. 需求、范围与决策
