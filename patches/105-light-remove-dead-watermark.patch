@@ -1,0 +1,22 @@
+diff --git a/src/vs/workbench/browser/parts/editor/editorGroupWatermark.ts b/src/vs/workbench/browser/parts/editor/editorGroupWatermark.ts
+index a63f37ce..3e7ae6a8 100644
+--- a/src/vs/workbench/browser/parts/editor/editorGroupWatermark.ts
++++ b/src/vs/workbench/browser/parts/editor/editorGroupWatermark.ts
+@@ -31,5 +31,3 @@ interface WatermarkEntry {
+ 
+-const showChatContextKey = ContextKeyExpr.and(ContextKeyExpr.equals('chatSetupHidden', false), ContextKeyExpr.equals('chatSetupDisabledInWorkspace', false));
+ 
+-const openChat: WatermarkEntry = { text: localize('watermark.openChat', "Open Chat"), id: 'workbench.action.chat.open', when: { native: showChatContextKey, web: showChatContextKey } };
+ const showCommands: WatermarkEntry = { text: localize('watermark.showCommands', "Show All Commands"), id: 'workbench.action.showCommands' };
+@@ -43,3 +41,2 @@ const findInFiles: WatermarkEntry = { text: localize('watermark.findInFiles', "F
+ const toggleTerminal: WatermarkEntry = { text: localize({ key: 'watermark.toggleTerminal', comment: ['toggle is a verb here'] }, "Toggle Terminal"), id: 'workbench.action.terminal.toggleTerminal', when: { web: ContextKeyExpr.equals('terminalProcessSupported', true) } };
+-const startDebugging: WatermarkEntry = { text: localize('watermark.startDebugging', "Start Debugging"), id: 'workbench.action.debug.start', when: { web: ContextKeyExpr.equals('terminalProcessSupported', true) } };
+ const openSettings: WatermarkEntry = { text: localize('watermark.openSettings', "Open Settings"), id: 'workbench.action.openSettings' };
+@@ -47,3 +44,2 @@ const openSettings: WatermarkEntry = { text: localize('watermark.openSettings',
+ const baseEntries: WatermarkEntry[] = [
+-	openChat,
+ 	showCommands,
+@@ -65,3 +61,2 @@ const otherEntries: WatermarkEntry[] = [
+ 	findInFiles,
+-	startDebugging,
+ 	toggleTerminal,

@@ -34,13 +34,13 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-29 03:45 +1000
+- 最近更新：2026-09-29 03:55 +1000
 - 当前进度：1/6 个里程碑完成
-- 当前状态：M4 构建窗口完成（BUILD EXIT 0、plist 43.7.5/地板 12.0、L1+L2 36 绿、锁屏态冷启动无崩溃）；M6 已核销四项——干净树重放（M4 真实构建 + 两次 scratch 复演）、体积总账（858→504→510MB，zip 263.6→178.5MB）、故障注入 ×2（prune exit 4 / sumchecker 硬失败，注入后产物已重打包还原）、`docs/vslight-plan.md` 落地标记；两场 L3 全量跑同待 ≥3 分钟解锁空闲窗口（守望 v4 在跑）
+- 当前状态：M4 构建窗口完成（BUILD EXIT 0、plist 43.7.5/地板 12.0、L1+L2 36 绿、锁屏态冷启动无崩溃）；M6 已核销四项（干净树重放、体积总账、故障注入×2、vslight-plan.md 标记）；M3 走查发现水印死条目（Start Debugging 死链 / OpenChat 入口，93/97 漏项）→ 105 号 patch 已生成并全序复演 byte-identical，含 103+105 的重建窗口进行中；两场 L3 全量跑同待 ≥3 分钟解锁空闲窗口（守望 v4 在跑）
 - 最近完成：M5 · bun spike ADR 落盘（结论：不采纳，domain.bind 根因级实证）
-- 下一步：守望跑通 M1–M3 smoke 全绿 → M1/M2/M3 记完成 → M4 smoke 全绿 + 三项走查 → M4 记完成 → M6 收尾（assets zip 窗口、CI 分支验证）
+- 下一步：105 重建验证（bundle grep + L1+L2）→ 守望跑通 M1–M3 smoke 全绿 → M1/M2/M3 记完成 → M4 smoke 全绿 + 三项走查（含水印条目目视复核）→ M6 收尾（assets zip、CI 分支）
 - 当前阻塞：L3 全量需 ≥3 分钟解锁空闲窗口（机器夜间锁定；守望 v4 在跑，注意：含 "/VSLight" 的宽泛 pkill 会误杀守望进程，已规避）
-- 代码基线：dirty@98a78aa（M6 记录、vslight-plan.md 落地标记、快照更新待提交）
+- 代码基线：dirty@21615f9（105 patch、M3 记录、快照更新待提交）
 
 ### 完成记录
 
@@ -48,7 +48,7 @@
 | --- | --- | --- | --- | --- |
 | M1 | 进行中 | 2026-09-29 03:25 +1000 | 构建验证基本完成：.map=0、zip 263.6→178.5MB、welcome 媒体空、checksum 链 0 新增、CPPFLAGS 修复、`-d` repack 核销（无 CI 71 map / CI 还原 0）；smoke L3 OCR 化重写完成（AX 死局实证后改 win_id+Vision OCR），硬保险①实战生效（失焦即中止）；L3 单项证据齐备；余单次全绿跑（守望重试中） | [M1 记录](lean-dist.records/M1.md) |
 | M2 | 进行中 | 2026-09-29 01:35 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs）；104 nil-guards 两轮补强：首轮修安装崩溃，次轮修启动空白窗（defaultAccount 等 5 处裸读，全量扫描 11 处安全/5 处必修），同号重建验证窗口完整渲染 + L1+L2 全绿；余 smoke L3 命令面板复核（随 M1 单次全绿跑收口） | [M2 记录](lean-dist.records/M2.md) |
-| M3 | 进行中 | 2026-09-29 00:39 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；发现并修复 prepare_vscode.sh 应用序 bug；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
+| M3 | 进行中 | 2026-09-29 03:55 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1）；体积账全核销；prepare_vscode.sh 应用序 bug 修复；走查发现水印死条目（93/97 漏项）→ 105 号 patch 已生成并全序复演 byte-identical，重建窗口进行中；余 smoke L3 走查复核 | [M3 记录](lean-dist.records/M3.md) |
 | M4 | 进行中 | 2026-09-29 03:35 +1000 | 构建窗口完成：BUILD EXIT 0（103 真实重放、43.7.5 原生重编、validateChecksum 过）、plist 43.7.5/地板 12.0、L1+L2 36 项全绿（Electron 断言自动跟随）、锁屏态冷启动无崩溃；余 smoke L3 全绿 + 三项走查（待解锁窗口） | [M4 记录](lean-dist.records/M4.md) |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
 | M6 | 进行中 | 2026-09-29 03:45 +1000 | 已核销：干净树重放（M4 真实构建+两次复演）、体积总账（858→504→510MB）、故障注入×2（exit 4/sumchecker 硬失败）、vslight-plan.md 落地标记；余 smoke 全量（随守望）、assets zip、CI 分支验证 | [M6 记录](lean-dist.records/M6.md) |
