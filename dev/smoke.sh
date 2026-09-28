@@ -292,8 +292,16 @@ else
   swiftc -O -o "${OCR_BIN}" dev/ocr_text.swift || { echo "ERROR: ocr_text 编译失败" >&2; exit 3; }
   swiftc -O -o "${WINID_BIN}" dev/win_id.swift || { echo "ERROR: win_id 编译失败" >&2; exit 3; }
 
-  # 残留实例会抢焦点/干扰进程名解析（open -na 每发必开新实例）
-  pkill -f "${APP_PATH}" 2>/dev/null; sleep 2
+  # 残留实例会抢焦点/干扰进程名解析（open -na 每发必开新实例）。
+  # 优雅退出优先：直接 pkill (SIGTERM) 会让下次启动弹「window terminated unexpectedly
+  # (killed, 15)」恢复对话框，遮挡窗口干扰 OCR 与按键
+  graceful_kill() { # graceful_kill <pkill-pattern> — 先 quit 等 6s，残余再 SIGTERM
+    pgrep -f "$1" >/dev/null 2>&1 || return 0  # AppleEvent 会拉起未运行的 app，空转必须避开
+    osascript -e "tell application \"${APP_NAME}\" to quit" 2>/dev/null
+    for i in {1..6}; do pgrep -f "$1" >/dev/null 2>&1 || return 0; sleep 1; done
+    pkill -f "$1" 2>/dev/null; sleep 1
+  }
+  graceful_kill "${APP_PATH}"
 
   # 硬保险③：L3 的剪贴板断言会覆写用户剪贴板，入口先备份，trap EXIT 恢复
   CLIP_BACKUP="$( pbpaste 2>/dev/null )"; CLIP_SAVED=1
@@ -306,7 +314,7 @@ else
   }
 
   launch_app() { # launch_app [extra-args...] → rc 0=窗口就绪且前台 1=90s无窗口 2=3s拉不到前台
-    pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; sleep 1
+    graceful_kill "${APP_NAME}.*${SMOKE_ROOT}"
     open -na "${APP_PATH}" --args \
       --user-data-dir "${SMOKE_ROOT}/user-data" \
       --extensions-dir "${SMOKE_ROOT}/extensions" \
@@ -327,7 +335,7 @@ else
     for i in 1 2 3; do frontmost_ok && return 0; sleep 1; done
     return 2
   }
-  quit_app() { osascript -e "tell application \"${APP_NAME}\" to quit" 2>/dev/null; sleep 2; pkill -f "${APP_NAME}.*${SMOKE_ROOT}" 2>/dev/null; }
+  quit_app() { graceful_kill "${APP_NAME}.*${SMOKE_ROOT}"; }
 
   capture_window() { # capture_window <out.png> — 按 CGWindowID 截窗口，不受遮挡与 Retina 缩放影响
     local wid
