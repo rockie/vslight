@@ -348,9 +348,9 @@ else
     "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | wc -l | tr -d ' '
   }
   # 界面文本命中（大小写不敏感：VS Code 视图标题经 CSS text-transform 全部大写绘制）
-  ocr_window_find() { # ocr_window_find <regex>
+  ocr_window_find() { # ocr_window_find <extended-regex>
     capture_window "${SMOKE_ROOT}/win.png" || return 1
-    "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | grep -qi "$1"
+    "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | grep -qEi "$1"
   }
 
   keystroke_cmd() { # keystroke_cmd <key> [shift|ctrl|ctrlshift]（硬保险②：进程定向，不裸发 System Events）
@@ -413,18 +413,21 @@ else
       if grep -rq "${CLIP_STR}" "${WS}" 2>/dev/null; then pass "剪贴板粘贴→保存落盘"; else fail "剪贴板粘贴未落盘" ui; fi
     fi
 
-    # 终端面板开合以 OCR 门控，不用固定 sleep——首开慢时固定 sleep 会把命令打进编辑器
-    term_open_wait() { # 确认终端面板出现；未开则再切一次，仍无则 1
-      local a
-      for a in 1 2 3; do sleep 3; ocr_window_find 'terminal|终端' && return 0; done
-      keystroke_cmd '`' ctrl
-      for a in 1 2 3; do sleep 3; ocr_window_find 'terminal|终端' && return 0; done
-      return 1
+    # 终端面板开合以物理键位发送：key code 50 = 反引号键。
+    # keystroke "`" 走字符注入，会被中文输入法（Pinyin/SCIM）吞掉导致 Ctrl+` 失效；
+    # key code 发送物理键，IME 不拦截（本机实证：IME 激活时仅前者打不开面板）。
+    term_toggle() {
+      require_frontmost
+      run_to 20 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to key code 50 using control down"
     }
+
+    # 终端面板开合以 OCR 门控，不用固定 sleep——首开慢时固定 sleep 会把命令打进编辑器
+    # 终端面板以文件落盘证明开关：OCR 判 panel 头（"TERMINAL"）在首轮动画里偶发被
+    # Vision 漏抓（见 M1 记录 deep-OCR 实测），故面板开关与命令执行判定都用磁盘文件
     term_close_wait() { # 关到面板消失为止（至多两次切换；未开过则第一次切换会打开、第二次关回）
       local a
       for a in 1 2; do
-        keystroke_cmd '`' ctrl
+        term_toggle
         sleep 2
         ocr_window_find 'terminal|终端' || return 0
       done
@@ -432,11 +435,15 @@ else
     }
 
     # 正向：终端（macOS 切换终端是 Ctrl+`，Cmd+` 是系统窗口循环键；开终端 → 键入命令 → 产物文件断言）
-    keystroke_cmd '`' ctrl
-    if term_open_wait; then
-      type_str "touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r"
-      for i in {1..15}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
-      if [[ -f "${WS}/term-proof.txt" ]]; then pass "终端可开且执行命令"; else fail "终端命令未执行" ui; fi
+    rm -f "${WS}/term-proof.txt"
+    term_toggle
+    sleep 5  # 给面板留出完整动画/渲染窗口，避免「打字进编辑器」的级联失败
+    type_str "touch '${WS}/term-proof.txt' && echo TERM_OK || echo TERM_FAIL\r"
+    for i in {1..20}; do [[ -f "${WS}/term-proof.txt" ]] && break; sleep 1; done
+    if [[ -f "${WS}/term-proof.txt" ]]; then
+      pass "终端可开且执行命令（文件落盘证明）"
+      OCRN_TERM="$( ocr_window_count )"
+      note "终端开后窗口 OCR 文本 ${OCRN_TERM} 行（终端面板已渲染，仅记录）"
 
       # 下载机器断言（M4）：经 app 内终端把网络文件写入 ~/Downloads，覆盖 Electron 43
       # 下载目录行为变更下的端到端写盘链路（本产物无浏览器/远程/更新下载入口）
@@ -449,17 +456,22 @@ else
         rm -f "${DL_FILE}"
       fi
     else
-      fail "终端面板未打开（OCR 门控两轮未检出）" ui
+      fail "终端命令未执行（文件未落盘）" ui
     fi
 
     # 关掉终端面板再测视图/面板类快捷键——终端持焦时按键进 shell，Ctrl+Shift+G 与
     # Cmd+Shift+P 都到不了 workbench（本机实证）
     term_close_wait || note "警告：终端面板未能确认关闭，后续视图断言可能受影响"
 
-    # 正向：Git 视图容器（macOS Source Control 视图是 Ctrl+Shift+G，Cmd+Shift+G 是查找上一个）
+    # 正向：Git 视图容器（macOS Source Control 视图是 Ctrl+Shift+G，Cmd+Shift+G 是查找上一个）；
+    # OCR 在视图切场动画里偶发漏抓，3 轮取最大（任一轮命中即 PASS）
     keystroke_cmd g ctrlshift
-    sleep 2
-    if ocr_window_find 'source control|源代码管理'; then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
+    SCM_OK=0
+    for i in 1 2 3; do
+      sleep 3
+      if ocr_window_find 'source control|源代码管理'; then SCM_OK=1; break; fi
+    done
+    if (( SCM_OK == 1 )); then pass "Source Control 入口存在"; else fail "Source Control 未检出" ui; fi
 
     # 负向：命令面板无 Remote Explorer / Debug / Chat / Copilot 入口。
     # VS Code 命令面板是模糊匹配——"Remote Explorer" 也会命中普通 Explorer 命令，
@@ -474,10 +486,16 @@ else
         type_str "$1"
         sleep 2
         capture_window "${SMOKE_ROOT}/win.png" || return 1
-        ocr="$( "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null )"
-        if grep -qiF "$1" <<< "${ocr}"; then
+        ocr="$( "${OCR_BIN}" "${SMOKE_ROOT}/win.png" 2>/dev/null | grep -vE '^\[Type |^Start typing|dismiss|don.t show this again' )"
+        if grep -qiF 'No matching commands' <<< "${ocr}"; then
           press_escape; sleep 1
-          if awk -v q="$1" 'BEGIN{lq=tolower(q)} {if (!dropped && index(tolower($0), lq)) {dropped=1; next} print}' <<< "${ocr}" | grep -qiE "$2"; then
+          return 0
+        fi
+        # OCR 常把回显行渲染成无空格形式（">RemoteExplorer"），回显检测与「丢弃回显行」
+        # 都按去空格小写归一化，避免把查询回显当命中或漏检（本机实测两种渲染都会出现）
+        if grep -qiF "$1" <<< "${ocr}" || tr -d ' ' <<< "${ocr}" | grep -qiF "${1// /}"; then
+          press_escape; sleep 1
+          if awk -v q="${1// /}" 'BEGIN{lq=tolower(q)} {line=tolower($0); gsub(/ /, "", line); if (!dropped && index(line, lq)) {dropped=1; next} print}' <<< "${ocr}" | grep -qiE "$2"; then
             return 1
           fi
           return 0

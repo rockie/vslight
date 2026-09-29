@@ -1,0 +1,16 @@
+diff --git a/src/vs/workbench/contrib/chat/browser/actions/chatActions.ts b/src/vs/workbench/contrib/chat/browser/actions/chatActions.ts
+index 93b75707..53c4f459 100644
+--- a/src/vs/workbench/contrib/chat/browser/actions/chatActions.ts
++++ b/src/vs/workbench/contrib/chat/browser/actions/chatActions.ts
+@@ -224,2 +224,3 @@ abstract class OpenChatGlobalAction extends Action2 {
+ 			precondition: ContextKeyExpr.and(
++				ContextKeyExpr.has('config.chat.disableAIFeatures').negate(),
+ 				ChatContextKeys.Setup.hidden.negate(),
+diff --git a/src/vs/workbench/contrib/chat/common/constants.ts b/src/vs/workbench/contrib/chat/common/constants.ts
+index 74098086..20bb861b 100644
+--- a/src/vs/workbench/contrib/chat/common/constants.ts
++++ b/src/vs/workbench/contrib/chat/common/constants.ts
+@@ -550,2 +550,3 @@ export const OPEN_AGENTS_WINDOW_COMMAND_ID = 'workbench.action.openAgentsWindow'
+ export const OPEN_AGENTS_WINDOW_PRECONDITION = ContextKeyExpr.and(
++	ContextKeyExpr.has('config.chat.disableAIFeatures').negate(),
+ 	ChatEntitlementContextKeys.Setup.hidden.negate(),

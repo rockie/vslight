@@ -1,0 +1,45 @@
+diff --git a/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts b/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
+index d7bb9e3d..e0f63861 100644
+--- a/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
++++ b/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
+@@ -10,3 +10,2 @@ import { status } from '../../../../../base/browser/ui/aria/aria.js';
+ import { KeybindingLabel } from '../../../../../base/browser/ui/keybindingLabel/keybindingLabel.js';
+-import { WorkbenchActionExecutedClassification, WorkbenchActionExecutedEvent } from '../../../../../base/common/actions.js';
+ import { Emitter, Event } from '../../../../../base/common/event.js';
+@@ -21,3 +20,2 @@ import { IInstantiationService } from '../../../../../platform/instantiation/com
+ import { IKeybindingService } from '../../../../../platform/keybinding/common/keybinding.js';
+-import { ITelemetryService } from '../../../../../platform/telemetry/common/telemetry.js';
+ import { ITerminalCapabilityStore, TerminalCapability } from '../../../../../platform/terminal/common/capabilities/capabilities.js';
+@@ -219,3 +217,2 @@ class TerminalInitialHintWidget extends Disposable {
+ 		@IKeybindingService private readonly _keybindingService: IKeybindingService,
+-		@ITelemetryService private readonly _telemetryService: ITelemetryService,
+ 	) {
+@@ -272,24 +269,6 @@ class TerminalInitialHintWidget extends Disposable {
+ 
+-		// Copilot CLI hint (only shown when AI features are enabled)
+-		if (!aiFeaturesHidden) {
+-			const handleCopilotCliClick = () => {
+-				this._telemetryService.publicLog2<WorkbenchActionExecutedEvent, WorkbenchActionExecutedClassification>('workbenchActionExecuted', {
+-					id: 'terminalCopilotCli.hintAction',
+-					from: 'hint'
+-				});
+-				this._instance.sendText('copilot', false);
+-			};
+-			const copilotCliHint = localize({
+-				key: 'copilotCliHint',
+-				comment: [
+-					'Preserve double-square brackets and their order',
+-				]
+-			}, "Type [[copilot]] to use Copilot CLI.");
+-			const copilotCliHintHandler: IContentActionHandler = {
+-				callback: () => handleCopilotCliClick(),
+-				disposables: this._toDispose
+-			};
+-			hintElement.appendChild(renderFormattedText(copilotCliHint, { actionHandler: copilotCliHintHandler }));
+-			ariaLabelParts.push(localize('copilotCliHintAriaLabel', "Type copilot to use Copilot CLI."));
+-		}
++		// Copilot CLI hint removed (vslight R-2/ADR-1: zero visible Copilot surface).
++		// Previously gated on !aiFeaturesHidden; even when AI features were hidden,
++		// the hint showed the dismissable "Type copilot to use Copilot CLI" text.
++		// Now: never render — fallback Suggest hint below handles the only legitimate case.
+ 
