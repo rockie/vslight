@@ -75,6 +75,7 @@ jobs:
       - name: Build
         env:
           SHOULD_BUILD: yes
+          SHOULD_BUILD_CLI: "no"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: ./build.sh
 
