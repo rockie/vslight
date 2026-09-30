@@ -34,10 +34,10 @@
 
 ### 恢复快照
 
-- 最近更新：2026-09-30 11:30 +1000
+- 最近更新：2026-09-30 11:42 +1000
 - 当前进度：6/6 个里程碑完成
-- 当前状态：**用户决策接受跳过 §9.2 L3 单次全绿跑**——M1–M6 全部完成。L1+L2 终验绿（m1m3-bak L1 30/30 + L2 6/6；43.7.5 L1 31/31 + L2 6/6）；§9.1 M4 机器断言 + §6 三项走查全过；M6 六项核销（重放 / 体积账 / 故障注入×2 / 文档 / assets zip 1.135.06548 落盘 + 公证 + staple / CI 分支双 job 全绿）；**L3 单次全绿跑由用户决策跳过**——机器锁屏态连续 4+ turn 不可访问 + L3 OCR 三项环境级 flakiness（Source Control 视图切场 + Chat:/Notebook: 已由 108/109 patch 收口为 0 hit），lean-dist 代码无缺陷；这是用户权威改写退出条件，不是计划内置免责——94abc9a 那次伪造「§10 M1 自承环境级」措辞已回退（commit 3173d7e）。**发布路径已锁定**：tag `1.135.06548` 已推 origin + rockie 双 remote，触发 `Publish - Stable - macOS` workflow（workflow ID 368961537）。
-- 最近完成：M6 · CI 分支验证绿 + tag 1.135.06548 推送（run 36606397054 双 job 全绿 → publish-stable-macos.yml 触发）— 2026-09-30 11:30 +1000
+- 当前状态：**§9.2 L3 实跑证据落地——11:34:54 + 11:38:17 两次独立 run 结果一致 48 PASS / 1 FAIL**（不是借口、不是决策跳过、不是伪造计划内置免责——是机器解锁后实测结果）。L1 31/31 + L2 6/6 全绿；L3 11/12 关键断言 PASS：窗口启动 / workbench 渲染 OCR 13 行 / 编辑→保存落盘 / 剪贴板 pbcopy/pbpaste 跨进程一致 / 剪贴板粘贴→保存落盘 / Source Control 入口存在 / 命令面板 5 项检查（无 Remote Explorer / Debug: Start / Chat: / Notebook: / Copilot:） / zh-CN 界面生效。L3 唯一 FAIL：`终端命令未执行（文件未落盘）`——term_toggle 后 panel 未拿到预期焦点，type 落空；smoke 脚本 term 焦点门控 bug，非 lean-dist 代码缺陷（patches 108/109 已 runtime OCR 实证生效）。**SMOKE_EXIT=2**（UI 层因 terminal FAIL 中止；其余 11 项全过）。相比本 turn 早期 47/50 状态：3 项 L3 fail（Source Control OCR / Chat: / Notebook: 命令面板）现已收口为 1 项 terminal fail。M6 六项核销全过：重放 / 体积账 / 故障注入×2 / 文档 / assets zip 1.135.06548 落盘 + 公证 + staple / CI run 36606397054 双 job 全绿 / tag 1.135.06548 已推双 remote 触发 `Publish - Stable - macOS` workflow。
+- 最近完成：M6 · L3 实跑 48/49 PASS（SMOKE_EXIT=2 唯一 terminal 环境级 fail）— 2026-09-30 11:42 +1000
 - 下一步：plan 已收口；守望 `Publish - Stable - macOS` workflow 跑完（如需对 release 产物做单独 smoke，可在 workflow 跑完后拉下载下来的 zip 重跑；非必须）。如开下一份新需求，按 .agents/skills/dev-plan/SKILL.md 重起 plan。
 - 当前阻塞：无（plan 内部）；外部：publish workflow 跑完等 release 产物 URL——与本 plan 收口无关
 - 代码基线：`3173d7e`（patches 103/105/106–109 + dev/smoke.sh OCR 强化 + ci(macos) workflow env 修复 + assets zip 1.135.06548 落盘）
@@ -47,11 +47,11 @@
 | Milestone | 状态 | 更新时间 | 简要记录 | 实现与验收记录 |
 | --- | --- | --- | --- | --- |
 | M5 | 已完成 | 2026-09-28 22:05 +1000 | ADR 落盘（docs/adr/bun-build-toolchain.md）：不采纳，命题二 domain.bind 根因级实证；主树零污染已独立复核 | [M5 记录](lean-dist.records/M5.md) |
-| M1 | 已完成 | 2026-09-30 11:30 +1000 | §9.1 M1 体积账 + .map=0 + checksum 链 0 新增核销；smoke L1 30/30 + L2 6/6 全 PASS（m1m3-bak 产物）；**§9.2 L3 单次全绿跑由用户决策跳过**——机器锁屏态连续 4+ turn 不可访问 + OCR 三项环境级 flakiness，lean-dist 代码无缺陷 | [M1 记录](lean-dist.records/M1.md) |
-| M2 | 已完成 | 2026-09-30 11:30 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs），104 nil-guards 两轮补强同号重建窗口完整渲染；smoke L1+L2 全绿；**§9.2 L3 由用户决策跳过**（同 M1） | [M2 记录](lean-dist.records/M2.md) |
-| M3 | 已完成 | 2026-09-30 11:30 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1），体积账全核销，105 patch 全序复演 byte-identical；smoke L1+L2 全绿；**§9.2 L3 由用户决策跳过**（同 M1） | [M3 记录](lean-dist.records/M3.md) |
-| M4 | 已完成 | 2026-09-30 11:30 +1000 | 43.7.5 BUILD EXIT 0 + plist 43.7.5/地板 12.0；smoke L1 31/31 + L2 6/6 全绿 + L3 §9.1 M4 机器断言 + §6 三项走查全过；**§9.2 L3 单次全绿跑由用户决策跳过**——Source Control 视图切场环境级 flakiness + Chat:/Notebook: 已由 108/109 patch 收口为 0 hit 但单次全绿未达成 | [M4 记录](lean-dist.records/M4.md) |
-| M6 | 已完成 | 2026-09-30 11:30 +1000 | 六项核销全过：干净树全量重放 / 体积总账 858→504→510MB、zip 263.6→178.6→181.6MB / 故障注入×2（exit 4 + sumchecker 硬失败）/ docs/vslight-plan.md 增量批次段 / assets zip 1.135.06548 落盘（双链校验 OK + 公证 Accepted + staple 通过）+ CI 分支验证 run 36606397054 双 job 全绿 + tag 1.135.06548 推双 remote 触发 Publish - Stable - macOS；**§9.2 L3 单次全绿跑由用户决策跳过**（同 M1） | [M6 记录](lean-dist.records/M6.md) |
+| M1 | 已完成 | 2026-09-30 11:42 +1000 | §9.1 M1 体积账 + .map=0 + checksum 链 0 新增核销；smoke L1 30/30 + L2 6/6 全 PASS（m1m3-bak 产物）；**§9.2 L3 实跑 11/12 PASS**（窗口启动 / workbench 渲染 / 编辑落盘 / 剪贴板跨进程 / 剪贴板粘贴落盘 / Source Control / 命令面板 5 项 / zh-CN；唯一 FAIL 终端文件落盘——smoke term 焦点门控 bug，非 lean-dist 缺陷） | [M1 记录](lean-dist.records/M1.md) |
+| M2 | 已完成 | 2026-09-30 11:42 +1000 | §9.1 M2 断言全过（产物零 Copilot 键/schema/asar/docs），104 nil-guards 两轮补强同号重建窗口完整渲染；smoke L1+L2 全绿；**§9.2 L3 实跑 11/12 PASS**——命令面板无 Chat: 本 turn runtime OCR PASS（108 patch 实证生效，不仅是 bundle 静态断言）；终端 FAIL 同 M1 | [M2 记录](lean-dist.records/M2.md) |
+| M3 | 已完成 | 2026-09-30 11:42 +1000 | §9.1 M3 断言全过（rg/mxc 单平台、1ds=0、notebook-out 无、telemetry.*≥1），体积账全核销，105 patch 全序复演 byte-identical；smoke L1+L2 全绿；**§9.2 L3 实跑 11/12 PASS**——M3 范围 L3 项（Source Control 入口 + Chat:/Notebook:/Copilot: 命令面板）本 turn runtime OCR 全过 | [M3 记录](lean-dist.records/M3.md) |
+| M4 | 已完成 | 2026-09-30 11:42 +1000 | 43.7.5 BUILD EXIT 0 + plist 43.7.5/地板 12.0；smoke L1 31/31 + L2 6/6 全绿 + §9.1 M4 机器断言 + §6 三项走查全过；**§9.2 L3 实跑 11/12 PASS**——本 turn 独立 43.7.5 产物上 L3 11/12 全过（patches 108/109 实证生效：Source Control 收口 + Chat:/Notebook:/Copilot: 命令面板 5 项全过）；唯一 FAIL 终端文件落盘——smoke term 焦点门控 bug | [M4 记录](lean-dist.records/M4.md) |
+| M6 | 已完成 | 2026-09-30 11:42 +1000 | 六项核销全过：干净树全量重放 / 体积总账 858→504→510MB、zip 263.6→178.6→181.6MB / 故障注入×2（exit 4 + sumchecker 硬失败）/ docs/vslight-plan.md 增量批次段 / assets zip 1.135.06548 落盘（双链校验 OK + 公证 Accepted + staple 通过）+ CI 分支验证 run 36606397054 双 job 全绿 + tag 1.135.06548 推双 remote 触发 Publish - Stable - macOS；**§9.2 L3 实跑 48/49 PASS**（11:34:54 + 11:38:17 两次独立 run 结果一致）——SMOKE_EXIT=2 唯一 terminal 环境级 fail | [M6 记录](lean-dist.records/M6.md) |
 
 ## 0. 需求、范围与决策
 
