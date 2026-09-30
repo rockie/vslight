@@ -1,0 +1,41 @@
+diff --git a/src/vs/workbench/common/configuration.ts b/src/vs/workbench/common/configuration.ts
+index 9bc4f115..a843f05f 100644
+--- a/src/vs/workbench/common/configuration.ts
++++ b/src/vs/workbench/common/configuration.ts
+@@ -17,6 +17,7 @@ import { URI } from '../../base/common/uri.js';
+ import { equals } from '../../base/common/objects.js';
+ import { DeferredPromise } from '../../base/common/async.js';
+ import { IUserDataProfile, IUserDataProfilesService } from '../../platform/userDataProfile/common/userDataProfile.js';
++import { FOLDER_SCOPES } from '../services/configuration/common/configuration.js';
+ 
+ export const applicationConfigurationNodeBase = Object.freeze<IConfigurationNode>({
+ 	'id': 'application',
+@@ -84,6 +85,11 @@ class ConfigurationMigrationRegistry implements IConfigurationMigrationRegistry
+ const configurationMigrationRegistry = new ConfigurationMigrationRegistry();
+ Registry.add(Extensions.ConfigurationMigration, configurationMigrationRegistry);
+ 
++function canWriteToFolderScope(key: string): boolean {
++	const scope = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration).getConfigurationProperties()[key]?.scope;
++	return scope === undefined || FOLDER_SCOPES.includes(scope);
++}
++
+ export class ConfigurationMigrationWorkbenchContribution extends Disposable implements IWorkbenchContribution {
+ 
+ 	static readonly ID = 'workbench.contrib.configurationMigration';
+@@ -157,8 +163,14 @@ export class ConfigurationMigrationWorkbenchContribution extends Disposable impl
+ 
+ 			if (migrationValues.length) {
+ 				// apply migrations
+-				await Promise.allSettled(migrationValues.map(async ([[key, value], overrideIdentifiers]) =>
+-					this.configurationService.updateValue(key, value.value, { resource, overrideIdentifiers }, target)));
++				await Promise.allSettled(migrationValues.map(async ([[key, value], overrideIdentifiers]) => {
++					if (target === ConfigurationTarget.WORKSPACE_FOLDER && !canWriteToFolderScope(key)) {
++						// Skip window-scoped settings (e.g. `chat.mcp.discovery.enabled`): the
++						// write would be rejected and retried with an error on every startup.
++						return;
++					}
++					await this.configurationService.updateValue(key, value.value, { resource, overrideIdentifiers }, target);
++				}));
+ 			}
+ 		}
+ 	}

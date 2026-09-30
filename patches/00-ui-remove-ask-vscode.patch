@@ -1,0 +1,51 @@
+diff --git a/src/vs/workbench/browser/actions/helpActions.ts b/src/vs/workbench/browser/actions/helpActions.ts
+index a534919b..9c78492f 100644
+--- a/src/vs/workbench/browser/actions/helpActions.ts
++++ b/src/vs/workbench/browser/actions/helpActions.ts
+@@ -11,3 +11,3 @@
+ import { URI } from '../../../base/common/uri.js';
+-import { MenuId, Action2, registerAction2, MenuRegistry } from '../../../platform/actions/common/actions.js';
++import { MenuId, Action2, registerAction2 } from '../../../platform/actions/common/actions.js';
+ import { KeyChord, KeyMod, KeyCode } from '../../../base/common/keyCodes.js';
+@@ -18,3 +18,2 @@
+ import { ICommandService } from '../../../platform/commands/common/commands.js';
+-import { ContextKeyExpr } from '../../../platform/contextkey/common/contextkey.js';
+ import { IsSessionsWindowContext } from '../../common/contextkeys.js';
+@@ -336,33 +335,3 @@
+ }
+-
+-class AskVSCodeCopilot extends Action2 {
+-	static readonly ID = 'workbench.action.askVScode';
+ 
+-	constructor() {
+-		super({
+-			id: AskVSCodeCopilot.ID,
+-			title: localize2('askVScode', 'Ask @vscode'),
+-			category: Categories.Help,
+-			f1: true,
+-			precondition: ContextKeyExpr.and(ContextKeyExpr.equals('chatSetupHidden', false), ContextKeyExpr.equals('chatSetupDisabledInWorkspace', false), IsSessionsWindowContext.negate())
+-		});
+-	}
+-
+-	async run(accessor: ServicesAccessor): Promise<void> {
+-		const commandService = accessor.get(ICommandService);
+-		commandService.executeCommand('workbench.action.chat.open', { mode: 'agent', query: '@vscode ', isPartialQuery: true });
+-
+-	}
+-}
+-
+-MenuRegistry.appendMenuItem(MenuId.MenubarHelpMenu, {
+-	command: {
+-		id: AskVSCodeCopilot.ID,
+-		title: localize2('askVScode', 'Ask @vscode'),
+-	},
+-	order: 7,
+-	group: '1_welcome',
+-	when: ContextKeyExpr.and(ContextKeyExpr.equals('chatSetupHidden', false), ContextKeyExpr.equals('chatSetupDisabledInWorkspace', false), IsSessionsWindowContext.negate())
+-});
+-
+ // --- Actions Registration
+@@ -406,3 +375 @@
+ registerAction2(GetStartedWithAccessibilityFeatures);
+-
+-registerAction2(AskVSCodeCopilot);
