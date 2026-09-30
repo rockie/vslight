@@ -28,3 +28,4 @@ build.log
 .pi/goals/.goal-ledger-checkpoint.json
 /.pi/goals/archived
 .pi/goals/goal_events.jsonl
+/dev/progress
