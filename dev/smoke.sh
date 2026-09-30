@@ -418,7 +418,8 @@ else
     # key code 发送物理键，IME 不拦截（本机实证：IME 激活时仅前者打不开面板）。
     term_toggle() {
       require_frontmost
-      run_to 20 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to key code 50 using control down"
+      # VSLight terminal 真快捷键是 Ctrl+Shift+`（menu 显示），不是 Ctrl+`——前 fix 漏 shift
+      run_to 20 osascript -e "tell application \"System Events\" to tell process \"${APP_NAME}\" to key code 50 using {control down, shift down}"
     }
 
     # 终端面板开合以 OCR 门控，不用固定 sleep——首开慢时固定 sleep 会把命令打进编辑器

@@ -24,3 +24,7 @@ build.log
 
 # private key material - never commit
 *.p12
+.pi/.goals-pool-snapshot.json
+.pi/goals/.goal-ledger-checkpoint.json
+/.pi/goals/archived
+.pi/goals/goal_events.jsonl
