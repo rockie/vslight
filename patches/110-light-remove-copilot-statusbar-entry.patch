@@ -1,0 +1,12 @@
+diff --git a/src/vs/workbench/contrib/chat/browser/chatStatus/chatStatusEntry.ts b/src/vs/workbench/contrib/chat/browser/chatStatus/chatStatusEntry.ts
+--- a/src/vs/workbench/contrib/chat/browser/chatStatus/chatStatusEntry.ts
++++ b/src/vs/workbench/contrib/chat/browser/chatStatus/chatStatusEntry.ts
+@@ -169,3 +169,7 @@
+ 		const sentiment = this.chatEntitlementService.sentiment;
+-		if (!sentiment.hidden) {
++		// vslight R-2/ADR-1: zero visible Copilot surface. This product ships no
++		// defaultChatAgent, so ChatEntitlementContext is never created and
++		// chatSetupHidden stays false — without this guard the dead Copilot status
++		// icon renders at the right of the status bar and its click target is inert.
++		if (!sentiment.hidden && product.defaultChatAgent) {
+ 			const props = this.getEntryProps();
