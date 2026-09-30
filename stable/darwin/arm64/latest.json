@@ -1,9 +1,9 @@
 {
-  "url": "https://github.com/rockie/vslight/releases/download/1.135.06523/VSLight-darwin-arm64-1.135.06523.zip",
-  "name": "1.135.06523",
-  "version": "70f5c9036ffb54ec222aa5ccf7ea81273348edaf",
-  "productVersion": "1.135.6523.0",
-  "hash": "ddf7c26f15dc5517fe9a9a8f3e06ebb153d45558",
-  "timestamp": "1790579844321",
-  "sha256hash": "a4edf9e5b08568fabd92564188dbc138e1ce84a35c79b402179b6b0c16ec88db"
+  "url": "https://github.com/rockie/vslight/releases/download/1.135.06566/VSLight-darwin-arm64-1.135.06566.zip",
+  "name": "1.135.06566",
+  "version": "41ec19baf8095b559518922360dcb3e4fee5319c",
+  "productVersion": "1.135.6566.0",
+  "hash": "d7c50d4a78d36c126f2fc9e620b7dd2cbe2d9509",
+  "timestamp": "1790744764164",
+  "sha256hash": "4f2a003fd6eee376f0c59afb4cff31a45efd48d438d412a7ad6b0301b4432e20"
 }
