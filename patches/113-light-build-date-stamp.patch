@@ -1,0 +1,25 @@
+diff --git a/build/lib/date.ts b/build/lib/date.ts
+--- a/build/lib/date.ts
++++ b/build/lib/date.ts
+@@ -7,3 +7,2 @@
+ import fs from 'fs';
+-import { execSync } from 'child_process';
+ 
+@@ -12,5 +12,5 @@
+ /**
+- * Get the ISO date for the build. Uses the git commit date of HEAD
+- * so that independent builds on different machines produce the same
+- * timestamp (required for deterministic builds, e.g. macOS Universal).
++ * Get the ISO date for the build. vslight: wall-clock build date — upstream uses
++ * the source HEAD commit date for deterministic macOS Universal builds, which
++ * this product does not produce (each arch package is built separately).
+  */
+@@ -17,7 +17,3 @@
+ export function getGitCommitDate(): string {
+-	try {
+-		return execSync('git log -1 --format=%cI HEAD', { cwd: root, encoding: 'utf8' }).trim();
+-	} catch {
+-		return new Date().toISOString();
+-	}
++	return new Date().toISOString();
+ }
