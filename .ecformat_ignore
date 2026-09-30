@@ -9,6 +9,11 @@
 .agents/skills/
 .claude/skills/
 
+# Project docs (own writing style, not editorconfig-formatted)
+README.md
+docs/
+dev/progress/
+
 # File types with a mixed formatting which seems to be intentional.
 # Disabling only check for some properties (like indent_size) is currently not supported.
 
