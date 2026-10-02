@@ -1,6 +1,7 @@
 ---
 name: documentation-writer
 description: 基于代码事实写和更新技术文档：README、API 文档（HTTP 接口 / OpenAPI / 库与 SDK 参考）、架构文档、代码库说明文档（docs/codebase/ 成套）、用户手册与操作指南。每条结论都能追到仓库里的文件，文字去 AI 味；需要架构图、流程图、时序图时，本地装了 archify skill 就优先用它出图，没有再用 Mermaid。凡用户要求写或更新 README、补接口文档、生成 OpenAPI、写架构文档、画系统架构、梳理仓库、写新人上手文档、写用户手册 / 使用说明 / 教程，或改完代码要同步文档，都用本 skill，即使用户没说「文档」二字。Use for READMEs, API/OpenAPI/SDK reference, architecture docs, codebase onboarding docs, user manuals, tutorials and how-to guides, or syncing docs after code changes.
+disable-model-invocation: true
 ---
 
 # documentation-writer · 基于代码事实的技术文档
@@ -122,17 +123,7 @@ python3 "$SKILL_DIR/scripts/check_doc.py" <文档路径...> --repo-root <仓库�
 
 ### 探测 archify
 
-按顺序判断，命中即停：
-
-1. 当前环境的可用 skill 列表里有 `archify`：可用。在 Claude Code 里用 Skill 工具加载它。
-2. 否则跑探测脚本：
-
-   ```bash
-   bash "$SKILL_DIR/scripts/find-archify.sh"
-   ```
-
-   它在本 skill 的同级目录、项目和用户级的 `.claude/skills`、`.agents/skills`、`.codex/skills`、`.cursor/skills` 以及 Claude Code 插件缓存里找 `archify/SKILL.md`，同时检查 `node` 是否可用。退出码 0 表示可用，并打印 archify 目录；读那个目录下的 `SKILL.md`，按它的流程出图。
-3. 都没有：用 Mermaid。
+由 Agent 自行检查当前环境的可用 skill 列表；列表中未找到或列表未提供时，直接查找本 skill 同级目录及当前环境的项目级、用户级 skill 目录中的 `archify/SKILL.md`。找到后加载或读取它，按其流程出图；没有安装时用 Mermaid。不新增或调用 archify 安装检测脚本，不自动安装 skill。
 
 ### 用 archify 出图
 
@@ -210,5 +201,4 @@ python3 "$SKILL_DIR/scripts/check_doc.py" <文档路径...> --repo-root <仓库�
 | [references/stack-detection.md](references/stack-detection.md) | 技术栈不明确、多种 manifest 并存时 |
 | `assets/templates/*.md` | 代码库说明的八份模板 |
 | `scripts/scan.py` | 大仓或陌生仓，动笔前扫描 |
-| `scripts/find-archify.sh` | 出图前探测 archify |
 | `scripts/check_doc.py` | 交付前自检 |
