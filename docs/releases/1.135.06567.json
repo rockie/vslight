@@ -99,5 +99,55 @@
     "privateP12Removed": true
   },
   "previousAcceptance": "../plan/lean-core.records/M8-final-acceptance151.md",
-  "ciAndX64": "not required for this release; not run as release checks"
+  "ciAndX64": "not required for this release; not run as release checks",
+  "publication": {
+    "releaseUrl": "https://github.com/rockie/vslight/releases/tag/1.135.06567",
+    "publishedAt": "2026-10-02T13:50:53Z",
+    "latest": true,
+    "publicDownloads": [
+      {
+        "name": "VSLight-darwin-arm64-1.135.06567.zip",
+        "httpStatus": 200,
+        "bytes": 157389080
+      },
+      {
+        "name": "VSLight-darwin-arm64-1.135.06567.zip.sha1",
+        "httpStatus": 200,
+        "bytes": 79
+      },
+      {
+        "name": "VSLight-darwin-arm64-1.135.06567.zip.sha256",
+        "httpStatus": 200,
+        "bytes": 103
+      },
+      {
+        "name": "VSLight.arm64.1.135.06567.dmg",
+        "httpStatus": 200,
+        "bytes": 187899779
+      },
+      {
+        "name": "VSLight.arm64.1.135.06567.dmg.sha1",
+        "httpStatus": 200,
+        "bytes": 72
+      },
+      {
+        "name": "VSLight.arm64.1.135.06567.dmg.sha256",
+        "httpStatus": 200,
+        "bytes": 96
+      }
+    ],
+    "feed": {
+      "url": "https://github.com/rockie/vslight/releases/download/1.135.06567/VSLight-darwin-arm64-1.135.06567.zip",
+      "name": "1.135.06567",
+      "version": "0ed30b1bd21ac0a40d0b08cfbeea7f16ffc5fa3b",
+      "productVersion": "1.135.6567.0",
+      "hash": "e997424597ea27a9805c045596cd3bd6fb51286e",
+      "timestamp": "1790949092613",
+      "sha256hash": "51759d6bbffe727214244bbe93cbffe9e427a05794dd8f660bd32054ed3caabf"
+    },
+    "feedUrl": "https://raw.githubusercontent.com/rockie/vslight/refs/heads/versions/stable/darwin/arm64/latest.json",
+    "feedCommit": "fb4fda72be3ff18956530d66b5a8d5d3807d2804",
+    "tagCommit": "6fd8c0afc94bf38c09b7a80f2f4490f978a28cf9",
+    "uploadedSizesAndDigestsMatch": true
+  }
 }

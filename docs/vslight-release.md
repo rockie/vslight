@@ -20,7 +20,7 @@
 - **决策 9（sourcemap）：不当 KPI**。体积收益记账口径 = 不产 reh+CLI、摘 sessions/agentHost
   入口、摘 debug/notebook 等 contribution；验收用装机 JS 字节。
 - **决策 10（纯本地边界）**：① 断网可完成主路径（编辑/文件/搜索/Git/终端）；
-  ② 内置 AI/Remote 网络链移除，扩展市场仍使用 open-vsx，当前更新源关闭；
+  ② 内置 AI/Remote 网络链移除，扩展市场仍使用 open-vsx，更新源为 `rockie/vslight@versions`；
   ③ 无账号/设置同步参与主路径（认证扩展仅按需被动触发）。普通扩展、认证和外链仍可按用户操作联网。
 - 版本号：跟随上游 `1.135.x` + vslight 构建序号；瘦身验收构建为 `1.135.06566`，新发行使用 `1.135.06567`。
 
@@ -33,7 +33,7 @@
 | checksums（sha1/sha256） | prepare_checksums.sh 产出 |
 | release notes | 落点：GitHub releases 页面（`rockie/vslight`） |
 | 迁移说明 | 落点：docs/vslight-migration.md + release notes 首段链接 |
-| versions feed（latest.json） | 待 feed 仓（docs/vslight-update-feed.md） |
+| versions feed（latest.json） | 已更新为 `1.135.06567`（`rockie/vslight@versions`） |
 
 ## 发布基础设施与历史验收
 
