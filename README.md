@@ -28,8 +28,9 @@ Releases: <https://github.com/rockie/vslight/releases>
 
 macOS (Apple Silicon) is the local acceptance platform; Linux and Windows keep build
 capability but are not part of the acceptance scope of this release.
-The current lean-core build has not been released. See the
-[release checklist](docs/vslight-release.md) for its validation status.
+The current lean-core release is [1.135.06567](https://github.com/rockie/vslight/releases/tag/1.135.06567),
+available as signed and notarized ZIP and DMG packages. See the
+[release checklist](docs/vslight-release.md) for validation details.
 
 ## Migration
 

@@ -1,5 +1,17 @@
 # vslight 发布清单（Phase 6 落点）
 
+## 当前发行
+
+最新瘦身发行版：[VSLight 1.135.06567](https://github.com/rockie/vslight/releases/tag/1.135.06567)，
+仅交付 macOS 12+ arm64。ZIP、DMG 和各自的 SHA-1/SHA-256 校验文件共六项；
+应用与 DMG 均经过 Developer ID 签名、Apple 公证及 staple 验证。
+发布说明见 [1.135.06567](releases/1.135.06567.md)，构建和产物验证见
+[发行记录](releases/1.135.06567.json)。自动升级源位于 `rockie/vslight@versions`。
+
+本次在隔离目录将发行版本递增后完整重建；生成源码的 5,213 个文件和链接与已验收
+151 版本一致，生产输入与当前代码一致。沿用本地 arm64 验收范围，x64/CI 不作为发布门。
+下方的 151 构建数字和“尚未发布”记录描述本次发行前的历史验收产物。
+
 ## 决策记录（沿用计划默认）
 
 - **决策 8（平台交付范围）：B —— 只发 macOS**。决策 7 加注：三平台仅保证可构建
@@ -10,7 +22,7 @@
 - **决策 10（纯本地边界）**：① 断网可完成主路径（编辑/文件/搜索/Git/终端）；
   ② 内置 AI/Remote 网络链移除，扩展市场仍使用 open-vsx，当前更新源关闭；
   ③ 无账号/设置同步参与主路径（认证扩展仅按需被动触发）。普通扩展、认证和外链仍可按用户操作联网。
-- 版本号：跟随上游 `1.135.x` + vslight 构建序号；当前瘦身验收构建为 `1.135.06566`，尚未发布。
+- 版本号：跟随上游 `1.135.x` + vslight 构建序号；瘦身验收构建为 `1.135.06566`，新发行使用 `1.135.06567`。
 
 ## 发布物清单（macOS）
 
@@ -23,12 +35,13 @@
 | 迁移说明 | 落点：docs/vslight-migration.md + release notes 首段链接 |
 | versions feed（latest.json） | 待 feed 仓（docs/vslight-update-feed.md） |
 
-## 首次发布前置（阻塞项）
+## 发布基础设施与历史验收
 
 1. **图标**：正式设计为浅色圆角底、代码尖括号和蓝色闪电，见
    `docs/vslight-icons.md`。打包后文档关联共用主图标，源资产保留；原生语言资源整理在签名前完成。当前150产物的 Finder/Dock/关于框已验，文档关联字段与三类文件打开正常；本次按用户指示以本地 arm64 验收为准，x64/CI 不要求。
-2. **vslight GitHub org/仓**：发布仓 + versions 仓 + secrets/docker 镜像/AUR/snap/winget
-   标识的新归属（当前 workflow 中保留 VSCodium 外部标识，见 Phase 2 残留清单）。
+2. **GitHub 发行与更新源**：发布仓为 `rockie/vslight`，更新源为同仓 `versions` 分支。
+   Docker/AUR/snap/winget 不属于本次 macOS arm64 交付范围；对应 workflow 的外部标识
+   仍见 Phase 2 残留清单。
 3. **签名/公证链已有历史通过记录（2026-09-28）**：Developer ID Application (KITMI PTY LTD,
    M6B2TDZC9H)；凭据在 `dev/osx/codesign.env`（gitignored）。验证通过：
    `spctl -a -vv` → accepted, source=Notarized Developer ID；`stapler validate` OK。

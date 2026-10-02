@@ -1,0 +1,103 @@
+{
+  "version": "1.135.06567",
+  "releaseUrl": "https://github.com/rockie/vslight/releases/tag/1.135.06567",
+  "sourceCommit": "b465f15428fffeda5aa9a91371eee1c265f00b7c",
+  "upstreamVersion": "1.135.0",
+  "upstreamCommit": "08d4889f9ec4a1685d257b9b95de036c8e1ce1e5",
+  "verifiedAt": "2026-10-02T23:48:23.227980+10:00",
+  "scope": "macOS 12+ arm64",
+  "build": {
+    "exit": 0,
+    "startedAt": "2026-10-02T23:37:23.763970+10:00",
+    "finishedAt": "2026-10-02T23:40:23.709257+10:00"
+  },
+  "productionInputsMatched": 443,
+  "sourceComparison": {
+    "matchedEntries": 5213,
+    "differences": []
+  },
+  "unsignedRuntimeExit": 0,
+  "artifactVerification": {
+    "version": "1.135.06567",
+    "productCommit": "0ed30b1bd21ac0a40d0b08cfbeea7f16ffc5fa3b",
+    "assets": {
+      "VSLight-darwin-arm64-1.135.06567.zip": {
+        "bytes": 157389080,
+        "sha1": "e997424597ea27a9805c045596cd3bd6fb51286e",
+        "sha256": "51759d6bbffe727214244bbe93cbffe9e427a05794dd8f660bd32054ed3caabf"
+      },
+      "VSLight.arm64.1.135.06567.dmg": {
+        "bytes": 187899779,
+        "sha1": "8dc2bff770967083a10dd9be20554a7a2d4f6f81",
+        "sha256": "b240dc5aa73079f16a9c6698d9303c3e2a1a9ee720085f5f428aeb75ac682c57"
+      }
+    },
+    "zipEntries": 3858,
+    "zipFilesAndLinksMatched": 1223,
+    "zipCRC": "PASS",
+    "cliVersion": "1.135.06567\n0ed30b1bd21ac0a40d0b08cfbeea7f16ffc5fa3b\narm64",
+    "cliExit": 0,
+    "appBytes": 421985317
+  },
+  "dmgVerification": {
+    "filesAndLinksMatched": 1223,
+    "applicationsLink": "/Applications",
+    "imageChecksum": "PASS"
+  },
+  "appNotary": {
+    "id": "6e2d590c-9488-4d66-9bb5-dac39aeb1c68",
+    "message": "Processing complete",
+    "status": "Accepted"
+  },
+  "dmgNotary": {
+    "status": "Accepted",
+    "message": "Processing complete",
+    "id": "8fdf7993-10cf-45ff-8852-ff7e0dcd1994"
+  },
+  "signAndNotaryStages": {
+    "dmg-notary-submit": 0,
+    "keychain-settings": 0,
+    "staple-validate": 0,
+    "spctl": 0,
+    "notary-submit": 0,
+    "key-partition": 0,
+    "content-audit": 0,
+    "signed-zip-crc": 0,
+    "clone": 0,
+    "dmg-app-clone": 0,
+    "keychain-unlock": 0,
+    "dmg-staple-validate": 0,
+    "dmg-create": 0,
+    "codesign-display": 0,
+    "dmg-assess": 0,
+    "notarization-zip": 0,
+    "signing": 0,
+    "signed-runtime": 0,
+    "staple": 0,
+    "dmg-applications": 0,
+    "certificate-import": 0,
+    "dmg-source": 0,
+    "codesign-verify": 0,
+    "runner": 0,
+    "cleanup": 0,
+    "notary-store": 0,
+    "dmg-staple": 0,
+    "codesign-after-staple": 0,
+    "dmg-sign": 0,
+    "signed-zip": 0,
+    "dmg-sign-verify": 0,
+    "keychain-create": 0
+  },
+  "signContentAudit": {
+    "status": "PASS",
+    "unexpected": []
+  },
+  "credentialCleanup": {
+    "equal": true,
+    "defaultKeychainUnchanged": true,
+    "privateKeychainRemoved": true,
+    "privateP12Removed": true
+  },
+  "previousAcceptance": "../plan/lean-core.records/M8-final-acceptance151.md",
+  "ciAndX64": "not required for this release; not run as release checks"
+}
