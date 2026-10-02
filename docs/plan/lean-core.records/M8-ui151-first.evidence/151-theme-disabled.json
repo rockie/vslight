@@ -1,0 +1,38 @@
+{
+  "theme": {
+    "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+    "editorBackground": "rgb(40, 44, 52)",
+    "colors": {
+      "editor.background": "#282c34",
+      "editor.foreground": "#abb2bf",
+      "sideBar.background": "#21252b",
+      "activityBar.background": "#282c34",
+      "statusBar.background": "#21252b"
+    }
+  },
+  "disabled": {
+    "query": "@disabled lean-disabled-final",
+    "rows": [
+      {
+        "id": "lean-tests.lean-disabled-final",
+        "label": "Synthetic disabled extension persistence sentinel, 0.0.1, Publisher lean-tests,  ",
+        "text": "Synthetic disabled extension persistence sentinel\nlean-tests"
+      }
+    ]
+  },
+  "surface": {
+    "status": "PASS",
+    "file": "/private/tmp/lcfinal-chkarkup/ui/w/content-proof.txt",
+    "sha256": "f969e69f3ec9cb2f93757fb6f9f41bc0a49ec856fc23fb66eb01684bbce2cca7",
+    "languageId": "plaintext",
+    "publicTextDocumentAndEditorAPIs": true,
+    "reopenedForThemeSurfaceOnly": true,
+    "notTabRestoreEvidence": true,
+    "noGlobalStateOrAuthWrites": true
+  },
+  "themeFile": {
+    "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+    "sha256": "186fbbd1ef99a9fb6548fac7a1d354b925a7f9b98da97ef7649e22e20d08c756"
+  },
+  "onlyReadThemeAndEnablement": true
+}

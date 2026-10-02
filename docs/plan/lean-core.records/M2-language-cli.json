@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-01T16:25:17.838704+00:00",
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "fixture": "/tmp/vslight-smoke.fWrs7O",
+  "status": "CLI_PASS_GUI_PENDING",
+  "checks": [
+    "OpenVSX German language pack installed",
+    "real package declares de localization",
+    "ordinary installed theme uninstalled",
+    "list removes theme and retains language pack"
+  ],
+  "before": [
+    "ms-ceintl.vscode-language-pack-de",
+    "ms-ceintl.vscode-language-pack-zh-hans",
+    "zhuangtongfa.material-theme"
+  ],
+  "after": [
+    "ms-ceintl.vscode-language-pack-de",
+    "ms-ceintl.vscode-language-pack-zh-hans"
+  ],
+  "installLog": "/tmp/lean-language-de144-install.log",
+  "uninstallLog": "/tmp/vslight-smoke.fWrs7O/theme-uninstall144.log"
+}

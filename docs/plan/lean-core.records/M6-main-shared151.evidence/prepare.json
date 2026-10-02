@@ -1,0 +1,25 @@
+{
+  "taskRoot": "/private/tmp/lc151ms-wdn5hck0",
+  "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "evidence": "/Users/rockie/Documents/gh-xgent/vscodium/docs/plan/lean-core.records/M6-main-shared151.evidence",
+  "ports": {
+    "renderer": 19550,
+    "main": 19551,
+    "shared": 19552
+  },
+  "loadedHashPreflight": {
+    "main": {
+      "appScript": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/main.js",
+      "frozenScript": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/main.js",
+      "sha256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718"
+    },
+    "shared": {
+      "appScript": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+      "frozenScript": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+      "sha256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79"
+    }
+  },
+  "launchPermitted": false,
+  "waitingFor": "explicit root message GUI\u5df2\u91ca\u653e",
+  "helperSHA256": "c24aa7b0f12a1d143134579f14745c8e19b0be3d9530e559024aea54bbc392e0"
+}

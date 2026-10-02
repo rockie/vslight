@@ -1,0 +1,3096 @@
+[
+  {
+    "index": 0,
+    "services": [
+      {
+        "id": "mainProcessService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "mainProcessConnection"
+        ]
+      },
+      {
+        "id": "productService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_serviceBrand",
+          "nameShort",
+          "nameLong",
+          "applicationName",
+          "dataFolderName",
+          "sharedDataFolderName",
+          "win32MutexName",
+          "licenseName",
+          "licenseUrl",
+          "serverLicenseUrl",
+          "serverGreeting",
+          "serverLicense",
+          "serverLicensePrompt",
+          "win32DirName",
+          "win32NameVersion",
+          "win32RegValueName",
+          "win32x64AppId",
+          "win32arm64AppId",
+          "win32x64UserAppId",
+          "win32arm64UserAppId",
+          "win32AppUserModelId",
+          "win32ShellNameShort",
+          "darwinBundleIdentifier",
+          "darwinProfileUUID",
+          "darwinProfilePayloadUUID",
+          "linuxIconName",
+          "licenseFileName",
+          "reportIssueUrl",
+          "nodejsArtifactFeed",
+          "electronArtifactFeed",
+          "urlProtocol",
+          "webviewContentExternalBaseUrlTemplate",
+          "builtInExtensions",
+          "onboardingKeymaps",
+          "onboardingThemes",
+          "checksumFailMoreInfoUrl",
+          "documentationUrl",
+          "extensionsGallery",
+          "keyboardShortcutsUrlLinux",
+          "keyboardShortcutsUrlMac",
+          "keyboardShortcutsUrlWin",
+          "linkProtectionTrustedDomains",
+          "releaseNotesUrl",
+          "updateUrl",
+          "downloadUrl",
+          "quality",
+          "win32AppId",
+          "win32UserAppId",
+          "win32ContextMenu",
+          "extensionAllowedBadgeProviders",
+          "extensionAllowedBadgeProvidersRegex",
+          "extensionsEnabledWithApiProposalVersion",
+          "extensionEnabledApiProposals",
+          "extensionKind",
+          "extensionPointExtensionKind",
+          "extensionSyncedKeys",
+          "extensionVirtualWorkspacesSupport",
+          "serverDownloadUrlTemplate",
+          "commit",
+          "date",
+          "checksums",
+          "version"
+        ]
+      },
+      {
+        "id": "environmentService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_args",
+          "paths",
+          "productService",
+          "configuration",
+          "$memoize$windowLogsPath",
+          "$memoize$logFile",
+          "$memoize$isExtensionDevelopment",
+          "$memoize$extensionTestsLocationURI",
+          "$memoize$window",
+          "$memoize$userDataPath",
+          "$memoize$appSettingsHome",
+          "$memoize$userRoamingDataHome",
+          "$memoize$remoteAuthority",
+          "$memoize$cacheHome",
+          "$memoize$disableWorkspaceTrust",
+          "$memoize$filesToOpenOrCreate",
+          "$memoize$filesToDiff",
+          "$memoize$filesToMerge",
+          "$memoize$disableTelemetry",
+          "$memoize$extensionEnabledProposedApi",
+          "$memoize$extensionDevelopmentKind",
+          "$memoize$os",
+          "$memoize$userHome",
+          "$memoize$backupPath",
+          "$memoize$enableSmokeTestDriver",
+          "$memoize$sync",
+          "$memoize$filesToWait",
+          "$memoize$extensionsPath",
+          "$memoize$builtinExtensionsPath",
+          "$memoize$extensionDevelopmentLocationURI",
+          "$memoize$debugExtensionHost",
+          "$memoize$extHostLogsPath",
+          "$memoize$localHistoryHome",
+          "$memoize$logLevel",
+          "$memoize$extensionLogLevel",
+          "$memoize$argvResource",
+          "$memoize$skipWelcome",
+          "$memoize$skipReleaseNotes",
+          "$memoize$useInMemorySecretStorage",
+          "$memoize$appRoot",
+          "$memoize$isPortable",
+          "$memoize$workspaceStorageHome",
+          "$memoize$logExtensionHostCommunication",
+          "$memoize$untitledWorkspacesHome"
+        ]
+      },
+      {
+        "id": "loggerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "logLevel",
+          "logsHome",
+          "_loggers",
+          "_onDidChangeLoggers",
+          "onDidChangeLoggers",
+          "_onDidChangeLogLevel",
+          "onDidChangeLogLevel",
+          "_onDidChangeVisibility",
+          "onDidChangeVisibility",
+          "windowId",
+          "channel"
+        ]
+      },
+      {
+        "id": "logService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "logger"
+        ]
+      },
+      {
+        "id": "defaultAccountService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "defaultAccount",
+          "initBarrier",
+          "_onDidChangeDefaultAccount",
+          "onDidChangeDefaultAccount",
+          "_onDidChangePolicyData",
+          "onDidChangePolicyData",
+          "_onDidChangeCopilotTokenInfo",
+          "onDidChangeCopilotTokenInfo",
+          "defaultAccountProvider",
+          "defaultAccountConfig"
+        ]
+      },
+      {
+        "id": "policy",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "policyDefinitions",
+          "policies",
+          "policyValueSources",
+          "_onDidChange",
+          "onDidChange",
+          "policyServices",
+          "logService"
+        ]
+      },
+      {
+        "id": "sharedProcessService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "windowId",
+          "logService",
+          "restoredBarrier",
+          "withSharedProcessConnection"
+        ]
+      },
+      {
+        "id": "utilityProcessWorkerWorkbenchService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "windowId",
+          "logService",
+          "mainProcessService",
+          "_utilityProcessWorkerService",
+          "restoredBarrier"
+        ]
+      },
+      {
+        "id": "signService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "fileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "logService",
+          "BUFFER_SIZE",
+          "_onDidChangeFileSystemProviderRegistrations",
+          "onDidChangeFileSystemProviderRegistrations",
+          "_onWillActivateFileSystemProvider",
+          "onWillActivateFileSystemProvider",
+          "_onDidChangeFileSystemProviderCapabilities",
+          "onDidChangeFileSystemProviderCapabilities",
+          "provider",
+          "_onDidRunOperation",
+          "onDidRunOperation",
+          "internalOnDidFilesChange",
+          "_onDidUncorrelatedFilesChange",
+          "onDidFilesChange",
+          "_onDidWatchError",
+          "onDidWatchError",
+          "activeWatchers",
+          "writeQueue"
+        ]
+      },
+      {
+        "id": "remoteAuthorityResolverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "remoteResourceLoader",
+          "_onDidChangeConnectionData",
+          "onDidChangeConnectionData",
+          "_resolveAuthorityRequests",
+          "_connectionTokens",
+          "_canonicalURIRequests",
+          "_canonicalURIProvider"
+        ]
+      },
+      {
+        "id": "IUriIdentityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "asCanonicalUri"
+        ]
+      },
+      {
+        "id": "IUserDataProfilesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "profilesHome",
+          "channel",
+          "_profiles",
+          "_onDidChangeProfiles",
+          "onDidChangeProfiles",
+          "onDidResetWorkspaces"
+        ]
+      },
+      {
+        "id": "IUserDataProfileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_onDidChangeCurrentProfile",
+          "onDidChangeCurrentProfile",
+          "_currentProfile"
+        ]
+      },
+      {
+        "id": "remoteSocketFactoryService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "factories"
+        ]
+      },
+      {
+        "id": "remoteAgentService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "remoteSocketFactoryService",
+          "userDataProfileService",
+          "_environmentService",
+          "_remoteAuthorityResolverService",
+          "_logService",
+          "_connection",
+          "_environment"
+        ]
+      },
+      {
+        "id": "storageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_onDidChangeValue",
+          "_onDidChangeTarget",
+          "onDidChangeTarget",
+          "_onWillSaveState",
+          "onWillSaveState",
+          "runFlushWhenIdle",
+          "_workspaceKeyTargets",
+          "_profileKeyTargets",
+          "_applicationKeyTargets",
+          "_applicationSharedKeyTargets",
+          "flushWhenIdleScheduler",
+          "remoteService",
+          "environmentService",
+          "profileStorageDisposables",
+          "workspaceStorageDisposables",
+          "applicationStorageProfile",
+          "applicationStorage",
+          "applicationSharedStorage",
+          "profileStorageProfile",
+          "profileStorage",
+          "workspaceStorageId",
+          "workspaceStorage",
+          "userDataProfileService",
+          "initializationPromise"
+        ]
+      },
+      {
+        "id": "nativeKeyboardLayoutService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_onDidChangeKeyboardLayout",
+          "onDidChangeKeyboardLayout",
+          "_keyboardLayoutService",
+          "_initPromise",
+          "_keyboardMapping",
+          "_keyboardLayoutInfo"
+        ]
+      },
+      {
+        "id": "contextService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "userDataProfileService",
+          "userDataProfilesService",
+          "fileService",
+          "remoteAgentService",
+          "uriIdentityService",
+          "logService",
+          "initialized",
+          "applicationConfiguration",
+          "remoteUserConfiguration",
+          "cachedFolderConfigs",
+          "_onDidChangeConfiguration",
+          "onDidChangeConfiguration",
+          "_onWillChangeWorkspaceFolders",
+          "onWillChangeWorkspaceFolders",
+          "_onDidChangeWorkspaceFolders",
+          "onDidChangeWorkspaceFolders",
+          "_onDidChangeWorkspaceName",
+          "onDidChangeWorkspaceName",
+          "_onDidChangeWorkbenchState",
+          "onDidChangeWorkbenchState",
+          "isWorkspaceTrusted",
+          "_restrictedSettings",
+          "_onDidChangeRestrictedSettings",
+          "onDidChangeRestrictedSettings",
+          "configurationRegistry",
+          "initRemoteUserConfigurationBarrier",
+          "completeWorkspaceBarrier",
+          "defaultConfiguration",
+          "policyConfiguration",
+          "configurationCache",
+          "_configuration",
+          "applicationConfigurationDisposables",
+          "localUserConfiguration",
+          "workspaceConfiguration",
+          "workspaceEditingQueue",
+          "workspace",
+          "instantiationService"
+        ]
+      },
+      {
+        "id": "configurationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "userDataProfileService",
+          "userDataProfilesService",
+          "fileService",
+          "remoteAgentService",
+          "uriIdentityService",
+          "logService",
+          "initialized",
+          "applicationConfiguration",
+          "remoteUserConfiguration",
+          "cachedFolderConfigs",
+          "_onDidChangeConfiguration",
+          "onDidChangeConfiguration",
+          "_onWillChangeWorkspaceFolders",
+          "onWillChangeWorkspaceFolders",
+          "_onDidChangeWorkspaceFolders",
+          "onDidChangeWorkspaceFolders",
+          "_onDidChangeWorkspaceName",
+          "onDidChangeWorkspaceName",
+          "_onDidChangeWorkbenchState",
+          "onDidChangeWorkbenchState",
+          "isWorkspaceTrusted",
+          "_restrictedSettings",
+          "_onDidChangeRestrictedSettings",
+          "onDidChangeRestrictedSettings",
+          "configurationRegistry",
+          "initRemoteUserConfigurationBarrier",
+          "completeWorkspaceBarrier",
+          "defaultConfiguration",
+          "policyConfiguration",
+          "configurationCache",
+          "_configuration",
+          "applicationConfigurationDisposables",
+          "localUserConfiguration",
+          "workspaceConfiguration",
+          "workspaceEditingQueue",
+          "workspace",
+          "instantiationService"
+        ]
+      },
+      {
+        "id": "workspaceTrustEnablementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "configurationService",
+          "environmentService"
+        ]
+      },
+      {
+        "id": "workspaceTrustManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "configurationService",
+          "remoteAuthorityResolverService",
+          "storageService",
+          "uriIdentityService",
+          "environmentService",
+          "workspaceService",
+          "workspaceTrustEnablementService",
+          "fileService",
+          "storageKey",
+          "_onDidChangeTrust",
+          "onDidChangeTrust",
+          "_onDidChangeTrustedFolders",
+          "onDidChangeTrustedFolders",
+          "_canonicalStartupFiles",
+          "_canonicalUrisResolved",
+          "_canonicalWorkspace",
+          "_workspaceResolvedPromise",
+          "_workspaceResolvedPromiseResolve",
+          "_workspaceTrustInitializedPromise",
+          "_workspaceTrustInitializedPromiseResolve",
+          "_storedTrustState",
+          "_trustTransitionManager",
+          "_trustStateInfo",
+          "_isTrusted"
+        ]
+      },
+      {
+        "id": "layoutService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "parent",
+          "layoutOptions",
+          "_onDidChangeZenMode",
+          "onDidChangeZenMode",
+          "_onDidChangeMainEditorCenteredLayout",
+          "onDidChangeMainEditorCenteredLayout",
+          "_onDidChangePanelAlignment",
+          "onDidChangePanelAlignment",
+          "_onDidChangeWindowMaximized",
+          "onDidChangeWindowMaximized",
+          "_onDidChangePanelPosition",
+          "onDidChangePanelPosition",
+          "_onDidChangePartVisibility",
+          "onDidChangePartVisibility",
+          "_onDidChangeNotificationsVisibility",
+          "onDidChangeNotificationsVisibility",
+          "_onDidChangeAuxiliaryBarMaximized",
+          "onDidChangeAuxiliaryBarMaximized",
+          "_onDidLayoutMainContainer",
+          "onDidLayoutMainContainer",
+          "_onDidLayoutActiveContainer",
+          "onDidLayoutActiveContainer",
+          "_onDidLayoutContainer",
+          "onDidLayoutContainer",
+          "_onDidAddContainer",
+          "onDidAddContainer",
+          "_onDidChangeActiveContainer",
+          "onDidChangeActiveContainer",
+          "mainContainer",
+          "containerStylesLoaded",
+          "parts",
+          "initialized",
+          "disposed",
+          "_openedDefaultEditors",
+          "whenReadyPromise",
+          "whenReady",
+          "whenRestoredPromise",
+          "whenRestored",
+          "restored",
+          "inMaximizedAuxiliaryBarTransition",
+          "options",
+          "serviceCollection",
+          "_onWillShutdown",
+          "onWillShutdown",
+          "_onDidShutdown",
+          "onDidShutdown",
+          "previousUnexpectedError",
+          "environmentService",
+          "configurationService",
+          "hostService",
+          "contextService",
+          "storageService",
+          "themeService",
+          "extensionService",
+          "logService",
+          "telemetryService",
+          "auxiliaryWindowService",
+          "editorService",
+          "editorGroupService",
+          "mainPartEditorService",
+          "paneCompositeService",
+          "viewDescriptorService",
+          "titleService",
+          "notificationService",
+          "statusBarService",
+          "_mainContainerDimension",
+          "stateModel",
+          "state",
+          "fontAliasing",
+          "fontFamily",
+          "fontSize",
+          "titleBarPartView",
+          "bannerPartView",
+          "sideBarPartView",
+          "activityBarPartView",
+          "editorPartView",
+          "panelPartView",
+          "auxiliaryBarPartView",
+          "statusBarPartView",
+          "workbenchGrid"
+        ]
+      },
+      {
+        "id": "languageConfigurationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getLanguageConfiguration",
+          "onDidChange"
+        ]
+      },
+      {
+        "id": "editorWorkerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_languageConfigurationService",
+          "_webWorkerService",
+          "_modelService",
+          "_workerManager",
+          "_logService"
+        ]
+      },
+      {
+        "id": "diffProviderFactoryService",
+        "state": "descriptor",
+        "descriptorCtor": "sbe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IActionViewItemService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "lookUp",
+          "onDidChange",
+          "register"
+        ]
+      },
+      {
+        "id": "IEditorCancelService",
+        "state": "descriptor",
+        "descriptorCtor": "",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "markdownRendererService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "setDefaultCodeBlockRenderer"
+        ]
+      },
+      {
+        "id": "actionWidgetService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "ICodeLensCache",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "get",
+          "put"
+        ]
+      },
+      {
+        "id": "ILanguageFeatureDebounceService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "for"
+        ]
+      },
+      {
+        "id": "IPeekViewService",
+        "state": "descriptor",
+        "descriptorCtor": "",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "ISymbolNavigationService",
+        "state": "descriptor",
+        "descriptorCtor": "Ixe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IInlayHintsCache",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "treeViewsDndService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IOutlineModelService",
+        "state": "descriptor",
+        "descriptorCtor": "gEe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IMarkerNavigationService",
+        "state": "descriptor",
+        "descriptorCtor": "yEe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IInlineCompletionsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "ISuggestMemories",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IExtensionStatusBarItemService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getEntries",
+          "onDidChange"
+        ]
+      },
+      {
+        "id": "workspaceTrustRequestService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "extensionManifestPropertiesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getExtensionKind",
+          "prefersExecuteOnUI"
+        ]
+      },
+      {
+        "id": "workingCopyService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeDirty",
+          "onDidRegister",
+          "onDidUnregister",
+          "onDidChangeContent",
+          "onDidSave",
+          "registerWorkingCopy"
+        ]
+      },
+      {
+        "id": "workingCopyFileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "addFileOperationParticipant",
+          "onDidRunWorkingCopyFileOperation",
+          "registerWorkingCopyProvider",
+          "onWillRunWorkingCopyFileOperation"
+        ]
+      },
+      {
+        "id": "filesConfigurationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "configurationService",
+          "contextService",
+          "environmentService",
+          "uriIdentityService",
+          "fileService",
+          "markerService",
+          "textResourceConfigurationService",
+          "_onDidChangeAutoSaveConfiguration",
+          "onDidChangeAutoSaveConfiguration",
+          "_onDidChangeAutoSaveDisabled",
+          "onDidChangeAutoSaveDisabled",
+          "_onDidChangeFilesAssociation",
+          "onDidChangeFilesAssociation",
+          "_onDidChangeReadonly",
+          "onDidChangeReadonly",
+          "autoSaveConfigurationCache",
+          "autoSaveAfterShortDelayOverrides",
+          "autoSaveDisabledOverrides",
+          "readonlyIncludeMatcher",
+          "readonlyExcludeMatcher",
+          "sessionReadonlyOverrides",
+          "autoSaveAfterShortDelayContext",
+          "currentGlobalAutoSaveConfiguration",
+          "currentFilesAssociationConfiguration",
+          "currentHotExitConfiguration"
+        ]
+      },
+      {
+        "id": "ICustomEditorLabelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChange",
+          "getName"
+        ]
+      },
+      {
+        "id": "untitledTextEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeEncoding"
+        ]
+      },
+      {
+        "id": "ILanguageStatusService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getLanguageStatus"
+        ]
+      },
+      {
+        "id": "extensionUrlHandler",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "extensionService",
+          "dialogService",
+          "commandService",
+          "hostService",
+          "storageService",
+          "configurationService",
+          "notificationService",
+          "productService",
+          "extensionHandlers",
+          "uriBuffer",
+          "userTrustedExtensionsStorage",
+          "disposable"
+        ]
+      },
+      {
+        "id": "IUserActivityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "markActive",
+          "onDidChangeIsActive"
+        ]
+      },
+      {
+        "id": "languageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_onDidRequestBasicLanguageFeatures",
+          "onDidRequestBasicLanguageFeatures",
+          "_onDidRequestRichLanguageFeatures",
+          "onDidRequestRichLanguageFeatures",
+          "_onDidChange",
+          "onDidChange",
+          "_requestedBasicLanguages",
+          "_requestedRichLanguages",
+          "_registry",
+          "languageIdCodec",
+          "logService",
+          "_configurationService",
+          "_extensionService"
+        ]
+      },
+      {
+        "id": "remoteExplorerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IAuthenticationAccessService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isAccessAllowed"
+        ]
+      },
+      {
+        "id": "IAuthenticationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isAuthenticationProviderRegistered",
+          "onDidChangeDeclaredProviders",
+          "onDidRegisterAuthenticationProvider",
+          "onDidChangeSessions",
+          "onDidUnregisterAuthenticationProvider",
+          "registerAuthenticationProviderHostDelegate",
+          "registerAuthenticationProvider",
+          "getAccounts",
+          "getSessions",
+          "getProvider",
+          "getProviderIds"
+        ]
+      },
+      {
+        "id": "IAuthenticationUsageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "addAccountUsage",
+          "initializeExtensionUsageCache"
+        ]
+      },
+      {
+        "id": "workingCopyEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerHandler",
+          "onDidRegisterHandler"
+        ]
+      },
+      {
+        "id": "textEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "untitledTextEditorService",
+          "instantiationService",
+          "uriIdentityService",
+          "fileService",
+          "editorResolverService",
+          "editorInputCache",
+          "fileEditorFactory",
+          "mapLeakToCounter"
+        ]
+      },
+      {
+        "id": "diffEditorCommandsService",
+        "state": "descriptor",
+        "descriptorCtor": "QAe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IEditorBreadcrumbsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "register"
+        ]
+      },
+      {
+        "id": "workspaceFolderLabelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "auxiliaryWindowService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "editorGroupsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "themeService",
+          "theme",
+          "id",
+          "memento",
+          "_parts",
+          "instantiationService",
+          "storageService",
+          "auxiliaryWindowService",
+          "contextKeyService",
+          "mapPartToInstantiationService",
+          "_onDidCreateAuxiliaryEditorPart",
+          "onDidCreateAuxiliaryEditorPart",
+          "modalEditorMaximized",
+          "workspaceMemento",
+          "profileMemento",
+          "_isReady",
+          "whenReadyPromise",
+          "whenReady",
+          "whenRestoredPromise",
+          "whenRestored",
+          "_onDidActiveGroupChange",
+          "onDidChangeActiveGroup",
+          "_onDidAddGroup",
+          "onDidAddGroup",
+          "_onDidRemoveGroup",
+          "onDidRemoveGroup",
+          "_onDidMoveGroup",
+          "onDidMoveGroup",
+          "_onDidActivateGroup",
+          "onDidActivateGroup",
+          "_onDidChangeGroupIndex",
+          "onDidChangeGroupIndex",
+          "_onDidChangeGroupLocked",
+          "onDidChangeGroupLocked",
+          "_onDidChangeGroupMaximized",
+          "onDidChangeGroupMaximized",
+          "globalContextKeys",
+          "scopedContextKeys",
+          "contextKeyProviders",
+          "registeredContextKeys",
+          "contextKeyProviderDisposables",
+          "modalEditorVisibleContext",
+          "editorWorkingSets",
+          "mainPart",
+          "mostRecentActiveParts"
+        ]
+      },
+      {
+        "id": "paneCompositePartService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getRegistryId",
+          "onDidPaneCompositeOpen",
+          "onDidPaneCompositeClose",
+          "getProgressIndicator",
+          "openPaneComposite",
+          "getPaneCompositeIds",
+          "getActivePaneComposite",
+          "getPinnedPaneCompositeIds"
+        ]
+      },
+      {
+        "id": "bannerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "themeService",
+          "theme",
+          "id",
+          "memento",
+          "options",
+          "layoutService",
+          "_onDidVisibilityChange",
+          "onDidVisibilityChange",
+          "_onDidChange",
+          "storageService",
+          "contextKeyService",
+          "instantiationService",
+          "markdownRendererService",
+          "height",
+          "minimumWidth",
+          "maximumWidth",
+          "_onDidChangeSize",
+          "visible",
+          "focusedActionIndex",
+          "parent",
+          "titleArea",
+          "element",
+          "contentArea",
+          "partLayout",
+          "_dimension",
+          "_contentPosition"
+        ]
+      },
+      {
+        "id": "statusbarService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "themeService",
+          "theme",
+          "id",
+          "memento",
+          "_parts",
+          "instantiationService",
+          "_onDidCreateAuxiliaryStatusbarPart",
+          "onDidCreateAuxiliaryStatusbarPart",
+          "mainPart",
+          "onDidChangeEntryVisibility"
+        ]
+      },
+      {
+        "id": "menuService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createMenu"
+        ]
+      },
+      {
+        "id": "undoRedoService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "canUndo",
+          "canRedo",
+          "createSnapshot",
+          "getLastElement",
+          "pushElement"
+        ]
+      },
+      {
+        "id": "editSessionIdentityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "addEditSessionIdentityCreateParticipant",
+          "registerEditSessionIdentityProvider"
+        ]
+      },
+      {
+        "id": "canonicalUriIdentityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerCanonicalUriProvider"
+        ]
+      },
+      {
+        "id": "keybindingEditingService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IFileDecorationsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerDecorationsProvider",
+          "onDidChangeDecorations",
+          "getDecoration"
+        ]
+      },
+      {
+        "id": "dialogService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onWillShowDialog",
+          "onDidShowDialog"
+        ]
+      },
+      {
+        "id": "progressService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "withProgress"
+        ]
+      },
+      {
+        "id": "codeEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerCodeEditorOpenHandler",
+          "onWillCreateCodeEditor",
+          "onWillCreateDiffEditor",
+          "listCodeEditors",
+          "listDiffEditors",
+          "willCreateCodeEditor",
+          "addCodeEditor",
+          "getFocusedCodeEditor",
+          "getActiveCodeEditor",
+          "onCodeEditorAdd",
+          "onCodeEditorRemove",
+          "registerDecorationType",
+          "onDidChangeTransientModelProperty",
+          "getTransientModelProperty",
+          "removeDecorationType"
+        ]
+      },
+      {
+        "id": "preferencesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getFolderSettingsResource",
+          "onDidDefaultSettingsContentChanged",
+          "openGlobalKeybindingSettings"
+        ]
+      },
+      {
+        "id": "jsonEditingService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "textModelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerTextModelContentProvider",
+          "createModelReference"
+        ]
+      },
+      {
+        "id": "editorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "editorGroupService",
+          "instantiationService",
+          "fileService",
+          "configurationService",
+          "contextService",
+          "uriIdentityService",
+          "editorResolverService",
+          "workspaceTrustRequestService",
+          "hostService",
+          "textEditorService",
+          "_onDidActiveEditorChange",
+          "onDidActiveEditorChange",
+          "_onDidVisibleEditorsChange",
+          "onDidVisibleEditorsChange",
+          "_onDidEditorsChange",
+          "onDidEditorsChange",
+          "_onWillOpenEditor",
+          "onWillOpenEditor",
+          "_onDidCloseEditor",
+          "onDidCloseEditor",
+          "_onDidOpenEditorFail",
+          "onDidOpenEditorFail",
+          "_onDidMostRecentlyActiveEditorsChange",
+          "onDidMostRecentlyActiveEditorsChange",
+          "lastActiveEditor",
+          "activeOutOfWorkspaceWatchers",
+          "closeOnFileDelete",
+          "editorGroupsContainer",
+          "isScoped",
+          "editorsObserver"
+        ]
+      },
+      {
+        "id": "editorResolverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "editorGroupService",
+          "instantiationService",
+          "configurationService",
+          "quickInputService",
+          "notificationService",
+          "storageService",
+          "extensionService",
+          "logService",
+          "uriIdentityService",
+          "_onDidChangeEditorRegistrations",
+          "onDidChangeEditorRegistrations",
+          "_editors",
+          "_flattenedEditors",
+          "_shouldReFlattenEditors",
+          "cache"
+        ]
+      },
+      {
+        "id": "historyService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "editorService",
+          "editorGroupService",
+          "contextService",
+          "storageService",
+          "configurationService",
+          "fileService",
+          "workspacesService",
+          "instantiationService",
+          "layoutService",
+          "contextKeyService",
+          "logService",
+          "activeEditorListeners",
+          "lastActiveEditor",
+          "_onDidChangeEditorNavigationStack",
+          "onDidChangeEditorNavigationStack",
+          "defaultScopedEditorNavigationStack",
+          "editorGroupScopedNavigationStacks",
+          "editorScopedNavigationStacks",
+          "editorNavigationScope",
+          "recentlyUsedEditorsStack",
+          "recentlyUsedEditorsStackIndex",
+          "recentlyUsedEditorsInGroupStack",
+          "recentlyUsedEditorsInGroupStackIndex",
+          "navigatingInRecentlyUsedEditorsStack",
+          "navigatingInRecentlyUsedEditorsInGroupStack",
+          "recentlyClosedEditors",
+          "ignoreEditorCloseEvent",
+          "recentlyClosedEditorsBatchId",
+          "recentlyClosedEditorsBatchScheduled",
+          "history",
+          "editorHistoryListeners",
+          "resourceExcludeMatcher",
+          "editorHelper",
+          "canNavigateBackContextKey",
+          "canNavigateForwardContextKey",
+          "canNavigateBackInNavigationsContextKey",
+          "canNavigateForwardInNavigationsContextKey",
+          "canNavigateToLastNavigationLocationContextKey",
+          "canNavigateBackInEditsContextKey",
+          "canNavigateForwardInEditsContextKey",
+          "canNavigateToLastEditLocationContextKey",
+          "canReopenClosedEditorContextKey"
+        ]
+      },
+      {
+        "id": "activityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getViewContainerActivities",
+          "onDidChangeActivity",
+          "getActivity",
+          "showViewContainerActivity"
+        ]
+      },
+      {
+        "id": "keybindingService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_contextKeyService",
+          "_commandService",
+          "_telemetryService",
+          "_notificationService",
+          "_logService",
+          "_onDidUpdateKeybindings",
+          "_currentChords",
+          "_currentChordChecker",
+          "_currentChordStatusMessage",
+          "_ignoreSingleModifiers",
+          "_currentSingleModifier",
+          "_currentSingleModifierClearTimeout",
+          "_currentlyDispatchingCommandId",
+          "_logging",
+          "hostService",
+          "keyboardLayoutService",
+          "_contributions",
+          "isComposingGlobalContextKey",
+          "kbsJsonSchema",
+          "_keyboardMapper",
+          "_keybindingHoldMode",
+          "_cachedResolver",
+          "userKeybindings"
+        ]
+      },
+      {
+        "id": "textResourcePropertiesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getEOL"
+        ]
+      },
+      {
+        "id": "modelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onModelRemoved",
+          "onModelAdded",
+          "onModelLanguageChanged",
+          "getModel",
+          "getModels",
+          "createModel"
+        ]
+      },
+      {
+        "id": "commandService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "executeCommand",
+          "onDidExecuteCommand"
+        ]
+      },
+      {
+        "id": "themeService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "storageService",
+          "configurationService",
+          "telemetryService",
+          "environmentService",
+          "extensionResourceLoaderService",
+          "logService",
+          "hostColorService",
+          "userDataInitializationService",
+          "languageService",
+          "notificationService",
+          "hostService",
+          "themeExtensionsActivated",
+          "container",
+          "settings",
+          "colorThemeRegistry",
+          "colorThemeWatcher",
+          "onColorThemeChange",
+          "currentColorTheme",
+          "colorThemeSequencer",
+          "fileIconThemeWatcher",
+          "fileIconThemeRegistry",
+          "fileIconThemeLoader",
+          "onFileIconThemeChange",
+          "currentFileIconTheme",
+          "fileIconThemeSequencer",
+          "productIconThemeWatcher",
+          "productIconThemeRegistry",
+          "onProductIconThemeChange",
+          "currentProductIconTheme",
+          "productIconThemeSequencer",
+          "colorThemingParticipantChangeListener"
+        ]
+      },
+      {
+        "id": "labelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerFormatter",
+          "getWorkspaceLabel",
+          "onDidChangeFormatters",
+          "getUriLabel",
+          "getHostLabel",
+          "getUriBasenameLabel",
+          "getSeparator"
+        ]
+      },
+      {
+        "id": "extensionGalleryService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isEnabled",
+          "getExtensions"
+        ]
+      },
+      {
+        "id": "IExtensionBisectService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isDisabledByBisect"
+        ]
+      },
+      {
+        "id": "extensionEnablementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onEnablementChanged",
+          "getEnablementStates",
+          "isEnabledEnablementState",
+          "getEnablementState",
+          "isEnabled"
+        ]
+      },
+      {
+        "id": "IBuiltinExtensionsScannerService",
+        "state": "descriptor",
+        "descriptorCtor": "DOe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IWorkspaceExtensionsConfigService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getUnwantedRecommendations",
+          "onDidChangeExtensionsConfigs"
+        ]
+      },
+      {
+        "id": "IExtensionIgnoredRecommendationsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IExtensionFeaturesManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeAccessData",
+          "getAccessData"
+        ]
+      },
+      {
+        "id": "notificationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeFilter",
+          "getFilter"
+        ]
+      },
+      {
+        "id": "IUserDataSyncUtilService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataProfileImportExportService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataProfileManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "userDataProfilesService",
+          "userDataProfileService",
+          "hostService",
+          "dialogService",
+          "workspaceContextService",
+          "extensionService",
+          "environmentService",
+          "productService",
+          "requestService",
+          "configurationService",
+          "uriIdentityService",
+          "logService"
+        ]
+      },
+      {
+        "id": "IRemoteUserDataProfilesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IRemoteExtensionsScannerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "embedderTerminalService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "viewDescriptorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getViewContainerLocation",
+          "getDefaultViewContainer",
+          "onDidChangeViewContainers",
+          "onDidChangeContainerLocation",
+          "getViewContainersByLocation",
+          "getViewContainerById",
+          "getViewContainerModel",
+          "getViewLocationById",
+          "getDefaultViewContainerLocation",
+          "getDefaultContainerById",
+          "canMoveViews",
+          "getViewContainerBadgeEnablementState",
+          "getViewDescriptorById",
+          "onDidChangeLocation",
+          "getViewContainerByViewId"
+        ]
+      },
+      {
+        "id": "viewsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "viewDescriptorService",
+          "paneCompositeService",
+          "contextKeyService",
+          "layoutService",
+          "editorService",
+          "_onDidChangeViewVisibility",
+          "onDidChangeViewVisibility",
+          "_onDidChangeViewContainerVisibility",
+          "onDidChangeViewContainerVisibility",
+          "_onDidChangeFocusedView",
+          "onDidChangeFocusedView",
+          "viewContainerDisposables",
+          "viewDisposable",
+          "enabledViewContainersContextKeys",
+          "visibleViewContextKeys",
+          "viewPaneContainers",
+          "focusedViewContextKey"
+        ]
+      },
+      {
+        "id": "quickInputService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onShow",
+          "onHide"
+        ]
+      },
+      {
+        "id": "IUserDataSyncWorkbenchService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "userDataSyncService",
+          "uriIdentityService",
+          "authenticationService",
+          "userDataSyncAccountService",
+          "quickInputService",
+          "storageService",
+          "userDataSyncEnablementService",
+          "userDataAutoSyncService",
+          "logService",
+          "productService",
+          "extensionService",
+          "environmentService",
+          "secretStorageService",
+          "notificationService",
+          "progressService",
+          "dialogService",
+          "viewsService",
+          "viewDescriptorService",
+          "userDataSyncStoreManagementService",
+          "lifecycleService",
+          "instantiationService",
+          "editorService",
+          "userDataInitializationService",
+          "fileService",
+          "fileDialogService",
+          "userDataSyncMachinesService",
+          "_authenticationProviders",
+          "_accountStatus",
+          "_onDidChangeAccountStatus",
+          "onDidChangeAccountStatus",
+          "_onDidTurnOnSync",
+          "onDidTurnOnSync",
+          "turnOnSyncCancellationToken",
+          "_cachedCurrentAuthenticationProviderId",
+          "_cachedCurrentSessionId",
+          "syncEnablementContext",
+          "syncStatusContext",
+          "accountStatusContext",
+          "activityViewsEnablementContext",
+          "hasConflicts",
+          "enableConflictsViewContext"
+        ]
+      },
+      {
+        "id": "IAuthenticationExtensionsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeAccountPreference",
+          "getAccountPreference"
+        ]
+      },
+      {
+        "id": "dynamicAuthenticationProviderStorageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IAuthenticationQueryService",
+        "state": "descriptor",
+        "descriptorCtor": "OFe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "hoverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "setupManagedHover",
+          "setupDelayedHover",
+          "setupDelayedHoverAtMouse"
+        ]
+      },
+      {
+        "id": "userInteractionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createDomFocusTracker"
+        ]
+      },
+      {
+        "id": "assignmentService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getTreatment",
+          "onDidRefetchAssignments",
+          "addTelemetryAssignmentFilter"
+        ]
+      },
+      {
+        "id": "IOutlineService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createOutline",
+          "onDidChange",
+          "registerOutlineCreator"
+        ]
+      },
+      {
+        "id": "ILanguageDetectionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_environmentService",
+          "_configurationService",
+          "_diagnosticsService",
+          "_workspaceContextService",
+          "_editorService",
+          "_logService",
+          "hasResolvedWorkspaceLanguageIds",
+          "workspaceLanguageIds",
+          "sessionOpenedLanguageIds",
+          "historicalGlobalOpenedLanguageIds",
+          "historicalWorkspaceOpenedLanguageIds",
+          "dirtyBiases",
+          "langBiases",
+          "_languageDetectionWorkerClient"
+        ]
+      },
+      {
+        "id": "ILanguageFeaturesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "semanticTokensStylingService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "textMateTokenizationFeature",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_languageService",
+          "_themeService",
+          "_extensionResourceLoaderService",
+          "_notificationService",
+          "_logService",
+          "_configurationService",
+          "_progressService",
+          "_environmentService",
+          "_instantiationService",
+          "_telemetryService",
+          "_createdModes",
+          "_encounteredLanguages",
+          "_debugMode",
+          "_debugModePrintFunc",
+          "_grammarDefinitions",
+          "_grammarFactory",
+          "_tokenizersRegistrations",
+          "_currentTheme",
+          "_currentTokenColorMap",
+          "_currentTokenFontMap",
+          "_threadedBackgroundTokenizerFactory",
+          "_vscodeOniguruma",
+          "_styleElement"
+        ]
+      },
+      {
+        "id": "treeSitterLibraryService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_configurationService",
+          "_fileService",
+          "_environmentService",
+          "isTest",
+          "_treeSitterImport",
+          "_supportsLanguage",
+          "_languagesCache",
+          "_injectionQueries"
+        ]
+      },
+      {
+        "id": "treeSitterThemeService",
+        "state": "descriptor",
+        "descriptorCtor": "XFe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "userAttentionService",
+        "state": "descriptor",
+        "descriptorCtor": "e2e",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "editorPaneService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "didInstantiateEditorPane",
+          "onWillInstantiateEditorPane"
+        ]
+      },
+      {
+        "id": "dataChannelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "linkPresentationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeLinkPresentationRules"
+        ]
+      },
+      {
+        "id": "IDefaultLogLevelsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeDefaultLogLevels"
+        ]
+      },
+      {
+        "id": "preferencesSearchService",
+        "state": "descriptor",
+        "descriptorCtor": "fVe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "testService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerExtHost",
+          "onDidCancelTestRun"
+        ]
+      },
+      {
+        "id": "ITestResultStorage",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "testProfileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "testCoverageService",
+        "state": "descriptor",
+        "descriptorCtor": "kVe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "testingContinuousRunService",
+        "state": "descriptor",
+        "descriptorCtor": "DVe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "testResultService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onResultsChanged"
+        ]
+      },
+      {
+        "id": "testingFilterState",
+        "state": "descriptor",
+        "descriptorCtor": "TVe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "explorerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IWorkspaceEditService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "setPreviewHandler"
+        ]
+      },
+      {
+        "id": "renameSymbolTrackerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "replaceService",
+        "state": "descriptor",
+        "descriptorCtor": "KWe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "searchHistoryService",
+        "state": "descriptor",
+        "descriptorCtor": "Ile",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "searchViewModelWorkbenchService",
+        "state": "descriptor",
+        "descriptorCtor": "RWe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "gitService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "setDelegate"
+        ]
+      },
+      {
+        "id": "quickDiff",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeQuickDiffProviders",
+          "getQuickDiffs"
+        ]
+      },
+      {
+        "id": "IQuickDiffModelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createQuickDiffModelReference"
+        ]
+      },
+      {
+        "id": "scm",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidAddRepository",
+          "onDidRemoveRepository",
+          "getRepository"
+        ]
+      },
+      {
+        "id": "scmView",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "multiDiffSourceResolverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerResolver"
+        ]
+      },
+      {
+        "id": "commentService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "unregisterCommentController",
+          "onDidChangeActiveEditingCommentThread",
+          "onResourceHasCommentingRanges",
+          "onDidUpdateCommentThreads",
+          "onDidChangeCurrentCommentThread",
+          "onDidDeleteDataProvider",
+          "onDidSetDataProvider",
+          "onDidUpdateCommentingRanges",
+          "onDidSetResourceCommentInfos",
+          "onDidChangeCommentingEnabled",
+          "resourceHasCommentingRanges",
+          "getDocumentComments",
+          "registerContinueOnCommentProvider",
+          "onDidSetAllCommentThreads"
+        ]
+      },
+      {
+        "id": "ITrustedDomainService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "webviewEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeActiveWebviewEditor",
+          "registerResolver"
+        ]
+      },
+      {
+        "id": "webviewViewService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "customEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "externalUriOpenerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerExternalOpenerProvider"
+        ]
+      },
+      {
+        "id": "extensionsWorkbenchService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "instantiationService",
+          "editorService",
+          "extensionManagementService",
+          "galleryService",
+          "extensionGalleryManifestService",
+          "configurationService",
+          "telemetryService",
+          "notificationService",
+          "extensionEnablementService",
+          "hostService",
+          "progressService",
+          "extensionManagementServerService",
+          "languageService",
+          "extensionsSyncManagementService",
+          "userDataAutoSyncService",
+          "productService",
+          "extensionManifestPropertiesService",
+          "logService",
+          "extensionService",
+          "localeService",
+          "lifecycleService",
+          "fileService",
+          "userDataProfileService",
+          "userDataProfilesService",
+          "storageService",
+          "dialogService",
+          "userDataSyncEnablementService",
+          "updateService",
+          "uriIdentityService",
+          "workspaceContextService",
+          "viewsService",
+          "fileDialogService",
+          "quickInputService",
+          "allowedExtensionsService",
+          "meteredConnectionService",
+          "localExtensions",
+          "remoteExtensions",
+          "webExtensions",
+          "extensionsServers",
+          "_onChange",
+          "_onDidChangeExtensionsNotification",
+          "onDidChangeExtensionsNotification",
+          "_onReset",
+          "installing",
+          "tasksInProgress",
+          "delayedAutoUpdateCheckTimer",
+          "extensionGalleryManifest",
+          "autoRestartListenerDisposable",
+          "hasOutdatedExtensionsContextKey",
+          "updatesCheckDelayer",
+          "autoUpdateDelayer",
+          "whenInitialized",
+          "_installed",
+          "_local",
+          "_dismissedNotificationsValue"
+        ]
+      },
+      {
+        "id": "IExtensionRecommendationNotificationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "extensionRecommendationsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "lifecycleService",
+          "galleryService",
+          "telemetryService",
+          "environmentService",
+          "extensionManagementService",
+          "extensionRecommendationsManagementService",
+          "extensionRecommendationNotificationService",
+          "extensionsWorkbenchService",
+          "remoteExtensionsScannerService",
+          "userDataInitializationService",
+          "_onDidChangeRecommendations",
+          "onDidChangeRecommendations",
+          "workspaceRecommendations",
+          "fileBasedRecommendations",
+          "configBasedRecommendations",
+          "exeBasedRecommendations",
+          "keymapRecommendations",
+          "webRecommendations",
+          "languageRecommendations",
+          "remoteRecommendations",
+          "sessionSeed",
+          "activationPromise"
+        ]
+      },
+      {
+        "id": "outputService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getChannelDescriptors",
+          "getChannel",
+          "getChannelDescriptor",
+          "onActiveOutputChannel"
+        ]
+      },
+      {
+        "id": "terminalInstanceService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "didRegisterBackend",
+          "getBackend",
+          "onDidCreateInstance",
+          "getRegisteredBackends",
+          "onDidRegisterBackend"
+        ]
+      },
+      {
+        "id": "terminalLogService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "trace"
+        ]
+      },
+      {
+        "id": "terminalConfigurationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "terminalService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onAnyInstanceIconChange",
+          "onDidCreateInstance",
+          "onAnyInstanceShellTypeChanged",
+          "setNativeDelegate",
+          "onDidDisposeInstance",
+          "onAnyInstanceProcessIdReady",
+          "onDidChangeInstanceDimensions",
+          "onAnyInstanceMaximumDimensionsChange",
+          "onDidRequestStartExtensionTerminal",
+          "onDidChangeActiveInstance",
+          "onAnyInstanceTitleChange",
+          "onAnyInstanceDataInput",
+          "onAnyInstanceSelectionChange",
+          "createOnInstanceEvent",
+          "createOnInstanceCapabilityEvent",
+          "registerProcessSupport"
+        ]
+      },
+      {
+        "id": "terminalEditorService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeInstances",
+          "onDidDisposeInstance",
+          "onDidChangeActiveInstance",
+          "onDidFocusInstance",
+          "onDidChangeInstanceCapability"
+        ]
+      },
+      {
+        "id": "terminalEditingService",
+        "state": "descriptor",
+        "descriptorCtor": "S6e",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "terminalGroupService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeInstances",
+          "onDidDisposeInstance",
+          "onDidChangeActiveInstance",
+          "onDidFocusInstance",
+          "onDidChangeInstanceCapability",
+          "onDidChangeActiveGroup"
+        ]
+      },
+      {
+        "id": "terminalProfileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeAvailableProfiles",
+          "getDefaultProfile"
+        ]
+      },
+      {
+        "id": "environmentVariableService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "delete",
+          "set"
+        ]
+      },
+      {
+        "id": "terminalContributionsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "terminalLinkProviderService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "terminalQuickFixService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "terminalCompletionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "snippetService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "walkthroughsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getWalkthroughs",
+          "onDidAddWalkthrough",
+          "onDidRemoveWalkthrough",
+          "onDidChangeWalkthrough",
+          "onDidProgressStep"
+        ]
+      },
+      {
+        "id": "onboardingScenarioService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "start"
+        ]
+      },
+      {
+        "id": "IWorkspaceIdentityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IEditSessionsLogService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IEditSessionsStorageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "timeline",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerTimelineProvider"
+        ]
+      },
+      {
+        "id": "accessibilitySignalService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getEnabledState"
+        ]
+      },
+      {
+        "id": "accessibleViewService",
+        "state": "descriptor",
+        "descriptorCtor": "W3e",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "accessibleViewInformationService",
+        "state": "descriptor",
+        "descriptorCtor": "pMe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "shareService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "randomService",
+        "state": "descriptor",
+        "descriptorCtor": "Rfs",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "aiEditTelemetryService",
+        "state": "descriptor",
+        "descriptorCtor": "gze",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IUserDataSyncLogService",
+        "state": "descriptor",
+        "descriptorCtor": "p2e",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IAllowedExtensionsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isAllowed",
+          "onDidChangeAllowedExtensionsConfigValue"
+        ]
+      },
+      {
+        "id": "IIgnoredExtensionsManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IGlobalExtensionEnablementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getDisabledExtensions"
+        ]
+      },
+      {
+        "id": "IExtensionStorageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getSourceExtensionToMigrate",
+          "getExtensionStateRaw",
+          "setExtensionState"
+        ]
+      },
+      {
+        "id": "contextViewService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "listService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "register"
+        ]
+      },
+      {
+        "id": "markerDecorationsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "markerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onMarkerChanged",
+          "read",
+          "getStatistics"
+        ]
+      },
+      {
+        "id": "contextKeyService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createKey",
+          "createScoped",
+          "onDidChangeContext",
+          "bufferChangeEvents",
+          "contextMatchesRules",
+          "getContextKeyValue",
+          "getContext"
+        ]
+      },
+      {
+        "id": "textResourceConfigurationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeConfiguration",
+          "getValue",
+          "inspect"
+        ]
+      },
+      {
+        "id": "downloadService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "openerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerOpener",
+          "setDefaultExternalOpener",
+          "registerExternalUriResolver",
+          "registerValidator",
+          "registerExternalOpener"
+        ]
+      },
+      {
+        "id": "IWebWorkerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createWorkerClient"
+        ]
+      },
+      {
+        "id": "textFileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "fileService",
+          "lifecycleService",
+          "instantiationService",
+          "modelService",
+          "environmentService",
+          "dialogService",
+          "fileDialogService",
+          "textResourceConfigurationService",
+          "filesConfigurationService",
+          "codeEditorService",
+          "pathService",
+          "workingCopyFileService",
+          "uriIdentityService",
+          "languageService",
+          "logService",
+          "elevatedFileService",
+          "decorationsService",
+          "files",
+          "untitled",
+          "_encoding"
+        ]
+      },
+      {
+        "id": "fileDialogService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "workspacesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getRecentlyOpened",
+          "onDidChangeRecentlyOpened"
+        ]
+      },
+      {
+        "id": "menubarService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "updateMenubar"
+        ]
+      },
+      {
+        "id": "updateService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onStateChange",
+          "isLatestVersion",
+          "setInternalOrg"
+        ]
+      },
+      {
+        "id": "urlService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "handlers",
+          "productService",
+          "nativeHostService",
+          "logService",
+          "urlService"
+        ]
+      },
+      {
+        "id": "lifecycleService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "logService",
+          "storageService",
+          "_onBeforeShutdown",
+          "onBeforeShutdown",
+          "_onWillShutdown",
+          "onWillShutdown",
+          "_onDidShutdown",
+          "onDidShutdown",
+          "_onBeforeShutdownError",
+          "onBeforeShutdownError",
+          "_onShutdownVeto",
+          "onShutdownVeto",
+          "_phase",
+          "_willShutdown",
+          "phaseWhen",
+          "_startupKind",
+          "nativeHostService"
+        ]
+      },
+      {
+        "id": "titleService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "themeService",
+          "theme",
+          "id",
+          "memento",
+          "_parts",
+          "instantiationService",
+          "properties",
+          "variables",
+          "mainPart",
+          "onMenubarVisibilityChange"
+        ]
+      },
+      {
+        "id": "hostService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeFocus",
+          "onDidChangeActiveWindow",
+          "onDidChangeFullScreen",
+          "hadLastFocus",
+          "moveTop"
+        ]
+      },
+      {
+        "id": "nativeHostService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeColorScheme",
+          "getOSColorScheme",
+          "onDidFocusMainOrAuxiliaryWindow",
+          "onDidBlurMainOrAuxiliaryWindow",
+          "onDidChangeWindowFullScreen",
+          "onDidChangeWindowAlwaysOnTop",
+          "isWindowAlwaysOnTop",
+          "updateWindowControls",
+          "onDidMaximizeWindow",
+          "onDidUnmaximizeWindow",
+          "setMinimumSize",
+          "notifyReady",
+          "setRepresentedFilename",
+          "clearToasts",
+          "updateTouchBar",
+          "saveWindowSplash",
+          "isAdmin",
+          "getActiveWindowId",
+          "onDidResumeOS",
+          "syncSystemWideKeybindings",
+          "onDidSuspendOS",
+          "onDidChangeOnBatteryPower",
+          "onDidChangeThermalState",
+          "onDidChangeSpeedLimit",
+          "onWillShutdownOS",
+          "onDidLockScreen",
+          "onDidUnlockScreen",
+          "getWindowCount",
+          "getOSProperties",
+          "getOSStatistics",
+          "getOSVirtualMachineHint",
+          "isRunningUnderARM64Translation",
+          "onDidChangeDisplay"
+        ]
+      },
+      {
+        "id": "meteredConnectionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_onDidChangeIsConnectionMetered",
+          "onDidChangeIsConnectionMetered",
+          "_isBrowserConnectionMetered",
+          "_meteredConnectionSetting",
+          "_isConnectionMetered",
+          "connectionMeteredDetector",
+          "_channel"
+        ]
+      },
+      {
+        "id": "requestService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "request"
+        ]
+      },
+      {
+        "id": "clipboardService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "contextMenuService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidShowContextMenu",
+          "onDidHideContextMenu"
+        ]
+      },
+      {
+        "id": "workspaceEditingService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "shellEnvironmentService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getShellEnv"
+        ]
+      },
+      {
+        "id": "configurationResolverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "contributeVariable",
+          "resolveAsync",
+          "resolveWithEnvironment"
+        ]
+      },
+      {
+        "id": "accessibilityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isScreenReaderOptimized",
+          "onDidChangeScreenReaderOptimized",
+          "isMotionReduced",
+          "getAccessibilitySupport",
+          "alert"
+        ]
+      },
+      {
+        "id": "keyboardLayoutService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getKeyboardMapper",
+          "onDidChangeKeyboardLayout"
+        ]
+      },
+      {
+        "id": "pathService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "userHome"
+        ]
+      },
+      {
+        "id": "hostColorSchemeService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeColorScheme"
+        ]
+      },
+      {
+        "id": "extensionManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getInstalled",
+          "onDidChangeProfile",
+          "onDidEnableExtensions",
+          "onDidInstallExtensions",
+          "onDidUninstallExtension",
+          "onInstallExtension",
+          "onUninstallExtension",
+          "getInstalledWorkspaceExtensions",
+          "getExtensionsControlManifest"
+        ]
+      },
+      {
+        "id": "encryptionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "imageResizeMainService",
+        "state": "descriptor",
+        "descriptorCtor": "izt",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "secretStorageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeSecret"
+        ]
+      },
+      {
+        "id": "languagePackService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "telemetryService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "publicLog2",
+          "publicLog"
+        ]
+      },
+      {
+        "id": "extensionHostStarter",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "createExtensionHost",
+          "onDynamicStdout",
+          "onDynamicStderr",
+          "onDynamicExit",
+          "start"
+        ]
+      },
+      {
+        "id": "extensionResourceLoaderService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "readExtensionResource"
+        ]
+      },
+      {
+        "id": "localizationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "activeLanguageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IExtensionsScannerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "scanSystemExtensions",
+          "scanUserExtensions",
+          "scanExtensionsUnderDevelopment",
+          "onDidChangeCache"
+        ]
+      },
+      {
+        "id": "extensionManagementServerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getExtensionManagementServer"
+        ]
+      },
+      {
+        "id": "IExtensionGalleryManifestService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "productService",
+          "onDidChangeExtensionGalleryManifest",
+          "onDidChangeExtensionGalleryManifestStatus",
+          "telemetryService",
+          "configurationService",
+          "requestService",
+          "defaultAccountService",
+          "logService",
+          "dialogService",
+          "hostService",
+          "extensionGalleryManifest",
+          "_onDidChangeExtensionGalleryManifest",
+          "currentStatus",
+          "_onDidChangeExtensionGalleryManifestStatus",
+          "commonHeadersPromise",
+          "extensionGalleryManifestPromise"
+        ]
+      },
+      {
+        "id": "IExtensionTipsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataSyncService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataSyncResourceProviderService",
+        "state": "descriptor",
+        "descriptorCtor": "Ize",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IUserDataSyncMachinesService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataSyncAccountService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataSyncStoreManagementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataAutoSyncService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onError"
+        ]
+      },
+      {
+        "id": "timerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "setPerformanceMarks"
+        ]
+      },
+      {
+        "id": "integrityService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isPure"
+        ]
+      },
+      {
+        "id": "workingCopyBackupService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "fileService",
+          "logService",
+          "impl",
+          "lifecycleService"
+        ]
+      },
+      {
+        "id": "checksumService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "checksum"
+        ]
+      },
+      {
+        "id": "tunnelService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onTunnelOpened",
+          "onTunnelClosed"
+        ]
+      },
+      {
+        "id": "diagnosticsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IV8InspectProfilingService",
+        "state": "descriptor",
+        "descriptorCtor": "Ize",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "elevatedFileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "searchService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "registerSearchResultProvider"
+        ]
+      },
+      {
+        "id": "workingCopyHistoryService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "IUserDataSyncEnablementService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "isEnabled",
+          "onDidChangeEnablement"
+        ]
+      },
+      {
+        "id": "extensionService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_store",
+          "_extensionsProposedApi",
+          "_extensionHostFactory",
+          "_extensionHostKindPicker",
+          "_instantiationService",
+          "_notificationService",
+          "_environmentService",
+          "_telemetryService",
+          "_extensionEnablementService",
+          "_fileService",
+          "_productService",
+          "_extensionManagementService",
+          "_contextService",
+          "_configurationService",
+          "_extensionManifestPropertiesService",
+          "_logService",
+          "_remoteAgentService",
+          "_remoteExtensionsScannerService",
+          "_lifecycleService",
+          "_remoteAuthorityResolverService",
+          "_dialogService",
+          "_onDidRegisterExtensions",
+          "onDidRegisterExtensions",
+          "_onDidChangeExtensionsStatus",
+          "onDidChangeExtensionsStatus",
+          "_onDidChangeExtensions",
+          "onDidChangeExtensions",
+          "_onWillActivateByEvent",
+          "onWillActivateByEvent",
+          "_onDidChangeResponsiveChange",
+          "onDidChangeResponsiveChange",
+          "_onWillStop",
+          "onWillStop",
+          "_activationEventReader",
+          "_registry",
+          "_installedExtensionsReady",
+          "_extensionStatus",
+          "_allRequestedActivateEvents",
+          "_pendingRemoteActivationEvents",
+          "_remoteCrashTracker",
+          "_deltaExtensionsQueue",
+          "_inHandleDeltaExtensions",
+          "_extensionHostManagers",
+          "_resolveAuthorityAttempt",
+          "_initializePromise",
+          "_hasLocalProcess",
+          "_allowRemoteExtensionsInLocalWebWorker",
+          "_runningLocations",
+          "_nativeHostService",
+          "_hostService",
+          "_remoteExplorerService",
+          "_extensionGalleryService",
+          "_workspaceTrustManagementService",
+          "_localCrashTracker",
+          "_extensionScanner"
+        ]
+      },
+      {
+        "id": "IUserDataProfileStorageService",
+        "state": "descriptor",
+        "descriptorCtor": "XGe",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "IExtensionsProfileScannerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "scanProfileExtensions"
+        ]
+      },
+      {
+        "id": "processService",
+        "state": "descriptor",
+        "descriptorCtor": "Eze",
+        "ownDataFields": [
+          "ctor",
+          "staticArguments",
+          "supportsDelayedInstantiation"
+        ]
+      },
+      {
+        "id": "powerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "extensionHostDebugService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onClose",
+          "onReload"
+        ]
+      },
+      {
+        "id": "IProfileAnalysisWorkerService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "extensionHostProfileService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "workbenchIssueService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "issueFormService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "githubUploadService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "localPtyService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onPtyHostExit",
+          "onPtyHostStart",
+          "onPtyHostUnresponsive",
+          "onPtyHostResponsive",
+          "onPtyHostRequestResolveVariables",
+          "getProfiles",
+          "getTerminalLayoutInfo",
+          "getPerformanceMarks",
+          "acceptPtyHostResolvedVariables",
+          "getDefaultSystemShell",
+          "getEnvironment"
+        ]
+      },
+      {
+        "id": "terminalProfileResolverService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getDefaultProfile"
+        ]
+      },
+      {
+        "id": "workspaceTagsService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "taskService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidStateChange",
+          "registerSupportedExecutions",
+          "registerTaskSystem",
+          "getWorkspaceTasks",
+          "onDidChangeTaskConfig"
+        ]
+      },
+      {
+        "id": "externalTerminal",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "getDefaultTerminalForPlatforms"
+        ]
+      },
+      {
+        "id": "webviewService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "onDidChangeActiveWebview"
+        ]
+      },
+      {
+        "id": "ISplashStorageService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "saveWindowSplash"
+        ]
+      },
+      {
+        "id": "IUserDataInitializationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": []
+      },
+      {
+        "id": "instantiationService",
+        "state": "instance-or-proxy",
+        "ownDataFields": [
+          "_services",
+          "_strict",
+          "_parent",
+          "_enableTracing",
+          "_isDisposed",
+          "_servicesToMaybeDispose",
+          "_children",
+          "_activeInstantiations",
+          "_globalGraph"
+        ]
+      }
+    ]
+  }
+]

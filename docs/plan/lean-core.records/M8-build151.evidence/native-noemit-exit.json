@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-02T18:51:50.173478+10:00",
+  "command": [
+    "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+    "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/node_modules/@typescript/native/bin/tsc",
+    "--noEmit",
+    "-p",
+    "src/tsconfig.json"
+  ],
+  "exit": 0,
+  "stdoutBytes": 0,
+  "stderrBytes": 0
+}

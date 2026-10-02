@@ -1,0 +1,93 @@
+{
+  "root": "/private/tmp/av149-qt1l4h3d/u/logs",
+  "patterns": {
+    "Unknown service": 0,
+    "Missing proxy": 0,
+    "Unknown channel": 0,
+    "customer.*(?:fail|error|initializ)": 0,
+    "actor.*(?:missing|unknown|fail)": 0,
+    "RPC.*(?:unknown|missing|error)": 0
+  },
+  "files": [
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/network-shared.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/editSessions.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/userDataSync.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/sharedprocess.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/ptyhost.log",
+      "bytes": 111
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/terminal.log",
+      "bytes": 188
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/remoteTunnelService.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/main.log",
+      "bytes": 1720
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/network.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/views.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/renderer.log",
+      "bytes": 678
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/textModelChanges.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/output_20261002T095945/tasks.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/extHostTelemetry.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/exthost.log",
+      "bytes": 3339
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/output_logging_20261002T095947/1-Markdown Language Server.log",
+      "bytes": 776
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/vscode.github/GitHub.log",
+      "bytes": 47
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/vscode.markdown-language-features/Markdown.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/vscode.json-language-features/JSON Language Server.log",
+      "bytes": 0
+    },
+    {
+      "path": "/private/tmp/av149-qt1l4h3d/u/logs/20261002T095945/window1/exthost/vscode.git/Git.log",
+      "bytes": 1003
+    }
+  ]
+}

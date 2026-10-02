@@ -1,0 +1,2138 @@
+{
+  "status": "PARTIAL_PAUSED_AT_USER_REQUEST",
+  "recordedAt": "2026-10-02T10:57:21.707316+10:00",
+  "root": "/private/tmp/restore150-gp4g8h_0",
+  "identity": {
+    "root": "/private/tmp/restore150-gp4g8h_0",
+    "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "source": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode",
+    "files": [
+      {
+        "path": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/main.js",
+        "sha256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+        "bytes": 1056524
+      },
+      {
+        "path": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+        "sha256": "e31bba14f7e709bd2794f91e73ff3f12b3139df4dd7ecac7ed1cf9569e1f99c5",
+        "bytes": 11227793
+      },
+      {
+        "path": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+        "sha256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+        "bytes": 1010159
+      },
+      {
+        "path": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode/src/vs/base/parts/storage/common/storage.ts",
+        "sha256": "bc0aa54367951efbbf02130379719b0fbdb65dd23b4dc882d49930a92e406e23",
+        "bytes": 14278
+      },
+      {
+        "path": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode/src/vs/workbench/common/editor/editorGroupModel.ts",
+        "sha256": "29a1cf3c96b357169d394ec0945e5286f97ea44decc4ca54804d10c0b1e4e1bd",
+        "bytes": 37545
+      }
+    ],
+    "helpers": [
+      {
+        "path": "/private/tmp/restore150-gp4g8h_0/restore-ext/extension.js",
+        "sourcePath": "/Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/extension.js",
+        "sha256": "a0dcdfb9dbc06eaed183e57ce2e1aef39ba5ec3f2f87609937e3bfe3506cb503"
+      },
+      {
+        "path": "/private/tmp/restore150-gp4g8h_0/restore-ext/restore.js",
+        "sourcePath": "/Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/restore.js",
+        "sha256": "e5896e008ebb726a92a0dde3cf7ded7e9bbe1d8a2f9ae329ec3cbfe4cabaeb8e"
+      },
+      {
+        "path": "/private/tmp/restore150-gp4g8h_0/restore-ext/package.json",
+        "sourcePath": "/Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/package.json",
+        "sha256": "960f26ece9e08d1f8ee215126ce5a074b850d6be29d5b97f3ddea5091e3b4c10"
+      }
+    ],
+    "ordinaryDataset": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset",
+    "workspace": "/private/tmp/restore150-gp4g8h_0/ordinary-workspace",
+    "provenance": [
+      {
+        "case": 4,
+        "source": "/tmp/lr-d16ezm2o/4",
+        "copiedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p",
+        "beforeGroupExact": true,
+        "workspaceID": "90f0aa6e7ff23f1ccd5768d9fca494d7",
+        "sqliteEditsOnly": [
+          "memento/workbench.parts.editor path relocation"
+        ],
+        "retiredSerializers": [
+          "workbench.editorinputs.browser",
+          "workbench.input.chatSession"
+        ]
+      },
+      {
+        "case": 5,
+        "source": "/tmp/lr-d16ezm2o/5",
+        "copiedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p",
+        "beforeGroupExact": true,
+        "workspaceID": "90f0aa6e7ff23f1ccd5768d9fca494d7",
+        "sqliteEditsOnly": [
+          "memento/workbench.parts.editor path relocation"
+        ],
+        "retiredSerializers": [
+          "workbench.editorinputs.browser",
+          "workbench.input.chatSession"
+        ]
+      },
+      {
+        "case": 6,
+        "source": "/tmp/lr-d16ezm2o/6",
+        "copiedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p",
+        "beforeGroupExact": true,
+        "workspaceID": "90f0aa6e7ff23f1ccd5768d9fca494d7",
+        "sqliteEditsOnly": [
+          "memento/workbench.parts.editor path relocation"
+        ],
+        "retiredSerializers": []
+      }
+    ],
+    "copiedSourceProfile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+    "oldSourceProfile": "/private/tmp/lean-restore-jdsqe80h/profile",
+    "sourceProfileNoWrites": true
+  },
+  "ordinary": {
+    "status": "PASS",
+    "runs": 6,
+    "cases": [
+      {
+        "case": 6,
+        "category": "no-retired",
+        "coldPid": 39076,
+        "restartPid": 40536,
+        "publicStateExact": true,
+        "persistedGroupExact": true,
+        "coldAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-cold/acceptance.json",
+        "restartAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-restart/acceptance.json",
+        "passed": true
+      },
+      {
+        "case": 4,
+        "category": "consecutive-sticky",
+        "coldPid": 42142,
+        "restartPid": 43608,
+        "publicStateExact": true,
+        "persistedGroupExact": true,
+        "coldAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-cold/acceptance.json",
+        "restartAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-restart/acceptance.json",
+        "passed": true
+      },
+      {
+        "case": 5,
+        "category": "all-retired",
+        "coldPid": 45331,
+        "restartPid": 46808,
+        "publicStateExact": true,
+        "persistedGroupExact": true,
+        "coldAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-cold/acceptance.json",
+        "restartAcceptance": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-restart/acceptance.json",
+        "passed": true
+      }
+    ],
+    "acceptancesEmbedded": [
+      {
+        "category": "no-retired",
+        "case": 6,
+        "phase": "cold",
+        "acceptance": {
+          "case": 6,
+          "label": "cold",
+          "runId": "restore150-6-cold-bc47b09a",
+          "pid": 39076,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-6-cold-bc47b09a",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/group.after.json",
+            "startedAt": "2026-10-02T00:50:12.019Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                  "isActive": false,
+                  "isPreview": false,
+                  "isPinned": true
+                },
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                  "isActive": true,
+                  "isPreview": true,
+                  "isPinned": false
+                }
+              ],
+              "activeUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+              "previewUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+              "stickyCount": 1,
+              "mruUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+              ]
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": 1,
+                  "tabs": [
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                      "label": "A.txt",
+                      "isActive": false,
+                      "isPreview": false,
+                      "isPinned": true,
+                      "isDirty": false
+                    },
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                      "label": "B.txt",
+                      "isActive": true,
+                      "isPreview": true,
+                      "isPinned": false,
+                      "isDirty": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ],
+                "actual": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ]
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": true
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": true,
+                    "isPreview": true,
+                    "isPinned": false
+                  }
+                ],
+                "actual": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": true
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": true,
+                    "isPreview": true,
+                    "isPinned": false
+                  }
+                ]
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+              ]
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "no-retired",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 3015,
+              "quietForMs": 3015,
+              "minimumMs": 3000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:50:15.037Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 6.603,
+            "ended": "2026-10-02T00:50:15.398100+00:00"
+          },
+          "postShutdown": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          1,
+                          0
+                        ],
+                        "preview": 1,
+                        "sticky": 0
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                1,
+                0
+              ],
+              "preview": 1,
+              "sticky": 0
+            }
+          },
+          "sqliteChecks": {
+            "sequential": true,
+            "mru": true,
+            "preview": true,
+            "sticky": true,
+            "active": true,
+            "activeGroup": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-6-cold-bc47b09a",
+          "pid": 39076,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-cold/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-cold/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:08.796523+00:00",
+          "beforeState": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          1,
+                          0
+                        ],
+                        "preview": 1,
+                        "sticky": 0
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 792
+                },
+                "orientation": 0,
+                "width": 792,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                1,
+                0
+              ],
+              "preview": 1,
+              "sticky": 0
+            }
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-cold/acceptance.json",
+        "acceptanceSHA256": "6273aa7b4fe67b43791789620c0c39515061fceea73d88ef5c0b39671a3c4a4f"
+      },
+      {
+        "category": "no-retired",
+        "case": 6,
+        "phase": "restart",
+        "acceptance": {
+          "case": 6,
+          "label": "restart",
+          "runId": "restore150-6-restart-2ff14c9f",
+          "pid": 40536,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-6-restart-2ff14c9f",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/group.after.json",
+            "startedAt": "2026-10-02T00:50:17.585Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                  "isActive": false,
+                  "isPreview": false,
+                  "isPinned": true
+                },
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                  "isActive": true,
+                  "isPreview": true,
+                  "isPinned": false
+                }
+              ],
+              "activeUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+              "previewUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+              "stickyCount": 1,
+              "mruUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+              ]
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": 1,
+                  "tabs": [
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                      "label": "A.txt",
+                      "isActive": false,
+                      "isPreview": false,
+                      "isPinned": true,
+                      "isDirty": false
+                    },
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                      "label": "B.txt",
+                      "isActive": true,
+                      "isPreview": true,
+                      "isPinned": false,
+                      "isDirty": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ],
+                "actual": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ]
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": true
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": true,
+                    "isPreview": true,
+                    "isPinned": false
+                  }
+                ],
+                "actual": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": true
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": true,
+                    "isPreview": true,
+                    "isPinned": false
+                  }
+                ]
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+              ]
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "no-retired",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 3018,
+              "quietForMs": 3017,
+              "minimumMs": 3000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:50:20.606Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 5.48,
+            "ended": "2026-10-02T00:50:20.892462+00:00"
+          },
+          "postShutdown": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          1,
+                          0
+                        ],
+                        "preview": 1,
+                        "sticky": 0
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                1,
+                0
+              ],
+              "preview": 1,
+              "sticky": 0
+            }
+          },
+          "sqliteChecks": {
+            "sequential": true,
+            "mru": true,
+            "preview": true,
+            "sticky": true,
+            "active": true,
+            "activeGroup": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-6-restart-2ff14c9f",
+          "pid": 40536,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-restart/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-restart/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:15.414638+00:00",
+          "beforeState": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          1,
+                          0
+                        ],
+                        "preview": 1,
+                        "sticky": 0
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                1,
+                0
+              ],
+              "preview": 1,
+              "sticky": 0
+            }
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-6-restart/acceptance.json",
+        "acceptanceSHA256": "ff050b4a7f5688b82e4ad18d755e7248bb67fe7faee6d1b6e53a6be7f151bef8"
+      },
+      {
+        "category": "consecutive-sticky",
+        "case": 4,
+        "phase": "cold",
+        "acceptance": {
+          "case": 4,
+          "label": "cold",
+          "runId": "restore150-4-cold-e37177ff",
+          "pid": 42142,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-4-cold-e37177ff",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/group.after.json",
+            "startedAt": "2026-10-02T00:50:23.364Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                  "isActive": true,
+                  "isPreview": false,
+                  "isPinned": false
+                },
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                  "isActive": false,
+                  "isPreview": false,
+                  "isPinned": false
+                }
+              ],
+              "activeUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+              "previewUri": null,
+              "stickyCount": 0,
+              "mruUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+              ]
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": 0,
+                  "tabs": [
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                      "label": "A.txt",
+                      "isActive": true,
+                      "isPreview": false,
+                      "isPinned": false,
+                      "isDirty": false
+                    },
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                      "label": "B.txt",
+                      "isActive": false,
+                      "isPreview": false,
+                      "isPinned": false,
+                      "isDirty": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ],
+                "actual": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ]
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": true,
+                    "isPreview": false,
+                    "isPinned": false
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": false
+                  }
+                ],
+                "actual": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": true,
+                    "isPreview": false,
+                    "isPinned": false
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": false
+                  }
+                ]
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": 0,
+                "actual": 0
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+              ]
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "consecutive-sticky",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 3013,
+              "quietForMs": 3013,
+              "minimumMs": 3000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:50:26.382Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 5.759,
+            "ended": "2026-10-02T00:50:26.671006+00:00"
+          },
+          "postShutdown": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          0,
+                          1
+                        ]
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                0,
+                1
+              ]
+            }
+          },
+          "sqliteChecks": {
+            "sequential": true,
+            "mru": true,
+            "preview": true,
+            "sticky": true,
+            "active": true,
+            "activeGroup": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-4-cold-e37177ff",
+          "pid": 42142,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-cold/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-cold/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:20.916031+00:00",
+          "beforeState": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editorinputs.browser",
+                            "value": "{\"id\":\"lean-fixture-browser\",\"url\":\"http://127.0.0.1:18765/lean-fixture\",\"title\":\"Lean fixture browser\"}"
+                          },
+                          {
+                            "id": "workbench.input.chatSession",
+                            "value": "{\"options\":{},\"sessionResource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"},\"resource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"}}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          2,
+                          3,
+                          1,
+                          0
+                        ],
+                        "sticky": 1
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 792
+                },
+                "orientation": 0,
+                "width": 792,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editorinputs.browser",
+                  "value": "{\"id\":\"lean-fixture-browser\",\"url\":\"http://127.0.0.1:18765/lean-fixture\",\"title\":\"Lean fixture browser\"}"
+                },
+                {
+                  "id": "workbench.input.chatSession",
+                  "value": "{\"options\":{},\"sessionResource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"},\"resource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"}}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                2,
+                3,
+                1,
+                0
+              ],
+              "sticky": 1
+            }
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-cold/acceptance.json",
+        "acceptanceSHA256": "7062354ad842ec0feb54a6d13bf9ce60bcce47276bfe7a1fc8c2498e9f4ea5df"
+      },
+      {
+        "category": "consecutive-sticky",
+        "case": 4,
+        "phase": "restart",
+        "acceptance": {
+          "case": 4,
+          "label": "restart",
+          "runId": "restore150-4-restart-f88f9c53",
+          "pid": 43608,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-4-restart-f88f9c53",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/group.after.json",
+            "startedAt": "2026-10-02T00:50:28.853Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                  "isActive": true,
+                  "isPreview": false,
+                  "isPinned": false
+                },
+                {
+                  "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                  "isActive": false,
+                  "isPreview": false,
+                  "isPinned": false
+                }
+              ],
+              "activeUri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+              "previewUri": null,
+              "stickyCount": 0,
+              "mruUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+              ]
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": 0,
+                  "tabs": [
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                      "label": "A.txt",
+                      "isActive": true,
+                      "isPreview": false,
+                      "isPinned": false,
+                      "isDirty": false
+                    },
+                    {
+                      "inputType": "TabInputText",
+                      "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                      "label": "B.txt",
+                      "isActive": false,
+                      "isPreview": false,
+                      "isPinned": false,
+                      "isDirty": false
+                    }
+                  ]
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ],
+                "actual": [
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt"
+                  },
+                  {
+                    "inputType": "TabInputText",
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+                  }
+                ]
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": true,
+                    "isPreview": false,
+                    "isPinned": false
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": false
+                  }
+                ],
+                "actual": [
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                    "isActive": true,
+                    "isPreview": false,
+                    "isPinned": false
+                  },
+                  {
+                    "uri": "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt",
+                    "isActive": false,
+                    "isPreview": false,
+                    "isPinned": false
+                  }
+                ]
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": 0,
+                "actual": 0
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": [
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt",
+                "file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt"
+              ]
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "consecutive-sticky",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 3016,
+              "quietForMs": 3016,
+              "minimumMs": 3000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:50:31.873Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 5.477,
+            "ended": "2026-10-02T00:50:32.165687+00:00"
+          },
+          "postShutdown": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          0,
+                          1
+                        ]
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                0,
+                1
+              ]
+            }
+          },
+          "sqliteChecks": {
+            "sequential": true,
+            "mru": true,
+            "preview": true,
+            "sticky": true,
+            "active": true,
+            "activeGroup": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-4-restart-f88f9c53",
+          "pid": 43608,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-restart/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-restart/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:26.689968+00:00",
+          "beforeState": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          },
+                          {
+                            "id": "workbench.editors.files.fileEditorInput",
+                            "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                          }
+                        ],
+                        "mru": [
+                          0,
+                          1
+                        ]
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 1092
+                },
+                "orientation": 0,
+                "width": 1092,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                },
+                {
+                  "id": "workbench.editors.files.fileEditorInput",
+                  "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"external\":\"file:///private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"path\":\"/private/tmp/restore150-gp4g8h_0/ordinary-workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                }
+              ],
+              "mru": [
+                0,
+                1
+              ]
+            }
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-4-restart/acceptance.json",
+        "acceptanceSHA256": "dcab4f5555ca80c6134eb5852df4ce2ea1cb7fa78bb167f86617341cd95064d1"
+      },
+      {
+        "category": "all-retired",
+        "case": 5,
+        "phase": "cold",
+        "acceptance": {
+          "case": 5,
+          "label": "cold",
+          "runId": "restore150-5-cold-971264f8",
+          "pid": 45331,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-5-cold-971264f8",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/group.after.json",
+            "startedAt": "2026-10-02T00:50:34.171Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [],
+              "activeUri": null,
+              "previewUri": null,
+              "stickyCount": 0,
+              "mruUris": []
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": -1,
+                  "tabs": []
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": -1,
+                "actual": -1
+              },
+              {
+                "name": "all retired leaves no editor in any group",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": []
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "all-retired",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 15077,
+              "quietForMs": 15077,
+              "minimumMs": 15000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:50:49.254Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 17.379,
+            "ended": "2026-10-02T00:50:49.557978+00:00"
+          },
+          "postShutdown": {
+            "editorPartStateAbsent": true
+          },
+          "sqliteChecks": {
+            "emptyStateRemovedOnNormalSave": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-5-cold-971264f8",
+          "pid": 45331,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-cold/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-cold/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:32.180692+00:00",
+          "beforeState": {
+            "part": {
+              "serializedGrid": {
+                "root": {
+                  "type": "branch",
+                  "data": [
+                    {
+                      "type": "leaf",
+                      "data": {
+                        "id": 0,
+                        "editors": [
+                          {
+                            "id": "workbench.editorinputs.browser",
+                            "value": "{\"id\":\"lean-fixture-browser\",\"url\":\"http://127.0.0.1:18765/lean-fixture\",\"title\":\"Lean fixture browser\"}"
+                          },
+                          {
+                            "id": "workbench.input.chatSession",
+                            "value": "{\"options\":{},\"sessionResource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"},\"resource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"}}"
+                          }
+                        ],
+                        "mru": [
+                          1,
+                          0
+                        ],
+                        "preview": 0,
+                        "sticky": 1
+                      },
+                      "size": 834
+                    }
+                  ],
+                  "size": 792
+                },
+                "orientation": 0,
+                "width": 792,
+                "height": 834
+              },
+              "activeGroup": 0,
+              "mostRecentActiveGroups": [
+                0
+              ]
+            },
+            "group": {
+              "id": 0,
+              "editors": [
+                {
+                  "id": "workbench.editorinputs.browser",
+                  "value": "{\"id\":\"lean-fixture-browser\",\"url\":\"http://127.0.0.1:18765/lean-fixture\",\"title\":\"Lean fixture browser\"}"
+                },
+                {
+                  "id": "workbench.input.chatSession",
+                  "value": "{\"options\":{},\"sessionResource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"},\"resource\":{\"$mid\":1,\"scheme\":\"vscode-chat-session\",\"authority\":\"local\",\"path\":\"/bGVhbi1maXh0dXJlLXNlc3Npb24\"}}"
+                }
+              ],
+              "mru": [
+                1,
+                0
+              ],
+              "preview": 0,
+              "sticky": 1
+            }
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-cold/acceptance.json",
+        "acceptanceSHA256": "c6a299ef445b4116495def8e37404720abbac484c41ff54535195b2696be28e3"
+      },
+      {
+        "category": "all-retired",
+        "case": 5,
+        "phase": "restart",
+        "acceptance": {
+          "case": 5,
+          "label": "restart",
+          "runId": "restore150-5-restart-6e0c7438",
+          "pid": 46808,
+          "fixture": {
+            "status": "PASS",
+            "runId": "restore150-5-restart-6e0c7438",
+            "casePath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/group.after.json",
+            "startedAt": "2026-10-02T00:50:52.016Z",
+            "apiVersion": "1.135.0",
+            "expected": {
+              "tabs": [],
+              "activeUri": null,
+              "previewUri": null,
+              "stickyCount": 0,
+              "mruUris": []
+            },
+            "observed": {
+              "initialized": true,
+              "groups": [
+                {
+                  "viewColumn": 1,
+                  "isActive": true,
+                  "isActiveGroup": true,
+                  "activeTabIndex": -1,
+                  "tabs": []
+                }
+              ]
+            },
+            "assertions": [
+              {
+                "name": "initialized tab group model",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "tab events stabilized before deadline",
+                "passed": true,
+                "expected": false,
+                "actual": false
+              },
+              {
+                "name": "one restored editor group",
+                "passed": true,
+                "expected": 1,
+                "actual": 1
+              },
+              {
+                "name": "active group is the restored group",
+                "passed": true,
+                "expected": true,
+                "actual": true
+              },
+              {
+                "name": "ordinary text tab order and URIs",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              },
+              {
+                "name": "active/preview/sticky flags",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              },
+              {
+                "name": "group active tab",
+                "passed": true,
+                "expected": -1,
+                "actual": -1
+              },
+              {
+                "name": "all retired leaves no editor in any group",
+                "passed": true,
+                "expected": [],
+                "actual": []
+              }
+            ],
+            "mru": {
+              "status": "REQUIRES_POST_SHUTDOWN_SQLITE",
+              "observableViaPublicApi": false,
+              "expectedUris": []
+            },
+            "quit": {
+              "requested": true,
+              "completionVerifiedByOuterRunner": false
+            },
+            "case": {
+              "category": "all-retired",
+              "variant": "default",
+              "manifestPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/manifest.json",
+              "groupPath": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/group.after.json",
+              "generatedProfile": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p"
+            },
+            "source": {
+              "profile": "/private/tmp/restore150-gp4g8h_0/copied-source-profile",
+              "profileSha256": "b728dc1da4ad3bc5255303eb16dd61ce3918f681ffc900759eb23567225b2dca",
+              "appVersion": "1.135.06566",
+              "apiVersion": "1.135.0",
+              "workspaceDatabase": "User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+              "groupPath": [
+                "data",
+                0,
+                "data"
+              ]
+            },
+            "actualWorkspaceDatabase": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p/User/workspaceStorage/90f0aa6e7ff23f1ccd5768d9fca494d7/state.vscdb",
+            "settling": {
+              "elapsedMs": 15075,
+              "quietForMs": 15075,
+              "minimumMs": 15000,
+              "quietMs": 1500,
+              "timeoutMs": 30000,
+              "events": {
+                "tabs": 0,
+                "groups": 0
+              },
+              "timedOut": false
+            },
+            "finishedAt": "2026-10-02T00:51:07.098Z"
+          },
+          "exit": {
+            "exitCode": 0,
+            "forced": false,
+            "waitedForChild": true,
+            "seconds": 17.829,
+            "ended": "2026-10-02T00:51:07.403089+00:00"
+          },
+          "postShutdown": {
+            "editorPartStateAbsent": true
+          },
+          "sqliteChecks": {
+            "emptyStateRemovedOnNormalSave": true
+          },
+          "passed": true
+        },
+        "launch": {
+          "runId": "restore150-5-restart-6e0c7438",
+          "pid": 46808,
+          "argv": [
+            "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+            "--user-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p",
+            "--extensions-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-restart/e",
+            "--shared-data-dir",
+            "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-restart/s",
+            "--extensionDevelopmentPath",
+            "/private/tmp/restore150-gp4g8h_0/restore-ext",
+            "--skip-welcome",
+            "--skip-release-notes",
+            "--disable-workspace-trust",
+            "--new-window",
+            "/private/tmp/restore150-gp4g8h_0/ordinary-workspace"
+          ],
+          "at": "2026-10-02T00:50:49.575104+00:00",
+          "beforeState": {
+            "editorPartStateAbsent": true
+          }
+        },
+        "acceptancePath": "/private/tmp/restore150-gp4g8h_0/evidence/ordinary-5-restart/acceptance.json",
+        "acceptanceSHA256": "52a69573b81f10ba78a87ddae31862c2f94a7752dae451d3def597e02b7f79d2"
+      }
+    ]
+  },
+  "mermaid": {
+    "status": "NOT_STARTED_AT_PAUSE",
+    "preparedOnly": true,
+    "preparedRoot": "/private/tmp/restore150-gp4g8h_0/mermaid",
+    "preparedMetadata": {
+      "root": "/private/tmp/restore150-gp4g8h_0/mermaid",
+      "oldRoot": "/private/tmp/mm149-931ruovz",
+      "cdp": "http://127.0.0.1:19570",
+      "sourceProfile": "/private/tmp/mm149-931ruovz/u",
+      "newWorkspaceID": "79fbbd3ca0ea69ad0d52480f1405964f",
+      "oldWorkspaceID": "64c6b64f589ac6e7bb51c3705e63ecf0",
+      "relocations": [
+        {
+          "database": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb",
+          "key": "history.entries",
+          "relocatedOwnFixturePathOnly": true
+        },
+        {
+          "database": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb",
+          "key": "memento/workbench.editors.files.textFileEditor",
+          "relocatedOwnFixturePathOnly": true
+        },
+        {
+          "database": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb.backup",
+          "key": "history.entries",
+          "relocatedOwnFixturePathOnly": true
+        },
+        {
+          "database": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb.backup",
+          "key": "memento/workbench.editors.files.textFileEditor",
+          "relocatedOwnFixturePathOnly": true
+        }
+      ],
+      "helperFiles": [
+        {
+          "path": "/private/tmp/restore150-gp4g8h_0/mermaid/ext/mermaid.js",
+          "sha256": "127d36bf454a06df4112f64d6c1e42d9a8ae14ff1aba31800627d58b83aa1f7c",
+          "sameAsRepo": true
+        },
+        {
+          "path": "/private/tmp/restore150-gp4g8h_0/mermaid/ext/mermaid-cases.json",
+          "sha256": "2b7cf6d5b79bc1929c76367f2eada6c7e44fc50e4fb6ba2dc33ce48ac46c3854",
+          "sameAsRepo": true
+        },
+        {
+          "path": "/private/tmp/restore150-gp4g8h_0/mermaid/ext/webview-cdp.mjs",
+          "sha256": "e91167ae9b5f35cb021ddd64215fc6a35f529dfde3097889e1129435c60e299d",
+          "sameAsRepo": true
+        }
+      ],
+      "workspaceDatabase": "/private/tmp/restore150-gp4g8h_0/mermaid/u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb",
+      "oldRequestNotCopied": true,
+      "clipboardUntouched": true
+    },
+    "appLaunched": false,
+    "cdpConnected": false,
+    "port": 19570,
+    "remaining": "Editor+Preview exact public tabs/source/id/theme/panZoom/serialized Preview state normal quit and same profile real restart. Not run before pause."
+  },
+  "cleanup": {
+    "allSixAppsNormalQuitExit0": true,
+    "allSixWaitedForChild": true,
+    "forcedTermination": false,
+    "appPids": [
+      39076,
+      40536,
+      42142,
+      43608,
+      45331,
+      46808
+    ],
+    "appPsNoRows": true,
+    "hostExits": [
+      {
+        "pid": 40285,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p/logs/20261002T105009/main.log",
+        "line": "2026-10-02 10:50:15.162 [info] Extension host with pid 40285 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      },
+      {
+        "pid": 41970,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/6/p/logs/20261002T105015/main.log",
+        "line": "2026-10-02 10:50:20.714 [info] Extension host with pid 41970 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      },
+      {
+        "pid": 43332,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p/logs/20261002T105021/main.log",
+        "line": "2026-10-02 10:50:26.493 [info] Extension host with pid 43332 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      },
+      {
+        "pid": 44832,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/4/p/logs/20261002T105026/main.log",
+        "line": "2026-10-02 10:50:31.979 [info] Extension host with pid 44832 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      },
+      {
+        "pid": 46536,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p/logs/20261002T105032/main.log",
+        "line": "2026-10-02 10:50:49.362 [info] Extension host with pid 46536 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      },
+      {
+        "pid": 48140,
+        "exitCode": 0,
+        "log": "/private/tmp/restore150-gp4g8h_0/ordinary-dataset/5/p/logs/20261002T105049/main.log",
+        "line": "2026-10-02 10:51:07.209 [info] Extension host with pid 48140 exited with code: 0, signal: unknown.",
+        "psGoneAtPause": true
+      }
+    ],
+    "hostPsNoRows": true,
+    "cdp19570NeverOpened": true,
+    "cdp19570NoListener": true
+  },
+  "boundaries": {
+    "sourceProfilesReadOnly": true,
+    "onlyPrivateCopiesModified": true,
+    "profileRowsNotDeletedByPreparation": true,
+    "originalFilesNotDeleted": true,
+    "sharedSourcePatchAndPlanUntouched": true,
+    "globalKeyboardClipboardImeUntouched": true,
+    "smokeNotUsed": true,
+    "browserNotAccessed": true
+  },
+  "resume": "User explicitly paused. Do not launch or resume until user instructs."
+}

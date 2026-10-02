@@ -1,0 +1,1750 @@
+diff --git a/src/vs/workbench/api/browser/extensionHost.contribution.ts b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+index 6ccf2f2..37eeba5 100644
+--- a/src/vs/workbench/api/browser/extensionHost.contribution.ts
++++ b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+@@ -24,7 +24,6 @@ import './mainThreadClipboard.js';
+ import './mainThreadCommands.js';
+ import './mainThreadConfiguration.js';
+ import './mainThreadConsole.js';
+-import './mainThreadDebugService.js';
+ import './mainThreadDecorations.js';
+ import './mainThreadDiagnostics.js';
+ import './mainThreadDialogs.js';
+@@ -68,12 +67,6 @@ import './mainThreadPower.js';
+ import './mainThreadWebviewManager.js';
+ import './mainThreadWorkspace.js';
+ import './mainThreadComments.js';
+-import './mainThreadNotebook.js';
+-import './mainThreadNotebookKernels.js';
+-import './mainThreadNotebookDocumentsAndEditors.js';
+-import './mainThreadNotebookRenderers.js';
+-import './mainThreadNotebookSaveParticipant.js';
+-import './mainThreadInteractive.js';
+ import './mainThreadTask.js';
+ import './mainThreadLabelService.js';
+ import './mainThreadTunnelService.js';
+diff --git a/src/vs/workbench/api/browser/mainThreadBulkEdits.ts b/src/vs/workbench/api/browser/mainThreadBulkEdits.ts
+index a823772..c6e95da 100644
+--- a/src/vs/workbench/api/browser/mainThreadBulkEdits.ts
++++ b/src/vs/workbench/api/browser/mainThreadBulkEdits.ts
+@@ -9,9 +9,7 @@ import { IBulkEditService, ResourceFileEdit, ResourceTextEdit } from '../../../e
+ import { WorkspaceEdit } from '../../../editor/common/languages.js';
+ import { ILogService } from '../../../platform/log/common/log.js';
+ import { IUriIdentityService } from '../../../platform/uriIdentity/common/uriIdentity.js';
+-import { IWorkspaceCellEditDto, IWorkspaceEditDto, IWorkspaceFileEditDto, MainContext, MainThreadBulkEditsShape } from '../common/extHost.protocol.js';
+-import { ResourceNotebookCellEdit } from '../../contrib/bulkEdit/browser/bulkCellEdits.js';
+-import { CellEditType } from '../../contrib/notebook/common/notebookCommon.js';
++import { IWorkspaceEditDto, IWorkspaceFileEditDto, MainContext, MainThreadBulkEditsShape } from '../common/extHost.protocol.js';
+ import { IExtHostContext, extHostNamedCustomer } from '../../services/extensions/common/extHostCustomers.js';
+ import { SerializableObjectWithBuffers } from '../../services/extensions/common/proxyIdentifier.js';
+ 
+@@ -29,7 +27,12 @@ export class MainThreadBulkEdits implements MainThreadBulkEditsShape {
+ 	dispose(): void { }
+ 
+ 	$tryApplyWorkspaceEdit(dto: SerializableObjectWithBuffers<IWorkspaceEditDto>, undoRedoGroupId?: number, isRefactoring?: boolean): Promise<boolean> {
+-		const edits = reviveWorkspaceEditDto(dto.value, this._uriIdentService);
++		let edits: WorkspaceEdit;
++		try {
++			edits = reviveWorkspaceEditDto(dto.value, this._uriIdentService);
++		} catch (error) {
++			return Promise.reject(error);
++		}
+ 		return this._bulkEditService.apply(edits, { undoRedoGroupId, respectAutoSaveConfig: isRefactoring }).then((res) => res.isApplied, err => {
+ 			this._logService.warn(`IGNORING workspace edit: ${err}`);
+ 			return false;
+@@ -66,26 +69,8 @@ export function reviveWorkspaceEditDto(data: IWorkspaceEditDto | undefined, uriI
+ 			edit.newResource = edit.newResource && uriIdentityService.asCanonicalUri(edit.newResource);
+ 			edit.oldResource = edit.oldResource && uriIdentityService.asCanonicalUri(edit.oldResource);
+ 		}
+-		if (ResourceNotebookCellEdit.is(edit)) {
+-			edit.resource = uriIdentityService.asCanonicalUri(edit.resource);
+-			const cellEdit = (edit as IWorkspaceCellEditDto).cellEdit;
+-			if (cellEdit.editType === CellEditType.Replace) {
+-				edit.cellEdit = {
+-					...cellEdit,
+-					cells: cellEdit.cells.map(cell => ({
+-						...cell,
+-						outputs: cell.outputs.map(output => ({
+-							...output,
+-							outputs: output.items.map(item => {
+-								return {
+-									mime: item.mime,
+-									data: item.valueBytes
+-								};
+-							})
+-						}))
+-					}))
+-				};
+-			}
++		if ('cellEdit' in edit) {
++			throw new Error('Notebook workspace edits are unavailable in this product.');
+ 		}
+ 	}
+ 	return <WorkspaceEdit>data;
+diff --git a/src/vs/workbench/api/browser/mainThreadComments.ts b/src/vs/workbench/api/browser/mainThreadComments.ts
+index 43c87d0..ab7dda6 100644
+--- a/src/vs/workbench/api/browser/mainThreadComments.ts
++++ b/src/vs/workbench/api/browser/mainThreadComments.ts
+@@ -23,7 +23,7 @@ import { Codicon } from '../../../base/common/codicons.js';
+ import { registerIcon } from '../../../platform/theme/common/iconRegistry.js';
+ import { localize } from '../../../nls.js';
+ import { MarshalledId } from '../../../base/common/marshallingIds.js';
+-import { ICellRange } from '../../contrib/notebook/common/notebookRange.js';
++import { ICellRange } from '../../common/notebookRange.js';
+ import { Schemas } from '../../../base/common/network.js';
+ import { IViewsService } from '../../services/views/common/viewsService.js';
+ import { MarshalledCommentThread } from '../../common/comments.js';
+diff --git a/src/vs/workbench/api/browser/mainThreadEditorTabs.ts b/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
+index 7cdcf92..6a7cc90 100644
+--- a/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
++++ b/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
+@@ -17,10 +17,8 @@ import { EditorInput } from '../../common/editor/editorInput.js';
+ import { SideBySideEditorInput } from '../../common/editor/sideBySideEditorInput.js';
+ import { AbstractTextResourceEditorInput } from '../../common/editor/textResourceEditorInput.js';
+ import { CustomEditorInput } from '../../contrib/customEditor/browser/customEditorInput.js';
+-import { InteractiveEditorInput } from '../../contrib/interactive/browser/interactiveEditorInput.js';
+ import { MergeEditorInput } from '../../contrib/mergeEditor/browser/mergeEditorInput.js';
+ import { MultiDiffEditorInput } from '../../contrib/multiDiffEditor/browser/multiDiffEditorInput.js';
+-import { NotebookEditorInput } from '../../contrib/notebook/common/notebookEditorInput.js';
+ import { TerminalEditorInput } from '../../contrib/terminal/browser/terminalEditorInput.js';
+ import { WebviewInput } from '../../contrib/webviewPanel/browser/webviewEditorInput.js';
+ import { columnToEditorGroup, EditorGroupColumn, editorGroupToColumn } from '../../services/editor/common/editorGroupColumn.js';
+@@ -142,14 +140,6 @@ export class MainThreadEditorTabs implements MainThreadEditorTabsShape {
+ 			return { kind: TabInputKind.UnknownInput };
+ 		}
+ 
+-		if (editor instanceof NotebookEditorInput) {
+-			return {
+-				kind: TabInputKind.NotebookInput,
+-				notebookType: editor.viewType,
+-				uri: editor.resource
+-			};
+-		}
+-
+ 		if (editor instanceof CustomEditorInput) {
+ 			return {
+ 				kind: TabInputKind.CustomEditorInput,
+@@ -179,22 +169,6 @@ export class MainThreadEditorTabs implements MainThreadEditorTabsShape {
+ 					original: editor.original.resource
+ 				};
+ 			}
+-			if (editor.modified instanceof NotebookEditorInput && editor.original instanceof NotebookEditorInput) {
+-				return {
+-					kind: TabInputKind.NotebookDiffInput,
+-					notebookType: editor.original.viewType,
+-					modified: editor.modified.resource,
+-					original: editor.original.resource
+-				};
+-			}
+-		}
+-
+-		if (editor instanceof InteractiveEditorInput) {
+-			return {
+-				kind: TabInputKind.InteractiveEditorInput,
+-				uri: editor.resource,
+-				inputBoxUri: editor.inputResource
+-			};
+ 		}
+ 
+ 
+diff --git a/src/vs/workbench/api/browser/viewsExtensionPoint.ts b/src/vs/workbench/api/browser/viewsExtensionPoint.ts
+index c9b10d8..2c42de9 100644
+--- a/src/vs/workbench/api/browser/viewsExtensionPoint.ts
++++ b/src/vs/workbench/api/browser/viewsExtensionPoint.ts
+@@ -22,7 +22,6 @@ import { CustomTreeView, TreeViewPane } from '../../browser/parts/views/treeView
+ import { ViewPaneContainer } from '../../browser/parts/views/viewPaneContainer.js';
+ import { IWorkbenchContribution, WorkbenchPhase, registerWorkbenchContribution2 } from '../../common/contributions.js';
+ import { ICustomViewDescriptor, IViewContainersRegistry, IViewDescriptor, IViewsRegistry, ViewContainer, Extensions as ViewContainerExtensions, ViewContainerLocation } from '../../common/views.js';
+-import { VIEWLET_ID as DEBUG } from '../../contrib/debug/common/debug.js';
+ import { VIEWLET_ID as EXPLORER } from '../../contrib/files/common/files.js';
+ import { VIEWLET_ID as REMOTE } from '../../contrib/remote/browser/remoteExplorer.js';
+ import { VIEWLET_ID as SCM } from '../../contrib/scm/common/scm.js';
+@@ -215,12 +214,6 @@ const viewsContribution: IJSONSchema = {
+ 			items: viewDescriptor,
+ 			default: []
+ 		},
+-		'debug': {
+-			description: localize('views.debug', "Contributes views to Debug container in the Activity bar"),
+-			type: 'array',
+-			items: viewDescriptor,
+-			default: []
+-		},
+ 		'scm': {
+ 			description: localize('views.scm', "Contributes views to SCM container in the Activity bar"),
+ 			type: 'array',
+@@ -627,7 +620,6 @@ class ViewsExtensionHandler implements IWorkbenchContribution {
+ 	private getViewContainer(value: string): ViewContainer | undefined {
+ 		switch (value) {
+ 			case 'explorer': return this.viewContainersRegistry.get(EXPLORER);
+-			case 'debug': return this.viewContainersRegistry.get(DEBUG);
+ 			case 'scm': return this.viewContainersRegistry.get(SCM);
+ 			case 'remote': return this.viewContainersRegistry.get(REMOTE);
+ 			default: return this.viewContainersRegistry.get(`workbench.view.extension.${value}`);
+@@ -638,7 +630,6 @@ class ViewsExtensionHandler implements IWorkbenchContribution {
+ 		switch (container.id) {
+ 			case EXPLORER:
+ 			case SCM:
+-			case DEBUG:
+ 				return true;
+ 		}
+ 		return false;
+diff --git a/src/vs/workbench/api/common/debugTypes.ts b/src/vs/workbench/api/common/debugTypes.ts
+new file mode 100644
+index 0000000..0f6ac0f
+--- /dev/null
++++ b/src/vs/workbench/api/common/debugTypes.ts
+@@ -0,0 +1,38 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++// Stable API data only; no service registration or feature runtime.
++
++export enum DebugConfigurationProviderTriggerKind {
++	/**
++	 *	`DebugConfigurationProvider.provideDebugConfigurations` is called to provide the initial debug configurations for a newly created launch.json.
++	 */
++	Initial = 1,
++	/**
++	 * `DebugConfigurationProvider.provideDebugConfigurations` is called to provide dynamically generated debug configurations when the user asks for them through the UI (e.g. via the "Select and Start Debugging" command).
++	 */
++	Dynamic = 2
++}
++
++export interface IDebugVisualizationTreeItem {
++	id: number;
++	label: string;
++	description?: string;
++	collapsibleState: DebugTreeItemCollapsibleState;
++	contextValue?: string;
++	canEdit?: boolean;
++}
++
++export namespace IDebugVisualizationTreeItem {
++	export type Serialized = IDebugVisualizationTreeItem;
++	export const deserialize = (v: Serialized): IDebugVisualizationTreeItem => v;
++	export const serialize = (item: IDebugVisualizationTreeItem): Serialized => item;
++}
++
++export const enum DebugTreeItemCollapsibleState {
++	None = 0,
++	Collapsed = 1,
++	Expanded = 2
++}
+diff --git a/src/vs/workbench/api/common/extHost.api.impl.ts b/src/vs/workbench/api/common/extHost.api.impl.ts
+index 7fdb5c0..bf44fe2 100644
+--- a/src/vs/workbench/api/common/extHost.api.impl.ts
++++ b/src/vs/workbench/api/common/extHost.api.impl.ts
+@@ -13,7 +13,7 @@ import { Schemas, matchesScheme } from '../../../base/common/network.js';
+ import Severity from '../../../base/common/severity.js';
+ import { URI } from '../../../base/common/uri.js';
+ import { TextEditorCursorStyle } from '../../../editor/common/config/editorOptions.js';
+-import { score, targetsNotebooks } from '../../../editor/common/languageSelector.js';
++import { score } from '../../../editor/common/languageSelector.js';
+ import * as languageConfiguration from '../../../editor/common/languages/languageConfiguration.js';
+ import { OverviewRulerLane } from '../../../editor/common/model.js';
+ import { ExtensionError, ExtensionIdentifierSet, IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+@@ -23,7 +23,7 @@ import { ILogService, ILoggerService, LogLevel } from '../../../platform/log/com
+ import { getRemoteName } from '../../../platform/remote/common/remoteHosts.js';
+ import { TelemetryTrustedValue } from '../../../platform/telemetry/common/telemetryUtils.js';
+ import { EditSessionIdentityMatch } from '../../../platform/workspace/common/editSessions.js';
+-import { DebugConfigurationProviderTriggerKind } from '../../contrib/debug/common/debug.js';
++import { DebugConfigurationProviderTriggerKind } from './debugTypes.js';
+ import { ExtensionDescriptionRegistry } from '../../services/extensions/common/extensionDescriptionRegistry.js';
+ import { UIKind } from '../../services/extensions/common/extensionHostProtocol.js';
+ import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/extensions/common/extensions.js';
+@@ -31,6 +31,7 @@ import { ProxyIdentifier } from '../../services/extensions/common/proxyIdentifie
+ import { AISearchKeyword, ExcludeSettingOptions, TextSearchCompleteMessageType, TextSearchContext2, TextSearchMatch2 } from '../../services/search/common/searchExtTypes.js';
+ import { CandidatePortSource, ExtHostContext, ExtHostLogLevelServiceShape, IDocumentDiffLineChangeDto, MainContext } from './extHost.protocol.js';
+ import * as disabledAi from './extHostDisabledAi.js';
++import * as disabledLegacy from './extHostDisabledLegacy.js';
+ import { ExtHostApiCommands } from './extHostApiCommands.js';
+ import { IExtHostApiDeprecationService } from './extHostApiDeprecationService.js';
+ import { IExtHostAuthentication } from './extHostAuthentication.js';
+@@ -42,7 +43,6 @@ import { createExtHostComments } from './extHostComments.js';
+ import { ExtHostConfigProvider, IExtHostConfiguration } from './extHostConfiguration.js';
+ import { ExtHostCustomEditors } from './extHostCustomEditors.js';
+ import { IExtHostDataChannels } from './extHostDataChannels.js';
+-import { IExtHostDebugService } from './extHostDebugService.js';
+ import { IExtHostDecorations } from './extHostDecorations.js';
+ import { ExtHostDiagnostics } from './extHostDiagnostics.js';
+ import { ExtHostDialogs } from './extHostDialogs.js';
+@@ -57,19 +57,12 @@ import { IExtHostConsumerFileSystem } from './extHostFileSystemConsumer.js';
+ import { ExtHostFileSystemEventService, FileSystemWatcherCreateOptions } from './extHostFileSystemEventService.js';
+ import { IExtHostFileSystemInfo } from './extHostFileSystemInfo.js';
+ import { IExtHostInitDataService } from './extHostInitDataService.js';
+-import { ExtHostInteractive } from './extHostInteractive.js';
+ import { ExtHostLabelService } from './extHostLabelService.js';
+ import { ExtHostLanguageFeatures } from './extHostLanguageFeatures.js';
+ import { ExtHostLanguages } from './extHostLanguages.js';
+ import { IExtHostLocalizationService } from './extHostLocalizationService.js';
+ import { IExtHostManagedSockets } from './extHostManagedSockets.js';
+ import { ExtHostMessageService } from './extHostMessageService.js';
+-import { ExtHostNotebookController } from './extHostNotebook.js';
+-import { ExtHostNotebookDocumentSaveParticipant } from './extHostNotebookDocumentSaveParticipant.js';
+-import { ExtHostNotebookDocuments } from './extHostNotebookDocuments.js';
+-import { ExtHostNotebookEditors } from './extHostNotebookEditors.js';
+-import { ExtHostNotebookKernels } from './extHostNotebookKernels.js';
+-import { ExtHostNotebookRenderers } from './extHostNotebookRenderers.js';
+ import { IExtHostOutputService } from './extHostOutput.js';
+ import { ExtHostProfileContentHandlers } from './extHostProfileContentHandler.js';
+ import { IExtHostProgress } from './extHostProgress.js';
+@@ -185,7 +178,6 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 	const extHostCommands = rpcProtocol.set(ExtHostContext.ExtHostCommands, accessor.get(IExtHostCommands));
+ 	const extHostTerminalService = rpcProtocol.set(ExtHostContext.ExtHostTerminalService, accessor.get(IExtHostTerminalService));
+ 	const extHostTerminalShellIntegration = rpcProtocol.set(ExtHostContext.ExtHostTerminalShellIntegration, accessor.get(IExtHostTerminalShellIntegration));
+-	const extHostDebugService = rpcProtocol.set(ExtHostContext.ExtHostDebugService, accessor.get(IExtHostDebugService));
+ 	const extHostSearch = rpcProtocol.set(ExtHostContext.ExtHostSearch, accessor.get(IExtHostSearch));
+ 	const extHostTask = rpcProtocol.set(ExtHostContext.ExtHostTask, accessor.get(IExtHostTask));
+ 	const extHostOutputService = rpcProtocol.set(ExtHostContext.ExtHostOutputService, accessor.get(IExtHostOutputService));
+@@ -195,12 +187,6 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 	const extHostDocuments = rpcProtocol.set(ExtHostContext.ExtHostDocuments, new ExtHostDocuments(rpcProtocol, extHostDocumentsAndEditors));
+ 	const extHostDocumentContentProviders = rpcProtocol.set(ExtHostContext.ExtHostDocumentContentProviders, new ExtHostDocumentContentProvider(rpcProtocol, extHostDocumentsAndEditors, extHostLogService));
+ 	const extHostDocumentSaveParticipant = rpcProtocol.set(ExtHostContext.ExtHostDocumentSaveParticipant, new ExtHostDocumentSaveParticipant(extHostLogService, extHostDocuments, rpcProtocol.getProxy(MainContext.MainThreadBulkEdits)));
+-	const extHostNotebook = rpcProtocol.set(ExtHostContext.ExtHostNotebook, new ExtHostNotebookController(rpcProtocol, extHostCommands, extHostDocumentsAndEditors, extHostDocuments, extHostConsumerFileSystem, extHostSearch, extHostLogService));
+-	const extHostNotebookDocuments = rpcProtocol.set(ExtHostContext.ExtHostNotebookDocuments, new ExtHostNotebookDocuments(extHostNotebook));
+-	const extHostNotebookEditors = rpcProtocol.set(ExtHostContext.ExtHostNotebookEditors, new ExtHostNotebookEditors(extHostLogService, extHostNotebook));
+-	const extHostNotebookKernels = rpcProtocol.set(ExtHostContext.ExtHostNotebookKernels, new ExtHostNotebookKernels(rpcProtocol, initData, extHostNotebook, extHostCommands, extHostLogService));
+-	const extHostNotebookRenderers = rpcProtocol.set(ExtHostContext.ExtHostNotebookRenderers, new ExtHostNotebookRenderers(rpcProtocol, extHostNotebook));
+-	const extHostNotebookDocumentSaveParticipant = rpcProtocol.set(ExtHostContext.ExtHostNotebookDocumentSaveParticipant, new ExtHostNotebookDocumentSaveParticipant(extHostLogService, extHostNotebook, rpcProtocol.getProxy(MainContext.MainThreadBulkEdits)));
+ 	const extHostEditors = rpcProtocol.set(ExtHostContext.ExtHostEditors, new ExtHostEditors(rpcProtocol, extHostDocumentsAndEditors));
+ 	const extHostTreeViews = rpcProtocol.set(ExtHostContext.ExtHostTreeViews, new ExtHostTreeViews(rpcProtocol.getProxy(MainContext.MainThreadTreeViews), extHostCommands, extHostLogService));
+ 	const extHostEditorInsets = rpcProtocol.set(ExtHostContext.ExtHostEditorInsets, new ExtHostEditorInsets(rpcProtocol.getProxy(MainContext.MainThreadEditorInsets), extHostEditors, initData.remote));
+@@ -224,7 +210,6 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 	const extHostTesting = rpcProtocol.set(ExtHostContext.ExtHostTesting, accessor.get(IExtHostTesting));
+ 	const extHostUriOpeners = rpcProtocol.set(ExtHostContext.ExtHostUriOpeners, new ExtHostUriOpeners(rpcProtocol));
+ 	const extHostProfileContentHandlers = rpcProtocol.set(ExtHostContext.ExtHostProfileContentHandlers, new ExtHostProfileContentHandlers(rpcProtocol));
+-	rpcProtocol.set(ExtHostContext.ExtHostInteractive, new ExtHostInteractive(rpcProtocol, extHostNotebook, extHostDocumentsAndEditors, extHostCommands, extHostLogService));
+ 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
+ 
+ 	// Check that no named customers are missing
+@@ -620,14 +605,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 			setTextDocumentLanguage(document: vscode.TextDocument, languageId: string): Thenable<vscode.TextDocument> {
+ 				return extHostLanguages.changeLanguage(document.uri, languageId);
+ 			},
+-			match(selector: vscode.DocumentSelector, document: vscode.TextDocument): number {
+-				const interalSelector = typeConverters.LanguageSelector.from(selector);
+-				let notebook: vscode.NotebookDocument | undefined;
+-				if (targetsNotebooks(interalSelector)) {
+-					notebook = extHostNotebook.notebookDocuments.find(value => value.apiNotebook.getCells().find(c => c.document === document))?.apiNotebook;
+-				}
+-				return score(interalSelector, document.uri, document.languageId, true, notebook?.uri, notebook?.notebookType);
+-			},
++			match(selector: vscode.DocumentSelector, document: vscode.TextDocument): number { const interalSelector = typeConverters.LanguageSelector.from(selector); return score(interalSelector, document.uri, document.languageId, true, undefined, undefined); },
+ 			registerCodeActionsProvider(selector: vscode.DocumentSelector, provider: vscode.CodeActionProvider, metadata?: vscode.CodeActionProviderMetadata): vscode.Disposable {
+ 				return extHostLanguageFeatures.registerCodeActionProvider(extension, checkSelector(selector), provider, metadata);
+ 			},
+@@ -986,27 +964,13 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 			}) {
+ 				return extHostWebviewViews.registerWebviewViewProvider(extension, viewId, provider, options?.webviewOptions);
+ 			},
+-			get activeNotebookEditor(): vscode.NotebookEditor | undefined {
+-				return extHostNotebook.activeNotebookEditor;
+-			},
+-			onDidChangeActiveNotebookEditor(listener, thisArgs?, disposables?) {
+-				return _asExtensionEvent(extHostNotebook.onDidChangeActiveNotebookEditor)(listener, thisArgs, disposables);
+-			},
+-			get visibleNotebookEditors() {
+-				return extHostNotebook.visibleNotebookEditors;
+-			},
+-			get onDidChangeVisibleNotebookEditors() {
+-				return _asExtensionEvent(extHostNotebook.onDidChangeVisibleNotebookEditors);
+-			},
+-			onDidChangeNotebookEditorSelection(listener, thisArgs?, disposables?) {
+-				return _asExtensionEvent(extHostNotebookEditors.onDidChangeNotebookEditorSelection)(listener, thisArgs, disposables);
+-			},
+-			onDidChangeNotebookEditorVisibleRanges(listener, thisArgs?, disposables?) {
+-				return _asExtensionEvent(extHostNotebookEditors.onDidChangeNotebookEditorVisibleRanges)(listener, thisArgs, disposables);
+-			},
+-			showNotebookDocument(document, options?) {
+-				return extHostNotebook.showNotebookDocument(document, options);
+-			},
++			get activeNotebookEditor(): vscode.NotebookEditor | undefined { return undefined; },
++			onDidChangeActiveNotebookEditor(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			get visibleNotebookEditors(): vscode.NotebookEditor[] { return []; },
++			get onDidChangeVisibleNotebookEditors() { return disabledLegacy.neverEvent; },
++			onDidChangeNotebookEditorSelection(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			onDidChangeNotebookEditorVisibleRanges(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			showNotebookDocument(_document, _options?) { return disabledLegacy.unavailableAsync('window.showNotebookDocument'); },
+ 			registerExternalUriOpener(id: string, opener: vscode.ExternalUriOpener, metadata: vscode.ExternalUriOpenerMetadata) {
+ 				checkProposedApiEnabled(extension, 'externalUriOpener');
+ 				return extHostUriOpeners.registerExternalUriOpener(extension.identifier, id, opener, metadata);
+@@ -1291,39 +1255,14 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 			onWillSaveTextDocument: (listener, thisArgs?, disposables?) => {
+ 				return _asExtensionEvent(extHostDocumentSaveParticipant.getOnWillSaveTextDocumentEvent(extension))(listener, thisArgs, disposables);
+ 			},
+-			get notebookDocuments(): vscode.NotebookDocument[] {
+-				return extHostNotebook.notebookDocuments.map(d => d.apiNotebook);
+-			},
+-			async openNotebookDocument(uriOrType?: URI | string, content?: vscode.NotebookData) {
+-				let uri: URI;
+-				if (URI.isUri(uriOrType)) {
+-					uri = uriOrType;
+-					await extHostNotebook.openNotebookDocument(uriOrType);
+-				} else if (typeof uriOrType === 'string') {
+-					uri = URI.revive(await extHostNotebook.createNotebookDocument({ viewType: uriOrType, content }));
+-				} else {
+-					throw new Error('Invalid arguments');
+-				}
+-				return extHostNotebook.getNotebookDocument(uri).apiNotebook;
+-			},
+-			onDidSaveNotebookDocument(listener, thisArg, disposables) {
+-				return _asExtensionEvent(extHostNotebookDocuments.onDidSaveNotebookDocument)(listener, thisArg, disposables);
+-			},
+-			onDidChangeNotebookDocument(listener, thisArg, disposables) {
+-				return _asExtensionEvent(extHostNotebookDocuments.onDidChangeNotebookDocument)(listener, thisArg, disposables);
+-			},
+-			onWillSaveNotebookDocument(listener, thisArg, disposables) {
+-				return _asExtensionEvent(extHostNotebookDocumentSaveParticipant.getOnWillSaveNotebookDocumentEvent(extension))(listener, thisArg, disposables);
+-			},
+-			get onDidOpenNotebookDocument() {
+-				return _asExtensionEvent(extHostNotebook.onDidOpenNotebookDocument);
+-			},
+-			get onDidCloseNotebookDocument() {
+-				return _asExtensionEvent(extHostNotebook.onDidCloseNotebookDocument);
+-			},
+-			registerNotebookSerializer(viewType: string, serializer: vscode.NotebookSerializer, options?: vscode.NotebookDocumentContentOptions, registration?: vscode.NotebookRegistrationData) {
+-				return extHostNotebook.registerNotebookSerializer(extension, viewType, serializer, options, isProposedApiEnabled(extension, 'notebookLiveShare') ? registration : undefined);
+-			},
++			get notebookDocuments(): vscode.NotebookDocument[] { return []; },
++			openNotebookDocument(_uriOrType?: URI | string, _content?: vscode.NotebookData) { return disabledLegacy.unavailableAsync('workspace.openNotebookDocument'); },
++			onDidSaveNotebookDocument(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			onDidChangeNotebookDocument(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			onWillSaveNotebookDocument(listener, thisArgs?, disposables?) { return disabledLegacy.neverEvent(listener, thisArgs, disposables); },
++			get onDidOpenNotebookDocument() { return disabledLegacy.neverEvent; },
++			get onDidCloseNotebookDocument() { return disabledLegacy.neverEvent; },
++			registerNotebookSerializer(_viewType: string, _serializer: vscode.NotebookSerializer, _options?: vscode.NotebookDocumentContentOptions, _registration?: vscode.NotebookRegistrationData) { return disabledLegacy.createRegistration(); },
+ 			onDidChangeConfiguration: (listener: (_: any) => any, thisArgs?: any, disposables?: extHostTypes.Disposable[]) => {
+ 				return _asExtensionEvent(configProvider.onDidChangeConfiguration)(listener, thisArgs, disposables);
+ 			},
+@@ -1500,73 +1439,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 		};
+ 
+ 		// namespace: debug
+-		const debug: typeof vscode.debug = {
+-			get activeDebugSession() {
+-				return extHostDebugService.activeDebugSession;
+-			},
+-			get activeDebugConsole() {
+-				return extHostDebugService.activeDebugConsole;
+-			},
+-			get breakpoints() {
+-				return extHostDebugService.breakpoints;
+-			},
+-			get activeStackItem() {
+-				return extHostDebugService.activeStackItem;
+-			},
+-			registerDebugVisualizationProvider(id, provider) {
+-				checkProposedApiEnabled(extension, 'debugVisualization');
+-				return extHostDebugService.registerDebugVisualizationProvider(extension, id, provider);
+-			},
+-			registerDebugVisualizationTreeProvider(id, provider) {
+-				checkProposedApiEnabled(extension, 'debugVisualization');
+-				return extHostDebugService.registerDebugVisualizationTree(extension, id, provider);
+-			},
+-			onDidStartDebugSession(listener, thisArg?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidStartDebugSession)(listener, thisArg, disposables);
+-			},
+-			onDidTerminateDebugSession(listener, thisArg?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidTerminateDebugSession)(listener, thisArg, disposables);
+-			},
+-			onDidChangeActiveDebugSession(listener, thisArg?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidChangeActiveDebugSession)(listener, thisArg, disposables);
+-			},
+-			onDidReceiveDebugSessionCustomEvent(listener, thisArg?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidReceiveDebugSessionCustomEvent)(listener, thisArg, disposables);
+-			},
+-			onDidChangeBreakpoints(listener, thisArgs?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidChangeBreakpoints)(listener, thisArgs, disposables);
+-			},
+-			onDidChangeActiveStackItem(listener, thisArg?, disposables?) {
+-				return _asExtensionEvent(extHostDebugService.onDidChangeActiveStackItem)(listener, thisArg, disposables);
+-			},
+-			registerDebugConfigurationProvider(debugType: string, provider: vscode.DebugConfigurationProvider, triggerKind?: vscode.DebugConfigurationProviderTriggerKind) {
+-				return extHostDebugService.registerDebugConfigurationProvider(debugType, provider, triggerKind || DebugConfigurationProviderTriggerKind.Initial);
+-			},
+-			registerDebugAdapterDescriptorFactory(debugType: string, factory: vscode.DebugAdapterDescriptorFactory) {
+-				return extHostDebugService.registerDebugAdapterDescriptorFactory(extension, debugType, factory);
+-			},
+-			registerDebugAdapterTrackerFactory(debugType: string, factory: vscode.DebugAdapterTrackerFactory) {
+-				return extHostDebugService.registerDebugAdapterTrackerFactory(debugType, factory);
+-			},
+-			startDebugging(folder: vscode.WorkspaceFolder | undefined, nameOrConfig: string | vscode.DebugConfiguration, parentSessionOrOptions?: vscode.DebugSession | vscode.DebugSessionOptions) {
+-				if (!parentSessionOrOptions || (typeof parentSessionOrOptions === 'object' && 'configuration' in parentSessionOrOptions)) {
+-					return extHostDebugService.startDebugging(folder, nameOrConfig, { parentSession: parentSessionOrOptions });
+-				}
+-				return extHostDebugService.startDebugging(folder, nameOrConfig, parentSessionOrOptions || {});
+-			},
+-			stopDebugging(session?: vscode.DebugSession) {
+-				return extHostDebugService.stopDebugging(session);
+-			},
+-			addBreakpoints(breakpoints: readonly vscode.Breakpoint[]) {
+-				return extHostDebugService.addBreakpoints(breakpoints);
+-			},
+-			removeBreakpoints(breakpoints: readonly vscode.Breakpoint[]) {
+-				return extHostDebugService.removeBreakpoints(breakpoints);
+-			},
+-			asDebugSourceUri(source: vscode.DebugProtocolSource, session?: vscode.DebugSession): vscode.Uri {
+-				return extHostDebugService.asDebugSourceUri(source, session);
+-			}
+-		};
++		const debug: typeof vscode.debug = disabledLegacy.createDebugApi(proposal => checkProposedApiEnabled(extension, proposal));
+ 
+ 		const tasks: typeof vscode.tasks = {
+ 			registerTaskProvider: (type: string, provider: vscode.TaskProvider) => {
+@@ -1616,25 +1489,7 @@ export function createApiFactoryAndRegisterActors(accessor: ServicesAccessor): I
+ 		};
+ 
+ 		// namespace: notebook
+-		const notebooks: typeof vscode.notebooks = {
+-			createNotebookController(id: string, notebookType: string, label: string, handler?, rendererScripts?: vscode.NotebookRendererScript[]) {
+-				return extHostNotebookKernels.createNotebookController(extension, id, notebookType, label, handler, isProposedApiEnabled(extension, 'notebookMessaging') ? rendererScripts : undefined);
+-			},
+-			registerNotebookCellStatusBarItemProvider: (notebookType: string, provider: vscode.NotebookCellStatusBarItemProvider) => {
+-				return extHostNotebook.registerNotebookCellStatusBarItemProvider(extension, notebookType, provider);
+-			},
+-			createRendererMessaging(rendererId) {
+-				return extHostNotebookRenderers.createRendererMessaging(extension, rendererId);
+-			},
+-			createNotebookControllerDetectionTask(notebookType: string) {
+-				checkProposedApiEnabled(extension, 'notebookKernelSource');
+-				return extHostNotebookKernels.createNotebookControllerDetectionTask(extension, notebookType);
+-			},
+-			registerKernelSourceActionProvider(notebookType: string, provider: vscode.NotebookKernelSourceActionProvider) {
+-				checkProposedApiEnabled(extension, 'notebookKernelSource');
+-				return extHostNotebookKernels.registerKernelSourceActionProvider(extension, notebookType, provider);
+-			},
+-		};
++		const notebooks: typeof vscode.notebooks = disabledLegacy.createNotebooksApi(proposal => checkProposedApiEnabled(extension, proposal));
+ 
+ 		// namespace: l10n
+ 		const l10n: typeof vscode.l10n = {
+diff --git a/src/vs/workbench/api/common/extHost.common.services.ts b/src/vs/workbench/api/common/extHost.common.services.ts
+index 57d244c..4d19a2f 100644
+--- a/src/vs/workbench/api/common/extHost.common.services.ts
++++ b/src/vs/workbench/api/common/extHost.common.services.ts
+@@ -12,7 +12,6 @@ import { IExtHostCommands, ExtHostCommands } from './extHostCommands.js';
+ import { IExtHostDocumentsAndEditors, ExtHostDocumentsAndEditors } from './extHostDocumentsAndEditors.js';
+ import { IExtHostTerminalService, WorkerExtHostTerminalService } from './extHostTerminalService.js';
+ import { IExtHostTask, WorkerExtHostTask } from './extHostTask.js';
+-import { IExtHostDebugService, WorkerExtHostDebugService } from './extHostDebugService.js';
+ import { IExtHostSearch, ExtHostSearch } from './extHostSearch.js';
+ import { IExtHostStorage, ExtHostStorage } from './extHostStorage.js';
+ import { IExtHostTunnelService, ExtHostTunnelService } from './extHostTunnelService.js';
+@@ -44,7 +43,6 @@ registerSingleton(IExtHostProgress, ExtHostProgress, InstantiationType.Eager);
+ registerSingleton(IExtHostConfiguration, ExtHostConfiguration, InstantiationType.Eager);
+ registerSingleton(IExtHostConsumerFileSystem, ExtHostConsumerFileSystem, InstantiationType.Eager);
+ registerSingleton(IExtHostTesting, ExtHostTesting, InstantiationType.Eager);
+-registerSingleton(IExtHostDebugService, WorkerExtHostDebugService, InstantiationType.Eager);
+ registerSingleton(IExtHostDecorations, ExtHostDecorations, InstantiationType.Eager);
+ registerSingleton(IExtHostDocumentsAndEditors, ExtHostDocumentsAndEditors, InstantiationType.Eager);
+ registerSingleton(IExtHostManagedSockets, ExtHostManagedSockets, InstantiationType.Eager);
+diff --git a/src/vs/workbench/api/common/extHost.protocol.ts b/src/vs/workbench/api/common/extHost.protocol.ts
+index 8013ade..4725d04 100644
+--- a/src/vs/workbench/api/common/extHost.protocol.ts
++++ b/src/vs/workbench/api/common/extHost.protocol.ts
+@@ -54,15 +54,11 @@ import { WorkspaceTrustRequestOptions } from '../../../platform/workspace/common
+ import { SaveReason } from '../../common/editor.js';
+ import { IRevealOptions, ITreeItem, IViewBadge } from '../../common/views.js';
+ import { CallHierarchyItem } from '../../contrib/callHierarchy/common/callHierarchy.js';
+-import { DebugConfigurationProviderTriggerKind, IAdapterDescriptor, IConfig, IDebugSessionReplMode, IDebugTestRunReference, IDebugVisualization, IDebugVisualizationContext, IDebugVisualizationTreeItem, MainThreadDebugVisualization } from '../../contrib/debug/common/debug.js';
+-import * as notebookCommon from '../../contrib/notebook/common/notebookCommon.js';
+-import { CellExecutionUpdateType } from '../../contrib/notebook/common/notebookExecutionService.js';
+-import { ICellExecutionComplete, ICellExecutionStateUpdate } from '../../contrib/notebook/common/notebookExecutionStateService.js';
+-import { ICellRange } from '../../contrib/notebook/common/notebookRange.js';
++import * as notebookCommon from './notebookTypes.js';
++import { ICellRange } from '../../common/notebookRange.js';
+ import { ISCMHistoryOptions } from '../../contrib/scm/common/history.js';
+ import { InputValidationType } from '../../contrib/scm/common/scm.js';
+-import { IWorkspaceSymbol, NotebookPriorityInfo } from '../../contrib/search/common/search.js';
+-import { IRawClosedNotebookFileMatch } from '../../contrib/search/common/searchNotebookHelpers.js';
++import { IWorkspaceSymbol } from '../../contrib/search/common/search.js';
+ import { CoverageDetails, ExtensionRunTestsRequest, ICallProfileRunHandler, IFileCoverage, ISerializedTestResults, IStartControllerTests, ITestItem, ITestMessage, ITestRunProfile, ITestRunTask, ResolvedTestRunRequest, TestControllerCapability, TestMessageFollowupRequest, TestMessageFollowupResponse, TestResultState, TestsDiffOp } from '../../contrib/testing/common/testTypes.js';
+ import { Timeline, TimelineChangeEvent, TimelineOptions, TimelineProviderDescriptor } from '../../contrib/timeline/common/timeline.js';
+ import { TypeHierarchyItem } from '../../contrib/typeHierarchy/common/typeHierarchy.js';
+@@ -1222,147 +1218,6 @@ export interface ExtHostManagedSocketsShape {
+ 	$remoteSocketDrain(socketId: number): Promise<void>;
+ }
+ 
+-export enum CellOutputKind {
+-	Text = 1,
+-	Error = 2,
+-	Rich = 3
+-}
+-
+-export enum NotebookEditorRevealType {
+-	Default = 0,
+-	InCenter = 1,
+-	InCenterIfOutsideViewport = 2,
+-	AtTop = 3
+-}
+-
+-export interface INotebookDocumentShowOptions {
+-	position?: EditorGroupColumn;
+-	preserveFocus?: boolean;
+-	pinned?: boolean;
+-	selections?: ICellRange[];
+-	label?: string;
+-}
+-
+-export type INotebookCellStatusBarEntryDto = Dto<notebookCommon.INotebookCellStatusBarItem>;
+-
+-export interface INotebookCellStatusBarListDto {
+-	items: INotebookCellStatusBarEntryDto[];
+-	cacheId: number;
+-}
+-
+-export interface MainThreadNotebookShape extends IDisposable {
+-	$registerNotebookSerializer(handle: number, extension: notebookCommon.NotebookExtensionDescription, viewType: string, options: notebookCommon.TransientOptions, registration: notebookCommon.INotebookContributionData | undefined): void;
+-	$unregisterNotebookSerializer(handle: number): void;
+-
+-	$registerNotebookCellStatusBarItemProvider(handle: number, eventHandle: number | undefined, viewType: string): Promise<void>;
+-	$unregisterNotebookCellStatusBarItemProvider(handle: number, eventHandle: number | undefined): Promise<void>;
+-	$emitCellStatusBarEvent(eventHandle: number): void;
+-}
+-
+-export interface MainThreadNotebookEditorsShape extends IDisposable {
+-	$tryShowNotebookDocument(uriComponents: UriComponents, viewType: string, options: INotebookDocumentShowOptions): Promise<string>;
+-	$tryRevealRange(id: string, range: ICellRange, revealType: NotebookEditorRevealType): Promise<void>;
+-	$trySetSelections(id: string, range: ICellRange[]): void;
+-}
+-
+-export interface MainThreadNotebookDocumentsShape extends IDisposable {
+-	$tryCreateNotebook(options: { viewType: string; content?: NotebookDataDto }): Promise<UriComponents>;
+-	$tryOpenNotebook(uriComponents: UriComponents): Promise<UriComponents>;
+-	$trySaveNotebook(uri: UriComponents): Promise<boolean>;
+-}
+-
+-export interface INotebookKernelDto2 {
+-	id: string;
+-	notebookType: string;
+-	extensionId: ExtensionIdentifier;
+-	extensionLocation: UriComponents;
+-	label: string;
+-	detail?: string;
+-	description?: string;
+-	supportedLanguages?: string[];
+-	supportsInterrupt?: boolean;
+-	supportsExecutionOrder?: boolean;
+-	preloads?: { uri: UriComponents; provides: readonly string[] }[];
+-	hasVariableProvider?: boolean;
+-}
+-
+-export interface INotebookProxyKernelDto {
+-	id: string;
+-	notebookType: string;
+-	extensionId: ExtensionIdentifier;
+-	extensionLocation: UriComponents;
+-	label: string;
+-	detail?: string;
+-	description?: string;
+-	kind?: string;
+-}
+-
+-export interface ICellExecuteOutputEditDto {
+-	editType: CellExecutionUpdateType.Output;
+-	cellHandle: number;
+-	append?: boolean;
+-	outputs: NotebookOutputDto[];
+-}
+-
+-export interface ICellExecuteOutputItemEditDto {
+-	editType: CellExecutionUpdateType.OutputItems;
+-	append?: boolean;
+-	outputId: string;
+-	items: NotebookOutputItemDto[];
+-}
+-
+-export interface ICellExecutionStateUpdateDto extends ICellExecutionStateUpdate {
+-}
+-
+-export interface ICellExecutionCompleteDto extends ICellExecutionComplete {
+-}
+-
+-export type ICellExecuteUpdateDto = ICellExecuteOutputEditDto | ICellExecuteOutputItemEditDto | ICellExecutionStateUpdateDto;
+-
+-export interface VariablesResult {
+-	id: number;
+-	name: string;
+-	value: string;
+-	type?: string;
+-	language?: string;
+-	expression?: string;
+-	hasNamedChildren: boolean;
+-	indexedChildrenCount: number;
+-	extensionId: string;
+-}
+-
+-export interface MainThreadNotebookKernelsShape extends IDisposable {
+-	$postMessage(handle: number, editorId: string | undefined, message: any): Promise<boolean>;
+-	$addKernel(handle: number, data: INotebookKernelDto2): Promise<void>;
+-	$updateKernel(handle: number, data: Partial<INotebookKernelDto2>): void;
+-	$removeKernel(handle: number): void;
+-	$updateNotebookPriority(handle: number, uri: UriComponents, value: number | undefined): void;
+-
+-	$createExecution(handle: number, controllerId: string, uri: UriComponents, cellHandle: number): void;
+-	$updateExecution(handle: number, data: SerializableObjectWithBuffers<ICellExecuteUpdateDto[]>): void;
+-	$completeExecution(handle: number, data: SerializableObjectWithBuffers<ICellExecutionCompleteDto>): void;
+-
+-	$createNotebookExecution(handle: number, controllerId: string, uri: UriComponents): void;
+-	$beginNotebookExecution(handle: number,): void;
+-	$completeNotebookExecution(handle: number): void;
+-
+-	$addKernelDetectionTask(handle: number, notebookType: string): Promise<void>;
+-	$removeKernelDetectionTask(handle: number): void;
+-
+-	$addKernelSourceActionProvider(handle: number, eventHandle: number, notebookType: string): Promise<void>;
+-	$removeKernelSourceActionProvider(handle: number, eventHandle: number): void;
+-	$emitNotebookKernelSourceActionsChangeEvent(eventHandle: number): void;
+-	$receiveVariable(requestId: string, variable: VariablesResult): void;
+-	$variablesUpdated(notebookUri: UriComponents): void;
+-}
+-
+-export interface MainThreadNotebookRenderersShape extends IDisposable {
+-	$postMessage(editorId: string | undefined, rendererId: string, message: unknown): Promise<boolean>;
+-}
+-
+-export interface MainThreadInteractiveShape extends IDisposable {
+-}
+-
+ export interface IPluginDto {
+ 	readonly uri: UriComponents;
+ }
+@@ -1670,52 +1525,6 @@ export interface MainThreadDocumentDiffShape extends IDisposable {
+ 	$computeDocumentDiff(originalUri: UriComponents, modifiedUri: UriComponents, ignoreTrimWhitespace: boolean, maxComputationTimeMs: number, computeMoves: boolean): Promise<IDocumentDiffResultDto | null>;
+ }
+ 
+-export type DebugSessionUUID = string;
+-
+-export interface IDebugConfiguration {
+-	type: string;
+-	name: string;
+-	request: string;
+-	[key: string]: any;
+-}
+-
+-export interface IStartDebuggingOptions {
+-	parentSessionID?: DebugSessionUUID;
+-	lifecycleManagedByParent?: boolean;
+-	repl?: IDebugSessionReplMode;
+-	noDebug?: boolean;
+-	compact?: boolean;
+-	suppressDebugToolbar?: boolean;
+-	suppressDebugStatusbar?: boolean;
+-	suppressDebugView?: boolean;
+-	suppressSaveBeforeStart?: boolean;
+-	testRun?: IDebugTestRunReference;
+-}
+-
+-export interface MainThreadDebugServiceShape extends IDisposable {
+-	$registerDebugTypes(debugTypes: string[]): void;
+-	$sessionCached(sessionID: string): void;
+-	$acceptDAMessage(handle: number, message: DebugProtocol.ProtocolMessage): void;
+-	$acceptDAError(handle: number, name: string, message: string, stack: string | undefined): void;
+-	$acceptDAExit(handle: number, code: number | undefined, signal: string | undefined): void;
+-	$registerDebugConfigurationProvider(type: string, triggerKind: DebugConfigurationProviderTriggerKind, hasProvideMethod: boolean, hasResolveMethod: boolean, hasResolve2Method: boolean, handle: number): Promise<void>;
+-	$registerDebugAdapterDescriptorFactory(type: string, handle: number): Promise<void>;
+-	$unregisterDebugConfigurationProvider(handle: number): void;
+-	$unregisterDebugAdapterDescriptorFactory(handle: number): void;
+-	$startDebugging(folder: UriComponents | undefined, nameOrConfig: string | IDebugConfiguration, options: IStartDebuggingOptions): Promise<boolean>;
+-	$stopDebugging(sessionId: DebugSessionUUID | undefined): Promise<void>;
+-	$setDebugSessionName(id: DebugSessionUUID, name: string): void;
+-	$customDebugAdapterRequest(id: DebugSessionUUID, command: string, args: any): Promise<any>;
+-	$getDebugProtocolBreakpoint(id: DebugSessionUUID, breakpoinId: string): Promise<DebugProtocol.Breakpoint | undefined>;
+-	$appendDebugConsole(value: string): void;
+-	$registerBreakpoints(breakpoints: Array<ISourceMultiBreakpointDto | IFunctionBreakpointDto | IDataBreakpointDto>): Promise<void>;
+-	$unregisterBreakpoints(breakpointIds: string[], functionBreakpointIds: string[], dataBreakpointIds: string[]): Promise<void>;
+-	$registerDebugVisualizer(extensionId: string, id: string): void;
+-	$unregisterDebugVisualizer(extensionId: string, id: string): void;
+-	$registerDebugVisualizerTree(treeId: string, canEdit: boolean): void;
+-	$unregisterDebugVisualizerTree(treeId: string): void;
+-}
+-
+ export interface IOpenUriOptions {
+ 	readonly allowTunneling?: boolean;
+ 	readonly allowContributedOpeners?: boolean | string;
+@@ -2554,112 +2363,6 @@ export interface ExtHostTaskShape {
+ 	$findExecutable(command: string, cwd?: string, paths?: string[]): Promise<string | undefined>;
+ }
+ 
+-export interface IBreakpointDto {
+-	type: string;
+-	id?: string;
+-	enabled: boolean;
+-	condition?: string;
+-	hitCondition?: string;
+-	logMessage?: string;
+-	mode?: string;
+-}
+-
+-export interface IFunctionBreakpointDto extends IBreakpointDto {
+-	type: 'function';
+-	functionName: string;
+-	mode?: string;
+-}
+-
+-export interface IDataBreakpointDto extends IBreakpointDto {
+-	type: 'data';
+-	dataId: string;
+-	canPersist: boolean;
+-	label: string;
+-	accessTypes?: DebugProtocol.DataBreakpointAccessType[];
+-	accessType: DebugProtocol.DataBreakpointAccessType;
+-	mode?: string;
+-}
+-
+-export interface ISourceBreakpointDto extends IBreakpointDto {
+-	type: 'source';
+-	uri: UriComponents;
+-	line: number;
+-	character: number;
+-}
+-
+-export interface IBreakpointsDeltaDto {
+-	added?: Array<ISourceBreakpointDto | IFunctionBreakpointDto | IDataBreakpointDto>;
+-	removed?: string[];
+-	changed?: Array<ISourceBreakpointDto | IFunctionBreakpointDto | IDataBreakpointDto>;
+-}
+-
+-export interface ISourceMultiBreakpointDto {
+-	type: 'sourceMulti';
+-	uri: UriComponents;
+-	lines: {
+-		id: string;
+-		enabled: boolean;
+-		condition?: string;
+-		hitCondition?: string;
+-		logMessage?: string;
+-		line: number;
+-		character: number;
+-		mode?: string;
+-	}[];
+-}
+-
+-export interface IDebugSessionFullDto {
+-	id: DebugSessionUUID;
+-	type: string;
+-	name: string;
+-	parent: DebugSessionUUID | undefined;
+-	folderUri: UriComponents | undefined;
+-	configuration: IConfig;
+-}
+-
+-export type IDebugSessionDto = IDebugSessionFullDto | DebugSessionUUID;
+-
+-export interface IThreadFocusDto {
+-	kind: 'thread';
+-	sessionId: string;
+-	threadId: number;
+-}
+-
+-export interface IStackFrameFocusDto {
+-	kind: 'stackFrame';
+-	sessionId: string;
+-	threadId: number;
+-	frameId: number;
+-}
+-
+-
+-export interface ExtHostDebugServiceShape {
+-	$substituteVariables(folder: UriComponents | undefined, config: IConfig): Promise<IConfig>;
+-	$runInTerminal(args: DebugProtocol.RunInTerminalRequestArguments, sessionId: string): Promise<number | undefined>;
+-	$startDASession(handle: number, session: IDebugSessionDto): Promise<void>;
+-	$stopDASession(handle: number): Promise<void>;
+-	$sendDAMessage(handle: number, message: DebugProtocol.ProtocolMessage): void;
+-	$resolveDebugConfiguration(handle: number, folder: UriComponents | undefined, debugConfiguration: IConfig, token: CancellationToken): Promise<IConfig | null | undefined>;
+-	$resolveDebugConfigurationWithSubstitutedVariables(handle: number, folder: UriComponents | undefined, debugConfiguration: IConfig, token: CancellationToken): Promise<IConfig | null | undefined>;
+-	$provideDebugConfigurations(handle: number, folder: UriComponents | undefined, token: CancellationToken): Promise<IConfig[]>;
+-	$provideDebugAdapter(handle: number, session: IDebugSessionDto): Promise<Dto<IAdapterDescriptor>>;
+-	$acceptDebugSessionStarted(session: IDebugSessionDto): void;
+-	$acceptDebugSessionTerminated(session: IDebugSessionDto): void;
+-	$acceptDebugSessionActiveChanged(session: IDebugSessionDto | undefined): void;
+-	$acceptDebugSessionCustomEvent(session: IDebugSessionDto, event: any): void;
+-	$acceptBreakpointsDelta(delta: IBreakpointsDeltaDto): void;
+-	$acceptDebugSessionNameChanged(session: IDebugSessionDto, name: string): void;
+-	$acceptStackFrameFocus(focus: IThreadFocusDto | IStackFrameFocusDto | undefined): void;
+-	$provideDebugVisualizers(extensionId: string, id: string, context: IDebugVisualizationContext, token: CancellationToken): Promise<IDebugVisualization.Serialized[]>;
+-	$resolveDebugVisualizer(id: number, token: CancellationToken): Promise<MainThreadDebugVisualization>;
+-	$executeDebugVisualizerCommand(id: number): Promise<void>;
+-	$disposeDebugVisualizers(ids: number[]): void;
+-	$getVisualizerTreeItem(treeId: string, element: IDebugVisualizationContext): Promise<IDebugVisualizationTreeItem.Serialized | undefined>;
+-	$getVisualizerTreeItemChildren(treeId: string, element: number): Promise<IDebugVisualizationTreeItem.Serialized[]>;
+-	$editVisualizerTreeItem(element: number, value: string): Promise<IDebugVisualizationTreeItem.Serialized | undefined>;
+-	$disposeVisualizedTree(element: number): void;
+-}
+-
+ 
+ export interface DecorationRequest {
+ 	readonly id: number;
+@@ -2735,49 +2438,6 @@ export interface ExtHostCommentsShape {
+ 	$setActiveComment(controllerHandle: number, commentInfo: { commentThreadHandle: number; uniqueIdInThread?: number } | undefined): Promise<void>;
+ }
+ 
+-export interface INotebookSelectionChangeEvent {
+-	selections: ICellRange[];
+-}
+-
+-export interface INotebookVisibleRangesEvent {
+-	ranges: ICellRange[];
+-}
+-
+-export interface INotebookEditorPropertiesChangeData {
+-	visibleRanges?: INotebookVisibleRangesEvent;
+-	selections?: INotebookSelectionChangeEvent;
+-}
+-
+-export interface INotebookDocumentPropertiesChangeData {
+-	metadata?: notebookCommon.NotebookDocumentMetadata;
+-}
+-
+-export interface INotebookModelAddedData {
+-	uri: UriComponents;
+-	versionId: number;
+-	cells: NotebookCellDto[];
+-	viewType: string;
+-	metadata?: notebookCommon.NotebookDocumentMetadata;
+-}
+-
+-export interface INotebookEditorAddData {
+-	id: string;
+-	documentUri: UriComponents;
+-	selections: ICellRange[];
+-	visibleRanges: ICellRange[];
+-	viewColumn?: number;
+-	viewType: string;
+-}
+-
+-export interface INotebookDocumentsAndEditorsDelta {
+-	removedDocuments?: UriComponents[];
+-	addedDocuments?: INotebookModelAddedData[];
+-	removedEditors?: string[];
+-	addedEditors?: INotebookEditorAddData[];
+-	newActiveEditor?: string | null;
+-	visibleEditors?: string[];
+-}
+-
+ export interface NotebookOutputItemDto {
+ 	readonly mime: string;
+ 	readonly valueBytes: VSBuffer;
+@@ -2804,110 +2464,6 @@ export interface NotebookDataDto {
+ 	readonly metadata: notebookCommon.NotebookDocumentMetadata;
+ }
+ 
+-export interface NotebookCellDto {
+-	handle: number;
+-	uri: UriComponents;
+-	eol: string;
+-	source: string[];
+-	language: string;
+-	mime?: string;
+-	cellKind: notebookCommon.CellKind;
+-	outputs: NotebookOutputDto[];
+-	metadata?: notebookCommon.NotebookCellMetadata;
+-	internalMetadata?: notebookCommon.NotebookCellInternalMetadata;
+-}
+-
+-export type INotebookPartialFileStatsWithMetadata = Omit<files.IFileStatWithMetadata, 'resource' | 'children'>;
+-
+-export interface ExtHostNotebookShape extends ExtHostNotebookDocumentsAndEditorsShape {
+-	$provideNotebookCellStatusBarItems(handle: number, uri: UriComponents, index: number, token: CancellationToken): Promise<INotebookCellStatusBarListDto | undefined>;
+-	$releaseNotebookCellStatusBarItems(id: number): void;
+-
+-	$dataToNotebook(handle: number, data: VSBuffer, token: CancellationToken): Promise<SerializableObjectWithBuffers<NotebookDataDto>>;
+-	$notebookToData(handle: number, data: SerializableObjectWithBuffers<NotebookDataDto>, token: CancellationToken): Promise<VSBuffer>;
+-	$saveNotebook(handle: number, uri: UriComponents, versionId: number, options: files.IWriteFileOptions, token: CancellationToken): Promise<INotebookPartialFileStatsWithMetadata | files.FileOperationError>;
+-
+-	$searchInNotebooks(handle: number, textQuery: search.ITextQuery, viewTypeFileTargets: NotebookPriorityInfo[], otherViewTypeFileTargets: NotebookPriorityInfo[], token: CancellationToken): Promise<{ results: IRawClosedNotebookFileMatch[]; limitHit: boolean }>;
+-}
+-
+-export interface ExtHostNotebookDocumentSaveParticipantShape {
+-	$participateInSave(resource: UriComponents, reason: SaveReason, token: CancellationToken): Promise<boolean>;
+-}
+-
+-export interface ExtHostNotebookRenderersShape {
+-	$postRendererMessage(editorId: string, rendererId: string, message: unknown): void;
+-}
+-
+-export interface ExtHostNotebookDocumentsAndEditorsShape {
+-	$acceptDocumentAndEditorsDelta(delta: SerializableObjectWithBuffers<INotebookDocumentsAndEditorsDelta>): void;
+-}
+-
+-export type NotebookRawContentEventDto =
+-	// notebookCommon.NotebookCellsInitializeEvent<NotebookCellDto>
+-	| {
+-
+-		readonly kind: notebookCommon.NotebookCellsChangeType.ModelChange;
+-		readonly changes: notebookCommon.NotebookCellTextModelSplice<NotebookCellDto>[];
+-	}
+-	| {
+-		readonly kind: notebookCommon.NotebookCellsChangeType.Move;
+-		readonly index: number;
+-		readonly length: number;
+-		readonly newIdx: number;
+-	}
+-	| {
+-		readonly kind: notebookCommon.NotebookCellsChangeType.Output;
+-		readonly index: number;
+-		readonly outputs: NotebookOutputDto[];
+-	}
+-	| {
+-		readonly kind: notebookCommon.NotebookCellsChangeType.OutputItem;
+-		readonly index: number;
+-		readonly outputId: string;
+-		readonly outputItems: NotebookOutputItemDto[];
+-		readonly append: boolean;
+-	}
+-	| notebookCommon.NotebookCellsChangeLanguageEvent
+-	| notebookCommon.NotebookCellsChangeMimeEvent
+-	| notebookCommon.NotebookCellsChangeMetadataEvent
+-	| notebookCommon.NotebookCellsChangeInternalMetadataEvent
+-	// | notebookCommon.NotebookDocumentChangeMetadataEvent
+-	| notebookCommon.NotebookCellContentChangeEvent
+-	// | notebookCommon.NotebookDocumentUnknownChangeEvent
+-	;
+-
+-export type NotebookCellsChangedEventDto = {
+-	readonly rawEvents: NotebookRawContentEventDto[];
+-	readonly versionId: number;
+-};
+-
+-export interface ExtHostNotebookDocumentsShape {
+-	$acceptModelChanged(uriComponents: UriComponents, event: SerializableObjectWithBuffers<NotebookCellsChangedEventDto>, isDirty: boolean, newMetadata?: notebookCommon.NotebookDocumentMetadata): void;
+-	$acceptDirtyStateChanged(uriComponents: UriComponents, isDirty: boolean): void;
+-	$acceptModelSaved(uriComponents: UriComponents): void;
+-}
+-
+-export type INotebookEditorViewColumnInfo = Record<string, number>;
+-
+-export interface ExtHostNotebookEditorsShape {
+-	$acceptEditorPropertiesChanged(id: string, data: INotebookEditorPropertiesChangeData): void;
+-	$acceptEditorViewColumns(data: INotebookEditorViewColumnInfo): void;
+-}
+-
+-export interface ExtHostNotebookKernelsShape {
+-	$acceptNotebookAssociation(handle: number, uri: UriComponents, value: boolean): void;
+-	$executeCells(handle: number, uri: UriComponents, handles: number[]): Promise<void>;
+-	$cancelCells(handle: number, uri: UriComponents, handles: number[]): Promise<void>;
+-	$acceptKernelMessageFromRenderer(handle: number, editorId: string, message: any): void;
+-	$provideKernelSourceActions(handle: number, token: CancellationToken): Promise<notebookCommon.INotebookKernelSourceAction[]>;
+-	$provideVariables(handle: number, requestId: string, notebookUri: UriComponents, parentId: number | undefined, kind: 'named' | 'indexed', start: number, token: CancellationToken): Promise<void>;
+-}
+-
+-export interface ExtHostInteractiveShape {
+-	$willAddInteractiveDocument(uri: UriComponents, eol: string, languageId: string, notebookUri: UriComponents): void;
+-	$willRemoveInteractiveDocument(uri: UriComponents, notebookUri: UriComponents): void;
+-}
+-
+ export interface ExtHostStorageShape {
+ 	$acceptValue(shared: boolean, extensionId: string, value: string): void;
+ }
+@@ -3177,7 +2733,6 @@ export const MainContext = {
+ 	MainThreadComments: createProxyIdentifier<MainThreadCommentsShape>('MainThreadComments'),
+ 	MainThreadConfiguration: createProxyIdentifier<MainThreadConfigurationShape>('MainThreadConfiguration'),
+ 	MainThreadConsole: createProxyIdentifier<MainThreadConsoleShape>('MainThreadConsole'),
+-	MainThreadDebugService: createProxyIdentifier<MainThreadDebugServiceShape>('MainThreadDebugService'),
+ 	MainThreadDecorations: createProxyIdentifier<MainThreadDecorationsShape>('MainThreadDecorations'),
+ 	MainThreadDiagnostics: createProxyIdentifier<MainThreadDiagnosticsShape>('MainThreadDiagnostics'),
+ 	MainThreadDialogs: createProxyIdentifier<MainThreadDiaglogsShape>('MainThreadDiaglogs'),
+@@ -3223,12 +2778,6 @@ export const MainContext = {
+ 	MainThreadWindow: createProxyIdentifier<MainThreadWindowShape>('MainThreadWindow'),
+ 	MainThreadPower: createProxyIdentifier<MainThreadPowerShape>('MainThreadPower'),
+ 	MainThreadLabelService: createProxyIdentifier<MainThreadLabelServiceShape>('MainThreadLabelService'),
+-	MainThreadNotebook: createProxyIdentifier<MainThreadNotebookShape>('MainThreadNotebook'),
+-	MainThreadNotebookDocuments: createProxyIdentifier<MainThreadNotebookDocumentsShape>('MainThreadNotebookDocumentsShape'),
+-	MainThreadNotebookEditors: createProxyIdentifier<MainThreadNotebookEditorsShape>('MainThreadNotebookEditorsShape'),
+-	MainThreadNotebookKernels: createProxyIdentifier<MainThreadNotebookKernelsShape>('MainThreadNotebookKernels'),
+-	MainThreadNotebookRenderers: createProxyIdentifier<MainThreadNotebookRenderersShape>('MainThreadNotebookRenderers'),
+-	MainThreadInteractive: createProxyIdentifier<MainThreadInteractiveShape>('MainThreadInteractive'),
+ 	MainThreadTheming: createProxyIdentifier<MainThreadThemingShape>('MainThreadTheming'),
+ 	MainThreadTunnelService: createProxyIdentifier<MainThreadTunnelServiceShape>('MainThreadTunnelService'),
+ 	MainThreadManagedSockets: createProxyIdentifier<MainThreadManagedSocketsShape>('MainThreadManagedSockets'),
+@@ -3242,7 +2791,6 @@ export const ExtHostContext = {
+ 	ExtHostCommands: createProxyIdentifier<ExtHostCommandsShape>('ExtHostCommands'),
+ 	ExtHostConfiguration: createProxyIdentifier<ExtHostConfigurationShape>('ExtHostConfiguration'),
+ 	ExtHostDiagnostics: createProxyIdentifier<ExtHostDiagnosticsShape>('ExtHostDiagnostics'),
+-	ExtHostDebugService: createProxyIdentifier<ExtHostDebugServiceShape>('ExtHostDebugService'),
+ 	ExtHostDecorations: createProxyIdentifier<ExtHostDecorationsShape>('ExtHostDecorations'),
+ 	ExtHostDocumentsAndEditors: createProxyIdentifier<ExtHostDocumentsAndEditorsShape>('ExtHostDocumentsAndEditors'),
+ 	ExtHostDocuments: createProxyIdentifier<ExtHostDocumentsShape>('ExtHostDocuments'),
+@@ -3284,13 +2832,6 @@ export const ExtHostContext = {
+ 	ExtHostProfileContentHandlers: createProxyIdentifier<ExtHostProfileContentHandlersShape>('ExtHostProfileContentHandlers'),
+ 	ExtHostOutputService: createProxyIdentifier<ExtHostOutputServiceShape>('ExtHostOutputService'),
+ 	ExtHostLabelService: createProxyIdentifier<ExtHostLabelServiceShape>('ExtHostLabelService'),
+-	ExtHostNotebook: createProxyIdentifier<ExtHostNotebookShape>('ExtHostNotebook'),
+-	ExtHostNotebookDocuments: createProxyIdentifier<ExtHostNotebookDocumentsShape>('ExtHostNotebookDocuments'),
+-	ExtHostNotebookEditors: createProxyIdentifier<ExtHostNotebookEditorsShape>('ExtHostNotebookEditors'),
+-	ExtHostNotebookKernels: createProxyIdentifier<ExtHostNotebookKernelsShape>('ExtHostNotebookKernels'),
+-	ExtHostNotebookRenderers: createProxyIdentifier<ExtHostNotebookRenderersShape>('ExtHostNotebookRenderers'),
+-	ExtHostNotebookDocumentSaveParticipant: createProxyIdentifier<ExtHostNotebookDocumentSaveParticipantShape>('ExtHostNotebookDocumentSaveParticipant'),
+-	ExtHostInteractive: createProxyIdentifier<ExtHostInteractiveShape>('ExtHostInteractive'),
+ 	ExtHostTheming: createProxyIdentifier<ExtHostThemingShape>('ExtHostTheming'),
+ 	ExtHostTunnelService: createProxyIdentifier<ExtHostTunnelServiceShape>('ExtHostTunnelService'),
+ 	ExtHostManagedSockets: createProxyIdentifier<ExtHostManagedSocketsShape>('ExtHostManagedSockets'),
+diff --git a/src/vs/workbench/api/common/extHostApiCommands.ts b/src/vs/workbench/api/common/extHostApiCommands.ts
+index d9b12be..9e507cb 100644
+--- a/src/vs/workbench/api/common/extHostApiCommands.ts
++++ b/src/vs/workbench/api/common/extHostApiCommands.ts
+@@ -18,7 +18,6 @@ import { ApiCommand, ApiCommandArgument, ApiCommandResult, ExtHostCommands } fro
+ import { CustomCodeAction } from './extHostLanguageFeatures.js';
+ import * as typeConverters from './extHostTypeConverters.js';
+ import * as types from './extHostTypes.js';
+-import { TransientCellMetadata, TransientDocumentMetadata } from '../../contrib/notebook/common/notebookCommon.js';
+ import * as search from '../../contrib/search/common/search.js';
+ import type * as vscode from 'vscode';
+ 
+@@ -379,38 +378,6 @@ const newCommands: ApiCommand[] = [
+ 			return undefined;
+ 		})
+ 	),
+-
+-	// --- notebooks
+-	new ApiCommand(
+-		'vscode.resolveNotebookContentProviders', '_resolveNotebookContentProvider', 'Resolve Notebook Content Providers',
+-		[
+-			// new ApiCommandArgument<string, string>('viewType', '', v => typeof v === 'string', v => v),
+-			// new ApiCommandArgument<string, string>('displayName', '', v => typeof v === 'string', v => v),
+-			// new ApiCommandArgument<object, object>('options', '', v => typeof v === 'object', v => v),
+-		],
+-		new ApiCommandResult<{
+-			viewType: string;
+-			displayName: string;
+-			options: { transientOutputs: boolean; transientCellMetadata: TransientCellMetadata; transientDocumentMetadata: TransientDocumentMetadata };
+-			filenamePattern: (vscode.GlobPattern | { include: vscode.GlobPattern; exclude: vscode.GlobPattern })[];
+-		}[], {
+-			viewType: string;
+-			displayName: string;
+-			filenamePattern: (vscode.GlobPattern | { include: vscode.GlobPattern; exclude: vscode.GlobPattern })[];
+-			options: vscode.NotebookDocumentContentOptions;
+-		}[] | undefined>('A promise that resolves to an array of NotebookContentProvider static info objects.', tryMapWith(item => {
+-			return {
+-				viewType: item.viewType,
+-				displayName: item.displayName,
+-				options: {
+-					transientOutputs: item.options.transientOutputs,
+-					transientCellMetadata: item.options.transientCellMetadata,
+-					transientDocumentMetadata: item.options.transientDocumentMetadata
+-				},
+-				filenamePattern: item.filenamePattern.map(pattern => typeConverters.NotebookExclusiveDocumentPattern.to(pattern))
+-			};
+-		}))
+-	),
+ 	// --- debug support
+ 	new ApiCommand(
+ 		'vscode.executeInlineValueProvider', '_executeInlineValueProvider', 'Execute inline value provider',
+@@ -545,6 +512,7 @@ export class ExtHostApiCommands {
+ 	static register(commands: ExtHostCommands) {
+ 
+ 		newCommands.forEach(commands.registerApiCommand, commands);
++		commands.registerCommand(false, 'vscode.resolveNotebookContentProviders', () => Promise.reject(new Error('Notebook content providers are unavailable in this product.')));
+ 
+ 		this._registerValidateWhenClausesCommand(commands);
+ 	}
+diff --git a/src/vs/workbench/api/common/extHostDisabledLegacy.ts b/src/vs/workbench/api/common/extHostDisabledLegacy.ts
+new file mode 100644
+index 0000000..be6b069
+--- /dev/null
++++ b/src/vs/workbench/api/common/extHostDisabledLegacy.ts
+@@ -0,0 +1,61 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import type * as vscode from 'vscode';
++import type { ApiProposalName } from '../../../platform/extensions/common/extensionsApiProposals.js';
++import { createRegistration, neverEvent, unavailable, unavailableAsync } from './extHostDisabledAi.js';
++
++export { createRegistration, neverEvent, unavailableAsync };
++
++/** Local compatibility only: provider callbacks are neither inspected nor retained. */
++export function createDebugApi(checkProposal: (proposal: ApiProposalName) => void): typeof vscode.debug {
++	return {
++		activeDebugSession: undefined,
++		activeDebugConsole: {
++			append() { unavailable('debug.activeDebugConsole.append'); },
++			appendLine() { unavailable('debug.activeDebugConsole.appendLine'); }
++		},
++		breakpoints: [],
++		activeStackItem: undefined,
++		onDidStartDebugSession: neverEvent,
++		onDidTerminateDebugSession: neverEvent,
++		onDidChangeActiveDebugSession: neverEvent,
++		onDidReceiveDebugSessionCustomEvent: neverEvent,
++		onDidChangeBreakpoints: neverEvent,
++		onDidChangeActiveStackItem: neverEvent,
++		registerDebugConfigurationProvider() { return createRegistration(); },
++		registerDebugAdapterDescriptorFactory() { return createRegistration(); },
++		registerDebugAdapterTrackerFactory() { return createRegistration(); },
++		startDebugging() { return unavailableAsync('debug.startDebugging'); },
++		stopDebugging() { return unavailableAsync('debug.stopDebugging'); },
++		addBreakpoints() { unavailable('debug.addBreakpoints'); },
++		removeBreakpoints() { unavailable('debug.removeBreakpoints'); },
++		asDebugSourceUri() { return unavailable('debug.asDebugSourceUri'); },
++		registerDebugVisualizationProvider() {
++			checkProposal('debugVisualization');
++			return unavailable('debug.registerDebugVisualizationProvider');
++		},
++		registerDebugVisualizationTreeProvider() {
++			checkProposal('debugVisualization');
++			return unavailable('debug.registerDebugVisualizationTreeProvider');
++		}
++	};
++}
++
++export function createNotebooksApi(checkProposal: (proposal: ApiProposalName) => void): typeof vscode.notebooks {
++	return {
++		createNotebookController() { return unavailable('notebooks.createNotebookController'); },
++		registerNotebookCellStatusBarItemProvider() { return createRegistration(); },
++		createRendererMessaging() { return unavailable('notebooks.createRendererMessaging'); },
++		createNotebookControllerDetectionTask() {
++			checkProposal('notebookKernelSource');
++			return unavailable('notebooks.createNotebookControllerDetectionTask');
++		},
++		registerKernelSourceActionProvider() {
++			checkProposal('notebookKernelSource');
++			return unavailable('notebooks.registerKernelSourceActionProvider');
++		}
++	};
++}
+diff --git a/src/vs/workbench/api/common/extHostTypeConverters.ts b/src/vs/workbench/api/common/extHostTypeConverters.ts
+index 05a815e..896ff1b 100644
+--- a/src/vs/workbench/api/common/extHostTypeConverters.ts
++++ b/src/vs/workbench/api/common/extHostTypeConverters.ts
+@@ -36,10 +36,10 @@ import { IMarkerData, IRelatedInformation, MarkerSeverity, MarkerTag } from '../
+ import { ProgressLocation as MainProgressLocation } from '../../../platform/progress/common/progress.js';
+ import { DEFAULT_EDITOR_ASSOCIATION, SaveReason } from '../../common/editor.js';
+ import { IViewBadge } from '../../common/views.js';
+-import { DebugTreeItemCollapsibleState, IDebugVisualizationTreeItem } from '../../contrib/debug/common/debug.js';
+-import * as notebooks from '../../contrib/notebook/common/notebookCommon.js';
+-import { CellEditType } from '../../contrib/notebook/common/notebookCommon.js';
+-import { ICellRange } from '../../contrib/notebook/common/notebookRange.js';
++import { DebugTreeItemCollapsibleState, IDebugVisualizationTreeItem } from './debugTypes.js';
++import * as notebooks from './notebookTypes.js';
++import { CellEditType } from './notebookTypes.js';
++import { ICellRange } from '../../common/notebookRange.js';
+ import { InputValidationType } from '../../contrib/scm/common/scm.js';
+ import * as search from '../../contrib/search/common/search.js';
+ import { TestId } from '../../contrib/testing/common/testId.js';
+diff --git a/src/vs/workbench/api/common/extHostTypes/workspaceEdit.ts b/src/vs/workbench/api/common/extHostTypes/workspaceEdit.ts
+index ec47f45..5cd8db8 100644
+--- a/src/vs/workbench/api/common/extHostTypes/workspaceEdit.ts
++++ b/src/vs/workbench/api/common/extHostTypes/workspaceEdit.ts
+@@ -7,7 +7,7 @@ import type * as vscode from 'vscode';
+ import { coalesceInPlace } from '../../../../base/common/arrays.js';
+ import { ResourceMap } from '../../../../base/common/map.js';
+ import { URI } from '../../../../base/common/uri.js';
+-import { CellEditType, ICellMetadataEdit, IDocumentMetadataEdit } from '../../../contrib/notebook/common/notebookCommon.js';
++import { CellEditType, ICellMetadataEdit, IDocumentMetadataEdit } from '../notebookTypes.js';
+ import { NotebookEdit } from './notebooks.js';
+ import { SnippetTextEdit } from './snippetTextEdit.js';
+ import { es5ClassCompat } from './es5ClassCompat.js';
+diff --git a/src/vs/workbench/api/common/notebookTypes.ts b/src/vs/workbench/api/common/notebookTypes.ts
+new file mode 100644
+index 0000000..731764f
+--- /dev/null
++++ b/src/vs/workbench/api/common/notebookTypes.ts
+@@ -0,0 +1,181 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import type { VSBuffer } from '../../../base/common/buffer.js';
++import type { IMarkdownString } from '../../../base/common/htmlContent.js';
++import type { ThemeColor } from '../../../base/common/themables.js';
++import type { URI, UriComponents } from '../../../base/common/uri.js';
++import type { Command, WorkspaceEditMetadata } from '../../../editor/common/languages.js';
++import type { IAccessibilityInformation } from '../../../platform/accessibility/common/accessibility.js';
++import type { IRange } from '../../../editor/common/core/range.js';
++
++// Stable API data only; no service registration or feature runtime.
++
++export const enum CellEditType {
++	Replace = 1,
++	Output = 2,
++	Metadata = 3,
++	CellLanguage = 4,
++	DocumentMetadata = 5,
++	Move = 6,
++	OutputItems = 7,
++	PartialMetadata = 8,
++	PartialInternalMetadata = 9,
++}
++
++export interface ICellMetadataEdit {
++	editType: CellEditType.Metadata;
++	index: number;
++	metadata: NotebookCellMetadata;
++}
++
++export interface NotebookCellMetadata {
++	/**
++	 * custom metadata
++	 */
++	[key: string]: unknown;
++}
++
++export interface IDocumentMetadataEdit {
++	editType: CellEditType.DocumentMetadata;
++	metadata: NotebookDocumentMetadata;
++}
++
++export type NotebookDocumentMetadata = Record<string, unknown>;
++
++export type TransientCellMetadata = { readonly [K in keyof NotebookCellMetadata]?: boolean };
++
++export type TransientDocumentMetadata = { readonly [K in keyof NotebookDocumentMetadata]?: boolean };
++
++export interface IWorkspaceNotebookCellEdit {
++	metadata?: WorkspaceEditMetadata;
++	resource: URI;
++	notebookVersionId: number | undefined;
++	cellEdit: ICellPartialMetadataEdit | IDocumentMetadataEdit | ICellReplaceEdit;
++}
++
++export interface ICellPartialMetadataEdit {
++	editType: CellEditType.PartialMetadata;
++	index: number;
++	metadata: NullablePartialNotebookCellMetadata;
++}
++
++export type NullablePartialNotebookCellMetadata = {
++	[Key in keyof Partial<NotebookCellMetadata>]: NotebookCellMetadata[Key] | null
++};
++
++export interface ICellReplaceEdit {
++	editType: CellEditType.Replace;
++	index: number;
++	count: number;
++	cells: ICellDto2[];
++}
++
++export interface ICellDto2 {
++	source: string;
++	language: string;
++	mime: string | undefined;
++	cellKind: CellKind;
++	outputs: IOutputDto[];
++	metadata?: NotebookCellMetadata;
++	internalMetadata?: NotebookCellInternalMetadata;
++	collapseState?: NotebookCellCollapseState;
++}
++
++export enum CellKind {
++	Markup = 1,
++	Code = 2
++}
++
++export interface IOutputDto {
++	outputs: IOutputItemDto[];
++	outputId: string;
++	metadata?: Record<string, any>;
++}
++
++export interface IOutputItemDto {
++	readonly mime: string;
++	readonly data: VSBuffer;
++}
++
++export interface NotebookCellInternalMetadata {
++	/**
++	 * Used only for diffing of Notebooks.
++	 * This is not persisted and generally useful only when diffing two notebooks.
++	 * Useful only after we've manually matched a few cells together so we know which cells are matching.
++	 */
++	internalId?: string;
++	executionId?: string;
++	executionOrder?: number;
++	lastRunSuccess?: boolean;
++	runStartTime?: number;
++	runStartTimeAdjustment?: number;
++	runEndTime?: number;
++	renderDuration?: { [key: string]: number };
++	error?: ICellExecutionError;
++}
++
++export interface ICellExecutionError {
++	name: string;
++	message: string;
++	stack: string | ICellErrorStackFrame[] | undefined;
++	uri: UriComponents;
++	location: IRange | undefined;
++}
++
++export interface ICellErrorStackFrame {
++	/**
++	 * The location of this stack frame. This should be provided as a URI if the
++	 * location of the call frame can be accessed by the editor.
++	 */
++	readonly uri?: UriComponents;
++
++	readonly location?: IRange;
++
++	/**
++	 * The name of the stack frame, typically a method or function name.
++	 */
++	readonly label: string;
++}
++
++export interface NotebookCellCollapseState {
++	inputCollapsed?: boolean;
++	outputCollapsed?: boolean;
++}
++
++export interface INotebookCellStatusBarItem {
++	readonly alignment: CellStatusbarAlignment;
++	readonly priority?: number;
++	readonly text: string;
++	readonly color?: string | ThemeColor;
++	readonly backgroundColor?: string | ThemeColor;
++	readonly tooltip?: string | IMarkdownString;
++	readonly command?: string | Command;
++	readonly accessibilityInformation?: IAccessibilityInformation;
++	readonly opacity?: string;
++	readonly onlyShowWhenActive?: boolean;
++}
++
++export const enum CellStatusbarAlignment {
++	Left = 1,
++	Right = 2
++}
++
++export interface INotebookKernelSourceAction {
++	readonly label: string;
++	readonly description?: string;
++	readonly detail?: string;
++	readonly command?: string | Command;
++	readonly documentation?: UriComponents | string;
++}
++
++export interface TransientOptions {
++	readonly transientOutputs: boolean;
++	readonly transientCellMetadata: TransientCellMetadata;
++	readonly transientDocumentMetadata: TransientDocumentMetadata;
++	readonly cellContentMetadata: CellContentMetadata;
++}
++
++export type CellContentMetadata = { readonly [K in keyof NotebookCellMetadata]?: boolean };
+diff --git a/src/vs/workbench/api/node/extHost.node.services.ts b/src/vs/workbench/api/node/extHost.node.services.ts
+index dbef519..e6e8835 100644
+--- a/src/vs/workbench/api/node/extHost.node.services.ts
++++ b/src/vs/workbench/api/node/extHost.node.services.ts
+@@ -6,11 +6,9 @@
+ import { InstantiationType, registerSingleton } from '../../../platform/instantiation/common/extensions.js';
+ import { ExtHostTerminalService } from './extHostTerminalService.js';
+ import { ExtHostTask } from './extHostTask.js';
+-import { ExtHostDebugService } from './extHostDebugService.js';
+ import { NativeExtHostSearch } from './extHostSearch.js';
+ import { ExtHostExtensionService } from './extHostExtensionService.js';
+ import { NodeExtHostTunnelService } from './extHostTunnelService.js';
+-import { IExtHostDebugService } from '../common/extHostDebugService.js';
+ import { IExtHostExtensionService } from '../common/extHostExtensionService.js';
+ import { IExtHostSearch } from '../common/extHostSearch.js';
+ import { IExtHostTask } from '../common/extHostTask.js';
+@@ -44,7 +42,6 @@ registerSingleton(IExtensionStoragePaths, ExtensionStoragePaths, InstantiationTy
+ registerSingleton(IExtHostTelemetry, new SyncDescriptor(ExtHostTelemetry, [false], true));
+ 
+ registerSingleton(IExtHostAuthentication, NodeExtHostAuthentication, InstantiationType.Eager);
+-registerSingleton(IExtHostDebugService, ExtHostDebugService, InstantiationType.Eager);
+ registerSingleton(IExtHostSearch, NativeExtHostSearch, InstantiationType.Eager);
+ registerSingleton(IExtHostTask, ExtHostTask, InstantiationType.Eager);
+ registerSingleton(IExtHostTerminalService, ExtHostTerminalService, InstantiationType.Eager);
+diff --git a/src/vs/workbench/api/test/common/extHostDisabledLegacy.test.ts b/src/vs/workbench/api/test/common/extHostDisabledLegacy.test.ts
+new file mode 100644
+index 0000000..0eb4513
+--- /dev/null
++++ b/src/vs/workbench/api/test/common/extHostDisabledLegacy.test.ts
+@@ -0,0 +1,181 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import assert from 'assert';
++import type * as vscode from 'vscode';
++import { URI } from '../../../../base/common/uri.js';
++import { ApiProposalName } from '../../../../platform/extensions/common/extensionsApiProposals.js';
++import { createDebugApi, createNotebooksApi, createRegistration, neverEvent, unavailableAsync } from '../../common/extHostDisabledLegacy.js';
++import { DebugConfigurationProviderTriggerKind, DebugTreeItemCollapsibleState, IDebugVisualizationTreeItem } from '../../common/debugTypes.js';
++import { CellEditType } from '../../common/notebookTypes.js';
++import * as types from '../../common/extHostTypes.js';
++import { WorkspaceEdit } from '../../common/extHostTypeConverters.js';
++import { isICellRange } from '../../../common/notebookRange.js';
++
++import { extUri } from '../../../../base/common/resources.js';
++import { Disposable } from '../../../../base/common/lifecycle.js';
++import { IBulkEditService } from '../../../../editor/browser/services/bulkEditService.js';
++import { NullLogService } from '../../../../platform/log/common/log.js';
++import { IUriIdentityService } from '../../../../platform/uriIdentity/common/uriIdentity.js';
++import { MainThreadBulkEdits, reviveWorkspaceEditDto } from '../../browser/mainThreadBulkEdits.js';
++import { IExtHostContext } from '../../../services/extensions/common/extHostCustomers.js';
++import { ExtensionHostKind } from '../../../services/extensions/common/extensionHostKind.js';
++import { SerializableObjectWithBuffers } from '../../../services/extensions/common/proxyIdentifier.js';
++
++suite('Retired Notebook and Debug API contracts', () => {
++	const acceptProposal = (_proposal: ApiProposalName) => { };
++
++	test('debug empty queries and never events', () => {
++		const debug = createDebugApi(acceptProposal);
++		assert.strictEqual(debug.activeDebugSession, undefined);
++		assert.strictEqual(debug.activeStackItem, undefined);
++		assert.deepStrictEqual(debug.breakpoints, []);
++		let calls = 0;
++		const disposables: vscode.Disposable[] = [];
++		const event = debug.onDidStartDebugSession(() => calls++, undefined, disposables);
++		assert.deepStrictEqual(disposables, [event]);
++		event.dispose();
++		event.dispose();
++		assert.strictEqual(calls, 0);
++	});
++
++	test('debug registrations never inspect providers or invoke callbacks', () => {
++		const debug = createDebugApi(acceptProposal);
++		const provider: vscode.DebugConfigurationProvider = {
++			get provideDebugConfigurations(): never { throw new Error('provider getter was read'); }
++		};
++		const factory: vscode.DebugAdapterDescriptorFactory = {
++			get createDebugAdapterDescriptor(): never { throw new Error('factory getter was read'); }
++		};
++		const tracker: vscode.DebugAdapterTrackerFactory = {
++			get createDebugAdapterTracker(): never { throw new Error('tracker getter was read'); }
++		};
++		for (const token of [debug.registerDebugConfigurationProvider('test', provider), debug.registerDebugAdapterDescriptorFactory('test', factory), debug.registerDebugAdapterTrackerFactory('test', tracker)]) {
++			token.dispose();
++			token.dispose();
++		}
++	});
++
++	test('async debug operations return promises and reject without sync throws', async () => {
++		const debug = createDebugApi(acceptProposal);
++		for (const operation of [() => debug.startDebugging(undefined, 'test'), () => debug.stopDebugging()]) {
++			const promise = operation();
++			assert.ok(promise instanceof Promise);
++			await assert.rejects(promise, /debug\..* is unavailable in this product/);
++		}
++	});
++
++	test('sync debug operations fail clearly without an adapter', () => {
++		const debug = createDebugApi(acceptProposal);
++		assert.throws(() => debug.activeDebugConsole.append('text'), /unavailable/);
++		assert.throws(() => debug.activeDebugConsole.appendLine('text'), /unavailable/);
++		assert.throws(() => debug.addBreakpoints([]), /unavailable/);
++		assert.throws(() => debug.removeBreakpoints([]), /unavailable/);
++		assert.throws(() => debug.asDebugSourceUri({ path: '/tmp/source.ts' }), /unavailable/);
++	});
++
++	test('notebook registrations ignore provider getters and runtime creation fails', () => {
++		const notebooks = createNotebooksApi(acceptProposal);
++		const provider: vscode.NotebookCellStatusBarItemProvider = {
++			get provideCellStatusBarItems(): never { throw new Error('provider getter was read'); }
++		};
++		const token = notebooks.registerNotebookCellStatusBarItemProvider('test', provider);
++		token.dispose();
++		token.dispose();
++		assert.throws(() => notebooks.createNotebookController('id', 'test', 'label'), /unavailable/);
++		assert.throws(() => notebooks.createRendererMessaging('renderer'), /unavailable/);
++	});
++
++	test('retired proposed APIs keep authorization checks and stay unavailable when authorized', () => {
++		const checks: ApiProposalName[] = [];
++		for (const authorized of [false, true]) {
++			const check = (proposal: ApiProposalName) => { checks.push(proposal); if (!authorized) { throw new Error('proposal permission required'); } };
++			const debug = createDebugApi(check);
++			const notebooks = createNotebooksApi(check);
++			const expected = authorized ? /unavailable/ : /proposal permission required/;
++			assert.throws(() => debug.registerDebugVisualizationProvider('test', { provideDebugVisualization: () => [] }), expected);
++			assert.throws(() => debug.registerDebugVisualizationTreeProvider('test', { getTreeItem: () => undefined, getChildren: () => [] }), expected);
++			assert.throws(() => notebooks.createNotebookControllerDetectionTask('test'), expected);
++			assert.throws(() => notebooks.registerKernelSourceActionProvider('test', { provideNotebookKernelSourceActions: () => [] }), expected);
++		}
++		assert.deepStrictEqual(checks, ['debugVisualization', 'debugVisualization', 'notebookKernelSource', 'notebookKernelSource', 'debugVisualization', 'debugVisualization', 'notebookKernelSource', 'notebookKernelSource']);
++	});
++
++	test('window and workspace primitives keep never-event disposal and async failure shape', async () => {
++		let calls = 0;
++		const token = neverEvent(() => calls++);
++		token.dispose();
++		createRegistration().dispose();
++		assert.strictEqual(calls, 0);
++		for (const name of ['workspace.openNotebookDocument', 'window.showNotebookDocument']) {
++			const promise = unavailableAsync(name);
++			assert.ok(promise instanceof Promise);
++			await assert.rejects(promise, /unavailable/);
++		}
++	});
++
++	test('Notebook constructors and workspace-edit serialization retain cell data', () => {
++		const cell = new types.NotebookCellData(types.NotebookCellKind.Code, 'hello', 'typescript');
++		cell.outputs = [new types.NotebookCellOutput([types.NotebookCellOutputItem.text('world')])];
++		const data = new types.NotebookData([cell]);
++		assert.strictEqual(data.cells[0], cell);
++		const edit = new types.WorkspaceEdit();
++		edit.set(URI.file('/tmp/test.ipynb'), [types.NotebookEdit.replaceCells(new types.NotebookRange(0, 1), data.cells)]);
++		const dto = WorkspaceEdit.from(edit);
++		assert.strictEqual(dto.edits.length, 1);
++		assert.ok('cellEdit' in dto.edits[0]);
++		if ('cellEdit' in dto.edits[0] && dto.edits[0].cellEdit.editType === CellEditType.Replace) {
++			assert.strictEqual(dto.edits[0].cellEdit.cells[0].source, 'hello');
++			assert.strictEqual(dto.edits[0].cellEdit.cells[0].outputs[0].items[0].valueBytes.toString(), 'world');
++		}
++	});
++
++	test('pure debug enum values and visualization DTO remain stable', () => {
++		assert.strictEqual(DebugConfigurationProviderTriggerKind.Initial, 1);
++		assert.strictEqual(DebugConfigurationProviderTriggerKind.Dynamic, 2);
++		assert.strictEqual(DebugTreeItemCollapsibleState.Expanded, 2);
++		const item: IDebugVisualizationTreeItem = { id: 1, label: 'test', collapsibleState: DebugTreeItemCollapsibleState.Expanded };
++		assert.strictEqual(IDebugVisualizationTreeItem.deserialize(IDebugVisualizationTreeItem.serialize(item)), item);
++		const executable = new types.DebugAdapterExecutable('node', ['adapter.js']);
++		assert.strictEqual(executable.command, 'node');
++		assert.deepStrictEqual(executable.args, ['adapter.js']);
++	});
++
++	test('ordinary Comments cell-range guard retains its data contract', () => {
++		assert.strictEqual(isICellRange({ start: 0, end: 2 }), true);
++		assert.strictEqual(isICellRange({ start: '0', end: 2 }), false);
++		assert.strictEqual(isICellRange(undefined), false);
++	});
++	test('Notebook bulk edits reject as promises before calling the ordinary service', async () => {
++		let applied = 0;
++		const bulkEdit: IBulkEditService = { _serviceBrand: undefined, hasPreviewHandler: () => false, setPreviewHandler: () => Disposable.None, apply: async () => { applied++; return { isApplied: true, ariaSummary: '' }; } };
++		const identity: IUriIdentityService = { _serviceBrand: undefined, extUri, asCanonicalUri: uri => uri };
++		const rpc: IExtHostContext = { remoteAuthority: null, extensionHostKind: ExtensionHostKind.LocalProcess, getProxy() { throw new Error('unexpected RPC'); }, set() { throw new Error('unexpected RPC'); }, assertRegistered() { throw new Error('unexpected RPC'); }, drain() { throw new Error('unexpected RPC'); }, dispose() { } };
++		const log = new NullLogService();
++		const main = new MainThreadBulkEdits(rpc, bulkEdit, log, identity);
++		const edit = new types.WorkspaceEdit();
++		edit.set(URI.file('/tmp/test.ipynb'), [types.NotebookEdit.replaceCells(new types.NotebookRange(0, 1), [])]);
++		const promise = main.$tryApplyWorkspaceEdit(new SerializableObjectWithBuffers(WorkspaceEdit.from(edit)));
++		assert.ok(promise instanceof Promise);
++		await assert.rejects(promise, /Notebook workspace edits are unavailable/);
++		assert.strictEqual(applied, 0);
++		main.dispose();
++		log.dispose();
++	});
++
++	test('ordinary text and file workspace edits still revive with canonical resources', () => {
++		const identity: IUriIdentityService = { _serviceBrand: undefined, extUri, asCanonicalUri: uri => uri.with({ path: uri.path.toLowerCase() }) };
++		const edit = new types.WorkspaceEdit();
++		edit.insert(URI.file('/tmp/Test.ts'), new types.Position(0, 0), 'hello');
++		edit.createFile(URI.file('/tmp/New.ts'));
++		const revived = reviveWorkspaceEditDto(WorkspaceEdit.from(edit), identity);
++		assert.strictEqual(revived.edits.length, 2);
++		assert.ok('resource' in revived.edits[0]);
++		if ('resource' in revived.edits[0]) { assert.strictEqual(revived.edits[0].resource.path, '/tmp/test.ts'); }
++		assert.ok('newResource' in revived.edits[1]);
++		if ('newResource' in revived.edits[1]) { assert.strictEqual(revived.edits[1].newResource?.path, '/tmp/new.ts'); }
++	});
++
++});
+diff --git a/src/vs/workbench/common/notebookRange.ts b/src/vs/workbench/common/notebookRange.ts
+new file mode 100644
+index 0000000..6f31f8d
+--- /dev/null
++++ b/src/vs/workbench/common/notebookRange.ts
+@@ -0,0 +1,27 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++/**
++ * [start, end]
++ */
++export interface ICellRange {
++	/**
++	 * zero based index
++	 */
++	start: number;
++
++	/**
++	 * zero based index
++	 */
++	end: number;
++}
++
++export function isICellRange(candidate: unknown): candidate is ICellRange {
++	if (!candidate || typeof candidate !== 'object') {
++		return false;
++	}
++	return typeof (candidate as ICellRange).start === 'number'
++		&& typeof (candidate as ICellRange).end === 'number';
++}
+diff --git a/src/vs/workbench/contrib/comments/browser/commentNode.ts b/src/vs/workbench/contrib/comments/browser/commentNode.ts
+index a48b0c8..259e563 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentNode.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentNode.ts
+@@ -37,7 +37,7 @@ import { TimestampWidget } from './timestamp.js';
+ import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
+ import { IMarkdownString } from '../../../../base/common/htmlContent.js';
+ import { IRange } from '../../../../editor/common/core/range.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { CommentMenus } from './commentMenus.js';
+ import { Scrollable, ScrollbarVisibility } from '../../../../base/common/scrollable.js';
+ import { SmoothScrollableElement } from '../../../../base/browser/ui/scrollbar/scrollableElement.js';
+diff --git a/src/vs/workbench/contrib/comments/browser/commentReply.ts b/src/vs/workbench/contrib/comments/browser/commentReply.ts
+index 2b4f227..0d2a78d 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentReply.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentReply.ts
+@@ -27,7 +27,7 @@ import { CommentMenus } from './commentMenus.js';
+ import { ICommentService } from './commentService.js';
+ import { CommentContextKeys } from '../common/commentContextKeys.js';
+ import { ICommentThreadWidget } from '../common/commentThreadWidget.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { LayoutableEditor, MIN_EDITOR_HEIGHT, SimpleCommentEditor, calculateEditorHeight } from './simpleCommentEditor.js';
+ import { IHoverService } from '../../../../platform/hover/browser/hover.js';
+ import { IContextMenuService } from '../../../../platform/contextview/browser/contextView.js';
+diff --git a/src/vs/workbench/contrib/comments/browser/commentService.ts b/src/vs/workbench/contrib/comments/browser/commentService.ts
+index 550288c..110e04d 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentService.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentService.ts
+@@ -12,7 +12,7 @@ import { Range, IRange } from '../../../../editor/common/core/range.js';
+ import { CancellationToken } from '../../../../base/common/cancellation.js';
+ import { ICommentThreadChangedEvent } from '../common/commentModel.js';
+ import { CommentMenus } from './commentMenus.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { IWorkbenchLayoutService } from '../../../services/layout/browser/layoutService.js';
+ import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
+ import { COMMENTS_SECTION, ICommentsConfiguration } from '../common/commentsConfiguration.js';
+diff --git a/src/vs/workbench/contrib/comments/browser/commentThreadAdditionalActions.ts b/src/vs/workbench/contrib/comments/browser/commentThreadAdditionalActions.ts
+index 95ea314..15cb25c 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentThreadAdditionalActions.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentThreadAdditionalActions.ts
+@@ -14,7 +14,7 @@ import * as languages from '../../../../editor/common/languages.js';
+ import { IContextKeyService } from '../../../../platform/contextkey/common/contextkey.js';
+ import { CommentFormActions } from './commentFormActions.js';
+ import { CommentMenus } from './commentMenus.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { IKeybindingService } from '../../../../platform/keybinding/common/keybinding.js';
+ import { IContextMenuService } from '../../../../platform/contextview/browser/contextView.js';
+ 
+diff --git a/src/vs/workbench/contrib/comments/browser/commentThreadBody.ts b/src/vs/workbench/contrib/comments/browser/commentThreadBody.ts
+index 7f3deff..0797004 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentThreadBody.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentThreadBody.ts
+@@ -16,7 +16,7 @@ import { IInstantiationService } from '../../../../platform/instantiation/common
+ import { URI } from '../../../../base/common/uri.js';
+ import { ICommentThreadWidget } from '../common/commentThreadWidget.js';
+ import { IMarkdownRendererExtraOptions } from '../../../../platform/markdown/browser/markdownRenderer.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { IRange } from '../../../../editor/common/core/range.js';
+ import { LayoutableEditor } from './simpleCommentEditor.js';
+ 
+diff --git a/src/vs/workbench/contrib/comments/browser/commentThreadWidget.ts b/src/vs/workbench/contrib/comments/browser/commentThreadWidget.ts
+index 8e31f0b..2ba7ff0 100644
+--- a/src/vs/workbench/contrib/comments/browser/commentThreadWidget.ts
++++ b/src/vs/workbench/contrib/comments/browser/commentThreadWidget.ts
+@@ -21,7 +21,7 @@ import { CommentThreadAdditionalActions } from './commentThreadAdditionalActions
+ import { CommentContextKeys } from '../common/commentContextKeys.js';
+ import { ICommentThreadWidget } from '../common/commentThreadWidget.js';
+ import { IRange, Range } from '../../../../editor/common/core/range.js';
+-import { ICellRange } from '../../notebook/common/notebookRange.js';
++import { ICellRange } from '../../../common/notebookRange.js';
+ import { FontInfo } from '../../../../editor/common/config/fontInfo.js';
+ import { registerNavigableContainer } from '../../../browser/actions/widgetNavigationCommands.js';
+ import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';

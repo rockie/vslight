@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-02T19:31:19.030875+10:00",
+  "status": "KEYCHAIN_CREATE_BLOCKED_BEFORE_SIGNING",
+  "runnerExit": 206,
+  "keychainCreateError": "SecKeychainCreate: One or more parameters passed to a function were not valid.",
+  "cleanupExit": 0,
+  "temporaryKeychainAndP12Removed": true,
+  "defaultAndSearchListUnchanged": true,
+  "next": "Parent root agent running same controller under current full-access execution context; no notary submission occurred."
+}

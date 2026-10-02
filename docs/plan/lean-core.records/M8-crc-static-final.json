@@ -1,0 +1,1623 @@
+{
+  "at": "2026-10-02T17:24:55.947258+10:00",
+  "generation": "150",
+  "gitBase": "f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "privateRoot": "/private/tmp/lean-core-crc-static150-bup2tvet",
+  "manifest": {
+    "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/build-inputs.json",
+    "sha256Before": "6e6f35ba16815bbe7db96434d32c3b04456b31600db2e57f67bd94e9933fa894",
+    "frozenAt": "2026-10-02T10:32:04.728531+10:00",
+    "files": 1421,
+    "categoryCounts": {
+      "production_or_build_input": 454,
+      "validation_helper": 21,
+      "documentation": 172,
+      "agent_configuration": 755,
+      "workflow": 19
+    },
+    "currentMatching": 1406,
+    "currentMismatches": [
+      {
+        "path": "dev/test-fixtures/lean-core/external-links-cdp.mjs",
+        "category": "validation_helper",
+        "frozenSha256": "aec87851569cd5ee54f624581f110f3878ba992d8a18922afbbfff85fccde02f",
+        "currentSha256": "21ad0f65d069fa1545224e896255aa4394848a6f3189e6d33a5c3d4759c61ebc"
+      },
+      {
+        "path": "dev/test-fixtures/lean-core/ordinary.js",
+        "category": "validation_helper",
+        "frozenSha256": "dd1da71d3fc703c490f6f6d9d50799ee0be359e3a02c92606600e4dff6858437",
+        "currentSha256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M2-resources.md",
+        "category": "documentation",
+        "frozenSha256": "ac9ba4b20e6411f6da50b959798b5da693fd2c1b6ced27aebe74910c085c8bf6",
+        "currentSha256": "1c29fcd196299c3889edf057e9cb4d42c62cc7ae09179a054d703cb287c364ab"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M4-secret-delete-investigation.md",
+        "category": "documentation",
+        "frozenSha256": "f3a6771e1afbd4c9c71ff8f71dfd5a80661a4370a1404d7bca5a0c2d1ae8390d",
+        "currentSha256": "cf2ce3a34c45e8e6827c502f3785de545d284366b058e4bac9723d72347e7ccf"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M4.md",
+        "category": "documentation",
+        "frozenSha256": "de11561ce8fe03c69fdbe2960e87f3885e151238940b27517c2886c352d8d5b1",
+        "currentSha256": "1fb8985df2aa6d6920753fb5950c240965a77240d22be824be134e28d9c0613f"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M5.md",
+        "category": "documentation",
+        "frozenSha256": "c7f7633d92873fcf13af0698710eef7a0bd9f3b136eb7798a1da90c2ad5eb527",
+        "currentSha256": "d4dfceb3aff7b74edba639fc2a611570927645d481121aef6731c0f6a7003a02"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-next-session.md",
+        "category": "documentation",
+        "frozenSha256": "864c371f229daab7a4ef4b6221d7dfbee9c75635a0c15cf017d90c23c71a1864",
+        "currentSha256": "aed1d132fcbf3d3e1d704686af3edee3ece652d5b9caee3f75cb8a22c3820da4"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-remaining-gates.md",
+        "category": "documentation",
+        "frozenSha256": "c726573a8e46ad116e2bfe4b0feb071028390434fdac2612a2285536d3b85982",
+        "currentSha256": "f6c96ed5601656d3a9d7c14086c7295c70ad5ca821b7bcc77ec1b1bb7f0f2f79"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-resume-audit.md",
+        "category": "documentation",
+        "frozenSha256": "e6a08b42ee1add2d3935f4c1a50edd2be9fd04af731a117f02ec76314f14d823",
+        "currentSha256": "1ba0678f7323e7c601afc678adc48281349be236e83d0b6d52b54da22e8e20b1"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8.md",
+        "category": "documentation",
+        "frozenSha256": "d8bcc799e56d76157d9ccc2ad46fa39b3dd984ea2adb4c853b1daaf64965181e",
+        "currentSha256": "2d24d63d98b095edac9ef383ebf0da16c30f640cb4566d876cd9662873466ec4"
+      },
+      {
+        "path": "README.md",
+        "category": "documentation",
+        "frozenSha256": "5501eeb695b973f1d3237064906a04c73998d921e57fee4877912ef978f9e5e3",
+        "currentSha256": "9b2d20c86b391537453dea59a797080ac1519e46dcfe6733fa6b14d40a000f56"
+      },
+      {
+        "path": "docs/extensions-compatibility.md",
+        "category": "documentation",
+        "frozenSha256": "f772c6def88a45d11b1d8956e752263d464d9d916f1532eabd54a1465acd4c47",
+        "currentSha256": "28eb67980b0689b4057e24fc77f5ca8544cc4141a2f32c0e8d82988f6c8c6db5"
+      },
+      {
+        "path": "docs/plan/lean-core.md",
+        "category": "documentation",
+        "frozenSha256": "6cb73bc78528b5707f5f449ad36920b4046371db7d112da74d73a0976476df37",
+        "currentSha256": "0d058cac4e64d6a13e9d811b809200868f13ef661e57858296b9ec4e0e4dd939"
+      },
+      {
+        "path": "docs/vslight-migration.md",
+        "category": "documentation",
+        "frozenSha256": "552eaaa8f31656262fe1cd8c55905198945c0c03d0b972458de1a7c4d9f707f4",
+        "currentSha256": "d7a69ed15a5ba78933cd3a0efe089fb397a65bac684167d65665878c275b9092"
+      },
+      {
+        "path": "docs/vslight-release.md",
+        "category": "documentation",
+        "frozenSha256": "7ae7f4a65fa6aeb4e2742b8a4cabc165bbab15bad616ca1b6d721e38803e54da",
+        "currentSha256": "87241056e82ef7c7e4f14a1d64ef88c126f075a782ddad76df496bda5433f84f"
+      }
+    ],
+    "persistentCopyMismatches": [],
+    "currentUnmanifestedOutsideEvidenceRecords": [
+      {
+        "path": "dev/test-fixtures/lean-core/ordinary-visual-cdp.mjs",
+        "category": "validation_helper"
+      }
+    ],
+    "sha256After": "6e6f35ba16815bbe7db96434d32c3b04456b31600db2e57f67bd94e9933fa894",
+    "notModified": true
+  },
+  "archives": [
+    {
+      "kind": "signed",
+      "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSLight-150-signed.zip",
+      "bytes": 157388380,
+      "sha256": "55f2e2ce6e34246e9ddb023f49c5b3be2cdd89625c3deda7bdced2c2f33e7d4f",
+      "recordedBytes": 157388380,
+      "recordedSha256": "55f2e2ce6e34246e9ddb023f49c5b3be2cdd89625c3deda7bdced2c2f33e7d4f",
+      "matchesRecorded": true
+    },
+    {
+      "kind": "unsigned",
+      "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/VSLight-150-unsigned.zip",
+      "bytes": 157532426,
+      "sha256": "5d80d6aa325dec8ce3d3f53d1e9deb9b8b4808b8fb5676eefc8b0b4ab3b54500",
+      "recordedBytes": 157532426,
+      "recordedSha256": "5d80d6aa325dec8ce3d3f53d1e9deb9b8b4808b8fb5676eefc8b0b4ab3b54500",
+      "matchesRecorded": true
+    }
+  ],
+  "zipToPreservedSignedApp": {
+    "regularFiles": 1209,
+    "symlinks": 14,
+    "directories": 472,
+    "appleDoubleEntries": 2163,
+    "mismatches": [],
+    "missingFromZip": [],
+    "unexpectedZipPayload": [],
+    "status": "PASS"
+  },
+  "runtimePackage": {
+    "app": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app",
+    "errors": [
+      {
+        "check": "asar_structure",
+        "detail": "missing/size-mismatched unpacked file: @parcel/watcher/build/Release/watcher.node"
+      },
+      {
+        "check": "required_package",
+        "detail": "CRI"
+      },
+      {
+        "check": "required_package",
+        "detail": "katex"
+      }
+    ],
+    "exit_code": 1,
+    "missing_out": [],
+    "required_packages": {
+      "CRI": {
+        "locations": [],
+        "present": false
+      },
+      "katex": {
+        "locations": [],
+        "present": false
+      },
+      "node-pty": {
+        "locations": [
+          {
+            "package": "node-pty",
+            "paths": [
+              "node-pty"
+            ],
+            "real_paths": [
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "ripgrep": {
+        "locations": [
+          {
+            "package": "@vscode/ripgrep-universal",
+            "paths": [
+              "@vscode/ripgrep-universal"
+            ],
+            "real_paths": [
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "semver": {
+        "locations": [
+          {
+            "package": "semver",
+            "paths": [
+              "semver"
+            ],
+            "real_paths": [
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+            ],
+            "store": "node_modules"
+          }
+        ],
+        "present": true
+      },
+      "sqlite": {
+        "locations": [
+          {
+            "package": "@vscode/sqlite3",
+            "paths": [
+              "@vscode/sqlite3"
+            ],
+            "real_paths": [
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      }
+    },
+    "retired_extensions": [],
+    "retired_out": [],
+    "retired_packages": [],
+    "retired_product_keys": [],
+    "schema_version": 1,
+    "status": "fail",
+    "stores": {
+      "node_modules": {
+        "exists": true,
+        "nodes": 58
+      },
+      "node_modules.asar.unpacked": {
+        "exists": true,
+        "nodes": 75
+      },
+      "out": {
+        "nodes": 174
+      }
+    },
+    "summary": {
+      "missing_required_out": 0,
+      "retired_extensions": 0,
+      "retired_out_groups": 0,
+      "retired_package_instances": 0,
+      "retired_product_keys": 0,
+      "structure_or_missing_package_errors": 3
+    }
+  },
+  "productionJson": {
+    "product.json": {
+      "parsed": true,
+      "sha256": "d06b0f6c3cc297f9591702450ad97bcfb8eba4473b7b34dcced8167a4edc5e10"
+    },
+    "patches/light/prune.json": {
+      "parsed": true,
+      "sha256": "0cb8c7bf610cacc18341137a5de593b7171464cdcafd11f386e4938a521ce33b"
+    },
+    "build/retired-api-proposals.json": {
+      "parsed": true,
+      "sha256": "3220fce198aaf2eb5796d34d26a83a6c859156ff1945d0561569fce2b2917858"
+    }
+  },
+  "pruneEntries": 254,
+  "checks": [
+    {
+      "name": "signed-zip-crc",
+      "command": [
+        "python3",
+        "-c",
+        "import sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); bad=z.testzip(); print(\"entries=\"+str(len(z.infolist()))+\" firstBad=\"+repr(bad)); sys.exit(1 if bad else 0)",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSLight-150-signed.zip"
+      ],
+      "exit": 0,
+      "stdout": "entries=3858 firstBad=None\n",
+      "stderr": "2026-10-02 17:24:56.290 xcodebuild[30176:146153]  DVTFilePathFSEvents: Failed to start fs event stream.\n2026-10-02 17:24:56.438 xcodebuild[30176:146152] [MT] DVTDeveloperPaths: Failed to get length of DARWIN_USER_CACHE_DIR from confstr(3), error = Error Domain=NSPOSIXErrorDomain Code=5 \"Input/output error\". Using NSCachesDirectory instead.\n"
+    },
+    {
+      "name": "signed-codesign-display",
+      "command": [
+        "codesign",
+        "-dv",
+        "--verbose=4",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "Executable=/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight\nIdentifier=com.vslight\nFormat=app bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=439 flags=0x10000(runtime) hashes=3+7 location=embedded\nVersionPlatform=1\nVersionMin=786432\nVersionSDK=1705216\nHash type=sha256 size=32\nCandidateCDHash sha256=83b0edf61f2b376f158ec88d635deb6882587f45\nCandidateCDHashFull sha256=83b0edf61f2b376f158ec88d635deb6882587f453feeb4204dd6ae01676bb728\nHash choices=sha256\nCMSDigest=83b0edf61f2b376f158ec88d635deb6882587f453feeb4204dd6ae01676bb728\nCMSDigestType=2\nExecutable Segment base=0\nExecutable Segment limit=16384\nExecutable Segment flags=0x1\nPage size=16384\nCDHash=83b0edf61f2b376f158ec88d635deb6882587f45\nSignature size=8977\nAuthority=(unavailable)\nNotarization Ticket=stapled\nInfo.plist=not bound\nTeamIdentifier=M6B2TDZC9H\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=1155\nInternal requirements count=1 size=172\nTotal signatures=1\nChosen signature=1\n"
+    },
+    {
+      "name": "signed-codesign-strict",
+      "command": [
+        "codesign",
+        "--verify",
+        "--deep",
+        "--strict",
+        "--verbose=2",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: invalid signature (code or signature have been modified)\nIn architecture: arm64\n"
+    },
+    {
+      "name": "signed-runtime-package",
+      "command": [
+        "python3",
+        "/Users/rockie/Documents/gh-xgent/vscodium/dev/check-lean-runtime.py",
+        "--app",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "exit": 1,
+      "stdout": "{\n  \"app\": \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app\",\n  \"errors\": [\n    {\n      \"check\": \"asar_structure\",\n      \"detail\": \"missing/size-mismatched unpacked file: @parcel/watcher/build/Release/watcher.node\"\n    },\n    {\n      \"check\": \"required_package\",\n      \"detail\": \"CRI\"\n    },\n    {\n      \"check\": \"required_package\",\n      \"detail\": \"katex\"\n    }\n  ],\n  \"exit_code\": 1,\n  \"missing_out\": [],\n  \"required_packages\": {\n    \"CRI\": {\n      \"locations\": [],\n      \"present\": false\n    },\n    \"katex\": {\n      \"locations\": [],\n      \"present\": false\n    },\n    \"node-pty\": {\n      \"locations\": [\n        {\n          \"package\": \"node-pty\",\n          \"paths\": [\n            \"node-pty\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    },\n    \"ripgrep\": {\n      \"locations\": [\n        {\n          \"package\": \"@vscode/ripgrep-universal\",\n          \"paths\": [\n            \"@vscode/ripgrep-universal\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    },\n    \"semver\": {\n      \"locations\": [\n        {\n          \"package\": \"semver\",\n          \"paths\": [\n            \"semver\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver\"\n          ],\n          \"store\": \"node_modules\"\n        }\n      ],\n      \"present\": true\n    },\n    \"sqlite\": {\n      \"locations\": [\n        {\n          \"package\": \"@vscode/sqlite3\",\n          \"paths\": [\n            \"@vscode/sqlite3\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    }\n  },\n  \"retired_extensions\": [],\n  \"retired_out\": [],\n  \"retired_packages\": [],\n  \"retired_product_keys\": [],\n  \"schema_version\": 1,\n  \"status\": \"fail\",\n  \"stores\": {\n    \"node_modules\": {\n      \"exists\": true,\n      \"nodes\": 58\n    },\n    \"node_modules.asar.unpacked\": {\n      \"exists\": true,\n      \"nodes\": 75\n    },\n    \"out\": {\n      \"nodes\": 174\n    }\n  },\n  \"summary\": {\n    \"missing_required_out\": 0,\n    \"retired_extensions\": 0,\n    \"retired_out_groups\": 0,\n    \"retired_package_instances\": 0,\n    \"retired_product_keys\": 0,\n    \"structure_or_missing_package_errors\": 3\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "bash-syntax",
+      "command": [
+        "bash",
+        "-n",
+        "build.sh",
+        "prepare_vscode.sh",
+        "prepare_src.sh",
+        "prepare_assets.sh"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "resource-helper-tests",
+      "command": [
+        "python3",
+        "/Users/rockie/Documents/gh-xgent/vscodium/dev/test_prune_macos_resources.py"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "....F......................\n======================================================================\nFAIL: test_cli_nonzero_and_json_summary (__main__.ResourceTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/Users/rockie/Documents/gh-xgent/vscodium/dev/test_prune_macos_resources.py\", line 300, in test_cli_nonzero_and_json_summary\n    self.assertEqual(result.returncode, 0, result.stderr)\nAssertionError: 1 != 0 : prune-macos-resources requires Python 3.11 or newer\n\n\n----------------------------------------------------------------------\nRan 27 tests in 0.630s\n\nFAILED (failures=1)\n"
+    }
+  ],
+  "finalInputSnapshot": {
+    "at": "2026-10-02T17:40:05.534534+10:00",
+    "files": 1421,
+    "matching": 1405,
+    "mismatches": [
+      {
+        "path": "dev/check-lean-runtime.py",
+        "category": "validation_helper",
+        "frozenSha256": "83cb6d78281cd0a4ec78c2470cc88688ccd15c13c9beb7056720501efd26738d",
+        "currentSha256": "14c2766a162ba219c7ccda829e57d9261e60e8ac76de6baf8d91722c793d1b9e"
+      },
+      {
+        "path": "dev/test-fixtures/lean-core/external-links-cdp.mjs",
+        "category": "validation_helper",
+        "frozenSha256": "aec87851569cd5ee54f624581f110f3878ba992d8a18922afbbfff85fccde02f",
+        "currentSha256": "21ad0f65d069fa1545224e896255aa4394848a6f3189e6d33a5c3d4759c61ebc"
+      },
+      {
+        "path": "dev/test-fixtures/lean-core/ordinary.js",
+        "category": "validation_helper",
+        "frozenSha256": "dd1da71d3fc703c490f6f6d9d50799ee0be359e3a02c92606600e4dff6858437",
+        "currentSha256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M2-resources.md",
+        "category": "documentation",
+        "frozenSha256": "ac9ba4b20e6411f6da50b959798b5da693fd2c1b6ced27aebe74910c085c8bf6",
+        "currentSha256": "1c29fcd196299c3889edf057e9cb4d42c62cc7ae09179a054d703cb287c364ab"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M4-secret-delete-investigation.md",
+        "category": "documentation",
+        "frozenSha256": "f3a6771e1afbd4c9c71ff8f71dfd5a80661a4370a1404d7bca5a0c2d1ae8390d",
+        "currentSha256": "cf2ce3a34c45e8e6827c502f3785de545d284366b058e4bac9723d72347e7ccf"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M4.md",
+        "category": "documentation",
+        "frozenSha256": "de11561ce8fe03c69fdbe2960e87f3885e151238940b27517c2886c352d8d5b1",
+        "currentSha256": "1fb8985df2aa6d6920753fb5950c240965a77240d22be824be134e28d9c0613f"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M5.md",
+        "category": "documentation",
+        "frozenSha256": "c7f7633d92873fcf13af0698710eef7a0bd9f3b136eb7798a1da90c2ad5eb527",
+        "currentSha256": "d4dfceb3aff7b74edba639fc2a611570927645d481121aef6731c0f6a7003a02"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-next-session.md",
+        "category": "documentation",
+        "frozenSha256": "864c371f229daab7a4ef4b6221d7dfbee9c75635a0c15cf017d90c23c71a1864",
+        "currentSha256": "aed1d132fcbf3d3e1d704686af3edee3ece652d5b9caee3f75cb8a22c3820da4"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-remaining-gates.md",
+        "category": "documentation",
+        "frozenSha256": "c726573a8e46ad116e2bfe4b0feb071028390434fdac2612a2285536d3b85982",
+        "currentSha256": "f6c96ed5601656d3a9d7c14086c7295c70ad5ca821b7bcc77ec1b1bb7f0f2f79"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-resume-audit.md",
+        "category": "documentation",
+        "frozenSha256": "e6a08b42ee1add2d3935f4c1a50edd2be9fd04af731a117f02ec76314f14d823",
+        "currentSha256": "1ba0678f7323e7c601afc678adc48281349be236e83d0b6d52b54da22e8e20b1"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8.md",
+        "category": "documentation",
+        "frozenSha256": "d8bcc799e56d76157d9ccc2ad46fa39b3dd984ea2adb4c853b1daaf64965181e",
+        "currentSha256": "2d24d63d98b095edac9ef383ebf0da16c30f640cb4566d876cd9662873466ec4"
+      },
+      {
+        "path": "README.md",
+        "category": "documentation",
+        "frozenSha256": "5501eeb695b973f1d3237064906a04c73998d921e57fee4877912ef978f9e5e3",
+        "currentSha256": "229d57accb7a3573a2d165d9514fb369da530e3e845a39d5cccd2d30a026ecaa"
+      },
+      {
+        "path": "docs/extensions-compatibility.md",
+        "category": "documentation",
+        "frozenSha256": "f772c6def88a45d11b1d8956e752263d464d9d916f1532eabd54a1465acd4c47",
+        "currentSha256": "28eb67980b0689b4057e24fc77f5ca8544cc4141a2f32c0e8d82988f6c8c6db5"
+      },
+      {
+        "path": "docs/plan/lean-core.md",
+        "category": "documentation",
+        "frozenSha256": "6cb73bc78528b5707f5f449ad36920b4046371db7d112da74d73a0976476df37",
+        "currentSha256": "0d058cac4e64d6a13e9d811b809200868f13ef661e57858296b9ec4e0e4dd939"
+      },
+      {
+        "path": "docs/vslight-migration.md",
+        "category": "documentation",
+        "frozenSha256": "552eaaa8f31656262fe1cd8c55905198945c0c03d0b972458de1a7c4d9f707f4",
+        "currentSha256": "d7a69ed15a5ba78933cd3a0efe089fb397a65bac684167d65665878c275b9092"
+      },
+      {
+        "path": "docs/vslight-release.md",
+        "category": "documentation",
+        "frozenSha256": "7ae7f4a65fa6aeb4e2742b8a4cabc165bbab15bad616ca1b6d721e38803e54da",
+        "currentSha256": "87241056e82ef7c7e4f14a1d64ef88c126f075a782ddad76df496bda5433f84f"
+      }
+    ],
+    "unmanifestedOutsideEvidenceRecords": [
+      {
+        "path": "dev/test-fixtures/lean-core/ordinary-visual-cdp.mjs",
+        "category": "validation_helper",
+        "sha256": "a1b7bc83ffb0c2f19a62bf6374b0d6aa23cb27203d57a04125f58f6bb47ba2c1"
+      },
+      {
+        "path": "dev/test_check_lean_runtime.py",
+        "category": "validation_helper",
+        "sha256": "f5748064f434cabc4498f2f5a838755138fe8b1ff1e6cf069813c931b0050da0"
+      }
+    ],
+    "productionOrBuildMismatches": [],
+    "workflowMismatches": [],
+    "manifestSha256": "6e6f35ba16815bbe7db96434d32c3b04456b31600db2e57f67bd94e9933fa894",
+    "originalManifestUnchanged": true
+  },
+  "diagnostics": {
+    "at": "2026-10-02T17:26:46.095287+10:00",
+    "checks": [
+      {
+        "name": "resource-helper-python312",
+        "command": [
+          "/opt/homebrew/bin/python3.12",
+          "/Users/rockie/Documents/gh-xgent/vscodium/dev/test_prune_macos_resources.py"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "...........................\n----------------------------------------------------------------------\nRan 27 tests in 0.768s\n\nOK\n"
+      },
+      {
+        "name": "unsigned-runtime-package",
+        "command": [
+          "/opt/homebrew/bin/python3.12",
+          "/Users/rockie/Documents/gh-xgent/vscodium/dev/check-lean-runtime.py",
+          "--app",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app"
+        ],
+        "exit": 0,
+        "stdout": "{\n  \"app\": \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app\",\n  \"errors\": [],\n  \"exit_code\": 0,\n  \"missing_out\": [],\n  \"required_packages\": {\n    \"CRI\": {\n      \"locations\": [\n        {\n          \"package\": \"chrome-remote-interface\",\n          \"paths\": [\n            \"chrome-remote-interface\"\n          ],\n          \"store\": \"asar\"\n        }\n      ],\n      \"present\": true\n    },\n    \"katex\": {\n      \"locations\": [\n        {\n          \"package\": \"katex\",\n          \"paths\": [\n            \"katex\"\n          ],\n          \"store\": \"asar\"\n        }\n      ],\n      \"present\": true\n    },\n    \"node-pty\": {\n      \"locations\": [\n        {\n          \"package\": \"node-pty\",\n          \"paths\": [\n            \"node-pty\"\n          ],\n          \"store\": \"asar\"\n        },\n        {\n          \"package\": \"node-pty\",\n          \"paths\": [\n            \"node-pty\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    },\n    \"ripgrep\": {\n      \"locations\": [\n        {\n          \"package\": \"@vscode/ripgrep-universal\",\n          \"paths\": [\n            \"@vscode/ripgrep-universal\"\n          ],\n          \"store\": \"asar\"\n        },\n        {\n          \"package\": \"@vscode/ripgrep-universal\",\n          \"paths\": [\n            \"@vscode/ripgrep-universal\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    },\n    \"semver\": {\n      \"locations\": [\n        {\n          \"package\": \"semver\",\n          \"paths\": [\n            \"semver\"\n          ],\n          \"store\": \"asar\"\n        },\n        {\n          \"package\": \"semver\",\n          \"paths\": [\n            \"semver\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver\"\n          ],\n          \"store\": \"node_modules\"\n        }\n      ],\n      \"present\": true\n    },\n    \"sqlite\": {\n      \"locations\": [\n        {\n          \"package\": \"@vscode/sqlite3\",\n          \"paths\": [\n            \"@vscode/sqlite3\"\n          ],\n          \"store\": \"asar\"\n        },\n        {\n          \"package\": \"@vscode/sqlite3\",\n          \"paths\": [\n            \"@vscode/sqlite3\"\n          ],\n          \"real_paths\": [\n            \"/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3\"\n          ],\n          \"store\": \"node_modules.asar.unpacked\"\n        }\n      ],\n      \"present\": true\n    }\n  },\n  \"retired_extensions\": [],\n  \"retired_out\": [],\n  \"retired_packages\": [],\n  \"retired_product_keys\": [],\n  \"schema_version\": 1,\n  \"status\": \"pass\",\n  \"stores\": {\n    \"asar\": {\n      \"header_bytes\": 97852,\n      \"json_bytes\": 97842,\n      \"nodes\": 2134,\n      \"unpacked_files\": 26\n    },\n    \"node_modules\": {\n      \"exists\": true,\n      \"nodes\": 58\n    },\n    \"node_modules.asar.unpacked\": {\n      \"exists\": true,\n      \"nodes\": 75\n    },\n    \"out\": {\n      \"nodes\": 174\n    }\n  },\n  \"summary\": {\n    \"missing_required_out\": 0,\n    \"retired_extensions\": 0,\n    \"retired_out_groups\": 0,\n    \"retired_package_instances\": 0,\n    \"retired_product_keys\": 0,\n    \"structure_or_missing_package_errors\": 0\n  }\n}\n",
+        "stderr": ""
+      },
+      {
+        "name": "codesign-main-executable",
+        "command": [
+          "codesign",
+          "--verify",
+          "--strict",
+          "--verbose=4",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight: invalid signature (code or signature have been modified)\nIn architecture: arm64\n"
+      },
+      {
+        "name": "codesign-helper-bundle",
+        "command": [
+          "codesign",
+          "--verify",
+          "--strict",
+          "--verbose=4",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app: invalid signature (code or signature have been modified)\nIn architecture: arm64\n"
+      },
+      {
+        "name": "codesign-ignore-resources",
+        "command": [
+          "codesign",
+          "--verify",
+          "--strict",
+          "--ignore-resources",
+          "--verbose=4",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+        ],
+        "exit": 1,
+        "stdout": "",
+        "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: invalid signature (code or signature have been modified)\nIn architecture: arm64\n"
+      },
+      {
+        "name": "codesign-signature-diagnostics",
+        "command": [
+          "codesign",
+          "-dv",
+          "--verbose=6",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+        ],
+        "exit": 0,
+        "stdout": "",
+        "stderr": "Executable=/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight\nIdentifier=com.vslight\nFormat=app bundle with Mach-O thin (arm64)\nCodeDirectory v=20500 size=439 flags=0x10000(runtime) hashes=3+7 location=embedded\nVersionPlatform=1\nVersionMin=786432\nVersionSDK=1705216\nHash type=sha256 size=32\nCandidateCDHash sha256=83b0edf61f2b376f158ec88d635deb6882587f45\nCandidateCDHashFull sha256=83b0edf61f2b376f158ec88d635deb6882587f453feeb4204dd6ae01676bb728\nHash choices=sha256\nCMSDigest=83b0edf61f2b376f158ec88d635deb6882587f453feeb4204dd6ae01676bb728\nCMSDigestType=2\nExecutable Segment base=0\nExecutable Segment limit=16384\nExecutable Segment flags=0x1\nPage size=16384\n    -7=33ad43120d6afc675e65134185370884710e630972bdb83b7ca446c9646b22d3\n    -6=0000000000000000000000000000000000000000000000000000000000000000\n    -5=74246a0dad7be01eb7cf5fe7b191740fd8c3956d34cbbef90fb85bdc61ab8d30\n    -4=0000000000000000000000000000000000000000000000000000000000000000\n    -3=65c9f2281a15a3aeaf144497093e5d1cd459a646fc6346b8d0418b41473369b6\n    -2=7847f9db950d34ca0afc19cc2b4dffa8034f7c835607ce1fdc5b45abbebff2d1\n    -1=79c97621b4d2de7da8709583663aaf64f14d188f752a5c1351f608b4f5cdea53\n     0=e2226cdfdcc56ef2c16328075e5e0e5333e0f14f5317e7b2aca4e9f339bf60d3\n     1=bf58716fa7e11fe026f4982fc4489c128322023811beca2732bbfd220ef35a70\n     2=392bc60eb9b2f549f798a61e8df5e0847996a40439024787a58501687ade5dfe\nCDHash=83b0edf61f2b376f158ec88d635deb6882587f45\nSignature size=8977\nAuthority=(unavailable)\nNotarization Ticket=stapled\nInfo.plist=not bound\nTeamIdentifier=M6B2TDZC9H\nRuntime Version=26.5.0\nSealed Resources version=2 rules=13 files=1155\nInternal requirements count=1 size=172\nTotal signatures=1\nChosen signature=1\n"
+      },
+      {
+        "name": "signed-xattrs",
+        "command": [
+          "xattr",
+          "-l",
+          "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+        ],
+        "exit": 0,
+        "stdout": "com.apple.provenance: \u0001\u0002\n",
+        "stderr": ""
+      }
+    ],
+    "signedUnpackedSizeMismatches": [
+      {
+        "path": "@parcel/watcher/build/Release/watcher.node",
+        "headerSize": 466096,
+        "unsignedPhysicalSize": 466096,
+        "signedPhysicalSize": 481664,
+        "unsignedSha256": "9bd8d88e4f21f52236cc6185a5bdf671f7ca70bba1d7a534d49954189091d2cb",
+        "signedSha256": "a509a8c3065bdbf9757bc04498c0bd354d25da5a813ec40619575b74753edbb4"
+      },
+      {
+        "path": "@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+        "headerSize": 6632912,
+        "unsignedPhysicalSize": 6632912,
+        "signedPhysicalSize": 6612624,
+        "unsignedSha256": "6246763c418c25c2d0f99c2416b9f600ae62bc5416adb3a36912952be6047571",
+        "signedSha256": "4689ce4354420a21d37cd8570cdcb0ac389e108c71d534a34d32eae0620f4921"
+      },
+      {
+        "path": "@vscode/deviceid/build/Release/windows.node",
+        "headerSize": 16704,
+        "unsignedPhysicalSize": 16704,
+        "signedPhysicalSize": 34864,
+        "unsignedSha256": "5dbf2eb1fa0884923a60980e523bc053a252fded3d4535437a985d07520547b3",
+        "signedSha256": "6a0908a0fb37131b7f6e111bff565dce68ba1eac353db2b1f3a36497740299c0"
+      },
+      {
+        "path": "@vscode/fs-copyfile/build/Release/vscode_fs.node",
+        "headerSize": 80384,
+        "unsignedPhysicalSize": 80384,
+        "signedPhysicalSize": 98176,
+        "unsignedSha256": "8910cd921dd31c8d7dd9c6f2eb39a8d1ec36e827f8031f2a7bd44580876b717f",
+        "signedSha256": "400b630f9fbb15812c0adca9dc5cde894b0d0b51511f3f2ef5c8cd1f1ff1b3da"
+      },
+      {
+        "path": "@vscode/native-watchdog/build/Release/watchdog.node",
+        "headerSize": 52208,
+        "unsignedPhysicalSize": 52208,
+        "signedPhysicalSize": 70176,
+        "unsignedSha256": "a317a3baf32e186067d57ba90a620d25c2f4ce1f9f4a5cffbafdf67357ef6428",
+        "signedSha256": "eabce226a496121b88f4fac76b7898640c314dcb1b56679e892f55e8f4e75ccd"
+      },
+      {
+        "path": "@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+        "headerSize": 4528512,
+        "unsignedPhysicalSize": 4528512,
+        "signedPhysicalSize": 4521264,
+        "unsignedSha256": "6ef40346bf31fcce79d9614c7745c198542925a0c7d4911e1ffe794c53392ac1",
+        "signedSha256": "e4edc922c266937740edbd5bb2237dfbcf4ddbc4244c9fa906284750bed576ed"
+      },
+      {
+        "path": "@vscode/spdlog/build/Release/spdlog.node",
+        "headerSize": 501288,
+        "unsignedPhysicalSize": 501288,
+        "signedPhysicalSize": 516640,
+        "unsignedSha256": "979b37097d66b2a2a76549d9ec976c57807032264fed6883ad05d952ca4f05b2",
+        "signedSha256": "388f6ff02ce6781ac15cd7ef5eb85c994e7a3f6c4ab87a505d88421cc5955cf4"
+      },
+      {
+        "path": "@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+        "headerSize": 1886784,
+        "unsignedPhysicalSize": 1886784,
+        "signedPhysicalSize": 1894080,
+        "unsignedSha256": "f6f8edf871289e37b57b940202965cfbbd7ecbedeb6b922954ec209c3b8ec9dc",
+        "signedSha256": "41f11ebc674006af593b6cb4dac4b1e14ba542e55c1f52629f2c44a0edcc1caf"
+      },
+      {
+        "path": "@vscodium/native-keymap/build/Release/keymapping.node",
+        "headerSize": 60064,
+        "unsignedPhysicalSize": 60064,
+        "signedPhysicalSize": 77984,
+        "unsignedSha256": "4f11dcb1989269d262d7aa835fb6ca27d2ddffe7fb8b8d279084b0a04caa6ed5",
+        "signedSha256": "b0db78ea531d7e53cde2811c9045eea3311bcb5fd721951d392c19dafdda2abd"
+      },
+      {
+        "path": "kerberos/build/Release/kerberos.node",
+        "headerSize": 540896,
+        "unsignedPhysicalSize": 540896,
+        "signedPhysicalSize": 590288,
+        "unsignedSha256": "6956b8cf505f3ddffbc28091e8e533ba011c365065ef7c14b6f8abec4bc3dd08",
+        "signedSha256": "238ef51a3120e0b79749b89897fb7a860bac4ddca6392b8741a0de5b732743e2"
+      },
+      {
+        "path": "native-is-elevated/build/Release/iselevated.node",
+        "headerSize": 50960,
+        "unsignedPhysicalSize": 50960,
+        "signedPhysicalSize": 68944,
+        "unsignedSha256": "7f666e36f7fc8db53408e55a950682b66bf496e49b2792964b0d3dc72f5452af",
+        "signedSha256": "6c52f8d6c31e746cd28df0ea243374c0bae0b9713ccb3085dfaf0b9cffd0c63d"
+      },
+      {
+        "path": "node-pty/build/Release/pty.node",
+        "headerSize": 91608,
+        "unsignedPhysicalSize": 91608,
+        "signedPhysicalSize": 109328,
+        "unsignedSha256": "553581d7829c35400251851ee1602b1c38b121d2fd2d7a4ffde4e7512bffbb20",
+        "signedSha256": "25c24f8cf05c7906164555efdc6b00fc8992b818d37f3e01ca69929edb74a5c5"
+      },
+      {
+        "path": "node-pty/build/Release/spawn-helper",
+        "headerSize": 50592,
+        "unsignedPhysicalSize": 50592,
+        "signedPhysicalSize": 69392,
+        "unsignedSha256": "6580e52494e6f2d04a6d1c8be8c2fb05a1baa5355917e4aee39eddd045356079",
+        "signedSha256": "ebd520a2242e1ce1e559e2036fc74865ce030cedaf1fa917e78928d3f108d574"
+      },
+      {
+        "path": "windows-foreground-love/build/Release/foreground_love.node",
+        "headerSize": 51400,
+        "unsignedPhysicalSize": 51400,
+        "signedPhysicalSize": 69376,
+        "unsignedSha256": "699a0ac054f08782c8d128124f13cad9b8f7dba242fa454a7469724fad875352",
+        "signedSha256": "656ed9313aac3a032e3b128dff8015920416892e7f60eb6a812d61025dd86942"
+      }
+    ],
+    "asarSameBeforeAfter": true
+  },
+  "contentAuditRecomputed": {
+    "status": "PASS",
+    "rawApp": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "signedApp": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app",
+    "changes": [
+      {
+        "path": "Contents/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2325
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 195322960,
+        "afterBytes": 194205696
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 1210848,
+        "afterBytes": 1222896
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libEGL.dylib",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 91952,
+        "afterBytes": 109664
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libGLESv2.dylib",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 6278400,
+        "afterBytes": 6260192
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 2230784,
+        "afterBytes": 2236096
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 16574256,
+        "afterBytes": 16496144
+      },
+      {
+        "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 10992
+      },
+      {
+        "path": "Contents/Frameworks/Mantle.framework/Versions/A/Mantle",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 126544,
+        "afterBytes": 144128
+      },
+      {
+        "path": "Contents/Frameworks/Mantle.framework/Versions/A/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2442
+      },
+      {
+        "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 352864,
+        "afterBytes": 369136
+      },
+      {
+        "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2442
+      },
+      {
+        "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 125696,
+        "afterBytes": 144032
+      },
+      {
+        "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 145408,
+        "afterBytes": 162864
+      },
+      {
+        "path": "Contents/Frameworks/Squirrel.framework/Versions/A/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2660
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/MacOS/VSLight Helper (GPU)",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 203600,
+        "afterBytes": 221168
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2200
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin)",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 203600,
+        "afterBytes": 221424
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2200
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/MacOS/VSLight Helper (Renderer)",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 203600,
+        "afterBytes": 221168
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2200
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 203584,
+        "afterBytes": 221168
+      },
+      {
+        "path": "Contents/Frameworks/VSLight Helper.app/Contents/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 2200
+      },
+      {
+        "path": "Contents/Info.plist",
+        "kind": "signer usage descriptions",
+        "beforeBytes": 35380,
+        "afterBytes": 35737
+      },
+      {
+        "path": "Contents/MacOS/VSLight",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 33968,
+        "afterBytes": 52864
+      },
+      {
+        "path": "Contents/Resources/app/extensions/git/node_modules/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 80416,
+        "afterBytes": 98208
+      },
+      {
+        "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/libmsalruntime.dylib",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 6603872,
+        "afterBytes": 6550864
+      },
+      {
+        "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/msal-node-runtime.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 359456,
+        "afterBytes": 342736
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 466096,
+        "afterBytes": 481664
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 16704,
+        "afterBytes": 34864
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 80384,
+        "afterBytes": 98176
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 52208,
+        "afterBytes": 70176
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 6632912,
+        "afterBytes": 6612624
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 4528512,
+        "afterBytes": 4521264
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 501288,
+        "afterBytes": 516640
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 1886784,
+        "afterBytes": 1894080
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 60064,
+        "afterBytes": 77984
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 540896,
+        "afterBytes": 590288
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 50960,
+        "afterBytes": 68944
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 91608,
+        "afterBytes": 109328
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 50592,
+        "afterBytes": 69392
+      },
+      {
+        "path": "Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+        "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+        "beforeBytes": 51400,
+        "afterBytes": 69376
+      },
+      {
+        "path": "Contents/_CodeSignature/CodeResources",
+        "kind": "signature metadata or stapled ticket",
+        "beforeBytes": null,
+        "afterBytes": 378428
+      }
+    ],
+    "unexpected": [],
+    "removed": [],
+    "unchangedRegularFiles": 1166
+  },
+  "validationAfterFix": {
+    "tests": {
+      "chunk_id": "e057d2",
+      "wall_time_seconds": 0.121472125,
+      "exit_code": 0,
+      "original_token_count": 28,
+      "output": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.194s\n\nOK\n"
+    },
+    "unsigned": {
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "dev/check-lean-runtime.py",
+        "--app",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "exit": 0,
+      "report": {
+        "app": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app",
+        "errors": [],
+        "exit_code": 0,
+        "missing_out": [],
+        "required_packages": {
+          "CRI": {
+            "locations": [
+              {
+                "package": "chrome-remote-interface",
+                "paths": [
+                  "chrome-remote-interface"
+                ],
+                "store": "asar"
+              }
+            ],
+            "present": true
+          },
+          "katex": {
+            "locations": [
+              {
+                "package": "katex",
+                "paths": [
+                  "katex"
+                ],
+                "store": "asar"
+              }
+            ],
+            "present": true
+          },
+          "node-pty": {
+            "locations": [
+              {
+                "package": "node-pty",
+                "paths": [
+                  "node-pty"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "node-pty",
+                "paths": [
+                  "node-pty"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          },
+          "ripgrep": {
+            "locations": [
+              {
+                "package": "@vscode/ripgrep-universal",
+                "paths": [
+                  "@vscode/ripgrep-universal"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "@vscode/ripgrep-universal",
+                "paths": [
+                  "@vscode/ripgrep-universal"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          },
+          "semver": {
+            "locations": [
+              {
+                "package": "semver",
+                "paths": [
+                  "semver"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "semver",
+                "paths": [
+                  "semver"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+                ],
+                "store": "node_modules"
+              }
+            ],
+            "present": true
+          },
+          "sqlite": {
+            "locations": [
+              {
+                "package": "@vscode/sqlite3",
+                "paths": [
+                  "@vscode/sqlite3"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "@vscode/sqlite3",
+                "paths": [
+                  "@vscode/sqlite3"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          }
+        },
+        "retired_extensions": [],
+        "retired_out": [],
+        "retired_packages": [],
+        "retired_product_keys": [],
+        "schema_version": 1,
+        "status": "pass",
+        "stores": {
+          "asar": {
+            "header_bytes": 97852,
+            "json_bytes": 97842,
+            "nodes": 2134,
+            "unpacked_files": 26
+          },
+          "node_modules": {
+            "exists": true,
+            "nodes": 58
+          },
+          "node_modules.asar.unpacked": {
+            "exists": true,
+            "nodes": 75
+          },
+          "out": {
+            "nodes": 174
+          }
+        },
+        "summary": {
+          "missing_required_out": 0,
+          "retired_extensions": 0,
+          "retired_out_groups": 0,
+          "retired_package_instances": 0,
+          "retired_product_keys": 0,
+          "structure_or_missing_package_errors": 0
+        }
+      }
+    },
+    "signed": {
+      "command": [
+        "/opt/homebrew/bin/python3.12",
+        "dev/check-lean-runtime.py",
+        "--signed",
+        "--app",
+        "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "sandboxPermissions": "require_escalated",
+      "exit": 0,
+      "report": {
+        "app": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app",
+        "errors": [],
+        "exit_code": 0,
+        "missing_out": [],
+        "required_packages": {
+          "CRI": {
+            "locations": [
+              {
+                "package": "chrome-remote-interface",
+                "paths": [
+                  "chrome-remote-interface"
+                ],
+                "store": "asar"
+              }
+            ],
+            "present": true
+          },
+          "katex": {
+            "locations": [
+              {
+                "package": "katex",
+                "paths": [
+                  "katex"
+                ],
+                "store": "asar"
+              }
+            ],
+            "present": true
+          },
+          "node-pty": {
+            "locations": [
+              {
+                "package": "node-pty",
+                "paths": [
+                  "node-pty"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "node-pty",
+                "paths": [
+                  "node-pty"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          },
+          "ripgrep": {
+            "locations": [
+              {
+                "package": "@vscode/ripgrep-universal",
+                "paths": [
+                  "@vscode/ripgrep-universal"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "@vscode/ripgrep-universal",
+                "paths": [
+                  "@vscode/ripgrep-universal"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          },
+          "semver": {
+            "locations": [
+              {
+                "package": "semver",
+                "paths": [
+                  "semver"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "semver",
+                "paths": [
+                  "semver"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+                ],
+                "store": "node_modules"
+              }
+            ],
+            "present": true
+          },
+          "sqlite": {
+            "locations": [
+              {
+                "package": "@vscode/sqlite3",
+                "paths": [
+                  "@vscode/sqlite3"
+                ],
+                "store": "asar"
+              },
+              {
+                "package": "@vscode/sqlite3",
+                "paths": [
+                  "@vscode/sqlite3"
+                ],
+                "real_paths": [
+                  "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+                ],
+                "store": "node_modules.asar.unpacked"
+              }
+            ],
+            "present": true
+          }
+        },
+        "retired_extensions": [],
+        "retired_out": [],
+        "retired_packages": [],
+        "retired_product_keys": [],
+        "schema_version": 1,
+        "signature_checks": [
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "--deep",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app",
+            "stderr": "--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Renderer).app\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Renderer).app\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (GPU).app\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (GPU).app\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Mantle.framework/Versions/Current/.\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Mantle.framework/Versions/Current/.\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.\n--prepared:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler\n--validated:/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper: satisfies its Designated Requirement\n",
+            "stdout": ""
+          },
+          {
+            "command": [
+              "codesign",
+              "--verify",
+              "--strict",
+              "--verbose=2",
+              "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node"
+            ],
+            "exit": 0,
+            "path": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+            "stderr": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node: satisfies its Designated Requirement\n",
+            "stdout": ""
+          }
+        ],
+        "signed_app_state": {
+          "after_sha256": "ea2498024a70028171aa1283a98baa272708aef976e78c51fca7a4813a548ea0",
+          "before_sha256": "ea2498024a70028171aa1283a98baa272708aef976e78c51fca7a4813a548ea0",
+          "unchanged": true
+        },
+        "status": "pass",
+        "stores": {
+          "asar": {
+            "header_bytes": 97852,
+            "json_bytes": 97842,
+            "nodes": 2134,
+            "signed_unpacked_size_changes": [
+              {
+                "header_bytes": 466096,
+                "path": "@parcel/watcher/build/Release/watcher.node",
+                "physical_bytes": 481664
+              },
+              {
+                "header_bytes": 6632912,
+                "path": "@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+                "physical_bytes": 6612624
+              },
+              {
+                "header_bytes": 16704,
+                "path": "@vscode/deviceid/build/Release/windows.node",
+                "physical_bytes": 34864
+              },
+              {
+                "header_bytes": 80384,
+                "path": "@vscode/fs-copyfile/build/Release/vscode_fs.node",
+                "physical_bytes": 98176
+              },
+              {
+                "header_bytes": 52208,
+                "path": "@vscode/native-watchdog/build/Release/watchdog.node",
+                "physical_bytes": 70176
+              },
+              {
+                "header_bytes": 4528512,
+                "path": "@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+                "physical_bytes": 4521264
+              },
+              {
+                "header_bytes": 501288,
+                "path": "@vscode/spdlog/build/Release/spdlog.node",
+                "physical_bytes": 516640
+              },
+              {
+                "header_bytes": 1886784,
+                "path": "@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+                "physical_bytes": 1894080
+              },
+              {
+                "header_bytes": 60064,
+                "path": "@vscodium/native-keymap/build/Release/keymapping.node",
+                "physical_bytes": 77984
+              },
+              {
+                "header_bytes": 540896,
+                "path": "kerberos/build/Release/kerberos.node",
+                "physical_bytes": 590288
+              },
+              {
+                "header_bytes": 50960,
+                "path": "native-is-elevated/build/Release/iselevated.node",
+                "physical_bytes": 68944
+              },
+              {
+                "header_bytes": 91608,
+                "path": "node-pty/build/Release/pty.node",
+                "physical_bytes": 109328
+              },
+              {
+                "header_bytes": 50592,
+                "path": "node-pty/build/Release/spawn-helper",
+                "physical_bytes": 69392
+              },
+              {
+                "header_bytes": 51400,
+                "path": "windows-foreground-love/build/Release/foreground_love.node",
+                "physical_bytes": 69376
+              }
+            ],
+            "unpacked_files": 26
+          },
+          "node_modules": {
+            "exists": true,
+            "nodes": 58
+          },
+          "node_modules.asar.unpacked": {
+            "exists": true,
+            "nodes": 75
+          },
+          "out": {
+            "nodes": 174
+          }
+        },
+        "summary": {
+          "missing_required_out": 0,
+          "retired_extensions": 0,
+          "retired_out_groups": 0,
+          "retired_package_instances": 0,
+          "retired_product_keys": 0,
+          "structure_or_missing_package_errors": 0
+        }
+      }
+    },
+    "nodeSyntax": [
+      {
+        "name": "external-links-cdp.mjs",
+        "result": {
+          "chunk_id": "4e584b",
+          "wall_time_seconds": 3.833e-06,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      },
+      {
+        "name": "ordinary.js",
+        "result": {
+          "chunk_id": "c1116b",
+          "wall_time_seconds": 3.667e-06,
+          "exit_code": 0,
+          "original_token_count": 0,
+          "output": ""
+        }
+      },
+      {
+        "name": "versions",
+        "result": {
+          "chunk_id": "2f2d90",
+          "wall_time_seconds": 6.541e-06,
+          "exit_code": 0,
+          "original_token_count": 58,
+          "output": "v24.18.0\nPython 3.12.13\n{\"production_or_build_input\": 454, \"validation_helper\": 21, \"documentation\": 172, \"agent_configuration\": 755, \"workflow\": 19}\nmanifest hash 6e6f35ba16815bbe7db96434d32c3b04456b31600db2e57f67bd94e9933fa894\n"
+        }
+      }
+    ],
+    "helperSha256": "14c2766a162ba219c7ccda829e57d9261e60e8ac76de6baf8d91722c793d1b9e",
+    "testSha256": "f5748064f434cabc4498f2f5a838755138fe8b1ff1e6cf069813c931b0050da0"
+  },
+  "codesignSandboxBoundary": {
+    "sandboxedStrictExit": 1,
+    "sameAppUnsandboxedStrictExit": 0,
+    "unsandboxedToolChunk": "5575c2",
+    "command": [
+      "codesign",
+      "--verify",
+      "--deep",
+      "--strict",
+      "--verbose=4",
+      "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app"
+    ],
+    "actualOutputExcerpt": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: valid on disk\n/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/sign150/VSCode-darwin-arm64/VSLight.app: satisfies its Designated Requirement\n",
+    "diagnosis": "Sandbox display Authority=(unavailable), isolated main executable and helper both fail; the identical full app succeeds outside sandbox and final signed checker verifies all 15 signatures without changing files."
+  },
+  "status": "PASS_SIGNED_CRC_FROZEN_PRODUCTION_INPUT_AND_STATIC_GATES",
+  "scope": {
+    "noProductionChanges": true,
+    "newValidationHelperChanges": [
+      "dev/check-lean-runtime.py",
+      "dev/test_check_lean_runtime.py"
+    ],
+    "originalFrozenInputsNotRewritten": true,
+    "rebuild": false,
+    "smokeRunOrModified": false,
+    "signedAppOrZipModified": false,
+    "commitPushCIRelease": false,
+    "remaining": "This closes CRC and static subset only; current-input dual-arch CI and any other pending runtime/UI/documentation gates are not inferred complete."
+  }
+}

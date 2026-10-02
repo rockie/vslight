@@ -1,0 +1,280 @@
+{
+  "totals": {
+    "Unknown service": 0,
+    "Missing proxy": 0,
+    "assertRegistered": 0,
+    "unknown customer": 0,
+    "service attribute read error": 0,
+    "RPC unknown": 0
+  },
+  "rows": [
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/network-shared.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/editSessions.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/userDataSync.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/sharedprocess.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/ptyhost.log",
+      "sha256": "81913f1ab2ec83b88da4f3d06cde198b2b885e38670c6a6fc98cdc30c52fff9a",
+      "bytes": 111,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/terminal.log",
+      "sha256": "9a68051f4b786bb688ed9527b104ac915c8f9c84050e3c6b28e14a2dcce5ef15",
+      "bytes": 188,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/remoteTunnelService.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/main.log",
+      "sha256": "2a690a6f21905701e046c95676d7a67075dd69cf9f7ced801f818cba315962e8",
+      "bytes": 1721,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/network.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/views.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/renderer.log",
+      "sha256": "812970eae900d15ab5deabcad7f75451752c60d91e7c61b9536c7ead86bba43f",
+      "bytes": 678,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/textModelChanges.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/output_20261002T205742/tasks.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/extHostTelemetry.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/exthost.log",
+      "sha256": "3a8390ca351415fa6d92f674db8e51201db4db30d9a410fff34ba5f16224a5ff",
+      "bytes": 2878,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/vscode.github/GitHub.log",
+      "sha256": "a3f33c60efa4e66cdcbfa8703cf547cb4730feaba849a621651e2babc12dc6fc",
+      "bytes": 47,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/vscode.markdown-language-features/Markdown.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/output_logging_20261002T205743/1-Markdown Language Server.log",
+      "sha256": "a5e626f27f60612fcf15d1e0f1de87ae41246ce1aebb624551c25fa720e27e74",
+      "bytes": 670,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/u/logs/20261002T205741/window1/exthost/vscode.git/Git.log",
+      "sha256": "0b5980d0986e6f710410b064fea350dca0b31be13714119972f5245055b72a8f",
+      "bytes": 832,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    },
+    {
+      "path": "/private/tmp/av151-4dvltjmt/launch.log",
+      "sha256": "f3aabdee132e5aac350d7420f11fb6cf64bb99ae0bbe6ae452dc994e1c0983cd",
+      "bytes": 2392,
+      "counts": {
+        "Unknown service": 0,
+        "Missing proxy": 0,
+        "assertRegistered": 0,
+        "unknown customer": 0,
+        "service attribute read error": 0,
+        "RPC unknown": 0
+      }
+    }
+  ],
+  "patterns": {
+    "Unknown service": "Unknown service",
+    "Missing proxy": "Missing proxy",
+    "assertRegistered": "assertRegistered",
+    "unknown customer": "unknown customer",
+    "service attribute read error": "Cannot read (?:properties|property) of (?:undefined|null).*?(?:service|Service)",
+    "RPC unknown": "RPC.*unknown|unknown.*RPC"
+  }
+}

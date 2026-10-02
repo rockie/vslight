@@ -1,0 +1,35 @@
+Debugger listening on ws://127.0.0.1:19551/356feb72-ecba-4666-a03d-e6cdfa2a94d1
+For help, see: https://nodejs.org/learn/getting-started/debugging
+
+DevTools listening on ws://127.0.0.1:19550/devtools/browser/e5935ceb-dcf9-4aa0-9f93-5eb9d180b0a4
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-02T11:13:27.097Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T11:13:27.117Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-02T11:13:27.214Z][0m [shared storage] Creating shared storage database at '/private/tmp/lc151ms-wdn5hck0/s/sharedStorage/state.vscdb' (wasCreated: true)
+[90m[main 2026-10-02T11:13:27.215Z][0m [shared storage] Initializing fallback application storage (path: /private/tmp/lc151ms-wdn5hck0/u/User/globalStorage/state.vscdb)
+[90m[main 2026-10-02T11:13:27.216Z][0m [shared storage] Fallback application storage initialized with 3 items
+[90m[main 2026-10-02T11:13:27.459Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T11:13:27.461Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T11:13:27.575Z][0m update#setState idle
+[90m[main 2026-10-02T11:13:27.635Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+(node:39925) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `VSLight --trace-deprecation ...` to show where the warning was created)
+[90m[main 2026-10-02T11:13:28.500Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T11:13:28.500Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T11:13:28.500Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+Debugger attached.
+[90m[main 2026-10-02T11:13:30.279Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T11:13:30.279Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T11:13:30.279Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+Debugger ending on ws://127.0.0.1:19551/356feb72-ecba-4666-a03d-e6cdfa2a94d1
+For help, see: https://nodejs.org/learn/getting-started/debugging
+[90m[main 2026-10-02T11:13:30.831Z][0m Extension host with pid 41146 exited with code: 0, signal: unknown.
+[90m[main 2026-10-02T11:13:30.888Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T11:13:30.889Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T11:13:31.035Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T11:13:31.035Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T11:13:31.035Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+Debugger attached.
+Debugger ending on ws://127.0.0.1:19551/356feb72-ecba-4666-a03d-e6cdfa2a94d1
+For help, see: https://nodejs.org/learn/getting-started/debugging
+[90m[main 2026-10-02T11:13:33.367Z][0m Extension host with pid 41471 exited with code: 0, signal: unknown.

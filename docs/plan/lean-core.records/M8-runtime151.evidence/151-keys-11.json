@@ -1,0 +1,10 @@
+{
+  "query": "@command:workbench.action.chat.acceptTool",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "@command:workbench.action.chat.acceptTool",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

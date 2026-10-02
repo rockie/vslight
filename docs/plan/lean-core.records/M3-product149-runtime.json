@@ -1,0 +1,1019 @@
+{
+  "status": "PRODUCT149_MERMAID_RUNTIME_GATES_PASS_WITH_FROZEN_VISUAL_LIMITS",
+  "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "generation": "147+148+149",
+  "M8Snapshot": {
+    "path": "/private/tmp/mm149-931ruovz/evidence/M8-final-artifact149.json",
+    "sha256": "9fd831fbe791003ef9890d7b008ec9ac3787bb5adf8ec352fa14894cb02919a9",
+    "sameApp": true,
+    "inputManifestSha256": "2b69e1a39d1500599c55a31075cac07d06d5b1b3c344666504a88b0b274723e5"
+  },
+  "bundles": [
+    {
+      "file": "markdown-preview-out/index.js",
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js",
+      "actual": {
+        "bytes": 18642002,
+        "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+      },
+      "sameAsPreLaunch": true,
+      "sameAsM8": true
+    },
+    {
+      "file": "chat-webview-out/index-editor.js",
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js",
+      "actual": {
+        "bytes": 18502766,
+        "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+      },
+      "sameAsPreLaunch": true,
+      "sameAsM8": true
+    },
+    {
+      "file": "chat-webview-out/codicon.css",
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/codicon.css",
+      "actual": {
+        "bytes": 133000,
+        "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+      },
+      "sameAsPreLaunch": true,
+      "sameAsM8": true
+    },
+    {
+      "file": "dist/extension.js",
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/dist/extension.js",
+      "actual": {
+        "bytes": 11917,
+        "sha256": "59c911a920f53e749adc09421ba3bb5d32cbd5e440adc75577e9e48040c0f6d9"
+      },
+      "sameAsPreLaunch": true,
+      "sameAsM8": null
+    }
+  ],
+  "actualScriptFiles": [
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+      "bytes": 24899,
+      "sha256": "dd9ddd892d77ac1d7fe95e155cd1d588d10527326777f67e14b77ec9726470a8"
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+      "bytes": 1804,
+      "sha256": "fc9727a04053759cf768c410588faad706ee61c80ccb447bba453ac9566857d0"
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js",
+      "bytes": 18502766,
+      "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js",
+      "bytes": 18642002,
+      "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+    }
+  ],
+  "matrix": {
+    "total": 32,
+    "domPass": 32,
+    "visualReviewed": 32,
+    "visualStatuses": {
+      "PASS": 28,
+      "PASS_WITH_NOTE": 2,
+      "UPSTREAM_FIXED_THEME_READABLE": 2
+    },
+    "allChineseReadableNoTofuNoClipping": true,
+    "rowAudit": [
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-flowchart.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-sequence.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "state",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-state.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "elk",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-elk.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-tidy-tree.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "zenuml",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-zenuml.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-invalid-flowchart.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-light-invalid-sequence.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-flowchart.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-sequence.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "state",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-state.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "elk",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-elk.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-tidy-tree.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-zenuml.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-invalid-flowchart.png"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/markdown-preview-dark-invalid-sequence.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-flowchart.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-sequence.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "state",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-state.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "elk",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-elk.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-tidy-tree.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "zenuml",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-zenuml.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-invalid-flowchart.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-light-invalid-sequence.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-flowchart.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-sequence.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "state",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-state.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "elk",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-elk.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-tidy-tree.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-zenuml.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-invalid-flowchart.png"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "productIdentityMatch": true,
+        "scriptsUnderActualApp": true,
+        "freshPausedDocument": true,
+        "cspViolations": 0,
+        "fontErrorFaces": 0,
+        "rootViewportScreenshot": "/private/tmp/mm149-931ruovz/evidence/matrix/standalone-editor-dark-invalid-sequence.png"
+      }
+    ],
+    "freshPausedBeforeScripts": 32,
+    "cspViolationCount": 0,
+    "fontErrorFaceCount": 0,
+    "cspInstallDeltaMsRange": [
+      -0.39990234375,
+      0.699951171875
+    ]
+  },
+  "matrixLogs": {
+    "eventCounts": {
+      "Log.entryAdded": 32,
+      "Network.loadingFailed": 14,
+      "Runtime.consoleAPICalled": 40,
+      "Runtime.exceptionThrown": 4
+    },
+    "policyWarnings": 32,
+    "canceledDocumentLoads": 14,
+    "ZenUMLInfoDebugMessages": 40,
+    "expectedInvalidMarkdownExceptions": [
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "count": 1,
+        "classification": "Expected invalid syntax parseError rethrow, same frozen Markdown behavior as145"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "count": 1,
+        "classification": "Expected invalid syntax parseError rethrow, same frozen Markdown behavior as145"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "count": 1,
+        "classification": "Expected invalid syntax parseError rethrow, same frozen Markdown behavior as145"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "count": 1,
+        "classification": "Expected invalid syntax parseError rethrow, same frozen Markdown behavior as145"
+      }
+    ],
+    "legalGraphExceptions": 0
+  },
+  "interactions": {
+    "steps": 33,
+    "names": [
+      "open source route",
+      "initial DOM",
+      "open webview-id route",
+      "id route DOM",
+      "open active route",
+      "active route DOM",
+      "copy webview-id",
+      "copy active",
+      "zoom-in",
+      "zoom-out",
+      "pan-toggle",
+      "pan",
+      "button-reset",
+      "button reset comparison",
+      "prepare command reset webview-id",
+      "pan before command reset webview-id",
+      "command reset webview-id",
+      "command reset comparison webview-id",
+      "prepare command reset active",
+      "pan before command reset active",
+      "command reset active",
+      "command reset comparison active",
+      "prepare persisted zoom",
+      "prepare persisted pan",
+      "live theme dark",
+      "live theme DOM dark",
+      "preserve transform on theme dark",
+      "live theme light",
+      "live theme DOM light",
+      "preserve transform on theme light",
+      "live theme dark",
+      "live theme DOM dark",
+      "preserve transform on theme dark"
+    ],
+    "snapshotCount": 28,
+    "deduplicatedEventCounts": {
+      "Log.entryAdded": 1
+    },
+    "cspViolationCount": 0,
+    "fontErrorFaceCount": 0,
+    "exactRawCopyRoutes": 6,
+    "rawSourceLength": 83
+  },
+  "restore": {
+    "status": "PASS",
+    "exactOriginalSource": true,
+    "exactWebviewId": "165d2776",
+    "exactTheme": "dark",
+    "numericTransformBefore": {
+      "scale": 1.25,
+      "x": 429.75,
+      "y": 225
+    },
+    "numericTransformAfter": {
+      "scale": 1.25,
+      "x": 429.75,
+      "y": 225
+    },
+    "sameProfile": "/private/tmp/mm149-931ruovz/u",
+    "oldMainPid": 90267,
+    "newMainPid": 93179,
+    "oldHostPid": 91406,
+    "newHostPid": 93874,
+    "ordinaryQuitBothExit0": true,
+    "persistedSourceReadOnly": "/private/tmp/mm149-931ruovz/evidence/persisted-source-readonly.json",
+    "beforeViewBox": "0 0 316 368.5",
+    "afterViewBox": "0 0 290 336",
+    "beforePanModePressed": "true",
+    "afterPanModePressed": "false",
+    "sameLayoutAndTransientPanModeDifferenceAlreadyPresent145": true,
+    "frozenSourceComparisons": {
+      "preview-src/shared/vsCodeTheme.ts": {
+        "upstreamSha256": "ced57079d15522367bf8ddb45c2a1c59ddd777c6b9ba9c501b6ffce823441989",
+        "privateSha256": "ced57079d15522367bf8ddb45c2a1c59ddd777c6b9ba9c501b6ffce823441989",
+        "matchesFrozenUpstreamExcept139AddonRegistration": true
+      },
+      "preview-src/chat/index-editor.ts": {
+        "upstreamSha256": "2b9397705ce7fadcbd81d97b4eaecc5916a1494cc9b2d01fec27ccd939229c0e",
+        "privateSha256": "2b9397705ce7fadcbd81d97b4eaecc5916a1494cc9b2d01fec27ccd939229c0e",
+        "matchesFrozenUpstreamExcept139AddonRegistration": true
+      },
+      "preview-src/chat/mermaidWebview.ts": {
+        "upstreamSha256": "8c42f2c885120d9de71e89a67816adbfebd7fa9ad9a33451cbd1ce0946208046",
+        "privateSha256": "2cb2e22a7569d5a1d7302ae712cda0837cf85730de72245f2907deb4b2eb01c6",
+        "matchesFrozenUpstreamExcept139AddonRegistration": true
+      }
+    },
+    "captureCoverage": {
+      "connectedAt": 1790879286191,
+      "selectedSessionAttachedAt": 1790879286195,
+      "existingTargetAtConnect": true,
+      "pausedBeforeScripts": false,
+      "newDocumentInstrumentation": true
+    },
+    "captureBoundary": "Restart target existed before CDP attach; observation cannot establish complete initial restart console/CSP coverage. Matrix32 captures fresh before scripts."
+  },
+  "hostLogs": {
+    "files": [
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/editSessions.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/main.log",
+        "bytes": 1160,
+        "sha256": "d0864ca04263716e13ad8867d44a79b11b2e5b452ddc7022cb4eac93729deda6"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/network-shared.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/remoteTunnelService.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/sharedprocess.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/terminal.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/userDataSync.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/extHostTelemetry.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/exthost.log",
+        "bytes": 5468,
+        "sha256": "5e815a7a2b57d62b55fe0828a99edefeddec9cf65919a3b4807a4e7e1cc15f4a"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/output_logging_20261002T042741/1-Markdown Language Server.log",
+        "bytes": 776,
+        "sha256": "58aeb153557d08ca390179abbf782910f7e152efe6c2d043c0ee2624f5b55f28"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/vscode.git/Git.log",
+        "bytes": 5083,
+        "sha256": "c18a610217638e39c61cc5417958a32be27a34ec02191a238523ad139533bf48"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/vscode.github/GitHub.log",
+        "bytes": 47,
+        "sha256": "5d4b20d7d12d3ab292caca416b18c8839710c9219870a92e3fe3d0b7356643b4"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/vscode.json-language-features/JSON Language Server.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/exthost/vscode.markdown-language-features/Markdown.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/network.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/output_20261002T042740/tasks.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/renderer.log",
+        "bytes": 1230,
+        "sha256": "0e9a585ff28ff93713d921ca53cd5ba416e6c110bb79e75802c576c8a3b82181"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/textModelChanges.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042740/window1/views.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/editSessions.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/main.log",
+        "bytes": 1162,
+        "sha256": "3e21e33d016426d631a24f09ad2e37811215ae090c3e97520fdc622427fd45a4"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/network-shared.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/remoteTunnelService.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/sharedprocess.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/terminal.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/userDataSync.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/exthost/extHostTelemetry.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/exthost/exthost.log",
+        "bytes": 2433,
+        "sha256": "8892cb7574995e2e2e5312c243723a8041a1eb0f98be7a55b118e4699681ca63"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/exthost/vscode.git/Git.log",
+        "bytes": 663,
+        "sha256": "0897b0c509f2f676378e8079342564d4e7efa5816300457c5cdc040aafd4d7de"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/exthost/vscode.github/GitHub.log",
+        "bytes": 47,
+        "sha256": "2ee890dd008513ea469e23e39afebdfbb21eab4c88873615a75653e217a92dac"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/exthost/vscode.json-language-features/JSON Language Server.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/network.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/output_20261002T042805/tasks.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/renderer.log",
+        "bytes": 301,
+        "sha256": "725df7cf652e14d7309a6179df7fdf23206effd13948b48fed7a8f922b9dfc4a"
+      },
+      {
+        "path": "/private/tmp/mm149-931ruovz/u/logs/20261002T042804/window1/views.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "errorFiles": [],
+    "warnings": {
+      "upstream extension resource-scoped configuration": 5,
+      "initial/intermediate webview missing CSP warning": 14,
+      "quit backup tracker suspended": 4
+    },
+    "old145MissingCspWarnings": 17,
+    "missingCspBoundary": "Final32 rendered documents all contain real CSP meta and have0 CSP violations. Host warns about initial/intermediate no-CSP webview documents14times;145 had17same warnings. No live intermediate document trace was captured; do not call full host warning log clean."
+  },
+  "clipboard": {
+    "originalContentsNotPrinted": true,
+    "backupMode": "0600",
+    "restored": true,
+    "backupDeleted": true
+  },
+  "cleanup": {
+    "port19510Closed": true,
+    "mainAndHostPidsGone": true,
+    "ownAppNormalQuit": true,
+    "noGlobalKeyboardOrForcedFocus": true
+  },
+  "visual": {
+    "method": "Individually viewed all 32 original full workbench viewport PNG files via view_image; no crops/composite/headless substitutions.",
+    "rows": [
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "实际原图中中文错误上下文、caret、完整Expecting及末尾got '1'换行可读；无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "实际原图中中文错误上下文、caret、完整Expecting及末尾got 'TXT'换行可读；无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "实际原图中中文错误上下文、caret、完整Expecting及末尾got '1'换行可读；无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "实际原图中中文错误上下文、caret、完整Expecting及末尾got 'TXT'换行可读；无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "原图全部中文节点、边/注释可读，无缺字方框或裁剪，浅色图与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "原图全部中文节点、边/注释可读，无缺字方框或裁剪，浅色图与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "原图全部中文节点、边/注释可读，无缺字方框或裁剪，浅色图与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "原图全部中文节点、边/注释可读，无缺字方框或裁剪，浅色图与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "status": "PASS",
+        "notes": "原图中文根/分支或流程标题、图标签完整可读，无缺字方框或裁剪。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "zenuml",
+        "status": "PASS",
+        "notes": "原图中文根/分支或流程标题、图标签完整可读，无缺字方框或裁剪。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "中文上下文、caret及完整Expecting/got自动换行可读，无裁剪，未显示图控制。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "中文上下文、caret及完整Expecting/got自动换行可读，无裁剪，未显示图控制。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "原图中文节点、边/注释可读，无缺字方框或裁剪，图内深色与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "原图中文节点、边/注释可读，无缺字方框或裁剪，图内深色与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "原图中文节点、边/注释可读，无缺字方框或裁剪，图内深色与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "原图中文节点、边/注释可读，无缺字方框或裁剪，图内深色与外层一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "status": "PASS_WITH_NOTE",
+        "notes": "全部中文完整可辨；左侧浅灰字/浅绿色分支对比偏弱，根节点黑字灰底。无缺字方框或裁剪，与145冻结行为一致。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "status": "UPSTREAM_FIXED_THEME_READABLE",
+        "notes": "实际图仍白底/#222文字，中文标题与全部标签清楚；外层为dark。上游冻结renderer固定主题，非139/141主题传参丢失。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "中文上下文、caret及完整Expecting/got自动换行可读，无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "中文上下文、caret及完整Expecting/got自动换行可读，无裁剪，控制隐藏。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内浅色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内浅色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内浅色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内浅色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "status": "PASS",
+        "notes": "中文根/分支或流程标题及全部图标签完整可读，无缺字方框或裁剪；pan/zoom/reset四图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "zenuml",
+        "status": "PASS",
+        "notes": "中文根/分支或流程标题及全部图标签完整可读，无缺字方框或裁剪；pan/zoom/reset四图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内深色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内深色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内深色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "全部中文图标签完整可读，无缺字方框或裁剪；图内深色，四枚pan/zoom/reset控制图标清楚。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "status": "PASS_WITH_NOTE",
+        "notes": "全部中文完整可辨，左侧浅灰字/浅绿色分支对比偏弱；无缺字方框或裁剪，四控制图标清楚，与145一致。"
+      },
+      {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "status": "UPSTREAM_FIXED_THEME_READABLE",
+        "notes": "实际图仍白底/#222文字，中文标题及全部标签清楚；外层/四控制dark可读，上游冻结renderer固定主题。"
+      }
+    ]
+  },
+  "remainingOutsideScope": [
+    "Final signing/distribution copy and project-wide M8/native/auth/smoke gates remain with root; this record tests the final149 raw build app."
+  ]
+}

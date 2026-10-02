@@ -1,0 +1,22 @@
+{
+  "buildExit": 0,
+  "noEmitExit": 0,
+  "noEmitLogBytes": 0,
+  "buildLog": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build144.log",
+  "sourceCompileZeroErrors": true,
+  "patch144Applied": true,
+  "prunePaths": 244,
+  "smokeExit": 0,
+  "smokePassCount": 56,
+  "smokeScope": "L1/L2 only (--skip-ui)",
+  "smokeLog": "/tmp/lean-smoke144-static.log",
+  "productionUniqueNames": 146,
+  "productionOccurrences": 199,
+  "productionProblems": 0,
+  "productionGraph": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/production-graph144.json",
+  "packageCheckerExit": 0,
+  "packageChecker": "M7-runtime144.json",
+  "inputs": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs144-beforemeta.json",
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/raw-before-voice-meta/VSLight.app",
+  "generation": "144-before-meta"
+}

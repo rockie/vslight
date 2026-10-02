@@ -1,0 +1,178 @@
+{
+  "at": "2026-10-02 21:38 +1000",
+  "status": "PASS_REQUIRED_LOCAL_GATES_CI_UNVERIFIED",
+  "milestonesCompleted": [
+    "M1",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7"
+  ],
+  "remainingMilestones": [
+    "M2",
+    "M8"
+  ],
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "generation": "151",
+  "gates": [
+    {
+      "gate": "V1",
+      "status": "PASS_LOCAL",
+      "finding": "65文档非icon字段/URL关联保持、唯一主图标有效；149四语言/实际文件打开与150 Finder/Dock/关于原图通过。151实际资源不变。"
+    },
+    {
+      "gate": "V2",
+      "status": "PASS_LOCAL",
+      "finding": "151实际三布局无Codicons demo，CSS/TTF/license保留；149普通Explorer/terminal/theme/Markdown/Mermaid图标实机通过。"
+    },
+    {
+      "gate": "V3",
+      "status": "PASS_LOCAL",
+      "finding": "149两surface×两theme×8case共32原图/33交互；preview同条件下降27.86%，普通独立editor/缩放/复制/语法错误有效。150 Storage变动后双surface真实退出重启的source/ID/theme/panZoom/SQLite精确保持。151只改terminal.ts。"
+    },
+    {
+      "gate": "V4",
+      "status": "PASS_LOCAL",
+      "finding": "资源白名单及引用、四locale base/16Framework variants有效，真实en/zh-CN/zh-TW/fr GUI和7资源选择/fallback；普通德语工作台/语言包安装保留。两arch CI另列未验。"
+    },
+    {
+      "gate": "V5",
+      "status": "PASS_LOCAL",
+      "finding": "Browser/Simple Browser/Playwright模块、IPC/preload/生产包移除；20实际外链覆盖四surface×五类base及完整编码URI，旧opener配置保留。151完整native菜单424节点、13快捷键、标题栏/Welcome和全量注册退休0。"
+    },
+    {
+      "gate": "V6",
+      "status": "PASS_LOCAL",
+      "finding": "双权限实际宿主§4.1各89路径、provider/handler0；当前ExtHost55/MainThread60全集及assert路径保留；151renderer全注册、main24/shared17 Cold/Reload实际退休0，正常host替换，无专属utility/background/download。"
+    },
+    {
+      "gate": "V7",
+      "status": "PASS_LOCAL",
+      "finding": "编辑保存、文件/内容搜索、Git diff-stage-commit、语言/主题、市场装卸、账户与secret、普通Webview消息/profiling实际证据齐。151 shell/task落盘停止、四真实按键route/用户覆盖、四DOM+AX A11Y内容/焦点、theme/禁用扩展与账户偏好退出重启通过。"
+    },
+    {
+      "gate": "V8",
+      "status": "PASS_LOCAL",
+      "finding": "151真实全补丁+254prune prepare/完整compile/packing exit0；native全图noEmit exit0/0B，实际root production146名/199出现/problems/退休0、三布局与普通copy通过；remote重跑离线ci/ls0。资源helper27、checker12与失败/幂等行为原来源沿用。两真实prune注入exit4并中止，254无重叠。"
+    },
+    {
+      "gate": "V9",
+      "status": "PASS_LOCAL",
+      "finding": "Browser/Chat混合12实机恢复、150普通/混合/全退休6轮与Mermaid定向恢复；15112DB键/6文件、账户偏好/主题/扩展状态原样保留。最新两CLI可读拒绝exit1，version/help0；显式--后chat文件真实打开沿用未变CLI原来源。"
+    },
+    {
+      "gate": "V10本地体积/分发",
+      "status": "PASS_LOCAL",
+      "finding": "同条件unsigned app422,443,727 B、ZIP157,530,299 B，下降20.01%/18.27%；Electron43.7.5/macOS12不变。独立151 strict codesign/spctl/Accepted/staple/validate/ZIP CRC及内容全量比对通过。signed app421,985,205 B/ZIP157,386,282 B独立计量；实际运行后1223文件/链接不变。"
+    },
+    {
+      "gate": "V10/M2/M8当前两arch CI",
+      "status": "UNVERIFIED",
+      "finding": "当前输入arm64/x64 CI未运行。用户明确仅本地、不提交/推送/触发CI或Release；旧CI、本地arm64构建及workflow语法绿不替代。"
+    },
+    {
+      "gate": "§9.2替代验收",
+      "status": "PASS_LOCAL",
+      "finding": "按用户指示不运行/修改smoke。实际包/CLI、真实host/公共API和限定PID/renderer GUI逐项覆盖原保留面及负向断言；原远程/Debug/Notebook/Copilot、telemetry/rg负向断言保留。相关静态输入未变、受151影响的terminal全部另验。"
+    },
+    {
+      "gate": "六文档/语法/升级说明",
+      "status": "PASS_LOCAL",
+      "finding": "README/兼容/语言使用/图标/迁移/发布说明逐项核对；AI无能力返回、第三方AI/opener、CLI、数据保留、四原生locale、151unsigned/signed账与未发布界限准确。JSON/bash/actionlint实际绿，生产/helper/workflow无漂移；最终文档和进度检查另归档。"
+    }
+  ],
+  "localRequiredGaps": [],
+  "unverified": [
+    "Current-input macOS arm64/x64 CI"
+  ],
+  "references": [
+    {
+      "path": "M4-final-acceptance151.json",
+      "sha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d",
+      "originalCapturedSha256": "b762b3a337e7e8e9aad480e9c9cdfb11f552edcda0cf02e0a43be55d5f827f93",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M5-final-acceptance151.json",
+      "sha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e",
+      "originalCapturedSha256": "00c385aec4bc8a68d60581a816bce6ff6ffe35cd797d70e0100278fc3b0b0da4",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M6-final-acceptance151.json",
+      "sha256": "9c023cb461ea36c515f2229d5175c5935d2e5996fe204a25db4d395e71cd0b1c",
+      "originalCapturedSha256": "564cd563f2b41e317702ec1cd96a19aa84160521d0377334316a0dfefbb68073",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M7-final-acceptance151.json",
+      "sha256": "8bad3af55dd4e5190c08d67be1ae75fbd4f065e8192a0011625d66f32abcce57",
+      "originalCapturedSha256": "d8c64a5d0bede78badc3ae66ca00fc6fb1a41488825ddc83112538c4eb4616db",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M8-build151.json",
+      "sha256": "ad2272ab4666e0f89c16f92239dcb3f0a380280c594bb13bd5cba43fd9671a8a"
+    },
+    {
+      "path": "M8-artifact151.json",
+      "sha256": "ef63b49987c9f408343432ee93c313e0acbc178aa21c16d371d69feacf667d9f"
+    },
+    {
+      "path": "M8-sign151.json",
+      "sha256": "9bb528aae802d6fc0ba6e3e4580846031e5d9eaa63e23be2c7c24c873b23e340"
+    },
+    {
+      "path": "M8-runtime151.json",
+      "sha256": "1f16c1e1fd4e893bd583d3c3736dc63e7fc751fa07b96de75eafe7486de2a49e"
+    },
+    {
+      "path": "M6-runtime151-audit.json",
+      "sha256": "3c918574065f33d3d6ad7e4fc7491e6f2fb1098ee01f164eb38df19e1afe45a8"
+    },
+    {
+      "path": "M6-main-shared151.json",
+      "sha256": "dc230212f97f2f37d28016092d60700e40b9a050b36ffb0a3cd6a00d83d79db5"
+    },
+    {
+      "path": "M4-accessibility151.json",
+      "sha256": "c36863fad3beb2e1b782408bb837a4c3dfb4c61881c0e697cf653986ba79c06f"
+    },
+    {
+      "path": "M4-terminal-keys151.json",
+      "sha256": "6478070ab455f00feff5166ad179c2e5ce5e3c3450a07734b2e925348e96e26f"
+    },
+    {
+      "path": "M7-remote151.json",
+      "sha256": "fdfda0bf0b29052eb2f03551cbe4ba7eb6cbe97b3f16fdffec473ef6c836b427"
+    },
+    {
+      "path": "M7-prune151.json",
+      "sha256": "439b5e24b6a814a7e4c1e69b040167a5baea168328156624fc5471f4fb0729bd"
+    },
+    {
+      "path": "M8-post-runtime-payload151.json",
+      "sha256": "5d80506803d63775ebf9aff81a20e719bf7c4ef0653cfabea4565e8b46254057"
+    },
+    {
+      "path": "M3-storage150-final.md",
+      "sha256": "800dfc097c5ef17338ca174bfa810d8563664aaea372fd3d4629ca8429927045"
+    },
+    {
+      "path": "M2-icons150.json",
+      "sha256": "2b498e5b28422f55958f6b79c24fe70490d45e927ad781da840df13565d8ef99"
+    },
+    {
+      "path": "M2-native-gui149-resume.json",
+      "sha256": "da9d975f6a8229661e165a0751898249a4c384409e0e4eceb0570e2811831614"
+    }
+  ],
+  "historicalFailures": "Original headless baseline-equivalent timeouts, disabled developer clear test, harness reds and signing sandbox reds retained; no claim every historical suite had zero skip/failure. Required final acceptance paths passed via actual adjusted gates.",
+  "authorization": "Local-only; no commit/push/CI/Release; do not run/edit smoke; no user installed app/profile/global setting mutation.",
+  "closingReferenceRecheck": {
+    "at": "2026-10-02T21:41:20.107124+10:00",
+    "reason": "Original M4 reference captured before M8-runtime151 summary gained subsequent completed-gate links; raw captured files/logs independently match. Dependent summary references refreshed in order; original hashes retained.",
+    "runtimeRawFilesVerified": 177
+  }
+}

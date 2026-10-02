@@ -1,0 +1,11 @@
+{
+  "command": [
+    "cp",
+    "-cR",
+    "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app"
+  ],
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

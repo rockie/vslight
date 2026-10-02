@@ -1,0 +1,23 @@
+diff --git a/src/vs/workbench/browser/workbench.contribution.ts b/src/vs/workbench/browser/workbench.contribution.ts
+--- a/src/vs/workbench/browser/workbench.contribution.ts
++++ b/src/vs/workbench/browser/workbench.contribution.ts
+@@ -879,7 +879,7 @@
+ 			[LayoutSettings.MODERN_UI]: {
+ 				'type': 'boolean',
+ 				'default': false,
+-				'description': localize('modernUI', "Controls whether the Modern UI Update is enabled. When on, the side bars and bottom panel are shown as floating cards with rounded corners and gaps, and a set of refreshed workbench styles is applied, matching the Agents window design."),
++				'description': localize('modernUI', "Controls whether the Modern UI Update is enabled. When on, the side bars and bottom panel are shown as floating cards with rounded corners and gaps, and a set of refreshed workbench styles is applied."),
+ 				experiment: { mode: 'auto' },
+ 			},
+ 			[LayoutSettings.MODERN_UI_UPPERCASE_VIEW_HEADERS]: {
+diff --git a/extensions/mermaid-markdown-features/package.nls.json b/extensions/mermaid-markdown-features/package.nls.json
+--- a/extensions/mermaid-markdown-features/package.nls.json
++++ b/extensions/mermaid-markdown-features/package.nls.json
+@@ -1,6 +1,6 @@
+ {
+ 	"displayName": "Mermaid Markdown Features",
+-	"description": "Adds Mermaid diagram support to built-in chats, Markdown previews, and notebooks.",
++	"description": "Adds Mermaid diagram support to Markdown previews and notebooks.",
+ 	"command.resetPanZoom.title": "Reset Pan and Zoom",
+ 	"command.openInEditor.title": "Open Diagram in Editor",
+ 	"command.copySource.title": "Copy Diagram Source",

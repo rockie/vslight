@@ -1,0 +1,10 @@
+{
+  "generation": "151",
+  "startedAt": "2026-10-02T18:47:16.400130+10:00",
+  "root": "/private/tmp/lean-core-build151-c480juxs",
+  "command": [
+    "bash",
+    "dev/run-build.sh",
+    "-s"
+  ]
+}

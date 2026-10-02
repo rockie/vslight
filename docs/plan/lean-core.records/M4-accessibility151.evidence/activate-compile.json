@@ -1,0 +1,5 @@
+{
+  "exit": 0,
+  "stdout": "",
+  "stderr": "/private/tmp/av151-4dvltjmt/activate.swift:5:57: warning: 'activateIgnoringOtherApps' was deprecated in macOS 14.0: ignoringOtherApps is deprecated in macOS 14 and will have no effect. [#DeprecatedDeclaration]\n3 | let expected=CommandLine.arguments[2]\n4 | guard let app=NSRunningApplication(processIdentifier:pid), app.bundleURL?.resolvingSymlinksInPath().path == expected else { fatalError(\"Wrong own app identity\") }\n5 | let accepted=app.activate(options:[.activateAllWindows,.activateIgnoringOtherApps])\n  |                                                         `- warning: 'activateIgnoringOtherApps' was deprecated in macOS 14.0: ignoringOtherApps is deprecated in macOS 14 and will have no effect. [#DeprecatedDeclaration]\n6 | print(\"activationAccepted=\\(accepted)\")\n7 | \n\n[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>\n"
+}

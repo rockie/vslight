@@ -1,0 +1,13 @@
+{
+    "terminal.integrated.defaultProfile.osx": "sh",
+    "terminal.integrated.profiles.osx": {
+        "sh": {
+            "path": "/bin/sh",
+            "args": [
+                "-f"
+            ]
+        }
+    },
+    "terminal.integrated.shellIntegration.enabled": false,
+    "editor.accessibilitySupport": "on"
+}

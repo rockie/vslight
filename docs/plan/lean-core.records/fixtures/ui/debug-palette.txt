@@ -1,0 +1,23 @@
+EXPLORER
+v WS
+=a.txt
+= b.txt
+= term-proof.txt
+› OUTLINE
+› TIMELINE
+08
+D
+= a.txt
+=a.txt
+>Debug: Start
+Developer: Debug Editor GPU Renderer
+Developer: Debug Extension Host In Dev Tools
+View: Toggle Tree Sticky Scroll
+Help: Start Extension Bisect
+View: Move Editor to Start
+similar commands {öz
+Ln 1, Col 43
+Spaces: 4
+UTF-8
+LF
+{} Plain Text

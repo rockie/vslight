@@ -1,0 +1,232 @@
+[
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 6,
+    "runId": "restore138-lr-nepzo6pm-6-1790865810",
+    "pid": 20836,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.76,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 1,
+    "runId": "restore138-lr-nepzo6pm-1-1790865815",
+    "pid": 22301,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.57,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 2,
+    "runId": "restore138-lr-nepzo6pm-2-1790865821",
+    "pid": 23766,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.43,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 3,
+    "runId": "restore138-lr-nepzo6pm-3-1790865827",
+    "pid": 25276,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.51,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 4,
+    "runId": "restore138-lr-nepzo6pm-4-1790865832",
+    "pid": 26787,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.6,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-nepzo6pm",
+    "case": 5,
+    "runId": "restore138-lr-nepzo6pm-5-1790865838",
+    "pid": 28269,
+    "exit": 0,
+    "forced": false,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "emptyStateRemovedOnNormalSave": true,
+      "walStable": true
+    },
+    "passed": true,
+    "outerCheckerRecovery": "Previous runner entered its rc==0/PASS branch, then wrongly required persisted empty-state row; corrected read-only check follows editorPart.saveState empty-state removal."
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 6,
+    "runId": "restore138-mixed-6-1790865987",
+    "pid": 32235,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.7,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 1,
+    "runId": "restore138-mixed-1-1790865993",
+    "pid": 33652,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.37,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 2,
+    "runId": "restore138-mixed-2-1790865998",
+    "pid": 35065,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.32,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 3,
+    "runId": "restore138-mixed-3-1790866003",
+    "pid": 36505,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.25,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 4,
+    "runId": "restore138-mixed-4-1790866009",
+    "pid": 37909,
+    "exit": 0,
+    "forced": false,
+    "seconds": 5.38,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "sequential": true,
+      "mru": true,
+      "preview": true,
+      "sticky": true,
+      "active": true,
+      "activeGroup": true,
+      "walStable": true
+    },
+    "passed": true
+  },
+  {
+    "dataset": "lr-d16ezm2o",
+    "case": 5,
+    "runId": "restore138-mixed-5-1790866014",
+    "pid": 39312,
+    "exit": 0,
+    "forced": false,
+    "seconds": 17.23,
+    "apiStatus": "PASS",
+    "sqliteChecks": {
+      "emptyStateRemovedOnNormalSave": true,
+      "walStable": true
+    },
+    "passed": true
+  }
+]

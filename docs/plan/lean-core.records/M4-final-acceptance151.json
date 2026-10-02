@@ -1,0 +1,1272 @@
+{
+  "status": "PASS_M4_ALL_EXIT_GATES",
+  "recordedAt": "2026-10-02T21:22:18.430205+10:00",
+  "scope": "M4退出条件只读最终汇总，不修改计划状态、不启动GUI、不重跑未变绿tests",
+  "codeBaseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "actual151Source": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode",
+  "sourceFreeze": {
+    "manifest": "/private/tmp/lean-core-build151-c480juxs/build-inputs.json",
+    "sha256": "f6fc4ff04b5b1c4828dc8c1f353f0a2bdb16affa7a5883a8d8fae2ee64fb5cd6",
+    "fileCount": 1475,
+    "actualCopiedInputsMismatches": []
+  },
+  "generation145InputAnchor": {
+    "manifest": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build149/inputs145.json",
+    "sha256": "b2839fa3bee3f9b10fc720e45e2bbefb61dcde2da287a5c021618a0c740f0f73",
+    "generation": "145+146",
+    "patches114Through146": [
+      {
+        "path": "patches/114-light-extension-host-lifecycle.patch",
+        "generation145SHA256": "e7ef01d908c47c962cffc0e8447ff08fe4645631e3a7502e8b0746422785ba37",
+        "generation151FrozenSHA256": "e7ef01d908c47c962cffc0e8447ff08fe4645631e3a7502e8b0746422785ba37",
+        "currentSHA256": "e7ef01d908c47c962cffc0e8447ff08fe4645631e3a7502e8b0746422785ba37",
+        "same": true
+      },
+      {
+        "path": "patches/115-light-codicons-demo-assets.patch",
+        "generation145SHA256": "cbd84a25d398d3483760c4139ab119e287e68bf4978874760dc9892b7f8ea713",
+        "generation151FrozenSHA256": "cbd84a25d398d3483760c4139ab119e287e68bf4978874760dc9892b7f8ea713",
+        "currentSHA256": "cbd84a25d398d3483760c4139ab119e287e68bf4978874760dc9892b7f8ea713",
+        "same": true
+      },
+      {
+        "path": "patches/116-light-lean-mermaid.patch",
+        "generation145SHA256": "7061b252e076cc6a92bb39a1376c436ac11a62899323af1fbdf24ace2e8f890d",
+        "generation151FrozenSHA256": "7061b252e076cc6a92bb39a1376c436ac11a62899323af1fbdf24ace2e8f890d",
+        "currentSHA256": "7061b252e076cc6a92bb39a1376c436ac11a62899323af1fbdf24ace2e8f890d",
+        "same": true
+      },
+      {
+        "path": "patches/117-light-editor-restore-index.patch",
+        "generation145SHA256": "0340b44e360c4a0292d35ebff0d63f83bb464409dd36dc31bd097c6d3f2c0821",
+        "generation151FrozenSHA256": "0340b44e360c4a0292d35ebff0d63f83bb464409dd36dc31bd097c6d3f2c0821",
+        "currentSHA256": "0340b44e360c4a0292d35ebff0d63f83bb464409dd36dc31bd097c6d3f2c0821",
+        "same": true
+      },
+      {
+        "path": "patches/118-light-disabled-ai-api.patch",
+        "generation145SHA256": "9568e9e289963f2ce977d854905af24d831d0dccdc91957d20157080e9de36c5",
+        "generation151FrozenSHA256": "9568e9e289963f2ce977d854905af24d831d0dccdc91957d20157080e9de36c5",
+        "currentSHA256": "9568e9e289963f2ce977d854905af24d831d0dccdc91957d20157080e9de36c5",
+        "same": true
+      },
+      {
+        "path": "patches/119-light-ai-rpc-closure.patch",
+        "generation145SHA256": "ea7a2f3dba6d6df06edb33747a65f52bc19038ee70c1c4d216d398ff3aedd710",
+        "generation151FrozenSHA256": "ea7a2f3dba6d6df06edb33747a65f52bc19038ee70c1c4d216d398ff3aedd710",
+        "currentSHA256": "ea7a2f3dba6d6df06edb33747a65f52bc19038ee70c1c4d216d398ff3aedd710",
+        "same": true
+      },
+      {
+        "path": "patches/120-light-terminal-tasks-consumers.patch",
+        "generation145SHA256": "c89f164bc7d1a64ff52c4a466014eade294f06f78e859eb4ac707b16ebe60b16",
+        "generation151FrozenSHA256": "c89f164bc7d1a64ff52c4a466014eade294f06f78e859eb4ac707b16ebe60b16",
+        "currentSHA256": "c89f164bc7d1a64ff52c4a466014eade294f06f78e859eb4ac707b16ebe60b16",
+        "same": true
+      },
+      {
+        "path": "patches/121-light-ordinary-consumers.patch",
+        "generation145SHA256": "010fe7b59ecc347f599a07621abab360f76a10bc320afbb5d671675e4c3ee964",
+        "generation151FrozenSHA256": "010fe7b59ecc347f599a07621abab360f76a10bc320afbb5d671675e4c3ee964",
+        "currentSHA256": "010fe7b59ecc347f599a07621abab360f76a10bc320afbb5d671675e4c3ee964",
+        "same": true
+      },
+      {
+        "path": "patches/122-light-authentication-consumers.patch",
+        "generation145SHA256": "8d0da62dcf2ec942b9add307037695db18c9e37dec99c86da0ff24cc2bc68514",
+        "generation151FrozenSHA256": "8d0da62dcf2ec942b9add307037695db18c9e37dec99c86da0ff24cc2bc68514",
+        "currentSHA256": "8d0da62dcf2ec942b9add307037695db18c9e37dec99c86da0ff24cc2bc68514",
+        "same": true
+      },
+      {
+        "path": "patches/123-light-retired-terminal-telemetry.patch",
+        "generation145SHA256": "085212637b0ca9b2d713df7eb276ef4fdf3d2053cb9249af1f983d7d81e34613",
+        "generation151FrozenSHA256": "085212637b0ca9b2d713df7eb276ef4fdf3d2053cb9249af1f983d7d81e34613",
+        "currentSHA256": "085212637b0ca9b2d713df7eb276ef4fdf3d2053cb9249af1f983d7d81e34613",
+        "same": true
+      },
+      {
+        "path": "patches/124-light-browser-consumers.patch",
+        "generation145SHA256": "9b8e39c9619efb323ea541497f7eb95f0a79529c9f73e27c26e028ab5a0f7a5b",
+        "generation151FrozenSHA256": "9b8e39c9619efb323ea541497f7eb95f0a79529c9f73e27c26e028ab5a0f7a5b",
+        "currentSHA256": "9b8e39c9619efb323ea541497f7eb95f0a79529c9f73e27c26e028ab5a0f7a5b",
+        "same": true
+      },
+      {
+        "path": "patches/125-light-browser-runtime-closure.patch",
+        "generation145SHA256": "19ba3e27f39a66df307ce46d6a98c902280a8065f18982ded5599dd26432e168",
+        "generation151FrozenSHA256": "19ba3e27f39a66df307ce46d6a98c902280a8065f18982ded5599dd26432e168",
+        "currentSHA256": "19ba3e27f39a66df307ce46d6a98c902280a8065f18982ded5599dd26432e168",
+        "same": true
+      },
+      {
+        "path": "patches/126-light-retired-ai-settings-signals.patch",
+        "generation145SHA256": "7caefc2797db3cf7b2326c19badd72654e664ea6d99d4a819fb942351c907d9b",
+        "generation151FrozenSHA256": "7caefc2797db3cf7b2326c19badd72654e664ea6d99d4a819fb942351c907d9b",
+        "currentSHA256": "7caefc2797db3cf7b2326c19badd72654e664ea6d99d4a819fb942351c907d9b",
+        "same": true
+      },
+      {
+        "path": "patches/127-light-retired-notebook-debug-api.patch",
+        "generation145SHA256": "8383d5cad6b785eb8a69ce38ea6b9001d2dd229dfa67ca9a6d3481f7a4fb71ca",
+        "generation151FrozenSHA256": "8383d5cad6b785eb8a69ce38ea6b9001d2dd229dfa67ca9a6d3481f7a4fb71ca",
+        "currentSHA256": "8383d5cad6b785eb8a69ce38ea6b9001d2dd229dfa67ca9a6d3481f7a4fb71ca",
+        "same": true
+      },
+      {
+        "path": "patches/128-light-retired-test-fixtures.patch",
+        "generation145SHA256": "9b346d6f4b7cc16ef023f30abe5d3f751d3ee818dd6af2fd4a6e3cf08f824931",
+        "generation151FrozenSHA256": "9b346d6f4b7cc16ef023f30abe5d3f751d3ee818dd6af2fd4a6e3cf08f824931",
+        "currentSHA256": "9b346d6f4b7cc16ef023f30abe5d3f751d3ee818dd6af2fd4a6e3cf08f824931",
+        "same": true
+      },
+      {
+        "path": "patches/129-light-retired-background-consumers.patch",
+        "generation145SHA256": "c88dd55c59801dbea8fa02d4795cbb8deff89e62a00f91e8f284fa11d015fc5d",
+        "generation151FrozenSHA256": "c88dd55c59801dbea8fa02d4795cbb8deff89e62a00f91e8f284fa11d015fc5d",
+        "currentSHA256": "c88dd55c59801dbea8fa02d4795cbb8deff89e62a00f91e8f284fa11d015fc5d",
+        "same": true
+      },
+      {
+        "path": "patches/130-light-retired-background-entrypoints.patch",
+        "generation145SHA256": "af194f605db541b6953df61c71bb9b9724c0139feb3444d05b4eaa34723cba27",
+        "generation151FrozenSHA256": "af194f605db541b6953df61c71bb9b9724c0139feb3444d05b4eaa34723cba27",
+        "currentSHA256": "af194f605db541b6953df61c71bb9b9724c0139feb3444d05b4eaa34723cba27",
+        "same": true
+      },
+      {
+        "path": "patches/131-light-retired-platform-consumers.patch",
+        "generation145SHA256": "0a12cd4459e250135e66bcfc97d9a5c90a18cc9db3e8ee60ea282b075567dd70",
+        "generation151FrozenSHA256": "0a12cd4459e250135e66bcfc97d9a5c90a18cc9db3e8ee60ea282b075567dd70",
+        "currentSHA256": "0a12cd4459e250135e66bcfc97d9a5c90a18cc9db3e8ee60ea282b075567dd70",
+        "same": true
+      },
+      {
+        "path": "patches/132-light-retired-ai-search-protocol.patch",
+        "generation145SHA256": "769c2521003a3890892b6bbe785dbbfa562836990bd9376df9ad62b381ce5dac",
+        "generation151FrozenSHA256": "769c2521003a3890892b6bbe785dbbfa562836990bd9376df9ad62b381ce5dac",
+        "currentSHA256": "769c2521003a3890892b6bbe785dbbfa562836990bd9376df9ad62b381ce5dac",
+        "same": true
+      },
+      {
+        "path": "patches/133-light-retired-runtime-build-tasks.patch",
+        "generation145SHA256": "6e4828d56db6e6684e1149decdf4acdebf43d4d711b65fe3fd374b61cf696f49",
+        "generation151FrozenSHA256": "6e4828d56db6e6684e1149decdf4acdebf43d4d711b65fe3fd374b61cf696f49",
+        "currentSHA256": "6e4828d56db6e6684e1149decdf4acdebf43d4d711b65fe3fd374b61cf696f49",
+        "same": true
+      },
+      {
+        "path": "patches/134-light-retired-build-entrypoints-metadata.patch",
+        "generation145SHA256": "034dc1045fea2cc84574afda380acfbd48609b7ae0fe296bee97dd08739c62fc",
+        "generation151FrozenSHA256": "034dc1045fea2cc84574afda380acfbd48609b7ae0fe296bee97dd08739c62fc",
+        "currentSHA256": "034dc1045fea2cc84574afda380acfbd48609b7ae0fe296bee97dd08739c62fc",
+        "same": true
+      },
+      {
+        "path": "patches/135-light-retired-shared-test-helpers.patch",
+        "generation145SHA256": "fc28e095c0b43d4973bcee95fcceb2e9caa96d81c07e955699a9a41d2ef7f62d",
+        "generation151FrozenSHA256": "fc28e095c0b43d4973bcee95fcceb2e9caa96d81c07e955699a9a41d2ef7f62d",
+        "currentSHA256": "fc28e095c0b43d4973bcee95fcceb2e9caa96d81c07e955699a9a41d2ef7f62d",
+        "same": true
+      },
+      {
+        "path": "patches/136-light-retired-production-dependencies.patch",
+        "generation145SHA256": "f122ac06f6db5c94468a4099b05b5d7a3f375c974274d49b6fcf3929ffc6aea7",
+        "generation151FrozenSHA256": "f122ac06f6db5c94468a4099b05b5d7a3f375c974274d49b6fcf3929ffc6aea7",
+        "currentSHA256": "f122ac06f6db5c94468a4099b05b5d7a3f375c974274d49b6fcf3929ffc6aea7",
+        "same": true
+      },
+      {
+        "path": "patches/137-light-retired-integration-fixtures.patch",
+        "generation145SHA256": "f9d3d5f4be7d22adff265e289cc0fbafcd88471d94c5beeac6dbe38424f140c3",
+        "generation151FrozenSHA256": "f9d3d5f4be7d22adff265e289cc0fbafcd88471d94c5beeac6dbe38424f140c3",
+        "currentSHA256": "f9d3d5f4be7d22adff265e289cc0fbafcd88471d94c5beeac6dbe38424f140c3",
+        "same": true
+      },
+      {
+        "path": "patches/138-light-main-process-semver-copy.patch",
+        "generation145SHA256": "1f5edc120cca8f54a6cfdc094417ce7d0adc7cffddff31ee9f29e865c63eae81",
+        "generation151FrozenSHA256": "1f5edc120cca8f54a6cfdc094417ce7d0adc7cffddff31ee9f29e865c63eae81",
+        "currentSHA256": "1f5edc120cca8f54a6cfdc094417ce7d0adc7cffddff31ee9f29e865c63eae81",
+        "same": true
+      },
+      {
+        "path": "patches/139-light-mermaid-editor-addons.patch",
+        "generation145SHA256": "fe6fce21bdfa687dcb94ed167ded30ff10ea7d4c9129eca9fea4871f750afbe0",
+        "generation151FrozenSHA256": "fe6fce21bdfa687dcb94ed167ded30ff10ea7d4c9129eca9fea4871f750afbe0",
+        "currentSHA256": "fe6fce21bdfa687dcb94ed167ded30ff10ea7d4c9129eca9fea4871f750afbe0",
+        "same": true
+      },
+      {
+        "path": "patches/141-light-mermaid-zenuml-font.patch",
+        "generation145SHA256": "d8213ad2b296a9d321ce0a2181b6e63dba41052f98643729a7bdda7838b612ff",
+        "generation151FrozenSHA256": "d8213ad2b296a9d321ce0a2181b6e63dba41052f98643729a7bdda7838b612ff",
+        "currentSHA256": "d8213ad2b296a9d321ce0a2181b6e63dba41052f98643729a7bdda7838b612ff",
+        "same": true
+      },
+      {
+        "path": "patches/142-light-ordinary-welcome-registry.patch",
+        "generation145SHA256": "667a1cbce338bd8152875543ddabb3d7ec4608b0cfeb7c684e3827697e712f08",
+        "generation151FrozenSHA256": "667a1cbce338bd8152875543ddabb3d7ec4608b0cfeb7c684e3827697e712f08",
+        "currentSHA256": "667a1cbce338bd8152875543ddabb3d7ec4608b0cfeb7c684e3827697e712f08",
+        "same": true
+      },
+      {
+        "path": "patches/143-light-retained-extension-consumers.patch",
+        "generation145SHA256": "20e3b99b9805a8a98e14f90bc04e69904bcec61e006759fa55f593a5b98f41d4",
+        "generation151FrozenSHA256": "20e3b99b9805a8a98e14f90bc04e69904bcec61e006759fa55f593a5b98f41d4",
+        "currentSHA256": "20e3b99b9805a8a98e14f90bc04e69904bcec61e006759fa55f593a5b98f41d4",
+        "same": true
+      },
+      {
+        "path": "patches/144-light-inline-unification.patch",
+        "generation145SHA256": "e53a1ce22d6cba94af50bfc4d52a027a229cada871e86bfc355066d5db0573f0",
+        "generation151FrozenSHA256": "e53a1ce22d6cba94af50bfc4d52a027a229cada871e86bfc355066d5db0573f0",
+        "currentSHA256": "e53a1ce22d6cba94af50bfc4d52a027a229cada871e86bfc355066d5db0573f0",
+        "same": true
+      },
+      {
+        "path": "patches/145-light-ai-stats-survey.patch",
+        "generation145SHA256": "0c42782251c11f610b5c39046a882758f06af012b7b54ef03050226266af3826",
+        "generation151FrozenSHA256": "0c42782251c11f610b5c39046a882758f06af012b7b54ef03050226266af3826",
+        "currentSHA256": "0c42782251c11f610b5c39046a882758f06af012b7b54ef03050226266af3826",
+        "same": true
+      },
+      {
+        "path": "patches/146-light-retained-ui-descriptions.patch",
+        "generation145SHA256": "76ba9d85fbdfd6bcd8a20cb514c10a6c396d1946a7ba7de5c147861cc2fde1d4",
+        "generation151FrozenSHA256": "76ba9d85fbdfd6bcd8a20cb514c10a6c396d1946a7ba7de5c147861cc2fde1d4",
+        "currentSHA256": "76ba9d85fbdfd6bcd8a20cb514c10a6c396d1946a7ba7de5c147861cc2fde1d4",
+        "same": true
+      }
+    ]
+  },
+  "patches147Through151": [
+    {
+      "path": "patches/147-light-retired-notebook-debug-settings.patch",
+      "sha256": "eab769cfd3b1a15b5b6249ffdf14c287863cdb3f83b6cb08246c76904fb02a69",
+      "frozenMatches": true,
+      "targets": [
+        "src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts",
+        "src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts",
+        "src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts",
+        "src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts",
+        "src/vs/workbench/contrib/search/browser/search.contribution.ts",
+        "src/vs/workbench/services/search/common/search.ts",
+        "src/vs/workbench/browser/workbench.contribution.ts",
+        "src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts",
+        "src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts",
+        "src/vs/workbench/browser/actions/listCommands.ts",
+        "src/vs/editor/common/config/editorOptions.ts",
+        "src/vs/platform/terminal/common/terminalPlatformConfiguration.ts",
+        "extensions/mermaid-markdown-features/package.json",
+        "extensions/npm/package.json",
+        "extensions/npm/package.nls.json",
+        "extensions/npm/src/scriptHover.ts",
+        "extensions/npm/src/npmView.ts",
+        "extensions/npm/src/npmMain.ts",
+        "extensions/npm/src/tasks.ts"
+      ],
+      "touchesApiOrRpc": false
+    },
+    {
+      "path": "patches/148-light-mermaid-editor-errors.patch",
+      "sha256": "7274e9c5ccabade92a640277a09a79c1827ca796378a1baa163b6f37c91f8426",
+      "frozenMatches": true,
+      "targets": [
+        "extensions/mermaid-markdown-features/src/editorManager.ts"
+      ],
+      "touchesApiOrRpc": false
+    },
+    {
+      "path": "patches/149-light-autolock-interactive-option.patch",
+      "sha256": "d681ff55e2e2ef39fd0c59122ecea37e5e8a92ff247993a01a0c359043a455bb",
+      "frozenMatches": true,
+      "targets": [
+        "src/vs/workbench/browser/parts/editor/editorConfiguration.ts"
+      ],
+      "touchesApiOrRpc": false
+    },
+    {
+      "path": "patches/150-light-storage-external-write-order.patch",
+      "sha256": "1ca962f9a6b5f84b804ffac309c539f73748d4b6f8802da0ebae9ac6b5d2415a",
+      "frozenMatches": true,
+      "targets": [
+        "src/vs/base/parts/storage/common/storage.ts",
+        "src/vs/base/parts/storage/test/common/storage.test.ts"
+      ],
+      "touchesApiOrRpc": false
+    },
+    {
+      "path": "patches/151-light-terminal-retired-command-filters.patch",
+      "sha256": "92282c3d51a074371264fdf60232207d1ecfffe10190d006d851b126a81fc77b",
+      "frozenMatches": true,
+      "targets": [
+        "src/vs/workbench/contrib/terminal/common/terminal.ts"
+      ],
+      "touchesApiOrRpc": false
+    }
+  ],
+  "pruneAdditionsAfter145": [
+    "extensions/npm/src/npmScriptLens.ts",
+    "src/vs/platform/accessibilitySignal/browser/media/break.mp3"
+  ],
+  "actual151SourceHashes": [
+    {
+      "path": "src/vs/workbench/api/common/extHost.api.impl.ts",
+      "actual151SHA256": "9ac1321a0de09626da27ec7815d61fcaa7f83a146e55b6855c300101d13c75d8",
+      "retained149SHA256": "9ac1321a0de09626da27ec7815d61fcaa7f83a146e55b6855c300101d13c75d8",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHost.protocol.ts",
+      "actual151SHA256": "cf04ef39108c06b0bff0487787dac08ee5f3088e68ca427e911344fe42419646",
+      "retained149SHA256": "cf04ef39108c06b0bff0487787dac08ee5f3088e68ca427e911344fe42419646",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHostDisabledAi.ts",
+      "actual151SHA256": "8b9e5f79e206b87d3f27fb659235176066768c4a65f065ecd94fcc1efe6e4fb4",
+      "retained149SHA256": "8b9e5f79e206b87d3f27fb659235176066768c4a65f065ecd94fcc1efe6e4fb4",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHostDisabledLegacy.ts",
+      "actual151SHA256": "dc0171eab4fdd781cc2708921127abdb0b44dd5edf7b06ce98a4927747689679",
+      "retained149SHA256": "dc0171eab4fdd781cc2708921127abdb0b44dd5edf7b06ce98a4927747689679",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHostTypes.ts",
+      "actual151SHA256": "f290154084587f154b576f2ab350ca31af799dec8e5e524be338943e71459136",
+      "retained149SHA256": "f290154084587f154b576f2ab350ca31af799dec8e5e524be338943e71459136",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHostExtensionService.ts",
+      "actual151SHA256": "d6757a33ee7fc9d78f350ea6a594250f09fb5fc0c77fbda1db2950795693d144",
+      "retained149SHA256": "d6757a33ee7fc9d78f350ea6a594250f09fb5fc0c77fbda1db2950795693d144",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/common/extHost.common.services.ts",
+      "actual151SHA256": "592855669b3b0aa564edfe17aeec54c81ac4a81a075752aa8edfc10da6ae44a2",
+      "retained149SHA256": "592855669b3b0aa564edfe17aeec54c81ac4a81a075752aa8edfc10da6ae44a2",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/node/extHost.node.services.ts",
+      "actual151SHA256": "4fd648c2baa28b5862ecf80807acd050580293afd72669be5c0e4d74a212b7f4",
+      "retained149SHA256": "4fd648c2baa28b5862ecf80807acd050580293afd72669be5c0e4d74a212b7f4",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/browser/extensionHost.contribution.ts",
+      "actual151SHA256": "c0c6eb8ee620737933f290915762076b04f062dbee0c3d41f62ec0438a7aa618",
+      "retained149SHA256": "c0c6eb8ee620737933f290915762076b04f062dbee0c3d41f62ec0438a7aa618",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/api/browser/mainThreadExtensionService.ts",
+      "actual151SHA256": "310760ceb8751d5509fb4b9a210b17321a5e7cdc8eced7b4674bf00e0c2a022c",
+      "retained149SHA256": "310760ceb8751d5509fb4b9a210b17321a5e7cdc8eced7b4674bf00e0c2a022c",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/services/extensions/common/extensionHostManager.ts",
+      "actual151SHA256": "98b7936a8c536250e909c35a71cdfec1df3458d550b62dfdebf38bb1d6cc0dcd",
+      "retained149SHA256": "98b7936a8c536250e909c35a71cdfec1df3458d550b62dfdebf38bb1d6cc0dcd",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/services/extensions/common/rpcProtocol.ts",
+      "actual151SHA256": "c4c1717b952fccca234daa463b9953ba23bb98138b484054ce857b746888d94b",
+      "retained149SHA256": "c4c1717b952fccca234daa463b9953ba23bb98138b484054ce857b746888d94b",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/common/editor/editorGroupModel.ts",
+      "actual151SHA256": "29a1cf3c96b357169d394ec0945e5286f97ea44decc4ca54804d10c0b1e4e1bd",
+      "retained149SHA256": "29a1cf3c96b357169d394ec0945e5286f97ea44decc4ca54804d10c0b1e4e1bd",
+      "same": true
+    },
+    {
+      "path": "src/vs/workbench/test/browser/parts/editor/editorGroupModel.test.ts",
+      "actual151SHA256": "de193be215af2e5bd90231c1655cf5c3158340e7d7118212b85132ac32c3a9f2",
+      "retained149SHA256": "de193be215af2e5bd90231c1655cf5c3158340e7d7118212b85132ac32c3a9f2",
+      "same": true
+    }
+  ],
+  "rpc": {
+    "ExtHostContext": {
+      "ids": [
+        "ExtHostCommands",
+        "ExtHostConfiguration",
+        "ExtHostDiagnostics",
+        "ExtHostDecorations",
+        "ExtHostDocumentsAndEditors",
+        "ExtHostDocuments",
+        "ExtHostDocumentContentProviders",
+        "ExtHostDocumentSaveParticipant",
+        "ExtHostEditors",
+        "ExtHostTreeViews",
+        "ExtHostFileSystem",
+        "ExtHostFileSystemInfo",
+        "ExtHostFileSystemEventService",
+        "ExtHostLanguages",
+        "ExtHostLanguageFeatures",
+        "ExtHostQuickOpen",
+        "ExtHostQuickDiff",
+        "ExtHostStatusBar",
+        "ExtHostShare",
+        "ExtHostExtensionService",
+        "ExtHostLogLevelServiceShape",
+        "ExtHostTerminalService",
+        "ExtHostTerminalShellIntegration",
+        "ExtHostSCM",
+        "ExtHostSearch",
+        "ExtHostTask",
+        "ExtHostWorkspace",
+        "ExtHostWindow",
+        "ExtHostPower",
+        "ExtHostWebviews",
+        "ExtHostWebviewPanels",
+        "ExtHostCustomEditors",
+        "ExtHostWebviewViews",
+        "ExtHostEditorInsets",
+        "ExtHostEditorTabs",
+        "ExtHostProgress",
+        "ExtHostComments",
+        "ExtHostSecretState",
+        "ExtHostStorage",
+        "ExtHostUrls",
+        "ExtHostUriOpeners",
+        "ExtHostProfileContentHandlers",
+        "ExtHostOutputService",
+        "ExtHostLabelService",
+        "ExtHostTheming",
+        "ExtHostTunnelService",
+        "ExtHostManagedSockets",
+        "ExtHostAuthentication",
+        "ExtHostTimeline",
+        "ExtHostTesting",
+        "ExtHostTelemetry",
+        "ExtHostMeteredConnection",
+        "ExtHostLocalization",
+        "ExtHostDataChannels",
+        "ExtHostGitExtension"
+      ],
+      "registrations": [
+        "ExtHostFileSystemInfo",
+        "ExtHostLogLevelServiceShape",
+        "ExtHostWorkspace",
+        "ExtHostConfiguration",
+        "ExtHostExtensionService",
+        "ExtHostStorage",
+        "ExtHostTunnelService",
+        "ExtHostWindow",
+        "ExtHostPower",
+        "ExtHostUrls",
+        "ExtHostSecretState",
+        "ExtHostTelemetry",
+        "ExtHostEditorTabs",
+        "ExtHostManagedSockets",
+        "ExtHostProgress",
+        "ExtHostAuthentication",
+        "ExtHostDataChannels",
+        "ExtHostMeteredConnection",
+        "ExtHostGitExtension",
+        "ExtHostDecorations",
+        "ExtHostDocumentsAndEditors",
+        "ExtHostCommands",
+        "ExtHostTerminalService",
+        "ExtHostTerminalShellIntegration",
+        "ExtHostSearch",
+        "ExtHostTask",
+        "ExtHostOutputService",
+        "ExtHostLocalization",
+        "ExtHostDocuments",
+        "ExtHostDocumentContentProviders",
+        "ExtHostDocumentSaveParticipant",
+        "ExtHostEditors",
+        "ExtHostTreeViews",
+        "ExtHostEditorInsets",
+        "ExtHostDiagnostics",
+        "ExtHostLanguages",
+        "ExtHostLanguageFeatures",
+        "ExtHostFileSystem",
+        "ExtHostFileSystemEventService",
+        "ExtHostQuickOpen",
+        "ExtHostSCM",
+        "ExtHostQuickDiff",
+        "ExtHostShare",
+        "ExtHostComments",
+        "ExtHostLabelService",
+        "ExtHostTheming",
+        "ExtHostTimeline",
+        "ExtHostWebviews",
+        "ExtHostWebviewPanels",
+        "ExtHostCustomEditors",
+        "ExtHostWebviewViews",
+        "ExtHostTesting",
+        "ExtHostUriOpeners",
+        "ExtHostProfileContentHandlers",
+        "ExtHostStatusBar"
+      ],
+      "idCount": 55,
+      "registrationCount": 55,
+      "missing": [],
+      "extra": [],
+      "duplicates": []
+    },
+    "MainContext": {
+      "ids": [
+        "MainThreadAuthentication",
+        "MainThreadBulkEdits",
+        "MainThreadGitExtension",
+        "MainThreadClipboard",
+        "MainThreadCommands",
+        "MainThreadComments",
+        "MainThreadConfiguration",
+        "MainThreadConsole",
+        "MainThreadDecorations",
+        "MainThreadDiagnostics",
+        "MainThreadDialogs",
+        "MainThreadDocuments",
+        "MainThreadDocumentContentProviders",
+        "MainThreadTextEditors",
+        "MainThreadEditorInsets",
+        "MainThreadEditorTabs",
+        "MainThreadErrors",
+        "MainThreadTreeViews",
+        "MainThreadDownloadService",
+        "MainThreadLanguageFeatures",
+        "MainThreadLanguages",
+        "MainThreadLogger",
+        "MainThreadMessageService",
+        "MainThreadOutputService",
+        "MainThreadProgress",
+        "MainThreadQuickDiff",
+        "MainThreadDocumentDiff",
+        "MainThreadQuickOpen",
+        "MainThreadStatusBar",
+        "MainThreadSecretState",
+        "MainThreadStorage",
+        "MainThreadTelemetry",
+        "MainThreadMeteredConnection",
+        "MainThreadTerminalService",
+        "MainThreadTerminalShellIntegration",
+        "MainThreadWebviews",
+        "MainThreadWebviewPanels",
+        "MainThreadWebviewViews",
+        "MainThreadCustomEditors",
+        "MainThreadUrls",
+        "MainThreadUriOpeners",
+        "MainThreadProfileContentHandlers",
+        "MainThreadWorkspace",
+        "MainThreadFileSystem",
+        "MainThreadFileSystemEventService",
+        "MainThreadExtensionService",
+        "MainThreadSCM",
+        "MainThreadSearch",
+        "MainThreadShare",
+        "MainThreadTask",
+        "MainThreadWindow",
+        "MainThreadPower",
+        "MainThreadLabelService",
+        "MainThreadTheming",
+        "MainThreadTunnelService",
+        "MainThreadManagedSockets",
+        "MainThreadTimeline",
+        "MainThreadTesting",
+        "MainThreadLocalization",
+        "MainThreadDataChannels"
+      ],
+      "registrations": [
+        "MainThreadSCM",
+        "MainThreadTask",
+        "MainThreadEditorInsets",
+        "MainThreadGitExtension",
+        "MainThreadExtensionService",
+        "MainThreadConfiguration",
+        "MainThreadTerminalShellIntegration",
+        "MainThreadDocuments",
+        "MainThreadTextEditors",
+        "MainThreadOutputService",
+        "MainThreadTelemetry",
+        "MainThreadWindow",
+        "MainThreadDocumentContentProviders",
+        "MainThreadTheming",
+        "MainThreadStatusBar",
+        "MainThreadDocumentDiff",
+        "MainThreadEditorTabs",
+        "MainThreadTimeline",
+        "MainThreadTunnelService",
+        "MainThreadFileSystem",
+        "MainThreadDiagnostics",
+        "MainThreadConsole",
+        "MainThreadWebviews",
+        "MainThreadWebviewPanels",
+        "MainThreadCustomEditors",
+        "MainThreadWebviewViews",
+        "MainThreadClipboard",
+        "MainThreadProfileContentHandlers",
+        "MainThreadComments",
+        "MainThreadWorkspace",
+        "MainThreadCommands",
+        "MainThreadLanguageFeatures",
+        "MainThreadBulkEdits",
+        "MainThreadPower",
+        "MainThreadDialogs",
+        "MainThreadDecorations",
+        "MainThreadTreeViews",
+        "MainThreadDataChannels",
+        "MainThreadAuthentication",
+        "MainThreadProgress",
+        "MainThreadLogger",
+        "MainThreadTesting",
+        "MainThreadSearch",
+        "MainThreadLanguages",
+        "MainThreadLabelService",
+        "MainThreadStorage",
+        "MainThreadUrls",
+        "MainThreadUriOpeners",
+        "MainThreadMeteredConnection",
+        "MainThreadErrors",
+        "MainThreadFileSystemEventService",
+        "MainThreadDownloadService",
+        "MainThreadSecretState",
+        "MainThreadLocalization",
+        "MainThreadMessageService",
+        "MainThreadQuickOpen",
+        "MainThreadShare",
+        "MainThreadQuickDiff",
+        "MainThreadTerminalService",
+        "MainThreadManagedSockets"
+      ],
+      "idCount": 60,
+      "registrationCount": 60,
+      "missing": [],
+      "extra": [],
+      "duplicates": []
+    }
+  },
+  "mainThreadRegistrationLocations": [
+    {
+      "id": "MainThreadSCM",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadSCM.ts",
+      "line": 599
+    },
+    {
+      "id": "MainThreadTask",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTask.ts",
+      "line": 455
+    },
+    {
+      "id": "MainThreadEditorInsets",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadCodeInsets.ts",
+      "line": 55
+    },
+    {
+      "id": "MainThreadGitExtension",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadGitExtensionService.ts",
+      "line": 70
+    },
+    {
+      "id": "MainThreadExtensionService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadExtensionService.ts",
+      "line": 33
+    },
+    {
+      "id": "MainThreadConfiguration",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadConfiguration.ts",
+      "line": 16
+    },
+    {
+      "id": "MainThreadTerminalShellIntegration",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTerminalShellIntegration.ts",
+      "line": 16
+    },
+    {
+      "id": "MainThreadDocuments",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadDocumentsAndEditors.ts",
+      "line": 306
+    },
+    {
+      "id": "MainThreadTextEditors",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadDocumentsAndEditors.ts",
+      "line": 309
+    },
+    {
+      "id": "MainThreadOutputService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadOutputService.ts",
+      "line": 19
+    },
+    {
+      "id": "MainThreadTelemetry",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTelemetry.ts",
+      "line": 17
+    },
+    {
+      "id": "MainThreadWindow",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadWindow.ts",
+      "line": 16
+    },
+    {
+      "id": "MainThreadDocumentContentProviders",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDocumentContentProviders.ts",
+      "line": 20
+    },
+    {
+      "id": "MainThreadTheming",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTheming.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadStatusBar",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadStatusBar.ts",
+      "line": 18
+    },
+    {
+      "id": "MainThreadDocumentDiff",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDocumentDiff.ts",
+      "line": 12
+    },
+    {
+      "id": "MainThreadEditorTabs",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadEditorTabs.ts",
+      "line": 34
+    },
+    {
+      "id": "MainThreadTimeline",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTimeline.ts",
+      "line": 15
+    },
+    {
+      "id": "MainThreadTunnelService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTunnelService.ts",
+      "line": 24
+    },
+    {
+      "id": "MainThreadFileSystem",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadFileSystem.ts",
+      "line": 15
+    },
+    {
+      "id": "MainThreadDiagnostics",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDiagnostics.ts",
+      "line": 14
+    },
+    {
+      "id": "MainThreadConsole",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadConsole.ts",
+      "line": 14
+    },
+    {
+      "id": "MainThreadWebviews",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadWebviewManager.ts",
+      "line": 24
+    },
+    {
+      "id": "MainThreadWebviewPanels",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadWebviewManager.ts",
+      "line": 27
+    },
+    {
+      "id": "MainThreadCustomEditors",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadWebviewManager.ts",
+      "line": 30
+    },
+    {
+      "id": "MainThreadWebviewViews",
+      "kind": "manual",
+      "path": "src/vs/workbench/api/browser/mainThreadWebviewManager.ts",
+      "line": 33
+    },
+    {
+      "id": "MainThreadClipboard",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadClipboard.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadProfileContentHandlers",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadProfileContentHandlers.ts",
+      "line": 14
+    },
+    {
+      "id": "MainThreadComments",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadComments.ts",
+      "line": 540
+    },
+    {
+      "id": "MainThreadWorkspace",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadWorkspace.ts",
+      "line": 34
+    },
+    {
+      "id": "MainThreadCommands",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadCommands.ts",
+      "line": 16
+    },
+    {
+      "id": "MainThreadLanguageFeatures",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadLanguageFeatures.ts",
+      "line": 44
+    },
+    {
+      "id": "MainThreadBulkEdits",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadBulkEdits.ts",
+      "line": 17
+    },
+    {
+      "id": "MainThreadPower",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadPower.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadDialogs",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDialogs.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadDecorations",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDecorations.ts",
+      "line": 70
+    },
+    {
+      "id": "MainThreadTreeViews",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTreeViews.ts",
+      "line": 27
+    },
+    {
+      "id": "MainThreadDataChannels",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDataChannels.ts",
+      "line": 15
+    },
+    {
+      "id": "MainThreadAuthentication",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadAuthentication.ts",
+      "line": 120
+    },
+    {
+      "id": "MainThreadProgress",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadProgress.ts",
+      "line": 15
+    },
+    {
+      "id": "MainThreadLogger",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadLogService.ts",
+      "line": 15
+    },
+    {
+      "id": "MainThreadTesting",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTesting.ts",
+      "line": 25
+    },
+    {
+      "id": "MainThreadSearch",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadSearch.ts",
+      "line": 17
+    },
+    {
+      "id": "MainThreadLanguages",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadLanguages.ts",
+      "line": 22
+    },
+    {
+      "id": "MainThreadLabelService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadLabelService.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadStorage",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadStorage.ts",
+      "line": 16
+    },
+    {
+      "id": "MainThreadUrls",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadUrls.ts",
+      "line": 34
+    },
+    {
+      "id": "MainThreadUriOpeners",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadUriOpeners.ts",
+      "line": 29
+    },
+    {
+      "id": "MainThreadMeteredConnection",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadMeteredConnection.ts",
+      "line": 11
+    },
+    {
+      "id": "MainThreadErrors",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadErrors.ts",
+      "line": 10
+    },
+    {
+      "id": "MainThreadFileSystemEventService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadFileSystemEventService.ts",
+      "line": 27
+    },
+    {
+      "id": "MainThreadDownloadService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadDownloadService.ts",
+      "line": 12
+    },
+    {
+      "id": "MainThreadSecretState",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadSecretState.ts",
+      "line": 14
+    },
+    {
+      "id": "MainThreadLocalization",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadLocalization.ts",
+      "line": 13
+    },
+    {
+      "id": "MainThreadMessageService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadMessageService.ts",
+      "line": 18
+    },
+    {
+      "id": "MainThreadQuickOpen",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadQuickOpen.ts",
+      "line": 28
+    },
+    {
+      "id": "MainThreadShare",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadShare.ts",
+      "line": 13
+    },
+    {
+      "id": "MainThreadQuickDiff",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadQuickDiff.ts",
+      "line": 14
+    },
+    {
+      "id": "MainThreadTerminalService",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadTerminalService.ts",
+      "line": 35
+    },
+    {
+      "id": "MainThreadManagedSockets",
+      "kind": "decorator",
+      "path": "src/vs/workbench/api/browser/mainThreadManagedSockets.ts",
+      "line": 16
+    }
+  ],
+  "rpcAssertions": {
+    "extHostFactory": "Object.values<ProxyIdentifier<any>>(ExtHostContext) -> rpcProtocol.assertRegistered(expected)",
+    "mainThreadExtensionService": "Object.keys(MainContext).map -> _setAllMainProxyIdentifiers",
+    "manager": "_rpcProtocol.assertRegistered(mainProxyIdentifiers)",
+    "rpcImplementation": "assertRegistered checks every identifier and throws if missing"
+  },
+  "absenceScans": {
+    "knownRetiredNullServiceOrRegistrationPattern": "class\\s+Null(?:Chat|Mcp|MCP|Speech|AgentHost|LanguageModel)\\w*|registerSingleton\\([^\\n]*(?:IChat|IMcp|IMCP|ISpeech|IAgentHost|ILanguageModel)|\\b(?:IChatService|IMcpService|ISpeechService|IAgentHostService|ILanguageModelsService)\\b",
+    "productionMatches": [],
+    "apiRetiredRuntimeImports": []
+  },
+  "gates": [
+    {
+      "id": "stable_shell",
+      "exitCondition": "§4.1 stable shell及proposed权限真实fixture",
+      "status": "PASS",
+      "sourceGeneration": "145+146",
+      "primaryEvidence": "M4-final-host145.json",
+      "evidenceMeaning": "双权限实际exit0/passed，各89 proposed paths；stable poison provider getter/method/subscription均0、事件never、invokeTool异步NotFound、普通Webview ping/pong/inline保留；147–151不改对应源码"
+    },
+    {
+      "id": "rpc_integrity",
+      "exitCondition": "剩余RPC全量校验有效",
+      "status": "PASS",
+      "sourceGeneration": "151 actual source +145+146/151 host",
+      "primaryEvidence": "M4-final-host145.json",
+      "evidenceMeaning": "实际ExtHost55/set55、Main60/54decorators+6manual，全集无缺失/额外/重复，两个assert及底层检查未过滤；新151普通宿主/A11Y/keys无DI/RPC异常"
+    },
+    {
+      "id": "ordinary_retained",
+      "exitCondition": "普通保留功能",
+      "status": "PASS",
+      "sourceGeneration": "138/144/145+146/149/150/151 retained sources",
+      "primaryEvidence": "M4-ordinary149.json",
+      "evidenceMeaning": "编辑保存/HTML/文件与内容搜索、Git diff/stage/commit、terminal/tasks/NPM、OpenVSX安装卸载、语言主题、账户session/secret、普通Webview/profiling均有实际对应证据；未受后续patch影响项沿用原版本"
+    },
+    {
+      "id": "terminal_new_input",
+      "exitCondition": "151普通terminal键盘及用户/第三方覆盖",
+      "status": "PASS",
+      "sourceGeneration": "151",
+      "primaryEvidence": "M4-terminal-keys151.json",
+      "evidenceMeaning": "四条真实own-renderer key routes：默认QuickOpen、负号→PTY0x10、第三方未追加→PTY0x05且回调0、追加→回调1且PTY0；恢复undefined、quit0；实际shell/task另外落盘"
+    },
+    {
+      "id": "accessibility",
+      "exitCondition": "§9.3四项普通可访问性完整内容/前台/关闭/焦点返回",
+      "status": "PASS",
+      "sourceGeneration": "151",
+      "primaryEvidence": "M4-accessibility151.json",
+      "evidenceMeaning": "terminal-view/help、editor-help、hover-view四行fullFocus/DOM+AX/trustedEscape/restore全部通过、退休文字0、日志DI/RPC0、正常quit0"
+    },
+    {
+      "id": "serializer_tests",
+      "exitCondition": "退休serializer混合状态单测与既有恢复",
+      "status": "PASS",
+      "sourceGeneration": "117 isolated source/138 actual app/150 storage regression",
+      "primaryEvidence": "M4-restore.md",
+      "evidenceMeaning": "原红14失败；新增16/完整65通过；138 Browser-only/混合各6实际退出与SQLite，150普通6轮针对Storage保存/删除/重启均严格相等，Mermaid双surface保存亦通过；151映射/Storage源码未变"
+    },
+    {
+      "id": "user_data",
+      "exitCondition": "普通Profile/账户/扩展偏好及用户数据不清理",
+      "status": "PASS",
+      "sourceGeneration": "150/151",
+      "primaryEvidence": "M8-runtime151.json",
+      "evidenceMeaning": "150 secret即时delete/Reload/真实quit-restart，151Beta silent偏好/主题CSS/禁用扩展不激活与12DB keys/6files精确保留；不是用Welcome/Shortcuts tabs替代混合恢复"
+    },
+    {
+      "id": "no_null_runtime",
+      "exitCondition": "不以空服务保留AI运行链",
+      "status": "PASS",
+      "sourceGeneration": "151 actual source/build +151 renderer",
+      "primaryEvidence": "M6-runtime151-audit.json",
+      "evidenceMeaning": "本地API helper只保留data/local对象，实际生产源码Null退休服务/known AI service注册扫描0、API退休runtime imports0、254prune物理absent、生产包/图退休0、实际renderer退休实体0；不宣称已直接捕获actor/main/shared maps"
+    }
+  ],
+  "gaps": [],
+  "references": [
+    {
+      "path": "docs/plan/lean-core.records/M4-final-host145.md",
+      "sha256": "8654538b1c6bc40a351f46b429170f1a73b3482e5f7ca3ff29a82127716fd693"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-final-host145.json",
+      "sha256": "665d30782a7c09fcc4c62f1ca7813e9db5282fc69e112fe5fec8ecd421fb8093"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-restore.md",
+      "sha256": "c3b4b701b169f5d585e60921ebc1c6dd2edbf371c889661ff7ff4d34c6b066d4"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-final-restore.md",
+      "sha256": "a6c35c23c083c2d71aea776b311b00f9f20548eab8ead5de2a535bdd4e40a760"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-final-restore.json",
+      "sha256": "a75d70c9de33b5b6336ada4d8638e9308b8e34310a4546497d58acef5ddde69b"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-consumers.md",
+      "sha256": "04d0f5f69445788a77a3b149eb29ad946693b48c84483cb9283b28ebab1a633d"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-terminal.md",
+      "sha256": "69b24808485904dfc94a7155c92b0730fc5a29de9316e050292a95b264e26b39"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-auth149-resume.md",
+      "sha256": "4b5c7d41db2575a2dfbf13cef83ff5137fa75e70bc46e88f516117a48b59ab72"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-auth149-resume.json",
+      "sha256": "dd27fcb10b87c085af6631cc180610f836317b9ddebcb4c6b23764ec1af49bf1"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-secret150-runtime.md",
+      "sha256": "5c56526cbe43e96ba494bf7195fc958c561ddcab3a9c83aed273fb5749bb1c51"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-secret150-runtime.json",
+      "sha256": "4388ed6640dc59d910e1b3316af4a612722f4be1240dc1f14f9cf139e0b87c18"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-ordinary149.md",
+      "sha256": "39176427a6aff64f245f58c74d9f612236098d24a514b37505d9af70c1e539e7"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-ordinary149.json",
+      "sha256": "c1c8a6a7cddcdff989b7fb4e6b8966f1c6dc10c24fb0ded903965ffd4a98906c"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-search-theme149-resume.md",
+      "sha256": "7f36135a41662b51620134e8b9efcaa37c98e20bcafa74c54ef644f905b2af22"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-search-theme149-resume.json",
+      "sha256": "e2de51c964d08c29cc7ccd8e25e55535c66114ffdbddc9740897d4884de550e2"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-terminal-clipboard149-resume.md",
+      "sha256": "60708e50a7b553b7cd233cc5e8d45753f74e6f6014c0d74f8568e5ee8b2648a6"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-terminal-clipboard149-resume.json",
+      "sha256": "2fda6d5e99e8702eb70c428a53641bc172bffd6fffc2dc676573a7aaa5770bd8"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-storage150-regression.md",
+      "sha256": "f359f7896d5793474c2116adf3d6a0844eb26320ae98bf821cdfc88bbd316dd0"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-storage150-regression.json",
+      "sha256": "83e579e17d18423f9b861f7ebe603f4c5a67574ddf92029c3b08c14e19dd8b0c"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M3-storage150-final.md",
+      "sha256": "800dfc097c5ef17338ca174bfa810d8563664aaea372fd3d4629ca8429927045"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M3-storage150-final.evidence/summary.json",
+      "sha256": "7d2749a4790bc242d11cbcd63a746aa2eecd73409ba1173e5be551e86857ebdf"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-terminal-keys151.md",
+      "sha256": "c38d6c03c47f164d5b001fa090a4275e5dbaf45528a550dccc113b9e8b5eea2a"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-terminal-keys151.json",
+      "sha256": "6478070ab455f00feff5166ad179c2e5ce5e3c3450a07734b2e925348e96e26f"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-accessibility151.md",
+      "sha256": "9e38ba92ef3ee3a276fab1b595612281d03f598721e6ea1bd09ade2fc67e176d"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M4-accessibility151.json",
+      "sha256": "c36863fad3beb2e1b782408bb837a4c3dfb4c61881c0e697cf653986ba79c06f"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M8-runtime151.md",
+      "sha256": "72bd101577dcdb5bce04e8510eebe19c1f3f0d36e28f92d5ab6f0a36de4cbf9b"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M8-runtime151.json",
+      "sha256": "1f16c1e1fd4e893bd583d3c3736dc63e7fc751fa07b96de75eafe7486de2a49e",
+      "originalCapturedSha256": "29225b051c686299690481a08b8251e3d2229bd0932b6e62727312a007d128ce",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-runtime151-audit.md",
+      "sha256": "363064f25f81c2fb2ed5ff4e0d3de5a7e633a7afa4724583ae263bc90c0093a7"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-runtime151-audit.json",
+      "sha256": "3c918574065f33d3d6ad7e4fc7491e6f2fb1098ee01f164eb38df19e1afe45a8"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M8-build151.md",
+      "sha256": "2ccc684af4c3f13a5380e819b3025253a1f41e8734e82ca9d640f7c5ed6360fb"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M8-build151.json",
+      "sha256": "ad2272ab4666e0f89c16f92239dcb3f0a380280c594bb13bd5cba43fd9671a8a"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M5-profiling145.md",
+      "sha256": "016f99dfdb92e9c9655af3030856d8d3a20842068d29121db2299419667baca1"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M5-external-links149-resume.md",
+      "sha256": "c9834ebe61a40f50db5078f149e3d8bd1dd2d611a9f5e0903ed3b45f42916095"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M2-language-cli.json",
+      "sha256": "8f9bef2d034982696986942a050e42b68d5eb86c509bf8c3eb7fa3845ce104fc"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M2-language-gui145.md",
+      "sha256": "b517cb1267e2067c1e049056728089fb58540bcb11fd9b385787098d9ff53a07"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M2-language-gui145.json",
+      "sha256": "1152ad5edc9bab19f224e1a9dbe91feb8fe46a3c64c3697e9a1f2a2527d9976d"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M8-alternative-validation-audit.md",
+      "sha256": "85dbaa3a33f688ec06cac11fabb2add61cfe1caeb7754538a3303b71ee8b473f"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-main-shared151.md",
+      "sha256": "7b4f16b6e516e993e7a9a3bbf6b2346fd419f73ccc3b9676d2d92222e6030093"
+    },
+    {
+      "path": "docs/plan/lean-core.records/M6-main-shared151.json",
+      "sha256": "dc230212f97f2f37d28016092d60700e40b9a050b36ffb0a3cd6a00d83d79db5"
+    }
+  ],
+  "notClaimed": [
+    "151重新运行145双权限API89路径",
+    "所有历史unit suite全绿（消费者headless4个基线相同超时仍保留原记录）",
+    "direct runtime actor table/main/shared map capture（M6/M8另验）",
+    "M2当前两arch CI（不属于M4退出）",
+    "M5-M8或整个计划完成"
+  ],
+  "actionsPerformed": [
+    "只读源码/冻结输入与既有实际证据审核",
+    "写本独立MD/JSON"
+  ],
+  "newTestsOrGuiRuns": false,
+  "supportingCurrentRuntime": "M6-main-shared151.md/json另提供当前signed151 Cold/Reload直接通道，M4判定未等待或替代M6独立完整验收",
+  "closingReferenceRecheck": {
+    "at": "2026-10-02T21:41:20.107124+10:00",
+    "reason": "Original M4 reference captured before M8-runtime151 summary gained subsequent completed-gate links; raw captured files/logs independently match. Dependent summary references refreshed in order; original hashes retained.",
+    "runtimeRawFilesVerified": 177
+  }
+}

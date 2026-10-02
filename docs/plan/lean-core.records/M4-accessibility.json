@@ -1,0 +1,814 @@
+{
+  "app": "vscode-file://vscode-app/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-final-build-ugv6jlev/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+  "pid": 71045,
+  "results": [
+    {
+      "action": "terminal-view",
+      "expected": "A11Y_TERMINAL_MARKER",
+      "status": "PASS",
+      "before": {
+        "focused": true,
+        "active": "<div class=\"native-edit-context\" autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"off\" spellcheck=\"false\" tabindex=\"0\" role=\"textbox\" aria-required=\"false\" aria-multiline=\"true\" aria-autocomplete=\"none\" aria-roledescription=\"editor\" aria-label=\"Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.\" style=\"tab-size: 15.9844px; text-wrap: nowrap; font-family: var(--monaco-monospace-font), Menlo, Monaco, 'Courier New', monospace; font-weight: normal; font-size: 12px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 18px; letter-spacing: 0px; top: 38px; left: 6px; height: 18px;\">rockie@RockiedeMacBook-Pro w % printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nrockie@RockiedeMacBook-Pro w % </div>",
+        "view": "Accessible View\nrockie@RockiedeMacBook-Pro w % printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nrockie@RockiedeMacBook-Pro w % \nA11Y_TERMINAL_MARKER\nrockie@RockiedeMacBook-Pro w % \nrockie@RockiedeMacBook-Pro w % printf 'A11Y_TERMINAL_MARKER\\n'",
+        "visible": true
+      },
+      "ax": [
+        {
+          "role": "textbox",
+          "name": "Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.",
+          "value": "rockie@RockiedeMacBook-Pro w % printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nrockie@RockiedeMacBook-Pro w % ",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "focused",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "hover_target • Untitled-1",
+          "value": "hover_target\nordinary editor\n",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "autocomplete",
+              "value": {
+                "type": "token",
+                "value": "both"
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "Terminal 1, Accessibility fixture Use ⌥F1 for terminal accessibility help",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "plaintext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        }
+      ],
+      "after": {
+        "focused": true,
+        "active": "<textarea class=\"xterm-helper-textarea\" aria-label=\"Terminal 1, Accessibility fixture\nUse ⌥F1 for terminal accessibility help\" aria-multiline=\"false\" autocomplete=\"off\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" tabindex=\"0\" style=\"left: 217px; top: 28px; width: 7px; height: 14px; line-height: 14px; z-index: -5;\"></textarea>",
+        "viewVisible": false,
+        "terminal": true,
+        "editor": false,
+        "hover": false
+      }
+    },
+    {
+      "action": "terminal-help",
+      "expected": "The Focus Accessible Terminal View command",
+      "status": "PASS",
+      "before": {
+        "focused": true,
+        "active": "<div class=\"native-edit-context\" autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"off\" spellcheck=\"false\" tabindex=\"0\" role=\"textbox\" aria-required=\"false\" aria-multiline=\"true\" aria-autocomplete=\"none\" aria-roledescription=\"editor\" aria-label=\"Accessibility Help, Explore actions such as disabling this hint (Shift+Tab).\" style=\"tab-size: 15.9844px; text-wrap: nowrap; font-family: var(--monaco-monospace-font), Menlo, Monaco, 'Courier New', monospace; font-weight: normal; font-size: 12px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 18px; letter-spacing: 0px; top: 2px; left: 6px; height: 18px;\">The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nThe terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:\n- Go to Next Command (Option+DownArrow) in the accessible view\n- Go to Previous Command (Option+UpArrow) in the accessible view\n- Go to Symbol (Shift+Command+O)\n- Run Recent Command (Control+Option+R)\n- Go to Recent Directory (Command+G)\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).</div>",
+        "view": "Accessibility Help\nThe Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nThe terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:\n- Go to Next Command (Option+DownArrow) in the accessible view\n- Go to Previous Command (Option+UpArrow) in the accessible view\n- Go to Symbol (Shift+Command+O)\n- Run Recent Command (Control+Option+R)\n- Go to Recent Directory (Command+G)\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).\nThe Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nThe terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:\n- Go to Next Command (Option+DownArrow) in the accessible view\n- Go to Previous Command (Option+UpArrow) in the accessible view\n- Go to Symbol (Shift+Command+O)\n- Run Recent Command (Control+Option+R)\n- Go to Recent Directory (Command+G)\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+        "visible": true
+      },
+      "ax": [
+        {
+          "role": "textbox",
+          "name": "Accessibility Help, Explore actions such as disabling this hint (Shift+Tab).",
+          "value": "The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nThe terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:\n- Go to Next Command (Option+DownArrow) in the accessible view\n- Go to Previous Command (Option+UpArrow) in the accessible view\n- Go to Symbol (Shift+Command+O)\n- Run Recent Command (Control+Option+R)\n- Go to Recent Directory (Command+G)\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "focused",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "hover_target • Untitled-1",
+          "value": "hover_target\nordinary editor\n",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "autocomplete",
+              "value": {
+                "type": "token",
+                "value": "both"
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "Terminal 1, Accessibility fixture Use ⌥F1 for terminal accessibility help",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "plaintext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        }
+      ],
+      "after": {
+        "focused": true,
+        "active": "<textarea class=\"xterm-helper-textarea\" aria-label=\"Terminal 1, Accessibility fixture\nUse ⌥F1 for terminal accessibility help\" aria-multiline=\"false\" autocomplete=\"off\" autocorrect=\"off\" autocapitalize=\"off\" spellcheck=\"false\" tabindex=\"0\" style=\"left: 217px; top: 28px; width: 7px; height: 14px; line-height: 14px; z-index: -5;\"></textarea>",
+        "viewVisible": false,
+        "terminal": true,
+        "editor": false,
+        "hover": false
+      }
+    },
+    {
+      "action": "editor-help",
+      "expected": "You are in a code editor.",
+      "status": "PASS",
+      "before": {
+        "focused": true,
+        "active": "<div class=\"native-edit-context\" autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"off\" spellcheck=\"false\" tabindex=\"0\" role=\"textbox\" aria-required=\"false\" aria-multiline=\"true\" aria-autocomplete=\"none\" aria-roledescription=\"editor\" aria-label=\"Accessibility Help\" style=\"tab-size: 15.9844px; text-wrap: nowrap; font-family: var(--monaco-monospace-font), Menlo, Monaco, 'Courier New', monospace; font-weight: normal; font-size: 12px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 18px; letter-spacing: 0px; top: 2px; left: 6px; height: 18px;\">The application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nThe Debug: Start Debugging command (unassigned keybinding) will start a debug session.\nThe Debug: Inline Breakpoint command (unassigned keybinding) will set or unset a breakpoint at the current cursor position in the active editor.\nThe Debug: Execute Selection command (unassigned keybinding) will execute the selected text in the debug console.\nThe Debug: Add to Watch command (unassigned keybinding) will add the selected text to the watch view.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).</div>",
+        "view": "Accessibility Help\nThe application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nThe Debug: Start Debugging command (unassigned keybinding) will start a debug session.\nThe Debug: Inline Breakpoint command (unassigned keybinding) will set or unset a breakpoint at the current cursor position in the active editor.\nThe Debug: Execute Selection command (unassigned keybinding) will execute the selected text in the debug console.\nThe Debug: Add to Watch command (unassigned keybinding) will add the selected text to the watch view.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).\nThe application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nThe Debug: Start Debugging command (unassigned keybinding) will start a debug session.\nThe Debug: Inline Breakpoint command (unassigned keybinding) will set or unset a breakpoint at the current cursor position in the active editor.\nThe Debug: Execute Selection command (unassigned keybinding) will execute the selected text in the debug console.\nThe Debug: Add to Watch command (unassigned keybinding) will add the selected text to the watch view.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+        "visible": true
+      },
+      "ax": [
+        {
+          "role": "textbox",
+          "name": "Accessibility Help",
+          "value": "The application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nThe Debug: Start Debugging command (unassigned keybinding) will start a debug session.\nThe Debug: Inline Breakpoint command (unassigned keybinding) will set or unset a breakpoint at the current cursor position in the active editor.\nThe Debug: Execute Selection command (unassigned keybinding) will execute the selected text in the debug console.\nThe Debug: Add to Watch command (unassigned keybinding) will add the selected text to the watch view.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "focused",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "hover_target • Untitled-1",
+          "value": "hover_target\nordinary editor\n",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "autocomplete",
+              "value": {
+                "type": "token",
+                "value": "both"
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "Terminal 1, Accessibility fixture Use ⌥F1 for terminal accessibility help",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "plaintext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        }
+      ],
+      "after": {
+        "focused": true,
+        "active": "<div class=\"native-edit-context\" autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"off\" spellcheck=\"false\" tabindex=\"0\" role=\"textbox\" aria-required=\"false\" aria-multiline=\"true\" aria-autocomplete=\"both\" aria-roledescription=\"editor\" aria-label=\"hover_target • Untitled-1\" style=\"tab-size: 28.9062px; text-wrap: nowrap; font-family: Menlo, Monaco, &quot;Courier New&quot;, monospace; font-weight: normal; font-size: 12px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 18px; letter-spacing: 0px; top: 0px; left: 66px; height: 18px;\">hover_target\nordinary editor\n</div>",
+        "viewVisible": false,
+        "terminal": false,
+        "editor": true,
+        "hover": false
+      }
+    },
+    {
+      "action": "hover-view",
+      "expected": "A11Y_HOVER_MARKER",
+      "status": "PASS",
+      "before": {
+        "focused": true,
+        "active": "<div class=\"native-edit-context\" autocorrect=\"off\" autocapitalize=\"off\" autocomplete=\"off\" spellcheck=\"false\" tabindex=\"0\" role=\"textbox\" aria-required=\"false\" aria-multiline=\"true\" aria-autocomplete=\"none\" aria-roledescription=\"editor\" aria-label=\"Accessible View, Explore actions such as disabling this hint (Shift+Tab).\" style=\"tab-size: 15.9844px; text-wrap: nowrap; font-family: var(--monaco-monospace-font), Menlo, Monaco, 'Courier New', monospace; font-weight: normal; font-size: 12px; font-feature-settings: &quot;liga&quot; 0, &quot;calt&quot; 0; font-variation-settings: normal; line-height: 18px; letter-spacing: 0px; top: 2px; left: 6px; height: 18px;\">A11Y_HOVER_MARKER: ordinary hover documentation</div>",
+        "view": "Accessible View\nA11Y_HOVER_MARKER: ordinary hover documentation\nA11Y_HOVER_MARKER: ordinary hover documentation",
+        "visible": true
+      },
+      "ax": [
+        {
+          "role": "textbox",
+          "name": "Accessible View, Explore actions such as disabling this hint (Shift+Tab).",
+          "value": "A11Y_HOVER_MARKER: ordinary hover documentation",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "focused",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "hover_target • Untitled-1",
+          "value": "hover_target\nordinary editor\n",
+          "properties": [
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "richtext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "autocomplete",
+              "value": {
+                "type": "token",
+                "value": "both"
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "roledescription",
+              "value": {
+                "type": "string",
+                "value": "editor"
+              }
+            }
+          ]
+        },
+        {
+          "role": "textbox",
+          "name": "Terminal 1, Accessibility fixture Use ⌥F1 for terminal accessibility help",
+          "properties": [
+            {
+              "name": "invalid",
+              "value": {
+                "type": "token",
+                "value": "false"
+              }
+            },
+            {
+              "name": "focusable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "editable",
+              "value": {
+                "type": "token",
+                "value": "plaintext"
+              }
+            },
+            {
+              "name": "settable",
+              "value": {
+                "type": "booleanOrUndefined",
+                "value": true
+              }
+            },
+            {
+              "name": "multiline",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "readonly",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            },
+            {
+              "name": "required",
+              "value": {
+                "type": "boolean",
+                "value": false
+              }
+            }
+          ]
+        }
+      ],
+      "after": {
+        "focused": true,
+        "active": "<div class=\"hover-row hover-row-with-copy\" tabindex=\"0\"><div class=\"hover-row-contents\"><div class=\"markdown-hover\"><div class=\"hover-contents\"><div class=\"rendered-markdown\"><p>A11Y_HOVER_MARKER: ordinary hover documentation</p></div></div></div></div><div tabindex=\"0\" class=\"button hover-copy-button codicon codicon-copy\" role=\"button\" aria-label=\"Copy\"></div></div>",
+        "viewVisible": false,
+        "terminal": false,
+        "editor": true,
+        "hover": true
+      }
+    }
+  ]
+}

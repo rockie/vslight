@@ -1,0 +1,6 @@
+2026-10-02 20:48:32.940 [info] Loading development extension at /private/tmp/lcfinal-chkarkup/ui/ext
+2026-10-02 20:48:32.940 [info] Loading development extension at /private/tmp/lcfinal-chkarkup/ui/terminal151-ext
+2026-10-02 20:48:32.983 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 20:48:33.914 [info] Started local extension host with pid 26830.
+2026-10-02 20:48:34.202 [warning] Authentication provider lean-final-synthetic-auth was not declared in the Extension Manifest.
+2026-10-02 20:48:35.381 [info] [perf] Render performance baseline is 8ms

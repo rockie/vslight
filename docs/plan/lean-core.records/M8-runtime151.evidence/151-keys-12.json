@@ -1,0 +1,10 @@
+{
+  "query": "@command:workbench.action.agentSessions.newBrowserTab",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "@command:workbench.action.agentSessions.newBrowserTab",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

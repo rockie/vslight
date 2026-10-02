@@ -1,0 +1,18 @@
+{
+  "startedAt": "2026-10-02T19:18:13.814399+10:00",
+  "endedAt": "2026-10-02T19:18:25.932108+10:00",
+  "durationSeconds": 12.117691583998749,
+  "command": [
+    "ditto",
+    "-c",
+    "-k",
+    "--sequesterRsrc",
+    "--keepParent",
+    "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "/private/tmp/lean-core-build151-c480juxs/VSLight-151-unsigned.zip"
+  ],
+  "cwd": "/Users/rockie/Documents/gh-xgent/vscodium",
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

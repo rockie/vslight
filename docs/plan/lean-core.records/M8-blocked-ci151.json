@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-02 21:44 +1000",
+  "status": "BLOCKED_CURRENT_INPUT_DUAL_ARCH_CI",
+  "sameBlockerConsecutiveGoalTurns": 3,
+  "turnClassification": [
+    "progress: completed M7 and final local acceptance; CI blocker remained",
+    "no progress: authoritative input recheck, same CI blocker",
+    "no progress: repeated input/commit/scope recheck, same CI blocker"
+  ],
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "inputManifestFiles": 1475,
+  "productionBuildHelperWorkflowDrift": [],
+  "patch151PresentInHead": false,
+  "remainingMilestones": [
+    "M2",
+    "M8"
+  ],
+  "localRequiredGaps": [],
+  "unverified": [
+    "Current-input macOS arm64/x64 CI"
+  ],
+  "authorizationConstraint": "User explicitly chose local-only: no commit/push/CI/Release; do not ask again for same authorization. Automatic goal continuation does not revoke this constraint.",
+  "safeRemainingAction": null,
+  "resumeCondition": "User explicitly authorizes current-input dual-architecture CI, or supplies verifiable CI evidence matching current production inputs.",
+  "reference": {
+    "path": "M8-final-local-audit151.json",
+    "sha256": "bb89cc5e793458a73376d0b3d93636a1a0bb73dffbfc725fd5c0b15f93a12b1a"
+  }
+}

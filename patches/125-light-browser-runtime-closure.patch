@@ -1,0 +1,457 @@
+diff --git a/src/vs/workbench/api/common/extHost.api.impl.ts b/src/vs/workbench/api/common/extHost.api.impl.ts
+--- a/src/vs/workbench/api/common/extHost.api.impl.ts
++++ b/src/vs/workbench/api/common/extHost.api.impl.ts
+@@ -63,7 +63,6 @@
+ import { ExtHostLanguages } from './extHostLanguages.js';
+ import { IExtHostLocalizationService } from './extHostLocalizationService.js';
+ import { IExtHostManagedSockets } from './extHostManagedSockets.js';
+-import { IExtHostBrowserTunnelProxy } from './extHostBrowserTunnelProxy.js';
+ import { ExtHostMessageService } from './extHostMessageService.js';
+ import { ExtHostNotebookController } from './extHostNotebook.js';
+ import { ExtHostNotebookDocumentSaveParticipant } from './extHostNotebookDocumentSaveParticipant.js';
+@@ -81,7 +80,6 @@
+ import { IExtHostSearch } from './extHostSearch.js';
+ import { IExtHostSecretState } from './extHostSecretState.js';
+ import { ExtHostShare } from './extHostShare.js';
+-import { ExtHostBrowsers } from './extHostBrowsers.js';
+ import { ExtHostStatusBar } from './extHostStatusBar.js';
+ import { IExtHostStorage } from './extHostStorage.js';
+ import { IExtensionStoragePaths } from './extHostStoragePaths.js';
+@@ -153,7 +151,6 @@
+ 	const extHostSecretState = accessor.get(IExtHostSecretState);
+ 	const extHostEditorTabs = accessor.get(IExtHostEditorTabs);
+ 	const extHostManagedSockets = accessor.get(IExtHostManagedSockets);
+-	const extHostBrowserTunnelProxy = accessor.get(IExtHostBrowserTunnelProxy);
+ 	const extHostProgress = accessor.get(IExtHostProgress);
+ 	const extHostAuthentication = accessor.get(IExtHostAuthentication);
+ 	const extHostDataChannels = accessor.get(IExtHostDataChannels);
+@@ -176,7 +173,6 @@
+ 	rpcProtocol.set(ExtHostContext.ExtHostTelemetry, extHostTelemetry);
+ 	rpcProtocol.set(ExtHostContext.ExtHostEditorTabs, extHostEditorTabs);
+ 	rpcProtocol.set(ExtHostContext.ExtHostManagedSockets, extHostManagedSockets);
+-	rpcProtocol.set(ExtHostContext.ExtHostBrowserTunnelProxy, extHostBrowserTunnelProxy);
+ 	rpcProtocol.set(ExtHostContext.ExtHostProgress, extHostProgress);
+ 	rpcProtocol.set(ExtHostContext.ExtHostAuthentication, extHostAuthentication);
+ 	rpcProtocol.set(ExtHostContext.ExtHostDataChannels, extHostDataChannels);
+@@ -230,7 +226,6 @@
+ 	const extHostProfileContentHandlers = rpcProtocol.set(ExtHostContext.ExtHostProfileContentHandlers, new ExtHostProfileContentHandlers(rpcProtocol));
+ 	rpcProtocol.set(ExtHostContext.ExtHostInteractive, new ExtHostInteractive(rpcProtocol, extHostNotebook, extHostDocumentsAndEditors, extHostCommands, extHostLogService));
+ 	const extHostStatusBar = rpcProtocol.set(ExtHostContext.ExtHostStatusBar, new ExtHostStatusBar(rpcProtocol, extHostCommands.converter));
+-	const extHostBrowsers = rpcProtocol.set(ExtHostContext.ExtHostBrowsers, new ExtHostBrowsers(rpcProtocol));
+ 
+ 	// Check that no named customers are missing
+ 	const expected = Object.values<ProxyIdentifier<any>>(ExtHostContext);
+@@ -1073,31 +1068,31 @@
+ 			},
+ 			get browserTabs() {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return extHostBrowsers.browserTabs;
++				return disabledAi.unavailable('window.browserTabs');
+ 			},
+ 			onDidOpenBrowserTab(listener, thisArg?, disposables?) {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return _asExtensionEvent(extHostBrowsers.onDidOpenBrowserTab)(listener, thisArg, disposables);
++				return disabledAi.unavailable('window.onDidOpenBrowserTab');
+ 			},
+ 			onDidCloseBrowserTab(listener, thisArg?, disposables?) {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return _asExtensionEvent(extHostBrowsers.onDidCloseBrowserTab)(listener, thisArg, disposables);
++				return disabledAi.unavailable('window.onDidCloseBrowserTab');
+ 			},
+ 			get activeBrowserTab() {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return extHostBrowsers.activeBrowserTab;
++				return disabledAi.unavailable('window.activeBrowserTab');
+ 			},
+ 			onDidChangeActiveBrowserTab(listener, thisArg?, disposables?) {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return _asExtensionEvent(extHostBrowsers.onDidChangeActiveBrowserTab)(listener, thisArg, disposables);
++				return disabledAi.unavailable('window.onDidChangeActiveBrowserTab');
+ 			},
+ 			onDidChangeBrowserTabState(listener, thisArg?, disposables?) {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return _asExtensionEvent(extHostBrowsers.onDidChangeBrowserTabState)(listener, thisArg, disposables);
+-			},
+-			openBrowserTab(url: string, options?: vscode.BrowserTabShowOptions) {
++				return disabledAi.unavailable('window.onDidChangeBrowserTabState');
++			},
++			async openBrowserTab(url: string, options?: vscode.BrowserTabShowOptions) {
+ 				checkProposedApiEnabled(extension, 'browser');
+-				return extHostBrowsers.openBrowserTab(url, options);
++				return disabledAi.unavailable('window.openBrowserTab');
+ 			},
+ 		};
+ 
+diff --git a/src/vs/workbench/api/common/extHost.common.services.ts b/src/vs/workbench/api/common/extHost.common.services.ts
+--- a/src/vs/workbench/api/common/extHost.common.services.ts
++++ b/src/vs/workbench/api/common/extHost.common.services.ts
+@@ -28,7 +28,6 @@
+ import { ExtHostVariableResolverProviderService, IExtHostVariableResolverProvider } from './extHostVariableResolverService.js';
+ import { ExtHostLocalizationService, IExtHostLocalizationService } from './extHostLocalizationService.js';
+ import { ExtHostManagedSockets, IExtHostManagedSockets } from './extHostManagedSockets.js';
+-import { ExtHostBrowserTunnelProxy, IExtHostBrowserTunnelProxy } from './extHostBrowserTunnelProxy.js';
+ import { IExtHostTerminalShellIntegration, ExtHostTerminalShellIntegration } from './extHostTerminalShellIntegration.js';
+ import { ExtHostTesting, IExtHostTesting } from './extHostTesting.js';
+ import { ExtHostUrls, IExtHostUrlsService } from './extHostUrls.js';
+@@ -49,7 +48,6 @@
+ registerSingleton(IExtHostDecorations, ExtHostDecorations, InstantiationType.Eager);
+ registerSingleton(IExtHostDocumentsAndEditors, ExtHostDocumentsAndEditors, InstantiationType.Eager);
+ registerSingleton(IExtHostManagedSockets, ExtHostManagedSockets, InstantiationType.Eager);
+-registerSingleton(IExtHostBrowserTunnelProxy, ExtHostBrowserTunnelProxy, InstantiationType.Eager);
+ registerSingleton(IExtHostFileSystemInfo, ExtHostFileSystemInfo, InstantiationType.Eager);
+ registerSingleton(IExtHostOutputService, ExtHostOutputService, InstantiationType.Delayed);
+ registerSingleton(IExtHostSearch, ExtHostSearch, InstantiationType.Eager);
+diff --git a/src/vs/workbench/api/node/extHost.node.services.ts b/src/vs/workbench/api/node/extHost.node.services.ts
+--- a/src/vs/workbench/api/node/extHost.node.services.ts
++++ b/src/vs/workbench/api/node/extHost.node.services.ts
+@@ -29,8 +29,6 @@
+ import { ExtHostTelemetry, IExtHostTelemetry } from '../common/extHostTelemetry.js';
+ import { IExtHostAuthentication } from '../common/extHostAuthentication.js';
+ import { NodeExtHostAuthentication } from './extHostAuthentication.js';
+-import { IExtHostBrowserTunnelProxy } from '../common/extHostBrowserTunnelProxy.js';
+-import { NodeExtHostBrowserTunnelProxy } from './extHostBrowserTunnelProxy.js';
+ 
+ // #########################################################################
+ // ###                                                                   ###
+@@ -52,4 +50,3 @@
+ registerSingleton(IExtHostTerminalService, ExtHostTerminalService, InstantiationType.Eager);
+ registerSingleton(IExtHostTunnelService, NodeExtHostTunnelService, InstantiationType.Eager);
+ registerSingleton(IExtHostVariableResolverProvider, NodeExtHostVariableResolverProviderService, InstantiationType.Eager);
+-registerSingleton(IExtHostBrowserTunnelProxy, NodeExtHostBrowserTunnelProxy, InstantiationType.Eager);
+diff --git a/src/vs/workbench/api/common/extHost.protocol.ts b/src/vs/workbench/api/common/extHost.protocol.ts
+--- a/src/vs/workbench/api/common/extHost.protocol.ts
++++ b/src/vs/workbench/api/common/extHost.protocol.ts
+@@ -31,11 +31,9 @@
+ import { ISerializedModelContentChangedEvent } from '../../../editor/common/textModelEvents.js';
+ import { IAccessibilityInformation } from '../../../platform/accessibility/common/accessibility.js';
+ import { ILocalizedString } from '../../../platform/action/common/action.js';
+-import { CDPEvent, CDPRequest, CDPResponse } from '../../../platform/browserView/common/cdp/types.js';
+ import { ConfigurationTarget, IConfigurationChange, IConfigurationData, IConfigurationOverrides } from '../../../platform/configuration/common/configuration.js';
+ import { ConfigurationScope } from '../../../platform/configuration/common/configurationRegistry.js';
+ import { LinkPresentationKind } from '../../../platform/dataChannel/common/dataChannel.js';
+-import { IEditorOptions } from '../../../platform/editor/common/editor.js';
+ import { IExtensionIdWithVersion } from '../../../platform/extensionManagement/common/extensionStorage.js';
+ import { ExtensionIdentifier, IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+ import * as files from '../../../platform/files/common/files.js';
+@@ -51,7 +49,6 @@
+ import { ISerializableEnvironmentDescriptionMap, ISerializableEnvironmentVariableCollection } from '../../../platform/terminal/common/environmentVariable.js';
+ import { ICreateContributedTerminalProfileOptions, IProcessProperty, IProcessReadyWindowsPty, IShellLaunchConfigDto, ITerminalEnvironment, ITerminalLaunchError, ITerminalProfile, TerminalExitReason, TerminalLocation, TerminalShellType } from '../../../platform/terminal/common/terminal.js';
+ import { ProvidedPortAttributes, TunnelCreationOptions, TunnelOptions, TunnelPrivacyId, TunnelProviderFeatures } from '../../../platform/tunnel/common/tunnel.js';
+-import { ITunnelProxyInfo } from '../../../platform/tunnel/common/tunnelProxy.js';
+ import { EditSessionIdentityMatch } from '../../../platform/workspace/common/editSessions.js';
+ import { WorkspaceTrustRequestOptions } from '../../../platform/workspace/common/workspaceTrust.js';
+ import { SaveReason } from '../../common/editor.js';
+@@ -1225,14 +1222,6 @@
+ 	$remoteSocketDrain(socketId: number): Promise<void>;
+ }
+ 
+-export interface MainThreadBrowserTunnelProxyShape extends IDisposable {
+-	$updateProxyInfo(info: ITunnelProxyInfo | undefined): void;
+-}
+-
+-export interface ExtHostBrowserTunnelProxyShape {
+-	$setEnabled(enabled: boolean): void;
+-}
+-
+ export enum CellOutputKind {
+ 	Text = 1,
+ 	Error = 2,
+@@ -1372,30 +1361,6 @@
+ }
+ 
+ export interface MainThreadInteractiveShape extends IDisposable {
+-}
+-
+-export interface BrowserTabDto {
+-	id: string;
+-	url: string;
+-	title: string;
+-	favicon: string | undefined;
+-}
+-
+-export interface MainThreadBrowsersShape extends IDisposable {
+-	$openBrowserTab(url: string, viewColumn?: EditorGroupColumn, options?: IEditorOptions): Promise<BrowserTabDto>;
+-	$closeBrowserTab(browserId: string): Promise<void>;
+-	$startCDPSession(sessionId: string, browserId: string): Promise<void>;
+-	$closeCDPSession(sessionId: string): Promise<void>;
+-	$sendCDPMessage(sessionId: string, message: CDPRequest): Promise<void>;
+-}
+-
+-export interface ExtHostBrowsersShape {
+-	$onDidOpenBrowserTab(browser: BrowserTabDto): void;
+-	$onDidCloseBrowserTab(browserId: string): void;
+-	$onDidChangeActiveBrowserTab(browserId: string | undefined): void;
+-	$onDidChangeBrowserTabState(browser: BrowserTabDto): void;
+-	$onCDPSessionMessage(sessionId: string, message: CDPResponse | CDPEvent): void;
+-	$onCDPSessionClosed(sessionId: string): void;
+ }
+ 
+ export interface IPluginDto {
+@@ -3267,12 +3232,10 @@
+ 	MainThreadTheming: createProxyIdentifier<MainThreadThemingShape>('MainThreadTheming'),
+ 	MainThreadTunnelService: createProxyIdentifier<MainThreadTunnelServiceShape>('MainThreadTunnelService'),
+ 	MainThreadManagedSockets: createProxyIdentifier<MainThreadManagedSocketsShape>('MainThreadManagedSockets'),
+-	MainThreadBrowserTunnelProxy: createProxyIdentifier<MainThreadBrowserTunnelProxyShape>('MainThreadBrowserTunnelProxy'),
+ 	MainThreadTimeline: createProxyIdentifier<MainThreadTimelineShape>('MainThreadTimeline'),
+ 	MainThreadTesting: createProxyIdentifier<MainThreadTestingShape>('MainThreadTesting'),
+ 	MainThreadLocalization: createProxyIdentifier<MainThreadLocalizationShape>('MainThreadLocalizationShape'),
+ 	MainThreadDataChannels: createProxyIdentifier<MainThreadDataChannelsShape>('MainThreadDataChannels'),
+-	MainThreadBrowsers: createProxyIdentifier<MainThreadBrowsersShape>('MainThreadBrowsers'),
+ };
+ 
+ export const ExtHostContext = {
+@@ -3331,7 +3294,6 @@
+ 	ExtHostTheming: createProxyIdentifier<ExtHostThemingShape>('ExtHostTheming'),
+ 	ExtHostTunnelService: createProxyIdentifier<ExtHostTunnelServiceShape>('ExtHostTunnelService'),
+ 	ExtHostManagedSockets: createProxyIdentifier<ExtHostManagedSocketsShape>('ExtHostManagedSockets'),
+-	ExtHostBrowserTunnelProxy: createProxyIdentifier<ExtHostBrowserTunnelProxyShape>('ExtHostBrowserTunnelProxy'),
+ 	ExtHostAuthentication: createProxyIdentifier<ExtHostAuthenticationShape>('ExtHostAuthentication'),
+ 	ExtHostTimeline: createProxyIdentifier<ExtHostTimelineShape>('ExtHostTimeline'),
+ 	ExtHostTesting: createProxyIdentifier<ExtHostTestingShape>('ExtHostTesting'),
+@@ -3340,5 +3302,4 @@
+ 	ExtHostLocalization: createProxyIdentifier<ExtHostLocalizationShape>('ExtHostLocalization'),
+ 	ExtHostDataChannels: createProxyIdentifier<ExtHostDataChannelsShape>('ExtHostDataChannels'),
+ 	ExtHostGitExtension: createProxyIdentifier<ExtHostGitExtensionShape>('ExtHostGitExtension'),
+-	ExtHostBrowsers: createProxyIdentifier<ExtHostBrowsersShape>('ExtHostBrowsers'),
+ };
+diff --git a/src/vs/workbench/api/browser/extensionHost.contribution.ts b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+--- a/src/vs/workbench/api/browser/extensionHost.contribution.ts
++++ b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+@@ -43,7 +43,6 @@
+ import './mainThreadLogService.js';
+ import './mainThreadMessageService.js';
+ import './mainThreadManagedSockets.js';
+-import './mainThreadBrowserTunnelProxy.js';
+ import './mainThreadOutputService.js';
+ import './mainThreadProgress.js';
+ import './mainThreadQuickDiff.js';
+@@ -87,7 +86,6 @@
+ import './mainThreadDataChannels.js';
+ import './mainThreadMeteredConnection.js';
+ import './mainThreadGitExtensionService.js';
+-import './mainThreadBrowsers.js';
+ 
+ export class ExtensionPoints implements IWorkbenchContribution {
+ 
+diff --git a/src/vs/code/electron-main/app.ts b/src/vs/code/electron-main/app.ts
+--- a/src/vs/code/electron-main/app.ts
++++ b/src/vs/code/electron-main/app.ts
+@@ -36,10 +36,6 @@
+ import { DialogMainService, IDialogMainService } from '../../platform/dialogs/electron-main/dialogMainService.js';
+ import { IEncryptionMainService } from '../../platform/encryption/common/encryptionService.js';
+ import { EncryptionMainService } from '../../platform/encryption/electron-main/encryptionMainService.js';
+-import { ipcBrowserViewChannelName } from '../../platform/browserView/common/browserView.js';
+-import { ipcBrowserViewGroupChannelName } from '../../platform/browserView/common/browserViewGroup.js';
+-import { BrowserViewMainService, IBrowserViewMainService } from '../../platform/browserView/electron-main/browserViewMainService.js';
+-import { BrowserViewGroupMainService, IBrowserViewGroupMainService } from '../../platform/browserView/electron-main/browserViewGroupMainService.js';
+ import { NativeParsedArgs } from '../../platform/environment/common/argv.js';
+ import { IEnvironmentMainService } from '../../platform/environment/electron-main/environmentMainService.js';
+ import { isLaunchedFromCli } from '../../platform/environment/node/argvHelper.js';
+@@ -556,10 +552,6 @@
+ 
+ 			// Handle any in-page navigation
+ 			contents.on('will-navigate', event => {
+-				if (BrowserViewMainService.isBrowserViewWebContents(contents)) {
+-					return; // Allow navigation in integrated browser views
+-				}
+-
+ 				this.logService.error('webContents#will-navigate: Prevented webcontent navigation');
+ 
+ 				event.preventDefault(); // Prevent any in-page navigation
+@@ -1185,10 +1177,6 @@
+ 		// Encryption
+ 		services.set(IEncryptionMainService, new SyncDescriptor(EncryptionMainService));
+ 
+-		// Browser View
+-		services.set(IBrowserViewMainService, new SyncDescriptor(BrowserViewMainService, undefined, false /* proxied to other processes */));
+-		services.set(IBrowserViewGroupMainService, new SyncDescriptor(BrowserViewGroupMainService, undefined, false /* proxied to other processes */));
+-
+ 		// Keyboard Layout
+ 		services.set(IKeyboardLayoutMainService, new SyncDescriptor(KeyboardLayoutMainService));
+ 
+@@ -1355,16 +1343,6 @@
+ 		// Encryption
+ 		const encryptionChannel = ProxyChannel.fromService(accessor.get(IEncryptionMainService), disposables);
+ 		mainProcessElectronServer.registerChannel('encryption', encryptionChannel);
+-
+-		// Browser View
+-		const browserViewChannel = ProxyChannel.fromService(accessor.get(IBrowserViewMainService), disposables);
+-		mainProcessElectronServer.registerChannel(ipcBrowserViewChannelName, browserViewChannel);
+-		sharedProcessClient.then(client => client.registerChannel(ipcBrowserViewChannelName, browserViewChannel));
+-
+-		// Browser View Group
+-		const browserViewGroupChannel = ProxyChannel.fromService(accessor.get(IBrowserViewGroupMainService), disposables);
+-		mainProcessElectronServer.registerChannel(ipcBrowserViewGroupChannelName, browserViewGroupChannel);
+-		sharedProcessClient.then(client => client.registerChannel(ipcBrowserViewGroupChannelName, browserViewGroupChannel));
+ 
+ 		// Signing
+ 		const signChannel = ProxyChannel.fromService(accessor.get(ISignService), disposables);
+diff --git a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+--- a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
++++ b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+@@ -134,8 +134,6 @@
+ import { McpGalleryManifestIPCService } from '../../../platform/mcp/common/mcpGalleryManifestServiceIpc.js';
+ import { IMeteredConnectionService } from '../../../platform/meteredConnection/common/meteredConnection.js';
+ import { MeteredConnectionChannelClient, METERED_CONNECTION_CHANNEL } from '../../../platform/meteredConnection/common/meteredConnectionIpc.js';
+-import { PlaywrightChannel } from '../../../platform/browserView/node/playwrightChannel.js';
+-import { AgentNetworkFilterService } from '../../../platform/networkFilter/common/networkFilterService.js';
+ import { ILocalGitService } from '../../../platform/git/common/localGitService.js';
+ import { LocalGitService } from '../../../platform/git/node/localGitService.js';
+ 
+@@ -474,11 +472,6 @@
+ 		// Web Content Extractor
+ 		const webContentExtractorChannel = ProxyChannel.fromService(accessor.get(ISharedWebContentExtractorService), this._store);
+ 		this.server.registerChannel('sharedWebContentExtractor', webContentExtractorChannel);
+-
+-		// Playwright
+-		const agentNetworkFilterService = this._register(new AgentNetworkFilterService(accessor.get(IConfigurationService)));
+-		const playwrightChannel = this._register(new PlaywrightChannel(this.server, accessor.get(IMainProcessService), accessor.get(ILogService), agentNetworkFilterService, accessor.get(ITelemetryService)));
+-		this.server.registerChannel('playwright', playwrightChannel);
+ 
+ 		// Local Git
+ 		const localGitChannel = ProxyChannel.fromService(accessor.get(ILocalGitService), this._store);
+diff --git a/src/vs/workbench/workbench.desktop.main.ts b/src/vs/workbench/workbench.desktop.main.ts
+--- a/src/vs/workbench/workbench.desktop.main.ts
++++ b/src/vs/workbench/workbench.desktop.main.ts
+@@ -92,7 +92,6 @@
+ import '../platform/webContentExtractor/electron-browser/webContentExtractorService.js';
+ import './services/agentHost/electron-browser/agentHostService.js';
+ import '../platform/agentHost/electron-browser/remoteAgentHostService.js';
+-import './services/browserView/electron-browser/playwrightWorkbenchService.js';
+ import './services/process/electron-browser/processService.js';
+ import './services/power/electron-browser/powerService.js';
+ 
+@@ -161,7 +160,6 @@
+ import './contrib/webview/electron-browser/webview.contribution.js';
+ 
+ // Browser
+-import './contrib/browserView/electron-browser/browserView.contribution.js';
+ 
+ // Splash
+ import './contrib/splash/electron-browser/splash.contribution.js';
+diff --git a/build/npm/dirs.ts b/build/npm/dirs.ts
+--- a/build/npm/dirs.ts
++++ b/build/npm/dirs.ts
+@@ -40,7 +40,6 @@
+ 	'extensions/php-language-features',
+ 	'extensions/references-view',
+ 	'extensions/search-result',
+-	'extensions/simple-browser',
+ 	'extensions/terminal-suggest',
+ 	'extensions/typescript-language-features',
+ 	'extensions/vscode-api-tests',
+diff --git a/build/gulpfile.extensions.ts b/build/gulpfile.extensions.ts
+--- a/build/gulpfile.extensions.ts
++++ b/build/gulpfile.extensions.ts
+@@ -81,7 +81,6 @@
+ 	'extensions/php-language-features/tsconfig.json',
+ 	'extensions/references-view/tsconfig.json',
+ 	'extensions/search-result/tsconfig.json',
+-	'extensions/simple-browser/tsconfig.json',
+ 	'extensions/tunnel-forwarding/tsconfig.json',
+ 	'extensions/typescript-language-features/web/tsconfig.json',
+ 	'extensions/typescript-language-features/tsconfig.json',
+diff --git a/build/lib/extensions.ts b/build/lib/extensions.ts
+--- a/build/lib/extensions.ts
++++ b/build/lib/extensions.ts
+@@ -603,7 +603,6 @@
+ 	{ script: 'markdown-language-features/esbuild.markdownEditor.mts', tsconfig: 'markdown-language-features/markdown-editor-src/tsconfig.json' },
+ 	{ script: 'markdown-math/esbuild.notebook.mts', tsconfig: 'markdown-math/notebook/tsconfig.json' },
+ 	{ script: 'mermaid-markdown-features/esbuild.webview.mts', tsconfig: 'mermaid-markdown-features/preview-src/tsconfig.json' },
+-	{ script: 'simple-browser/esbuild.webview.mts', tsconfig: 'simple-browser/preview-src/tsconfig.json' },
+ ];
+ 
+ export function buildExtensionMedia(isWatch: boolean, outputRoot?: string): Promise<void> {
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -81,7 +81,6 @@
+ 	// Electron Preload
+ 	'out-build/vs/base/parts/sandbox/electron-browser/preload.js',
+ 	'out-build/vs/base/parts/sandbox/electron-browser/preload-aux.js',
+-	'out-build/vs/platform/browserView/electron-browser/preload-browserView.js',
+ 
+ 	// Node Scripts
+ 	'out-build/vs/base/node/{terminateProcess.sh,cpuUsage.sh,ps.sh}',
+diff --git a/build/next/index.ts b/build/next/index.ts
+--- a/build/next/index.ts
++++ b/build/next/index.ts
+@@ -477,7 +477,6 @@
+ const desktopStandaloneFiles = [
+ 	'vs/base/parts/sandbox/electron-browser/preload.ts',
+ 	'vs/base/parts/sandbox/electron-browser/preload-aux.ts',
+-	'vs/platform/browserView/electron-browser/preload-browserView.ts',
+ ];
+ 
+ async function compileStandaloneFiles(outDir: string, doMinify: boolean, target: BuildTarget): Promise<void> {
+diff --git a/build/filters.ts b/build/filters.ts
+--- a/build/filters.ts
++++ b/build/filters.ts
+@@ -167,7 +167,6 @@
+ 	'!extensions/markdown-math/notebook-out/*.js',
+ 	'!extensions/ipynb/notebook-out/**',
+ 	'!extensions/notebook-renderers/renderer-out/*.js',
+-	'!extensions/simple-browser/media/*.js',
+ ]);
+ 
+ export const copyrightFilter = Object.freeze<string[]>([
+@@ -210,7 +209,6 @@
+ 	'!extensions/markdown-language-features/media/highlight.css',
+ 	'!extensions/markdown-math/notebook-out/**',
+ 	'!extensions/ipynb/notebook-out/**',
+-	'!extensions/simple-browser/media/codicon.css',
+ 	'!extensions/terminal-suggest/src/completions/upstream/**',
+ 	'!extensions/typescript-language-features/node-maintainer/**',
+ 	'!extensions/html-language-features/server/src/modes/typescript/*',
+diff --git a/build/checker/layersChecker.ts b/build/checker/layersChecker.ts
+--- a/build/checker/layersChecker.ts
++++ b/build/checker/layersChecker.ts
+@@ -59,12 +59,6 @@
+ 		disallowedTypes: NATIVE_TYPES,
+ 	},
+ 
+-	// Browser view preload script
+-	{
+-		target: '**/vs/platform/browserView/electron-browser/preload-browserView.ts',
+-		disallowedTypes: NATIVE_TYPES,
+-	},
+-
+ 	// Validated IPC wrapper
+ 	{
+ 		target: '**/vs/base/parts/ipc/electron-main/ipcMain.ts',
+diff --git a/build/checker/tsconfig.electron-browser.json b/build/checker/tsconfig.electron-browser.json
+--- a/build/checker/tsconfig.electron-browser.json
++++ b/build/checker/tsconfig.electron-browser.json
+@@ -16,7 +16,6 @@
+ 		"../../src/**/test/**",
+ 		"../../src/**/fixtures/**",
+ 		"../../src/vs/base/parts/sandbox/electron-browser/preload.ts", 		// Preload scripts for Electron sandbox
+-		"../../src/vs/base/parts/sandbox/electron-browser/preload-aux.ts",	// have limited access to node.js APIs
+-		"../../src/vs/platform/browserView/electron-browser/preload-browserView.ts"	// Browser view preload script
++		"../../src/vs/base/parts/sandbox/electron-browser/preload-aux.ts"	// have limited access to node.js APIs
+ 	]
+ }
+diff --git a/build/lib/i18n.resources.json b/build/lib/i18n.resources.json
+--- a/build/lib/i18n.resources.json
++++ b/build/lib/i18n.resources.json
+@@ -599,10 +599,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/browserView",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/dropOrPasteInto",
+ 			"project": "vscode-workbench"
+ 		},
+diff --git a/src/vs/workbench/workbench.web.main.ts b/src/vs/workbench/workbench.web.main.ts
+--- a/src/vs/workbench/workbench.web.main.ts
++++ b/src/vs/workbench/workbench.web.main.ts
+@@ -187,6 +187,5 @@
+ import './contrib/processExplorer/browser/processExplorer.web.contribution.js';
+ 
+ // Browser View
+-import './contrib/browserView/browser/browserView.contribution.js';
+ 
+ //#endregion

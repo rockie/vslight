@@ -1,0 +1,72 @@
+{
+  "code_baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33 + patch 114",
+  "host_exit": 0,
+  "report": {
+    "status": "FAIL",
+    "results": [
+      {
+        "name": "ordinary document, command and status bar",
+        "result": "PASS"
+      },
+      {
+        "name": "ordinary terminal sendText writes a file",
+        "result": "PASS"
+      },
+      {
+        "name": "shell task executes and exits",
+        "result": "PASS"
+      },
+      {
+        "name": "running shell task can be stopped",
+        "result": "PASS"
+      },
+      {
+        "name": "built-in Git diff, stage and commit",
+        "result": "PASS"
+      },
+      {
+        "name": "Webview script and bidirectional message round trip",
+        "result": "PASS"
+      },
+      {
+        "name": "hover content and ordinary accessibility command registrations",
+        "result": "PASS"
+      }
+    ],
+    "error": "Error: authentication provider, session and secret storage timed out\n\tat Timeout.<anonymous> (/Users/rockie/Documents/gh-xgent/vscodium/docs/plan/lean-core.records/fixtures/baseline/run.js:18:65)\n\tat listOnTimeout (node:internal/timers:685:17)\n\tat process.processTimers (node:internal/timers:618:7)"
+  },
+  "progress": {
+    "stage": "secrets.get",
+    "results": [
+      {
+        "name": "ordinary document, command and status bar",
+        "result": "PASS"
+      },
+      {
+        "name": "ordinary terminal sendText writes a file",
+        "result": "PASS"
+      },
+      {
+        "name": "shell task executes and exits",
+        "result": "PASS"
+      },
+      {
+        "name": "running shell task can be stopped",
+        "result": "PASS"
+      },
+      {
+        "name": "built-in Git diff, stage and commit",
+        "result": "PASS"
+      },
+      {
+        "name": "Webview script and bidirectional message round trip",
+        "result": "PASS"
+      },
+      {
+        "name": "hover content and ordinary accessibility command registrations",
+        "result": "PASS"
+      }
+    ]
+  },
+  "encryption_observation": "safeStorage.isEncryptionAvailable initially blocked during screen lock; resumed after timeout; no full authentication/secret pass"
+}

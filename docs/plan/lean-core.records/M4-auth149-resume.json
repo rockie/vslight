@@ -1,0 +1,552 @@
+{
+  "status": "PASS",
+  "pid": 44513,
+  "fixtureSHA256": "1585680ae83194ae1127d413517edc155354136c8d257feb68ec8a18b1422531",
+  "ready": {
+    "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+    "hostPid": 45740,
+    "parentPid": 44513,
+    "vscodeVersion": "1.135.0",
+    "extensionId": "lean-tests.lean-auth-runtime-fixture",
+    "root": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts",
+    "providerId": "lean-private-auth-405f13e2a8",
+    "providerLabel": "Lean Synthetic Auth 405f13e2a8",
+    "accounts": {
+      "alpha": {
+        "id": "lean-405f13e2a8-alpha",
+        "label": "Lean Synthetic Alpha 405f13e2a8"
+      },
+      "beta": {
+        "id": "lean-405f13e2a8-beta",
+        "label": "Lean Synthetic Beta 405f13e2a8"
+      }
+    },
+    "scopes": [
+      "lean.fixture.read"
+    ],
+    "secretKey": "lean-auth-private-405f13e2a8",
+    "registeredThroughPublicApi": true
+  },
+  "responses": [
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-06db65725a8e4ceabb89d50a0eac0682.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-07258a6ca91045a18ea3d34f02873b39.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-384526348ae749a0805d7c6b1033f472.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-4362367191604b4a80bcd735fcfa9b62.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-6663c8838e15420eb3596f999c1092c4.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-7cef5d2685734e048372e5238b2a73b0.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-8095e99f86cf45c1a9db81716a04972a.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-97017a72b17c4425926639a3c16fe24b.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-9f5826eedf8b4f1b9f6031c1d98de93b.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-ad662f1170f1433db76f12136f3317b7.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-bc5bf6425b8542fd9eeaa313bbd084e6.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-d4fba15d661e469b9caf3472105976b7.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-dbaad6e9a9e64eca823ab6511a0e45fb.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-dda3f58b254e488581f6fcfaba38c379.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-eea70ec6b24b485c831c5f835fcab375.json",
+    "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/responses/resume-fc5e6c939d214527a660dfb77ce26716.json"
+  ],
+  "rows": [
+    {
+      "id": "resume-06db65725a8e4ceabb89d50a0eac0682",
+      "action": "reuse-beta",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-2",
+          "account": {
+            "id": "lean-405f13e2a8-beta",
+            "label": "Lean Synthetic Beta 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 0
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-07258a6ca91045a18ea3d34f02873b39",
+      "action": "reuse-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-1",
+          "account": {
+            "id": "lean-405f13e2a8-alpha",
+            "label": "Lean Synthetic Alpha 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 0
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-384526348ae749a0805d7c6b1033f472",
+      "action": "create-beta",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-2",
+          "account": {
+            "id": "lean-405f13e2a8-beta",
+            "label": "Lean Synthetic Beta 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 1,
+        "removeSession": 0,
+        "providerEvents": 1,
+        "publicEvents": 3,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-4362367191604b4a80bcd735fcfa9b62",
+      "action": "reuse-beta",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-2",
+          "account": {
+            "id": "lean-405f13e2a8-beta",
+            "label": "Lean Synthetic Beta 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 0
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-6663c8838e15420eb3596f999c1092c4",
+      "action": "unregister",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "registered": false,
+        "publicLookupRejected": true
+      },
+      "callDelta": {
+        "getSessions": 0,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-7cef5d2685734e048372e5238b2a73b0",
+      "action": "accounts-two",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "accounts": [
+          {
+            "id": "lean-405f13e2a8-alpha",
+            "label": "Lean Synthetic Alpha 405f13e2a8"
+          },
+          {
+            "id": "lean-405f13e2a8-beta",
+            "label": "Lean Synthetic Beta 405f13e2a8"
+          }
+        ],
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-8095e99f86cf45c1a9db81716a04972a",
+      "action": "accounts-empty",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "accounts": [],
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-97017a72b17c4425926639a3c16fe24b",
+      "action": "accounts-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "accounts": [
+          {
+            "id": "lean-405f13e2a8-alpha",
+            "label": "Lean Synthetic Alpha 405f13e2a8"
+          }
+        ],
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-9f5826eedf8b4f1b9f6031c1d98de93b",
+      "action": "silent-empty",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": null,
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-ad662f1170f1433db76f12136f3317b7",
+      "action": "signout-beta",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "removedAccount": {
+          "id": "lean-405f13e2a8-beta",
+          "label": "Lean Synthetic Beta 405f13e2a8"
+        },
+        "providerRemoveSessionDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 1,
+        "providerEvents": 1,
+        "publicEvents": 2,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-bc5bf6425b8542fd9eeaa313bbd084e6",
+      "action": "accounts-beta",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "accounts": [
+          {
+            "id": "lean-405f13e2a8-beta",
+            "label": "Lean Synthetic Beta 405f13e2a8"
+          }
+        ],
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-d4fba15d661e469b9caf3472105976b7",
+      "action": "accounts-empty",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "accounts": [],
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-dbaad6e9a9e64eca823ab6511a0e45fb",
+      "action": "silent-removed-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": null,
+        "providerGetSessionsDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-dda3f58b254e488581f6fcfaba38c379",
+      "action": "reuse-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-1",
+          "account": {
+            "id": "lean-405f13e2a8-alpha",
+            "label": "Lean Synthetic Alpha 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 0
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 0,
+        "providerEvents": 0,
+        "publicEvents": 0,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-eea70ec6b24b485c831c5f835fcab375",
+      "action": "create-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "session": {
+          "id": "lean-405f13e2a8-session-1",
+          "account": {
+            "id": "lean-405f13e2a8-alpha",
+            "label": "Lean Synthetic Alpha 405f13e2a8"
+          },
+          "scopes": [
+            "lean.fixture.read"
+          ]
+        },
+        "syntheticTokenRoundtripVerified": true,
+        "providerGetSessionsDelta": 1,
+        "providerCreateSessionDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 1,
+        "removeSession": 0,
+        "providerEvents": 1,
+        "publicEvents": 3,
+        "secretEvents": 0
+      }
+    },
+    {
+      "id": "resume-fc5e6c939d214527a660dfb77ce26716",
+      "action": "signout-alpha",
+      "bootId": "e3da499d-4097-4ab5-a914-b0f71febe828",
+      "status": "PASS",
+      "result": {
+        "removedAccount": {
+          "id": "lean-405f13e2a8-alpha",
+          "label": "Lean Synthetic Alpha 405f13e2a8"
+        },
+        "providerRemoveSessionDelta": 1
+      },
+      "callDelta": {
+        "getSessions": 1,
+        "createSession": 0,
+        "removeSession": 1,
+        "providerEvents": 1,
+        "publicEvents": 2,
+        "secretEvents": 0
+      }
+    }
+  ],
+  "dialogs": {
+    "signout-beta-dialog": [
+      {
+        "value": "",
+        "role": "AXWindow",
+        "title": "w"
+      },
+      {
+        "role": "AXGroup",
+        "value": "",
+        "title": "w"
+      },
+      {
+        "value": "The account 'Lean Synthetic Beta 405f13e2a8' has been used by: \n\nLean Private Auth Fixture\n\nSign out from these extensions?",
+        "role": "AXStaticText",
+        "title": ""
+      },
+      {
+        "title": "Cancel",
+        "value": "",
+        "role": "AXButton"
+      },
+      {
+        "title": "Sign Out",
+        "value": "",
+        "role": "AXButton"
+      }
+    ],
+    "signout-alpha-dialog": [
+      {
+        "title": "w",
+        "value": "",
+        "role": "AXWindow"
+      },
+      {
+        "title": "w",
+        "value": "",
+        "role": "AXGroup"
+      },
+      {
+        "title": "",
+        "role": "AXStaticText",
+        "value": "The account 'Lean Synthetic Alpha 405f13e2a8' has been used by: \n\nLean Private Auth Fixture\n\nSign out from these extensions?"
+      },
+      {
+        "title": "Cancel",
+        "role": "AXButton",
+        "value": ""
+      },
+      {
+        "role": "AXButton",
+        "title": "Sign Out",
+        "value": ""
+      }
+    ],
+    "create-alpha-dialog": [
+      {
+        "role": "AXWindow",
+        "title": "w",
+        "value": ""
+      },
+      {
+        "role": "AXGroup",
+        "title": "w",
+        "value": ""
+      },
+      {
+        "value": "The extension 'Lean Private Auth Fixture' wants to sign in using Lean Synthetic Auth 405f13e2a8.",
+        "role": "AXStaticText",
+        "title": ""
+      },
+      {
+        "role": "AXStaticText",
+        "value": "Private synthetic account test; no external login.",
+        "title": ""
+      },
+      {
+        "value": "",
+        "title": "Cancel",
+        "role": "AXButton"
+      },
+      {
+        "title": "Allow",
+        "role": "AXButton",
+        "value": ""
+      }
+    ],
+    "create-beta-dialog": [
+      {
+        "title": "w",
+        "value": "",
+        "role": "AXWindow"
+      },
+      {
+        "value": "",
+        "role": "AXGroup",
+        "title": "w"
+      },
+      {
+        "role": "AXStaticText",
+        "title": "",
+        "value": "The extension 'Lean Private Auth Fixture' wants to sign in using Lean Synthetic Auth 405f13e2a8."
+      },
+      {
+        "title": "",
+        "value": "Private synthetic second-account test; no external login.",
+        "role": "AXStaticText"
+      },
+      {
+        "role": "AXButton",
+        "value": "",
+        "title": "Cancel"
+      },
+      {
+        "title": "Allow",
+        "value": "",
+        "role": "AXButton"
+      }
+    ]
+  },
+  "sourceGeneration": "149 (147+148+149)",
+  "ordinaryAuthenticationFull": true,
+  "secretStorageFull": false
+}

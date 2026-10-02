@@ -1,0 +1,391 @@
+diff --git a/src/vs/workbench/contrib/files/browser/fileActions.contribution.ts b/src/vs/workbench/contrib/files/browser/fileActions.contribution.ts
+--- a/src/vs/workbench/contrib/files/browser/fileActions.contribution.ts
++++ b/src/vs/workbench/contrib/files/browser/fileActions.contribution.ts
+@@ -762,65 +762,3 @@
+ 	order: 1
+ });
+ 
+-
+-// Chat used attachment anchor context menu
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
+-	group: 'navigation',
+-	order: 10,
+-	command: openToSideCommand,
+-	when: ContextKeyExpr.and(ResourceContextKey.IsFileSystemResource, ExplorerFolderContext.toNegated())
+-});
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
+-	group: 'navigation',
+-	order: 20,
+-	command: revealInSideBarCommand,
+-	when: ResourceContextKey.IsFileSystemResource
+-});
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
+-	group: '1_cutcopypaste',
+-	order: 10,
+-	command: copyPathCommand,
+-	when: ResourceContextKey.IsFileSystemResource
+-});
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
+-	group: '1_cutcopypaste',
+-	order: 20,
+-	command: copyRelativePathCommand,
+-	when: ResourceContextKey.IsFileSystemResource
+-});
+-
+-// Chat resource anchor attachments/anchors context menu
+-
+-for (const menuId of [MenuId.ChatInlineResourceAnchorContext, MenuId.ChatInputResourceAttachmentContext]) {
+-	MenuRegistry.appendMenuItem(menuId, {
+-		group: 'navigation',
+-		order: 10,
+-		command: openToSideCommand,
+-		when: ContextKeyExpr.and(ResourceContextKey.HasResource, ExplorerFolderContext.toNegated())
+-	});
+-
+-	MenuRegistry.appendMenuItem(menuId, {
+-		group: 'navigation',
+-		order: 20,
+-		command: revealInSideBarCommand,
+-		when: ResourceContextKey.IsFileSystemResource
+-	});
+-
+-	MenuRegistry.appendMenuItem(menuId, {
+-		group: '1_cutcopypaste',
+-		order: 10,
+-		command: copyPathCommand,
+-		when: ResourceContextKey.IsFileSystemResource
+-	});
+-
+-	MenuRegistry.appendMenuItem(menuId, {
+-		group: '1_cutcopypaste',
+-		order: 20,
+-		command: copyRelativePathCommand,
+-		when: ResourceContextKey.IsFileSystemResource
+-	});
+-}
+diff --git a/src/vs/workbench/contrib/files/electron-browser/fileActions.contribution.ts b/src/vs/workbench/contrib/files/electron-browser/fileActions.contribution.ts
+--- a/src/vs/workbench/contrib/files/electron-browser/fileActions.contribution.ts
++++ b/src/vs/workbench/contrib/files/electron-browser/fileActions.contribution.ts
+@@ -97,20 +97,3 @@
+ 	category: category
+ }, REVEAL_IN_OS_WHEN_CONTEXT);
+ 
+-// Menu registration - chat attachments context
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatAttachmentsContext, {
+-	group: 'navigation',
+-	order: 20,
+-	command: revealInOsCommand,
+-	when: REVEAL_IN_OS_WHEN_CONTEXT
+-});
+-
+-// Menu registration - chat inline anchor
+-
+-MenuRegistry.appendMenuItem(MenuId.ChatInlineResourceAnchorContext, {
+-	group: 'navigation',
+-	order: 20,
+-	command: revealInOsCommand,
+-	when: REVEAL_IN_OS_WHEN_CONTEXT
+-});
+diff --git a/src/vs/editor/contrib/codeAction/browser/codeActionCommands.ts b/src/vs/editor/contrib/codeAction/browser/codeActionCommands.ts
+--- a/src/vs/editor/contrib/codeAction/browser/codeActionCommands.ts
++++ b/src/vs/editor/contrib/codeAction/browser/codeActionCommands.ts
+@@ -12,7 +12,6 @@
+ import { EditorContextKeys } from '../../../common/editorContextKeys.js';
+ import { autoFixCommandId, codeActionCommandId, fixAllCommandId, organizeImportsCommandId, quickFixCommandId, refactorCommandId, sourceActionCommandId } from './codeAction.js';
+ import * as nls from '../../../../nls.js';
+-import { MenuId } from '../../../../platform/actions/common/actions.js';
+ import { ContextKeyExpr } from '../../../../platform/contextkey/common/contextkey.js';
+ import { KeybindingWeight } from '../../../../platform/keybinding/common/keybindingsRegistry.js';
+ import { CodeActionAutoApply, CodeActionCommandArgs, CodeActionFilter, CodeActionKind, CodeActionTriggerSource } from '../common/types.js';
+@@ -79,12 +78,6 @@
+ 				when: EditorContextKeys.textInputFocus,
+ 				primary: KeyMod.CtrlCmd | KeyCode.Period,
+ 				weight: KeybindingWeight.EditorContrib
+-			},
+-			menu: {
+-				id: MenuId.InlineChatEditorAffordance,
+-				group: '1_quickfix',
+-				order: 0,
+-				when: ContextKeyExpr.and(EditorContextKeys.writable, EditorContextKeys.hasCodeActionsProvider)
+ 			}
+ 		});
+ 	}
+diff --git a/src/vs/workbench/contrib/extensions/browser/extensions.contribution.ts b/src/vs/workbench/contrib/extensions/browser/extensions.contribution.ts
+--- a/src/vs/workbench/contrib/extensions/browser/extensions.contribution.ts
++++ b/src/vs/workbench/contrib/extensions/browser/extensions.contribution.ts
+@@ -306,7 +306,7 @@
+ 			},
+ 			'extensions.allowOpenInModalEditor': {
+ 				type: 'boolean',
+-				description: localize('extensions.allowOpenInModalEditor', "Controls whether extensions and MCP servers open in a modal editor overlay."),
++				description: localize('extensions.allowOpenInModalEditor', "Controls whether extensions open in a modal editor overlay."),
+ 				default: false, // TODO@bpasero figure out the default for stable and retire this setting
+ 				tags: ['experimental'],
+ 				experiment: {
+diff --git a/src/vs/workbench/browser/workbench.contribution.ts b/src/vs/workbench/browser/workbench.contribution.ts
+--- a/src/vs/workbench/browser/workbench.contribution.ts
++++ b/src/vs/workbench/browser/workbench.contribution.ts
+@@ -584,7 +584,7 @@
+ 				'type': 'string',
+ 				'enum': ['hidden', 'visibleInWorkspace', 'visible', 'maximizedInWorkspace', 'maximized'],
+ 				'default': 'visibleInWorkspace',
+-				'description': localize('secondarySideBarDefaultVisibility', "Controls the default visibility of the secondary side bar in workspaces or empty windows that are opened for the first time. Can be overridden by the agent sessions startup editor setting."),
++				'description': localize('secondarySideBarDefaultVisibility', "Controls the default visibility of the secondary side bar in workspaces or empty windows that are opened for the first time."),
+ 				'enumDescriptions': [
+ 					localize('workbench.secondarySideBar.defaultVisibility.hidden', "The secondary side bar is hidden by default."),
+ 					localize('workbench.secondarySideBar.defaultVisibility.visibleInWorkspace', "The secondary side bar is visible by default if a workspace is opened."),
+diff --git a/src/vs/workbench/browser/layout.ts b/src/vs/workbench/browser/layout.ts
+--- a/src/vs/workbench/browser/layout.ts
++++ b/src/vs/workbench/browser/layout.ts
+@@ -3091,10 +3091,7 @@
+ 		// Auxiliary bar: Maximized settings
+ 		if (this.isNew[StorageScope.WORKSPACE]) {
+ 			const defaultAuxiliaryBarVisibility = this.configurationService.getValue(WorkbenchLayoutSettings.AUXILIARYBAR_DEFAULT_VISIBILITY);
+-			const startupEditor = this.configurationService.getValue<'none' | 'welcomePage' | 'readme' | 'newUntitledFile' | 'welcomePageInEmptyWorkbench' | 'terminal' | 'agentSessionsWelcomePage'>('workbench.startupEditor');
+-			if (startupEditor === 'agentSessionsWelcomePage') {
+-				this.applyAuxiliaryBarHiddenOverride(true);
+-			} else if (
++			if (
+ 				defaultAuxiliaryBarVisibility === 'maximized' ||
+ 				(defaultAuxiliaryBarVisibility === 'maximizedInWorkspace' && this.contextService.getWorkbenchState() !== WorkbenchState.EMPTY)
+ 			) {
+@@ -3133,10 +3130,6 @@
+ 
+ 		this.setRuntimeValue(LayoutStateKeys.AUXILIARYBAR_LAST_NON_MAXIMIZED_SIZE, this.getInitializationValue(LayoutStateKeys.AUXILIARYBAR_SIZE));
+ 		this.setRuntimeValue(LayoutStateKeys.AUXILIARYBAR_WAS_LAST_MAXIMIZED, true);
+-	}
+-
+-	private applyAuxiliaryBarHiddenOverride(value: boolean): void {
+-		this.setRuntimeValue(LayoutStateKeys.AUXILIARYBAR_HIDDEN, value);
+ 	}
+ 
+ 	save(workspace: boolean, global: boolean): void {
+diff --git a/src/vs/platform/theme/electron-main/themeMainServiceImpl.ts b/src/vs/platform/theme/electron-main/themeMainServiceImpl.ts
+--- a/src/vs/platform/theme/electron-main/themeMainServiceImpl.ts
++++ b/src/vs/platform/theme/electron-main/themeMainServiceImpl.ts
+@@ -45,7 +45,6 @@
+ 	export const DETECT_HC = new Setting<boolean>('window.autoDetectHighContrast', true);
+ 	export const SYSTEM_COLOR_THEME = new Setting<'default' | 'auto' | 'light' | 'dark'>('window.systemColorTheme', 'default');
+ 	export const AUXILIARYBAR_DEFAULT_VISIBILITY = new Setting<'hidden' | 'visibleInWorkspace' | 'visible' | 'maximizedInWorkspace' | 'maximized'>('workbench.secondarySideBar.defaultVisibility', 'visibleInWorkspace');
+-	export const STARTUP_EDITOR = new Setting<'none' | 'welcomePage' | 'readme' | 'newUntitledFile' | 'welcomePageInEmptyWorkbench' | 'terminal' | 'agentSessionsWelcomePage'>('workbench.startupEditor', 'welcomePage');
+ }
+ 
+ interface IPartSplashOverrideWorkspaces {
+@@ -367,7 +366,6 @@
+ 
+ 		// Figure out auxiliary bar width based on workspace, configuration and overrides
+ 		const auxiliaryBarDefaultVisibility = Setting.AUXILIARYBAR_DEFAULT_VISIBILITY.getValue(this.configurationService);
+-		const startupEditor = Setting.STARTUP_EDITOR.getValue(this.configurationService);
+ 		let auxiliaryBarWidth: number;
+ 		if (workspace) {
+ 			const auxiliaryBarVisible = override.layoutInfo.workspaces[workspace.id]?.auxiliaryBarVisible;
+@@ -376,9 +374,9 @@
+ 			} else if (auxiliaryBarVisible === false) {
+ 				auxiliaryBarWidth = 0;
+ 			} else {
+-				if (startupEditor !== 'agentSessionsWelcomePage' && (auxiliaryBarDefaultVisibility === 'visible' || auxiliaryBarDefaultVisibility === 'visibleInWorkspace')) {
++				if (auxiliaryBarDefaultVisibility === 'visible' || auxiliaryBarDefaultVisibility === 'visibleInWorkspace') {
+ 					auxiliaryBarWidth = override.layoutInfo.auxiliaryBarWidth || partSplash.layoutInfo.auxiliaryBarWidth || ThemeMainService.DEFAULT_BAR_WIDTH;
+-				} else if (startupEditor !== 'agentSessionsWelcomePage' && (auxiliaryBarDefaultVisibility === 'maximized' || auxiliaryBarDefaultVisibility === 'maximizedInWorkspace')) {
++				} else if (auxiliaryBarDefaultVisibility === 'maximized' || auxiliaryBarDefaultVisibility === 'maximizedInWorkspace') {
+ 					auxiliaryBarWidth = Number.MAX_SAFE_INTEGER; // marker for a maximised auxiliary bar
+ 				} else {
+ 					auxiliaryBarWidth = 0;
+diff --git a/src/vs/workbench/contrib/accessibility/browser/editorAccessibilityHelp.ts b/src/vs/workbench/contrib/accessibility/browser/editorAccessibilityHelp.ts
+--- a/src/vs/workbench/contrib/accessibility/browser/editorAccessibilityHelp.ts
++++ b/src/vs/workbench/contrib/accessibility/browser/editorAccessibilityHelp.ts
+@@ -108,10 +108,6 @@
+ 		content.push(AccessibilityHelpNLS.intellisense);
+ 		content.push(AccessibilityHelpNLS.showOrFocusHover);
+ 		content.push(AccessibilityHelpNLS.goToSymbol);
+-		content.push(AccessibilityHelpNLS.startDebugging);
+-		content.push(AccessibilityHelpNLS.setBreakpoint);
+-		content.push(AccessibilityHelpNLS.debugExecuteSelection);
+-		content.push(AccessibilityHelpNLS.addToWatch);
+ 		return content.join('\n');
+ 	}
+ }
+diff --git a/src/vs/editor/common/standaloneStrings.ts b/src/vs/editor/common/standaloneStrings.ts
+--- a/src/vs/editor/common/standaloneStrings.ts
++++ b/src/vs/editor/common/standaloneStrings.ts
+@@ -38,10 +38,6 @@
+ 	export const focusNotifications = nls.localize("focusNotifications", "Focus notification toasts{0} to navigate them with the keyboard. Accept the primary action of a focused notification{1}.", '<keybinding:notifications.focusToasts>', '<keybinding:notification.acceptPrimaryAction>');
+ 	export const quickChat = nls.localize("quickChatCommand", "Toggle quick chat{0} to open or close a chat session.", '<keybinding:workbench.action.quickchat.toggle>');
+ 	export const startInlineChat = nls.localize("startInlineChatCommand", "Start inline chat{0} to create an in editor chat session.", '<keybinding:inlineChat.start>');
+-	export const startDebugging = nls.localize('debug.startDebugging', "The Debug: Start Debugging command{0} will start a debug session.", '<keybinding:workbench.action.debug.start>');
+-	export const setBreakpoint = nls.localize('debugConsole.setBreakpoint', "The Debug: Inline Breakpoint command{0} will set or unset a breakpoint at the current cursor position in the active editor.", '<keybinding:editor.debug.action.toggleInlineBreakpoint>');
+-	export const addToWatch = nls.localize('debugConsole.addToWatch', "The Debug: Add to Watch command{0} will add the selected text to the watch view.", '<keybinding:editor.debug.action.selectionToWatch>');
+-	export const debugExecuteSelection = nls.localize('debugConsole.executeSelection', "The Debug: Execute Selection command{0} will execute the selected text in the debug console.", '<keybinding:editor.debug.action.selectionToRepl>');
+ 	export const chatEditorModification = nls.localize('chatEditorModification', "The editor contains pending modifications that have been made by chat.");
+ 	export const chatEditorRequestInProgress = nls.localize('chatEditorRequestInProgress', "The editor is currently waiting for modifications to be made by chat.");
+ 	export const chatEditActions = nls.localize('chatEditing.navigation', 'Navigate between edits in the editor with navigate previous{0} and next{1} and accept{2}, reject{3} or view the diff{4} for the current change. Accept edits across all files{5}.', '<keybinding:chatEditor.action.navigatePrevious>', '<keybinding:chatEditor.action.navigateNext>', '<keybinding:chatEditor.action.acceptHunk>', '<keybinding:chatEditor.action.undoHunk>', '<keybinding:chatEditor.action.toggleDiff>', '<keybinding:chatEditor.action.acceptAllEdits>');
+diff --git a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+--- a/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
++++ b/src/vs/workbench/contrib/welcomeGettingStarted/common/gettingStartedContent.ts
+@@ -172,17 +172,6 @@
+ 			command: 'command:remoteHub.openRepository',
+ 		}
+ 	},
+-	{
+-		id: 'topLevelRemoteOpen',
+-		title: localize('gettingStarted.topLevelRemoteOpen.title', "Connect to..."),
+-		description: localize('gettingStarted.topLevelRemoteOpen.description', "Connect to remote development workspaces."),
+-		when: '!isWeb',
+-		icon: Codicon.remote,
+-		content: {
+-			type: 'startEntry',
+-			command: 'command:workbench.action.remote.showMenu',
+-		}
+-	},
+ ];
+ 
+ const Button = (title: string, href: string) => `[${title}](${href})`;
+@@ -253,7 +242,7 @@
+ 				{
+ 					id: 'findLanguageExtensionsWeb',
+ 					title: localize('gettingStarted.findLanguageExts.title', "Rich support for all your languages"),
+-					description: localize('gettingStarted.findLanguageExts.description.interpolated', "Code smarter with syntax highlighting, inline suggestions, linting and debugging. While many languages are built-in, many more can be added as extensions.\n{0}", Button(localize('browseLangExts', "Browse Language Extensions"), 'command:workbench.extensions.action.showLanguageExtensions')),
++					description: localize('gettingStarted.findLanguageExts.description.interpolated', "Code with syntax highlighting, inline suggestions and linting. While many languages are built-in, many more can be added as extensions.\n{0}", Button(localize('browseLangExts', "Browse Language Extensions"), 'command:workbench.extensions.action.showLanguageExtensions')),
+ 					when: 'workspacePlatform != \'webworker\'',
+ 					media: {
+ 						type: 'svg', altText: 'Language extensions', path: 'languages.svg'
+@@ -355,7 +344,7 @@
+ 				{
+ 					id: 'goToSymbol',
+ 					title: localize('gettingStarted.goToSymbol.title', "Navigate to symbols in a file"),
+-					description: localize('gettingStarted.goToSymbol.description.interpolated', "The Go to Symbol command is useful for navigating between important landmarks in a document.\n{0}", Button(localize('openGoToSymbol', "Go to Symbol"), 'command:editor.action.goToSymbol')),
++					description: localize('gettingStarted.goToSymbol.description.interpolated', "The Go to Symbol command is useful for navigating between important landmarks in a document.\n{0}", Button(localize('openGoToSymbol', "Go to Symbol"), 'command:workbench.action.gotoSymbol')),
+ 					media: {
+ 						type: 'markdown', path: 'empty'
+ 					}
+@@ -396,11 +385,10 @@
+ 			type: 'steps',
+ 			steps: [
+ 				{
+-					id: 'settingsAndSync',
++					id: 'settings',
+ 					title: localize('gettingStarted.settings.title', "Tune your settings"),
+-					description: localize('gettingStarted.settingsAndSync.description.interpolated', "Customize every aspect of VSLight and [sync](command:workbench.userDataSync.actions.turnOn) customizations across devices.\n{0}", Button(localize('tweakSettings', "Open Settings"), 'command:toSide:workbench.action.openSettings')),
+-					when: 'workspacePlatform != \'webworker\' && syncStatus != uninitialized',
+-					completionEvents: ['onEvent:sync-enabled'],
++					description: localize('gettingStarted.settings.description.interpolated', "Customize every aspect of VSLight.\n{0}", Button(localize('tweakSettings', "Open Settings"), 'command:toSide:workbench.action.openSettings')),
++					completionEvents: ['onCommand:workbench.action.openSettings'],
+ 					media: {
+ 						type: 'svg', altText: 'VSLight Settings', path: 'settings.svg'
+ 					},
+@@ -415,6 +403,15 @@
+ 					},
+ 				},
+ 				{
++					id: 'editor',
++					title: localize('gettingStarted.editor.title', "Learn the editor"),
++					description: localize('gettingStarted.editor.description.interpolated', "Try selection, code navigation, suggestions and other editing features in an interactive playground.\n{0}", Button(localize('openEditorPlayground', "Open Editor Playground"), 'command:workbench.action.showInteractivePlayground')),
++					completionEvents: ['onCommand:workbench.action.showInteractivePlayground'],
++					media: {
++						type: 'svg', altText: 'Editor commands in the Command Palette.', path: 'commandPalette.svg'
++					},
++				},
++				{
+ 					id: 'terminal',
+ 					title: localize('gettingStarted.terminal.title', "Built-in terminal"),
+ 					description: localize('gettingStarted.terminal.description.interpolated', "Quickly run shell commands and monitor build output, right next to your code.\n{0}", Button(localize('showTerminal', "Open Terminal"), 'command:workbench.action.terminal.toggleTerminal')),
+@@ -424,15 +421,6 @@
+ 					},
+ 				},
+ 				{
+-					id: 'debugging',
+-					title: localize('gettingStarted.debug.title', "Watch your code in action"),
+-					description: localize('gettingStarted.debug.description.interpolated', "Accelerate your edit, build, test, and debug loop by setting up a launch configuration.\n{0}", Button(localize('runProject', "Run your Project"), 'command:workbench.action.debug.selectandstart')),
+-					when: 'workspacePlatform != \'webworker\' && workspaceFolderCount != 0',
+-					media: {
+-						type: 'svg', altText: 'Run and debug view.', path: 'debug.svg',
+-					},
+-				},
+-				{
+ 					id: 'scmClone',
+ 					title: localize('gettingStarted.scm.title', "Track your code with Git"),
+ 					description: localize('gettingStarted.scmClone.description.interpolated', "Set up the built-in version control for your project to track your changes and collaborate with others.\n{0}", Button(localize('cloneRepo', "Clone Repository"), 'command:git.clone')),
+@@ -492,7 +480,7 @@
+ 				{
+ 					id: 'workspaceTrust',
+ 					title: localize('gettingStarted.workspaceTrust.title', "Safely browse and edit code"),
+-					description: localize('gettingStarted.workspaceTrust.description.interpolated', "{0} lets you decide whether your project folders should **allow or restrict** automatic code execution __(required for extensions, debugging, etc)__.\nOpening a file/folder will prompt to grant trust. You can always {1} later.", Button(localize('workspaceTrust', "Workspace Trust"), 'https://code.visualstudio.com/docs/editor/workspace-trust'), Button(localize('enableTrust', "enable trust"), 'command:toSide:workbench.trust.manage')),
++					description: localize('gettingStarted.workspaceTrust.description.interpolated', "{0} lets you decide whether your project folders should **allow or restrict** automatic code execution __(required for extensions and tasks)__.\nOpening a file/folder will prompt to grant trust. You can always {1} later.", Button(localize('workspaceTrust', "Workspace Trust"), 'https://code.visualstudio.com/docs/editor/workspace-trust'), Button(localize('enableTrust', "enable trust"), 'command:toSide:workbench.trust.manage')),
+ 					when: 'workspacePlatform != \'webworker\' && !isWorkspaceTrusted && workspaceFolderCount == 0',
+ 					media: {
+ 						type: 'svg', altText: 'Workspace Trust editor in Restricted mode and a primary button for switching to Trusted mode.', path: 'workspaceTrust.svg'
+diff --git a/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts b/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts
+--- a/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts
++++ b/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts
+@@ -65,7 +65,6 @@
+ 		const inactive = typeof optionsOrToSide === 'object' ? optionsOrToSide.inactive : false;
+ 		const activeEditor = editorService.activeEditor;
+ 
+-		// If no specific walkthrough is requested and agent sessions welcome is preferred, open that instead
+ 		if (walkthroughID) {
+ 			const selectedCategory = typeof walkthroughID === 'string' ? walkthroughID : walkthroughID.category;
+ 			let selectedStep: string | undefined;
+diff --git a/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedService.ts b/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedService.ts
+--- a/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedService.ts
++++ b/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedService.ts
+@@ -437,8 +437,7 @@
+ 		this.storageService.store(walkthroughMetadataConfigurationKey, JSON.stringify([...this.metadata.entries()]), StorageScope.PROFILE, StorageTarget.USER);
+ 
+ 		const hadLastFoucs = await this.hostService.hadLastFocus();
+-		const startupEditor = this.configurationService.getValue<string>('workbench.startupEditor');
+-		if (hadLastFoucs && sectionToOpen && this.configurationService.getValue<string>('workbench.welcomePage.walkthroughs.openOnInstall') && startupEditor !== 'agentSessionsWelcomePage') {
++		if (hadLastFoucs && sectionToOpen && this.configurationService.getValue<string>('workbench.welcomePage.walkthroughs.openOnInstall')) {
+ 			type GettingStartedAutoOpenClassification = {
+ 				owner: 'lramos15';
+ 				comment: 'When a walkthrough is opened upon extension installation';
+diff --git a/src/vs/workbench/workbench.common.main.ts b/src/vs/workbench/workbench.common.main.ts
+--- a/src/vs/workbench/workbench.common.main.ts
++++ b/src/vs/workbench/workbench.common.main.ts
+@@ -335,8 +335,9 @@
+ import './contrib/surveys/browser/nps.contribution.js';
+ import './contrib/surveys/browser/languageSurveys.contribution.js';
+ 
+-// Welcome — vslight: welcome page/walkthroughs removed; viewsWelcome/newFile kept
+-// (they render the empty-state of kept views like Explorer)
++// Welcome: ordinary onboarding, editor playground and empty view content
++import './contrib/welcomeGettingStarted/browser/gettingStarted.contribution.js';
++import './contrib/welcomeWalkthrough/browser/walkThrough.contribution.js';
+ import './contrib/welcomeViews/common/viewsWelcome.contribution.js';
+ import './contrib/welcomeViews/common/newFile.contribution.js';
+ 
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -100,8 +100,25 @@
+ 	// Accessibility Signals
+ 	'out-build/vs/platform/accessibilitySignal/browser/media/*.mp3',
+ 
+-	// Welcome
+-
++	// Welcome: files referenced by the retained ordinary walkthroughs
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/menuBar.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/dark-hc.png',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/dark.png',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/light-hc.png',
++	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/light.png',
+ 
+ 	// Extensions
+ 	'out-build/vs/workbench/contrib/extensions/browser/media/{theme-icon.png,language-icon.svg}',

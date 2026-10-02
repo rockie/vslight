@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-01T18:47:15.125230+00:00",
+  "generation": "147+148+149",
+  "status": "SIGN_NOTARY_STAPLE_GATES_PASS_CLEANUP_RECHECK_PASS",
+  "sourceApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "signedApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign149-rwc9y8ux/VSCode-darwin-arm64/VSLight.app",
+  "signedRegularFiles": 1209,
+  "signedAppBytes": 421987283,
+  "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign149-rwc9y8ux/VSLight-149-signed.zip",
+  "zipBytes": 157387197,
+  "zipSha256": "a349cf5b6352f74ed3a037b696605615e44d833146914d584d00985492c2813d",
+  "notaryID": "538bae3e-3e94-483e-8653-cfe10f27e190",
+  "notaryStatus": "Accepted",
+  "finalGates": [
+    {
+      "gate": "strict-final",
+      "exit": 0
+    },
+    {
+      "gate": "spctl-final",
+      "exit": 0
+    },
+    {
+      "gate": "staple-final",
+      "exit": 0
+    },
+    {
+      "gate": "zip-final",
+      "exit": 0
+    }
+  ],
+  "originalRunner": {
+    "exit": 2,
+    "completedAt": "2026-10-01T18:31:59.280399+00:00"
+  },
+  "cleanupRecheck": {
+    "at": "2026-10-01T18:38:16.012531+00:00",
+    "status": "PASS",
+    "exit": 0,
+    "searchListEqualSaved145Reference": true,
+    "searchListReference": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign145-7ran_y91/search-list-before.json",
+    "new149PreSignSnapshotCaptured": false,
+    "privateKeychainRemoved": true,
+    "privateP12Removed": true,
+    "overallOriginalRunnerExit": 2,
+    "cause": "The cloned runner omitted restore-search-list.py. Signing/notary/staple/spctl/strict/ZIP completed; final record helper failed. Temporary keychain and P12 cleanup already ran.",
+    "repair": "Verified no task-private keychain/P12 and current search list equals saved145 reference; no list mutation and no repeat signing."
+  },
+  "contentAudit": "M8-sign149-content.json",
+  "electron": "43.7.5",
+  "macosFloor": "12.0",
+  "credentials": "Existing authorized credential file used without printing values; private keychain/P12 removed; no release/upload distribution."
+}

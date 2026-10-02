@@ -1,0 +1,428 @@
+{
+  "app": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app",
+  "errors": [],
+  "exit_code": 0,
+  "missing_out": [],
+  "required_packages": {
+    "CRI": {
+      "locations": [
+        {
+          "package": "chrome-remote-interface",
+          "paths": [
+            "chrome-remote-interface"
+          ],
+          "store": "asar"
+        }
+      ],
+      "present": true
+    },
+    "katex": {
+      "locations": [
+        {
+          "package": "katex",
+          "paths": [
+            "katex"
+          ],
+          "store": "asar"
+        }
+      ],
+      "present": true
+    },
+    "node-pty": {
+      "locations": [
+        {
+          "package": "node-pty",
+          "paths": [
+            "node-pty"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "node-pty",
+          "paths": [
+            "node-pty"
+          ],
+          "real_paths": [
+            "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    },
+    "ripgrep": {
+      "locations": [
+        {
+          "package": "@vscode/ripgrep-universal",
+          "paths": [
+            "@vscode/ripgrep-universal"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "@vscode/ripgrep-universal",
+          "paths": [
+            "@vscode/ripgrep-universal"
+          ],
+          "real_paths": [
+            "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    },
+    "semver": {
+      "locations": [
+        {
+          "package": "semver",
+          "paths": [
+            "semver"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "semver",
+          "paths": [
+            "semver"
+          ],
+          "real_paths": [
+            "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+          ],
+          "store": "node_modules"
+        }
+      ],
+      "present": true
+    },
+    "sqlite": {
+      "locations": [
+        {
+          "package": "@vscode/sqlite3",
+          "paths": [
+            "@vscode/sqlite3"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "@vscode/sqlite3",
+          "paths": [
+            "@vscode/sqlite3"
+          ],
+          "real_paths": [
+            "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    }
+  },
+  "retired_extensions": [],
+  "retired_out": [],
+  "retired_packages": [],
+  "retired_product_keys": [],
+  "schema_version": 1,
+  "signature_checks": [
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "--deep",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app",
+      "stderr": "--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Renderer).app\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Renderer).app\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (GPU).app\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper (GPU).app\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Mantle.framework/Versions/Current/.\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Mantle.framework/Versions/Current/.\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.\n--prepared:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler\n--validated:/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper: satisfies its Designated Requirement\n",
+      "stdout": ""
+    },
+    {
+      "command": [
+        "codesign",
+        "--verify",
+        "--strict",
+        "--verbose=2",
+        "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node"
+      ],
+      "exit": 0,
+      "path": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+      "stderr": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node: valid on disk\n/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node: satisfies its Designated Requirement\n",
+      "stdout": ""
+    }
+  ],
+  "signed_app_state": {
+    "after_sha256": "ed837977d384d86b999a1c667f083f5b4deb69787851cc38067f145d1571d859",
+    "before_sha256": "ed837977d384d86b999a1c667f083f5b4deb69787851cc38067f145d1571d859",
+    "unchanged": true
+  },
+  "status": "pass",
+  "stores": {
+    "asar": {
+      "header_bytes": 97852,
+      "json_bytes": 97843,
+      "nodes": 2134,
+      "signed_unpacked_size_changes": [
+        {
+          "header_bytes": 466096,
+          "path": "@parcel/watcher/build/Release/watcher.node",
+          "physical_bytes": 481664
+        },
+        {
+          "header_bytes": 6632912,
+          "path": "@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+          "physical_bytes": 6612624
+        },
+        {
+          "header_bytes": 16704,
+          "path": "@vscode/deviceid/build/Release/windows.node",
+          "physical_bytes": 34864
+        },
+        {
+          "header_bytes": 80384,
+          "path": "@vscode/fs-copyfile/build/Release/vscode_fs.node",
+          "physical_bytes": 98176
+        },
+        {
+          "header_bytes": 52208,
+          "path": "@vscode/native-watchdog/build/Release/watchdog.node",
+          "physical_bytes": 70176
+        },
+        {
+          "header_bytes": 4528512,
+          "path": "@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+          "physical_bytes": 4521264
+        },
+        {
+          "header_bytes": 501288,
+          "path": "@vscode/spdlog/build/Release/spdlog.node",
+          "physical_bytes": 516640
+        },
+        {
+          "header_bytes": 1886784,
+          "path": "@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+          "physical_bytes": 1894080
+        },
+        {
+          "header_bytes": 60064,
+          "path": "@vscodium/native-keymap/build/Release/keymapping.node",
+          "physical_bytes": 77984
+        },
+        {
+          "header_bytes": 540896,
+          "path": "kerberos/build/Release/kerberos.node",
+          "physical_bytes": 590288
+        },
+        {
+          "header_bytes": 50960,
+          "path": "native-is-elevated/build/Release/iselevated.node",
+          "physical_bytes": 68944
+        },
+        {
+          "header_bytes": 91608,
+          "path": "node-pty/build/Release/pty.node",
+          "physical_bytes": 109328
+        },
+        {
+          "header_bytes": 50592,
+          "path": "node-pty/build/Release/spawn-helper",
+          "physical_bytes": 69392
+        },
+        {
+          "header_bytes": 51400,
+          "path": "windows-foreground-love/build/Release/foreground_love.node",
+          "physical_bytes": 69376
+        }
+      ],
+      "unpacked_files": 26
+    },
+    "node_modules": {
+      "exists": true,
+      "nodes": 58
+    },
+    "node_modules.asar.unpacked": {
+      "exists": true,
+      "nodes": 75
+    },
+    "out": {
+      "nodes": 174
+    }
+  },
+  "summary": {
+    "missing_required_out": 0,
+    "retired_extensions": 0,
+    "retired_out_groups": 0,
+    "retired_package_instances": 0,
+    "retired_product_keys": 0,
+    "structure_or_missing_package_errors": 0
+  }
+}

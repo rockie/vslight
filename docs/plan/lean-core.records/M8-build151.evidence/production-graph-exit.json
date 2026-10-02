@@ -1,0 +1,14 @@
+{
+  "at": "2026-10-02T18:51:48.564245+10:00",
+  "command": [
+    "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+    "/Users/rockie/.local/share/mise/installs/node/24.18.0/lib/node_modules/npm/bin/npm-cli.js",
+    "ls",
+    "--omit=dev",
+    "--all",
+    "--json"
+  ],
+  "exit": 0,
+  "stdoutBytes": 32665,
+  "stderrBytes": 1094
+}

@@ -1,0 +1,83 @@
+{
+  "status": "FAIL",
+  "app": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+  "root": "/private/tmp/lcfinal-chkarkup/mermaid",
+  "runs": [
+    {
+      "label": "cold",
+      "pid": 32227,
+      "args": [
+        "--user-data-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/u",
+        "--extensions-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/e",
+        "--shared-data-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/s",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/mermaid/ext",
+        "--remote-debugging-port=19570",
+        "--skip-welcome",
+        "--skip-release-notes",
+        "--disable-workspace-trust",
+        "--new-window",
+        "/private/tmp/lcfinal-chkarkup/mermaid/w"
+      ],
+      "at": "2026-10-02T07:32:44.637Z",
+      "ready": {
+        "hostPid": 32993,
+        "parentPid": 32227,
+        "version": "1.135.0",
+        "mermaidExtensionPath": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features",
+        "matrixRows": 32
+      },
+      "authority": "32227 32222 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/mermaid/u --extensions-dir /private/tmp/lcfinal-chkarkup/mermaid/e --shared-data-dir /private/tmp/lcfinal-chkarkup/mermaid/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/mermaid/ext --remote-debugging-port=19570 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/mermaid/w\n",
+      "listener": "p32227\nf32\nn127.0.0.1:19570\n",
+      "exit": {
+        "code": 0,
+        "signal": null,
+        "at": "2026-10-02T07:32:50.435Z"
+      }
+    },
+    {
+      "label": "restart",
+      "pid": 33760,
+      "args": [
+        "--user-data-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/u",
+        "--extensions-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/e",
+        "--shared-data-dir",
+        "/private/tmp/lcfinal-chkarkup/mermaid/s",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/mermaid/ext",
+        "--remote-debugging-port=19570",
+        "--skip-welcome",
+        "--skip-release-notes",
+        "--disable-workspace-trust",
+        "--new-window",
+        "/private/tmp/lcfinal-chkarkup/mermaid/w"
+      ],
+      "at": "2026-10-02T07:32:50.474Z",
+      "ready": {
+        "hostPid": 34496,
+        "parentPid": 33760,
+        "version": "1.135.0",
+        "mermaidExtensionPath": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features",
+        "matrixRows": 32
+      },
+      "authority": "33760 32222 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/mermaid/u --extensions-dir /private/tmp/lcfinal-chkarkup/mermaid/e --shared-data-dir /private/tmp/lcfinal-chkarkup/mermaid/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/mermaid/ext --remote-debugging-port=19570 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/mermaid/w\n",
+      "listener": "p33760\nf32\nn127.0.0.1:19570\n",
+      "exit": {
+        "code": 0,
+        "signal": null,
+        "at": "2026-10-02T07:33:08.050Z"
+      }
+    }
+  ],
+  "reusedProfile": true,
+  "clipboard": {
+    "restored": true,
+    "backupDeleted": true
+  },
+  "error": "Error: Mermaid DOM did not pass before timeout: []\n    at WebviewCdp.waitForMermaid (file:///private/tmp/lcfinal-chkarkup/mermaid/ext/webview-cdp.mjs:209:11)\n    at async WebviewCdp.snapshot (file:///private/tmp/lcfinal-chkarkup/mermaid/ext/webview-cdp.mjs:212:23)\n    at async snapshots (file:///private/tmp/lcfinal-chkarkup/mermaid/run-final.mjs:53:16)\n    at async file:///private/tmp/lcfinal-chkarkup/mermaid/run-final.mjs:81:15"
+}

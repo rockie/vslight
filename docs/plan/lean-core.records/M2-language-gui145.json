@@ -1,0 +1,103 @@
+{
+  "at": "2026-10-01T18:10:57.906298+00:00",
+  "status": "WORKBENCH_DE_GUI_PASS_NATIVE_DIALOG_PENDING",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33 + actual145/146",
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "fixture": "/private/tmp/de145-o5kf9hvk",
+  "firstLaunch": {
+    "pid": 54171,
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "args": [
+      "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "--locale",
+      "de",
+      "--user-data-dir",
+      "/tmp/vslight-smoke.fWrs7O/user-data",
+      "--extensions-dir",
+      "/tmp/vslight-smoke.fWrs7O/extensions",
+      "--shared-data-dir",
+      "/private/tmp/de145-o5kf9hvk/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/de145-o5kf9hvk/ext",
+      "--remote-debugging-port=19530",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/tmp/de145-o5kf9hvk/w"
+    ],
+    "at": "2026-10-01T17:53:08.245450+00:00",
+    "profile": "/tmp/vslight-smoke.fWrs7O/user-data",
+    "locale": "de"
+  },
+  "normalQuitRequest": "de145-quit01",
+  "restart": {
+    "pid": 58637,
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "args": [
+      "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "--inspect=19531",
+      "--locale",
+      "de",
+      "--user-data-dir",
+      "/tmp/vslight-smoke.fWrs7O/user-data",
+      "--extensions-dir",
+      "/tmp/vslight-smoke.fWrs7O/extensions",
+      "--shared-data-dir",
+      "/private/tmp/de145-o5kf9hvk/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/de145-o5kf9hvk/ext",
+      "--remote-debugging-port=19530",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/tmp/de145-o5kf9hvk/w"
+    ],
+    "at": "2026-10-01T18:07:30.064282+00:00",
+    "profile": "/tmp/vslight-smoke.fWrs7O/user-data",
+    "locale": "de",
+    "oldPid": 54171
+  },
+  "nls": {
+    "pid": 58637,
+    "argvLocale": "de",
+    "userDataArg": "/tmp/vslight-smoke.fWrs7O/user-data",
+    "dev": null,
+    "nls": {
+      "userLocale": "de",
+      "osLocale": "zh-cn",
+      "resolvedLanguage": "de",
+      "hasLanguagePack": true,
+      "defaultMessagesFile": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/nls.messages.json",
+      "messagesFile": "/tmp/vslight-smoke.fWrs7O/user-data/clp/adf01292e1e2c2b3ffcfe7aad4025692.de/41ec19baf8095b559518922360dcb3e4fee5319c/nls.messages.json"
+    }
+  },
+  "indexBirth": "2026-10-01T17:53:08.923755+00:00",
+  "packVersion": "1.131.0",
+  "assertions": [
+    "document.documentElement.lang=de",
+    "Welcome=Willkommen",
+    "Outline=GLIEDERUNG, Timeline=ZEITACHSE",
+    "real German languagePack messages file loaded on restart"
+  ],
+  "evidence": [
+    {
+      "path": "/private/tmp/de145-o5kf9hvk/evidence/workbench-en-red.png",
+      "sha256": "afb2ebec7105e66d7e45ad0213c1c472ff83ee47fad7fd09627e428abe4114d8"
+    },
+    {
+      "path": "/private/tmp/de145-o5kf9hvk/evidence/workbench-de-green.png",
+      "sha256": "3b2b9372d3b2b8cc4abc037bd1ace461c4d8ddeefc85464e1d3790d65097a691"
+    },
+    {
+      "path": "/private/tmp/de145-o5kf9hvk/evidence/dom-de.json",
+      "sha256": "07ff892ea4ea30c38049c2da6c060eb040483ea3f892d386d10a423bc3533ad4"
+    },
+    {
+      "path": "/private/tmp/de145-o5kf9hvk/nls-main.json",
+      "sha256": "4fae9c155b905dfc540ab00f9bab3bf2bb423f63d44ef769685374bf7bbc59a7"
+    }
+  ],
+  "firstStartInference": "languagepacks.json birth is after first main launch; resolveNLSConfiguration falls back to English if index missing. First-start NLS config itself was not captured. No production source change."
+}

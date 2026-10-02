@@ -1,0 +1,26 @@
+2026-10-02 21:13:28.601 [info] Extension host with pid 41146 started
+2026-10-02 21:13:28.601 [info] Skipping acquiring lock for /private/tmp/lc151ms-wdn5hck0/u/User/workspaceStorage/14d17518e30c83650b462535b55e76c5.
+2026-10-02 21:13:28.606 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 21:13:28.608 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 21:13:28.625 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:13:28.662 [info] Eager extensions activated
+2026-10-02 21:13:28.665 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:13:28.671 [info] ExtensionService#_doActivateExtension lean-tests.lc151ms-fixture, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:13:28.679 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 21:13:30.829 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 21:13:30.831 [info] Extension host with pid 41146 exiting with code 0
+2026-10-02 21:13:31.121 [info] Extension host with pid 41471 started
+2026-10-02 21:13:31.121 [info] Skipping acquiring lock for /private/tmp/lc151ms-wdn5hck0/u/User/workspaceStorage/14d17518e30c83650b462535b55e76c5.
+2026-10-02 21:13:31.125 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 21:13:31.136 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 21:13:31.137 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 21:13:31.153 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:13:31.193 [info] Eager extensions activated
+2026-10-02 21:13:31.197 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:13:31.202 [info] ExtensionService#_doActivateExtension lean-tests.lc151ms-fixture, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:13:33.232 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 21:13:33.237 [info] Extension host with pid 41471 exiting with code 0

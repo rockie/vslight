@@ -1,0 +1,230 @@
+{
+  "at": "2026-10-02T10:56:12.117161+10:00",
+  "generation": "150",
+  "status": "CLEAN_BUILD_TYPECHECK_STORAGE_SUITE_AND_PACKAGE_PASS",
+  "root": "/private/tmp/lean-core-build150-z3fs7f_q",
+  "source": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode",
+  "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "gitBase": "f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "upstreamCommit": "08d4889f9ec4a1685d257b9b95de036c8e1ce1e5",
+  "build": {
+    "exit": 0,
+    "startedAt": "2026-10-02T10:32:04.781376+10:00",
+    "endedAt": "2026-10-02T10:35:58.895220+10:00",
+    "durationSeconds": 234.112177542
+  },
+  "inputs": {
+    "manifest": "/private/tmp/lean-core-build150-z3fs7f_q/build-inputs.json",
+    "files": 1421,
+    "postBuildValidationHelpersChanged": true,
+    "productionInputFrozen": true
+  },
+  "nativeNoEmit": {
+    "exit": 0,
+    "bytes": 0,
+    "log": "/private/tmp/lean-core-build150-z3fs7f_q/native-noemit.log"
+  },
+  "storageRegression": {
+    "PASS": 7,
+    "FAIL": 0,
+    "SKIP": 0,
+    "privateSourceMocha": true
+  },
+  "officialElectronStorageSuites": {
+    "exit": 0,
+    "PASS": 79,
+    "FAIL": 0,
+    "pending": 1,
+    "pendingSource": "Existing workbench browser StorageService test.skip clear, slow developer action; not changed or counted as product acceptance",
+    "log": "/private/tmp/lean-core-build150-z3fs7f_q/storage-electron-suite.log",
+    "runner": {
+      "command": [
+        "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode/.build/electron/VSLight.app/Contents/MacOS/VSLight",
+        "test/unit/electron/index.js",
+        "--build",
+        "--run",
+        "src/vs/base/parts/storage/test/common/storage.test.ts",
+        "--run",
+        "src/vs/base/parts/storage/test/node/storage.integrationTest.ts",
+        "--run",
+        "src/vs/platform/storage/test/common/storageService.test.ts",
+        "--run",
+        "src/vs/platform/secrets/test/common/secrets.test.ts",
+        "--run",
+        "src/vs/platform/storage/test/electron-main/storageMainService.test.ts",
+        "--run",
+        "src/vs/workbench/services/storage/test/browser/storageService.test.ts"
+      ],
+      "exit": 0
+    }
+  },
+  "productionGraph": {
+    "graphUnique": 146,
+    "graphOccurrences": 199,
+    "problems": [],
+    "retired": [],
+    "exit": 0,
+    "path": "/private/tmp/lean-core-build150-z3fs7f_q/production-graph.json"
+  },
+  "package": {
+    "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "errors": [],
+    "exit_code": 0,
+    "missing_out": [],
+    "required_packages": {
+      "CRI": {
+        "locations": [
+          {
+            "package": "chrome-remote-interface",
+            "paths": [
+              "chrome-remote-interface"
+            ],
+            "store": "asar"
+          }
+        ],
+        "present": true
+      },
+      "katex": {
+        "locations": [
+          {
+            "package": "katex",
+            "paths": [
+              "katex"
+            ],
+            "store": "asar"
+          }
+        ],
+        "present": true
+      },
+      "node-pty": {
+        "locations": [
+          {
+            "package": "node-pty",
+            "paths": [
+              "node-pty"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "node-pty",
+            "paths": [
+              "node-pty"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "ripgrep": {
+        "locations": [
+          {
+            "package": "@vscode/ripgrep-universal",
+            "paths": [
+              "@vscode/ripgrep-universal"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "@vscode/ripgrep-universal",
+            "paths": [
+              "@vscode/ripgrep-universal"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "semver": {
+        "locations": [
+          {
+            "package": "semver",
+            "paths": [
+              "semver"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "semver",
+            "paths": [
+              "semver"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+            ],
+            "store": "node_modules"
+          }
+        ],
+        "present": true
+      },
+      "sqlite": {
+        "locations": [
+          {
+            "package": "@vscode/sqlite3",
+            "paths": [
+              "@vscode/sqlite3"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "@vscode/sqlite3",
+            "paths": [
+              "@vscode/sqlite3"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      }
+    },
+    "retired_extensions": [],
+    "retired_out": [],
+    "retired_packages": [],
+    "retired_product_keys": [],
+    "schema_version": 1,
+    "status": "pass",
+    "stores": {
+      "asar": {
+        "header_bytes": 97852,
+        "json_bytes": 97842,
+        "nodes": 2134,
+        "unpacked_files": 26
+      },
+      "node_modules": {
+        "exists": true,
+        "nodes": 58
+      },
+      "node_modules.asar.unpacked": {
+        "exists": true,
+        "nodes": 75
+      },
+      "out": {
+        "nodes": 174
+      }
+    },
+    "summary": {
+      "missing_required_out": 0,
+      "retired_extensions": 0,
+      "retired_out_groups": 0,
+      "retired_package_instances": 0,
+      "retired_product_keys": 0,
+      "structure_or_missing_package_errors": 0
+    }
+  },
+  "node": "24.18.0",
+  "npm": "11.16.0",
+  "electron": "43.7.5",
+  "macosFloor": "12.0",
+  "arch": "arm64",
+  "CI": true,
+  "pruneEntries": 254,
+  "remaining": "Current-input dual-arch CI not run per user; actual shortcut/menu/titlebar GUI and Mermaid150 targeted restart pending"
+}

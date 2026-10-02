@@ -1,0 +1,66 @@
+{
+  "welcomePresent": true,
+  "welcomeText": "Start\nNew File...\nOpen...\nClone Git Repository...\nRecent\nYou have no recent folders,open a folderto start.\nWalkthroughs\nGet started with VSLight\nCustomize your editor, learn the basics, and start coding\nLearn the Fundamentals\nVSLight Announcements\nThere are no current announcements.\n\nShow welcome page on startup",
+  "welcomeRect": {
+    "width": 1092,
+    "height": 497
+  },
+  "titlebarPresent": true,
+  "titlebarText": "[Extension Development Host] w",
+  "titlebarControls": [
+    {
+      "role": "button",
+      "label": "Go Back (⌃-)",
+      "title": null
+    },
+    {
+      "role": "button",
+      "label": "Go Forward (⌃⇧-)",
+      "title": null
+    },
+    {
+      "role": "toolbar",
+      "label": "Title actions",
+      "title": null
+    },
+    {
+      "role": "button",
+      "label": "Customize Layout...",
+      "title": null
+    },
+    {
+      "role": "button",
+      "label": "Toggle Primary Side Bar (⌘B)",
+      "title": null
+    },
+    {
+      "role": "button",
+      "label": "Toggle Panel (⌘J)",
+      "title": null
+    },
+    {
+      "role": "button",
+      "label": "Toggle Secondary Side Bar (⌥⌘B)",
+      "title": null
+    }
+  ],
+  "activityLabels": [
+    "Active View Switcher",
+    "",
+    "Explorer (⇧⌘E)",
+    "Explorer (⇧⌘E)",
+    "",
+    "Search (⇧⌘F)",
+    "Search (⇧⌘F)",
+    "",
+    "Source Control (⌃⇧G)",
+    "Source Control (⌃⇧G)",
+    "Extensions (⇧⌘X)",
+    "Extensions (⇧⌘X)",
+    "Extensions (⇧⌘X)",
+    "Manage",
+    "Manage",
+    "Manage",
+    "Manage"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "tabs": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": false
+    },
+    {
+      "label": "Welcome",
+      "active": true
+    }
+  ],
+  "readonly": true,
+  "before": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": false
+    },
+    {
+      "label": "Welcome",
+      "active": true
+    }
+  ],
+  "strictEqual": true,
+  "fullPreviewStickyRestoreGate": "Historical restore150 evidence; this controller only observes current tabs"
+}

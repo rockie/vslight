@@ -1,0 +1,22 @@
+2026-10-02 21:13:27.114 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:27.116 [info] StorageMainService: creating application shared storage
+2026-10-02 21:13:27.214 [info] [shared storage] Creating shared storage database at '/private/tmp/lc151ms-wdn5hck0/s/sharedStorage/state.vscdb' (wasCreated: true)
+2026-10-02 21:13:27.215 [info] [shared storage] Initializing fallback application storage (path: /private/tmp/lc151ms-wdn5hck0/u/User/globalStorage/state.vscdb)
+2026-10-02 21:13:27.216 [info] [shared storage] Fallback application storage initialized with 3 items
+2026-10-02 21:13:27.459 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:27.461 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:27.575 [info] update#setState idle
+2026-10-02 21:13:27.635 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:28.500 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 21:13:28.500 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 21:13:28.500 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 21:13:30.279 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 21:13:30.279 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 21:13:30.279 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 21:13:30.831 [info] Extension host with pid 41146 exited with code: 0, signal: unknown.
+2026-10-02 21:13:30.888 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:30.889 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:13:31.035 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 21:13:31.035 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 21:13:31.035 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 21:13:33.367 [info] Extension host with pid 41471 exited with code: 0, signal: unknown.

@@ -1,0 +1,19 @@
+{
+  "old150ProcessesAbsent": true,
+  "first151ProcessesAbsent": true,
+  "portListenerAbsent": true,
+  "previous151ActualExit": {
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-02T10:21:34.792Z"
+  },
+  "historical150ActualExit": {
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-02T10:19:43.481Z"
+  },
+  "identitySHA256": "23e0224afc738652b3feff6617be722a0130cb04a5f76b4b562159e78c572dda",
+  "ordinaryFixtureSHA256": "a47ac4f19b57ca8f48912e0db41fa78b7affa827b913a78b4f98b57cf5acbd58",
+  "secondExtensionSHA256": "e2b10f710a4d1a7958874f48bf21ca1aa83830e816df79a7e525ef6f8b3e9f81",
+  "fourSignedFilesVerified": true
+}

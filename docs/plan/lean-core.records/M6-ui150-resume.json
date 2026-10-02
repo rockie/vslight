@@ -1,0 +1,99 @@
+{
+  "status": "PAUSED_BEFORE_APP_LAUNCH",
+  "pausedAtUTC": "2026-10-02T00:53:44Z",
+  "reason": "User explicitly requested immediate pause and progress save before machine restart. No additional UI actions performed.",
+  "scope": "V5/V6 pending actual Keyboard Shortcuts GUI, native menu items and titlebar DOM",
+  "privateRoot": "/private/tmp/ui150-l8chxb3s",
+  "launchPreparedOnly": {
+    "root": "/private/tmp/ui150-l8chxb3s",
+    "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "cdpPort": 19560,
+    "node": "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+    "sourceGeneration": "150",
+    "fixtureSHA256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e",
+    "registryHelper": {
+      "path": "/Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/registry.mjs",
+      "sha256": "e59cc46c8fbf0e9e7ff0907d3702c901ab2d85c885eaf0407e32b45b63cde5fd"
+    },
+    "appSHA256": {
+      "executable": "4751f35ad2f7e7c21c81c6596a9d6faa2ce1f6c6c9641aa51c4ae3a1926ed3b7",
+      "main": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+      "shared": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+      "workbench": "e31bba14f7e709bd2794f91e73ff3f12b3139df4dd7ecac7ed1cf9569e1f99c5"
+    }
+  },
+  "mainPID": null,
+  "hostPID": null,
+  "appLaunched": false,
+  "cdpConnected": false,
+  "normalQuitRequired": false,
+  "cleanup": {
+    "own150ProcessesStarted": 0,
+    "port": 19560,
+    "listenerCheck": {
+      "command": "/usr/sbin/lsof -nP -iTCP:19560 -sTCP:LISTEN -Fpn",
+      "exitCode": 1,
+      "output": "",
+      "meaning": "No listener exists at checkpoint"
+    },
+    "previous149Session": "Previously delivered search/theme session already normally quit and released port; no new 150 process was started."
+  },
+  "preparedArtifacts": [
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/launch.json",
+      "sha256": "19d0ef8a6e55cebebd2c6f7013d6bd4a41922fb6680e8e457840d9d910379c41"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/retired-provenance149.json",
+      "sha256": "1eb458c2878d9279cd63b5fadcffc6d4b4be4816060ecb83b24756ff0199e8ac"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/menu-readonly.m",
+      "sha256": "5af6412bdcc356cd2fd33b3abbf2b6227177f167fdc87f201c998b7587db0ae6"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/ext/ordinary.js",
+      "sha256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/ext/package.json",
+      "sha256": "4603de0de339f618cfd1aec508c147eeedb90565f18e97ffc605b5b3934ebaef"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/u/User/settings.json",
+      "sha256": "85fc109d77711004bf35aba610c5f747856b99d78d3b5ace77896f84683b88d0"
+    },
+    {
+      "path": "/private/tmp/ui150-l8chxb3s/w/ordinary.txt",
+      "sha256": "e2b5e98dd8368a3f07bb05e5e2f8036f9f2f53a8e4e3bcc110ec114219c1bfd3"
+    }
+  ],
+  "staticFinding": {
+    "source": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode/src/vs/workbench/contrib/preferences/browser/preferences.contribution.ts",
+    "line": 895,
+    "finding": "workbench.action.openGlobalKeybindings action takes its first string argument as query and calls openGlobalKeybindingSettings(false,{query,groupId}).",
+    "serviceSource": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/vscode/src/vs/workbench/services/preferences/browser/preferencesService.ts",
+    "serviceLine": 364,
+    "serviceFinding": "Actual Keyboard Shortcuts editor is opened, then editor.search(options.query) is invoked if query exists.",
+    "guiProof": false
+  },
+  "actualUIResults": [],
+  "registryCapture150": null,
+  "afterAppHashCapture": null,
+  "normalExitProof150": null,
+  "remainingSteps": [
+    "After explicit resume, verify or recreate private root and freeze current 150 app/source identity; compile own read-only PID-scoped native menu helper and create own controller/CDP helper. Shared fixture remains unchanged.",
+    "Start isolated 150 app with u/e/s/w and private fixture, --remote-debugging-port=19560, loopback binding; hold actual parent process and verify PID/profile/listener/loaded-workbench authority.",
+    "Run existing registry.mjs against this own runtime; compare source-classified retired candidate IDs and 57 dynamic rows, preserving ordinary exceptions and actual source identity.",
+    "Use public workbench.action.openGlobalKeybindings with first string query. Check actual GUI search input, total result count, DOM command IDs and AX for Browser/Chat and related retired families plus ordinary positive control. Compare results with runtime registry; classify ordinary marketplace/developer entries rather than deleting by words.",
+    "Read complete own PID AX menu tree recursively, capture titlebar ordinary controls and absent Browser/Chat controls from actual renderer DOM; retain raw trees/screenshots as evidence.",
+    "Public quit and actual parent wait; verify PID/19560 released, key app before/after hashes and DI/RPC log scan. Save real pass/fail results without assuming full V5/V6 or M8 completion."
+  ],
+  "limits": [
+    "No 150 actual GUI acceptance completed",
+    "No shared fixture, production patch, root plan, smoke, user vscode tree or installed app changed",
+    "No browser resources operated",
+    "No CI operation"
+  ],
+  "resumeRequest": "Continue M6-ui150-resume pending actual GUI checks on final150 app under the existing isolated ownership constraints, after user explicitly resumes."
+}

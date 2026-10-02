@@ -1,0 +1,58 @@
+[
+  {
+    "case": "default Quick Open skip",
+    "collector": {
+      "ready": "/private/tmp/lc-key151-mivqeuwq/w/ready-7b3b9895-9b77-4a29-8e88-74408c3b7c67",
+      "input": "/private/tmp/lc-key151-mivqeuwq/w/input-7b3b9895-9b77-4a29-8e88-74408c3b7c67",
+      "shellPID": 32920,
+      "terminalName": "Keys 7b3b9895-9b77-4a29-8e88-74408c3b7c67",
+      "counter": 0
+    },
+    "ordinaryKey": {
+      "before": {
+        "hasFocus": true,
+        "visibility": "visible",
+        "active": {
+          "tag": "TEXTAREA",
+          "classes": "xterm-helper-textarea",
+          "label": "Terminal 1, Keys 7b3b9895-9b77-4a29-8e88-74408c3b7c67\nUse ⌥F1 for terminal accessibility help"
+        },
+        "terminal": true,
+        "quickOpen": false
+      },
+      "native": {
+        "appActive": true,
+        "bundleURL": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+        "onConsole": true,
+        "pid": 31442,
+        "locked": false
+      },
+      "mode": "trusted raw key only to verified own renderer",
+      "sessionId": "8ABDE221689C946169EFCEE4116A4C00"
+    },
+    "quickOpen": {
+      "hasFocus": true,
+      "visibility": "visible",
+      "active": {
+        "tag": "INPUT",
+        "classes": "input empty",
+        "label": "Search files by name (append : to go to line or @ to go to symbol)"
+      },
+      "terminal": false,
+      "quickOpen": true
+    },
+    "afterEscape": {
+      "hasFocus": true,
+      "visibility": "visible",
+      "active": {
+        "tag": "TEXTAREA",
+        "classes": "xterm-helper-textarea",
+        "label": "Terminal 1, Keys 7b3b9895-9b77-4a29-8e88-74408c3b7c67\nUse ⌥F1 for terminal accessibility help"
+      },
+      "terminal": true,
+      "quickOpen": false
+    },
+    "shellInputBytes": 0,
+    "status": "PASS"
+  }
+]

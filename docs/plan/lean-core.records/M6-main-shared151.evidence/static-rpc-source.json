@@ -1,0 +1,209 @@
+{
+  "scope": "Frozen151 retained source facts plus cold/Reload ordinary host activation. No direct runtime actor table enumeration; do not rename static IDs as captured actor tables.",
+  "contexts": {
+    "MainContext": {
+      "ids": [
+        "MainThreadAuthentication",
+        "MainThreadBulkEdits",
+        "MainThreadGitExtension",
+        "MainThreadClipboard",
+        "MainThreadCommands",
+        "MainThreadComments",
+        "MainThreadConfiguration",
+        "MainThreadConsole",
+        "MainThreadDecorations",
+        "MainThreadDiagnostics",
+        "MainThreadDialogs",
+        "MainThreadDocuments",
+        "MainThreadDocumentContentProviders",
+        "MainThreadTextEditors",
+        "MainThreadEditorInsets",
+        "MainThreadEditorTabs",
+        "MainThreadErrors",
+        "MainThreadTreeViews",
+        "MainThreadDownloadService",
+        "MainThreadLanguageFeatures",
+        "MainThreadLanguages",
+        "MainThreadLogger",
+        "MainThreadMessageService",
+        "MainThreadOutputService",
+        "MainThreadProgress",
+        "MainThreadQuickDiff",
+        "MainThreadDocumentDiff",
+        "MainThreadQuickOpen",
+        "MainThreadStatusBar",
+        "MainThreadSecretState",
+        "MainThreadStorage",
+        "MainThreadTelemetry",
+        "MainThreadMeteredConnection",
+        "MainThreadTerminalService",
+        "MainThreadTerminalShellIntegration",
+        "MainThreadWebviews",
+        "MainThreadWebviewPanels",
+        "MainThreadWebviewViews",
+        "MainThreadCustomEditors",
+        "MainThreadUrls",
+        "MainThreadUriOpeners",
+        "MainThreadProfileContentHandlers",
+        "MainThreadWorkspace",
+        "MainThreadFileSystem",
+        "MainThreadFileSystemEventService",
+        "MainThreadExtensionService",
+        "MainThreadSCM",
+        "MainThreadSearch",
+        "MainThreadShare",
+        "MainThreadTask",
+        "MainThreadWindow",
+        "MainThreadPower",
+        "MainThreadLabelService",
+        "MainThreadTheming",
+        "MainThreadTunnelService",
+        "MainThreadManagedSockets",
+        "MainThreadTimeline",
+        "MainThreadTesting",
+        "MainThreadLocalization",
+        "MainThreadDataChannels"
+      ],
+      "count": 60,
+      "retiredMatches": []
+    },
+    "ExtHostContext": {
+      "ids": [
+        "ExtHostCommands",
+        "ExtHostConfiguration",
+        "ExtHostDiagnostics",
+        "ExtHostDecorations",
+        "ExtHostDocumentsAndEditors",
+        "ExtHostDocuments",
+        "ExtHostDocumentContentProviders",
+        "ExtHostDocumentSaveParticipant",
+        "ExtHostEditors",
+        "ExtHostTreeViews",
+        "ExtHostFileSystem",
+        "ExtHostFileSystemInfo",
+        "ExtHostFileSystemEventService",
+        "ExtHostLanguages",
+        "ExtHostLanguageFeatures",
+        "ExtHostQuickOpen",
+        "ExtHostQuickDiff",
+        "ExtHostStatusBar",
+        "ExtHostShare",
+        "ExtHostExtensionService",
+        "ExtHostLogLevelServiceShape",
+        "ExtHostTerminalService",
+        "ExtHostTerminalShellIntegration",
+        "ExtHostSCM",
+        "ExtHostSearch",
+        "ExtHostTask",
+        "ExtHostWorkspace",
+        "ExtHostWindow",
+        "ExtHostPower",
+        "ExtHostWebviews",
+        "ExtHostWebviewPanels",
+        "ExtHostCustomEditors",
+        "ExtHostWebviewViews",
+        "ExtHostEditorInsets",
+        "ExtHostEditorTabs",
+        "ExtHostProgress",
+        "ExtHostComments",
+        "ExtHostSecretState",
+        "ExtHostStorage",
+        "ExtHostUrls",
+        "ExtHostUriOpeners",
+        "ExtHostProfileContentHandlers",
+        "ExtHostOutputService",
+        "ExtHostLabelService",
+        "ExtHostTheming",
+        "ExtHostTunnelService",
+        "ExtHostManagedSockets",
+        "ExtHostAuthentication",
+        "ExtHostTimeline",
+        "ExtHostTesting",
+        "ExtHostTelemetry",
+        "ExtHostMeteredConnection",
+        "ExtHostLocalization",
+        "ExtHostDataChannels",
+        "ExtHostGitExtension"
+      ],
+      "count": 55,
+      "retiredMatches": []
+    }
+  },
+  "sources": [
+    {
+      "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/common/extHost.protocol.ts",
+      "sha256": "cf04ef39108c06b0bff0487787dac08ee5f3088e68ca427e911344fe42419646",
+      "relevantLines": []
+    },
+    {
+      "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/common/extHost.api.impl.ts",
+      "sha256": "9ac1321a0de09626da27ec7815d61fcaa7f83a146e55b6855c300101d13c75d8",
+      "relevantLines": [
+        {
+          "line": 216,
+          "text": "\tconst expected = Object.values<ProxyIdentifier<any>>(ExtHostContext);"
+        },
+        {
+          "line": 217,
+          "text": "\trpcProtocol.assertRegistered(expected);"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/browser/mainThreadExtensionService.ts",
+      "sha256": "310760ceb8751d5509fb4b9a210b17321a5e7cdc8eced7b4674bf00e0c2a022c",
+      "relevantLines": [
+        {
+          "line": 58,
+          "text": "\t\tinternalExtHostContext._setAllMainProxyIdentifiers(Object.keys(MainContext).map((key) => (<any>MainContext)[key]));"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/services/extensions/common/extensionHostManager.ts",
+      "sha256": "98b7936a8c536250e909c35a71cdfec1df3458d550b62dfdebf38bb1d6cc0dcd",
+      "relevantLines": [
+        {
+          "line": 268,
+          "text": "\t\t\tassertRegistered: (identifiers: ProxyIdentifier<any>[]): void => this._rpcProtocol!.assertRegistered(identifiers),"
+        },
+        {
+          "line": 276,
+          "text": "\t\t\t_setAllMainProxyIdentifiers: (value: ProxyIdentifier<any>[]): void => {"
+        },
+        {
+          "line": 314,
+          "text": "\t\tthis._rpcProtocol.assertRegistered(mainProxyIdentifiers);"
+        }
+      ]
+    },
+    {
+      "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/services/extensions/common/rpcProtocol.ts",
+      "sha256": "c4c1717b952fccca234daa463b9953ba23bb98138b484054ce857b746888d94b",
+      "relevantLines": [
+        {
+          "line": 267,
+          "text": "\t\tthis._locals[identifier.nid] = value;"
+        },
+        {
+          "line": 271,
+          "text": "\tpublic assertRegistered(identifiers: ProxyIdentifier<any>[]): void {"
+        },
+        {
+          "line": 274,
+          "text": "\t\t\tif (!this._locals[identifier.nid]) {"
+        },
+        {
+          "line": 275,
+          "text": "\t\t\t\tthrow new Error(`Missing proxy instance ${identifier.sid}`);"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "allRemainingExtHostContextAssertPreserved": true,
+    "allMainContextPassedToMainAssert": true,
+    "assertActuallyChecksLocalsAndThrows": true,
+    "retiredContextIDsZero": true
+  }
+}

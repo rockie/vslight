@@ -9,7 +9,7 @@
 | 资产 | 位置 | 生成方式 |
 |---|---|---|
 | 主 SVG（已剥离 C2PA 元数据，3KB） | `icons/{stable,insider}/vslight.svg` | `icons/app-icon.svg` 去 metadata |
-| macOS app + 文档图标（27×.icns） | `src/{stable,insider}/resources/darwin/*.icns` | `rsvg-convert` 多尺寸 + `iconutil` |
+| macOS app + 文档图标源 | `src/{stable,insider}/resources/darwin/*.icns` | `rsvg-convert` 多尺寸 + `iconutil`；打包后文档关联共用主图标 |
 | Windows 图标（.ico + 70/150 png） | `src/{stable,insider}/resources/win32/` | rsvg + 纯 Python PNG-in-ICO |
 | Linux 图标（code.png/code.svg） | `src/{stable,insider}/resources/linux/` | rsvg 1024 + 主 SVG |
 | workbench code-icon.svg | `src/{stable,insider}/src/vs/workbench/browser/media/` | 主 SVG |
@@ -31,3 +31,10 @@
 2. rsvg 出 1024/512/256/128/64/48/32/24/16 + 150/70 → iconutil 打 icns → python 打 ICO
 3. 覆盖上表全部槽位（先删旧 `code.icns` 再生成，build_icons.sh 对已存在文件会整段跳过）
 4. 全量构建验收：产物 icns sha 对比 + Dock/关于框/编辑器底纹目视
+
+## macOS 打包资源
+
+`build.sh` 在 packing 后、签名和 ZIP 前调用 `dev/prune-macos-resources.py`。
+只有与主图标哈希相同、且没有其他 plist 引用的文档图标副本才会删除；文档关联改为引用主图标，类型、扩展名、UTI 和角色保留。设计源和再生成流程保持完整，发布包共用图标文件。
+
+同一步保留英文、英式英文、简体中文、繁体中文原生语言资源及已有 gender variants；其他原生语言回退英文。工作台语言包机制保持。资源整理后再签名，不能原地修改已签名的发行包。

@@ -1,0 +1,526 @@
+{
+  "status": "CONTENT_SEARCH_AND_CONTRIBUTED_THEME_PASS_NORMAL_QUIT",
+  "root": "/private/tmp/ost149-zaow7iwr",
+  "launch": {
+    "root": "/private/tmp/ost149-zaow7iwr",
+    "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "cdpPort": 19560,
+    "node": "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+    "sourceGeneration": "147+148+149",
+    "fixtureSHA256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e",
+    "helperSHA256": "a1b7bc83ffb0c2f19a62bf6374b0d6aa23cb27203d57a04125f58f6bb47ba2c1",
+    "appSHA256": {
+      "executable": "4751f35ad2f7e7c21c81c6596a9d6faa2ce1f6c6c9641aa51c4ae3a1926ed3b7",
+      "main": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+      "shared": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+      "workbench": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "theme": {
+      "sourceInstalledExtension": "/tmp/vslight-smoke.10EUl2/extensions/zhuangtongfa.material-theme-3.20.2-universal",
+      "directory": "/private/tmp/ost149-zaow7iwr/e/zhuangtongfa.material-theme-3.20.2-universal",
+      "declaration": {
+        "label": "One Dark Pro",
+        "uiTheme": "vs-dark",
+        "path": "./themes/OneDark-Pro.json"
+      },
+      "packageSHA256": "979579d58b1f7ae5292ae80f807f0291fdc5e85b3e5fe998bf506d0fabb22999",
+      "themeFile": "/private/tmp/ost149-zaow7iwr/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+      "themeSHA256": "186fbbd1ef99a9fb6548fac7a1d354b925a7f9b98da97ef7649e22e20d08c756",
+      "version": "3.20.2"
+    },
+    "harnessRed": "/private/tmp/ost149-nys1xaxr/complete.json",
+    "args": [
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "--user-data-dir",
+      "/private/tmp/ost149-zaow7iwr/u",
+      "--extensions-dir",
+      "/private/tmp/ost149-zaow7iwr/e",
+      "--shared-data-dir",
+      "/private/tmp/ost149-zaow7iwr/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/ost149-zaow7iwr/ext",
+      "--remote-debugging-port=19560",
+      "--remote-debugging-address=127.0.0.1",
+      "--disable-workspace-trust",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--new-window",
+      "/private/tmp/ost149-zaow7iwr/w"
+    ],
+    "startedAt": "2026-10-02T00:41:14.137039+00:00",
+    "pid": 23527
+  },
+  "helperExit": 0,
+  "visual": {
+    "status": "CONTENT_SEARCH_AND_CONTRIBUTED_THEME_PASS",
+    "at": "2026-10-02T00:41:16.305Z",
+    "generation": "147+148+149",
+    "scope": "content-search and actual contributed color theme only",
+    "authorityBefore": {
+      "pid": 23527,
+      "hostPID": 24743,
+      "root": "/private/tmp/ost149-zaow7iwr",
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "command": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/ost149-zaow7iwr/u --extensions-dir /private/tmp/ost149-zaow7iwr/e --shared-data-dir /private/tmp/ost149-zaow7iwr/s --extensionDevelopmentPath /private/tmp/ost149-zaow7iwr/ext --remote-debugging-port=19560 --remote-debugging-address=127.0.0.1 --disable-workspace-trust --skip-welcome --skip-release-notes --new-window /private/tmp/ost149-zaow7iwr/w",
+      "listener": "p23527\nf32\nn127.0.0.1:19560",
+      "port": 19560,
+      "fixtureSHA256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e",
+      "expectedWorkbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "loadedWorkbench": {
+      "targetId": "695C16B9BDF1EDB34DFEAAABB6B1F679",
+      "url": "vscode-file://vscode-app/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+      "scriptId": "9",
+      "sha256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "searchHost": {
+      "request": {
+        "id": "822af6a6-0da3-4ad0-8b79-c74378e9c339",
+        "action": "content-search",
+        "marker": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      "response": {
+        "id": "822af6a6-0da3-4ad0-8b79-c74378e9c339",
+        "action": "content-search",
+        "status": "PASS",
+        "result": {
+          "status": "SEARCH_REQUESTED_RESULTS_REQUIRE_RENDERER_CHECK",
+          "file": "/private/tmp/ost149-zaow7iwr/w/content-proof.txt",
+          "uri": "file:///private/tmp/ost149-zaow7iwr/w/content-proof.txt",
+          "marker": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d",
+          "content": "ordinary first line\nneedle: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d\nordinary last line\n",
+          "editorTabClosedBeforeSearch": true,
+          "documentModelIsClosed": false
+        }
+      }
+    },
+    "searchDOM": {
+      "documentURL": "vscode-file://vscode-app/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+      "query": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d",
+      "files": [
+        {
+          "text": "content-proof.txt\n1",
+          "titles": [],
+          "rowAria": "1 matches in file content-proof.txt of folder ., Search result"
+        }
+      ],
+      "matches": [
+        {
+          "text": "needle: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d",
+          "match": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d",
+          "rowAria": "'needle: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d' at column 9 found OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+        }
+      ],
+      "messages": "1 result in 1 file - Open in editor",
+      "rectangle": {
+        "width": 300,
+        "height": 799
+      }
+    },
+    "searchAX": [
+      {
+        "role": "tree",
+        "name": "1 result in 1 file - Search: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "treeitem",
+        "name": "1 matches in file content-proof.txt of folder ., Search result"
+      },
+      {
+        "role": "treeitem",
+        "name": "'needle: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d' at column 9 found OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "generic",
+        "name": "/private/tmp/ost149-zaow7iwr/w/content-proof.txt"
+      },
+      {
+        "role": "link",
+        "name": "needle: OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "StaticText",
+        "name": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "StaticText",
+        "name": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "StaticText",
+        "name": "content-proof.txt"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "OST149_SEARCH_1c92806a713e4b3ea90633843ee1d57d"
+      },
+      {
+        "role": "InlineTextBox",
+        "name": "content-proof.txt"
+      }
+    ],
+    "themeHost": {
+      "request": {
+        "id": "c901b637-578a-4524-824b-d505ac020bb9",
+        "action": "apply-theme",
+        "extensionId": "zhuangtongfa.material-theme",
+        "theme": "One Dark Pro"
+      },
+      "response": {
+        "id": "c901b637-578a-4524-824b-d505ac020bb9",
+        "action": "apply-theme",
+        "status": "PASS",
+        "result": {
+          "status": "THEME_API_PASS_RENDERER_COLORS_REQUIRE_CHECK",
+          "extensionId": "zhuangtongfa.material-theme",
+          "extensionPath": "/private/tmp/ost149-zaow7iwr/e/zhuangtongfa.material-theme-3.20.2-universal",
+          "version": "3.20.2",
+          "declaration": {
+            "label": "One Dark Pro",
+            "uiTheme": "vs-dark",
+            "path": "./themes/OneDark-Pro.json"
+          },
+          "themeFile": "/private/tmp/ost149-zaow7iwr/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+          "colors": {
+            "editor.background": "#282c34",
+            "editor.foreground": "#abb2bf",
+            "sideBar.background": "#21252b",
+            "activityBar.background": "#282c34",
+            "statusBar.background": "#21252b"
+          },
+          "configuredTheme": "One Dark Pro",
+          "activeColorThemeBefore": 1,
+          "activeColorThemeKind": 2,
+          "expectedKind": 2
+        }
+      }
+    },
+    "themeDOM": {
+      "documentURL": "vscode-file://vscode-app/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+      "classes": "monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe file-icons-enabled vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "editorBackground": "rgb(40, 44, 52)",
+      "colors": {
+        "editor.background": "#282c34",
+        "editor.foreground": "#abb2bf",
+        "sideBar.background": "#21252b",
+        "activityBar.background": "#282c34",
+        "statusBar.background": "#21252b"
+      },
+      "rectangle": {
+        "width": 1440,
+        "height": 891
+      }
+    },
+    "themeIdentity": {
+      "expectedClass": "zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "extensionId": "zhuangtongfa.material-theme",
+      "themeFile": "/private/tmp/ost149-zaow7iwr/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+      "themeSHA256": "186fbbd1ef99a9fb6548fac7a1d354b925a7f9b98da97ef7649e22e20d08c756",
+      "packageSHA256": "979579d58b1f7ae5292ae80f807f0291fdc5e85b3e5fe998bf506d0fabb22999"
+    },
+    "authorityAfter": {
+      "pid": 23527,
+      "hostPID": 24743,
+      "root": "/private/tmp/ost149-zaow7iwr",
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "command": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/ost149-zaow7iwr/u --extensions-dir /private/tmp/ost149-zaow7iwr/e --shared-data-dir /private/tmp/ost149-zaow7iwr/s --extensionDevelopmentPath /private/tmp/ost149-zaow7iwr/ext --remote-debugging-port=19560 --remote-debugging-address=127.0.0.1 --disable-workspace-trust --skip-welcome --skip-release-notes --new-window /private/tmp/ost149-zaow7iwr/w",
+      "listener": "p23527\nf32\nn127.0.0.1:19560",
+      "port": 19560,
+      "fixtureSHA256": "957e0011795d88e5a13522f442cf7ce26d3307007ab1f772d774506a3157574e",
+      "expectedWorkbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    }
+  },
+  "processExit": 0,
+  "forced": false,
+  "appSHA256After": {
+    "executable": "4751f35ad2f7e7c21c81c6596a9d6faa2ce1f6c6c9641aa51c4ae3a1926ed3b7",
+    "main": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+    "shared": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+    "workbench": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+  },
+  "appBytesUnchanged": true,
+  "logs": {
+    "counts": {
+      "Unknown service": 0,
+      "Missing proxy": 0,
+      "assertRegistered": 0,
+      "unknown customer": 0,
+      "Cannot read properties.*service": 0,
+      "RPC unknown": 0
+    },
+    "files": [
+      {
+        "path": "u/logs/20261002T104114/network-shared.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/editSessions.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/userDataSync.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/sharedprocess.log",
+        "bytes": 306,
+        "sha256": "794d128dae5c6d150c9c95d9b00986ccc701fc9a8d297330a2a178073ca5745b",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/terminal.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/remoteTunnelService.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/main.log",
+        "bytes": 1396,
+        "sha256": "6a1c3271602fc9ef54169c6316188965b665ef49fe66428c34b311fda4b560e1",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/network.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/views.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/renderer.log",
+        "bytes": 681,
+        "sha256": "bb6efcf21dc6174f467f19333cb9120b37bcd9d0973a357a45408648665f12f6",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/textModelChanges.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/output_20261002T104114/tasks.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/exthost/extHostTelemetry.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/exthost/exthost.log",
+        "bytes": 2370,
+        "sha256": "8934aeb3547c7341b04f8903d657ddfcbc57c0c393bb83f781416aa2a337622b",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/exthost/vscode.github/GitHub.log",
+        "bytes": 47,
+        "sha256": "9ad581326d0aa71ff8b8c66b26ac4cc04c0f9a0bba2ded2f42d03e874a445f8e",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/exthost/vscode.json-language-features/JSON Language Server.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      },
+      {
+        "path": "u/logs/20261002T104114/window1/exthost/vscode.git/Git.log",
+        "bytes": 1341,
+        "sha256": "f605746c09ac942fed486ab97a92df65202fd7536346550cd59eea5bc6acaf85",
+        "hits": {
+          "Unknown service": 0,
+          "Missing proxy": 0,
+          "assertRegistered": 0,
+          "unknown customer": 0,
+          "Cannot read properties.*service": 0,
+          "RPC unknown": 0
+        }
+      }
+    ]
+  },
+  "completedAt": "2026-10-02T00:41:18.357643+00:00",
+  "record": {
+    "plan": "docs/plan/lean-core.md",
+    "validation": "V7 / M4 / M8 alternative validation",
+    "resultScope": [
+      "actual content-search result",
+      "installed third-party contributed color theme actually applied"
+    ],
+    "rawComplete": "/private/tmp/ost149-zaow7iwr/complete.json",
+    "rawCompleteSHA256": "a0e3ad72a5ded3abd412fca6129e14c0024880535b372dea58102af48b92855e",
+    "harnessFailurePreserved": {
+      "path": "/private/tmp/ost149-nys1xaxr/complete.json",
+      "sha256": "dd43ec62e8f797062047a8287b84fac84f7f5f9c108ac012386cae6251a90429",
+      "status": "FAIL",
+      "helperExit": 1,
+      "processExit": 0,
+      "forced": true,
+      "error": "Error: Error: Search proof document did not close\n\tat until (/private/tmp/ost149-nys1xaxr/ext/ordinary.js:16:9)\n\tat async handle (/private/tmp/ost149-nys1xaxr/ext/ordinary.js:50:7)\n\tat async Timeout._onTimeout (/private/tmp/ost149-nys1xaxr/ext/ordinary.js:198:22)\n    at request (file:///Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/ordinary-visual-cdp.mjs:76:45)\n    at async file:///Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/ordinary-visual-cdp.mjs:105:23",
+      "resolution": "Public Tab API verifies the editor is closed; TextDocument model can remain cached for three minutes. Product, renderer result assertion and theme assertions were unchanged."
+    },
+    "visualInspection": {
+      "performed": true,
+      "method": "Local original-resolution screenshots from own CDP page, individually viewed",
+      "search": "Search shows 1 result in 1 file and content-proof.txt. Narrow result text is truncated visually; DOM and AX retain the exact unique marker and column 9.",
+      "theme": "Actual dark workbench and open proof editor show the selected theme; ordinary search, file, source control, extensions and settings icons remain legible.",
+      "images": [
+        {
+          "path": "/private/tmp/ost149-zaow7iwr/evidence/search.png",
+          "sha256": "6f0b516ac396d9d2a79075da1cc6c9a5f389b26a288706eff09ba3da3eef7110",
+          "bytes": 116767
+        },
+        {
+          "path": "/private/tmp/ost149-zaow7iwr/evidence/theme.png",
+          "sha256": "2dff5dff382302a5843c45c01d02d4167a121e4a446c93d529839c1486d243a3",
+          "bytes": 138165
+        }
+      ]
+    },
+    "scopeLimits": [
+      "No smoke execution or modification",
+      "No global typing, paste, IME change or focus emulation",
+      "No user vscode tree or installed app changes",
+      "No browser resource operations",
+      "No CI run, push or dispatch",
+      "No Storage integration or persistent-theme restart claim"
+    ],
+    "integrityScope": "Before/after SHA256 of executable, main, shared and workbench files; loaded workbench source hash also verified. Not a whole-app byte enumeration.",
+    "terminalClipboardBlockUnchangedFromPreviousPrivateFixture": true
+  }
+}

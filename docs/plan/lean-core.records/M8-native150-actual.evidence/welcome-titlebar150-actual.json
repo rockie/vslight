@@ -1,0 +1,73 @@
+{
+  "pid": 46653,
+  "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+  "response": {
+    "id": "8022e5b5-84f5-4dce-8ab1-2a7a6e4a5f6a",
+    "action": "command",
+    "status": "PASS"
+  },
+  "dom": {
+    "titlebar": {
+      "text": "[Extension Development Host] w",
+      "labels": [
+        {
+          "aria": "Go Back (⌃-)",
+          "title": null,
+          "class": "action-label codicon codicon-arrow-left"
+        },
+        {
+          "aria": "Go Forward (⌃⇧-)",
+          "title": null,
+          "class": "action-label disabled codicon codicon-arrow-right"
+        },
+        {
+          "aria": "Title actions",
+          "title": null,
+          "class": "actions-container"
+        },
+        {
+          "aria": "Customize Layout...",
+          "title": null,
+          "class": "action-label codicon codicon-configure-layout-icon"
+        },
+        {
+          "aria": "Toggle Primary Side Bar (⌘B)",
+          "title": null,
+          "class": "action-label checked codicon codicon-panel-left"
+        },
+        {
+          "aria": "Toggle Panel (⌘J)",
+          "title": null,
+          "class": "action-label codicon codicon-panel-layout-icon-off"
+        },
+        {
+          "aria": "Toggle Secondary Side Bar (⌥⌘B)",
+          "title": null,
+          "class": "action-label codicon codicon-auxiliarybar-right-off-layout-icon"
+        }
+      ],
+      "rect": {
+        "width": 1440,
+        "height": 35
+      }
+    },
+    "welcome": {
+      "present": true,
+      "text": "VSLight\n\nEditing evolved\n\nStart\nNew File...\nOpen...\nClone Git Repository...\nRecent\nYou have no recent folders,open a folderto start.\nWalkthroughs\nGet started with VSLight\nCustomize your editor, learn the basics, and start coding\nLearn the Fundamentals\nVSLight Announcements\nThere are no current announcements.\n\nShow welcome page on startup",
+      "rect": {
+        "width": 1092,
+        "height": 794
+      }
+    },
+    "tabs": [
+      {
+        "text": "Keyboard Shortcuts",
+        "title": "Keyboard Shortcuts"
+      },
+      {
+        "text": "Welcome",
+        "title": "Welcome, preview"
+      }
+    ]
+  }
+}

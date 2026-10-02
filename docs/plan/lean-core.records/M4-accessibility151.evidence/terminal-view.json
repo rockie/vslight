@@ -1,0 +1,161 @@
+{
+  "action": "terminal-view",
+  "expected": "A11Y_TERMINAL_MARKER",
+  "fixtureResponse": {
+    "id": "6758985d-11b1-45d7-b0e9-2f44c50b7370",
+    "action": "terminal-view",
+    "status": "PASS"
+  },
+  "before": {
+    "documentHasFocus": true,
+    "visibility": "visible",
+    "active": {
+      "tag": "DIV",
+      "classes": "native-edit-context",
+      "role": "textbox",
+      "ariaLabel": "Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.",
+      "text": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ "
+    },
+    "view": {
+      "present": true,
+      "width": 904,
+      "height": 86,
+      "visible": true,
+      "text": "Accessible View\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ \nA11Y_TERMINAL_MARKER\nsh-3.2$ \nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'"
+    },
+    "terminal": false,
+    "editor": false,
+    "hover": false
+  },
+  "beforeNative": {
+    "appActive": true,
+    "AXWindowCount": 1,
+    "AXWindowsStatus": 0,
+    "bundleURL": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "locked": false,
+    "onConsole": true,
+    "pid": 29377,
+    "running": true
+  },
+  "ax": [
+    {
+      "nodeId": "28",
+      "ignored": false,
+      "role": "textbox",
+      "name": "Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.",
+      "value": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ ",
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "focused",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "editable",
+          "value": {
+            "type": "token",
+            "value": "richtext"
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "400",
+      "ignored": false,
+      "role": "textbox",
+      "name": "hover_target • Untitled-1",
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "editable",
+          "value": {
+            "type": "token",
+            "value": "richtext"
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "21",
+      "ignored": false,
+      "role": "textbox",
+      "name": "Terminal 1, Accessibility fixture Use ⌥F1 for terminal accessibility help",
+      "properties": [
+        {
+          "name": "focusable",
+          "value": {
+            "type": "booleanOrUndefined",
+            "value": true
+          }
+        },
+        {
+          "name": "editable",
+          "value": {
+            "type": "token",
+            "value": "plaintext"
+          }
+        }
+      ]
+    }
+  ],
+  "accessibleContent": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ ",
+  "contentCheck": "REAL_DOM_AX_CONTENT_SUBSET_PASS",
+  "retiredTextCheck": {
+    "patterns": "debug/debugger/debugging/chat/copilot/notebook/jupyter/mcp/agent",
+    "matches": [],
+    "status": "CONTENT_SUBSET_ZERO_RETIRED_TEXT"
+  },
+  "escapeInput": {
+    "mode": "trusted key event only to verified own renderer target",
+    "targetId": "39115B0DA24B88873BBC9D419B4F2F4D",
+    "sessionId": "EB42B925A52B92A250BF1EFBBB1419C2"
+  },
+  "after": {
+    "documentHasFocus": true,
+    "visibility": "visible",
+    "active": {
+      "tag": "TEXTAREA",
+      "classes": "xterm-helper-textarea",
+      "role": null,
+      "ariaLabel": "Terminal 1, Accessibility fixture\nUse ⌥F1 for terminal accessibility help",
+      "text": ""
+    },
+    "view": {
+      "present": true,
+      "width": 0,
+      "height": 0,
+      "visible": false,
+      "text": "Accessible Viewsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ A11Y_TERMINAL_MARKERsh-3.2$ sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'Press desired key combination and then press ENTER."
+    },
+    "terminal": true,
+    "editor": false,
+    "hover": false
+  },
+  "afterNative": {
+    "appActive": true,
+    "AXWindowCount": 1,
+    "AXWindowsStatus": 0,
+    "bundleURL": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "locked": false,
+    "onConsole": true,
+    "pid": 29377,
+    "running": true
+  },
+  "fullFocusGate": true,
+  "status": "FOUR_GATE_ROW_PASS"
+}

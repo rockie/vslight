@@ -1,0 +1,24 @@
+{
+  "query": "mcp",
+  "ids": [
+    "markdown.showPreviewSecuritySelector",
+    "merge-conflict.previous"
+  ],
+  "dom": {
+    "present": true,
+    "search": "mcp",
+    "rows": [
+      {
+        "text": "Markdown: Change Preview Security Settings\n-\nMarkdown Language Features",
+        "aria": "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+        "id": ""
+      },
+      {
+        "text": "Merge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+        "aria": "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+        "id": "merge-conflict.previous"
+      }
+    ]
+  },
+  "retiredMatches": 0
+}

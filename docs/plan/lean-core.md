@@ -1,6 +1,6 @@
 # lean-core · VSLight · 原生资源合并与浏览器、AI 服务摘除（补丁层裁剪 · 本地编辑器）
 
-> **计划状态：Ready**
+> **计划状态：Completed（本地 macOS arm64 验收）**
 >
 > 调查基线：2026-10-01 · 初稿功能基线为 `072159555717dd134cd599b918fa84e3d55c95cf`；本次核对 HEAD 为 `8471f4d7d406c1b42ecb5ecbf54e0cf884708851`，两者差异仅本计划。当前 dirty：本计划修订、未跟踪的 `docs/plan/lean-core.review.md`；评审文件只读，原无关记录目录未读取、未修改。现状依据当前补丁层、应用产物及已有生成树；`vscode/` 的上游基线为 `08d4889f9ec4a1685d257b9b95de036c8e1ce1e5`（1.135.0），其修改是生成态，不能拿该 SHA 冒充最终应用的构建来源。
 >
@@ -34,19 +34,26 @@
 
 ### 恢复快照
 
-- 最近更新：2026-10-01 20:51 +1000（计划修订，尚未实施）
-- 当前进度：0/8 个里程碑完成
-- 当前状态：尚未开始；六项范围、稳定 API 契约及逐里程碑验收条件已确定
-- 最近完成：无
-- 下一步：M1 · 隔离重放当前补丁、固定基线产物与删除依赖清单，验证保留功能
-- 当前阻塞：无设计阻塞；构建、签名及真实 UI 验收将在实施期运行
-- 代码基线：dirty@8471f4d7d406c1b42ecb5ecbf54e0cf884708851（本计划修订与未跟踪评审文件；不包含功能实现）
+- 最近更新：2026-10-02 22:01 +1000
+- 当前进度：8/8 个里程碑完成
+- 当前状态：8/8；按用户最新本地arm64验收范围全部完成，原CI阻塞解除
+- 最近完成：M8；当前本地arm64的V1–V10、完整build/真实GUI/数据/签名公证/ZIP及六文档退出项全部通过；用户取消x64/CI门，缺口0。 见[M8记录](lean-core.records/M8.md)
+- 下一步：开发与本地验收已完成；交付签名app/ZIP和记录，未提交/推送/发布
+- 当前阻塞：无；用户以本地arm64验收取代双架构CI门，不提交/推送/触发CI或Release
+- 代码基线：dirty@f1961b7546139a6aa722ff0b8a001296d3041e33（114–139/141–151、254条prune；151完整build/noEmit/闭包/签名公证/CRC及真实GUI/键盘/A11Y/Cold-Reload/数据保留通过；1475输入生产漂移0，用户生成树与installed app保留）
 
 ### 完成记录
 
 | Milestone | 状态 | 更新时间 | 简要记录 | 实现与验收记录 |
 | --- | --- | --- | --- | --- |
-| — | — | — | 尚未开始任何里程碑 | — |
+| M1 | 已完成 | 2026-10-01 21:37 +1000 | 干净全构建、体积/删除清单及真实profile fixture已固定；8类保留面通过，完整smoke现状与终端焦点缺口已如实记录。 | [M1 记录](lean-core.records/M1.md) |
+| M3 | 已完成 | 2026-10-02 04:55 +1000 | 最终149两surface/两theme/8case的32原图、33交互及真实quit/restart精确恢复通过；普通preview下降，Chat适配为0。 | [M3 记录](lean-core.records/M3-mermaid.md) |
+| M4 | 已完成 | 2026-10-02 21:25 +1000 | 无能力API/55与60 RPC全集、普通保留面与恢复通过；151四按键路由/用户覆盖及四项完整A11Y、普通持久化全绿，退出缺口0。 | [M4 记录](lean-core.records/M4.md) |
+| M5 | 已完成 | 2026-10-02 21:27 +1000 | Browser/Playwright运行链与入口已删除；20条系统外链、真实混合恢复及普通Webview/HTML/profiling通过，151菜单/快捷键与Cold/Reload全绿。 | [M5 记录](lean-core.records/M5.md) |
+| M6 | 已完成 | 2026-10-02 21:29 +1000 | AI/MCP/语音后台、IPC与入口物理删除；55/60 RPC全集、151完整注册表/Cold-Reload及CLI拒绝、旧profile恢复/数据保护和普通保留面通过。 | [M6 记录](lean-core.records/M6.md) |
+| M7 | 已完成 | 2026-10-02 21:35 +1000 | 生产依赖/实际包三布局及普通copy通过；254-prune无重叠、两真实失效注入exit4并中止，完整noEmit/build与root/remote安装字节账通过。 | [M7 记录](lean-core.records/M7.md) |
+| M2 | 已完成 | 2026-10-02 21:59 +1000 | 资源/原生GUI/语言包及当前arm64完整build与包检查通过；用户取消x64/CI门，退出缺口0。 | [M2 记录](lean-core.records/M2-resources.md) |
+| M8 | 已完成 | 2026-10-02 22:01 +1000 | 当前本地arm64的V1–V10、完整build/真实GUI/数据/签名公证/ZIP及六文档退出项全部通过；用户取消x64/CI门，缺口0。 | [M8 记录](lean-core.records/M8.md) |
 
 ## 0. 需求、范围与决策
 
@@ -64,7 +71,7 @@
 | NFR-2 | 可靠性 | README 的保留范围、现有 smoke、普通可访问性贡献 | 编辑/文件/搜索/Git/终端/tasks/OpenVSX/语言/主题/auth/普通 Webview/Markdown、普通 Accessibility Help/Accessible View 保持可用，普通扩展激活与 Reload 不出现缺 DI/actor | §4/5.4/9.3、V7、M4/M8 | 已知 |
 | NFR-3 | 可维护性 | prepare_vscode.sh、utils.sh | 改动通过补丁/构建脚本重放；编译图、运行图、安装包与 npm 生产依赖闭包一致；不得以隐藏、skip 或删除校验代替移除 | §5、V8 | 已知 |
 | NFR-4 | 兼容与数据 | 既有独立用户数据目录 | 稳定扩展 API 可加载并按无能力契约响应；旧设置和窗口状态不阻止普通编辑；不清理用户文件、账户凭据或历史数据库 | §3、§4、V9 | 已知 |
-| NFR-5 | 分发 | patches/103-light-update-electron.patch 与 vscode/.npmrc（43.7.5）、当前 app Info.plist（LSMinimumSystemVersion=12.0）、docs/vslight-release.md（签名流程） | 沿用 Electron 43.7.5、macOS 12.0 地板和签名/公证链；macOS arm64 实机验收，现有 x64 CI 保持可构建 | §7–9、M8 | 已知 |
+| NFR-5 | 分发 | patches/103-light-update-electron.patch 与 vscode/.npmrc（43.7.5）、当前 app Info.plist（LSMinimumSystemVersion=12.0）、docs/vslight-release.md（签名流程） | 沿用 Electron 43.7.5、macOS 12.0 地板和签名/公证链；本次以当前输入的本地 macOS arm64 完整构建与实机验收为准；用户明确取消 x64/CI 验收门，现有 workflow 配置保留 | §7–9、M8 | 已知 |
 | C-1 | 约束 | prepare_vscode.sh:154–196、utils.sh:19–43 | 根 JSON remove 在 patch 之前；light/prune 在全部 patch 之后；缺失路径退出 4；嵌套删除必须消除重叠路径 | §5.7、§12 | 已确认 |
 | C-2 | 约束 | build.sh:20–35、build/osx/prepare_assets.sh | macOS 资源整理必须在 packing 后、touch/签名/公证/ZIP 前，覆盖本地与 CI 共同入口 | §5.1、V1/V4 | 已确认 |
 | C-3 | 约束 | src/tsconfig.json:29–34、extHost.api.impl.ts:273–275 | 全量 TypeScript 编译包含源码与测试；RPC 仍校验剩余全部 actor，不能全局关闭 assertRegistered | §5.4、V6/V8 | 已确认 |
@@ -228,13 +235,14 @@ Proposed browser/speech/Chat 扩展接口不受兼容承诺保护。删对应 ac
 | 普通 Webview | MainThreadWebviews 的 actor/rendering 与外链服务是独立链路 | 完整保留；普通消息、恢复、主题回归 |
 | 账户/auth | authenticationQueryService 的 MCP usage/access 混在普通查询内 | 只拆 MCP 事件/入口/DI；普通 auth/session/secret 操作不改变 |
 | profiling | base/node/profiling.ts:86 动态 import CRI；CLI/ExtensionHostProfiler 仍调用 | 保留 CRI和采样停止路径 |
+| 扩展宿主生命周期 | localProcessExtensionHost 无条件订阅 close/reload；93 号补丁误删主进程 extensionhostdebugservice 通道 | 保留 platform/debug 的普通宿主广播桥和 client；114 号补丁恢复 server 注册，不恢复 Run/Debug UI |
 | 元数据 allowlist | 根 product 合并没有删除语义，曾保留 browser/speech/chat/MCP proposal条目 | 根配置与生成结果双层精确过滤；保留不相关 proposals/extensions |
 
 ## 5. 实施机制
 
 ### 5.1 重复图标与原生语言资源
 
-新 helper 在 `build.sh` macOS 的 min-packing 后、现有 touch 和 prepare_assets 签名前运行，参数传实际输出 app 路径。从输出目录唯一 app 或生成 product.nameShort 推导，不能硬编码 VSLight.app 导致 Insider 失效。CI arm64/x64 都经过同一入口。当前 `.github/workflows/ci-build-macos.yml`、`.github/workflows/publish-stable-macos.yml` 与 `.github/workflows/publish-insider-macos.yml` 的 setup-python 均仅在 x64 执行；M2 去掉这三处 arch 条件，沿用已有 Python 3.11 配置供给两个 arch，helper 入口检查可用版本。不得把 arm64 runner 镜像预装当作显式供给，也不为验证配置触发发布任务。
+新 helper 在 `build.sh` macOS 的 min-packing 后、现有 touch 和 prepare_assets 签名前运行，参数传实际输出 app 路径。从输出目录唯一 app 或生成 product.nameLong 推导（build/lib/electron.ts:233 的实际打包名称），不能硬编码 VSLight.app 导致 Insider 失效。CI arm64/x64 都经过同一入口。当前 `.github/workflows/ci-build-macos.yml`、`.github/workflows/publish-stable-macos.yml` 与 `.github/workflows/publish-insider-macos.yml` 的 setup-python 均仅在 x64 执行；M2 去掉这三处 arch 条件，沿用已有 Python 3.11 配置供给两个 arch，helper 入口检查可用版本。不得把 arm64 runner 镜像预装当作显式供给，也不为验证配置触发发布任务。
 
 图标流程：
 
@@ -306,6 +314,10 @@ Proposed browser/speech/Chat 扩展接口不受兼容承诺保护。删对应 ac
 
 移除运行实现族：workbench/contrib 下 chat、inlineChat、mcp、speech、agentsVoice 和专属 terminalContrib/chat/chatAgentTools/voice；services 下 chat、AI settings/embedding/relatedInformation、agentHost、localTranscription 及专属 MCP认证；platform 下 agentHost、mcp、localTranscription、sandbox（AI终端辅助域）、webContentExtractor和没有保留消费者的 AI networkFilter。先拆共享消费者，再按清单删除目录/文件/对应专属测试。共用 imageCarousel 等贡献仅在入边确认为 Chat专属后去掉；普通图片预览扩展保留。
 
+M1 已确认 `src/vs/sessions/**`、`platform/agentPlugins/**` 和既已退休 Notebook/Interactive/Debug 等域残留仍有 Chat/agentHost 编译入边；随专属源码、入口和专属测试闭包删除，不用 tsconfig 排除掩盖引用。普通 `MainThreadLanguages/LanguageFeatures` 和对应 ExtHost actors、扩展宿主生命周期桥必须保留。`imageCarousel` 有普通 Explorer 消费者，保留普通 editor/serializer/菜单与设置，只解绑 Chat 分支；不能整目录删除。
+
+Notebook/Debug 的已退休稳定 API 采用同一无后台边界：保留纯构造器、枚举与 WorkspaceEdit Notebook 数据 DTO；查询返回空值、事件不触发、provider/serializer/status 注册只返回本地 Disposable，不读取或保留 provider。异步 open/show/start/stop 明确 Promise 拒绝；需实际运行对象的同步 createNotebookController/createRendererMessaging、DebugConsole append、asDebugSourceUri、breakpoint 修改明确 unavailable，不构造假的 controller/session。Proposed 入口仍先执行原权限检查。普通 text/file WorkspaceEdit、Comments Range、源码栈渲染器与 extensionHost 生命周期桥保持可用；必要纯数据和通用 UI 迁出退休父目录，不保留其服务实现。
+
 这里的 `platform/sandbox` 不包括 `base/parts/sandbox`。普通 ptyHost、file watcher、extensionHost、editor workers、Webview与通用网络代理继续保留。
 
 main/shared：撤销 MCP discovery/gateway/management/gallery/scanner、sandboxHelper、webContentExtractor/shared extractor等服务和所有 IPC；撤销 local transcription utility worker、runtime download参数、agent prewarmer。IPC名称按代码中的常量收集，不只检查 channel字符串包含 chat。
@@ -343,7 +355,7 @@ CLI：从 cli.ts、cliProcessMain.ts、platform/environment/{node,common}/argv �
 | NFR-2 | 核心保留能力与扩展激活通过，错误无DI/RPC缺失 | 先解绑消费者/API再摘服务，保留actor assert | V7、真实extension fixture、完整smoke |
 | NFR-3 | 全量重放、编译图/包图/运行图一致 | 数值补丁序、无重叠prune、生产依赖和copy闭包 | V8、失败注入、干净重构建 |
 | NFR-4 | 旧profile可启动、普通tabs与auth有效，用户数据不被清理 | 本地无能力API；缺serializer容错；profile副本回归 | V9，数据目录前后清单 |
-| NFR-5 | 43.7.5/12.0不改变，签名与公证仍有效 | 先整理再签名；保留许可文件；现有macOS CI/签名链 | codesign/spctl/stapler/Info.plist、M8 |
+| NFR-5 | 43.7.5/12.0不改变，签名与公证仍有效 | 先整理再签名；保留许可文件；本地macOS arm64构建/签名链 | codesign/spctl/stapler/Info.plist、M8 |
 
 本期不承诺 RAM/冷启动改善比例。M1/M8可在相同机器和空profile记录启动和空闲进程数据用于比较，结果不能由磁盘下降推断。运行错误沿用既有logs；无新增监控、后台服务或遥测。
 
@@ -377,11 +389,15 @@ CLI：从 cli.ts、cliProcessMain.ts、platform/environment/{node,common}/argv �
 | V7 | 保留功能 | 编辑保存、文件/搜索、语言/主题、Git diff/stage/commit、terminal命令落盘、task执行/停止、OpenVSX装卸、普通auth/session/secret、Webview消息往返、profiling及§9.3的普通Accessibility Help/Accessible View全部通过 |
 | V8 | 重放与闭包 | 全补丁+prune成功；全源码typecheck/compile；生产dependency tree与三种文件布局无专属包；保留DI/RPC校验；资源helper幂等和失败注入；prune缺失路径/父子重叠注入均exit 4且调用者不继续 |
 | V9 | 升级数据 | 使用注明来源/构造方法的旧profile副本混合tabs/AI配置；普通tabs顺序/active/preview/sticky正确，外链fallback，账户仍在；不删除历史/凭据/用户文件；chat/--add-mcp可读拒绝且exit 1，显式--后的chat文件及普通CLI正常 |
-| V10 | 体积与分发 | app/ZIP实测下降且账不重复；43.7.5/12.0符合；macOS CI构建绿；codesign、spctl、公证和staple验证通过 |
+| V10 | 体积与分发 | app/ZIP实测下降且账不重复；43.7.5/12.0符合；当前输入本地macOS arm64完整构建绿；codesign、spctl、公证和staple验证通过 |
 
 不把 compiled JS 中没有某个关键词当作唯一移除证据：设置/命令枚举、入口/生产图、已构建文件清单和 runtime共同验证。纯API数据类型/禁用接口字符串/测试依赖列为明确例外，不放宽服务实现的验收。
 
 ### 9.2 必要自动验证与现有入口
+
+**最终平台验收调整（2026-10-02 21:59 +1000，用户指示）**：用户明确“x64 不用跑了，本地跑过 arm64就可以”。NFR-5、V10、§9.4及M2/M8原当前输入arm64/x64 CI构建要求改为当前输入的本地macOS arm64完整构建和实机验收。x64/CI本次不要求，未运行，不记为通过；既有workflow配置保留。其他退出条件及仅本地、不提交/推送/发布、停用smoke要求不变。[范围与证据](lean-core.records/M8-local-arm64-scope151.md)。
+
+**实施验收方式调整（2026-10-02，用户指示）**：用户明确要求停止使用 `dev/smoke.sh`，并指出拼音输入法会改变文字注入结果。此后不再运行或修改该脚本。正文与里程碑中原 `smoke` / `--skip-ui` / 单次完整 smoke 的执行要求，统一由实际产物静态/CLI断言、隔离真实扩展宿主 fixture 和限定 PID 的原生 GUI 逐项验证替代；M8 必须逐项覆盖原保留功能和负向断言，所有替代项均通过且无跳过/失败。过去静态/CLI证据按实际覆盖范围保留，受输入法或错误控件影响的 UI 一轮不计通过。保留面、完整前台/焦点、全构建/分发要求不变。双架构CI要求由下述用户最新验收指示取代。
 
 - 资源helper：实际fixture涵盖多文档类型、不同哈希/缺文件、symlink越界、语言保留/缺必需资源、可选CFBundleLocalizations、重跑幂等；未知资源输入必须在写入前失败。
 - 真宿主fixture：普通命令/文档/状态栏、稳定chat/lm/MCP、local accessInfo、provider零回调、never-fired Event、dispose重复调用、invokeTool异步reject、Webview双向消息；不是仅在Node中mock一个API对象。
@@ -412,28 +428,31 @@ CLI：从 cli.ts、cliProcessMain.ts、platform/environment/{node,common}/argv �
 - M7 在独立临时目录做两次 prune 注入：一次 remove 不存在路径；一次创建 parent/child 后按 parent、parent/child 顺序删除。各自用小型JSON调用 utils.sh 的 apply_actions，并按实际构建的 set -e 环境、VSCODE_QUALITY=stable 执行；要求 stderr 含 Not found、退出码4，调用后的哨兵未执行。仅删除测试目录，不改正式prune清单、不作用于用户生成树。
 - vscode树：`node node_modules/@typescript/native/bin/tsc -p src/tsconfig.json --noEmit`；各服务/API切片完成后跑全图，M8再跑完整 `npm run compile` 与 `./dev/run-build.sh` 等价干净全构建。只跑tsgo不能替代最终打包。
 - 同构基线/最终在同一Node、Electron、CI=true、arch和压缩/签名条件构建；检查npm production graph，并解析asar目录及实际文件，而非对lock或压缩binary简单grep。
-- 所有资源删除发生在签名前；通过现有macOS流水线做codesign严格校验、spctl、公证、stapler，验证两种arch现有CI构建。Linux/Windows仅受影响的通用编译/构建能力保持，不扩大实机验收。
+- 所有资源删除发生在签名前；通过现有macOS签名工具链做codesign严格校验、spctl、公证、stapler；本次验证当前输入的本地arm64完整构建与实机，不要求x64/CI。Linux/Windows仅受影响的通用编译/构建能力保持，不扩大实机验收。
 
 ## 10. 里程碑（每步可独立验收）
 
 | # | 里程碑 | 前置依赖 | 内容与并行边界 | 验证/退出条件 |
 | --- | --- | --- | --- | --- |
 | M1 | 基线、删除闭包和契约冻结 | 无 | 集成人隔离重放并固定基线、旧profile/运行注册；只读consumer检查与验收fixture设计可并行；冻结§4.1、输入/删除/保留清单 | 同条件基线有来源与体积；保留路径和smoke现状实测；入口清单含§5.4全部注册表种类、旧profile/合成fixture有来源和构造步骤；每条入边有处置/验收，记录明确未知并收口后才开依赖任务；回写「实施进度」 |
-| M2 | 图标、Codicons、locale资源整理 | M1 | helper/fixture worker与Codicons独立patch worker可并行；build.sh和三个macOS workflow由集成人单写，Python供给覆盖两arch；只在未签名输出操作 | V1/V2/V4/V8资源项通过；真实原生fallback已验证；三workflow的setup-python覆盖arm64/x64且CI两arch构建绿；新产物smoke --skip-ui静态/CLI绿；回写「实施进度」 |
+| M2 | 图标、Codicons、locale资源整理 | M1 | helper/fixture worker与Codicons独立patch worker可并行；build.sh和三个macOS workflow由集成人单写，Python供给覆盖两arch；只在未签名输出操作 | V1/V2/V4/V8资源项通过；真实原生fallback已验证；三workflow的setup-python覆盖arm64/x64配置保留；当前输入本地arm64完整构建绿（用户取消x64/CI验收门）；新产物smoke --skip-ui静态/CLI绿；回写「实施进度」 |
 | M3 | Mermaid压缩与Chat适配拆分 | M1 | 独立扩展目录/新patch，可与M2/M4的独立API文件任务并行；使用私有outputRoot，不共享extension输出 | V3通过；普通openInEditor命令仍在；chat index/renderer/tool与manifest已解绑；全图检查无新增错误；回写「实施进度」 |
 | M4 | 无能力API与普通消费者解绑 | M1 | API worker、terminal/tasks worker、其余保留消费者worker按冻结文件表并行；窗口恢复通用映射与回归独立文件可委派；工厂/protocol/common入口/product/锁由集成人拥有，编译与patch生成串行 | §4.1真实宿主fixture通过；剩余RPC全量校验有效；普通保留功能、§9.3普通可访问性走查和退休serializer混合状态单测通过，无以空服务保留AI运行链；回写「实施进度」 |
 | M5 | 内置浏览器及Playwright运行链摘除 | M4 | 一名worker负责BrowserView/Simple Browser专属目录；保留auth/app/entry/checker等共享文件由集成人集成；与M6因服务/入口耦合串行 | V5、V9浏览器及旧profile退休Browser混合tabs实机恢复项通过；smoke已补浏览器断言且当步产物--skip-ui绿；全图typecheck和普通宿主启动通过；Webview/HTML编辑/外链/profiling保留；回写「实施进度」 |
 | M6 | Chat/MCP/语音服务和CLI摘除 | M3、M4、M5 | 服务域内已独立文件可委派；main/shared/CLI/入口/prune由集成人单写；先撤注册/IPC，再源码闭包 | V6服务、V9旧profile退休Chat/Browser混合tabs实机恢复及V7保留面通过；Chat旧smoke断言已替换、旧CLI两项L2拒绝断言及同名文件宿主断言通过，当步产物--skip-ui绿；MCP/语音/agent后台和下载入口无；全图typecheck通过；回写「实施进度」 |
 | M7 | 生产依赖与构建/复制闭包 | M5、M6 | 集成人单写root/remote manifests、locks、生产构建配置与copy规则；专属元数据清理可委派只改独立补丁候选 | V8生产图/asar/普通copy无专属包；MXC旧smoke断言已替换且当步产物--skip-ui绿；prune缺失/父子重叠注入exit 4且调用中止；tsgo绿；无prune重叠、无坏build入口；实际安装字节账落盘；回写「实施进度」 |
-| M8 | 集成、实机、分发和文档交付 | M2、M3、M4、M5、M6、M7 | 集成人做干净重放/构建/签名及单一GUI会话；文档worker并行独立文档，版本/记录/最终结论集成人统一 | V1–V10全部通过；完整compile/build和现有macOS CI绿，完整smoke退出码0且汇总零SKIP/FAIL；签名/公证/staple和ZIP通过；README/兼容/语言/迁移/图标及下述升级用户须知准确、实测账完整；回写「实施进度」 |
+| M8 | 集成、实机、分发和文档交付 | M2、M3、M4、M5、M6、M7 | 集成人做干净重放/构建/签名及单一GUI会话；文档worker并行独立文档，版本/记录/最终结论集成人统一 | V1–V10全部通过；当前输入本地arm64完整compile/build绿（用户取消x64/CI验收门），完整smoke退出码0且汇总零SKIP/FAIL；签名/公证/staple和ZIP通过；README/兼容/语言/迁移/图标及下述升级用户须知准确、实测账完整；回写「实施进度」 |
 
 执行编排：M1后M2、M3和M4的已冻结独立任务可以同时开始；M5→M6→M7因后台服务/协议/编译依赖保持顺序。不是按编号把所有任务串行，也不允许仅因目录不同就并行改共享契约。
+
+实施编译接续：M4普通接口解绑会使全图里的退休Chat/Sessions源码失去旧terminal/SCM/API成员。完成共享契约后，Browser→后台服务的候选源码仍串行整合，共用一次完整编译/构建，再分别运行M4/M5/M6门并按前置完成顺序记账；未验收的里程碑保持进行中。不得为中间状态的编译绿色恢复退休运行链或排除保留源码。
 
 集成人单写的共享面包括workbench.common/desktop/web入口、app.ts、sharedProcessMain.ts、API factory/protocol、根product/prepare脚本、build/gulp/filters/npm dirs、prune、lock、smoke及计划。worker对这些文件给精确patch候选/建议，由集成人应用；同一文件不同时存在两个写手。使用隔离worktree/源码树或明确互不相交的文件范围；vscode生成树的patch生成、完整compile/build、同一个GUI与profile资源串行。Mermaid测量用私有outputRoot；不同fixture使用独立临时profile和扩展目录。
 
 M8同步文档：README.md、docs/extensions-compatibility.md、docs/vslight-icons.md、docs/vslight-release.md、docs/usage.md、docs/vslight-migration.md及发布说明。旧lean-dist记录保留其历史事实，本计划注明已覆盖其Chat本体/Playwright保留决议，不把历史记录改成当时就已摘除。
 
 M8 在 docs/vslight-migration.md 新增「从旧版 VSLight 升级」，发布说明链接到该节并列出：①AI从默认隐藏变服务物理移除，旧Chat历史/MCP配置留盘但本产品不再提供访问入口，稳定API按无能力契约响应；②两个内置浏览器入口消失，普通HTTP(S)/localhost默认使用系统浏览器，第三方opener机制仍保留；③vslight chat/--add-mcp明确exit 1，显式--后的同名文件可正常打开；④原生界面仅英文/简体/繁体，其他原生语言回退英文，工作台语言包仍可用。README核对「removed: AI Chat」与本次最终行为，兼容文档说明依赖宿主AI服务的扩展功能不可用，不承诺第三方自行携带的AI实现也被禁用。
+
 
 ## 11. 风险、开放问题与就绪状态
 
@@ -444,9 +463,9 @@ M8 在 docs/vslight-migration.md 新增「从旧版 VSLight 升级」，发布�
 | 旧窗口跳过serializer后的索引风险，尚无实机结果 | 用户升级 | M1混合state fixture；M4修通用映射，M5/M6用旧profile验收 | M5/M6退出前 | 否，映射、fallback和保留用户数据契约已定 |
 | 历史smoke终端焦点失败 | 完整实机门 | M1重跑并定位；失败时对应里程碑不能记完成 | M8退出前 | 否，属于验证工具/产品缺陷处理 |
 | 原生非支持语言fallback | 原生UX | M2隔离系统偏好实机验证，禁止假用--locale代替 | M2退出 | 否，英文回退契约已定 |
-| 跨平台编译/生产配置引用 | Linux/Windows可构建性 | 清理通用构建声明，现有macOS x64 CI及必要平台最低验证 | M8 | 否 |
+| 跨平台编译/生产配置引用 | Linux/Windows可构建性 | 清理通用构建声明，本地macOS arm64验收及必要通用编译/配置核验；本次不要求x64/CI | M8 | 否 |
 
-最终状态：**Ready**。六项需求已纳入终局范围；此前“保留Chat实现、保留运行Playwright”的决议被本次用户要求覆盖。稳定API、语言范围、用户数据与测试工具边界已明确，无需再次向用户确认同一删除意图。当前尚未实施，真实构建和UI结果没有预填为通过。
+最终状态：**Ready**。六项需求已纳入终局范围；此前“保留Chat实现、保留运行Playwright”的决议被本次用户要求覆盖。稳定API、语言范围、用户数据与测试工具边界已明确，无需再次向用户确认同一删除意图。当前实施进展见恢复快照；真实构建和UI仅依据实际结果记账。
 
 ## 12. 已知坑与历史教训
 

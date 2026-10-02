@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "sameBuildConditions": "actual unsigned arm64 M1 and149 app: Node24.18.0/Electron43.7.5/CI=true; frozen dependency versions",
+  "baselineArtifact": "M1-baseline-artifact.json",
+  "finalArtifact": "M8-final-artifact.json",
+  "baselineApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/original-baseline-app/VSLight.app",
+  "finalApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "files": {
+    "markdown-preview-out/index.js": {
+      "baselineBytes": 25842004,
+      "finalBytes": 18642002,
+      "baselineSHA256": "22db604f03df70a38ce04b0314d7149adfeed1d0c65d11849e5af679ba284e5b",
+      "finalSHA256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+    },
+    "chat-webview-out/index.js": {
+      "baselineBytes": 4733391,
+      "finalBytes": 0,
+      "baselineSHA256": "2a9b50b3e3a7684b9669a36167376831441fc7f05a8b4b399671ef86986fecc7",
+      "finalSHA256": null
+    },
+    "chat-webview-out/index-editor.js": {
+      "baselineBytes": 4733815,
+      "finalBytes": 18502766,
+      "baselineSHA256": "0e15726aaf233fe825277740b7bdf5af8a0d9a9787718c23dae600f0fa9a4cd1",
+      "finalSHA256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+    },
+    "chat-webview-out/codicon.css": {
+      "baselineBytes": 133000,
+      "finalBytes": 133000,
+      "baselineSHA256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641",
+      "finalSHA256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+    }
+  },
+  "previewReductionBytes": 7200002,
+  "previewReductionPercent": 27.86,
+  "editorAddonIncreaseBytes": 13768951,
+  "allBundleSumBaseline": 35442210,
+  "allBundleSumFinal": 37277768,
+  "limit": "Preview compressed and chat entry removed; restoring required editor addons adds bytes. Do not claim total Mermaid family bytes decreased."
+}

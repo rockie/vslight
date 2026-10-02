@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-02T19:57:58.134232+10:00",
+  "pid": 46653,
+  "exit": 0,
+  "trusted": true,
+  "menuBarError": 0,
+  "nodeCount": 421,
+  "positiveTopMenus": [
+    "Apple",
+    "VSLight",
+    "File",
+    "Edit",
+    "Selection",
+    "View",
+    "Go",
+    "Terminal",
+    "Window",
+    "Help"
+  ],
+  "retiredTitleMatches": [],
+  "retiredTitleMatchCount": 0,
+  "rawFile": "/private/tmp/lcfinal-chkarkup/ui/evidence/native-menu-allowed150.json"
+}

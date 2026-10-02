@@ -1,0 +1,74 @@
+[
+  {
+    "url": "node:electron/js2c/sandbox_bundle",
+    "scriptId": "4",
+    "isModule": false,
+    "hash": "15daa44a533a3acb8387dd3e2bfd3650f96a5f8ab9290c1344564bf4b304c2e0"
+  },
+  {
+    "url": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/base/parts/sandbox/electron-browser/preload.js",
+    "scriptId": "5",
+    "isModule": false,
+    "hash": "095de4665bc0b4ef323adeb399d97564e7ba1f6d9ef845f164aeba126c72cc9a"
+  },
+  {
+    "url": "",
+    "scriptId": "6",
+    "isModule": false,
+    "hash": "cb28eafc61a54ef9b4621764371ef6b8fc5cc1a217a966416197ed9a903aa585"
+  },
+  {
+    "url": "",
+    "scriptId": "7",
+    "isModule": false,
+    "hash": "cb28eafc61a54ef9b4621764371ef6b8fc5cc1a217a966416197ed9a903aa585"
+  },
+  {
+    "url": "vscode-file://vscode-app/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.js",
+    "scriptId": "8",
+    "isModule": true,
+    "hash": "8111cd1af92cd2486cfd16f41febbd5ee92ee202b943a86ecb62f83be3aa39ca"
+  },
+  {
+    "url": "vscode-file://vscode-app/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+    "scriptId": "9",
+    "isModule": true,
+    "hash": "4c164bd9abb2d7c32913b942d0ee35fd60d6b572e4d1e9c1b69919f2877e8496"
+  },
+  {
+    "url": "",
+    "scriptId": "13",
+    "isModule": false,
+    "hash": "3fd6a9e89ef6ca87973e42a31a86a767e574bfbb19014def88994b90a968f88a"
+  },
+  {
+    "url": "",
+    "scriptId": "14",
+    "isModule": false,
+    "hash": "14ebd33aa86b084ff7bd1abd4b906b843e73f77df2f3e07e602e1ef33c3695f7"
+  },
+  {
+    "url": "",
+    "scriptId": "15",
+    "isModule": false,
+    "hash": "8bf35441887dc3cd86b2bffc27bd8f7ac4b468ff57d9a0c5ef21abe48d2e8fde"
+  },
+  {
+    "url": "",
+    "scriptId": "16",
+    "isModule": false,
+    "hash": "8a4c43be26719eb9626faa193f48523ebf811ead204b96987e5af7b118703cf3"
+  },
+  {
+    "url": "",
+    "scriptId": "17",
+    "isModule": false,
+    "hash": "e8c3860e7ac71d1b06ee1aa42e68916e3f57efa5926e71e3bfc67867885fed42"
+  },
+  {
+    "url": "",
+    "scriptId": "18",
+    "isModule": false,
+    "hash": "108b8b7da4816825515df50abca833088de0146825b5088bd8e229c191415dff"
+  }
+]

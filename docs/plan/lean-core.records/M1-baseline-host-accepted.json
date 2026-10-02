@@ -1,0 +1,43 @@
+{
+  "code_baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33 + patch 114",
+  "status": "PASS",
+  "results": [
+    {
+      "name": "ordinary document, command and status bar",
+      "result": "PASS"
+    },
+    {
+      "name": "ordinary terminal sendText writes a file",
+      "result": "PASS"
+    },
+    {
+      "name": "shell task executes and exits",
+      "result": "PASS"
+    },
+    {
+      "name": "running shell task can be stopped",
+      "result": "PASS"
+    },
+    {
+      "name": "built-in Git diff, stage and commit",
+      "result": "PASS"
+    },
+    {
+      "name": "Webview script and bidirectional message round trip",
+      "result": "PASS"
+    },
+    {
+      "name": "hover content and ordinary accessibility command registrations",
+      "result": "PASS"
+    },
+    {
+      "name": "authentication provider, session and secret storage",
+      "result": "PASS"
+    }
+  ],
+  "evidence": [
+    "M1-baseline-host-before-unlock.json",
+    "M1-baseline-host-auth.json"
+  ],
+  "method": "Seven unchanged checks reused from actual pre-unlock run; only unresolved authentication/session/secret check rerun after unlock. Separate runs do not claim single full smoke success."
+}

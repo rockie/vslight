@@ -1,0 +1,21 @@
+
+DevTools listening on ws://127.0.0.1:19540/devtools/browser/36e32493-2717-4e67-8ccd-21c8df73d535
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-02T10:57:41.831Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:57:41.856Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-02T10:57:41.949Z][0m [shared storage] Creating shared storage database at '/Users/rockie/.vslight-shared/sharedStorage/state.vscdb' (wasCreated: false)
+[90m[main 2026-10-02T10:57:41.949Z][0m [shared storage] Initializing fallback application storage (path: /private/tmp/av151-4dvltjmt/u/User/globalStorage/state.vscdb)
+[90m[main 2026-10-02T10:57:41.953Z][0m [shared storage] Fallback application storage initialized with 3 items
+[90m[main 2026-10-02T10:57:42.203Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:57:42.204Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:57:42.325Z][0m update#setState idle
+[90m[main 2026-10-02T10:57:42.389Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+(node:29377) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `VSLight --trace-deprecation ...` to show where the warning was created)
+[90m[main 2026-10-02T10:57:43.519Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T10:57:43.519Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T10:57:43.519Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+[90m[main 2026-10-02T10:57:44.809Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T10:57:44.809Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T10:57:44.809Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+[90m[main 2026-10-02T10:57:52.441Z][0m Extension host with pid 30589 exited with code: 0, signal: unknown.

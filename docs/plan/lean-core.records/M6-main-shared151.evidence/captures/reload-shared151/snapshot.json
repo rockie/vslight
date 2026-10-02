@@ -1,0 +1,190 @@
+{
+  "capturedAt": "2026-10-02T11:13:33.003Z",
+  "status": "RUNTIME_CAPTURED_UNASSESSED",
+  "role": "shared",
+  "authority": {
+    "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "profile": "/private/tmp/lc151ms-wdn5hck0/u",
+    "pid": 40135,
+    "parentPID": 39925,
+    "mainPID": 39925,
+    "port": 19552,
+    "listener": "127.0.0.1:19552",
+    "executable": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper"
+  },
+  "module": {
+    "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+    "scriptId": "154",
+    "diskSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+    "loadedSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+    "callback": "uncaughtException",
+    "bindingNames": {
+      "channelServer": "Gw",
+      "ipcServer": "Kw"
+    }
+  },
+  "identity": {
+    "channelServer": {
+      "binding": "Gw",
+      "constructorMatches": true,
+      "methods": [
+        "constructor",
+        "registerChannel",
+        "sendResponse",
+        "send",
+        "sendBuffer",
+        "onRawMessage",
+        "onPromise",
+        "onEventListen",
+        "disposeActiveRequest",
+        "collectPendingRequest",
+        "flushPendingRequests",
+        "dispose"
+      ],
+      "location": {
+        "scriptId": "154",
+        "lineNumber": 27,
+        "columnNumber": 117498
+      }
+    },
+    "ipcServer": {
+      "binding": "Kw",
+      "constructorMatches": true,
+      "methods": [
+        "constructor",
+        "getChannel",
+        "getMulticastEvent",
+        "registerChannel",
+        "dispose"
+      ],
+      "location": {
+        "scriptId": "154",
+        "lineNumber": 29,
+        "columnNumber": 2467
+      },
+      "existingSourceChain": {
+        "moduleAnchorBinding": "Yw",
+        "anchorLocation": {
+          "scriptId": "154",
+          "lineNumber": 29,
+          "columnNumber": 7021
+        },
+        "ownPrototypeParentIsExactBase": true
+      }
+    }
+  },
+  "servers": {
+    "channelServer": {
+      "instances": [
+        {
+          "registeredChannels": [
+            "IUserDataSyncResourceProviderService",
+            "checksum",
+            "diagnostics",
+            "extensionGalleryManifest",
+            "extensionTipsService",
+            "extensions",
+            "languagePacks",
+            "localGit",
+            "remoteTunnel",
+            "sharedProcessTunnel",
+            "telemetryAppender",
+            "userDataAutoSync",
+            "userDataSync",
+            "userDataSyncAccount",
+            "userDataSyncMachines",
+            "userDataSyncStoreManagement",
+            "v8InspectProfiling"
+          ],
+          "channelCount": 17,
+          "activeRequestCount": 0,
+          "pendingChannelCount": 0
+        },
+        {
+          "registeredChannels": [
+            "IUserDataSyncResourceProviderService",
+            "checksum",
+            "diagnostics",
+            "extensionGalleryManifest",
+            "extensionTipsService",
+            "extensions",
+            "languagePacks",
+            "localGit",
+            "remoteTunnel",
+            "sharedProcessTunnel",
+            "telemetryAppender",
+            "userDataAutoSync",
+            "userDataSync",
+            "userDataSyncAccount",
+            "userDataSyncMachines",
+            "userDataSyncStoreManagement",
+            "v8InspectProfiling"
+          ],
+          "channelCount": 17,
+          "activeRequestCount": 11,
+          "pendingChannelCount": 0
+        }
+      ],
+      "excludedDerivedPrototypeCount": 0
+    },
+    "ipcServer": {
+      "instances": [
+        {
+          "registeredChannels": [
+            "IUserDataSyncResourceProviderService",
+            "checksum",
+            "diagnostics",
+            "extensionGalleryManifest",
+            "extensionTipsService",
+            "extensions",
+            "languagePacks",
+            "localGit",
+            "remoteTunnel",
+            "sharedProcessTunnel",
+            "telemetryAppender",
+            "userDataAutoSync",
+            "userDataSync",
+            "userDataSyncAccount",
+            "userDataSyncMachines",
+            "userDataSyncStoreManagement",
+            "v8InspectProfiling"
+          ],
+          "channelCount": 17,
+          "connectionCount": 2
+        }
+      ],
+      "excludedDerivedPrototypeCount": 1
+    }
+  },
+  "channelNames": [
+    "IUserDataSyncResourceProviderService",
+    "checksum",
+    "diagnostics",
+    "extensionGalleryManifest",
+    "extensionTipsService",
+    "extensions",
+    "languagePacks",
+    "localGit",
+    "remoteTunnel",
+    "sharedProcessTunnel",
+    "telemetryAppender",
+    "userDataAutoSync",
+    "userDataSync",
+    "userDataSyncAccount",
+    "userDataSyncMachines",
+    "userDataSyncStoreManagement",
+    "v8InspectProfiling"
+  ],
+  "boundaries": {
+    "noAppLaunch": true,
+    "noImports": true,
+    "existingCallbackModuleOnly": true,
+    "exactPrototypesOnly": true,
+    "noServiceFactories": true,
+    "noDIGet": true,
+    "noChannelCalls": true,
+    "noEnvironmentOrStartupArgumentsSerialized": true,
+    "noAcceptanceVerdict": true
+  },
+  "authorityRecheckedAfterCapture": true
+}

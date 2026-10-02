@@ -1,0 +1,12 @@
+2026-10-02 21:06:25.865 [info] Extension host with pid 34294 started
+2026-10-02 21:06:25.865 [info] Skipping acquiring lock for /private/tmp/lc-key151-mivqeuwq/u/User/workspaceStorage/cb27b0ae02a8679747e501c956b51b0d.
+2026-10-02 21:06:25.869 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 21:06:25.873 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 21:06:25.888 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 21:06:25.920 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:06:25.920 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:06:25.927 [info] Eager extensions activated
+2026-10-02 21:06:25.930 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:06:25.935 [info] ExtensionService#_doActivateExtension lean-tests.terminal-keys151, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:06:26.142 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 21:06:26.143 [info] Extension host with pid 34294 exiting with code 0

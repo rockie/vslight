@@ -1,0 +1,28 @@
+2026-10-02 17:45:44.196 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 17:45:44.196 [info] StorageMainService: creating application shared storage
+2026-10-02 17:45:44.196 [info] [shared storage] Creating shared storage database at '/private/tmp/lcfinal-chkarkup/ui/s/sharedStorage/state.vscdb' (wasCreated: false)
+2026-10-02 17:45:44.196 [info] [shared storage] Initializing fallback application storage (path: /private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/state.vscdb)
+2026-10-02 17:45:44.202 [info] [shared storage] Fallback application storage initialized with 49 items
+2026-10-02 17:45:44.313 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 17:45:44.314 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 17:45:45.204 [info] update#setState idle
+2026-10-02 17:45:45.281 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 17:46:15.207 [info] update#setState checking for updates
+2026-10-02 17:46:15.207 [info] update#doCheckForUpdates {"url":"https://raw.githubusercontent.com/rockie/vslight/refs/heads/versions/stable/darwin/arm64/latest.json","explicit":false,"background":true}
+2026-10-02 17:46:15.342 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 17:46:15.342 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 17:46:15.342 [info] update#isLatestVersion() - releaseAge: 51, minReleaseAge: 1
+2026-10-02 17:46:15.342 [info] update#setState idle
+2026-10-02 18:46:15.215 [info] update#setState checking for updates
+2026-10-02 18:46:15.219 [info] update#doCheckForUpdates {"url":"https://raw.githubusercontent.com/rockie/vslight/refs/heads/versions/stable/darwin/arm64/latest.json","explicit":false,"background":true}
+2026-10-02 18:46:15.338 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 18:46:15.339 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 18:46:15.339 [info] update#isLatestVersion() - releaseAge: 52, minReleaseAge: 1
+2026-10-02 18:46:15.339 [info] update#setState idle
+2026-10-02 19:49:49.806 [info] update#setState checking for updates
+2026-10-02 19:49:49.806 [info] update#doCheckForUpdates {"url":"https://raw.githubusercontent.com/rockie/vslight/refs/heads/versions/stable/darwin/arm64/latest.json","explicit":false,"background":true}
+2026-10-02 19:49:49.955 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 19:49:49.955 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 19:49:49.955 [info] update#isLatestVersion() - releaseAge: 53, minReleaseAge: 1
+2026-10-02 19:49:49.955 [info] update#setState idle
+2026-10-02 20:19:43.443 [info] Extension host with pid 47396 exited with code: 0, signal: unknown.

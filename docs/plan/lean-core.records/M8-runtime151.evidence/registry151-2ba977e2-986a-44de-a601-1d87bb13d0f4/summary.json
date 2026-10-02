@@ -1,0 +1,3492 @@
+{
+  "capturedAtUTC": "2026-10-02T10:48:49.435Z",
+  "expectedApp": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "target": {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=127.0.0.1:19560/devtools/page/95178FB44D2AB199563AB8DD41C50349",
+    "id": "95178FB44D2AB199563AB8DD41C50349",
+    "title": "[Extension Development Host] Keyboard Shortcuts — w",
+    "type": "page",
+    "url": "vscode-file://vscode-app/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:19560/devtools/page/95178FB44D2AB199563AB8DD41C50349"
+  },
+  "counts": {
+    "commands": 2145,
+    "commandMetadata": 898,
+    "statusbarModels": 1,
+    "statusbarEntries": 2,
+    "settings": 1571,
+    "excludedSettings": 10,
+    "keybindings": 975,
+    "menuIDs": 286,
+    "menuIDsWithItems": 133,
+    "menuItems": 2402,
+    "containers": 9,
+    "views": 39,
+    "viewsWelcomeIDs": 4,
+    "viewsWelcomeEntries": 32,
+    "singletons": 247,
+    "workbenchInstances": 1,
+    "rendererChannelServers": 4,
+    "walkthroughInstances": 1,
+    "walkthroughSteps": 30,
+    "commandLinks": 74
+  },
+  "narrowCounts": {
+    "commands": 1,
+    "commandMetadata": 2,
+    "settings": 11,
+    "excludedSettings": 0,
+    "configurations": 4,
+    "keybindings": 2,
+    "menus": 63,
+    "containers": 0,
+    "views": 0,
+    "viewsWelcome": 0,
+    "registryEntries": 0,
+    "singletons": 1,
+    "statusbars": 0,
+    "walkthroughSteps": 0
+  },
+  "missingCommandLinks": [
+    {
+      "location": "walkthroughSteps[2].description[1].nodes[0].href",
+      "id": "workbench.action.toggleMenuBar",
+      "registered": false,
+      "retiredCandidate": false,
+      "value": "command:workbench.action.toggleMenuBar"
+    },
+    {
+      "location": "walkthroughSteps[6].description[2].nodes[0].href",
+      "id": "remoteHub.openRepository",
+      "registered": false,
+      "retiredCandidate": false,
+      "value": "command:remoteHub.openRepository"
+    }
+  ],
+  "retiredCommandLinks": [],
+  "walkthroughs": {
+    "descriptorCount": 1,
+    "registryEntryIDs": [],
+    "sourceSymbolEvidence": {
+      "serviceMethodPresent": true,
+      "contentCollectionPresent": true,
+      "contentStepPresent": false
+    },
+    "instances": [
+      {
+        "index": 0,
+        "allContributions": [
+          {
+            "id": "Setup",
+            "title": "Get started with VSLight",
+            "description": "Customize your editor, learn the basics, and start coding",
+            "isFeatured": true,
+            "icon": {
+              "type": "icon",
+              "icon": {
+                "id": "getting-started-setup"
+              }
+            },
+            "when": {
+              "expression": "true"
+            },
+            "walkthroughPageTitle": "Setup VSLight",
+            "next": "Beginner",
+            "content": {
+              "type": "steps",
+              "steps": [
+                {
+                  "id": "videoTutorial",
+                  "title": "Watch video tutorials",
+                  "description": "Watch the first in a series of short & practical video tutorials for VSLight's key features.\n[Watch Tutorial](https://aka.ms/vscode-getting-started-video)",
+                  "media": {
+                    "type": "svg",
+                    "altText": "VSLight Settings",
+                    "path": "learn.svg"
+                  }
+                }
+              ]
+            },
+            "order": 4,
+            "source": "Built-In",
+            "steps": [
+              {
+                "id": "videoTutorial",
+                "title": "Watch video tutorials",
+                "description": [
+                  {
+                    "nodes": [
+                      "Watch the first in a series of short & practical video tutorials for VSLight's key features."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Watch Tutorial",
+                        "href": "https://aka.ms/vscode-getting-started-video"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "VSLight Settings",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onLink:https://aka.ms/vscode-getting-started-video"
+                ],
+                "category": "Setup",
+                "order": 0,
+                "when": {
+                  "expression": "true"
+                }
+              }
+            ]
+          },
+          {
+            "id": "SetupWeb",
+            "title": "Get Started with VSLight for the Web",
+            "description": "Customize your editor, learn the basics, and start coding",
+            "isFeatured": true,
+            "icon": {
+              "type": "icon",
+              "icon": {
+                "id": "getting-started-setup"
+              }
+            },
+            "when": {
+              "expression": "false"
+            },
+            "next": "Beginner",
+            "walkthroughPageTitle": "Setup VSLight Web",
+            "content": {
+              "type": "steps",
+              "steps": [
+                {
+                  "id": "pickColorThemeWeb",
+                  "title": "Choose your theme",
+                  "description": "The right theme helps you focus on your code, is easy on your eyes, and is simply more fun to use.\n[Browse Color Themes](command:workbench.action.selectTheme)",
+                  "completionEvents": [
+                    "onSettingChanged:workbench.colorTheme",
+                    "onCommand:workbench.action.selectTheme"
+                  ],
+                  "media": {
+                    "type": "markdown",
+                    "path": "theme_picker"
+                  }
+                },
+                {
+                  "id": "menuBarWeb",
+                  "title": "Just the right amount of UI",
+                  "description": "The full menu bar is available in the dropdown menu to make room for your code. Toggle its appearance for faster access. \n[Toggle Menu Bar](command:workbench.action.toggleMenuBar)",
+                  "when": "isWeb",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Comparing menu dropdown with the visible menu bar.",
+                    "path": "menuBar.svg"
+                  }
+                },
+                {
+                  "id": "extensionsWebWeb",
+                  "title": "Code with extensions",
+                  "description": "Extensions are VSLight's power-ups. A growing number are becoming available in the web.\n[Browse Popular Web Extensions](command:workbench.extensions.action.showPopularExtensions)",
+                  "when": "workspacePlatform == 'webworker'",
+                  "media": {
+                    "type": "svg",
+                    "altText": "VSLight extension marketplace with featured language extensions",
+                    "path": "extensions-web.svg"
+                  }
+                },
+                {
+                  "id": "findLanguageExtensionsWeb",
+                  "title": "Rich support for all your languages",
+                  "description": "Code with syntax highlighting, inline suggestions and linting. While many languages are built-in, many more can be added as extensions.\n[Browse Language Extensions](command:workbench.extensions.action.showLanguageExtensions)",
+                  "when": "workspacePlatform != 'webworker'",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Language extensions",
+                    "path": "languages.svg"
+                  }
+                },
+                {
+                  "id": "commandPaletteTaskWeb",
+                  "title": "Unlock productivity with the Command Palette ",
+                  "description": "Run commands without reaching for your mouse to accomplish any task in VSLight.\n[Open Command Palette](command:workbench.action.showCommands)",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Command Palette overlay for searching and executing commands.",
+                    "path": "commandPalette.svg"
+                  }
+                },
+                {
+                  "id": "pickAFolderTask-WebWeb",
+                  "title": "Open up your code",
+                  "description": "You're all set to start coding. You can open a local project or a remote repository to get your files into VSLight.\n[Open Folder](command:workbench.action.addRootFolder)\n[Open Repository](command:remoteHub.openRepository)",
+                  "when": "workspaceFolderCount == 0",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Explorer view showing buttons for opening folder and cloning repository.",
+                    "path": "openFolder.svg"
+                  }
+                },
+                {
+                  "id": "quickOpenWeb",
+                  "title": "Quickly navigate between your files",
+                  "description": "Navigate between files in an instant with one keystroke. Tip: Open multiple files by pressing the right arrow key.\n[Quick Open a File](command:toSide:workbench.action.quickOpen)",
+                  "when": "workspaceFolderCount != 0",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Go to file in quick search.",
+                    "path": "search.svg"
+                  }
+                }
+              ]
+            },
+            "order": 3,
+            "source": "Built-In",
+            "steps": [
+              {
+                "id": "pickColorThemeWeb",
+                "title": "Choose your theme",
+                "description": [
+                  {
+                    "nodes": [
+                      "The right theme helps you focus on your code, is easy on your eyes, and is simply more fun to use."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Browse Color Themes",
+                        "href": "command:workbench.action.selectTheme"
+                      }
+                    ]
+                  }
+                ],
+                "completionEvents": [
+                  "onSettingChanged:workbench.colorTheme",
+                  "onCommand:workbench.action.selectTheme"
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/theme_picker",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/theme_picker\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "category": "SetupWeb",
+                "order": 0,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "menuBarWeb",
+                "title": "Just the right amount of UI",
+                "description": [
+                  {
+                    "nodes": [
+                      "The full menu bar is available in the dropdown menu to make room for your code. Toggle its appearance for faster access. "
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Toggle Menu Bar",
+                        "href": "command:workbench.action.toggleMenuBar"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "false"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Comparing menu dropdown with the visible menu bar.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/menuBar.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/menuBar.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.toggleMenuBar"
+                ],
+                "category": "SetupWeb",
+                "order": 1
+              },
+              {
+                "id": "extensionsWebWeb",
+                "title": "Code with extensions",
+                "description": [
+                  {
+                    "nodes": [
+                      "Extensions are VSLight's power-ups. A growing number are becoming available in the web."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Browse Popular Web Extensions",
+                        "href": "command:workbench.extensions.action.showPopularExtensions"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "workspacePlatform == 'webworker'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "VSLight extension marketplace with featured language extensions",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.extensions.action.showPopularExtensions"
+                ],
+                "category": "SetupWeb",
+                "order": 2
+              },
+              {
+                "id": "findLanguageExtensionsWeb",
+                "title": "Rich support for all your languages",
+                "description": [
+                  {
+                    "nodes": [
+                      "Code with syntax highlighting, inline suggestions and linting. While many languages are built-in, many more can be added as extensions."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Browse Language Extensions",
+                        "href": "command:workbench.extensions.action.showLanguageExtensions"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "workspacePlatform != 'webworker'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Language extensions",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.extensions.action.showLanguageExtensions"
+                ],
+                "category": "SetupWeb",
+                "order": 3
+              },
+              {
+                "id": "commandPaletteTaskWeb",
+                "title": "Unlock productivity with the Command Palette ",
+                "description": [
+                  {
+                    "nodes": [
+                      "Run commands without reaching for your mouse to accomplish any task in VSLight."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Command Palette",
+                        "href": "command:workbench.action.showCommands"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "Command Palette overlay for searching and executing commands.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.showCommands"
+                ],
+                "category": "SetupWeb",
+                "order": 4,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "pickAFolderTask-WebWeb",
+                "title": "Open up your code",
+                "description": [
+                  {
+                    "nodes": [
+                      "You're all set to start coding. You can open a local project or a remote repository to get your files into VSLight."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Folder",
+                        "href": "command:workbench.action.addRootFolder"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Repository",
+                        "href": "command:remoteHub.openRepository"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "workspaceFolderCount == '0'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Explorer view showing buttons for opening folder and cloning repository.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.addRootFolder",
+                  "onCommand:remoteHub.openRepository"
+                ],
+                "category": "SetupWeb",
+                "order": 5
+              },
+              {
+                "id": "quickOpenWeb",
+                "title": "Quickly navigate between your files",
+                "description": [
+                  {
+                    "nodes": [
+                      "Navigate between files in an instant with one keystroke. Tip: Open multiple files by pressing the right arrow key."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Quick Open a File",
+                        "href": "command:toSide:workbench.action.quickOpen"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "workspaceFolderCount != '0'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Go to file in quick search.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:toSide:workbench.action.quickOpen"
+                ],
+                "category": "SetupWeb",
+                "order": 6
+              }
+            ]
+          },
+          {
+            "id": "SetupAccessibility",
+            "title": "Get Started with Accessibility Features",
+            "description": "Learn the tools and shortcuts that make VSLight accessible. Note that some actions are not actionable from within the context of the walkthrough.",
+            "isFeatured": true,
+            "icon": {
+              "type": "icon",
+              "icon": {
+                "id": "getting-started-setup"
+              }
+            },
+            "when": {
+              "expression": "accessibilityModeEnabled"
+            },
+            "next": "Setup",
+            "walkthroughPageTitle": "Setup VSLight Accessibility",
+            "content": {
+              "type": "steps",
+              "steps": [
+                {
+                  "id": "accessibilityHelp",
+                  "title": "Use the accessibility help dialog to learn about features",
+                  "description": "The accessibility help dialog provides information about what to expect from a feature and the commands/keybindings to operate them.\n With focus in an editor, terminal, or comment, the relevant dialog can be opened with the Open Accessibility Help command.\n[Open Accessibility Help](command:editor.action.accessibilityHelp)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "accessibleView",
+                  "title": "Screen reader users can inspect content line by line, character by character in the accessible view.",
+                  "description": "The accessible view is available for the terminal, hovers, notifications, comments, and inline completions.\n With focus in any of those features, it can be opened with the Open Accessible View command.\n[Open Accessible View](command:editor.action.accessibleView)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "verbositySettings",
+                  "title": "Control the verbosity of aria labels",
+                  "description": "Screen reader verbosity settings exist for features around the workbench so that once a user is familiar with a feature, they can avoid hearing hints about how to operate it. For example, features for which an accessibility help dialog exists will indicate how to open the dialog until the verbosity setting for that feature has been disabled.\n These and other accessibility settings can be configured by running the Open Accessibility Settings command.\n[Open Accessibility Settings](command:workbench.action.openAccessibilitySettings)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "commandPaletteTaskAccessibility",
+                  "title": "Unlock productivity with the Command Palette ",
+                  "description": "Run commands without reaching for your mouse to accomplish any task in VSLight.\n[Open Command Palette](command:workbench.action.showCommands)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "keybindingsAccessibility",
+                  "title": "Customize your keyboard shortcuts",
+                  "description": "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access.\n[Keyboard Shortcuts](command:toSide:workbench.action.openGlobalKeybindings)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "accessibilitySignals",
+                  "title": "Fine tune which accessibility signals you want to receive via audio or a braille device",
+                  "description": "Accessibility sounds and announcements are played around the workbench for different events.\n These can be discovered and configured using the List Signal Sounds and List Signal Announcements commands.\n[List Signal Sounds](command:signals.sounds.help)\n[List Signal Announcements](command:accessibility.announcement.help)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "hover",
+                  "title": "Access the hover in the editor to get more information on a variable or symbol",
+                  "description": "While focus is in the editor on a variable or symbol, a hover can be focused with the Show or Open Hover command.\n[Show or Focus Hover](command:editor.action.showHover)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "goToSymbol",
+                  "title": "Navigate to symbols in a file",
+                  "description": "The Go to Symbol command is useful for navigating between important landmarks in a document.\n[Go to Symbol](command:workbench.action.gotoSymbol)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "codeFolding",
+                  "title": "Use code folding to collapse blocks of code and focus on the code you're interested in.",
+                  "description": "Fold or unfold a code section with the Toggle Fold command.\n[Toggle Fold](command:editor.toggleFold)\n Fold or unfold recursively with the Toggle Fold Recursively Command\n[Toggle Fold Recursively](command:editor.toggleFoldRecursively)\n",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "intellisense",
+                  "title": "Use Intellisense to improve coding efficiency",
+                  "description": "Intellisense suggestions can be opened with the Trigger Intellisense command.\n[Trigger Intellisense](command:editor.action.triggerSuggest)\n Inline intellisense suggestions can be triggered with Trigger Inline Suggestion\n[Trigger Inline Suggestion](command:editor.action.inlineSuggest.trigger)\n Useful settings include editor.inlineCompletionsAccessibilityVerbose and editor.screenReaderAnnounceInlineSuggestion.",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                },
+                {
+                  "id": "accessibilitySettings",
+                  "title": "Configure accessibility settings",
+                  "description": "Accessibility settings can be configured by running the Open Accessibility Settings command.\n[Open Accessibility Settings](command:workbench.action.openAccessibilitySettings)",
+                  "media": {
+                    "type": "markdown",
+                    "path": "empty"
+                  }
+                }
+              ]
+            },
+            "order": 2,
+            "source": "Built-In",
+            "steps": [
+              {
+                "id": "accessibilityHelp",
+                "title": "Use the accessibility help dialog to learn about features",
+                "description": [
+                  {
+                    "nodes": [
+                      "The accessibility help dialog provides information about what to expect from a feature and the commands/keybindings to operate them."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " With focus in an editor, terminal, or comment, the relevant dialog can be opened with the Open Accessibility Help command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Accessibility Help",
+                        "href": "command:editor.action.accessibilityHelp"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:editor.action.accessibilityHelp"
+                ],
+                "category": "SetupAccessibility",
+                "order": 0,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "accessibleView",
+                "title": "Screen reader users can inspect content line by line, character by character in the accessible view.",
+                "description": [
+                  {
+                    "nodes": [
+                      "The accessible view is available for the terminal, hovers, notifications, comments, and inline completions."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " With focus in any of those features, it can be opened with the Open Accessible View command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Accessible View",
+                        "href": "command:editor.action.accessibleView"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:editor.action.accessibleView"
+                ],
+                "category": "SetupAccessibility",
+                "order": 1,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "verbositySettings",
+                "title": "Control the verbosity of aria labels",
+                "description": [
+                  {
+                    "nodes": [
+                      "Screen reader verbosity settings exist for features around the workbench so that once a user is familiar with a feature, they can avoid hearing hints about how to operate it. For example, features for which an accessibility help dialog exists will indicate how to open the dialog until the verbosity setting for that feature has been disabled."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " These and other accessibility settings can be configured by running the Open Accessibility Settings command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Accessibility Settings",
+                        "href": "command:workbench.action.openAccessibilitySettings"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.openAccessibilitySettings"
+                ],
+                "category": "SetupAccessibility",
+                "order": 2,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "commandPaletteTaskAccessibility",
+                "title": "Unlock productivity with the Command Palette ",
+                "description": [
+                  {
+                    "nodes": [
+                      "Run commands without reaching for your mouse to accomplish any task in VSLight."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Command Palette",
+                        "href": "command:workbench.action.showCommands"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.showCommands"
+                ],
+                "category": "SetupAccessibility",
+                "order": 3,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "keybindingsAccessibility",
+                "title": "Customize your keyboard shortcuts",
+                "description": [
+                  {
+                    "nodes": [
+                      "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Keyboard Shortcuts",
+                        "href": "command:toSide:workbench.action.openGlobalKeybindings"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:toSide:workbench.action.openGlobalKeybindings"
+                ],
+                "category": "SetupAccessibility",
+                "order": 4,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "accessibilitySignals",
+                "title": "Fine tune which accessibility signals you want to receive via audio or a braille device",
+                "description": [
+                  {
+                    "nodes": [
+                      "Accessibility sounds and announcements are played around the workbench for different events."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " These can be discovered and configured using the List Signal Sounds and List Signal Announcements commands."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "List Signal Sounds",
+                        "href": "command:signals.sounds.help"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "List Signal Announcements",
+                        "href": "command:accessibility.announcement.help"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:signals.sounds.help",
+                  "onCommand:accessibility.announcement.help"
+                ],
+                "category": "SetupAccessibility",
+                "order": 5,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "hover",
+                "title": "Access the hover in the editor to get more information on a variable or symbol",
+                "description": [
+                  {
+                    "nodes": [
+                      "While focus is in the editor on a variable or symbol, a hover can be focused with the Show or Open Hover command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Show or Focus Hover",
+                        "href": "command:editor.action.showHover"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:editor.action.showHover"
+                ],
+                "category": "SetupAccessibility",
+                "order": 6,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "goToSymbol",
+                "title": "Navigate to symbols in a file",
+                "description": [
+                  {
+                    "nodes": [
+                      "The Go to Symbol command is useful for navigating between important landmarks in a document."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Go to Symbol",
+                        "href": "command:workbench.action.gotoSymbol"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.gotoSymbol"
+                ],
+                "category": "SetupAccessibility",
+                "order": 7,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "codeFolding",
+                "title": "Use code folding to collapse blocks of code and focus on the code you're interested in.",
+                "description": [
+                  {
+                    "nodes": [
+                      "Fold or unfold a code section with the Toggle Fold command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Toggle Fold",
+                        "href": "command:editor.toggleFold"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " Fold or unfold recursively with the Toggle Fold Recursively Command"
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Toggle Fold Recursively",
+                        "href": "command:editor.toggleFoldRecursively"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:editor.toggleFold",
+                  "onCommand:editor.toggleFoldRecursively"
+                ],
+                "category": "SetupAccessibility",
+                "order": 8,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "intellisense",
+                "title": "Use Intellisense to improve coding efficiency",
+                "description": [
+                  {
+                    "nodes": [
+                      "Intellisense suggestions can be opened with the Trigger Intellisense command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Trigger Intellisense",
+                        "href": "command:editor.action.triggerSuggest"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " Inline intellisense suggestions can be triggered with Trigger Inline Suggestion"
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Trigger Inline Suggestion",
+                        "href": "command:editor.action.inlineSuggest.trigger"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      " Useful settings include editor.inlineCompletionsAccessibilityVerbose and editor.screenReaderAnnounceInlineSuggestion."
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:editor.action.triggerSuggest",
+                  "onCommand:editor.action.inlineSuggest.trigger"
+                ],
+                "category": "SetupAccessibility",
+                "order": 9,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "accessibilitySettings",
+                "title": "Configure accessibility settings",
+                "description": [
+                  {
+                    "nodes": [
+                      "Accessibility settings can be configured by running the Open Accessibility Settings command."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Accessibility Settings",
+                        "href": "command:workbench.action.openAccessibilitySettings"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "markdown",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "base": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  },
+                  "root": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                    "query": "",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.openAccessibilitySettings"
+                ],
+                "category": "SetupAccessibility",
+                "order": 10,
+                "when": {
+                  "expression": "true"
+                }
+              }
+            ]
+          },
+          {
+            "id": "Beginner",
+            "isFeatured": false,
+            "title": "Learn the Fundamentals",
+            "icon": {
+              "type": "icon",
+              "icon": {
+                "id": "getting-started-beginner"
+              }
+            },
+            "description": "Get an overview of the most essential features",
+            "walkthroughPageTitle": "Essential Features",
+            "content": {
+              "type": "steps",
+              "steps": [
+                {
+                  "id": "settings",
+                  "title": "Tune your settings",
+                  "description": "Customize every aspect of VSLight.\n[Open Settings](command:toSide:workbench.action.openSettings)",
+                  "completionEvents": [
+                    "onCommand:workbench.action.openSettings"
+                  ],
+                  "media": {
+                    "type": "svg",
+                    "altText": "VSLight Settings",
+                    "path": "settings.svg"
+                  }
+                },
+                {
+                  "id": "extensions",
+                  "title": "Code with extensions",
+                  "description": "Extensions are VSLight's power-ups. They range from handy productivity hacks, expanding out-of-the-box features, to adding completely new capabilities.\n[Browse Popular Extensions](command:workbench.extensions.action.showPopularExtensions)",
+                  "when": "workspacePlatform != 'webworker'",
+                  "media": {
+                    "type": "svg",
+                    "altText": "VSLight extension marketplace with featured language extensions",
+                    "path": "extensions.svg"
+                  }
+                },
+                {
+                  "id": "editor",
+                  "title": "Learn the editor",
+                  "description": "Try selection, code navigation, suggestions and other editing features in an interactive playground.\n[Open Editor Playground](command:workbench.action.showInteractivePlayground)",
+                  "completionEvents": [
+                    "onCommand:workbench.action.showInteractivePlayground"
+                  ],
+                  "media": {
+                    "type": "svg",
+                    "altText": "Editor commands in the Command Palette.",
+                    "path": "commandPalette.svg"
+                  }
+                },
+                {
+                  "id": "terminal",
+                  "title": "Built-in terminal",
+                  "description": "Quickly run shell commands and monitor build output, right next to your code.\n[Open Terminal](command:workbench.action.terminal.toggleTerminal)",
+                  "when": "workspacePlatform != 'webworker' && remoteName != codespaces && !terminalIsOpen",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Integrated terminal running a few npm commands",
+                    "path": "terminal.svg"
+                  }
+                },
+                {
+                  "id": "scmClone",
+                  "title": "Track your code with Git",
+                  "description": "Set up the built-in version control for your project to track your changes and collaborate with others.\n[Clone Repository](command:git.clone)",
+                  "when": "config.git.enabled && !git.missing && workspaceFolderCount == 0",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Source Control view.",
+                    "path": "git.svg"
+                  }
+                },
+                {
+                  "id": "scmSetup",
+                  "title": "Track your code with Git",
+                  "description": "Set up the built-in version control for your project to track your changes and collaborate with others.\n[Initialize Git Repository](command:git.init)",
+                  "when": "config.git.enabled && !git.missing && workspaceFolderCount != 0 && gitOpenRepositoryCount == 0",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Source Control view.",
+                    "path": "git.svg"
+                  }
+                },
+                {
+                  "id": "scm",
+                  "title": "Track your code with Git",
+                  "description": "No more looking up Git commands! Git and GitHub workflows are seamlessly integrated.\n[Open Source Control](command:workbench.view.scm)",
+                  "when": "config.git.enabled && !git.missing && workspaceFolderCount != 0 && gitOpenRepositoryCount != 0 && activeViewlet != 'workbench.view.scm'",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Source Control view.",
+                    "path": "git.svg"
+                  }
+                },
+                {
+                  "id": "installGit",
+                  "title": "Install Git",
+                  "description": "Install Git to track changes in your projects.\n[Install Git](https://aka.ms/vscode-install-git)\n[Reload window](command:workbench.action.reloadWindow) after installation to complete Git setup.",
+                  "when": "git.missing",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Install Git.",
+                    "path": "git.svg"
+                  },
+                  "completionEvents": [
+                    "onContext:git.state == initialized"
+                  ]
+                },
+                {
+                  "id": "tasks",
+                  "title": "Automate your project tasks",
+                  "when": "workspaceFolderCount != 0 && workspacePlatform != 'webworker'",
+                  "description": "Create tasks for your common workflows and enjoy the integrated experience of running scripts and automatically checking results.\n[Run Auto-detected Tasks](command:workbench.action.tasks.runTask)",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Task runner.",
+                    "path": "runTask.svg"
+                  }
+                },
+                {
+                  "id": "shortcuts",
+                  "title": "Customize your shortcuts",
+                  "description": "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access.\n[Keyboard Shortcuts](command:toSide:workbench.action.openGlobalKeybindings)",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Interactive shortcuts.",
+                    "path": "shortcuts.svg"
+                  }
+                },
+                {
+                  "id": "workspaceTrust",
+                  "title": "Safely browse and edit code",
+                  "description": "[Workspace Trust](https://code.visualstudio.com/docs/editor/workspace-trust) lets you decide whether your project folders should **allow or restrict** automatic code execution __(required for extensions and tasks)__.\nOpening a file/folder will prompt to grant trust. You can always [enable trust](command:toSide:workbench.trust.manage) later.",
+                  "when": "workspacePlatform != 'webworker' && !isWorkspaceTrusted && workspaceFolderCount == 0",
+                  "media": {
+                    "type": "svg",
+                    "altText": "Workspace Trust editor in Restricted mode and a primary button for switching to Trusted mode.",
+                    "path": "workspaceTrust.svg"
+                  }
+                }
+              ]
+            },
+            "order": 1,
+            "source": "Built-In",
+            "when": {
+              "expression": "true"
+            },
+            "steps": [
+              {
+                "id": "settings",
+                "title": "Tune your settings",
+                "description": [
+                  {
+                    "nodes": [
+                      "Customize every aspect of VSLight."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Settings",
+                        "href": "command:toSide:workbench.action.openSettings"
+                      }
+                    ]
+                  }
+                ],
+                "completionEvents": [
+                  "onCommand:workbench.action.openSettings"
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "VSLight Settings",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "category": "Beginner",
+                "order": 0,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "extensions",
+                "title": "Code with extensions",
+                "description": [
+                  {
+                    "nodes": [
+                      "Extensions are VSLight's power-ups. They range from handy productivity hacks, expanding out-of-the-box features, to adding completely new capabilities."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Browse Popular Extensions",
+                        "href": "command:workbench.extensions.action.showPopularExtensions"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "workspacePlatform != 'webworker'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "VSLight extension marketplace with featured language extensions",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.extensions.action.showPopularExtensions"
+                ],
+                "category": "Beginner",
+                "order": 1
+              },
+              {
+                "id": "editor",
+                "title": "Learn the editor",
+                "description": [
+                  {
+                    "nodes": [
+                      "Try selection, code navigation, suggestions and other editing features in an interactive playground."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Editor Playground",
+                        "href": "command:workbench.action.showInteractivePlayground"
+                      }
+                    ]
+                  }
+                ],
+                "completionEvents": [
+                  "onCommand:workbench.action.showInteractivePlayground"
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "Editor commands in the Command Palette.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "category": "Beginner",
+                "order": 2,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "terminal",
+                "title": "Built-in terminal",
+                "description": [
+                  {
+                    "nodes": [
+                      "Quickly run shell commands and monitor build output, right next to your code."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Terminal",
+                        "href": "command:workbench.action.terminal.toggleTerminal"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "!terminalIsOpen && remoteName != 'codespaces' && workspacePlatform != 'webworker'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Integrated terminal running a few npm commands",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.terminal.toggleTerminal"
+                ],
+                "category": "Beginner",
+                "order": 3
+              },
+              {
+                "id": "scmClone",
+                "title": "Track your code with Git",
+                "description": [
+                  {
+                    "nodes": [
+                      "Set up the built-in version control for your project to track your changes and collaborate with others."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Clone Repository",
+                        "href": "command:git.clone"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "config.git.enabled && !git.missing && workspaceFolderCount == '0'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Source Control view.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:git.clone"
+                ],
+                "category": "Beginner",
+                "order": 4
+              },
+              {
+                "id": "scmSetup",
+                "title": "Track your code with Git",
+                "description": [
+                  {
+                    "nodes": [
+                      "Set up the built-in version control for your project to track your changes and collaborate with others."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Initialize Git Repository",
+                        "href": "command:git.init"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "config.git.enabled && !git.missing && gitOpenRepositoryCount == '0' && workspaceFolderCount != '0'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Source Control view.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:git.init"
+                ],
+                "category": "Beginner",
+                "order": 5
+              },
+              {
+                "id": "scm",
+                "title": "Track your code with Git",
+                "description": [
+                  {
+                    "nodes": [
+                      "No more looking up Git commands! Git and GitHub workflows are seamlessly integrated."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Open Source Control",
+                        "href": "command:workbench.view.scm"
+                      }
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "config.git.enabled && !git.missing && activeViewlet != 'workbench.view.scm' && gitOpenRepositoryCount != '0' && workspaceFolderCount != '0'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Source Control view.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.view.scm"
+                ],
+                "category": "Beginner",
+                "order": 6
+              },
+              {
+                "id": "installGit",
+                "title": "Install Git",
+                "description": [
+                  {
+                    "nodes": [
+                      "Install Git to track changes in your projects."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Install Git",
+                        "href": "https://aka.ms/vscode-install-git"
+                      }
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Reload window",
+                        "href": "command:workbench.action.reloadWindow"
+                      },
+                      " after installation to complete Git setup."
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "git.missing"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Install Git.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onContext:git.state == initialized"
+                ],
+                "category": "Beginner",
+                "order": 7
+              },
+              {
+                "id": "tasks",
+                "title": "Automate your project tasks",
+                "when": {
+                  "expression": "workspaceFolderCount != '0' && workspacePlatform != 'webworker'"
+                },
+                "description": [
+                  {
+                    "nodes": [
+                      "Create tasks for your common workflows and enjoy the integrated experience of running scripts and automatically checking results."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Run Auto-detected Tasks",
+                        "href": "command:workbench.action.tasks.runTask"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "Task runner.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:workbench.action.tasks.runTask"
+                ],
+                "category": "Beginner",
+                "order": 8
+              },
+              {
+                "id": "shortcuts",
+                "title": "Customize your shortcuts",
+                "description": [
+                  {
+                    "nodes": [
+                      "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      {
+                        "label": "Keyboard Shortcuts",
+                        "href": "command:toSide:workbench.action.openGlobalKeybindings"
+                      }
+                    ]
+                  }
+                ],
+                "media": {
+                  "type": "svg",
+                  "altText": "Interactive shortcuts.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "onCommand:toSide:workbench.action.openGlobalKeybindings"
+                ],
+                "category": "Beginner",
+                "order": 9,
+                "when": {
+                  "expression": "true"
+                }
+              },
+              {
+                "id": "workspaceTrust",
+                "title": "Safely browse and edit code",
+                "description": [
+                  {
+                    "nodes": [
+                      {
+                        "label": "Workspace Trust",
+                        "href": "https://code.visualstudio.com/docs/editor/workspace-trust"
+                      },
+                      " lets you decide whether your project folders should **allow or restrict** automatic code execution __(required for extensions and tasks)__."
+                    ]
+                  },
+                  {
+                    "nodes": [
+                      "Opening a file/folder will prompt to grant trust. You can always ",
+                      {
+                        "label": "enable trust",
+                        "href": "command:toSide:workbench.trust.manage"
+                      },
+                      " later."
+                    ]
+                  }
+                ],
+                "when": {
+                  "expression": "!isWorkspaceTrusted && workspaceFolderCount == '0' && workspacePlatform != 'webworker'"
+                },
+                "media": {
+                  "type": "svg",
+                  "altText": "Workspace Trust editor in Restricted mode and a primary button for switching to Trusted mode.",
+                  "path": {
+                    "scheme": "file",
+                    "authority": "",
+                    "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg",
+                    "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg\"}",
+                    "fragment": "",
+                    "_formatted": null,
+                    "_fsPath": null
+                  }
+                },
+                "completionEvents": [
+                  "stepSelected"
+                ],
+                "category": "Beginner",
+                "order": 10
+              }
+            ]
+          }
+        ],
+        "allSteps": [
+          {
+            "id": "videoTutorial",
+            "title": "Watch video tutorials",
+            "description": [
+              {
+                "nodes": [
+                  "Watch the first in a series of short & practical video tutorials for VSLight's key features."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Watch Tutorial",
+                    "href": "https://aka.ms/vscode-getting-started-video"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "VSLight Settings",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/learn.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onLink:https://aka.ms/vscode-getting-started-video"
+            ],
+            "category": "Setup",
+            "order": 0,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "pickColorThemeWeb",
+            "title": "Choose your theme",
+            "description": [
+              {
+                "nodes": [
+                  "The right theme helps you focus on your code, is easy on your eyes, and is simply more fun to use."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Browse Color Themes",
+                    "href": "command:workbench.action.selectTheme"
+                  }
+                ]
+              }
+            ],
+            "completionEvents": [
+              "onSettingChanged:workbench.colorTheme",
+              "onCommand:workbench.action.selectTheme"
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/theme_picker",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/theme_picker\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "category": "SetupWeb",
+            "order": 0,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "menuBarWeb",
+            "title": "Just the right amount of UI",
+            "description": [
+              {
+                "nodes": [
+                  "The full menu bar is available in the dropdown menu to make room for your code. Toggle its appearance for faster access. "
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Toggle Menu Bar",
+                    "href": "command:workbench.action.toggleMenuBar"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "false"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Comparing menu dropdown with the visible menu bar.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/menuBar.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/menuBar.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.toggleMenuBar"
+            ],
+            "category": "SetupWeb",
+            "order": 1
+          },
+          {
+            "id": "extensionsWebWeb",
+            "title": "Code with extensions",
+            "description": [
+              {
+                "nodes": [
+                  "Extensions are VSLight's power-ups. A growing number are becoming available in the web."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Browse Popular Web Extensions",
+                    "href": "command:workbench.extensions.action.showPopularExtensions"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "workspacePlatform == 'webworker'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "VSLight extension marketplace with featured language extensions",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/extensions-web.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.extensions.action.showPopularExtensions"
+            ],
+            "category": "SetupWeb",
+            "order": 2
+          },
+          {
+            "id": "findLanguageExtensionsWeb",
+            "title": "Rich support for all your languages",
+            "description": [
+              {
+                "nodes": [
+                  "Code with syntax highlighting, inline suggestions and linting. While many languages are built-in, many more can be added as extensions."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Browse Language Extensions",
+                    "href": "command:workbench.extensions.action.showLanguageExtensions"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "workspacePlatform != 'webworker'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Language extensions",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/languages.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.extensions.action.showLanguageExtensions"
+            ],
+            "category": "SetupWeb",
+            "order": 3
+          },
+          {
+            "id": "commandPaletteTaskWeb",
+            "title": "Unlock productivity with the Command Palette ",
+            "description": [
+              {
+                "nodes": [
+                  "Run commands without reaching for your mouse to accomplish any task in VSLight."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Command Palette",
+                    "href": "command:workbench.action.showCommands"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "Command Palette overlay for searching and executing commands.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.showCommands"
+            ],
+            "category": "SetupWeb",
+            "order": 4,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "pickAFolderTask-WebWeb",
+            "title": "Open up your code",
+            "description": [
+              {
+                "nodes": [
+                  "You're all set to start coding. You can open a local project or a remote repository to get your files into VSLight."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Folder",
+                    "href": "command:workbench.action.addRootFolder"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Repository",
+                    "href": "command:remoteHub.openRepository"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "workspaceFolderCount == '0'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Explorer view showing buttons for opening folder and cloning repository.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/openFolder.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.addRootFolder",
+              "onCommand:remoteHub.openRepository"
+            ],
+            "category": "SetupWeb",
+            "order": 5
+          },
+          {
+            "id": "quickOpenWeb",
+            "title": "Quickly navigate between your files",
+            "description": [
+              {
+                "nodes": [
+                  "Navigate between files in an instant with one keystroke. Tip: Open multiple files by pressing the right arrow key."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Quick Open a File",
+                    "href": "command:toSide:workbench.action.quickOpen"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "workspaceFolderCount != '0'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Go to file in quick search.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/search.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:toSide:workbench.action.quickOpen"
+            ],
+            "category": "SetupWeb",
+            "order": 6
+          },
+          {
+            "id": "accessibilityHelp",
+            "title": "Use the accessibility help dialog to learn about features",
+            "description": [
+              {
+                "nodes": [
+                  "The accessibility help dialog provides information about what to expect from a feature and the commands/keybindings to operate them."
+                ]
+              },
+              {
+                "nodes": [
+                  " With focus in an editor, terminal, or comment, the relevant dialog can be opened with the Open Accessibility Help command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Accessibility Help",
+                    "href": "command:editor.action.accessibilityHelp"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:editor.action.accessibilityHelp"
+            ],
+            "category": "SetupAccessibility",
+            "order": 0,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "accessibleView",
+            "title": "Screen reader users can inspect content line by line, character by character in the accessible view.",
+            "description": [
+              {
+                "nodes": [
+                  "The accessible view is available for the terminal, hovers, notifications, comments, and inline completions."
+                ]
+              },
+              {
+                "nodes": [
+                  " With focus in any of those features, it can be opened with the Open Accessible View command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Accessible View",
+                    "href": "command:editor.action.accessibleView"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:editor.action.accessibleView"
+            ],
+            "category": "SetupAccessibility",
+            "order": 1,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "verbositySettings",
+            "title": "Control the verbosity of aria labels",
+            "description": [
+              {
+                "nodes": [
+                  "Screen reader verbosity settings exist for features around the workbench so that once a user is familiar with a feature, they can avoid hearing hints about how to operate it. For example, features for which an accessibility help dialog exists will indicate how to open the dialog until the verbosity setting for that feature has been disabled."
+                ]
+              },
+              {
+                "nodes": [
+                  " These and other accessibility settings can be configured by running the Open Accessibility Settings command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Accessibility Settings",
+                    "href": "command:workbench.action.openAccessibilitySettings"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.openAccessibilitySettings"
+            ],
+            "category": "SetupAccessibility",
+            "order": 2,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "commandPaletteTaskAccessibility",
+            "title": "Unlock productivity with the Command Palette ",
+            "description": [
+              {
+                "nodes": [
+                  "Run commands without reaching for your mouse to accomplish any task in VSLight."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Command Palette",
+                    "href": "command:workbench.action.showCommands"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.showCommands"
+            ],
+            "category": "SetupAccessibility",
+            "order": 3,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "keybindingsAccessibility",
+            "title": "Customize your keyboard shortcuts",
+            "description": [
+              {
+                "nodes": [
+                  "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Keyboard Shortcuts",
+                    "href": "command:toSide:workbench.action.openGlobalKeybindings"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:toSide:workbench.action.openGlobalKeybindings"
+            ],
+            "category": "SetupAccessibility",
+            "order": 4,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "accessibilitySignals",
+            "title": "Fine tune which accessibility signals you want to receive via audio or a braille device",
+            "description": [
+              {
+                "nodes": [
+                  "Accessibility sounds and announcements are played around the workbench for different events."
+                ]
+              },
+              {
+                "nodes": [
+                  " These can be discovered and configured using the List Signal Sounds and List Signal Announcements commands."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "List Signal Sounds",
+                    "href": "command:signals.sounds.help"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "List Signal Announcements",
+                    "href": "command:accessibility.announcement.help"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:signals.sounds.help",
+              "onCommand:accessibility.announcement.help"
+            ],
+            "category": "SetupAccessibility",
+            "order": 5,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "hover",
+            "title": "Access the hover in the editor to get more information on a variable or symbol",
+            "description": [
+              {
+                "nodes": [
+                  "While focus is in the editor on a variable or symbol, a hover can be focused with the Show or Open Hover command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Show or Focus Hover",
+                    "href": "command:editor.action.showHover"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:editor.action.showHover"
+            ],
+            "category": "SetupAccessibility",
+            "order": 6,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "goToSymbol",
+            "title": "Navigate to symbols in a file",
+            "description": [
+              {
+                "nodes": [
+                  "The Go to Symbol command is useful for navigating between important landmarks in a document."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Go to Symbol",
+                    "href": "command:workbench.action.gotoSymbol"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.gotoSymbol"
+            ],
+            "category": "SetupAccessibility",
+            "order": 7,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "codeFolding",
+            "title": "Use code folding to collapse blocks of code and focus on the code you're interested in.",
+            "description": [
+              {
+                "nodes": [
+                  "Fold or unfold a code section with the Toggle Fold command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Toggle Fold",
+                    "href": "command:editor.toggleFold"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  " Fold or unfold recursively with the Toggle Fold Recursively Command"
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Toggle Fold Recursively",
+                    "href": "command:editor.toggleFoldRecursively"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:editor.toggleFold",
+              "onCommand:editor.toggleFoldRecursively"
+            ],
+            "category": "SetupAccessibility",
+            "order": 8,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "intellisense",
+            "title": "Use Intellisense to improve coding efficiency",
+            "description": [
+              {
+                "nodes": [
+                  "Intellisense suggestions can be opened with the Trigger Intellisense command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Trigger Intellisense",
+                    "href": "command:editor.action.triggerSuggest"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  " Inline intellisense suggestions can be triggered with Trigger Inline Suggestion"
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Trigger Inline Suggestion",
+                    "href": "command:editor.action.inlineSuggest.trigger"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  " Useful settings include editor.inlineCompletionsAccessibilityVerbose and editor.screenReaderAnnounceInlineSuggestion."
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:editor.action.triggerSuggest",
+              "onCommand:editor.action.inlineSuggest.trigger"
+            ],
+            "category": "SetupAccessibility",
+            "order": 9,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "accessibilitySettings",
+            "title": "Configure accessibility settings",
+            "description": [
+              {
+                "nodes": [
+                  "Accessibility settings can be configured by running the Open Accessibility Settings command."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Accessibility Settings",
+                    "href": "command:workbench.action.openAccessibilitySettings"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "markdown",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/empty",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/empty\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "base": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              },
+              "root": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/",
+                "query": "",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.openAccessibilitySettings"
+            ],
+            "category": "SetupAccessibility",
+            "order": 10,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "settings",
+            "title": "Tune your settings",
+            "description": [
+              {
+                "nodes": [
+                  "Customize every aspect of VSLight."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Settings",
+                    "href": "command:toSide:workbench.action.openSettings"
+                  }
+                ]
+              }
+            ],
+            "completionEvents": [
+              "onCommand:workbench.action.openSettings"
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "VSLight Settings",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/settings.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "category": "Beginner",
+            "order": 0,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "extensions",
+            "title": "Code with extensions",
+            "description": [
+              {
+                "nodes": [
+                  "Extensions are VSLight's power-ups. They range from handy productivity hacks, expanding out-of-the-box features, to adding completely new capabilities."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Browse Popular Extensions",
+                    "href": "command:workbench.extensions.action.showPopularExtensions"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "workspacePlatform != 'webworker'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "VSLight extension marketplace with featured language extensions",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/extensions.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.extensions.action.showPopularExtensions"
+            ],
+            "category": "Beginner",
+            "order": 1
+          },
+          {
+            "id": "editor",
+            "title": "Learn the editor",
+            "description": [
+              {
+                "nodes": [
+                  "Try selection, code navigation, suggestions and other editing features in an interactive playground."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Editor Playground",
+                    "href": "command:workbench.action.showInteractivePlayground"
+                  }
+                ]
+              }
+            ],
+            "completionEvents": [
+              "onCommand:workbench.action.showInteractivePlayground"
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "Editor commands in the Command Palette.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/commandPalette.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "category": "Beginner",
+            "order": 2,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "terminal",
+            "title": "Built-in terminal",
+            "description": [
+              {
+                "nodes": [
+                  "Quickly run shell commands and monitor build output, right next to your code."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Terminal",
+                    "href": "command:workbench.action.terminal.toggleTerminal"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "!terminalIsOpen && remoteName != 'codespaces' && workspacePlatform != 'webworker'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Integrated terminal running a few npm commands",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/terminal.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.terminal.toggleTerminal"
+            ],
+            "category": "Beginner",
+            "order": 3
+          },
+          {
+            "id": "scmClone",
+            "title": "Track your code with Git",
+            "description": [
+              {
+                "nodes": [
+                  "Set up the built-in version control for your project to track your changes and collaborate with others."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Clone Repository",
+                    "href": "command:git.clone"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "config.git.enabled && !git.missing && workspaceFolderCount == '0'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Source Control view.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:git.clone"
+            ],
+            "category": "Beginner",
+            "order": 4
+          },
+          {
+            "id": "scmSetup",
+            "title": "Track your code with Git",
+            "description": [
+              {
+                "nodes": [
+                  "Set up the built-in version control for your project to track your changes and collaborate with others."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Initialize Git Repository",
+                    "href": "command:git.init"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "config.git.enabled && !git.missing && gitOpenRepositoryCount == '0' && workspaceFolderCount != '0'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Source Control view.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:git.init"
+            ],
+            "category": "Beginner",
+            "order": 5
+          },
+          {
+            "id": "scm",
+            "title": "Track your code with Git",
+            "description": [
+              {
+                "nodes": [
+                  "No more looking up Git commands! Git and GitHub workflows are seamlessly integrated."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Open Source Control",
+                    "href": "command:workbench.view.scm"
+                  }
+                ]
+              }
+            ],
+            "when": {
+              "expression": "config.git.enabled && !git.missing && activeViewlet != 'workbench.view.scm' && gitOpenRepositoryCount != '0' && workspaceFolderCount != '0'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Source Control view.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.view.scm"
+            ],
+            "category": "Beginner",
+            "order": 6
+          },
+          {
+            "id": "installGit",
+            "title": "Install Git",
+            "description": [
+              {
+                "nodes": [
+                  "Install Git to track changes in your projects."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Install Git",
+                    "href": "https://aka.ms/vscode-install-git"
+                  }
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Reload window",
+                    "href": "command:workbench.action.reloadWindow"
+                  },
+                  " after installation to complete Git setup."
+                ]
+              }
+            ],
+            "when": {
+              "expression": "git.missing"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Install Git.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/git.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onContext:git.state == initialized"
+            ],
+            "category": "Beginner",
+            "order": 7
+          },
+          {
+            "id": "tasks",
+            "title": "Automate your project tasks",
+            "when": {
+              "expression": "workspaceFolderCount != '0' && workspacePlatform != 'webworker'"
+            },
+            "description": [
+              {
+                "nodes": [
+                  "Create tasks for your common workflows and enjoy the integrated experience of running scripts and automatically checking results."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Run Auto-detected Tasks",
+                    "href": "command:workbench.action.tasks.runTask"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "Task runner.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/runTask.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:workbench.action.tasks.runTask"
+            ],
+            "category": "Beginner",
+            "order": 8
+          },
+          {
+            "id": "shortcuts",
+            "title": "Customize your shortcuts",
+            "description": [
+              {
+                "nodes": [
+                  "Once you have discovered your favorite commands, create custom keyboard shortcuts for instant access."
+                ]
+              },
+              {
+                "nodes": [
+                  {
+                    "label": "Keyboard Shortcuts",
+                    "href": "command:toSide:workbench.action.openGlobalKeybindings"
+                  }
+                ]
+              }
+            ],
+            "media": {
+              "type": "svg",
+              "altText": "Interactive shortcuts.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/shortcuts.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "onCommand:toSide:workbench.action.openGlobalKeybindings"
+            ],
+            "category": "Beginner",
+            "order": 9,
+            "when": {
+              "expression": "true"
+            }
+          },
+          {
+            "id": "workspaceTrust",
+            "title": "Safely browse and edit code",
+            "description": [
+              {
+                "nodes": [
+                  {
+                    "label": "Workspace Trust",
+                    "href": "https://code.visualstudio.com/docs/editor/workspace-trust"
+                  },
+                  " lets you decide whether your project folders should **allow or restrict** automatic code execution __(required for extensions and tasks)__."
+                ]
+              },
+              {
+                "nodes": [
+                  "Opening a file/folder will prompt to grant trust. You can always ",
+                  {
+                    "label": "enable trust",
+                    "href": "command:toSide:workbench.trust.manage"
+                  },
+                  " later."
+                ]
+              }
+            ],
+            "when": {
+              "expression": "!isWorkspaceTrusted && workspaceFolderCount == '0' && workspacePlatform != 'webworker'"
+            },
+            "media": {
+              "type": "svg",
+              "altText": "Workspace Trust editor in Restricted mode and a primary button for switching to Trusted mode.",
+              "path": {
+                "scheme": "file",
+                "authority": "",
+                "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg",
+                "query": "{\"moduleId\":\"vs/workbench/contrib/welcomeGettingStarted/common/media/workspaceTrust.svg\"}",
+                "fragment": "",
+                "_formatted": null,
+                "_fsPath": null
+              }
+            },
+            "completionEvents": [
+              "stepSelected"
+            ],
+            "category": "Beginner",
+            "order": 10
+          }
+        ]
+      }
+    ]
+  },
+  "limitations": [
+    "Main/shared-process ChannelServer maps are outside the renderer CDP context.",
+    "Statusbar capture reads existing model entry IDs and alignment only; names, tooltips, commands, DOM and getters are not evaluated.",
+    "Process and logs prove the observed interval only; they do not prove future background inactivity.",
+    "Empty MenuId symbols are reported separately from registered menu items.",
+    "No walkthrough service/collection means no positive evidence that ordinary walkthroughs are retained."
+  ]
+}

@@ -1,0 +1,3035 @@
+{
+  "at": "2026-10-01T17:33:02.465087+00:00",
+  "scope": "READ_ONLY_PRODUCT145_146_MATRIX_AUDIT",
+  "status": "DOM_MATRIX_PASS_WITH_VISUAL_OPEN_ITEMS",
+  "productRun": "parent-controlled real macOS Electron app; this audit did not connect CDP or control GUI",
+  "evidenceSummary": {
+    "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/summary.json",
+    "bytes": 533382,
+    "sha256": "9ad9c035a474af5e0e873cae1cff989a33b4f0697017fad83c48de3e0754dd8c"
+  },
+  "artifactManifest": {
+    "path": "/Users/rockie/Documents/gh-xgent/vscodium/docs/plan/lean-core.records/M8-final-artifact.json",
+    "bytes": 1523,
+    "sha256": "69bd91d7458e684ff22a203edbe31a503efeb0bef5ba448bd5e213f82888ad18"
+  },
+  "fixtureStatus": {
+    "file": {
+      "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/fixture-status.json",
+      "bytes": 386,
+      "sha256": "537188fa5c9d7ddb15d648625ada303787889ca4853a27c93981df98cf4f3376"
+    },
+    "mermaidExtensionPath": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features",
+    "insideExpectedApp": true
+  },
+  "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "generation": "145+146",
+  "dom": {
+    "total": 32,
+    "domPass": 32,
+    "fail": 0
+  },
+  "visualCounts": {
+    "PASS": 24,
+    "PASS_WITH_NOTE": 2,
+    "THEME_MISMATCH": 2,
+    "ERROR_TEXT_CLIPPED": 4
+  },
+  "bundleFiles": [
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js",
+      "bytes": 18642002,
+      "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e",
+      "relativePath": "markdown-preview-out/index.js",
+      "expected": {
+        "bytes": 18642002,
+        "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+      },
+      "matchesArtifact": true
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js",
+      "bytes": 18502766,
+      "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776",
+      "relativePath": "chat-webview-out/index-editor.js",
+      "expected": {
+        "bytes": 18502766,
+        "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+      },
+      "matchesArtifact": true
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/codicon.css",
+      "bytes": 133000,
+      "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641",
+      "relativePath": "chat-webview-out/codicon.css",
+      "expected": {
+        "bytes": 133000,
+        "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+      },
+      "matchesArtifact": true
+    }
+  ],
+  "scriptFiles": [
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+      "bytes": 24899,
+      "sha256": "dd9ddd892d77ac1d7fe95e155cd1d588d10527326777f67e14b77ec9726470a8",
+      "sourceUrl": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+      "insideExpectedApp": true
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+      "bytes": 1804,
+      "sha256": "fc9727a04053759cf768c410588faad706ee61c80ccb447bba453ac9566857d0",
+      "sourceUrl": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+      "insideExpectedApp": true
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js",
+      "bytes": 18502766,
+      "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776",
+      "sourceUrl": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js",
+      "insideExpectedApp": true
+    },
+    {
+      "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js",
+      "bytes": 18642002,
+      "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e",
+      "sourceUrl": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js",
+      "insideExpectedApp": true
+    }
+  ],
+  "eventsSummary": [
+    {
+      "method": "Log.entryAdded",
+      "classification": "permission-policy-warning",
+      "count": 32
+    },
+    {
+      "method": "Network.loadingFailed",
+      "classification": "canceled-document-navigation",
+      "count": 17
+    },
+    {
+      "method": "Runtime.consoleAPICalled",
+      "classification": "zenuml-diagnostic",
+      "count": 40
+    },
+    {
+      "method": "Runtime.exceptionThrown",
+      "classification": "invalid-fixture-parser-rejection",
+      "count": 4
+    }
+  ],
+  "exceptions": [
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "invalid-flowchart",
+      "method": "Runtime.exceptionThrown",
+      "at": 1790875145810,
+      "classification": "invalid-fixture-parser-rejection",
+      "text": "Uncaught (in promise)",
+      "descriptionFirstLine": "Error: Parse error on line 4:",
+      "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "invalid-sequence",
+      "method": "Runtime.exceptionThrown",
+      "at": 1790875146319,
+      "classification": "invalid-fixture-parser-rejection",
+      "text": "Uncaught (in promise)",
+      "descriptionFirstLine": "Error: Parse error on line 2:",
+      "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "invalid-flowchart",
+      "method": "Runtime.exceptionThrown",
+      "at": 1790875149968,
+      "classification": "invalid-fixture-parser-rejection",
+      "text": "Uncaught (in promise)",
+      "descriptionFirstLine": "Error: Parse error on line 4:",
+      "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "invalid-sequence",
+      "method": "Runtime.exceptionThrown",
+      "at": 1790875150474,
+      "classification": "invalid-fixture-parser-rejection",
+      "text": "Uncaught (in promise)",
+      "descriptionFirstLine": "Error: Parse error on line 2:",
+      "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+    }
+  ],
+  "checks": {
+    "all32ProductIdentitiesMatch": true,
+    "all32CaptureCoverageBeforeScripts": true,
+    "all32NoObservedCspViolations": true,
+    "all32NoFontFaceError": true,
+    "allBundleFilesMatchM8": true,
+    "allScriptFilesInsideApp": true,
+    "allScreens2880x1784": true,
+    "unexpectedEventCount": 0
+  },
+  "boundaries": [
+    "Visual glyph judgments cover the Chinese strings in these eight fixture cases at the captured viewport; no exhaustive font coverage or numeric contrast threshold was tested.",
+    "DOM bodyClass/themeColors cannot establish ZenUML internal theme; the two dark ZenUML screenshots retain a white canvas.",
+    "Canceled Document requests may be lifecycle navigation cancellation; this record preserves them rather than claiming no network events.",
+    "The four invalid Markdown fixtures log uncaught promise parser rejections; valid diagrams log none.",
+    "Interaction, source/copy, pan/zoom/reset, live theme transform preservation and actual quit/restart restoration are independent gates controlled by parent; this matrix cannot close all M3.",
+    "No product source or signed app was changed, no fixture request written, and no CDP/GUI session connected by this audit."
+  ],
+  "rows": [
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "四个中文节点及是/否边标签完整可读；白底深色文字，完整图形未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "57F8D2AF7F574C514221790BC84AEC14:2",
+        "id": 2,
+        "uniqueId": "140029676035141099.-3330039555790025406",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "1CB6869D04B0EB9F150D49BFE0725360",
+        "sessionId": "57F8D2AF7F574C514221790BC84AEC14",
+        "targetId": "83D4BAE20458ADA729F3EB6061C4B848",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875142485,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875142562,
+        "timeOrigin": 1790875142562.1,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-350b8b14-0334-43f2-a90a-1f9ac64c4ed1'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875142562,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-flowchart.png",
+        "bytes": 89579,
+        "sha256": "0c156030fc818cfe5753aaffdd9d503b847662d08380c0277d8b248450787ebd",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "中文参与者、请求/返回和时序说明完整可读；参与者顶部/底部完整，未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "C570DFE7549092A1D5C9F6624AE5A618:5",
+        "id": 5,
+        "uniqueId": "-1912242722244128113.-9047839943202919306",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "178C6CA0655FC35FF7E79162192408F9",
+        "sessionId": "C570DFE7549092A1D5C9F6624AE5A618",
+        "targetId": "48B15BB98F3160DE47AC5C94DBB0F11B",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875143152,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875143164,
+        "timeOrigin": 1790875143164.3,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-8153dcff-8341-4513-8180-eccf4acfc7f2'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875143162,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875143164,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-sequence.png",
+        "bytes": 97507,
+        "sha256": "fb40389f78ba3d34cffff4febd971152077cbaffb46d6bf1416d6a67eee0f9cd",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "state",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "三个中文状态与开始/成功完整可读；起终点完整，未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "668194116B36AD9D241331193B910BA3:7",
+        "id": 7,
+        "uniqueId": "-4776003149113119207.-8303356605303477364",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "782E495D23CD9681DFC737D5BBBB6E0D",
+        "sessionId": "668194116B36AD9D241331193B910BA3",
+        "targetId": "9F0C442D37EB9B314123921C849B334E",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875143649,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875143660,
+        "timeOrigin": 1790875143659.6,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-a9814308-dfc5-42cf-bf80-6bebc3955915'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875143659,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-state.png",
+        "bytes": 85009,
+        "sha256": "fe0ce1fb1ea64bbdb87fca1002b7c1ca5b7d2925848b9d1e7042f88bd417dd64",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "elk",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "中文入口、两并行任务、汇总结果完整可读；实际非居中根ELK几何，未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "608C85A5A48591AADFADA1F56BED9839:10",
+        "id": 10,
+        "uniqueId": "-5949561145363724940.4056690907711488450",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "7E97D48771A7AFAB1AE2005B20A0CA80",
+        "sessionId": "608C85A5A48591AADFADA1F56BED9839",
+        "targetId": "22214415661FEFCC0FC5445DED51CB69",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875144154,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875144166,
+        "timeOrigin": 1790875144165.8,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-0dd9b458-cfc4-4e5f-a1aa-0235fa81d2c2'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875144164,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875144165,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-elk.png",
+        "bytes": 75443,
+        "sha256": "bb65a86aadc0583a0744119d80760c1082b721bddf00f0c613f74deefd2d017b",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "tidy-tree",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "status": "PASS",
+        "notes": "五个中文mindmap标签完整可读；左右分支和外侧叶子完整，未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "6310DC22789FE8080CC08509197F7ABB:13",
+        "id": 13,
+        "uniqueId": "8614733112961163799.-8027387424764710512",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "3E133D192C9F6770098E5F8F34B0708A",
+        "sessionId": "6310DC22789FE8080CC08509197F7ABB",
+        "targetId": "B55316D78AECBF2430E60E3C0881BBE7",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875144658,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875144670,
+        "timeOrigin": 1790875144670.2,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-922a04eb-a5f9-48eb-9249-95438cfb718c'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875144668,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875144670,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-tidy-tree.png",
+        "bytes": 81773,
+        "sha256": "b5a5ec707a38c3ddcf2a66e1db19b97b511a1ac38fd04a5bc25c71734df2994d",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "zenuml",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "zenuml",
+        "status": "PASS",
+        "notes": "中文调用流程标题、三个调用参与者、Get/item/result标签完整可读，边框完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "CC34C8A307F6F63D6AC718EB97C4AA6D:15",
+        "id": 15,
+        "uniqueId": "2158330441096680932.-458900796965767160",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "47CC6A9F172AFDF10A329221095A424F",
+        "sessionId": "CC34C8A307F6F63D6AC718EB97C4AA6D",
+        "targetId": "DFDB2E8400E85AFA2F459309A6276633",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875145162,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875145172,
+        "timeOrigin": 1790875145171.8,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-fe89a03c-e51c-4f83-b5b4-9849ddc78453'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875145171,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145331,
+          "classification": "zenuml-diagnostic",
+          "level": "info",
+          "message": "[VerticalMode] resolved=\"html\" (VITE_VERTICAL_MODE=\"undefined\")"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145396,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "[ZenUML] WidthProviderOnCanvas: using OffscreenCanvas"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145398,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of _STARTER_ is 111; labelWidth: 91"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145398,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Controller is 100; labelWidth: 69"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145398,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Service is 100; labelWidth: 53"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145398,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Repository is 100; labelWidth: 76"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145399,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of _STARTER_ is 55.5"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145399,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Controller is 161"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145399,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Service is 261"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875145399,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Repository is 361"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-zenuml.png",
+        "bytes": 101138,
+        "sha256": "d5daa259cb99dbfd46942f1384602e9419728a279048647bd2b45199570fca5e",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "invalid-flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "有内容的Parse error与中文未闭合摘录可读；消息自然换行，末尾完整，无对象错误。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "E1C775D25AB6AA4A034951CAAAA23674:18",
+        "id": 18,
+        "uniqueId": "1600416730245839093.-1375194024571007586",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "C831B7E5BA2D55135B99F2BFA9092E4C",
+        "sessionId": "E1C775D25AB6AA4A034951CAAAA23674",
+        "targetId": "E5E84F2C2D20B6CB720CF17CF33B5AD3",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875145663,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875145675,
+        "timeOrigin": 1790875145674.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-f09aedfd-7df6-4c17-9129-4358117d2537'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875145672,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875145674,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        },
+        {
+          "method": "Runtime.exceptionThrown",
+          "at": 1790875145810,
+          "classification": "invalid-fixture-parser-rejection",
+          "text": "Uncaught (in promise)",
+          "descriptionFirstLine": "Error: Parse error on line 4:",
+          "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-invalid-flowchart.png",
+        "bytes": 112335,
+        "sha256": "6f31ba09525d211ffdb14071c388f91606cc67bdf76fd7d94f8115a2ecdf5a2f",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "light",
+      "caseId": "invalid-sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "有内容的Parse error与中文非法语法摘录可读；长token列表自然换行，最后got TXT完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "9FC11A76FFC7302F75865D2CF97B038B:20",
+        "id": 20,
+        "uniqueId": "7282483321385129065.-5201301095030765497",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "2A40454D6112CA6E0A5DDE3351DEB647",
+        "sessionId": "9FC11A76FFC7302F75865D2CF97B038B",
+        "targetId": "AFB9C252C5CA26E092C18B7D138A5C2F",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875146166,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875146176,
+        "timeOrigin": 1790875146176.2,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-3eb2cc3b-8ad4-4473-8d57-42f6c9548c3c'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875146176,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Runtime.exceptionThrown",
+          "at": 1790875146319,
+          "classification": "invalid-fixture-parser-rejection",
+          "text": "Uncaught (in promise)",
+          "descriptionFirstLine": "Error: Parse error on line 2:",
+          "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-light-invalid-sequence.png",
+        "bytes": 177939,
+        "sha256": "47d15f9054c4bc936fdb0df290cda5b7004a94ed15e72f9dab9f4904cc9d97a6",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "深底浅色四个中文节点及是/否完整可读，蓝色连线完整无裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "0CB1B46CF86CDC3D2B2F91D61A418E4F:22",
+        "id": 22,
+        "uniqueId": "5017656295714329709.1781808027058960252",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "35436DA79D24B21F3E6F9CA866D08FF6",
+        "sessionId": "0CB1B46CF86CDC3D2B2F91D61A418E4F",
+        "targetId": "E3837093BF56E1EA228D45648B2F753F",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875146696,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875146708,
+        "timeOrigin": 1790875146708,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-918df9c6-a907-433b-83d4-5738368e244a'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875146708,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-flowchart.png",
+        "bytes": 87653,
+        "sha256": "493aed4d4e6935b784b0a9d6a485405fffd8503500dd2fcbab57a1dcadc300cf",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "深底浅色中文参与者、请求/返回和时序说明完整可读，完整时序图未裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "A7F17A73934EB04D5E3DD539E32BF363:25",
+        "id": 25,
+        "uniqueId": "-4567650366349679467.2507981341185003015",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "5A625D434062C88A17D89395B43C2E8B",
+        "sessionId": "A7F17A73934EB04D5E3DD539E32BF363",
+        "targetId": "FAC7F40F0F0DBD92F1F4398C40FA67F4",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875147279,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875147293,
+        "timeOrigin": 1790875147292.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-23857f2b-9c3f-4030-a16f-6499206c0220'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875147290,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875147292,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-sequence.png",
+        "bytes": 95238,
+        "sha256": "27241594544ac3b7a7833f500452154a550275657c808321497086f048194db6",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "state",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "深底浅色三个中文状态与开始/成功完整可读，起终点完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "408CF430413E82B4E2D8F33B5EF09D91:28",
+        "id": 28,
+        "uniqueId": "2178108107484183190.3329210959847815018",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "2155E33F838C8D8998AF024DC741BEE4",
+        "sessionId": "408CF430413E82B4E2D8F33B5EF09D91",
+        "targetId": "14DD10904B0EDC12CC19AB34CEDE6B99",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875147783,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875147796,
+        "timeOrigin": 1790875147795.4,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-82902ac6-b9c9-45a6-899c-4585a873864b'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875147793,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875147795,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-state.png",
+        "bytes": 82768,
+        "sha256": "ccae21f7a12b5d0342b6ca125ca31544eb7a17daa596a081061f5edcf6e43101",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "elk",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "深底浅色四个中文ELK节点完整可读，蓝色折线和整体图形完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "4B8BDB1A02BC700DC89B2B70EAE4B771:31",
+        "id": 31,
+        "uniqueId": "-2548663953373799956.-6972695758115892947",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "526CC5D8DA05E762D1C83E6FCF1DBB05",
+        "sessionId": "4B8BDB1A02BC700DC89B2B70EAE4B771",
+        "targetId": "4AC1244156786411094189A1CD611943",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875148294,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875148307,
+        "timeOrigin": 1790875148306.9,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-76f4df0a-0f09-4fec-8861-f20cd7cfe22e'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875148305,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875148306,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-elk.png",
+        "bytes": 73422,
+        "sha256": "66080951650f9d0740f17301fe0aa2593423d07d106da3b5e955d6314ef512e2",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "tidy-tree",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "status": "PASS_WITH_NOTE",
+        "notes": "五个中文mindmap标签均可读、无缺字/裁剪；左侧浅字/浅绿背景对比较低，根为黑字灰底，需保留视觉对比观察。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "99C347D9DF62248088EB9F8DA1C6E85A:33",
+        "id": 33,
+        "uniqueId": "-4181257173374725181.8216678037903921081",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "9D5C6073144A67605FCEA466738C9459",
+        "sessionId": "99C347D9DF62248088EB9F8DA1C6E85A",
+        "targetId": "572314FBF8D1AF53F07D582E171962FB",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875148800,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875148810,
+        "timeOrigin": 1790875148810.2,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-9ea35675-2959-4e33-89ea-c4c12ade31c2'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875148810,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-tidy-tree.png",
+        "bytes": 80008,
+        "sha256": "0ac81661293602f4136ca5f3a38191ef0fd5baefb2c7e9983ffe7653b8f8f919",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "zenuml",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "status": "THEME_MISMATCH",
+        "notes": "中文标题及调用标签完整可读、无缺字/裁剪；图内保持白底黑字，与light图内配色一致，未使用对应dark画布。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "802D9F466F2B7CC3F650D5905822E453:35",
+        "id": 35,
+        "uniqueId": "-6833959452377844331.6695966359912431478",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "A36248FD48243F18F2EAB15A7B959E7E",
+        "sessionId": "802D9F466F2B7CC3F650D5905822E453",
+        "targetId": "11611E4E185B3BC0421F7F9743D6F920",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875149299,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875149310,
+        "timeOrigin": 1790875149309.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-c348b29a-601e-4658-b79c-557948c3bd1e'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875149309,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149480,
+          "classification": "zenuml-diagnostic",
+          "level": "info",
+          "message": "[VerticalMode] resolved=\"html\" (VITE_VERTICAL_MODE=\"undefined\")"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149544,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "[ZenUML] WidthProviderOnCanvas: using OffscreenCanvas"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149544,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of _STARTER_ is 111; labelWidth: 91"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149544,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Controller is 100; labelWidth: 69"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149544,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Service is 100; labelWidth: 53"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149544,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Repository is 100; labelWidth: 76"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149545,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of _STARTER_ is 55.5"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149546,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Controller is 161"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149546,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Service is 261"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875149546,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Repository is 361"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-zenuml.png",
+        "bytes": 99702,
+        "sha256": "7e2c3c5ddec7dccad7ba113709a1ddefa42d78e40ef64e01964d38c119a2a093",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "invalid-flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "status": "PASS",
+        "notes": "深底浅色Parse error与中文摘录可读，提示全文自然换行且完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "38148D9D4CDAC176DBC6C9CD3CE30E1A:38",
+        "id": 38,
+        "uniqueId": "6122926100680815429.-4442853336536533241",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "1EE7753DC9043411BE2D0537F56C6766",
+        "sessionId": "38148D9D4CDAC176DBC6C9CD3CE30E1A",
+        "targetId": "06E5728E8C2B16A8AC58578BB3365266",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875149804,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875149816,
+        "timeOrigin": 1790875149815.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-bbe16adf-0eed-4350-a16a-5abd2134e79d'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875149813,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875149815,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        },
+        {
+          "method": "Runtime.exceptionThrown",
+          "at": 1790875149968,
+          "classification": "invalid-fixture-parser-rejection",
+          "text": "Uncaught (in promise)",
+          "descriptionFirstLine": "Error: Parse error on line 4:",
+          "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-invalid-flowchart.png",
+        "bytes": 110005,
+        "sha256": "d6954c9630138619db1e4834a5371dea1c6f65bcbcdeef22485917cee5fc0f79",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "caseId": "invalid-sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "markdown-preview",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "status": "PASS",
+        "notes": "深底浅色Parse error与中文摘录可读，长token列表全文自然换行且末尾完整。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "35C53AA01A6BEE5E89BB3EB257E3C061:41",
+        "id": 41,
+        "uniqueId": "9033792486134690109.7231504622477778905",
+        "origin": "vscode-webview://1khjgava3qmrul8gt0umm5htf810onjkghjd8vofu4u2ni4pnpmo",
+        "name": "",
+        "frameId": "EFA548AD99131DEDF51A5F76A46FC6EA",
+        "sessionId": "35C53AA01A6BEE5E89BB3EB257E3C061",
+        "targetId": "496BDF207261D14DEFE56EDB550356AC",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875150310,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875150324,
+        "timeOrigin": 1790875150323.4,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-9588aab3-2382-4867-930a-fe54b1a2da5b'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875150321,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875150323,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        },
+        {
+          "method": "Runtime.exceptionThrown",
+          "at": 1790875150474,
+          "classification": "invalid-fixture-parser-rejection",
+          "text": "Uncaught (in promise)",
+          "descriptionFirstLine": "Error: Parse error on line 2:",
+          "url": "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/markdown-preview-dark-invalid-sequence.png",
+        "bytes": 174273,
+        "sha256": "7866cc9c8f7ff6c7dc38886af0652d336369df4010f22faee8f9269ba7b5e391",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "四个中文节点及是/否完整可读，全部图形居中未裁剪；右上四个pan/zoom/reset图标清晰。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "2FCE73C70484C213F0117EBB79FFEF2E:2",
+        "id": 2,
+        "uniqueId": "-4800601312723653325.5939869006253921572",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "A6CD09D6E4A7B00B45D2694356348908",
+        "sessionId": "2FCE73C70484C213F0117EBB79FFEF2E",
+        "targetId": "9DB65784178CEA4E7AD0BA2DAEEA96FF",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875150810,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875150874,
+        "timeOrigin": 1790875150874,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-c7fbbc61-b14e-4be2-8520-9dd26e076448'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875150874,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-flowchart.png",
+        "bytes": 79117,
+        "sha256": "82188e4d41e312e42b51786e94774845b4a33e3f287dbec554c9c441937fa6e0",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "全部中文参与者、消息、Note可读且完整；右上四个控制图标清晰，无裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "18388E2F2A225E7C8159EB7CC10D2E59:5",
+        "id": 5,
+        "uniqueId": "-4003757923246197397.-7169103291756112812",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "A6A9E71243B30B9FB624732AD238F36F",
+        "sessionId": "18388E2F2A225E7C8159EB7CC10D2E59",
+        "targetId": "91526FE20B468D68F43681C3BEEF51FC",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875151295,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875151306,
+        "timeOrigin": 1790875151305.8,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-a1d7ff65-bcba-43ae-a973-d41a9b69884d'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875151303,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875151305,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-sequence.png",
+        "bytes": 87098,
+        "sha256": "39d9c8d39dc372e7dbc17db2d199bdc232382c2ca1b20e69c574a3d9856ae676",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "state",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "中文状态和迁移标签、起终点完整可读；右上四个控制图标清晰，无裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "E40B70349EE7E8973BF8E672416AFB0C:7",
+        "id": 7,
+        "uniqueId": "-6453045800734903623.-1801928699161551721",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "4BEC0385920596A9B67B529417837168",
+        "sessionId": "E40B70349EE7E8973BF8E672416AFB0C",
+        "targetId": "6BF505822011795CF369529D037B3D56",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875151798,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875151807,
+        "timeOrigin": 1790875151806.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-14121a4d-31c9-408d-99d6-dd9f0274529f'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875151806,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-state.png",
+        "bytes": 76619,
+        "sha256": "aa843a7324f9fe4976421cd9eff4c06e4c2c0dc6e9676f36f524ea2c3c383b1d",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "elk",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "四个中文ELK节点、折线完整，右上四个控制图标清晰，无裁剪。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "711763387808799D7AEB8A982DC91301:9",
+        "id": 9,
+        "uniqueId": "6673332913131459440.-193493059918935039",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "C8343E237A4B3391A976E0C19B000DA9",
+        "sessionId": "711763387808799D7AEB8A982DC91301",
+        "targetId": "EE70E3906CFDB02A0DABE4189427C781",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875152202,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875152212,
+        "timeOrigin": 1790875152212.2,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-638b356a-4c79-440a-b22f-bcd257579a32'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875152212,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-elk.png",
+        "bytes": 68663,
+        "sha256": "90ab7b7fbbf657a682b00c688654bc5ea8078f213b5c292428aa0826726c2cd8",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "tidy-tree",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "tidy-tree",
+        "status": "PASS",
+        "notes": "5 个中文标签完整，左右叶节点均在画布内；右上 4 个操作按钮可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "2D9A0E7A3DD2C24DC403D4C48D1C6230:11",
+        "id": 11,
+        "uniqueId": "-1360775519049576806.-3636470314804677160",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "FBB426C7AAB6BF3E5B3DCF2DAA348469",
+        "sessionId": "2D9A0E7A3DD2C24DC403D4C48D1C6230",
+        "targetId": "48A4EE777E92F2DF8E9678E4B1394ACB",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875152716,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875152727,
+        "timeOrigin": 1790875152726.7,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-4f9d48a8-91f0-4efa-8084-b6a0b1a1e027'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875152726,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-tidy-tree.png",
+        "bytes": 73453,
+        "sha256": "8ef57982b82a167b0f78f160f6444554250e6a4537ef36b7feaf26f120a83de7",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "zenuml",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "zenuml",
+        "status": "PASS",
+        "notes": "中文标题、英文参与者及消息标签完整；白底图内文字清楚，右上操作按钮可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "B3C44977DBF0C9165F8C28A83445AFCF:14",
+        "id": 14,
+        "uniqueId": "-2297560294478484732.962438991392044904",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "03CBED996826EB2928A71F22E5A7F85B",
+        "sessionId": "B3C44977DBF0C9165F8C28A83445AFCF",
+        "targetId": "F28E0CDE47B75A3EBABDFE2A214C42DC",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875153124,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875153136,
+        "timeOrigin": 1790875153135.8,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-9e7a69b8-d397-47d2-89c0-cffb239264f3'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(59, 59, 59)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875153133,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875153136,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153288,
+          "classification": "zenuml-diagnostic",
+          "level": "info",
+          "message": "[VerticalMode] resolved=\"html\" (VITE_VERTICAL_MODE=\"undefined\")"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153352,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "[ZenUML] WidthProviderOnCanvas: using OffscreenCanvas"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153354,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of _STARTER_ is 111; labelWidth: 91"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153354,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Controller is 100; labelWidth: 69"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153354,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Service is 100; labelWidth: 53"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153354,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Repository is 100; labelWidth: 76"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153355,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of _STARTER_ is 55.5"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153355,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Controller is 161"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153355,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Service is 261"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875153355,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Repository is 361"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-zenuml.png",
+        "bytes": 93170,
+        "sha256": "8ac3e91bd8339aff43ef8fa91f0a1c19e132ba6fb10c2eba6955b58af68e6205",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "invalid-flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-flowchart",
+        "status": "ERROR_TEXT_CLIPPED",
+        "notes": "ParseError、行号和中文代码片段可读；末尾 Expecting 长列表不换行，伸出右侧视口而被裁剪。错误态未显示图操作按钮。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "88B1FBF7060D255F2B80084ED482DECD:16",
+        "id": 16,
+        "uniqueId": "1327768979871867832.-7786516365824134846",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "F59E0DB9657AA14D1D879DC50118363B",
+        "sessionId": "88B1FBF7060D255F2B80084ED482DECD",
+        "targetId": "388178694717B6DCCA24D642FC140CF6",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875153633,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875153645,
+        "timeOrigin": 1790875153644.4,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-11a65e68-85cd-475b-b8a0-39d6c52feb9d'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875153644,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-invalid-flowchart.png",
+        "bytes": 83619,
+        "sha256": "18a142a4bdd3cce59c75dd489433d8f730a5dddfeccd0751ef9b4487ab2fc12e",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "light",
+      "caseId": "invalid-sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "light",
+        "caseId": "invalid-sequence",
+        "status": "ERROR_TEXT_CLIPPED",
+        "notes": "ParseError、行号和中文代码片段可读；末尾 Expecting 长列表不换行，伸出右侧视口而被裁剪。错误态未显示图操作按钮。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "8CCC76CCC1507566249978801D5C59E3:19",
+        "id": 19,
+        "uniqueId": "3184209387375711158.7477682951484604057",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "25204B3100F6B0F19EF83F56E68801D8",
+        "sessionId": "8CCC76CCC1507566249978801D5C59E3",
+        "targetId": "A2F493685C2DB9F8A35165ACA57F1815",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875153936,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875153948,
+        "timeOrigin": 1790875153947.6,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-c1a838f4-f9e8-4837-aa4b-f1e314709e80'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-light",
+      "themeColors": {
+        "foreground": "#3b3b3b",
+        "background": "#ffffff",
+        "bodyColor": "rgb(59, 59, 59)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875153945,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875153947,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-light-invalid-sequence.png",
+        "bytes": 88390,
+        "sha256": "a90138fbab64c7b68f14eb595865eca524720ac856ef2995a22226112bf9fccb",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "flowchart",
+        "status": "PASS",
+        "notes": "4 个中文节点及是/否连线标签完整；深色画布、浅色文字和操作按钮清楚。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "C35987BCE5C8053A45328970E437BA18:22",
+        "id": 22,
+        "uniqueId": "-2490585069356438281.-4725167454828850405",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "ECFC08F0C8C95C82AA04E22D0E026F47",
+        "sessionId": "C35987BCE5C8053A45328970E437BA18",
+        "targetId": "D8401591E92E51BE2B50A4EA9ED8CEB7",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875154359,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875154371,
+        "timeOrigin": 1790875154370.5,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-da1b008b-5156-472a-92f6-fc55678ea734'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875154368,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875154370,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-flowchart.png",
+        "bytes": 77330,
+        "sha256": "b3d8941a07255af2a690b3a0b157562c18cbd82b669b7f049ee720b424ee3642",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "sequence",
+        "status": "PASS",
+        "notes": "中文参与者、消息与说明完整；深色画布和浅色文字清楚，操作按钮可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "8EF39B61E1DD9FA2628109C762B6DEE7:25",
+        "id": 25,
+        "uniqueId": "-5130712567654977940.241360694296239858",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "27CD102A7AD744DDBE6FED8BFCA4078C",
+        "sessionId": "8EF39B61E1DD9FA2628109C762B6DEE7",
+        "targetId": "D7EEA21EB2771D823070C82BE5B51F8C",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875154750,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875154762,
+        "timeOrigin": 1790875154762.2,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-918ceff9-b074-40ff-a4e8-c41cce83aaac'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875154759,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875154762,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-sequence.png",
+        "bytes": 84941,
+        "sha256": "8308b1920329ecde0cd6b3db9be895973a5057181785c9936ec323a3afbafb31",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "state",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "state",
+        "status": "PASS",
+        "notes": "3 个中文状态、开始/成功转换及起止点完整；深色画布和操作按钮可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "F4029257CAB63DB98D05266D076A60D4:27",
+        "id": 27,
+        "uniqueId": "9170999209245600255.-426684454806832606",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "917D39483021F2A4280EA3009AEC78DD",
+        "sessionId": "F4029257CAB63DB98D05266D076A60D4",
+        "targetId": "2F2D29EB8207903BE81DB10AE9727587",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875155363,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875155375,
+        "timeOrigin": 1790875155374.8,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-34ae6654-062a-49d8-b34c-3646727acb1d'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875155374,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-state.png",
+        "bytes": 74232,
+        "sha256": "8a200adaa617f69d745c6cf55fcff7713518917215d58147a92330e48442f410",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "elk",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "elk",
+        "status": "PASS",
+        "notes": "4 个中文节点完整，正交连线清楚；深色画布和操作按钮可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "87CB35D49587A8658B214D406EFA18A7:30",
+        "id": 30,
+        "uniqueId": "-4663495833483245432.5965838354452008080",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "A80ADB5F730CDAF3EBAB43DC896B914B",
+        "sessionId": "87CB35D49587A8658B214D406EFA18A7",
+        "targetId": "DF44E59D206C083996B62A706CB620F0",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875155869,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875155883,
+        "timeOrigin": 1790875155882.4,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-1a085cf2-6017-43ac-ab5e-70e67ca1acd3'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875155879,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875155883,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-elk.png",
+        "bytes": 66769,
+        "sha256": "d39f22d427a22b3790bb2861b2911d6753c165a95cc8caec8575381fff79a5e8",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "tidy-tree",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "tidy-tree",
+        "status": "PASS_WITH_NOTE",
+        "notes": "5 个中文标签完整、无裁剪；左分支及叶节点浅灰字/浅绿底对比较弱，仍可辨读；控件可读。未执行对比度数值验收。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "7C446919D3100312D4CD33944EDC9156:32",
+        "id": 32,
+        "uniqueId": "-6372810345544122951.3298708138114057528",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "3EC1291E135B5CEC2743F699B273C2D9",
+        "sessionId": "7C446919D3100312D4CD33944EDC9156",
+        "targetId": "A368667A522A1085BAEAECCE2E699DBF",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875156379,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875156391,
+        "timeOrigin": 1790875156391,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-4e6ebccf-297a-4f20-b811-3031c3fe1a6d'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875156390,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-tidy-tree.png",
+        "bytes": 71827,
+        "sha256": "6e122bdee247c90362a860f37ed8a4c4d153088b715c7866355ec8154dc86fde",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "zenuml",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "zenuml",
+        "status": "THEME_MISMATCH",
+        "notes": "外层工作台为 dark，图内仍为白底黑字，与 light 图配色相同；中文标题及英文参与者/消息完整、清楚，控件可读。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "E853F49B342736DD21BC282153687E5F:34",
+        "id": 34,
+        "uniqueId": "8368680741317242491.-5515926913268939077",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "3DB110FF6418A487A91E954606E901D3",
+        "sessionId": "E853F49B342736DD21BC282153687E5F",
+        "targetId": "57BB4AE50F9A72D528190E12666DB022",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875156785,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875156797,
+        "timeOrigin": 1790875156796.9,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-97bd165b-76f9-424f-a163-83f99f8139b3'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875156797,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875156951,
+          "classification": "zenuml-diagnostic",
+          "level": "info",
+          "message": "[VerticalMode] resolved=\"html\" (VITE_VERTICAL_MODE=\"undefined\")"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157014,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "[ZenUML] WidthProviderOnCanvas: using OffscreenCanvas"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157014,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of _STARTER_ is 111; labelWidth: 91"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157014,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Controller is 100; labelWidth: 69"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157014,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Service is 100; labelWidth: 53"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157014,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Width of Repository is 100; labelWidth: 76"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157015,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of _STARTER_ is 55.5"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157015,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Controller is 161"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157015,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Service is 261"
+        },
+        {
+          "method": "Runtime.consoleAPICalled",
+          "at": 1790875157015,
+          "classification": "zenuml-diagnostic",
+          "level": "debug",
+          "message": "Position of Repository is 361"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-zenuml.png",
+        "bytes": 91669,
+        "sha256": "67254df17a51f9af4225cafa1497904c145df9b09c937b1cc1cd9a69ee328175",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "invalid-flowchart",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-flowchart",
+        "status": "ERROR_TEXT_CLIPPED",
+        "notes": "ParseError、行号和中文代码片段可读；末尾 Expecting 长列表不换行，伸出右侧视口而被裁剪。错误态未显示图操作按钮。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "99701A2B771E016EF2CE5894902B1E29:37",
+        "id": 37,
+        "uniqueId": "-7574711005170203633.2279573214476202037",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "C8C39126D7E95550B1FBBA30B49A130E",
+        "sessionId": "99701A2B771E016EF2CE5894902B1E29",
+        "targetId": "40F46ABCEFAAEFA3275C1963E79E56BF",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875157292,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875157304,
+        "timeOrigin": 1790875157303.5,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-dd6f070e-db50-46d0-9687-65c33bdc3102'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875157301,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875157303,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-invalid-flowchart.png",
+        "bytes": 81595,
+        "sha256": "810e9e6c6a97c6d053c38e06c7cedc9035a83ed5826aa2707d4a31e866e26c75",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    },
+    {
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "caseId": "invalid-sequence",
+      "domStatus": "DOM_CHECK_PASS",
+      "visual": {
+        "surface": "standalone-editor",
+        "theme": "dark",
+        "caseId": "invalid-sequence",
+        "status": "ERROR_TEXT_CLIPPED",
+        "notes": "ParseError、行号和中文代码片段可读；末尾 Expecting 长列表不换行，伸出右侧视口而被裁剪。错误态未显示图操作按钮。"
+      },
+      "productIdentity": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "productIdentityMatches": true,
+      "context": {
+        "key": "74B8BC31DBE76923F878A388E594B3F7:40",
+        "id": 40,
+        "uniqueId": "-4225270632069095113.-6720800270689784125",
+        "origin": "vscode-webview://1bri24bh554c5s3la1rkd8rlemh63pcs9mv9lpcoldsl6bdqdv81",
+        "name": "",
+        "frameId": "AE520DDD46CB502ABB0709D86B6F9637",
+        "sessionId": "74B8BC31DBE76923F878A388E594B3F7",
+        "targetId": "2115ECCAD513A57C63857CA906B0C0F6",
+        "targetType": "iframe",
+        "rootTargetId": "10F056B1DD3CE4AF001D741E03BEE774"
+      },
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "captureCoverage": {
+        "connectedAt": 1790875141717,
+        "selectedSessionAttachedAt": 1790875157804,
+        "existingTargetAtConnect": false,
+        "pausedBeforeScripts": true,
+        "newDocumentInstrumentation": true
+      },
+      "coverageOrderPass": true,
+      "csp": {
+        "installedAt": 1790875157818,
+        "timeOrigin": 1790875157817.6,
+        "violations": []
+      },
+      "domCsp": "default-src 'none'; img-src data:; script-src 'nonce-4e7296db-2878-4ca2-a130-ab2e8e7d340b'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "fontErrorFaces": [],
+      "domFailures": [],
+      "rowFailures": [],
+      "bodyClass": "vscode-dark",
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": null
+      },
+      "events": [
+        {
+          "method": "Log.entryAdded",
+          "at": 1790875157815,
+          "classification": "permission-policy-warning",
+          "level": "warning",
+          "message": "Unrecognized feature: 'local-network-access'."
+        },
+        {
+          "method": "Network.loadingFailed",
+          "at": 1790875157818,
+          "classification": "canceled-document-navigation",
+          "errorText": "net::ERR_ABORTED",
+          "canceled": true,
+          "blockedReason": null,
+          "type": "Document"
+        }
+      ],
+      "screenshot": {
+        "path": "/private/tmp/mm145-ejdnx3uk/evidence/matrix/standalone-editor-dark-invalid-sequence.png",
+        "bytes": 85903,
+        "sha256": "f6c1a20226885a28faa1e86528329289758a67b892aaf3f88259cde05b442553",
+        "dimensions": [
+          2880,
+          1784
+        ]
+      }
+    }
+  ],
+  "zenumlThemeAssessment": {
+    "status": "FROZEN_UPSTREAM_FIXED_SVG_THEME_LIMITATION",
+    "readability": "Both real dark screenshots remain readable, Chinese labels complete.",
+    "regressionFrom139Or141": false,
+    "frozenPlugin": "@mermaid-js/mermaid-zenuml 0.2.3",
+    "frozenCore": "@zenuml/core 3.48.3",
+    "themeTrace": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-mermaid148-51j4buri/zenuml-theme-trace.json",
+    "evidence": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-mermaid148-51j4buri/148-evidence.md",
+    "explanation": "VS Code variables reach Mermaid. Frozen plugin calls renderToSvg(code) without options; native core composeSvg ignores options and emits fixed white canvas/#222 labels. No new theme system introduced."
+  },
+  "artifactManifestSnapshot": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-mermaid148-51j4buri/product145-M8-final-artifact.json"
+}

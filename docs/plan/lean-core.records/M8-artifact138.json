@@ -1,0 +1,15 @@
+{
+  "files": 1182,
+  "bytes": 407625179,
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-final-build-ugv6jlev/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "unsigned": true,
+  "patch": 138,
+  "zipBytes": 152619148,
+  "zipSha256": "a56349a64741fa2a6c848324dba6bab849eeafd9fb75200b33255bc74eb92447",
+  "baselineAppBytes": 528142131,
+  "baselineZipBytes": 192738926,
+  "savedAppBytes": 120516952,
+  "savedZipBytes": 40119778,
+  "appReductionPercent": 22.82,
+  "zipReductionPercent": 20.82
+}

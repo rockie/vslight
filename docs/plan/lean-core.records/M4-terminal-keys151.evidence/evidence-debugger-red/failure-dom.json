@@ -1,0 +1,11 @@
+{
+  "hasFocus": true,
+  "visibility": "visible",
+  "active": {
+    "tag": "TEXTAREA",
+    "classes": "xterm-helper-textarea",
+    "label": "Terminal 1, Keys 7b3b9895-9b77-4a29-8e88-74408c3b7c67\nUse ⌥F1 for terminal accessibility help"
+  },
+  "terminal": true,
+  "quickOpen": false
+}

@@ -1,0 +1,30 @@
+{
+  "label": "cold",
+  "pid": 46653,
+  "args": [
+    "--user-data-dir",
+    "/private/tmp/lcfinal-chkarkup/ui/u",
+    "--extensions-dir",
+    "/private/tmp/lcfinal-chkarkup/ui/e",
+    "--shared-data-dir",
+    "/private/tmp/lcfinal-chkarkup/ui/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lcfinal-chkarkup/ui/ext",
+    "--remote-debugging-port=19560",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--new-window",
+    "/private/tmp/lcfinal-chkarkup/ui/w"
+  ],
+  "at": "2026-10-02T07:45:43.743Z",
+  "ready": {
+    "pid": 47396,
+    "parentPID": 46653,
+    "version": "1.135.0",
+    "root": "/private/tmp/lcfinal-chkarkup/ui",
+    "extensionId": "lean-tests.lean-ui-final"
+  },
+  "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+  "listener": "p46653\nf32\nn127.0.0.1:19560\n"
+}

@@ -1,0 +1,308 @@
+diff --git a/src/vs/workbench/contrib/editTelemetry/browser/editTelemetryContribution.ts b/src/vs/workbench/contrib/editTelemetry/browser/editTelemetryContribution.ts
+--- a/src/vs/workbench/contrib/editTelemetry/browser/editTelemetryContribution.ts
++++ b/src/vs/workbench/contrib/editTelemetry/browser/editTelemetryContribution.ts
+@@ -6,16 +6,13 @@
+ import { Disposable } from '../../../../base/common/lifecycle.js';
+ import { autorun, derived } from '../../../../base/common/observable.js';
+ import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
+-import { CommandsRegistry } from '../../../../platform/commands/common/commands.js';
+ import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
+ import { observableConfigValue } from '../../../../platform/observable/common/platformObservableUtils.js';
+ import { ITelemetryService, TelemetryLevel, telemetryLevelEnabled } from '../../../../platform/telemetry/common/telemetry.js';
+ import { AnnotatedDocuments } from './helpers/annotatedDocuments.js';
+ import { EditTrackingFeature } from './telemetry/editSourceTrackingFeature.js';
+ import { VSCodeWorkspace } from './helpers/vscodeObservableWorkspace.js';
+-import { AiStatsFeature } from './editStats/aiStatsFeature.js';
+-import { AI_STATS_SETTING_ID, EDIT_TELEMETRY_SETTING_ID } from './settingIds.js';
+-import { AiContributionFeature } from './aiContributionFeature.js';
++import { EDIT_TELEMETRY_SETTING_ID } from './settingIds.js';
+ 
+ export class EditTelemetryContribution extends Disposable {
+ 	constructor(
+@@ -37,31 +34,5 @@
+ 			}
+ 			r.store.add(instantiationService.createInstance(EditTrackingFeature, workspace.read(r), annotatedDocuments.read(r)));
+ 		}));
+-
+-		const aiStatsEnabled = observableConfigValue(AI_STATS_SETTING_ID, true, configurationService);
+-		this._register(autorun(r => {
+-			const enabled = aiStatsEnabled.read(r);
+-			if (!enabled) {
+-				return;
+-			}
+-
+-			r.store.add(instantiationService.createInstance(AiStatsFeature, annotatedDocuments.read(r)));
+-		}));
+-
+-		// Register no-op fallbacks so that extensions can always call these
+-		// commands even when AiContributionFeature is not active.
+-		// AiContributionFeature overrides these with real implementations
+-		// when active, and the no-ops restore when it is disposed.
+-		this._register(CommandsRegistry.registerCommand('_aiEdits.hasAiContributions', () => false));
+-		this._register(CommandsRegistry.registerCommand('_aiEdits.clearAiContributions', () => { }));
+-		this._register(CommandsRegistry.registerCommand('_aiEdits.clearAllAiContributions', () => { }));
+-
+-		const addAICoAuthor = observableConfigValue('git.addAICoAuthor', 'off', configurationService);
+-		this._register(autorun(r => {
+-			if (addAICoAuthor.read(r) === 'off') {
+-				return;
+-			}
+-			r.store.add(instantiationService.createInstance(AiContributionFeature, annotatedDocuments.read(r)));
+-		}));
+ 	}
+ }
+diff --git a/src/vs/workbench/contrib/editTelemetry/browser/editTelemetry.contribution.ts b/src/vs/workbench/contrib/editTelemetry/browser/editTelemetry.contribution.ts
+--- a/src/vs/workbench/contrib/editTelemetry/browser/editTelemetry.contribution.ts
++++ b/src/vs/workbench/contrib/editTelemetry/browser/editTelemetry.contribution.ts
+@@ -5,7 +5,7 @@
+ 
+ import { Registry } from '../../../../platform/registry/common/platform.js';
+ import { EditTelemetryContribution } from './editTelemetryContribution.js';
+-import { EDIT_TELEMETRY_SETTING_ID, AI_STATS_SETTING_ID } from './settingIds.js';
++import { EDIT_TELEMETRY_SETTING_ID } from './settingIds.js';
+ import { Extensions as ConfigurationExtensions, IConfigurationRegistry } from '../../../../platform/configuration/common/configurationRegistry.js';
+ import { localize } from '../../../../nls.js';
+ import { EDIT_TELEMETRY_DETAILS_SETTING_ID, EDIT_TELEMETRY_SHOW_DECORATIONS, EDIT_TELEMETRY_SHOW_STATUS_BAR } from './settings.js';
+@@ -33,15 +33,6 @@
+ 				mode: 'auto'
+ 			},
+ 		},
+-		[AI_STATS_SETTING_ID]: {
+-			markdownDescription: localize('editor.aiStats.enabled', "Controls whether to enable AI statistics in the editor. The gauge shows the average AI rate across 5-minute sessions, where each session's rate is calculated as AI-inserted characters divided by total inserted characters."),
+-			type: 'boolean',
+-			default: false,
+-			tags: ['experimental'],
+-			experiment: {
+-				mode: 'auto'
+-			}
+-		},
+ 		[EDIT_TELEMETRY_DETAILS_SETTING_ID]: {
+ 			markdownDescription: localize('telemetry.editStats.detailed.enabled', "Controls whether to enable telemetry for detailed edit statistics (only sends statistics if general telemetry is enabled)."),
+ 			type: 'boolean',
+diff --git a/src/vs/workbench/contrib/editTelemetry/browser/settingIds.ts b/src/vs/workbench/contrib/editTelemetry/browser/settingIds.ts
+--- a/src/vs/workbench/contrib/editTelemetry/browser/settingIds.ts
++++ b/src/vs/workbench/contrib/editTelemetry/browser/settingIds.ts
+@@ -4,4 +4,3 @@
+  *--------------------------------------------------------------------------------------------*/
+ 
+ export { EDIT_TELEMETRY_SETTING_ID } from '../../../../platform/telemetry/common/editArcTelemetry.js';
+-export const AI_STATS_SETTING_ID = 'editor.aiStats.enabled';
+diff --git a/src/vs/workbench/services/editor/common/editorResolverService.ts b/src/vs/workbench/services/editor/common/editorResolverService.ts
+--- a/src/vs/workbench/services/editor/common/editorResolverService.ts
++++ b/src/vs/workbench/services/editor/common/editorResolverService.ts
+@@ -38,44 +38,11 @@
+ export const diffEditorsAssociationsSettingId = 'workbench.diffEditorAssociations';
+ export const hiddenEditorTypesSettingId = 'workbench.editor.hiddenEditorTypes';
+ 
+-/**
+- * Setting that controls whether the Markdown editor is the default editor for
+- * `*.md` files in the Agents window. Gated behind an experiment so it can be
+- * rolled out gradually. Defaults to on.
+- */
+-export const markdownDefaultEditorAgentsWindowSettingId = 'workbench.editor.markdownDefaultEditorInAgentsWindow';
+-
+-/**
+- * Builds the default value for `workbench.editorAssociations` in the Agents window.
+- * Shared so that dynamic re-registrations of the setting preserve the override.
+- *
+- * Each editor association can be toggled independently. Passing `undefined`
+- * leaves the association at its enabled default, so the static registration
+- * ends up with all defaults registered. Pass `false` to fall back to the
+- * markdown preview editor for `*.md` files.
+- */
+-export function editorsAssociationsAgentsWindowDefault(options?: { markdownDefaultEditor?: boolean }): Record<string, string> {
+-	return {
+-		'*.md': options?.markdownDefaultEditor === true ? 'vscode.markdown.editor' : 'vscode.markdown.preview.editor'
+-	};
+-}
+-
+-export function diffEditorsAssociationsAgentsWindowDefault(options?: { markdownDefaultEditor?: boolean }): Record<string, string> {
+-	return editorsAssociationsAgentsWindowDefault(options);
+-}
+-
+ const configurationRegistry = Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration);
+ 
+ const editorAssociationsConfigurationNode: IConfigurationNode = {
+ 	...workbenchConfigurationNodeBase,
+ 	properties: {
+-		[markdownDefaultEditorAgentsWindowSettingId]: {
+-			type: 'boolean',
+-			default: true,
+-			tags: ['experimental'],
+-			experiment: { mode: 'startup' },
+-			markdownDescription: localize('editor.markdownDefaultEditorInAgentsWindow', "Controls whether the Markdown editor is used as the default editor for Markdown files in the Agents window."),
+-		},
+ 		[editorsAssociationsSettingId]: {
+ 			type: 'object',
+ 			markdownDescription: localize('editor.editorAssociations', "Configure [glob patterns](https://aka.ms/vscode-glob-patterns) to editors (for example `\"*.hex\": \"hexEditor.hexedit\"`). These have precedence over the default behavior."),
+@@ -83,7 +50,7 @@
+ 				type: 'string'
+ 			},
+ 			agentsWindow: {
+-				default: editorsAssociationsAgentsWindowDefault()
++				default: { '*.md': 'vscode.markdown.preview.editor' }
+ 			}
+ 		},
+ 		[diffEditorsAssociationsSettingId]: {
+@@ -93,7 +60,7 @@
+ 				type: 'string'
+ 			},
+ 			agentsWindow: {
+-				default: diffEditorsAssociationsAgentsWindowDefault()
++				default: { '*.md': 'vscode.markdown.preview.editor' }
+ 			}
+ 		},
+ 		[hiddenEditorTypesSettingId]: {
+diff --git a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+--- a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
++++ b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+@@ -9,14 +9,13 @@
+ import { Disposable } from '../../../../base/common/lifecycle.js';
+ import { IConfigurationRegistry, Extensions as ConfigurationExtensions, IConfigurationNode, ConfigurationScope } from '../../../../platform/configuration/common/configurationRegistry.js';
+ import { workbenchConfigurationNodeBase } from '../../../common/configuration.js';
+-import { diffEditorsAssociationsAgentsWindowDefault, diffEditorsAssociationsSettingId, editorsAssociationsAgentsWindowDefault, editorsAssociationsSettingId, IEditorResolverService, markdownDefaultEditorAgentsWindowSettingId, RegisteredEditorInfo, RegisteredEditorPriority, toRegisteredEditorPriorityInfo } from '../../../services/editor/common/editorResolverService.js';
++import { diffEditorsAssociationsSettingId, editorsAssociationsSettingId, IEditorResolverService, RegisteredEditorInfo, RegisteredEditorPriority, toRegisteredEditorPriorityInfo } from '../../../services/editor/common/editorResolverService.js';
+ import { IJSONSchemaMap } from '../../../../base/common/jsonSchema.js';
+ import { IExtensionService } from '../../../services/extensions/common/extensions.js';
+ import { coalesce } from '../../../../base/common/arrays.js';
+ import { Event } from '../../../../base/common/event.js';
+ import { IWorkbenchEnvironmentService } from '../../../services/environment/common/environmentService.js';
+ import { ByteSize, getLargeFileConfirmationLimit } from '../../../../platform/files/common/files.js';
+-import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
+ 
+ export class DynamicEditorConfigurations extends Disposable implements IWorkbenchContribution {
+ 
+@@ -71,8 +70,7 @@
+ 	constructor(
+ 		@IEditorResolverService private readonly editorResolverService: IEditorResolverService,
+ 		@IExtensionService extensionService: IExtensionService,
+-		@IWorkbenchEnvironmentService private readonly environmentService: IWorkbenchEnvironmentService,
+-		@IConfigurationService private readonly configurationService: IConfigurationService
++		@IWorkbenchEnvironmentService private readonly environmentService: IWorkbenchEnvironmentService
+ 	) {
+ 		super();
+ 
+@@ -93,12 +91,6 @@
+ 		// Registered editors (debounced to reduce perf overhead)
+ 		this._register(Event.debounce(this.editorResolverService.onDidChangeEditorRegistrations, (_, e) => e)(() => this.updateDynamicEditorConfigurations()));
+ 
+-		// Re-register when the Agents window Markdown default editor setting changes
+-		this._register(this.configurationService.onDidChangeConfiguration(e => {
+-			if (e.affectsConfiguration(markdownDefaultEditorAgentsWindowSettingId)) {
+-				this.updateDynamicEditorConfigurations();
+-			}
+-		}));
+ 	}
+ 
+ 	private updateDynamicEditorConfigurations(): void {
+@@ -153,7 +145,6 @@
+ 
+ 		// Registers setting for editorAssociations
+ 		const oldEditorAssociationsConfigurationNode = this.editorAssociationsConfigurationNode;
+-		const markdownDefaultEditorEnabled = this.configurationService.getValue<boolean>(markdownDefaultEditorAgentsWindowSettingId) === true;
+ 		this.editorAssociationsConfigurationNode = {
+ 			...workbenchConfigurationNodeBase,
+ 			properties: {
+@@ -167,7 +158,7 @@
+ 						}
+ 					},
+ 					agentsWindow: {
+-						default: editorsAssociationsAgentsWindowDefault({ markdownDefaultEditor: markdownDefaultEditorEnabled })
++						default: { '*.md': 'vscode.markdown.preview.editor' }
+ 					}
+ 				}
+ 			}
+@@ -188,7 +179,7 @@
+ 						}
+ 					},
+ 					agentsWindow: {
+-						default: diffEditorsAssociationsAgentsWindowDefault({ markdownDefaultEditor: markdownDefaultEditorEnabled })
++						default: { '*.md': 'vscode.markdown.preview.editor' }
+ 					}
+ 				}
+ 			}
+diff --git a/src/vs/workbench/workbench.desktop.main.ts b/src/vs/workbench/workbench.desktop.main.ts
+--- a/src/vs/workbench/workbench.desktop.main.ts
++++ b/src/vs/workbench/workbench.desktop.main.ts
+@@ -121,9 +121,6 @@
+ // Issues
+ import './contrib/issue/electron-browser/issue.service.contribution.js'; // vslight: keep issue services registered (extension report-issue actions inject IWorkbenchIssueService)
+ 
+-// Surveys
+-import './contrib/surveys/browser/survey.contribution.js';
+-
+ // Process Explorer
+ import './contrib/processExplorer/electron-browser/processExplorer.contribution.js';
+ 
+diff --git a/src/vs/workbench/workbench.web.main.ts b/src/vs/workbench/workbench.web.main.ts
+--- a/src/vs/workbench/workbench.web.main.ts
++++ b/src/vs/workbench/workbench.web.main.ts
+@@ -154,9 +154,6 @@
+ // Issues
+ import './contrib/issue/browser/issue.contribution.js';
+ 
+-// Surveys
+-import './contrib/surveys/browser/survey.contribution.js';
+-
+ // Splash
+ import './contrib/splash/browser/splash.contribution.js';
+ 
+diff --git a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+--- a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
++++ b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+@@ -56,9 +56,6 @@
+ 	Walkthrough = 'accessibility.verbosity.walkthrough',
+ 	SourceControl = 'accessibility.verbosity.sourceControl',
+ 	Find = 'accessibility.verbosity.find',
+-	SessionsChanges = 'accessibility.verbosity.sessionsChanges',
+-	Survey = 'accessibility.verbosity.survey',
+-	Automations = 'accessibility.verbosity.automations',
+ }
+ 
+ const baseVerbosityProperty: IConfigurationPropertySchema = {
+@@ -184,18 +181,6 @@
+ 			description: localize('verbosity.find', 'Provide information about how to access the find accessibility help menu when the find input is focused.'),
+ 			...baseVerbosityProperty
+ 		},
+-		[AccessibilityVerbositySettingId.SessionsChanges]: {
+-			description: localize('verbosity.sessionsChanges', 'Provide information about how to access the Changes view accessibility help menu when the Changes view is focused.'),
+-			...baseVerbosityProperty
+-		},
+-		[AccessibilityVerbositySettingId.Survey]: {
+-			description: localize('verbosity.survey', 'Provide information about how to navigate and interact with the survey editor pane.'),
+-			...baseVerbosityProperty
+-		},
+-		[AccessibilityVerbositySettingId.Automations]: {
+-			description: localize('verbosity.automations', 'Provide information about how to use Automations management views, including keyboard navigation and how to inspect scheduled runs.'),
+-			...baseVerbosityProperty
+-		},
+ 		'accessibility.signalOptions.volume': {
+ 			'description': localize('accessibility.signalOptions.volume', "The volume of the sounds in percent (0-100)."),
+ 			'type': 'number',
+diff --git a/src/vs/workbench/services/editor/test/browser/editorResolverService.test.ts b/src/vs/workbench/services/editor/test/browser/editorResolverService.test.ts
+--- a/src/vs/workbench/services/editor/test/browser/editorResolverService.test.ts
++++ b/src/vs/workbench/services/editor/test/browser/editorResolverService.test.ts
+@@ -12,22 +12,11 @@
+ import { DiffEditorInput } from '../../../../common/editor/diffEditorInput.js';
+ import { EditorResolverService } from '../../browser/editorResolverService.js';
+ import { IEditorGroupsService } from '../../common/editorGroupsService.js';
+-import { diffEditorsAssociationsAgentsWindowDefault, EditorInputFactoryObject, IEditorResolverService, ResolvedStatus, RegisteredEditorPriority, diffEditorsAssociationsSettingId, editorsAssociationsSettingId } from '../../common/editorResolverService.js';
++import { EditorInputFactoryObject, IEditorResolverService, ResolvedStatus, RegisteredEditorPriority, diffEditorsAssociationsSettingId, editorsAssociationsSettingId } from '../../common/editorResolverService.js';
+ import { TestConfigurationService } from '../../../../../platform/configuration/test/common/testConfigurationService.js';
+ import { createEditorPart, ITestInstantiationService, TestFileEditorInput, TestServiceAccessor, workbenchInstantiationService } from '../../../../test/browser/workbenchTestServices.js';
+ 
+ suite('EditorResolverService', () => {
+-	test('Agents window diff editor default follows the Markdown editor setting', () => {
+-		assert.deepStrictEqual({
+-			enabled: diffEditorsAssociationsAgentsWindowDefault({ markdownDefaultEditor: true }),
+-			disabled: diffEditorsAssociationsAgentsWindowDefault({ markdownDefaultEditor: false }),
+-		}, {
+-			enabled: { '*.md': 'vscode.markdown.editor' },
+-			disabled: { '*.md': 'vscode.markdown.preview.editor' },
+-		});
+-	});
+-
+-
+ 	const TEST_EDITOR_INPUT_ID = 'testEditorInputForEditorResolverService';
+ 	const disposables = new DisposableStore();
+ 

@@ -1,0 +1,134 @@
+{
+  "at": "2026-10-02 22:01 +1000",
+  "status": "PASS_M8_ALL_CURRENT_EXIT_GATES",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "preconditions": [
+    "M1 completed",
+    "M2 completed",
+    "M3 completed",
+    "M4 completed",
+    "M5 completed",
+    "M6 completed",
+    "M7 completed"
+  ],
+  "scope": "User explicitly accepts current-input local macOS arm64 only; x64/CI not required",
+  "gates": [
+    {
+      "gate": "V1",
+      "status": "PASS_LOCAL",
+      "finding": "65文档非icon字段/URL关联保持、唯一主图标有效；149四语言/实际文件打开与150 Finder/Dock/关于原图通过。151实际资源不变。"
+    },
+    {
+      "gate": "V2",
+      "status": "PASS_LOCAL",
+      "finding": "151实际三布局无Codicons demo，CSS/TTF/license保留；149普通Explorer/terminal/theme/Markdown/Mermaid图标实机通过。"
+    },
+    {
+      "gate": "V3",
+      "status": "PASS_LOCAL",
+      "finding": "149两surface×两theme×8case共32原图/33交互；preview同条件下降27.86%，普通独立editor/缩放/复制/语法错误有效。150 Storage变动后双surface真实退出重启的source/ID/theme/panZoom/SQLite精确保持。151只改terminal.ts。"
+    },
+    {
+      "gate": "V4",
+      "status": "PASS_LOCAL",
+      "finding": "资源白名单及引用、四locale base/16Framework variants有效，真实en/zh-CN/zh-TW/fr GUI和7资源选择/fallback；普通德语工作台/语言包安装保留。用户取消x64/CI验收门。"
+    },
+    {
+      "gate": "V5",
+      "status": "PASS_LOCAL",
+      "finding": "Browser/Simple Browser/Playwright模块、IPC/preload/生产包移除；20实际外链覆盖四surface×五类base及完整编码URI，旧opener配置保留。151完整native菜单424节点、13快捷键、标题栏/Welcome和全量注册退休0。"
+    },
+    {
+      "gate": "V6",
+      "status": "PASS_LOCAL",
+      "finding": "双权限实际宿主§4.1各89路径、provider/handler0；当前ExtHost55/MainThread60全集及assert路径保留；151renderer全注册、main24/shared17 Cold/Reload实际退休0，正常host替换，无专属utility/background/download。"
+    },
+    {
+      "gate": "V7",
+      "status": "PASS_LOCAL",
+      "finding": "编辑保存、文件/内容搜索、Git diff-stage-commit、语言/主题、市场装卸、账户与secret、普通Webview消息/profiling实际证据齐。151 shell/task落盘停止、四真实按键route/用户覆盖、四DOM+AX A11Y内容/焦点、theme/禁用扩展与账户偏好退出重启通过。"
+    },
+    {
+      "gate": "V8",
+      "status": "PASS_LOCAL",
+      "finding": "151真实全补丁+254prune prepare/完整compile/packing exit0；native全图noEmit exit0/0B，实际root production146名/199出现/problems/退休0、三布局与普通copy通过；remote重跑离线ci/ls0。资源helper27、checker12与失败/幂等行为原来源沿用。两真实prune注入exit4并中止，254无重叠。"
+    },
+    {
+      "gate": "V9",
+      "status": "PASS_LOCAL",
+      "finding": "Browser/Chat混合12实机恢复、150普通/混合/全退休6轮与Mermaid定向恢复；15112DB键/6文件、账户偏好/主题/扩展状态原样保留。最新两CLI可读拒绝exit1，version/help0；显式--后chat文件真实打开沿用未变CLI原来源。"
+    },
+    {
+      "gate": "V10本地体积/分发",
+      "status": "PASS_LOCAL",
+      "finding": "同条件unsigned app422,443,727 B、ZIP157,530,299 B，下降20.01%/18.27%；Electron43.7.5/macOS12不变。独立151 strict codesign/spctl/Accepted/staple/validate/ZIP CRC及内容全量比对通过。signed app421,985,205 B/ZIP157,386,282 B独立计量；实际运行后1223文件/链接不变。"
+    },
+    {
+      "gate": "V10/M2/M8当前两arch CI",
+      "status": "NOT_REQUIRED_BY_EXPLICIT_USER",
+      "finding": "用户明确x64不用跑、本地arm64通过即可；当前输入本地arm64已通过。x64/CI未运行，不宣称通过。"
+    },
+    {
+      "gate": "§9.2替代验收",
+      "status": "PASS_LOCAL",
+      "finding": "按用户指示不运行/修改smoke。实际包/CLI、真实host/公共API和限定PID/renderer GUI逐项覆盖原保留面及负向断言；原远程/Debug/Notebook/Copilot、telemetry/rg负向断言保留。相关静态输入未变、受151影响的terminal全部另验。"
+    },
+    {
+      "gate": "六文档/语法/升级说明",
+      "status": "PASS_LOCAL",
+      "finding": "README/兼容/语言使用/图标/迁移/发布说明逐项核对；AI无能力返回、第三方AI/opener、CLI、数据保留、四原生locale、151unsigned/signed账与未发布界限准确。JSON/bash/actionlint实际绿，生产/helper/workflow无漂移；最终文档和进度检查另归档。"
+    }
+  ],
+  "requiredGaps": [],
+  "historicalCI": "Not run; user removed this acceptance requirement. Not a passed CI claim.",
+  "published": false,
+  "committed": false,
+  "pushed": false,
+  "smokeRunOrEditedThisClosure": false,
+  "references": [
+    {
+      "path": "M2-final-acceptance151.json",
+      "sha256": "142a6398090217438e8020730620cb470a29eb831c7c51ae0574ec20d3071520"
+    },
+    {
+      "path": "M4-final-acceptance151.json",
+      "sha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d"
+    },
+    {
+      "path": "M5-final-acceptance151.json",
+      "sha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e"
+    },
+    {
+      "path": "M6-final-acceptance151.json",
+      "sha256": "9c023cb461ea36c515f2229d5175c5935d2e5996fe204a25db4d395e71cd0b1c"
+    },
+    {
+      "path": "M7-final-acceptance151.json",
+      "sha256": "8bad3af55dd4e5190c08d67be1ae75fbd4f065e8192a0011625d66f32abcce57"
+    },
+    {
+      "path": "M8-final-local-audit151.json",
+      "sha256": "bb89cc5e793458a73376d0b3d93636a1a0bb73dffbfc725fd5c0b15f93a12b1a"
+    },
+    {
+      "path": "M8-completion-input-artifact151.json",
+      "sha256": "13af6c9fff08800103c0500c4d1fab1650e8611505e537547dd541d750cf8d82"
+    },
+    {
+      "path": "M8-local-arm64-scope151.md",
+      "sha256": "179e8f6cb12042ef837669a9e7402216f0a6148af57cd48cfc56f2187d92759c"
+    },
+    {
+      "path": "M8-sign151.json",
+      "sha256": "9bb528aae802d6fc0ba6e3e4580846031e5d9eaa63e23be2c7c24c873b23e340"
+    },
+    {
+      "path": "M8-final-validation151.json",
+      "sha256": "8ffe3b8a9018df8e6ebae71eeee4e32349533bf0e6e79b52f31eae9373a50b85"
+    },
+    {
+      "path": "M8-final-reference-audit151.json",
+      "sha256": "bce9491ad8f327e2bf9e6f5fca925ddeaab3d465b67ea329100ffd8dadb78efb"
+    }
+  ]
+}

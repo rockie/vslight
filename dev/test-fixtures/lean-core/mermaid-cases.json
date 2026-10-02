@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "requirement": "lean-core.md §5.3 / V3 / M3",
+  "surfaces": ["markdown-preview", "standalone-editor"],
+  "themes": [
+    { "id": "light", "setting": "Default Light Modern", "bodyClass": "vscode-light" },
+    { "id": "dark", "setting": "Default Dark Modern", "bodyClass": "vscode-dark" }
+  ],
+  "cases": [
+    {
+      "id": "flowchart",
+      "expectValid": true,
+      "diagramType": "flowchart",
+      "source": "flowchart TD\n  A[中文开始] --> B{是否成功}\n  B -->|是| C[保存结果]\n  B -->|否| D[检查输入]\n  D --> A\n",
+      "expectedLabels": ["中文开始", "是否成功", "保存结果", "检查输入"]
+    },
+    {
+      "id": "sequence",
+      "expectValid": true,
+      "diagramType": "sequenceDiagram",
+      "source": "sequenceDiagram\n  participant U as 中文用户\n  participant S as 普通服务\n  U->>S: 请求图表\n  activate S\n  S-->>U: 返回结果\n  deactivate S\n  Note over U,S: 中文时序说明\n",
+      "expectedLabels": ["中文用户", "普通服务", "请求图表", "返回结果", "中文时序说明"]
+    },
+    {
+      "id": "state",
+      "expectValid": true,
+      "diagramType": "stateDiagram-v2",
+      "source": "stateDiagram-v2\n  state \"中文空闲\" as Idle\n  state \"正在处理\" as Busy\n  state \"处理完成\" as Done\n  [*] --> Idle\n  Idle --> Busy: 开始\n  Busy --> Done: 成功\n  Done --> [*]\n",
+      "expectedLabels": ["中文空闲", "正在处理", "处理完成", "开始", "成功"]
+    },
+    {
+      "id": "elk",
+      "expectValid": true,
+      "diagramType": "flowchart",
+      "layout": "elk",
+      "source": "---\nconfig:\n  layout: elk\n---\nflowchart TD\n  A[中文入口] --> B[并行任务甲]\n  A --> C[并行任务乙]\n  B --> D[汇总结果]\n  C --> D\n",
+      "expectedLabels": ["中文入口", "并行任务甲", "并行任务乙", "汇总结果"],
+      "layoutAssertion": "No 'Layout elk not found' or fallback warning; compare actual ELK node positions with the isolated reference."
+    },
+    {
+      "id": "tidy-tree",
+      "expectValid": true,
+      "diagramType": "mindmap",
+      "layout": "tidy-tree",
+      "source": "---\nconfig:\n  layout: tidy-tree\n---\nmindmap\nroot((中文根节点))\n  左侧分支\n    左侧叶子\n  右侧分支\n    右侧叶子\n",
+      "expectedLabels": ["中文根节点", "左侧分支", "左侧叶子", "右侧分支", "右侧叶子"],
+      "layoutAssertion": "The tidy-tree package example uses mindmap, not a flowchart. No unavailable-layout/fallback warning; branches extend on both sides of the root."
+    },
+    {
+      "id": "zenuml",
+      "expectValid": true,
+      "diagramType": "zenuml",
+      "source": "zenuml\n  title 中文调用流程\n  Controller.Get(id) {\n    Service.Get(id) {\n      item = Repository.Get(id)\n      return item\n    }\n    return result\n  }\n",
+      "expectedLabels": ["中文调用流程", "Controller", "Service", "Repository"]
+    },
+    {
+      "id": "invalid-flowchart",
+      "expectValid": false,
+      "diagramType": "flowchart",
+      "source": "flowchart TD\n  A[中文未闭合\n  A --> B\n",
+      "expectedErrorPattern": "Parse error|Syntax error|Lexical error|Expecting"
+    },
+    {
+      "id": "invalid-sequence",
+      "expectValid": false,
+      "diagramType": "sequenceDiagram",
+      "source": "sequenceDiagram\n  Alice totally-invalid-arrow Bob: 中文非法语法\n",
+      "expectedErrorPattern": "Parse error|Syntax error|Lexical error|Expecting"
+    }
+  ],
+  "matrix": {
+    "expansion": "Every case on every surface in every theme",
+    "expectedRows": 32,
+    "validRows": 24,
+    "invalidRows": 8,
+    "additionalChecks": [
+      "Actual screenshot: Chinese glyphs readable, no missing-glyph boxes, labels not clipped",
+      "Actual webview: no CSP violations or unexpected console errors for valid diagrams",
+      "Light and dark output use the corresponding live VS Code theme colors",
+      "Standalone editor: zoom in/out, pan toggle, command reset, copySource by webviewId and active fallback",
+      "Standalone editor: source and pan/zoom restored by the ordinary serializer after restart",
+      "Final app: index-editor.js/codicon.css present; chat-only index.js absent"
+    ]
+  }
+}

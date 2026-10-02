@@ -1,0 +1,14 @@
+{
+  "host_exit": 0,
+  "report": {
+    "status": "PASS",
+    "selectedCheck": "authentication provider, session and secret storage",
+    "results": [
+      {
+        "name": "authentication provider, session and secret storage",
+        "result": "PASS"
+      }
+    ]
+  },
+  "selectedCheck": "authentication provider, session and secret storage"
+}

@@ -1,0 +1,1 @@
+{"name": "terminal-keys151", "publisher": "lean-tests", "version": "0.0.1", "engines": {"vscode": "^1.135.0"}, "main": "./extension.js", "activationEvents": ["onStartupFinished"], "contributes": {"commands": [{"command": "lean-tests.terminalKeys.thirdParty", "title": "Private third party terminal key control"}]}}

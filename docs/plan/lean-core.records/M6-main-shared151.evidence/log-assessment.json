@@ -1,0 +1,143 @@
+{
+  "scope": "All text log files in owned new profile copied after public quit; LevelDB not read/copied.",
+  "files": [
+    {
+      "file": "logs/20261002T211327/editSessions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/main.log",
+      "bytes": 2353,
+      "sha256": "848a1c1c1a6a45f364421d19e39ebc1834b0553bf69d3a0f749142f075581175"
+    },
+    {
+      "file": "logs/20261002T211327/network-shared.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/remoteTunnelService.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/sharedprocess.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/terminal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/userDataSync.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/extHostTelemetry.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "bytes": 3534,
+      "sha256": "ae11dadcc71faf836ef3e786356edb6912203a281200c62fe2c45169828c39a4"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/vscode.git/Git.log",
+      "bytes": 1833,
+      "sha256": "4271b9efb81bdcbefc3657f44476f4a6f64159e20c7fc3b45c7a11f47b4e800d"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/vscode.github/GitHub.log",
+      "bytes": 94,
+      "sha256": "b2cba0de0e724a47504cc2cbb31d99b52fab6884db404cad740dbd56a7a9e6ed"
+    },
+    {
+      "file": "logs/20261002T211327/window1/network.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/output_20261002T211327/tasks.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/output_20261002T211330/tasks.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/renderer.log",
+      "bytes": 987,
+      "sha256": "619be58a73f07340d03a42f0ad886ffd74230180bbfb8ba1a45c8abb7c129bf6"
+    },
+    {
+      "file": "logs/20261002T211327/window1/textModelChanges.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/views.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "textLogCount": 17,
+  "warningCount": 4,
+  "errorCount": 0,
+  "warnings": [
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "line": 6,
+      "text": "2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource."
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "line": 7,
+      "text": "2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource."
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "line": 20,
+      "text": "2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource."
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "line": 21,
+      "text": "2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource."
+    }
+  ],
+  "errors": [],
+  "patterns": {
+    "unknownService": "Unknown service",
+    "missingProxy": "Missing (?:proxy|IExtensionHostProxy)|No proxy",
+    "namedCustomerActorInitialization": "Cannot instantiate named customer|(?:customer|actor).*(?:missing|not found|initialization.*(?:fail|error))",
+    "unknownChannel": "Unknown channel|channel.*not found",
+    "rpcMethod": "Unknown method|(?:RPC|rpc).*(?:method.*not found|protocol.*(?:error|fail))",
+    "retiredBackendDownload": "localTranscription|agentHost|NativeMcp|mcpGateway|playwright|(?:Model|model).*(?:download|prewarm)"
+  },
+  "patternHits": {
+    "unknownService": [],
+    "missingProxy": [],
+    "namedCustomerActorInitialization": [],
+    "unknownChannel": [],
+    "rpcMethod": [],
+    "retiredBackendDownload": []
+  },
+  "reloadIntervalStartsAtLocal": "2026-10-02 21:13:30.826",
+  "reloadWarningCount": 2,
+  "reloadErrorCount": 0,
+  "launchStderr": {
+    "sha256": "93fd50ac45be7f982fc7b9045b75e5098360d31bc0b012fbca00e7733bf92de1",
+    "remoteDebuggingPortOptionWarningCount": 1,
+    "nodeUrlParseDeprecationWarningCount": 1,
+    "mainInspectorAttachedCount": 2,
+    "mainInspectorEndingCount": 2,
+    "scope": "Untimed portions not assigned to reload interval; inspector listener/UUIDs not emitted in report."
+  }
+}

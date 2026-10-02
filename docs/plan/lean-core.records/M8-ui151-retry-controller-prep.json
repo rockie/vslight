@@ -1,0 +1,91 @@
+{
+  "status": "RETRY_CONTROLLER_PREPARED_NOT_EXECUTED",
+  "at": "2026-10-02T10:27:46.601469+00:00",
+  "files": [
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/resume151.mjs",
+      "bytes": 27354,
+      "sha256": "f663c5650f6269ced9318636804e29e0552ce55ebf1c21d2885321437683362e"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/extension.js",
+      "bytes": 6527,
+      "sha256": "e2b10f710a4d1a7958874f48bf21ca1aa83830e816df79a7e525ef6f8b3e9f81"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/package.json",
+      "bytes": 225,
+      "sha256": "4f37e0018d090a86b111a0e2af62503b7e08f9ec3d9d7f61d9a20682b0442e65"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/preservation151.py",
+      "bytes": 2360,
+      "sha256": "5a1cd472b1d6d6296e4bc010fba90d8f79e0df8cb309983b1ca6cd9675fc461d"
+    }
+  ],
+  "node": "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+  "syntaxChecks": {
+    "resume151.mjs": 0,
+    "terminal151-ext/extension.js": 0,
+    "preservation151.py_compile": 0
+  },
+  "oldStandbyAndIdentityUnmodified": true,
+  "runtimeExecutedByPreparer": false,
+  "protocolRoot": "/private/tmp/lcfinal-chkarkup/ui",
+  "newEvidenceRoot": "/private/tmp/lcfinal-chkarkup/ui/evidence151-retry",
+  "historicalAttempt": "/private/tmp/lcfinal-chkarkup/ui/attempt151-task-red",
+  "rootReportedFirst151": {
+    "mainPID": 7097,
+    "hostPID": 7930,
+    "task": "FAIL_MARKER_TIMEOUT",
+    "cleanupActualExit": {
+      "code": 0,
+      "signal": null
+    },
+    "otherPassedSubset": [
+      "public synthetic account Beta / preference",
+      "actual theme CSS",
+      "exact disabled row",
+      "13 shortcut queries",
+      "native421-node menu",
+      "runtime full registry capture / schema",
+      "actual terminal disk marker"
+    ]
+  },
+  "fixtureCorrection": {
+    "taskDefinitionType": "shell",
+    "taskShellArgs": [
+      "-f",
+      "-c"
+    ],
+    "ordinaryTerminalShellArgs": [
+      "-f"
+    ],
+    "productionPatched": false,
+    "reason": "Explicit executable sets shellSpecified; terminalTaskSystem does not add -c; previous unregistered lean-terminal151 task definition removed"
+  },
+  "coldGuards": [
+    "old150 main/host/parent and first151 main/host absent",
+    "19560 has no listener",
+    "historical real exit0/null evidence unchanged",
+    "historical standby/identity/ordinary fixture/new terminal extension/source hashes frozen",
+    "12 preserved keys and6 files checked before launch"
+  ],
+  "runtimeStillPending": [
+    "retry actual task marker and end event",
+    "actual xterm DOM",
+    "existing TerminalConfigurationService skipSet",
+    "retry ordinary state/menu/schema checks",
+    "normal retry exit0/null and final preservation",
+    "root retired registry and visual review"
+  ],
+  "first151KnownLogFinding": {
+    "count": 1,
+    "message": "vscode-file rejected prior150 carrier theme-seti/icons/seti.woff resource path",
+    "previousCarrier": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+    "source": "Root actual first151 main.log audit",
+    "retryResult": "PENDING_ACTUAL_LOG_REVIEW",
+    "cacheOrProfileClearedByPreparer": false,
+    "zeroErrorClaim": false
+  }
+}

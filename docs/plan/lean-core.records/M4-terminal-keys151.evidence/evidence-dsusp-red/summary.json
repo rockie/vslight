@@ -1,0 +1,130 @@
+{
+  "status": "FAIL",
+  "root": "/private/tmp/lc-key151-mivqeuwq",
+  "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "startedAt": "2026-10-02T11:09:49.662Z",
+  "checks": [
+    {
+      "case": "default Quick Open skip",
+      "collector": {
+        "ready": "/private/tmp/lc-key151-mivqeuwq/w/ready-f5968e8d-3f37-44ba-9eb3-c48e45ca2b8f",
+        "input": "/private/tmp/lc-key151-mivqeuwq/w/input-f5968e8d-3f37-44ba-9eb3-c48e45ca2b8f",
+        "shellPID": 37790,
+        "terminalName": "Keys f5968e8d-3f37-44ba-9eb3-c48e45ca2b8f",
+        "counter": 0
+      },
+      "ordinaryKey": {
+        "before": {
+          "hasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "TEXTAREA",
+            "classes": "xterm-helper-textarea",
+            "label": "Terminal 1, Keys f5968e8d-3f37-44ba-9eb3-c48e45ca2b8f\nUse ⌥F1 for terminal accessibility help"
+          },
+          "terminal": true,
+          "quickOpen": false
+        },
+        "native": {
+          "locked": false,
+          "onConsole": true,
+          "pid": 36307,
+          "appActive": true,
+          "bundleURL": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app"
+        },
+        "mode": "trusted raw key only to verified own renderer",
+        "sessionId": "B0522D84E8824FBA9D077386DCB9A51F"
+      },
+      "quickOpen": {
+        "hasFocus": true,
+        "visibility": "visible",
+        "active": {
+          "tag": "INPUT",
+          "classes": "input empty",
+          "label": "Search files by name (append : to go to line or @ to go to symbol)"
+        },
+        "terminal": false,
+        "quickOpen": true
+      },
+      "afterEscape": {
+        "hasFocus": true,
+        "visibility": "visible",
+        "active": {
+          "tag": "TEXTAREA",
+          "classes": "xterm-helper-textarea",
+          "label": "Terminal 1, Keys f5968e8d-3f37-44ba-9eb3-c48e45ca2b8f\nUse ⌥F1 for terminal accessibility help"
+        },
+        "terminal": true,
+        "quickOpen": false
+      },
+      "shellInputBytes": 0,
+      "status": "PASS"
+    },
+    {
+      "case": "user negative Quick Open override",
+      "collector": {
+        "ready": "/private/tmp/lc-key151-mivqeuwq/w/ready-d034e02e-e79f-4478-b956-bb0978b6b31e",
+        "input": "/private/tmp/lc-key151-mivqeuwq/w/input-d034e02e-e79f-4478-b956-bb0978b6b31e",
+        "shellPID": 37802,
+        "terminalName": "Keys d034e02e-e79f-4478-b956-bb0978b6b31e",
+        "counter": 0
+      },
+      "key": {
+        "before": {
+          "hasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "TEXTAREA",
+            "classes": "xterm-helper-textarea",
+            "label": "Terminal 2, Keys d034e02e-e79f-4478-b956-bb0978b6b31e\nUse ⌥F1 for terminal accessibility help"
+          },
+          "terminal": true,
+          "quickOpen": false
+        },
+        "native": {
+          "pid": 36307,
+          "appActive": true,
+          "bundleURL": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+          "locked": false,
+          "onConsole": true
+        },
+        "mode": "trusted raw key only to verified own renderer",
+        "sessionId": "B0522D84E8824FBA9D077386DCB9A51F"
+      },
+      "shellBytes": [
+        16
+      ],
+      "status": "PASS"
+    }
+  ],
+  "mainPID": 36307,
+  "hostPID": 37662,
+  "args": [
+    "--user-data-dir",
+    "/private/tmp/lc-key151-mivqeuwq/u",
+    "--extensions-dir",
+    "/private/tmp/lc-key151-mivqeuwq/e",
+    "--shared-data-dir",
+    "/private/tmp/lc-key151-mivqeuwq/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lc-key151-mivqeuwq/ext",
+    "--remote-debugging-port=19542",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--locale",
+    "en",
+    "/private/tmp/lc-key151-mivqeuwq/w"
+  ],
+  "authority": "36307 36290 /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lc-key151-mivqeuwq/u --extensions-dir /private/tmp/lc-key151-mivqeuwq/e --shared-data-dir /private/tmp/lc-key151-mivqeuwq/s --extensionDevelopmentPath /private/tmp/lc-key151-mivqeuwq/ext --remote-debugging-port=19542 --skip-welcome --skip-release-notes --disable-workspace-trust --locale en /private/tmp/lc-key151-mivqeuwq/w\n",
+  "error": "Error: Unadded third-party binding did not deliver shell byte\n    at until (file:///private/tmp/lc-key151-mivqeuwq/run.mjs:4:173)\n    at async file:///private/tmp/lc-key151-mivqeuwq/run.mjs:39:111",
+  "restored": {
+    "restored": true,
+    "counter": 0
+  },
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "finishedAt": "2026-10-02T11:10:14.913Z"
+}

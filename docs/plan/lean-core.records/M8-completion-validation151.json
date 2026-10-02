@@ -1,0 +1,68 @@
+{
+  "at": "2026-10-02 22:01 +1000",
+  "status": "PASS_FINAL_COMPLETION_8_OF_8",
+  "checks": [
+    {
+      "label": "products",
+      "command": [
+        "python3",
+        ".agents/skills/documentation-writer/scripts/check_doc.py",
+        "README.md",
+        "docs/extensions-compatibility.md",
+        "docs/vslight-icons.md",
+        "docs/vslight-release.md",
+        "docs/usage.md",
+        "docs/vslight-migration.md",
+        "--repo-root",
+        "."
+      ],
+      "exit": 0,
+      "stdout": "== README.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/extensions-compatibility.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-icons.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-release.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/usage.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-migration.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n\n没有错误\n",
+      "stderr": ""
+    },
+    {
+      "label": "final-records",
+      "command": [
+        "python3",
+        ".agents/skills/documentation-writer/scripts/check_doc.py",
+        "docs/plan/lean-core.records/M8-final-acceptance151.md",
+        "docs/plan/lean-core.records/M8-local-arm64-scope151.md",
+        "docs/plan/lean-core.records/M8.md",
+        "docs/plan/lean-core.records/M2-resources.md",
+        "--repo-root",
+        "."
+      ],
+      "exit": 0,
+      "stdout": "== docs/plan/lean-core.records/M8-final-acceptance151.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8-local-arm64-scope151.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M2-resources.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n\n没有错误\n",
+      "stderr": ""
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "completed-progress",
+      "exit": 0,
+      "stdout": "---\n进度:8/8 · 里程碑表 8 行 · 记录 8 行(已完成 8) · ERROR 0 · WARN 0\n",
+      "stderr": ""
+    }
+  ],
+  "milestonesCompleted": 8,
+  "milestonesTotal": 8,
+  "requiredGaps": [],
+  "scope": "Current local macOS arm64 accepted by explicit user instruction",
+  "x64AndCI": "NOT_REQUIRED_AND_NOT_RUN",
+  "finalReferenceHashesMatch": true,
+  "productionBuildHelperWorkflowDrift": [],
+  "userDataAndInstalledApplicationUnmodified": true,
+  "published": false,
+  "committed": false,
+  "pushed": false
+}

@@ -1,0 +1,194 @@
+{
+  "status": "FAIL_151_RETRY_RUNTIME",
+  "mode": "--retry",
+  "generation": "151",
+  "startedAt": "2026-10-02T10:28:50.571Z",
+  "runs": [
+    {
+      "generation": "151",
+      "pid": 10462,
+      "args": [
+        "--user-data-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/u",
+        "--extensions-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/e",
+        "--shared-data-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/s",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/ui/ext",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext",
+        "--remote-debugging-port=19560",
+        "--skip-welcome",
+        "--skip-release-notes",
+        "--disable-workspace-trust",
+        "--new-window",
+        "/private/tmp/lcfinal-chkarkup/ui/w"
+      ],
+      "at": "2026-10-02T10:28:50.681Z",
+      "controllerPID": 10453,
+      "ready": {
+        "pid": 11680,
+        "parentPID": 10462,
+        "version": "1.135.0",
+        "root": "/private/tmp/lcfinal-chkarkup/ui",
+        "extensionId": "lean-tests.lean-ui-final"
+      },
+      "terminalReady": {
+        "pid": 11680,
+        "parentPID": 10462,
+        "root": "/private/tmp/lcfinal-chkarkup/ui",
+        "extensionId": "lean-tests.lean-terminal151",
+        "noGlobalStateOrAuthWrites": true
+      },
+      "authority": "10462 10453 S    /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/terminal151-ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w",
+      "hostAuthority": "11680 10462 S    /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=zh-CN --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/private/tmp/lcfinal-chkarkup/ui/u --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --cors-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --fetch-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,12267357642211850169,5403538654998908670,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,DropInputEventsWhilePaintHolding,LocalNetworkAccessChecks,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1935764596,r,4734627340286667816,510778964103904525,4 --trace-process-track-uuid=3190708992871164437",
+      "listener": "p10462\nf32\nn127.0.0.1:19560\n",
+      "exit": {
+        "code": 0,
+        "signal": null,
+        "at": "2026-10-02T10:28:54.669Z"
+      }
+    }
+  ],
+  "queries": [],
+  "fullRetiredRegistryReview": "PENDING_ROOT_REVIEW",
+  "coldGuard": {
+    "old150ProcessesAbsent": true,
+    "first151ProcessesAbsent": true,
+    "portListenerAbsent": true,
+    "previous151ActualExit": {
+      "code": 0,
+      "signal": null,
+      "at": "2026-10-02T10:21:34.792Z"
+    },
+    "historical150ActualExit": {
+      "code": 0,
+      "signal": null,
+      "at": "2026-10-02T10:19:43.481Z"
+    },
+    "identitySHA256": "23e0224afc738652b3feff6617be722a0130cb04a5f76b4b562159e78c572dda",
+    "ordinaryFixtureSHA256": "a47ac4f19b57ca8f48912e0db41fa78b7affa827b913a78b4f98b57cf5acbd58",
+    "secondExtensionSHA256": "e2b10f710a4d1a7958874f48bf21ca1aa83830e816df79a7e525ef6f8b3e9f81",
+    "fourSignedFilesVerified": true
+  },
+  "coldPreservation": {
+    "status": "PASS",
+    "stage": "afterquit",
+    "dbKeysChecked": 12,
+    "filesChecked": 6,
+    "retiredSettingsRetained": true,
+    "disabledNeverActivated": true,
+    "syntheticOnly": true,
+    "checks": [
+      "globalDB:lean-tests.lean-ui-final",
+      "globalDB:extensionsIdentifiers/disabled",
+      "globalDB:lean-tests.lean-ui-final-lean-final-synthetic-auth",
+      "globalDB:lean-tests.lean-ui-final-lean-final-synthetic-auth-lean-profile.read lean-profile.write",
+      "globalDB:chat.sessions",
+      "globalDB:mcp.synthetic.legacyState",
+      "globalDB:secret://{\"extensionId\":\"lean-tests.legacy-synthetic\",\"key\":\"MCP_CREDENTIAL_FIXTURE\"}",
+      "globalDB:lean-final-synthetic-auth-Synthetic Alpha 150",
+      "globalDB:lean-final-synthetic-auth-Synthetic Beta 150",
+      "workspaceDB:lean-tests.lean-ui-final-lean-final-synthetic-auth",
+      "workspaceDB:lean-tests.lean-ui-final-lean-final-synthetic-auth-lean-profile.read lean-profile.write",
+      "workspaceDB:chat.synthetic.history",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/mcp.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/chatSessions/synthetic-legacy-session.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/lean-tests.legacy-synthetic/fake-credential.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/lean-tests.lean-disabled-final-0.0.1/package.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/lean-tests.lean-disabled-final-0.0.1/extension.js",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/package.json"
+    ],
+    "tokenValuesPrinted": false
+  },
+  "tabsAfter151": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": true
+    },
+    {
+      "label": "Welcome",
+      "active": false
+    }
+  ],
+  "after": {
+    "status": "PASS",
+    "phase": "after",
+    "extensionId": "lean-tests.lean-ui-final",
+    "configuredTheme": "One Dark Pro",
+    "themeExtension": {
+      "id": "zhuangtongfa.material-theme",
+      "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal",
+      "version": "3.20.2",
+      "isActive": true
+    },
+    "activeColorThemeKind": 2,
+    "syntheticAuth": {
+      "providerId": "lean-final-synthetic-auth",
+      "accountIds": [
+        "synthetic-alpha",
+        "synthetic-beta"
+      ],
+      "selectedAccountId": "synthetic-beta",
+      "selectedSessionId": "synthetic-beta-session",
+      "tokenVerified": true,
+      "accountsProviderCalls": 2,
+      "sessionProviderCalls": 1,
+      "createSessionCalls": 0,
+      "removeSessionCalls": 0,
+      "registeredThroughPublicApi": true,
+      "requestedSilentWithoutExplicitAccount": true
+    },
+    "globalStateSentinelVerified": true,
+    "retiredHistoryAndFakeCredentialSentinelsVerified": true,
+    "preQuitGlobalStateWriteVerified": true,
+    "disabledExtension": {
+      "id": "lean-tests.lean-disabled-final",
+      "manifestPresent": true,
+      "hostVisible": false,
+      "activationMarkerPresent": false
+    },
+    "note": "Theme identity/colors and database/file byte preservation require controller checks; no tokens returned."
+  },
+  "themeDisabled": {
+    "theme": {
+      "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "editorBackground": "rgb(40, 44, 52)",
+      "colors": {
+        "editor.background": "#282c34",
+        "editor.foreground": "#abb2bf",
+        "sideBar.background": "#21252b",
+        "activityBar.background": "#282c34",
+        "statusBar.background": "#21252b"
+      }
+    },
+    "disabled": {
+      "query": "@disabled lean-disabled-final",
+      "rows": [
+        {
+          "id": "lean-tests.lean-disabled-final",
+          "label": "Synthetic disabled extension persistence sentinel, 0.0.1, Publisher lean-tests,  ",
+          "text": "Synthetic disabled extension persistence sentinel\nlean-tests"
+        }
+      ]
+    },
+    "surface": {
+      "status": "PASS",
+      "file": "/private/tmp/lcfinal-chkarkup/ui/w/content-proof.txt",
+      "sha256": "f969e69f3ec9cb2f93757fb6f9f41bc0a49ec856fc23fb66eb01684bbce2cca7",
+      "languageId": "plaintext",
+      "publicTextDocumentAndEditorAPIs": true,
+      "reopenedForThemeSurfaceOnly": true,
+      "notTabRestoreEvidence": true,
+      "noGlobalStateOrAuthWrites": true
+    }
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(dom.welcomeText?.length>20)\n\n    at welcomeTitlebar (file:///private/tmp/lcfinal-chkarkup/ui/resume151.mjs:53:2)\n    at async file:///private/tmp/lcfinal-chkarkup/ui/resume151.mjs:141:64",
+  "failureCleanupExit151": {
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-02T10:28:54.669Z"
+  },
+  "finishedAt": "2026-10-02T10:28:54.675Z"
+}

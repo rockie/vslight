@@ -1,0 +1,128 @@
+{
+  "status": "PREPARED_NOT_RUNTIME_EXECUTED",
+  "at": "2026-10-02T10:13:31.376731+00:00",
+  "files": [
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/standby151.mjs",
+      "bytes": 29138,
+      "sha256": "bd0d608fdff7962524d363fca3d742bb4f19aed4897fe563dac4e354c8f38a07"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/identity151.json",
+      "bytes": 19307,
+      "sha256": "23e0224afc738652b3feff6617be722a0130cb04a5f76b4b562159e78c572dda"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/package.json",
+      "bytes": 225,
+      "sha256": "4f37e0018d090a86b111a0e2af62503b7e08f9ec3d9d7f61d9a20682b0442e65"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/extension.js",
+      "bytes": 6547,
+      "sha256": "013437d0cbd9041174d66e24ffa53eb8907e56584728f150fdc97e7948a09949"
+    }
+  ],
+  "node": "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+  "syntaxChecks": {
+    "standby151.mjs": {
+      "command": "node --check",
+      "exit": 0
+    },
+    "terminal151-ext/extension.js": {
+      "command": "node --check",
+      "exit": 0
+    }
+  },
+  "runtimeExecuted": false,
+  "oldObservation": {
+    "mainPID": 46653,
+    "hostPID": 47396,
+    "parentPID": 46652,
+    "preservedByPreparation": true
+  },
+  "signed151App": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "preflightMode": "--preflight",
+  "executionMode": "--finish-after-permission",
+  "scope": {
+    "profileSeededOrRewritten": false,
+    "guiLaunchedOrClosed": false,
+    "keychainOrTCCModified": false,
+    "productionOrExistingFixtureModified": false
+  },
+  "runtimeGatesPending": [
+    "Actual151 restart / ordinary synthetic authentication / preference / disabled extension / theme persistence",
+    "Native151 menu and Welcome/titlebar DOM screenshots",
+    "Actual registry151 schema and existing TerminalConfigurationService skipSet",
+    "Actual shell terminal / long task termination / xterm DOM",
+    "Normal151 process exit and 12-key / 6-file preservation",
+    "Root complete retired entity registry review and screenshots visual review"
+  ],
+  "notEvidence": [
+    "No product runtime PASS from preparation",
+    "Reopening content-proof.txt is a theme rendering surface, not restored-tab proof",
+    "Prior150 evidence is not final151 artifact runtime evidence"
+  ],
+  "readOnlyVerification": {
+    "jsonParse": true,
+    "deliveredSourceHashesMatch": true,
+    "oldAndNewFourFileHashesMatch": true,
+    "fixtureAndOldControllerHashesMatch": true,
+    "newWorkbenchAnd151SourceHashesMatch": true,
+    "gitDiffCheckExit": 0
+  },
+  "nativeMenuTrustedGuard": {
+    "accepted": [
+      true,
+      1
+    ],
+    "rejected": [
+      false,
+      0
+    ],
+    "reason": "Objective-C NSNumber AXIsProcessTrusted serializes as numeric1 in the actual helper output",
+    "syntaxCheckExit": 0,
+    "runtimeExecuted": false
+  },
+  "systemNativeDictationCorrection": {
+    "savedActualPreflight": {
+      "status": "WAIT_KEEP_APPLICATION_OPEN",
+      "nodeCount": 421,
+      "onlyProhibitedPath": [
+        "AXMenuBar",
+        "Edit",
+        "AXMenu",
+        "开始听写…"
+      ]
+    },
+    "attemptFiles": [
+      {
+        "path": "/private/tmp/lcfinal-chkarkup/ui/evidence/151-preflight-native-menu-attempt-system-dictation.json",
+        "sha256": "bcc268b99ecdaf00123c3012bf28070cb6451002ef8b972bc273f7e96f0bcf77"
+      },
+      {
+        "path": "/private/tmp/lcfinal-chkarkup/ui/evidence/standby151-preflight-attempt-system-dictation.json",
+        "sha256": "39b0452c52c2b9c79cf00a3facd28bc26a962444fa5c7196cba128c8dd2cdac4"
+      }
+    ],
+    "acceptedExactLabels": [
+      "开始听写…",
+      "Start Dictation…"
+    ],
+    "exactPathPrefix": [
+      "AXMenuBar",
+      "Edit",
+      "AXMenu"
+    ],
+    "exactPathLength": 4,
+    "sourceURL": "https://support.apple.com/en-au/guide/mac-help/mh40584/26/mac/26",
+    "productNativeMenubarSource": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/platform/menubar/electron-main/menubar.ts",
+    "productNativeMenubarSourceSHA256": "556a481c44b160aec7740465a1d8aceb1d2954092b9dd30557cbbf6b2951df8b",
+    "productNativeMenubarDictationRegistrationMatches": 0,
+    "offlineSavedMenuClassificationPass": true,
+    "offlineNegativePathAndLabelCasesPass": true,
+    "syntaxCheckExit": 0,
+    "controllerRuntimeExecutedByPreparer": false,
+    "productSpeechRegistryReview": "PENDING_ROOT_RUNTIME_GATE"
+  }
+}

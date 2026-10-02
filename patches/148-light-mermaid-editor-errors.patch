@@ -1,0 +1,43 @@
+diff --git a/extensions/mermaid-markdown-features/src/editorManager.ts b/extensions/mermaid-markdown-features/src/editorManager.ts
+--- a/extensions/mermaid-markdown-features/src/editorManager.ts
++++ b/extensions/mermaid-markdown-features/src/editorManager.ts
+@@ -216,6 +216,9 @@
+ 		const zoomOutLabel = vscode.l10n.t('Zoom Out');
+ 		const zoomInLabel = vscode.l10n.t('Zoom In');
+ 		const resetPanZoomLabel = vscode.l10n.t('Reset Pan and Zoom');
++		// HTML drops the first newline inside pre and normalizes literal CR characters.
++		// Keep template indentation out of the source saved for serializer restoration.
++		const mermaidSource = escapeHtmlText('\n' + this._mermaidSource).replaceAll('\r', '&#13;');
+ 
+ 		return /* html */`<!DOCTYPE html>
+ 			<html lang="en">
+@@ -239,6 +242,18 @@
+ 					.mermaid.rendered {
+ 						visibility: visible;
+ 					}
++					.mermaid:has(> .mermaid-error) {
++						box-sizing: border-box;
++						margin: 0;
++						padding: 12px;
++						max-height: 100vh;
++						overflow: auto;
++					}
++					.mermaid-error {
++						margin: 0;
++						white-space: pre-wrap;
++						overflow-wrap: anywhere;
++					}
+ 					.mermaid-wrapper {
+ 						height: 100%;
+ 						width: 100%;
+@@ -284,9 +299,7 @@
+ 					<button class="zoom-in-btn" title="${zoomInLabel}" aria-label="${zoomInLabel}"><i class="codicon codicon-zoom-in" aria-hidden="true"></i></button>
+ 					<button class="zoom-reset-btn" title="${resetPanZoomLabel}" aria-label="${resetPanZoomLabel}"><i class="codicon codicon-screen-normal" aria-hidden="true"></i></button>
+ 				</div>
+-				<pre class="mermaid">
+-					${escapeHtmlText(this._mermaidSource)}
+-				</pre>
++				<pre class="mermaid">${mermaidSource}</pre>
+ 				<script type="module" nonce="${nonce}" src="${scriptUri}"></script>
+ 			</body>
+ 			</html>`;

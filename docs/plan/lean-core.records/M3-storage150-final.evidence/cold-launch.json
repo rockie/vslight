@@ -1,0 +1,35 @@
+{
+  "label": "cold",
+  "pid": 35743,
+  "args": [
+    "--user-data-dir",
+    "/private/tmp/lcfinal-chkarkup/mermaid/u",
+    "--extensions-dir",
+    "/private/tmp/lcfinal-chkarkup/mermaid/e",
+    "--shared-data-dir",
+    "/private/tmp/lcfinal-chkarkup/mermaid/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lcfinal-chkarkup/mermaid/ext",
+    "--remote-debugging-port=19570",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--new-window",
+    "/private/tmp/lcfinal-chkarkup/mermaid/w"
+  ],
+  "at": "2026-10-02T07:34:36.384Z",
+  "ready": {
+    "hostPid": 36475,
+    "parentPid": 35743,
+    "version": "1.135.0",
+    "mermaidExtensionPath": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features",
+    "matrixRows": 32
+  },
+  "authority": "35743 35741 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/mermaid/u --extensions-dir /private/tmp/lcfinal-chkarkup/mermaid/e --shared-data-dir /private/tmp/lcfinal-chkarkup/mermaid/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/mermaid/ext --remote-debugging-port=19570 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/mermaid/w\n",
+  "listener": "p35743\nf32\nn127.0.0.1:19570\n",
+  "exit": {
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-02T07:34:40.254Z"
+  }
+}

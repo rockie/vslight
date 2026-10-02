@@ -1,0 +1,13 @@
+2026-10-02 20:48:34.001 [info] Revived process, old id 87222462cdda108ffb51174a9c4d8430-1 -> new id 1
+2026-10-02 20:48:34.001 [info] Revived process, old id 87222462cdda108ffb51174a9c4d8430-2 -> new id 2
+2026-10-02 20:48:34.004 [info] Expanding terminal instance, old id 87222462cdda108ffb51174a9c4d8430-1 -> new id 1
+2026-10-02 20:48:34.004 [info] Expanding terminal instance, old id 87222462cdda108ffb51174a9c4d8430-2 -> new id 2
+2026-10-02 20:48:34.049 [warning] Persistent process "2": Process had no disconnect runners but was an orphan
+2026-10-02 20:48:34.049 [info] Persistent process reconnection "2"
+2026-10-02 20:48:34.074 [warning] Shell integration cannot be enabled for executable "/bin/sh" and args ["-f"]
+2026-10-02 20:48:34.080 [info] Persistent process "2": Replaying 575 chars and 1 size events
+2026-10-02 20:48:34.110 [warning] Persistent process "1": Process had no disconnect runners but was an orphan
+2026-10-02 20:48:34.110 [info] Persistent process reconnection "1"
+2026-10-02 20:48:34.111 [warning] Shell integration cannot be enabled for executable "/bin/sh" and args ["-f"]
+2026-10-02 20:48:34.113 [info] Persistent process "1": Replaying 679 chars and 1 size events
+2026-10-02 20:48:49.690 [warning] Shell integration cannot be enabled for executable "/bin/sh" and args ["-f"]

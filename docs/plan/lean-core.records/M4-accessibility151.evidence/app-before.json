@@ -1,0 +1,6 @@
+{
+  "Contents/MacOS/VSLight": "dca29e3eec449e8ec500625a2bf567cf1896d0a1c29733756b3db1955881a42b",
+  "Contents/Resources/app/out/main.js": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+  "Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+  "Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js": "4c164bd9abb2d7c32913b942d0ee35fd60d6b572e4d1e9c1b69919f2877e8496"
+}

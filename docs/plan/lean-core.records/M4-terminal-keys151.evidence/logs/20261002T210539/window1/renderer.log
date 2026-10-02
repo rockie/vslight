@@ -1,0 +1,6 @@
+2026-10-02 21:05:39.552 [info] Started initializing default profile extensions in extensions installation folder. file:///private/tmp/lc-key151-mivqeuwq/e
+2026-10-02 21:05:39.593 [info] Completed initializing default profile extensions in extensions installation folder. file:///private/tmp/lc-key151-mivqeuwq/e
+2026-10-02 21:05:39.612 [info] Loading development extension at /private/tmp/lc-key151-mivqeuwq/ext
+2026-10-02 21:05:39.653 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 21:05:40.422 [info] Started local extension host with pid 32643.
+2026-10-02 21:05:42.284 [info] [perf] Render performance baseline is 7ms

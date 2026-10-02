@@ -1,0 +1,480 @@
+{
+  "status": "BEFORE_QUIT_PUBLIC_CHECKS_PASS",
+  "app": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+  "root": "/private/tmp/lcfinal-chkarkup/ui",
+  "runs": [],
+  "queries": [
+    {
+      "query": "@command:editor.action.clipboardCopyAction",
+      "dom": {
+        "present": true,
+        "search": "@command:editor.action.clipboardCopyAction",
+        "bodyText": "Showing 1 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource\nCopy\n⌘\nC\n-\nSystem",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": [
+          {
+            "text": "Copy\n⌘\nC\n-\nSystem",
+            "aria": "Copy (editor.action.clipboardCopyAction)",
+            "id": "",
+            "labels": [
+              "Change Keybinding (Enter)",
+              "Copy (editor.action.clipboardCopyAction)",
+              "Command+C"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "query": "chat",
+      "dom": {
+        "present": true,
+        "search": "chat",
+        "bodyText": "Showing 8 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource\neditor.changeDropType\n⌘\n。\ndropWidgetVisible\nSystem\neditor.changePasteType\n⌘\n。\npasteWidgetVisible\nSystem\nChange Tab Display Size\neditor.action.changeTabDisplaySize\n-\nSystem\nCloud Changes: Turn off Cloud Changes...\n-\nSystem\nTranspose Characters around the Cursor\n-\nSystem\nextensions.actions.searchByCategory.Chat\n-\nSystem\nworkbench.action.terminal.changeColorActiveTab\n-\nSystem\nworkbench.action.terminal.changeIconActiveTab\n-\nSystem",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": [
+          {
+            "text": "editor.changeDropType\n⌘\n。\ndropWidgetVisible\nSystem",
+            "aria": "editor.changeDropType",
+            "id": "editor.changeDropType",
+            "labels": [
+              "Change Keybinding (Enter)",
+              "editor.changeDropType",
+              "Command+。"
+            ]
+          },
+          {
+            "text": "editor.changePasteType\n⌘\n。\npasteWidgetVisible\nSystem",
+            "aria": "editor.changePasteType",
+            "id": "editor.changePasteType",
+            "labels": [
+              "Change Keybinding (Enter)",
+              "editor.changePasteType",
+              "Command+。"
+            ]
+          },
+          {
+            "text": "Change Tab Display Size\neditor.action.changeTabDisplaySize\n-\nSystem",
+            "aria": "Change Tab Display Size (editor.action.changeTabDisplaySize)",
+            "id": "editor.action.changeTabDisplaySize",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "Change Tab Display Size (editor.action.changeTabDisplaySize)",
+              "Shift+Option+F10"
+            ]
+          },
+          {
+            "text": "Cloud Changes: Turn off Cloud Changes...\n-\nSystem",
+            "aria": "Cloud Changes: Turn off Cloud Changes... (workbench.editSessions.actions.resetAuth)",
+            "id": "",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "Cloud Changes: Turn off Cloud Changes... (workbench.editSessions.actions.resetAuth)",
+              "Command+K Option+Command+UpArrow"
+            ]
+          },
+          {
+            "text": "Transpose Characters around the Cursor\n-\nSystem",
+            "aria": "Transpose Characters around the Cursor (editor.action.transpose)",
+            "id": "",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "Transpose Characters around the Cursor (editor.action.transpose)",
+              "Command+C"
+            ]
+          },
+          {
+            "text": "extensions.actions.searchByCategory.Chat\n-\nSystem",
+            "aria": "extensions.actions.searchByCategory.Chat",
+            "id": "extensions.actions.searchByCategory.Chat",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "extensions.actions.searchByCategory.Chat",
+              "Shift+Option+DownArrow"
+            ]
+          },
+          {
+            "text": "workbench.action.terminal.changeColorActiveTab\n-\nSystem",
+            "aria": "workbench.action.terminal.changeColorActiveTab",
+            "id": "workbench.action.terminal.changeColorActiveTab",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "workbench.action.terminal.changeColorActiveTab",
+              "Shift+Option+UpArrow"
+            ]
+          },
+          {
+            "text": "workbench.action.terminal.changeIconActiveTab\n-\nSystem",
+            "aria": "workbench.action.terminal.changeIconActiveTab",
+            "id": "workbench.action.terminal.changeIconActiveTab",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "workbench.action.terminal.changeIconActiveTab",
+              "Command+C"
+            ]
+          }
+        ]
+      },
+      "actualCommandIds": [
+        "editor.changeDropType",
+        "editor.changePasteType",
+        "editor.action.changeTabDisplaySize",
+        "workbench.editSessions.actions.resetAuth",
+        "editor.action.transpose",
+        "extensions.actions.searchByCategory.Chat",
+        "workbench.action.terminal.changeColorActiveTab",
+        "workbench.action.terminal.changeIconActiveTab"
+      ],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "mcp",
+      "dom": {
+        "present": true,
+        "search": "mcp",
+        "bodyText": "Showing 2 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource\nMarkdown: Change Preview Security Settings\n-\nMarkdown Language Features\nMerge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": [
+          {
+            "text": "Markdown: Change Preview Security Settings\n-\nMarkdown Language Features",
+            "aria": "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+            "id": "",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+              "Shift+Option+UpArrow"
+            ]
+          },
+          {
+            "text": "Merge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+            "aria": "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+            "id": "merge-conflict.previous",
+            "labels": [
+              "Add Keybinding (Enter)",
+              "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+              "Command+C"
+            ]
+          }
+        ]
+      },
+      "actualCommandIds": [
+        "markdown.showPreviewSecuritySelector",
+        "merge-conflict.previous"
+      ],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "speech",
+      "dom": {
+        "present": true,
+        "search": "speech",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "dictation",
+      "dom": {
+        "present": true,
+        "search": "dictation",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "integrated browser",
+      "dom": {
+        "present": true,
+        "search": "integrated browser",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "simple browser",
+      "dom": {
+        "present": true,
+        "search": "simple browser",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "agent sessions",
+      "dom": {
+        "present": true,
+        "search": "agent sessions",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "playwright",
+      "dom": {
+        "present": true,
+        "search": "playwright",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "@command:simpleBrowser.show",
+      "dom": {
+        "present": true,
+        "search": "@command:simpleBrowser.show",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "@command:workbench.action.browser.goBack",
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.browser.goBack",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "@command:workbench.action.chat.acceptTool",
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.chat.acceptTool",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    },
+    {
+      "query": "@command:workbench.action.agentSessions.newBrowserTab",
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.agentSessions.newBrowserTab",
+        "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+        "lists": [
+          {
+            "role": "list",
+            "count": null,
+            "label": "Keybindings"
+          }
+        ],
+        "rows": []
+      },
+      "actualCommandIds": [],
+      "classifiedRetired": 0
+    }
+  ],
+  "live": {
+    "label": "cold",
+    "pid": 46653,
+    "args": [
+      "--user-data-dir",
+      "/private/tmp/lcfinal-chkarkup/ui/u",
+      "--extensions-dir",
+      "/private/tmp/lcfinal-chkarkup/ui/e",
+      "--shared-data-dir",
+      "/private/tmp/lcfinal-chkarkup/ui/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/lcfinal-chkarkup/ui/ext",
+      "--remote-debugging-port=19560",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/tmp/lcfinal-chkarkup/ui/w"
+    ],
+    "at": "2026-10-02T07:45:43.743Z",
+    "ready": {
+      "pid": 47396,
+      "parentPID": 46653,
+      "version": "1.135.0",
+      "root": "/private/tmp/lcfinal-chkarkup/ui",
+      "extensionId": "lean-tests.lean-ui-final"
+    },
+    "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+    "listener": "p46653\nf32\nn127.0.0.1:19560\n"
+  },
+  "themeApplied": {
+    "status": "THEME_API_PASS_RENDERER_COLORS_REQUIRE_CHECK",
+    "extensionId": "zhuangtongfa.material-theme",
+    "extensionPath": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal",
+    "version": "3.20.2",
+    "declaration": {
+      "label": "One Dark Pro",
+      "uiTheme": "vs-dark",
+      "path": "./themes/OneDark-Pro.json"
+    },
+    "themeFile": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+    "colors": {
+      "editor.background": "#282c34",
+      "editor.foreground": "#abb2bf",
+      "sideBar.background": "#21252b",
+      "activityBar.background": "#282c34",
+      "statusBar.background": "#21252b"
+    },
+    "configuredTheme": "One Dark Pro",
+    "activeColorThemeBefore": 2,
+    "activeColorThemeKind": 2,
+    "expectedKind": 2
+  },
+  "before": {
+    "status": "PASS",
+    "phase": "before",
+    "extensionId": "lean-tests.lean-ui-final",
+    "configuredTheme": "One Dark Pro",
+    "themeExtension": {
+      "id": "zhuangtongfa.material-theme",
+      "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal",
+      "version": "3.20.2",
+      "isActive": true
+    },
+    "activeColorThemeKind": 2,
+    "syntheticAuth": {
+      "providerId": "lean-final-synthetic-auth",
+      "accountIds": [
+        "synthetic-alpha",
+        "synthetic-beta"
+      ],
+      "selectedAccountId": "synthetic-beta",
+      "selectedSessionId": "synthetic-beta-session",
+      "tokenVerified": true,
+      "accountsProviderCalls": 2,
+      "sessionProviderCalls": 1,
+      "createSessionCalls": 0,
+      "removeSessionCalls": 0,
+      "registeredThroughPublicApi": true,
+      "requestedSilentWithoutExplicitAccount": true
+    },
+    "globalStateSentinelVerified": true,
+    "retiredHistoryAndFakeCredentialSentinelsVerified": true,
+    "preQuitGlobalStateWriteVerified": true,
+    "disabledExtension": {
+      "id": "lean-tests.lean-disabled-final",
+      "manifestPresent": true,
+      "hostVisible": false,
+      "activationMarkerPresent": false
+    },
+    "note": "Theme identity/colors and database/file byte preservation require controller checks; no tokens returned."
+  },
+  "cssBefore": {
+    "bodyClass": "",
+    "editorBackground": "",
+    "activityLabels": [
+      "Active View Switcher",
+      "",
+      "Explorer (⇧⌘E)",
+      "Explorer (⇧⌘E)",
+      "",
+      "Search (⇧⌘F)",
+      "Search (⇧⌘F)",
+      "",
+      "Source Control (⌃⇧G)",
+      "Source Control (⌃⇧G)",
+      "",
+      "Extensions (⇧⌘X)",
+      "Extensions (⇧⌘X)",
+      "Manage",
+      "Manage",
+      "Manage",
+      "Manage"
+    ]
+  }
+}

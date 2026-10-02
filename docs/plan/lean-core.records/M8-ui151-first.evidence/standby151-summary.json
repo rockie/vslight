@@ -1,0 +1,8556 @@
+{
+  "status": "FAIL_HANDOFF_OR_151_RUNTIME",
+  "mode": "--finish-after-permission",
+  "generation": "151",
+  "startedAt": "2026-10-02T10:19:42.328Z",
+  "runs": [
+    {
+      "generation": "151",
+      "pid": 7097,
+      "args": [
+        "--user-data-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/u",
+        "--extensions-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/e",
+        "--shared-data-dir",
+        "/private/tmp/lcfinal-chkarkup/ui/s",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/ui/ext",
+        "--extensionDevelopmentPath",
+        "/private/tmp/lcfinal-chkarkup/ui/terminal151-ext",
+        "--remote-debugging-port=19560",
+        "--skip-welcome",
+        "--skip-release-notes",
+        "--disable-workspace-trust",
+        "--new-window",
+        "/private/tmp/lcfinal-chkarkup/ui/w"
+      ],
+      "at": "2026-10-02T10:20:54.908Z",
+      "controllerPID": 6725,
+      "ready": {
+        "pid": 7930,
+        "parentPID": 7097,
+        "version": "1.135.0",
+        "root": "/private/tmp/lcfinal-chkarkup/ui",
+        "extensionId": "lean-tests.lean-ui-final"
+      },
+      "terminalReady": {
+        "pid": 7930,
+        "parentPID": 7097,
+        "root": "/private/tmp/lcfinal-chkarkup/ui",
+        "extensionId": "lean-tests.lean-terminal151",
+        "noGlobalStateOrAuthWrites": true
+      },
+      "authority": "7097  6725 S    /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/terminal151-ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w",
+      "hostAuthority": "7930  7097 S    /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=zh-CN --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/private/tmp/lcfinal-chkarkup/ui/u --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --cors-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --fetch-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,13757556905260510390,4291919746677301681,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,DropInputEventsWhilePaintHolding,LocalNetworkAccessChecks,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1935764596,r,1120477831196039117,3416015054039434225,4 --trace-process-track-uuid=3190708992871164437",
+      "listener": "p7097\nf34\nn127.0.0.1:19560\n",
+      "exit": {
+        "code": 0,
+        "signal": null,
+        "at": "2026-10-02T10:21:34.792Z"
+      }
+    }
+  ],
+  "queries": [
+    {
+      "query": "@command:editor.action.clipboardCopyAction",
+      "ids": [
+        "editor.action.clipboardCopyAction"
+      ],
+      "dom": {
+        "present": true,
+        "search": "@command:editor.action.clipboardCopyAction",
+        "rows": [
+          {
+            "text": "Copy\n⌘\nC\n-\nSystem",
+            "aria": "Copy (editor.action.clipboardCopyAction)",
+            "id": ""
+          }
+        ]
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "chat",
+      "ids": [
+        "editor.changeDropType",
+        "editor.changePasteType",
+        "editor.action.changeTabDisplaySize",
+        "workbench.editSessions.actions.resetAuth",
+        "editor.action.transpose",
+        "extensions.actions.searchByCategory.Chat",
+        "workbench.action.terminal.changeColorActiveTab",
+        "workbench.action.terminal.changeIconActiveTab"
+      ],
+      "dom": {
+        "present": true,
+        "search": "chat",
+        "rows": [
+          {
+            "text": "editor.changeDropType\n⌘\n。\ndropWidgetVisible\nSystem",
+            "aria": "editor.changeDropType",
+            "id": "editor.changeDropType"
+          },
+          {
+            "text": "editor.changePasteType\n⌘\n。\npasteWidgetVisible\nSystem",
+            "aria": "editor.changePasteType",
+            "id": "editor.changePasteType"
+          },
+          {
+            "text": "Change Tab Display Size\neditor.action.changeTabDisplaySize\n-\nSystem",
+            "aria": "Change Tab Display Size (editor.action.changeTabDisplaySize)",
+            "id": "editor.action.changeTabDisplaySize"
+          },
+          {
+            "text": "Cloud Changes: Turn off Cloud Changes...\n-\nSystem",
+            "aria": "Cloud Changes: Turn off Cloud Changes... (workbench.editSessions.actions.resetAuth)",
+            "id": ""
+          },
+          {
+            "text": "Transpose Characters around the Cursor\n-\nSystem",
+            "aria": "Transpose Characters around the Cursor (editor.action.transpose)",
+            "id": ""
+          },
+          {
+            "text": "extensions.actions.searchByCategory.Chat\n-\nSystem",
+            "aria": "extensions.actions.searchByCategory.Chat",
+            "id": "extensions.actions.searchByCategory.Chat"
+          },
+          {
+            "text": "workbench.action.terminal.changeColorActiveTab\n-\nSystem",
+            "aria": "workbench.action.terminal.changeColorActiveTab",
+            "id": "workbench.action.terminal.changeColorActiveTab"
+          },
+          {
+            "text": "workbench.action.terminal.changeIconActiveTab\n-\nSystem",
+            "aria": "workbench.action.terminal.changeIconActiveTab",
+            "id": "workbench.action.terminal.changeIconActiveTab"
+          }
+        ]
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "mcp",
+      "ids": [
+        "markdown.showPreviewSecuritySelector",
+        "merge-conflict.previous"
+      ],
+      "dom": {
+        "present": true,
+        "search": "mcp",
+        "rows": [
+          {
+            "text": "Markdown: Change Preview Security Settings\n-\nMarkdown Language Features",
+            "aria": "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+            "id": ""
+          },
+          {
+            "text": "Merge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+            "aria": "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+            "id": "merge-conflict.previous"
+          }
+        ]
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "speech",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "speech",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "dictation",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "dictation",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "integrated browser",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "integrated browser",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "simple browser",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "simple browser",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "agent sessions",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "agent sessions",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "playwright",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "playwright",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "@command:simpleBrowser.show",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "@command:simpleBrowser.show",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "@command:workbench.action.browser.goBack",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.browser.goBack",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "@command:workbench.action.chat.acceptTool",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.chat.acceptTool",
+        "rows": []
+      },
+      "retiredMatches": 0
+    },
+    {
+      "query": "@command:workbench.action.agentSessions.newBrowserTab",
+      "ids": [],
+      "dom": {
+        "present": true,
+        "search": "@command:workbench.action.agentSessions.newBrowserTab",
+        "rows": []
+      },
+      "retiredMatches": 0
+    }
+  ],
+  "fullRetiredRegistryReview": "PENDING_ROOT_REVIEW",
+  "guard150": {
+    "main": "46653 46652 S    /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w",
+    "host": "47396 46653 S    /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin) --type=utility --utility-sub-type=node.mojom.NodeService --lang=zh-CN --service-sandbox-type=none --dns-result-order=ipv4first --experimental-network-inspection --inspect-port=0 --user-data-dir=/private/tmp/lcfinal-chkarkup/ui/u --standard-schemes=vscode-webview,vscode-file --enable-sandbox --secure-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --cors-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --fetch-schemes=vscode-webview,vscode-file,vscode-remote-resource,vscode-managed-remote-resource --service-worker-schemes=vscode-webview --code-cache-schemes=vscode-webview,vscode-file --shared-files --field-trial-handle=1718379636,r,3919351959523289290,321697022860114133,262144 --enable-features=DocumentPolicyIncludeJSCallStacksInCrashReports,EarlyEstablishGpuChannel,EstablishGpuChannelAsync,PdfUseShowSaveFilePicker,ScreenCaptureKitPickerScreen,ScreenCaptureKitStreamPickerSonoma --disable-features=CalculateNativeWinOcclusion,DropInputEventsWhilePaintHolding,LocalNetworkAccessChecks,ScreenAIOCREnabled,SpareRendererForSitePerProcess,TimeoutHangingVideoCaptureStarts,TraceSiteInstanceGetProcessCreation --variations-seed-version --pseudonymization-salt-handle=1935764596,r,10100211226038717889,4573616838243229665,4 --trace-process-track-uuid=3190708992871164437",
+    "parent": "46652 20387 Ss   /Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node /private/tmp/lcfinal-chkarkup/ui/run-final.mjs",
+    "listener": "p46653\nf32\nn127.0.0.1:19560\n",
+    "ready": {
+      "pid": 47396,
+      "parentPID": 46653,
+      "version": "1.135.0",
+      "root": "/private/tmp/lcfinal-chkarkup/ui",
+      "extensionId": "lean-tests.lean-ui-final"
+    },
+    "four150HashesVerified": true
+  },
+  "menu150": {
+    "complete": true,
+    "errors": [],
+    "nodeCount": 421,
+    "deepest": 7,
+    "positiveHits": {
+      "File": "File",
+      "Edit": "Edit",
+      "View": "View",
+      "Terminal": "Terminal",
+      "Help": "Help"
+    },
+    "topTitles": [
+      "Apple",
+      "VSLight",
+      "File",
+      "Edit",
+      "Selection",
+      "View",
+      "Go",
+      "Terminal",
+      "Window",
+      "Help"
+    ],
+    "titles": [
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple"
+        ],
+        "title": "Apple"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关于本机"
+        ],
+        "title": "关于本机"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "系统信息"
+        ],
+        "title": "系统信息"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "系统设置…"
+        ],
+        "title": "系统设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置"
+        ],
+        "title": "位置"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "临时"
+        ],
+        "title": "临时"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "强制DNS"
+        ],
+        "title": "强制DNS"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "自动"
+        ],
+        "title": "自动"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "网络设置…"
+        ],
+        "title": "网络设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "App Store"
+        ],
+        "title": "App Store"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目"
+        ],
+        "title": "最近使用的项目"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "应用程序"
+        ],
+        "title": "应用程序"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "系统设置.app"
+        ],
+        "title": "系统设置.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“系统设置.app”"
+        ],
+        "title": "在访达中显示“系统设置.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "邮件.app"
+        ],
+        "title": "邮件.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“邮件.app”"
+        ],
+        "title": "在访达中显示“邮件.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "预览.app"
+        ],
+        "title": "预览.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“预览.app”"
+        ],
+        "title": "在访达中显示“预览.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Claude.app"
+        ],
+        "title": "Claude.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Claude.app”"
+        ],
+        "title": "在访达中显示“Claude.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Google Chrome.app"
+        ],
+        "title": "Google Chrome.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Google Chrome.app”"
+        ],
+        "title": "在访达中显示“Google Chrome.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VLC.app"
+        ],
+        "title": "VLC.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VLC.app”"
+        ],
+        "title": "在访达中显示“VLC.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Xcode.app"
+        ],
+        "title": "Xcode.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Xcode.app”"
+        ],
+        "title": "在访达中显示“Xcode.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "文稿"
+        ],
+        "title": "文稿"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "06-verify-and-ship.md"
+        ],
+        "title": "06-verify-and-ship.md"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“06-verify-and-ship.md”"
+        ],
+        "title": "在访达中显示“06-verify-and-ship.md”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "a.txt"
+        ],
+        "title": "a.txt"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“a.txt”"
+        ],
+        "title": "在访达中显示“a.txt”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "SKILL.md"
+        ],
+        "title": "SKILL.md"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“SKILL.md”"
+        ],
+        "title": "在访达中显示“SKILL.md”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "xgent.code-workspace"
+        ],
+        "title": "xgent.code-workspace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“xgent.code-workspace”"
+        ],
+        "title": "在访达中显示“xgent.code-workspace”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "服务器"
+        ],
+        "title": "服务器"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Macintosh HD"
+        ],
+        "title": "Macintosh HD"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "清除菜单"
+        ],
+        "title": "清除菜单"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "强制退出…"
+        ],
+        "title": "强制退出…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "强制退出“VSLight”"
+        ],
+        "title": "强制退出“VSLight”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "睡眠"
+        ],
+        "title": "睡眠"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "重启…"
+        ],
+        "title": "重启…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "重启"
+        ],
+        "title": "重启"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关机…"
+        ],
+        "title": "关机…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关机"
+        ],
+        "title": "关机"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "锁屏"
+        ],
+        "title": "锁屏"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "退出登录“Rockie Guo”…"
+        ],
+        "title": "退出登录“Rockie Guo”…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "退出登录“Rockie Guo”"
+        ],
+        "title": "退出登录“Rockie Guo”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight"
+        ],
+        "title": "VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "About VSLight"
+        ],
+        "title": "About VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Check for Updates…"
+        ],
+        "title": "Check for Updates…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences"
+        ],
+        "title": "Preferences"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Settings"
+        ],
+        "title": "Settings"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Extensions"
+        ],
+        "title": "Extensions"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Keyboard Shortcuts [⌘K ⌘S]"
+        ],
+        "title": "Keyboard Shortcuts [⌘K ⌘S]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Configure Snippets"
+        ],
+        "title": "Configure Snippets"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Tasks"
+        ],
+        "title": "Tasks"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes"
+        ],
+        "title": "Themes"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "Color Theme [⌘K ⌘T]"
+        ],
+        "title": "Color Theme [⌘K ⌘T]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "File Icon Theme"
+        ],
+        "title": "File Icon Theme"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "Product Icon Theme"
+        ],
+        "title": "Product Icon Theme"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Online Services Settings"
+        ],
+        "title": "Online Services Settings"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services"
+        ],
+        "title": "Services"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Activity Monitor"
+        ],
+        "title": "Activity Monitor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Allocations & Leaks"
+        ],
+        "title": "Allocations & Leaks"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "File Activity"
+        ],
+        "title": "File Activity"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "System Trace"
+        ],
+        "title": "System Trace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile Active Application"
+        ],
+        "title": "Time Profile Active Application"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile App Under Mouse"
+        ],
+        "title": "Time Profile App Under Mouse"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile Entire System"
+        ],
+        "title": "Time Profile Entire System"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Toggle Instruments Recording"
+        ],
+        "title": "Toggle Instruments Recording"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Ask Claude"
+        ],
+        "title": "Ask Claude"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "New Claude Code Session Here"
+        ],
+        "title": "New Claude Code Session Here"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Send to Claude"
+        ],
+        "title": "Send to Claude"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "服务设置…"
+        ],
+        "title": "服务设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Hide VSLight"
+        ],
+        "title": "Hide VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Hide Others"
+        ],
+        "title": "Hide Others"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Show All"
+        ],
+        "title": "Show All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Quit VSLight"
+        ],
+        "title": "Quit VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File"
+        ],
+        "title": "File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New Text File"
+        ],
+        "title": "New Text File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New File…"
+        ],
+        "title": "New File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New Window"
+        ],
+        "title": "New Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open…"
+        ],
+        "title": "Open…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Folder…"
+        ],
+        "title": "Open Folder…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Workspace from File…"
+        ],
+        "title": "Open Workspace from File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent"
+        ],
+        "title": "Open Recent"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "Reopen Closed Editor"
+        ],
+        "title": "Reopen Closed Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "More…"
+        ],
+        "title": "More…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "Clear Recently Opened…"
+        ],
+        "title": "Clear Recently Opened…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Add Folder to Workspace…"
+        ],
+        "title": "Add Folder to Workspace…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save Workspace As…"
+        ],
+        "title": "Save Workspace As…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Duplicate Workspace"
+        ],
+        "title": "Duplicate Workspace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save"
+        ],
+        "title": "Save"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save As…"
+        ],
+        "title": "Save As…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save All"
+        ],
+        "title": "Save All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Auto Save"
+        ],
+        "title": "Auto Save"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Revert File"
+        ],
+        "title": "Revert File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Editor"
+        ],
+        "title": "Close Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Folder [⌘K F]"
+        ],
+        "title": "Close Folder [⌘K F]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Window"
+        ],
+        "title": "Close Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit"
+        ],
+        "title": "Edit"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Undo"
+        ],
+        "title": "Undo"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Redo"
+        ],
+        "title": "Redo"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Cut"
+        ],
+        "title": "Cut"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Copy"
+        ],
+        "title": "Copy"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Paste"
+        ],
+        "title": "Paste"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Find"
+        ],
+        "title": "Find"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Replace"
+        ],
+        "title": "Replace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Find in Files"
+        ],
+        "title": "Find in Files"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Replace in Files"
+        ],
+        "title": "Replace in Files"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Toggle Line Comment"
+        ],
+        "title": "Toggle Line Comment"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Toggle Block Comment"
+        ],
+        "title": "Toggle Block Comment"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Emmet: Expand Abbreviation"
+        ],
+        "title": "Emmet: Expand Abbreviation"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充"
+        ],
+        "title": "自动填充"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "联系人…"
+        ],
+        "title": "联系人…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "密码…"
+        ],
+        "title": "密码…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "信用卡…"
+        ],
+        "title": "信用卡…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "开始听写…"
+        ],
+        "title": "开始听写…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "表情与符号"
+        ],
+        "title": "表情与符号"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection"
+        ],
+        "title": "Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Select All"
+        ],
+        "title": "Select All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Expand Selection"
+        ],
+        "title": "Expand Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Shrink Selection"
+        ],
+        "title": "Shrink Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Copy Line Up"
+        ],
+        "title": "Copy Line Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Copy Line Down"
+        ],
+        "title": "Copy Line Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Move Line Up"
+        ],
+        "title": "Move Line Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Move Line Down"
+        ],
+        "title": "Move Line Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Duplicate Selection"
+        ],
+        "title": "Duplicate Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursor Above"
+        ],
+        "title": "Add Cursor Above"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursor Below"
+        ],
+        "title": "Add Cursor Below"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursors to Line Ends"
+        ],
+        "title": "Add Cursors to Line Ends"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Next Occurrence"
+        ],
+        "title": "Add Next Occurrence"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Previous Occurrence"
+        ],
+        "title": "Add Previous Occurrence"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Select All Occurrences"
+        ],
+        "title": "Select All Occurrences"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Switch to Cmd+Click for Multi-Cursor"
+        ],
+        "title": "Switch to Cmd+Click for Multi-Cursor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Column Selection Mode"
+        ],
+        "title": "Column Selection Mode"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View"
+        ],
+        "title": "View"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Command Palette…"
+        ],
+        "title": "Command Palette…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Open View…"
+        ],
+        "title": "Open View…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance"
+        ],
+        "title": "Appearance"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Full Screen"
+        ],
+        "title": "Full Screen"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zen Mode [⌘K Z]"
+        ],
+        "title": "Zen Mode [⌘K Z]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Centered Layout"
+        ],
+        "title": "Centered Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Primary Side Bar"
+        ],
+        "title": "Primary Side Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Secondary Side Bar"
+        ],
+        "title": "Secondary Side Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Status Bar"
+        ],
+        "title": "Status Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel"
+        ],
+        "title": "Panel"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Move Primary Side Bar Right"
+        ],
+        "title": "Move Primary Side Bar Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position"
+        ],
+        "title": "Activity Bar Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Default"
+        ],
+        "title": "Default"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Top"
+        ],
+        "title": "Top"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Bottom"
+        ],
+        "title": "Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position"
+        ],
+        "title": "Panel Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Top"
+        ],
+        "title": "Top"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Left"
+        ],
+        "title": "Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Right"
+        ],
+        "title": "Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Bottom"
+        ],
+        "title": "Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel"
+        ],
+        "title": "Align Panel"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Center"
+        ],
+        "title": "Center"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Justify"
+        ],
+        "title": "Justify"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Left"
+        ],
+        "title": "Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Right"
+        ],
+        "title": "Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar"
+        ],
+        "title": "Tab Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Multiple Tabs"
+        ],
+        "title": "Multiple Tabs"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Single Tab"
+        ],
+        "title": "Single Tab"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position"
+        ],
+        "title": "Editor Actions Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Tab Bar"
+        ],
+        "title": "Tab Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Title Bar"
+        ],
+        "title": "Title Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Minimap"
+        ],
+        "title": "Minimap"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Breadcrumbs"
+        ],
+        "title": "Breadcrumbs"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Sticky Scroll"
+        ],
+        "title": "Sticky Scroll"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace"
+        ],
+        "title": "Render Whitespace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to None"
+        ],
+        "title": "Set Render Whitespace to None"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Boundary"
+        ],
+        "title": "Set Render Whitespace to Boundary"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Selection"
+        ],
+        "title": "Set Render Whitespace to Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Trailing"
+        ],
+        "title": "Set Render Whitespace to Trailing"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to All"
+        ],
+        "title": "Set Render Whitespace to All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Control Characters"
+        ],
+        "title": "Render Control Characters"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zoom In"
+        ],
+        "title": "Zoom In"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zoom Out"
+        ],
+        "title": "Zoom Out"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Reset Zoom [⌘NumPad0]"
+        ],
+        "title": "Reset Zoom [⌘NumPad0]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout"
+        ],
+        "title": "Editor Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Up"
+        ],
+        "title": "Split Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Down"
+        ],
+        "title": "Split Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Left"
+        ],
+        "title": "Split Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Right"
+        ],
+        "title": "Split Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Move Editor into New Window"
+        ],
+        "title": "Move Editor into New Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Copy Editor into New Window [⌘K O]"
+        ],
+        "title": "Copy Editor into New Window [⌘K O]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Single"
+        ],
+        "title": "Single"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Columns"
+        ],
+        "title": "Two Columns"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Three Columns"
+        ],
+        "title": "Three Columns"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Rows"
+        ],
+        "title": "Two Rows"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Three Rows"
+        ],
+        "title": "Three Rows"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Grid (2x2)"
+        ],
+        "title": "Grid (2x2)"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Rows Right"
+        ],
+        "title": "Two Rows Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Columns Bottom"
+        ],
+        "title": "Two Columns Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Flip Layout"
+        ],
+        "title": "Flip Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Explorer"
+        ],
+        "title": "Explorer"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Search"
+        ],
+        "title": "Search"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Source Control"
+        ],
+        "title": "Source Control"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Extensions"
+        ],
+        "title": "Extensions"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Problems"
+        ],
+        "title": "Problems"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Output"
+        ],
+        "title": "Output"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Terminal"
+        ],
+        "title": "Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Word Wrap"
+        ],
+        "title": "Word Wrap"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go"
+        ],
+        "title": "Go"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Back"
+        ],
+        "title": "Back"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Forward"
+        ],
+        "title": "Forward"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Last Edit Location [⌘K ⌘Q]"
+        ],
+        "title": "Last Edit Location [⌘K ⌘Q]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor"
+        ],
+        "title": "Switch Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Editor"
+        ],
+        "title": "Next Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Editor"
+        ],
+        "title": "Previous Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Used Editor"
+        ],
+        "title": "Next Used Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Used Editor"
+        ],
+        "title": "Previous Used Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Editor in Group [⌘K ⌥⌘→]"
+        ],
+        "title": "Next Editor in Group [⌘K ⌥⌘→]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Editor in Group [⌘K ⌥⌘←]"
+        ],
+        "title": "Previous Editor in Group [⌘K ⌥⌘←]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Used Editor in Group"
+        ],
+        "title": "Next Used Editor in Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Used Editor in Group"
+        ],
+        "title": "Previous Used Editor in Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group"
+        ],
+        "title": "Switch Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 1"
+        ],
+        "title": "Group 1"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 2"
+        ],
+        "title": "Group 2"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 3"
+        ],
+        "title": "Group 3"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 4"
+        ],
+        "title": "Group 4"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 5"
+        ],
+        "title": "Group 5"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Next Group"
+        ],
+        "title": "Next Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Previous Group"
+        ],
+        "title": "Previous Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Left [⌘K ⌘←]"
+        ],
+        "title": "Group Left [⌘K ⌘←]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Right [⌘K ⌘→]"
+        ],
+        "title": "Group Right [⌘K ⌘→]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Above [⌘K ⌘↑]"
+        ],
+        "title": "Group Above [⌘K ⌘↑]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Below [⌘K ⌘↓]"
+        ],
+        "title": "Group Below [⌘K ⌘↓]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to File…"
+        ],
+        "title": "Go to File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Symbol in Workspace…"
+        ],
+        "title": "Go to Symbol in Workspace…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Symbol in Editor…"
+        ],
+        "title": "Go to Symbol in Editor…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Definition"
+        ],
+        "title": "Go to Definition"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Declaration"
+        ],
+        "title": "Go to Declaration"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Type Definition"
+        ],
+        "title": "Go to Type Definition"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Implementations"
+        ],
+        "title": "Go to Implementations"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to References"
+        ],
+        "title": "Go to References"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Line/Column…"
+        ],
+        "title": "Go to Line/Column…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Bracket"
+        ],
+        "title": "Go to Bracket"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Next Problem"
+        ],
+        "title": "Next Problem"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Previous Problem"
+        ],
+        "title": "Previous Problem"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Next Change"
+        ],
+        "title": "Next Change"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Previous Change"
+        ],
+        "title": "Previous Change"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal"
+        ],
+        "title": "Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "New Terminal"
+        ],
+        "title": "New Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Split Terminal"
+        ],
+        "title": "Split Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "New Terminal Window"
+        ],
+        "title": "New Terminal Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Task…"
+        ],
+        "title": "Run Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Build Task…"
+        ],
+        "title": "Run Build Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Active File"
+        ],
+        "title": "Run Active File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Selected Text"
+        ],
+        "title": "Run Selected Text"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Show Running Tasks…"
+        ],
+        "title": "Show Running Tasks…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Restart Running Task…"
+        ],
+        "title": "Restart Running Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Terminate Task…"
+        ],
+        "title": "Terminate Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Configure Tasks…"
+        ],
+        "title": "Configure Tasks…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Configure Default Build Task…"
+        ],
+        "title": "Configure Default Build Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window"
+        ],
+        "title": "Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Minimize"
+        ],
+        "title": "Minimize"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全部最小化"
+        ],
+        "title": "全部最小化"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Zoom"
+        ],
+        "title": "Zoom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全部缩放"
+        ],
+        "title": "全部缩放"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "填充"
+        ],
+        "title": "填充"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "居中"
+        ],
+        "title": "居中"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "进入全屏幕"
+        ],
+        "title": "进入全屏幕"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小"
+        ],
+        "title": "移动与调整大小"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "二等分"
+        ],
+        "title": "二等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧"
+        ],
+        "title": "左侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧"
+        ],
+        "title": "右侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部"
+        ],
+        "title": "顶部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部"
+        ],
+        "title": "底部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "四等分"
+        ],
+        "title": "四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左上"
+        ],
+        "title": "左上"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右上"
+        ],
+        "title": "右上"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左下"
+        ],
+        "title": "左下"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右下"
+        ],
+        "title": "右下"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "排列"
+        ],
+        "title": "排列"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧与右侧"
+        ],
+        "title": "左侧与右侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧与四等分"
+        ],
+        "title": "左侧与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧与左侧"
+        ],
+        "title": "右侧与左侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧与四等分"
+        ],
+        "title": "右侧与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部与底部"
+        ],
+        "title": "顶部与底部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部与四等分"
+        ],
+        "title": "顶部与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部与顶部"
+        ],
+        "title": "底部与顶部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部与四等分"
+        ],
+        "title": "底部与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "四等分"
+        ],
+        "title": "四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "恢复上一个大小"
+        ],
+        "title": "恢复上一个大小"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全屏幕平铺"
+        ],
+        "title": "全屏幕平铺"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Switch Window…"
+        ],
+        "title": "Switch Window…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Bring All to Front"
+        ],
+        "title": "Bring All to Front"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "排在前面"
+        ],
+        "title": "排在前面"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "从组中移除窗口"
+        ],
+        "title": "从组中移除窗口"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "[Extension Development Host] Welcome — w"
+        ],
+        "title": "[Extension Development Host] Welcome — w"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help"
+        ],
+        "title": "Help"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Welcome"
+        ],
+        "title": "Welcome"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Show All Commands"
+        ],
+        "title": "Show All Commands"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Documentation"
+        ],
+        "title": "Documentation"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Editor Playground"
+        ],
+        "title": "Editor Playground"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Open Walkthrough…"
+        ],
+        "title": "Open Walkthrough…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Show Release Notes"
+        ],
+        "title": "Show Release Notes"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Get Started with Accessibility Features"
+        ],
+        "title": "Get Started with Accessibility Features"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Keyboard Shortcuts Reference [⌘K ⌘R]"
+        ],
+        "title": "Keyboard Shortcuts Reference [⌘K ⌘R]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "View License"
+        ],
+        "title": "View License"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Toggle Developer Tools"
+        ],
+        "title": "Toggle Developer Tools"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Open Process Explorer"
+        ],
+        "title": "Open Process Explorer"
+      }
+    ],
+    "prohibited": [],
+    "systemNativeExceptions": [
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "开始听写…"
+        ],
+        "title": "开始听写…",
+        "classification": "macOS system Edit menu Start Dictation",
+        "sourceURL": "https://support.apple.com/en-au/guide/mac-help/mh40584/26/mac/26"
+      }
+    ]
+  },
+  "tabsBefore150": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": false
+    },
+    {
+      "label": "Welcome",
+      "active": true
+    }
+  ],
+  "welcome150": {
+    "welcomePresent": true,
+    "welcomeText": "VSLight\n\nEditing evolved\n\nStart\nNew File...\nOpen...\nClone Git Repository...\nRecent\nYou have no recent folders,open a folderto start.\nWalkthroughs\nGet started with VSLight\nCustomize your editor, learn the basics, and start coding\nLearn the Fundamentals\nVSLight Announcements\nThere are no current announcements.\n\nShow welcome page on startup",
+    "titlebarPresent": true,
+    "titlebarText": "[Extension Development Host] w",
+    "titlebarControls": [
+      {
+        "role": "button",
+        "label": "Go Back (⌃-)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Go Forward (⌃⇧-)",
+        "title": null
+      },
+      {
+        "role": "toolbar",
+        "label": "Title actions",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Customize Layout...",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Primary Side Bar (⌘B)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Panel (⌘J)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Secondary Side Bar (⌥⌘B)",
+        "title": null
+      }
+    ],
+    "activityLabels": [
+      "Active View Switcher",
+      "",
+      "Explorer (⇧⌘E)",
+      "Explorer (⇧⌘E)",
+      "",
+      "Search (⇧⌘F)",
+      "Search (⇧⌘F)",
+      "",
+      "Source Control (⌃⇧G)",
+      "Source Control (⌃⇧G)",
+      "Extensions (⇧⌘X)",
+      "Extensions (⇧⌘X)",
+      "Extensions (⇧⌘X)",
+      "Manage",
+      "Manage",
+      "Manage",
+      "Manage"
+    ]
+  },
+  "handoff150": {
+    "actualExit": {
+      "code": 0,
+      "signal": null,
+      "at": "2026-10-02T10:19:43.481Z"
+    },
+    "parentTerminal": true,
+    "staleControllerStatus": "FAIL"
+  },
+  "tabsAfter151": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": false
+    },
+    {
+      "label": "Welcome",
+      "active": true
+    }
+  ],
+  "after": {
+    "status": "PASS",
+    "phase": "after",
+    "extensionId": "lean-tests.lean-ui-final",
+    "configuredTheme": "One Dark Pro",
+    "themeExtension": {
+      "id": "zhuangtongfa.material-theme",
+      "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal",
+      "version": "3.20.2",
+      "isActive": true
+    },
+    "activeColorThemeKind": 2,
+    "syntheticAuth": {
+      "providerId": "lean-final-synthetic-auth",
+      "accountIds": [
+        "synthetic-alpha",
+        "synthetic-beta"
+      ],
+      "selectedAccountId": "synthetic-beta",
+      "selectedSessionId": "synthetic-beta-session",
+      "tokenVerified": true,
+      "accountsProviderCalls": 2,
+      "sessionProviderCalls": 1,
+      "createSessionCalls": 0,
+      "removeSessionCalls": 0,
+      "registeredThroughPublicApi": true,
+      "requestedSilentWithoutExplicitAccount": true
+    },
+    "globalStateSentinelVerified": true,
+    "retiredHistoryAndFakeCredentialSentinelsVerified": true,
+    "preQuitGlobalStateWriteVerified": true,
+    "disabledExtension": {
+      "id": "lean-tests.lean-disabled-final",
+      "manifestPresent": true,
+      "hostVisible": false,
+      "activationMarkerPresent": false
+    },
+    "note": "Theme identity/colors and database/file byte preservation require controller checks; no tokens returned."
+  },
+  "themeDisabled": {
+    "theme": {
+      "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "editorBackground": "rgb(40, 44, 52)",
+      "colors": {
+        "editor.background": "#282c34",
+        "editor.foreground": "#abb2bf",
+        "sideBar.background": "#21252b",
+        "activityBar.background": "#282c34",
+        "statusBar.background": "#21252b"
+      }
+    },
+    "disabled": {
+      "query": "@disabled lean-disabled-final",
+      "rows": [
+        {
+          "id": "lean-tests.lean-disabled-final",
+          "label": "Synthetic disabled extension persistence sentinel, 0.0.1, Publisher lean-tests,  ",
+          "text": "Synthetic disabled extension persistence sentinel\nlean-tests"
+        }
+      ]
+    },
+    "surface": {
+      "status": "PASS",
+      "file": "/private/tmp/lcfinal-chkarkup/ui/w/content-proof.txt",
+      "sha256": "f969e69f3ec9cb2f93757fb6f9f41bc0a49ec856fc23fb66eb01684bbce2cca7",
+      "languageId": "plaintext",
+      "publicTextDocumentAndEditorAPIs": true,
+      "reopenedForThemeSurfaceOnly": true,
+      "notTabRestoreEvidence": true,
+      "noGlobalStateOrAuthWrites": true
+    }
+  },
+  "welcome151": {
+    "welcomePresent": true,
+    "welcomeText": "VSLight\n\nEditing evolved\n\nStart\nNew File...\nOpen...\nClone Git Repository...\nRecent\nYou have no recent folders,open a folderto start.\nWalkthroughs\nGet started with VSLight\nCustomize your editor, learn the basics, and start coding\nLearn the Fundamentals\nVSLight Announcements\nThere are no current announcements.\n\nShow welcome page on startup",
+    "titlebarPresent": true,
+    "titlebarText": "[Extension Development Host] w",
+    "titlebarControls": [
+      {
+        "role": "button",
+        "label": "Go Back (⌃-)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Go Forward (⌃⇧-)",
+        "title": null
+      },
+      {
+        "role": "toolbar",
+        "label": "Title actions",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Customize Layout...",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Primary Side Bar (⌘B)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Panel (⌘J)",
+        "title": null
+      },
+      {
+        "role": "button",
+        "label": "Toggle Secondary Side Bar (⌥⌘B)",
+        "title": null
+      }
+    ],
+    "activityLabels": [
+      "Active View Switcher",
+      "",
+      "Explorer (⇧⌘E)",
+      "Explorer (⇧⌘E)",
+      "",
+      "Search (⇧⌘F)",
+      "Search (⇧⌘F)",
+      "",
+      "Source Control (⌃⇧G)",
+      "Source Control (⌃⇧G)",
+      "Extensions (⇧⌘X)",
+      "Extensions (⇧⌘X)",
+      "Extensions (⇧⌘X)",
+      "Manage",
+      "Manage",
+      "Manage",
+      "Manage"
+    ]
+  },
+  "menu151": {
+    "complete": true,
+    "errors": [],
+    "nodeCount": 424,
+    "deepest": 7,
+    "positiveHits": {
+      "File": "File",
+      "Edit": "Edit",
+      "View": "View",
+      "Terminal": "Terminal",
+      "Help": "Help"
+    },
+    "topTitles": [
+      "Apple",
+      "VSLight",
+      "File",
+      "Edit",
+      "Selection",
+      "View",
+      "Go",
+      "Terminal",
+      "Window",
+      "Help"
+    ],
+    "titles": [
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple"
+        ],
+        "title": "Apple"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关于本机"
+        ],
+        "title": "关于本机"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "系统信息"
+        ],
+        "title": "系统信息"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "系统设置…"
+        ],
+        "title": "系统设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置"
+        ],
+        "title": "位置"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "临时"
+        ],
+        "title": "临时"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "强制DNS"
+        ],
+        "title": "强制DNS"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "自动"
+        ],
+        "title": "自动"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "位置",
+          "AXMenu",
+          "网络设置…"
+        ],
+        "title": "网络设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "App Store"
+        ],
+        "title": "App Store"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目"
+        ],
+        "title": "最近使用的项目"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "应用程序"
+        ],
+        "title": "应用程序"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "系统设置.app"
+        ],
+        "title": "系统设置.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“系统设置.app”"
+        ],
+        "title": "在访达中显示“系统设置.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "邮件.app"
+        ],
+        "title": "邮件.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“邮件.app”"
+        ],
+        "title": "在访达中显示“邮件.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "预览.app"
+        ],
+        "title": "预览.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“预览.app”"
+        ],
+        "title": "在访达中显示“预览.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Claude.app"
+        ],
+        "title": "Claude.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Claude.app”"
+        ],
+        "title": "在访达中显示“Claude.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Google Chrome.app"
+        ],
+        "title": "Google Chrome.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Google Chrome.app”"
+        ],
+        "title": "在访达中显示“Google Chrome.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VLC.app"
+        ],
+        "title": "VLC.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VLC.app”"
+        ],
+        "title": "在访达中显示“VLC.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "VSLight.app"
+        ],
+        "title": "VSLight.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“VSLight.app”"
+        ],
+        "title": "在访达中显示“VSLight.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Xcode.app"
+        ],
+        "title": "Xcode.app"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“Xcode.app”"
+        ],
+        "title": "在访达中显示“Xcode.app”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "文稿"
+        ],
+        "title": "文稿"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "06-verify-and-ship.md"
+        ],
+        "title": "06-verify-and-ship.md"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“06-verify-and-ship.md”"
+        ],
+        "title": "在访达中显示“06-verify-and-ship.md”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "a.txt"
+        ],
+        "title": "a.txt"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“a.txt”"
+        ],
+        "title": "在访达中显示“a.txt”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "SKILL.md"
+        ],
+        "title": "SKILL.md"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“SKILL.md”"
+        ],
+        "title": "在访达中显示“SKILL.md”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "ws"
+        ],
+        "title": "ws"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“ws”"
+        ],
+        "title": "在访达中显示“ws”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "xgent.code-workspace"
+        ],
+        "title": "xgent.code-workspace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "在访达中显示“xgent.code-workspace”"
+        ],
+        "title": "在访达中显示“xgent.code-workspace”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "服务器"
+        ],
+        "title": "服务器"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "Macintosh HD"
+        ],
+        "title": "Macintosh HD"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "最近使用的项目",
+          "AXMenu",
+          "清除菜单"
+        ],
+        "title": "清除菜单"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "强制退出…"
+        ],
+        "title": "强制退出…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "强制退出“VSLight”"
+        ],
+        "title": "强制退出“VSLight”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "睡眠"
+        ],
+        "title": "睡眠"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "重启…"
+        ],
+        "title": "重启…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "重启"
+        ],
+        "title": "重启"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关机…"
+        ],
+        "title": "关机…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "关机"
+        ],
+        "title": "关机"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "锁屏"
+        ],
+        "title": "锁屏"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "退出登录“Rockie Guo”…"
+        ],
+        "title": "退出登录“Rockie Guo”…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          "退出登录“Rockie Guo”"
+        ],
+        "title": "退出登录“Rockie Guo”"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Apple",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight"
+        ],
+        "title": "VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "About VSLight"
+        ],
+        "title": "About VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Check for Updates…"
+        ],
+        "title": "Check for Updates…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences"
+        ],
+        "title": "Preferences"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Settings"
+        ],
+        "title": "Settings"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Extensions"
+        ],
+        "title": "Extensions"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Keyboard Shortcuts [⌘K ⌘S]"
+        ],
+        "title": "Keyboard Shortcuts [⌘K ⌘S]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Configure Snippets"
+        ],
+        "title": "Configure Snippets"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Tasks"
+        ],
+        "title": "Tasks"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes"
+        ],
+        "title": "Themes"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "Color Theme [⌘K ⌘T]"
+        ],
+        "title": "Color Theme [⌘K ⌘T]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "File Icon Theme"
+        ],
+        "title": "File Icon Theme"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Themes",
+          "AXMenu",
+          "Product Icon Theme"
+        ],
+        "title": "Product Icon Theme"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Preferences",
+          "AXMenu",
+          "Online Services Settings"
+        ],
+        "title": "Online Services Settings"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services"
+        ],
+        "title": "Services"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Activity Monitor"
+        ],
+        "title": "Activity Monitor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Allocations & Leaks"
+        ],
+        "title": "Allocations & Leaks"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "File Activity"
+        ],
+        "title": "File Activity"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "System Trace"
+        ],
+        "title": "System Trace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile Active Application"
+        ],
+        "title": "Time Profile Active Application"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile App Under Mouse"
+        ],
+        "title": "Time Profile App Under Mouse"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Time Profile Entire System"
+        ],
+        "title": "Time Profile Entire System"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Toggle Instruments Recording"
+        ],
+        "title": "Toggle Instruments Recording"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Ask Claude"
+        ],
+        "title": "Ask Claude"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "New Claude Code Session Here"
+        ],
+        "title": "New Claude Code Session Here"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "Send to Claude"
+        ],
+        "title": "Send to Claude"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Services",
+          "AXMenu",
+          "服务设置…"
+        ],
+        "title": "服务设置…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Hide VSLight"
+        ],
+        "title": "Hide VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Hide Others"
+        ],
+        "title": "Hide Others"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Show All"
+        ],
+        "title": "Show All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "VSLight",
+          "AXMenu",
+          "Quit VSLight"
+        ],
+        "title": "Quit VSLight"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File"
+        ],
+        "title": "File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New Text File"
+        ],
+        "title": "New Text File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New File…"
+        ],
+        "title": "New File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "New Window"
+        ],
+        "title": "New Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open…"
+        ],
+        "title": "Open…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Folder…"
+        ],
+        "title": "Open Folder…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Workspace from File…"
+        ],
+        "title": "Open Workspace from File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent"
+        ],
+        "title": "Open Recent"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "Reopen Closed Editor"
+        ],
+        "title": "Reopen Closed Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "More…"
+        ],
+        "title": "More…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Open Recent",
+          "AXMenu",
+          "Clear Recently Opened…"
+        ],
+        "title": "Clear Recently Opened…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Add Folder to Workspace…"
+        ],
+        "title": "Add Folder to Workspace…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save Workspace As…"
+        ],
+        "title": "Save Workspace As…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Duplicate Workspace"
+        ],
+        "title": "Duplicate Workspace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save"
+        ],
+        "title": "Save"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save As…"
+        ],
+        "title": "Save As…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Save All"
+        ],
+        "title": "Save All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Auto Save"
+        ],
+        "title": "Auto Save"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Revert File"
+        ],
+        "title": "Revert File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Editor"
+        ],
+        "title": "Close Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Folder [⌘K F]"
+        ],
+        "title": "Close Folder [⌘K F]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "File",
+          "AXMenu",
+          "Close Window"
+        ],
+        "title": "Close Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit"
+        ],
+        "title": "Edit"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Undo"
+        ],
+        "title": "Undo"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Redo"
+        ],
+        "title": "Redo"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Cut"
+        ],
+        "title": "Cut"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Copy"
+        ],
+        "title": "Copy"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Paste"
+        ],
+        "title": "Paste"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Find"
+        ],
+        "title": "Find"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Replace"
+        ],
+        "title": "Replace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Find in Files"
+        ],
+        "title": "Find in Files"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Replace in Files"
+        ],
+        "title": "Replace in Files"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Toggle Line Comment"
+        ],
+        "title": "Toggle Line Comment"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Toggle Block Comment"
+        ],
+        "title": "Toggle Block Comment"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "Emmet: Expand Abbreviation"
+        ],
+        "title": "Emmet: Expand Abbreviation"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充"
+        ],
+        "title": "自动填充"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "联系人…"
+        ],
+        "title": "联系人…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "密码…"
+        ],
+        "title": "密码…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "自动填充",
+          "AXMenu",
+          "信用卡…"
+        ],
+        "title": "信用卡…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "开始听写…"
+        ],
+        "title": "开始听写…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "表情与符号"
+        ],
+        "title": "表情与符号"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection"
+        ],
+        "title": "Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Select All"
+        ],
+        "title": "Select All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Expand Selection"
+        ],
+        "title": "Expand Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Shrink Selection"
+        ],
+        "title": "Shrink Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Copy Line Up"
+        ],
+        "title": "Copy Line Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Copy Line Down"
+        ],
+        "title": "Copy Line Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Move Line Up"
+        ],
+        "title": "Move Line Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Move Line Down"
+        ],
+        "title": "Move Line Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Duplicate Selection"
+        ],
+        "title": "Duplicate Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursor Above"
+        ],
+        "title": "Add Cursor Above"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursor Below"
+        ],
+        "title": "Add Cursor Below"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Cursors to Line Ends"
+        ],
+        "title": "Add Cursors to Line Ends"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Next Occurrence"
+        ],
+        "title": "Add Next Occurrence"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Add Previous Occurrence"
+        ],
+        "title": "Add Previous Occurrence"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Select All Occurrences"
+        ],
+        "title": "Select All Occurrences"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Switch to Cmd+Click for Multi-Cursor"
+        ],
+        "title": "Switch to Cmd+Click for Multi-Cursor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Selection",
+          "AXMenu",
+          "Column Selection Mode"
+        ],
+        "title": "Column Selection Mode"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View"
+        ],
+        "title": "View"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Command Palette…"
+        ],
+        "title": "Command Palette…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Open View…"
+        ],
+        "title": "Open View…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance"
+        ],
+        "title": "Appearance"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Full Screen"
+        ],
+        "title": "Full Screen"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zen Mode [⌘K Z]"
+        ],
+        "title": "Zen Mode [⌘K Z]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Centered Layout"
+        ],
+        "title": "Centered Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Primary Side Bar"
+        ],
+        "title": "Primary Side Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Secondary Side Bar"
+        ],
+        "title": "Secondary Side Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Status Bar"
+        ],
+        "title": "Status Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel"
+        ],
+        "title": "Panel"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Move Primary Side Bar Right"
+        ],
+        "title": "Move Primary Side Bar Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position"
+        ],
+        "title": "Activity Bar Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Default"
+        ],
+        "title": "Default"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Top"
+        ],
+        "title": "Top"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Bottom"
+        ],
+        "title": "Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Activity Bar Position",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position"
+        ],
+        "title": "Panel Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Top"
+        ],
+        "title": "Top"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Left"
+        ],
+        "title": "Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Right"
+        ],
+        "title": "Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Panel Position",
+          "AXMenu",
+          "Bottom"
+        ],
+        "title": "Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel"
+        ],
+        "title": "Align Panel"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Center"
+        ],
+        "title": "Center"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Justify"
+        ],
+        "title": "Justify"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Left"
+        ],
+        "title": "Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Align Panel",
+          "AXMenu",
+          "Right"
+        ],
+        "title": "Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar"
+        ],
+        "title": "Tab Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Multiple Tabs"
+        ],
+        "title": "Multiple Tabs"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Single Tab"
+        ],
+        "title": "Single Tab"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Tab Bar",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position"
+        ],
+        "title": "Editor Actions Position"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Tab Bar"
+        ],
+        "title": "Tab Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Title Bar"
+        ],
+        "title": "Title Bar"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Editor Actions Position",
+          "AXMenu",
+          "Hidden"
+        ],
+        "title": "Hidden"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Minimap"
+        ],
+        "title": "Minimap"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Breadcrumbs"
+        ],
+        "title": "Breadcrumbs"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Sticky Scroll"
+        ],
+        "title": "Sticky Scroll"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace"
+        ],
+        "title": "Render Whitespace"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to None"
+        ],
+        "title": "Set Render Whitespace to None"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Boundary"
+        ],
+        "title": "Set Render Whitespace to Boundary"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Selection"
+        ],
+        "title": "Set Render Whitespace to Selection"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to Trailing"
+        ],
+        "title": "Set Render Whitespace to Trailing"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Whitespace",
+          "AXMenu",
+          "Set Render Whitespace to All"
+        ],
+        "title": "Set Render Whitespace to All"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Render Control Characters"
+        ],
+        "title": "Render Control Characters"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zoom In"
+        ],
+        "title": "Zoom In"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Zoom Out"
+        ],
+        "title": "Zoom Out"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Appearance",
+          "AXMenu",
+          "Reset Zoom [⌘NumPad0]"
+        ],
+        "title": "Reset Zoom [⌘NumPad0]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout"
+        ],
+        "title": "Editor Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Up"
+        ],
+        "title": "Split Up"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Down"
+        ],
+        "title": "Split Down"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Left"
+        ],
+        "title": "Split Left"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Split Right"
+        ],
+        "title": "Split Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Move Editor into New Window"
+        ],
+        "title": "Move Editor into New Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Copy Editor into New Window [⌘K O]"
+        ],
+        "title": "Copy Editor into New Window [⌘K O]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Single"
+        ],
+        "title": "Single"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Columns"
+        ],
+        "title": "Two Columns"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Three Columns"
+        ],
+        "title": "Three Columns"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Rows"
+        ],
+        "title": "Two Rows"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Three Rows"
+        ],
+        "title": "Three Rows"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Grid (2x2)"
+        ],
+        "title": "Grid (2x2)"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Rows Right"
+        ],
+        "title": "Two Rows Right"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Two Columns Bottom"
+        ],
+        "title": "Two Columns Bottom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Editor Layout",
+          "AXMenu",
+          "Flip Layout"
+        ],
+        "title": "Flip Layout"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Explorer"
+        ],
+        "title": "Explorer"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Search"
+        ],
+        "title": "Search"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Source Control"
+        ],
+        "title": "Source Control"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Extensions"
+        ],
+        "title": "Extensions"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Problems"
+        ],
+        "title": "Problems"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Output"
+        ],
+        "title": "Output"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Terminal"
+        ],
+        "title": "Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "View",
+          "AXMenu",
+          "Word Wrap"
+        ],
+        "title": "Word Wrap"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go"
+        ],
+        "title": "Go"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Back"
+        ],
+        "title": "Back"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Forward"
+        ],
+        "title": "Forward"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Last Edit Location [⌘K ⌘Q]"
+        ],
+        "title": "Last Edit Location [⌘K ⌘Q]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor"
+        ],
+        "title": "Switch Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Editor"
+        ],
+        "title": "Next Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Editor"
+        ],
+        "title": "Previous Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Used Editor"
+        ],
+        "title": "Next Used Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Used Editor"
+        ],
+        "title": "Previous Used Editor"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Editor in Group [⌘K ⌥⌘→]"
+        ],
+        "title": "Next Editor in Group [⌘K ⌥⌘→]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Editor in Group [⌘K ⌥⌘←]"
+        ],
+        "title": "Previous Editor in Group [⌘K ⌥⌘←]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Next Used Editor in Group"
+        ],
+        "title": "Next Used Editor in Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Editor",
+          "AXMenu",
+          "Previous Used Editor in Group"
+        ],
+        "title": "Previous Used Editor in Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group"
+        ],
+        "title": "Switch Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 1"
+        ],
+        "title": "Group 1"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 2"
+        ],
+        "title": "Group 2"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 3"
+        ],
+        "title": "Group 3"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 4"
+        ],
+        "title": "Group 4"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group 5"
+        ],
+        "title": "Group 5"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Next Group"
+        ],
+        "title": "Next Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Previous Group"
+        ],
+        "title": "Previous Group"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Left [⌘K ⌘←]"
+        ],
+        "title": "Group Left [⌘K ⌘←]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Right [⌘K ⌘→]"
+        ],
+        "title": "Group Right [⌘K ⌘→]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Above [⌘K ⌘↑]"
+        ],
+        "title": "Group Above [⌘K ⌘↑]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Switch Group",
+          "AXMenu",
+          "Group Below [⌘K ⌘↓]"
+        ],
+        "title": "Group Below [⌘K ⌘↓]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to File…"
+        ],
+        "title": "Go to File…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Symbol in Workspace…"
+        ],
+        "title": "Go to Symbol in Workspace…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Symbol in Editor…"
+        ],
+        "title": "Go to Symbol in Editor…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Definition"
+        ],
+        "title": "Go to Definition"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Declaration"
+        ],
+        "title": "Go to Declaration"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Type Definition"
+        ],
+        "title": "Go to Type Definition"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Implementations"
+        ],
+        "title": "Go to Implementations"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to References"
+        ],
+        "title": "Go to References"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Line/Column…"
+        ],
+        "title": "Go to Line/Column…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Go to Bracket"
+        ],
+        "title": "Go to Bracket"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Next Problem"
+        ],
+        "title": "Next Problem"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Previous Problem"
+        ],
+        "title": "Previous Problem"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Next Change"
+        ],
+        "title": "Next Change"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Go",
+          "AXMenu",
+          "Previous Change"
+        ],
+        "title": "Previous Change"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal"
+        ],
+        "title": "Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "New Terminal"
+        ],
+        "title": "New Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Split Terminal"
+        ],
+        "title": "Split Terminal"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "New Terminal Window"
+        ],
+        "title": "New Terminal Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Task…"
+        ],
+        "title": "Run Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Build Task…"
+        ],
+        "title": "Run Build Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Active File"
+        ],
+        "title": "Run Active File"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Run Selected Text"
+        ],
+        "title": "Run Selected Text"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Show Running Tasks…"
+        ],
+        "title": "Show Running Tasks…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Restart Running Task…"
+        ],
+        "title": "Restart Running Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Terminate Task…"
+        ],
+        "title": "Terminate Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Configure Tasks…"
+        ],
+        "title": "Configure Tasks…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Terminal",
+          "AXMenu",
+          "Configure Default Build Task…"
+        ],
+        "title": "Configure Default Build Task…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window"
+        ],
+        "title": "Window"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Minimize"
+        ],
+        "title": "Minimize"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全部最小化"
+        ],
+        "title": "全部最小化"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Zoom"
+        ],
+        "title": "Zoom"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全部缩放"
+        ],
+        "title": "全部缩放"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "填充"
+        ],
+        "title": "填充"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "居中"
+        ],
+        "title": "居中"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "进入全屏幕"
+        ],
+        "title": "进入全屏幕"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小"
+        ],
+        "title": "移动与调整大小"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "二等分"
+        ],
+        "title": "二等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧"
+        ],
+        "title": "左侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧"
+        ],
+        "title": "右侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部"
+        ],
+        "title": "顶部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部"
+        ],
+        "title": "底部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "四等分"
+        ],
+        "title": "四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左上"
+        ],
+        "title": "左上"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右上"
+        ],
+        "title": "右上"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左下"
+        ],
+        "title": "左下"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右下"
+        ],
+        "title": "右下"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "排列"
+        ],
+        "title": "排列"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧与右侧"
+        ],
+        "title": "左侧与右侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "左侧与四等分"
+        ],
+        "title": "左侧与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧与左侧"
+        ],
+        "title": "右侧与左侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "右侧与四等分"
+        ],
+        "title": "右侧与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部与底部"
+        ],
+        "title": "顶部与底部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "顶部与四等分"
+        ],
+        "title": "顶部与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部与顶部"
+        ],
+        "title": "底部与顶部"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "底部与四等分"
+        ],
+        "title": "底部与四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "四等分"
+        ],
+        "title": "四等分"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "移动与调整大小",
+          "AXMenu",
+          "恢复上一个大小"
+        ],
+        "title": "恢复上一个大小"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全屏幕平铺"
+        ],
+        "title": "全屏幕平铺"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全屏幕平铺",
+          "AXMenu",
+          "屏幕左侧"
+        ],
+        "title": "屏幕左侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "全屏幕平铺",
+          "AXMenu",
+          "屏幕右侧"
+        ],
+        "title": "屏幕右侧"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Switch Window…"
+        ],
+        "title": "Switch Window…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "Bring All to Front"
+        ],
+        "title": "Bring All to Front"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "排在前面"
+        ],
+        "title": "排在前面"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "从组中移除窗口"
+        ],
+        "title": "从组中移除窗口"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Window",
+          "AXMenu",
+          "[Extension Development Host] Welcome — w"
+        ],
+        "title": "[Extension Development Host] Welcome — w"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help"
+        ],
+        "title": "Help"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Welcome"
+        ],
+        "title": "Welcome"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Show All Commands"
+        ],
+        "title": "Show All Commands"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Documentation"
+        ],
+        "title": "Documentation"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Editor Playground"
+        ],
+        "title": "Editor Playground"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Open Walkthrough…"
+        ],
+        "title": "Open Walkthrough…"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Show Release Notes"
+        ],
+        "title": "Show Release Notes"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Get Started with Accessibility Features"
+        ],
+        "title": "Get Started with Accessibility Features"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Keyboard Shortcuts Reference [⌘K ⌘R]"
+        ],
+        "title": "Keyboard Shortcuts Reference [⌘K ⌘R]"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "View License"
+        ],
+        "title": "View License"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          ""
+        ],
+        "title": ""
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Toggle Developer Tools"
+        ],
+        "title": "Toggle Developer Tools"
+      },
+      {
+        "path": [
+          "AXMenuBar",
+          "Help",
+          "AXMenu",
+          "Open Process Explorer"
+        ],
+        "title": "Open Process Explorer"
+      }
+    ],
+    "prohibited": [],
+    "systemNativeExceptions": [
+      {
+        "path": [
+          "AXMenuBar",
+          "Edit",
+          "AXMenu",
+          "开始听写…"
+        ],
+        "title": "开始听写…",
+        "classification": "macOS system Edit menu Start Dictation",
+        "sourceURL": "https://support.apple.com/en-au/guide/mac-help/mh40584/26/mac/26"
+      }
+    ]
+  },
+  "registry": {
+    "output": "/private/tmp/lcfinal-chkarkup/ui/evidence/registry151-e412786b-556a-4565-aa2c-1ebdbcc75817",
+    "workbenchIdentityVerified": true,
+    "schemaTextSameAsReal151Source": true,
+    "retiredSkipStringCount": 0,
+    "otherRetiredEntitiesReview": "PENDING_ROOT_REVIEW"
+  },
+  "terminalControls": {
+    "status": "PASS",
+    "extensionId": "lean-tests.lean-terminal151",
+    "availability": {
+      "workbench.action.quickOpen": true,
+      "workbench.action.nextEditor": true,
+      "workbench.action.terminal.copySelection": true,
+      "workbench.action.terminal.paste": true,
+      "workbench.action.terminal.new": true,
+      "workbench.action.tasks.runTask": true,
+      "editor.action.accessibilityHelp": true,
+      "workbench.action.terminal.focusAccessibleBuffer": true,
+      "workbench.action.terminal.selectAll": true
+    },
+    "clipboardTouched": false,
+    "noGlobalStateOrAuthWrites": true
+  },
+  "terminal": {
+    "status": "PASS",
+    "extensionId": "lean-tests.lean-terminal151",
+    "file": "/private/tmp/lcfinal-chkarkup/ui/w/terminal151-shell-9c90cf50-dc31-48bb-b56a-243c55723d21.txt",
+    "marker": "TERMINAL151_9c90cf50-dc31-48bb-b56a-243c55723d21",
+    "bytes": 49,
+    "terminalName": "terminal151-9c90cf50-dc31-48bb-b56a-243c55723d21",
+    "shellPID": 8710,
+    "terminalRetainedForDOM": true,
+    "clipboardTouched": false
+  },
+  "error": "AssertionError [ERR_ASSERTION]: {\"id\":\"ff87d64d-164f-48b0-bbac-62f315ad3051\",\"action\":\"task\",\"status\":\"FAIL\",\"error\":\"Error: Real long-running task did not write exact marker\\n\\tat until (/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/extension.js:12:9)\\n\\tat async handle (/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/extension.js:57:9)\\n\\tat async Timeout._onTimeout (/private/tmp/lcfinal-chkarkup/ui/terminal151-ext/extension.js:76:107)\"}\n\n'FAIL' !== 'PASS'\n\n    at file:///private/tmp/lcfinal-chkarkup/ui/standby151.mjs:58:35\n    at async until (file:///private/tmp/lcfinal-chkarkup/ui/standby151.mjs:18:114)\n    at async file:///private/tmp/lcfinal-chkarkup/ui/standby151.mjs:153:143",
+  "failureCleanupExit151": {
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-02T10:21:34.792Z"
+  },
+  "finishedAt": "2026-10-02T10:21:34.798Z"
+}

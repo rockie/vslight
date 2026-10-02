@@ -1,0 +1,490 @@
+{
+  "editor": {
+    "status": "DOM_CHECK_PASS",
+    "scope": "Selected CDP document only; product identity, screenshots and remaining gates require review",
+    "productIdentity": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+    "context": {
+      "key": "8D60F0A4D74EDC490A5EDD1CAE2721BA:2",
+      "id": 2,
+      "uniqueId": "8067510523353435180.2839662776686239351",
+      "origin": "vscode-webview://1s8hv15tig6popq0slfvcgnfkhoc458ifscdpubc20pro3dkc7i0",
+      "name": "",
+      "frameId": "D17344A663BFFD4D2B927CF40D97A451",
+      "sessionId": "8D60F0A4D74EDC490A5EDD1CAE2721BA",
+      "targetId": "85B750A85D0B7B84E7746F76F2F7D572",
+      "targetType": "iframe",
+      "rootTargetId": "A7588B307A27C68147CFBFB103DE0ED7"
+    },
+    "dom": {
+      "caseId": "flowchart",
+      "surface": "standalone-editor",
+      "theme": "dark",
+      "status": "PASS",
+      "failures": [],
+      "url": "vscode-webview://1s8hv15tig6popq0slfvcgnfkhoc458ifscdpubc20pro3dkc7i0/index.html?id=4e54354e-ca28-4244-a378-199699658ccb&parentId=1&origin=c0447b4e-92ee-4d48-8424-5025d6e93d1c&swVersion=6&extensionId=vscode.mermaid-markdown-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+      "bodyClass": "vscode-dark",
+      "mermaidWebviewId": "165d2776",
+      "bodyContext": "{\"preventDefaultContextMenuItems\":true,\"mermaidWebviewId\":\"165d2776\"}",
+      "diagramContext": null,
+      "diagramCount": 1,
+      "svgCount": 1,
+      "svgRect": {
+        "x": 429.75,
+        "y": 238,
+        "width": 362.5,
+        "height": 420
+      },
+      "viewBox": "0 0 290 336",
+      "diagramDescription": "flowchart-v2",
+      "text": "是\n否\n中文开始\n是否成功\n保存结果\n检查输入",
+      "errors": [],
+      "controls": [
+        {
+          "className": "pan-mode-btn",
+          "label": "Toggle Pan Mode",
+          "pressed": "false",
+          "visible": true,
+          "iconFont": "codicon"
+        },
+        {
+          "className": "zoom-out-btn",
+          "label": "Zoom Out",
+          "pressed": null,
+          "visible": true,
+          "iconFont": "codicon"
+        },
+        {
+          "className": "zoom-in-btn",
+          "label": "Zoom In",
+          "pressed": null,
+          "visible": true,
+          "iconFont": "codicon"
+        },
+        {
+          "className": "zoom-reset-btn",
+          "label": "Reset Pan and Zoom",
+          "pressed": null,
+          "visible": true,
+          "iconFont": "codicon"
+        }
+      ],
+      "nodePositions": [
+        {
+          "text": "中文开始",
+          "transform": "translate(145, 32.75)",
+          "layoutX": 145,
+          "layoutY": 32.75,
+          "x": 541,
+          "y": 248
+        },
+        {
+          "text": "是否成功",
+          "transform": "translate(80.5, 158.25)",
+          "layoutX": 80.5,
+          "layoutY": 158.25,
+          "x": 467.5625,
+          "y": 372.375
+        },
+        {
+          "text": "保存结果",
+          "transform": "translate(64, 303.25)",
+          "layoutX": 64,
+          "layoutY": 303.25,
+          "x": 439.75,
+          "y": 586.125
+        },
+        {
+          "text": "检查输入",
+          "transform": "translate(226, 303.25)",
+          "layoutX": 226,
+          "layoutY": 303.25,
+          "x": 642.25,
+          "y": 586.125
+        }
+      ],
+      "transform": "translate(429.75px, 225px) scale(1.25)",
+      "font": "-apple-system, \"system-ui\", sans-serif",
+      "fontStatus": "loaded",
+      "fontFaces": [
+        {
+          "family": "codicon",
+          "status": "loaded"
+        }
+      ],
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "csp": "default-src 'none'; img-src data:; script-src 'nonce-c1dac0e3-3975-4b69-8219-503d3d8be897'; style-src 'self' https://*.vscode-cdn.net 'unsafe-inline'; font-src data:;",
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out/index-editor.js"
+      ],
+      "remainingChecks": [
+        "console/CSP log",
+        "Chinese glyph screenshot",
+        "layout selection/fallback warnings",
+        "interaction/serializer restoration"
+      ]
+    },
+    "failures": [],
+    "events": [
+      {
+        "at": 1790926482593,
+        "sessionId": "8D60F0A4D74EDC490A5EDD1CAE2721BA",
+        "method": "Log.entryAdded",
+        "params": {
+          "entry": {
+            "source": "other",
+            "level": "warning",
+            "text": "Unrecognized feature: 'local-network-access'.",
+            "timestamp": 1790926482593.07,
+            "url": "vscode-webview://1s8hv15tig6popq0slfvcgnfkhoc458ifscdpubc20pro3dkc7i0/index.html?id=4e54354e-ca28-4244-a378-199699658ccb&parentId=1&origin=c0447b4e-92ee-4d48-8424-5025d6e93d1c&swVersion=6&extensionId=vscode.mermaid-markdown-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "lineNumber": 1037,
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "6",
+                  "url": "vscode-webview://1s8hv15tig6popq0slfvcgnfkhoc458ifscdpubc20pro3dkc7i0/index.html?id=4e54354e-ca28-4244-a378-199699658ccb&parentId=1&origin=c0447b4e-92ee-4d48-8424-5025d6e93d1c&swVersion=6&extensionId=vscode.mermaid-markdown-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+                  "lineNumber": 1037,
+                  "columnNumber": 13
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "csp": {
+      "installedAt": 1790926482593,
+      "timeOrigin": 1790926482593.3,
+      "violations": []
+    },
+    "screenshot": {
+      "path": "/private/tmp/lcfinal-chkarkup/mermaid/evidence/after-editor.png",
+      "mode": "root-page-viewport",
+      "rootTargetId": "A7588B307A27C68147CFBFB103DE0ED7",
+      "selectedFrameId": "D17344A663BFFD4D2B927CF40D97A451"
+    },
+    "captureCoverage": {
+      "connectedAt": 1790926482166,
+      "selectedSessionAttachedAt": 1790926482583,
+      "existingTargetAtConnect": false,
+      "pausedBeforeScripts": true,
+      "newDocumentInstrumentation": true
+    },
+    "transformNumbers": {
+      "scale": 1.25,
+      "x": 429.75,
+      "y": 225
+    },
+    "remainingChecks": [
+      "Review Chinese glyphs/clipping in root-page screenshot",
+      "Verify fresh-load capture coverage",
+      "Ordinary host commands and serializer restoration",
+      "Final product input and size gates"
+    ]
+  },
+  "preview": {
+    "status": "DOM_CHECK_PASS",
+    "scope": "Selected CDP document only; product identity, screenshots and remaining gates require review",
+    "productIdentity": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+    "context": {
+      "key": "48BBC28D7E2F921BB25A41DD045444C7:4",
+      "id": 4,
+      "uniqueId": "-6220539274185945777.-8115994528503498287",
+      "origin": "vscode-webview://1u3lovg7dp452vaio6b1uf27cp7ab8fi2f3no7t8092klulrl1qj",
+      "name": "",
+      "frameId": "EAAB5611FD25CB090AB357037E47D7F5",
+      "sessionId": "48BBC28D7E2F921BB25A41DD045444C7",
+      "targetId": "1EBA36FAC9998ED403CBFAD336814873",
+      "targetType": "iframe",
+      "rootTargetId": "A7588B307A27C68147CFBFB103DE0ED7"
+    },
+    "dom": {
+      "caseId": "flowchart",
+      "surface": "markdown-preview",
+      "theme": "dark",
+      "status": "PASS",
+      "failures": [],
+      "url": "vscode-webview://1u3lovg7dp452vaio6b1uf27cp7ab8fi2f3no7t8092klulrl1qj/index.html?id=67fa4306-ddc1-4e53-bc7d-748f9e0dcaf1&parentId=1&origin=eeb6d9df-b4ab-4482-bd44-daf3a2684b73&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+      "bodyClass": "vscode-body scrollBeyondLastLine wordWrap vscode-dark",
+      "mermaidWebviewId": null,
+      "bodyContext": null,
+      "diagramContext": "{\"webviewSection\":\"mermaid\",\"mermaidSource\":\"flowchart TD\\n  A[中文开始] --> B{是否成功}\\n  B -->|是| C[保存结果]\\n  B -->|否| D[检查输入]\\n  D --> A\",\"preventDefaultContextMenuItems\":true}",
+      "diagramCount": 1,
+      "svgCount": 1,
+      "svgRect": {
+        "x": 403,
+        "y": 75.3984375,
+        "width": 290,
+        "height": 336
+      },
+      "viewBox": "0 0 290 336",
+      "diagramDescription": "flowchart-v2",
+      "text": "是\n否\n中文开始\n是否成功\n保存结果\n检查输入",
+      "errors": [],
+      "controls": [],
+      "nodePositions": [
+        {
+          "text": "中文开始",
+          "transform": "translate(145, 32.75)",
+          "layoutX": 145,
+          "layoutY": 32.75,
+          "x": 492,
+          "y": 83.3984375
+        },
+        {
+          "text": "是否成功",
+          "transform": "translate(80.5, 158.25)",
+          "layoutX": 80.5,
+          "layoutY": 158.25,
+          "x": 433.25,
+          "y": 182.8984375
+        },
+        {
+          "text": "保存结果",
+          "transform": "translate(64, 303.25)",
+          "layoutX": 64,
+          "layoutY": 303.25,
+          "x": 411,
+          "y": 353.8984375
+        },
+        {
+          "text": "检查输入",
+          "transform": "translate(226, 303.25)",
+          "layoutX": 226,
+          "layoutY": 303.25,
+          "x": 573,
+          "y": 353.8984375
+        }
+      ],
+      "transform": "translate(350px, 0px) scale(1)",
+      "font": "-apple-system, \"system-ui\", sans-serif",
+      "fontStatus": "loaded",
+      "fontFaces": [
+        {
+          "family": "KaTeX_AMS",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Caligraphic",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Caligraphic",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Fraktur",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Fraktur",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Main",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Main",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Main",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Main",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Math",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Math",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_SansSerif",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_SansSerif",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_SansSerif",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Script",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Size1",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Size2",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Size3",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Size4",
+          "status": "unloaded"
+        },
+        {
+          "family": "KaTeX_Typewriter",
+          "status": "unloaded"
+        },
+        {
+          "family": "codicon",
+          "status": "loaded"
+        }
+      ],
+      "themeColors": {
+        "foreground": "#cccccc",
+        "background": "#1f1f1f",
+        "bodyColor": "rgb(204, 204, 204)",
+        "bodyBackground": "rgba(0, 0, 0, 0)",
+        "labelColor": "rgb(204, 204, 204)"
+      },
+      "csp": "default-src 'none'; img-src 'self' 'self' https://*.vscode-cdn.net https: data:; media-src 'self' 'self' https://*.vscode-cdn.net https: data:; script-src 'nonce-4b2244a6-0f44-4f04-93a6-199515d3e35f'; style-src 'self' 'self' https://*.vscode-cdn.net 'unsafe-inline' https: data:; font-src 'self' 'self' https://*.vscode-cdn.net https: data:;",
+      "scriptSources": [
+        "https://file+.vscode-resource.vscode-cdn.net/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/pre.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/index.js",
+        "https://file+.vscode-resource.vscode-cdn.net/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/markdown-preview-out/index.js"
+      ],
+      "remainingChecks": [
+        "console/CSP log",
+        "Chinese glyph screenshot",
+        "layout selection/fallback warnings",
+        "interaction/serializer restoration"
+      ]
+    },
+    "failures": [],
+    "events": [
+      {
+        "at": 1790926483460,
+        "sessionId": "48BBC28D7E2F921BB25A41DD045444C7",
+        "method": "Log.entryAdded",
+        "params": {
+          "entry": {
+            "source": "other",
+            "level": "warning",
+            "text": "Unrecognized feature: 'local-network-access'.",
+            "timestamp": 1790926483459.913,
+            "url": "vscode-webview://1u3lovg7dp452vaio6b1uf27cp7ab8fi2f3no7t8092klulrl1qj/index.html?id=67fa4306-ddc1-4e53-bc7d-748f9e0dcaf1&parentId=1&origin=eeb6d9df-b4ab-4482-bd44-daf3a2684b73&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "lineNumber": 1037,
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "functionName": "",
+                  "scriptId": "11",
+                  "url": "vscode-webview://1u3lovg7dp452vaio6b1uf27cp7ab8fi2f3no7t8092klulrl1qj/index.html?id=67fa4306-ddc1-4e53-bc7d-748f9e0dcaf1&parentId=1&origin=eeb6d9df-b4ab-4482-bd44-daf3a2684b73&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+                  "lineNumber": 1037,
+                  "columnNumber": 13
+                }
+              ]
+            }
+          }
+        }
+      }
+    ],
+    "csp": {
+      "installedAt": 1790926483460,
+      "timeOrigin": 1790926483460.1,
+      "violations": []
+    },
+    "screenshot": {
+      "path": "/private/tmp/lcfinal-chkarkup/mermaid/evidence/after-preview.png",
+      "mode": "root-page-viewport",
+      "rootTargetId": "A7588B307A27C68147CFBFB103DE0ED7",
+      "selectedFrameId": "EAAB5611FD25CB090AB357037E47D7F5"
+    },
+    "captureCoverage": {
+      "connectedAt": 1790926482166,
+      "selectedSessionAttachedAt": 1790926483439,
+      "existingTargetAtConnect": false,
+      "pausedBeforeScripts": true,
+      "newDocumentInstrumentation": true
+    },
+    "transformNumbers": {
+      "scale": 1,
+      "x": 350,
+      "y": 0
+    },
+    "remainingChecks": [
+      "Review Chinese glyphs/clipping in root-page screenshot",
+      "Verify fresh-load capture coverage",
+      "Ordinary host commands and serializer restoration",
+      "Final product input and size gates"
+    ]
+  },
+  "tabs": [
+    {
+      "label": "Mermaid fixture: flowchart",
+      "active": false,
+      "preview": false,
+      "pinned": false,
+      "dirty": false,
+      "inputType": "FC",
+      "viewType": "mainThreadWebview-vscode.mermaid-markdown-features.preview"
+    },
+    {
+      "label": "flowchart.md",
+      "active": false,
+      "preview": true,
+      "pinned": false,
+      "dirty": false,
+      "inputType": "n1",
+      "uri": "file:///private/tmp/lcfinal-chkarkup/mermaid/flowchart.md"
+    },
+    {
+      "label": "Preview flowchart.md",
+      "active": true,
+      "preview": false,
+      "pinned": false,
+      "dirty": false,
+      "inputType": "FC",
+      "viewType": "mainThreadWebview-markdown.preview"
+    }
+  ],
+  "exactSource": [
+    {
+      "route": "id",
+      "response": {
+        "id": "259f6697-9311-4073-9ea5-25e57be321f0",
+        "action": "copy-source",
+        "status": "COMMAND_COMPLETED",
+        "result": {
+          "copiedSource": "flowchart TD\n  A[中文开始] --> B{是否成功}\n  B -->|是| C[保存结果]\n  B -->|否| D[检查输入]\n  D --> A\n",
+          "sourceRoute": "webview-id"
+        }
+      },
+      "exact": true
+    },
+    {
+      "route": "active",
+      "response": {
+        "id": "0c31c713-e6b2-4790-9aa3-aa10cba58d90",
+        "action": "copy-source",
+        "status": "COMMAND_COMPLETED",
+        "result": {
+          "copiedSource": "flowchart TD\n  A[中文开始] --> B{是否成功}\n  B -->|是| C[保存结果]\n  B -->|否| D[检查输入]\n  D --> A\n",
+          "sourceRoute": "active-webview"
+        }
+      },
+      "exact": true
+    }
+  ]
+}

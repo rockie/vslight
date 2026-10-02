@@ -1,0 +1,20 @@
+diff --git a/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts b/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
+--- a/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
++++ b/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
+@@ -3,7 +3,7 @@
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+ import mermaid, { MermaidConfig } from 'mermaid';
+-import { buildMermaidConfig, createMermaidErrorElement, loadExtensionConfig, markVsCodeContextAsError } from '../shared';
++import { buildMermaidConfig, createMermaidErrorElement, loadExtensionConfig, markVsCodeContextAsError, registerMermaidAddons } from '../shared';
+ import { VsCodeMermaidThemeTracker } from '../shared/vsCodeTheme';
+ import { VsCodeApi } from './vscodeApi';
+ 
+@@ -447,6 +447,7 @@
+ 	const config: MermaidConfig = buildMermaidConfig(loadExtensionConfig(), themeTracker);
+ 	mermaid.initialize(config);
+ 	try {
++		await registerMermaidAddons();
+ 		await mermaid.run({ nodes: [diagram] });
+ 	} catch (err) {
+ 		diagram.replaceChildren(createMermaidErrorElement(err));

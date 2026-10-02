@@ -1,0 +1,16 @@
+2026-10-02 20:28:52.505 [info] Extension host with pid 11680 started
+2026-10-02 20:28:52.505 [info] Skipping acquiring lock for /private/tmp/lcfinal-chkarkup/ui/u/User/workspaceStorage/87222462cdda108ffb51174a9c4d8430.
+2026-10-02 20:28:52.530 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 20:28:52.538 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-10-02 20:28:52.558 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 20:28:52.562 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 20:28:52.579 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 20:28:52.615 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:28:52.615 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:28:52.622 [info] Eager extensions activated
+2026-10-02 20:28:52.626 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:28:52.632 [info] ExtensionService#_doActivateExtension zhuangtongfa.material-theme, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:28:52.636 [info] ExtensionService#_doActivateExtension lean-tests.lean-ui-final, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:28:52.636 [info] ExtensionService#_doActivateExtension lean-tests.lean-terminal151, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:28:54.506 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 20:28:54.507 [info] Extension host with pid 11680 exiting with code 0

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-02T19:36:41.618672+10:00",
+  "restored": false,
+  "deleteKeychainExit": 0,
+  "afterDeletion": [
+    "/Users/rockie/Library/Keychains/login.keychain-db"
+  ],
+  "equal": true,
+  "defaultKeychainUnchanged": true,
+  "privateKeychainRemoved": true,
+  "privateP12Removed": true
+}

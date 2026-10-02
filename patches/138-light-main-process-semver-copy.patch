@@ -1,0 +1,16 @@
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+index 7043dd0..5a7a77f 100644
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -356,8 +356,9 @@ function packageTask(platform: string, arch: string, sourceFolderName: string, d
+ 			], [
+ 				'**/*.mk',
+ 			], [
+-				'node_modules/vsda/**' // retain copy of `vsda` in node_modules for internal use
+-
++				'node_modules/vsda/**', // retain copy of `vsda` in node_modules for internal use
++				// The main process imports semver before installing the ASAR resolver.
++				'node_modules/semver/**'
+ 			], 'node_modules.asar'));
+ 
+ 		const mergeStreams = [

@@ -1,0 +1,21 @@
+[
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=127.0.0.1:19560/devtools/page/ABF458FCD8194A4C66A4AFB7A341D82B",
+    "id": "ABF458FCD8194A4C66A4AFB7A341D82B",
+    "title": "[Extension Development Host] Keyboard Shortcuts — w",
+    "type": "page",
+    "url": "vscode-file://vscode-app/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:19560/devtools/page/ABF458FCD8194A4C66A4AFB7A341D82B"
+  },
+  {
+    "description": "",
+    "devtoolsFrontendUrl": "/devtools/inspector.html?ws=127.0.0.1:19560/devtools/page/F5B16329AEDC3B27443F1837A89C8943",
+    "id": "F5B16329AEDC3B27443F1837A89C8943",
+    "parentId": "ABF458FCD8194A4C66A4AFB7A341D82B",
+    "title": "editorWorkerService",
+    "type": "worker",
+    "url": "blob:vscode-file://vscode-app/8718fffc-0456-49e0-ac9e-64e84a4063d1",
+    "webSocketDebuggerUrl": "ws://127.0.0.1:19560/devtools/page/F5B16329AEDC3B27443F1837A89C8943"
+  }
+]

@@ -1,0 +1,14 @@
+{
+  "tabs": [
+    {
+      "label": "Keyboard Shortcuts",
+      "active": true
+    },
+    {
+      "label": "Welcome",
+      "active": false
+    }
+  ],
+  "readonly": true,
+  "notNewTabRestoreAcceptance": true
+}

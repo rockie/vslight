@@ -1,0 +1,73 @@
+{
+  "root": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs",
+  "patterns": {
+    "Unknown service": 0,
+    "Missing proxy": 0,
+    "Unknown channel": 0,
+    "customer.*(?:fail|error|initializ)": 0,
+    "actor.*(?:missing|unknown|fail)": 0,
+    "RPC.*(?:unknown|missing|error)": 0
+  },
+  "files": [
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/network-shared.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/editSessions.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/userDataSync.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/sharedprocess.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/terminal.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/remoteTunnelService.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/main.log",
+      "bytes": 1512
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/network.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/views.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/renderer.log",
+      "bytes": 409
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/output_20261002T095828/tasks.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/exthost/extHostTelemetry.log",
+      "bytes": 0
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/exthost/exthost.log",
+      "bytes": 1200
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/exthost/vscode.github/GitHub.log",
+      "bytes": 47
+    },
+    {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-resume149-pzgqgcap/auth-accounts/u/logs/20261002T095828/window1/exthost/vscode.git/Git.log",
+      "bytes": 832
+    }
+  ]
+}

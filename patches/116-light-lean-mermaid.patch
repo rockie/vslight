@@ -1,0 +1,481 @@
+diff --git a/extensions/mermaid-markdown-features/esbuild.webview.mts b/extensions/mermaid-markdown-features/esbuild.webview.mts
+index 964a239..6a83eda 100644
+--- a/extensions/mermaid-markdown-features/esbuild.webview.mts
++++ b/extensions/mermaid-markdown-features/esbuild.webview.mts
+@@ -39,14 +39,12 @@ const mermaidMarkdownBuildOptions: Partial<esbuild.BuildOptions> = {
+ 		'.ttf': 'dataurl',
+ 	},
+ 	plugins: [cssTextPlugin],
+-	minify: false,
+ };
+ 
+ await Promise.all([
+-	// Chat
++	// Editor preview
+ 	run({
+ 		entryPoints: {
+-			'index': path.join(chatSrcDir, 'index.ts'),
+ 			'index-editor': path.join(chatSrcDir, 'index-editor.ts'),
+ 			'codicon': path.join(rootDir, 'node_modules', '@vscode', 'codicons', 'dist', 'codicon.css'),
+ 		},
+diff --git a/extensions/mermaid-markdown-features/package.json b/extensions/mermaid-markdown-features/package.json
+index 74500a2..dd58a5b 100644
+--- a/extensions/mermaid-markdown-features/package.json
++++ b/extensions/mermaid-markdown-features/package.json
+@@ -13,10 +13,6 @@
+   "engines": {
+     "vscode": "^1.104.0"
+   },
+-  "enabledApiProposals": [
+-    "chatOutputRenderer",
+-    "chatParticipantPrivate"
+-  ],
+   "capabilities": {
+     "virtualWorkspaces": true,
+     "untrustedWorkspaces": {
+@@ -61,17 +57,17 @@
+       "webview/context": [
+         {
+           "command": "_mermaid-markdown.openInEditor",
+-          "when": "webviewId == 'vscode.mermaid-markdown-features.chatOutputItem' || (webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output'))",
++          "when": "webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output')",
+           "group": "navigation@1"
+         },
+         {
+           "command": "_mermaid-markdown.copySource",
+-          "when": "webviewId == 'vscode.mermaid-markdown-features.chatOutputItem' || webviewId == 'vscode.mermaid-markdown-features.preview' || (webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output'))",
++          "when": "webviewId == 'vscode.mermaid-markdown-features.preview' || (webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output'))",
+           "group": "navigation@2"
+         },
+         {
+           "command": "_mermaid-markdown.resetPanZoom",
+-          "when": "!mermaidError && (webviewId == 'vscode.mermaid-markdown-features.chatOutputItem' || webviewId == 'vscode.mermaid-markdown-features.preview')",
++          "when": "!mermaidError && webviewId == 'vscode.mermaid-markdown-features.preview'",
+           "group": "navigation@3"
+         }
+       ]
+@@ -185,45 +181,7 @@
+         "type": "module"
+       }
+     ],
+-    "markdown.markdownItPlugins": true,
+-    "chatOutputRenderers": [
+-      {
+-        "viewType": "vscode.mermaid-markdown-features.chatOutputItem",
+-        "mimeTypes": [
+-          "text/vnd.mermaid"
+-        ],
+-        "codeBlockLanguageIdentifiers": [
+-          "mermaid"
+-        ]
+-      }
+-    ],
+-    "languageModelTools": [
+-      {
+-        "name": "renderMermaidDiagram",
+-        "displayName": "Mermaid Renderer",
+-        "toolReferenceName": "renderMermaidDiagram",
+-        "legacyToolReferenceFullNames": [
+-          "vscode.mermaid-chat-features/renderMermaidDiagram"
+-        ],
+-        "canBeReferencedInPrompt": true,
+-        "modelDescription": "Renders a Mermaid diagram from Mermaid.js markup.",
+-        "userDescription": "Render a Mermaid.js diagram from markup.",
+-        "when": "chatSessionType == local",
+-        "inputSchema": {
+-          "type": "object",
+-          "properties": {
+-            "markup": {
+-              "type": "string",
+-              "description": "The mermaid diagram markup to render as a Mermaid diagram. This should only be the markup of the diagram. Do not include a wrapping code block."
+-            },
+-            "title": {
+-              "type": "string",
+-              "description": "A short title that describes the diagram."
+-            }
+-          }
+-        }
+-      }
+-    ]
++    "markdown.markdownItPlugins": true
+   },
+   "scripts": {
+     "compile": "gulp compile-extension:mermaid-markdown-features && npm run build-webview",
+diff --git a/extensions/mermaid-markdown-features/preview-src/chat/index.ts b/extensions/mermaid-markdown-features/preview-src/chat/index.ts
+deleted file mode 100644
+index d50d419..0000000
+--- a/extensions/mermaid-markdown-features/preview-src/chat/index.ts
++++ /dev/null
+@@ -1,24 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-import { initializeMermaidWebview } from './mermaidWebview';
+-import { VsCodeApi } from './vscodeApi';
+-
+-declare function acquireVsCodeApi(): VsCodeApi;
+-const vscode = acquireVsCodeApi();
+-
+-
+-async function main() {
+-	await initializeMermaidWebview(vscode);
+-
+-	// Set up the "Open in Editor" button
+-	const openBtn = document.querySelector('.open-in-editor-btn');
+-	if (openBtn) {
+-		openBtn.addEventListener('click', e => {
+-			e.stopPropagation();
+-			vscode.postMessage({ type: 'openInEditor' });
+-		});
+-	}
+-}
+-main();
+diff --git a/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts b/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
+index 7f4b50b..6284f83 100644
+--- a/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
++++ b/extensions/mermaid-markdown-features/preview-src/chat/mermaidWebview.ts
+@@ -54,7 +54,7 @@ export class PanZoomHandler {
+ 		this.container.style.cursor = 'default';
+ 		this.setupEventListeners();
+ 
+-		// Chat output containers can resize without triggering a window resize event.
++		// Webview containers can resize without triggering a window resize event.
+ 		this.resizeObserver = new ResizeObserver(() => this.handleResize());
+ 		this.resizeObserver.observe(this.container);
+ 		window.addEventListener('pagehide', () => this.resizeObserver.disconnect(), { once: true });
+diff --git a/extensions/mermaid-markdown-features/src/chatOutputRenderer.ts b/extensions/mermaid-markdown-features/src/chatOutputRenderer.ts
+deleted file mode 100644
+index 829158d..0000000
+--- a/extensions/mermaid-markdown-features/src/chatOutputRenderer.ts
++++ /dev/null
+@@ -1,222 +0,0 @@
+-/*---------------------------------------------------------------------------------------------
+- *  Copyright (c) Microsoft Corporation. All rights reserved.
+- *  Licensed under the MIT License. See License.txt in the project root for license information.
+- *--------------------------------------------------------------------------------------------*/
+-import * as vscode from 'vscode';
+-import { MermaidEditorManager } from './editorManager';
+-import { MermaidCommandContext, MermaidWebviewManager } from './webviewManager';
+-import { escapeHtmlText } from './util/html';
+-import { generateUuid } from './util/uuid';
+-import { disposeAll } from './util/dispose';
+-import { renderMermaidConfigSpan } from './markdownMermaid/config';
+-
+-/**
+- * Mime type used to identify Mermaid diagram data in chat output.
+- */
+-const mime = 'text/vnd.mermaid';
+-
+-/**
+- * View type that uniquely identifies the Mermaid chat output renderer.
+- */
+-const viewType = 'vscode.mermaid-markdown-features.chatOutputItem';
+-
+-class MermaidChatOutputRenderer implements vscode.ChatOutputRenderer {
+-
+-	constructor(
+-		private readonly _extensionUri: vscode.Uri,
+-		private readonly _webviewManager: MermaidWebviewManager
+-	) { }
+-
+-	async renderChatOutput({ value }: vscode.ChatOutputDataItem, chatOutputWebview: vscode.ChatOutputWebview, _ctx: unknown, _token: vscode.CancellationToken): Promise<void> {
+-		const webview = chatOutputWebview.webview;
+-		const decoded = decodeMermaidData(value);
+-		const mermaidSource = decoded.source;
+-		const title = decoded.title;
+-
+-		// Generate unique ID for this webview
+-		const webviewId = generateUuid();
+-
+-		const disposables: vscode.Disposable[] = [];
+-
+-		// Register and set as active
+-		disposables.push(this._webviewManager.registerWebview(webviewId, webview, mermaidSource, title, 'chat'));
+-
+-		// Listen for messages from the webview
+-		disposables.push(webview.onDidReceiveMessage(message => {
+-			if (message.type === 'openInEditor') {
+-				void vscode.commands.executeCommand('_mermaid-markdown.openInEditor', { mermaidWebviewId: webviewId });
+-			}
+-		}));
+-
+-		// Dispose resources when webview is disposed
+-		chatOutputWebview.onDidDispose(() => {
+-			disposeAll(disposables);
+-		});
+-
+-		// Set the options for the webview
+-		const mediaRoot = vscode.Uri.joinPath(this._extensionUri, 'chat-webview-out');
+-		webview.options = {
+-			enableScripts: true,
+-			localResourceRoots: [mediaRoot],
+-		};
+-
+-		// Set the HTML content for the webview
+-		const nonce = generateUuid();
+-		const mermaidScript = vscode.Uri.joinPath(mediaRoot, 'index.js');
+-		const codiconsUri = webview.asWebviewUri(vscode.Uri.joinPath(mediaRoot, 'codicon.css'));
+-		const openInEditorLabel = vscode.l10n.t('Open Diagram in Editor');
+-
+-		webview.html = `
+-			<!DOCTYPE html>
+-			<html lang="en">
+-
+-			<head>
+-				<meta charset="UTF-8">
+-				<meta name="viewport" content="width=device-width, initial-scale=1.0">
+-				<title>Mermaid Diagram</title>
+-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src data:; script-src 'nonce-${nonce}'; style-src ${webview.cspSource} 'unsafe-inline'; font-src data:;" />
+-				<link rel="stylesheet" type="text/css" href="${codiconsUri}">
+-
+-				<style>
+-					body {
+-						padding: 0;
+-					}
+-					.mermaid {
+-						visibility: hidden;
+-					}
+-					.mermaid.rendered {
+-						visibility: visible;
+-					}
+-					.open-in-editor-btn {
+-						position: absolute;
+-						top: 8px;
+-						right: 8px;
+-						display: flex;
+-						align-items: center;
+-						justify-content: center;
+-						width: 26px;
+-						height: 26px;
+-						background: var(--vscode-editorWidget-background);
+-						color: var(--vscode-icon-foreground);
+-						border: 1px solid var(--vscode-editorWidget-border);
+-						border-radius: 6px;
+-						cursor: pointer;
+-						z-index: 100;
+-						opacity: 0;
+-						transition: opacity 0.2s;
+-					}
+-					body:hover .open-in-editor-btn,
+-					.open-in-editor-btn:focus {
+-						opacity: 1;
+-					}
+-					.open-in-editor-btn:hover {
+-						opacity: 1;
+-						background: var(--vscode-toolbar-hoverBackground);
+-					}
+-				</style>
+-			</head>
+-
+-			<body data-vscode-context='${JSON.stringify({ preventDefaultContextMenuItems: true, mermaidWebviewId: webviewId })}' data-vscode-mermaid-webview-id="${webviewId}">
+-				${renderMermaidConfigSpan()}
+-				<button class="open-in-editor-btn" title="${openInEditorLabel}" aria-label="${openInEditorLabel}"><i class="codicon codicon-open-preview" aria-hidden="true"></i></button>
+-				<pre class="mermaid">
+-					${escapeHtmlText(mermaidSource)}
+-				</pre>
+-
+-				<script type="module" nonce="${nonce}" src="${webview.asWebviewUri(mermaidScript)}"></script>
+-			</body>
+-			</html>`;
+-	}
+-}
+-
+-
+-export function registerChatSupport(
+-	context: vscode.ExtensionContext,
+-	webviewManager: MermaidWebviewManager,
+-	editorManager: MermaidEditorManager
+-): vscode.Disposable {
+-	const disposables: vscode.Disposable[] = [];
+-
+-	disposables.push(
+-		vscode.commands.registerCommand('_mermaid-markdown.openInEditor', (ctx?: MermaidCommandContext) => {
+-			if (typeof ctx?.mermaidSource === 'string') {
+-				editorManager.openPreview(ctx.mermaidSource, typeof ctx.title === 'string' ? ctx.title : undefined);
+-				return;
+-			}
+-
+-			const webviewInfo = ctx?.mermaidWebviewId ? webviewManager.getWebview(ctx.mermaidWebviewId) : webviewManager.activeWebview;
+-			if (webviewInfo) {
+-				editorManager.openPreview(webviewInfo.mermaidSource, webviewInfo.title);
+-			}
+-		})
+-	);
+-
+-	// Register lm tools
+-	disposables.push(
+-		vscode.lm.registerTool<{ markup: string; title?: string }>('renderMermaidDiagram', {
+-			invoke: async (options, _token) => {
+-				const sourceCode = options.input.markup;
+-				const title = options.input.title;
+-				return writeMermaidToolOutput(sourceCode, title);
+-			},
+-		})
+-	);
+-
+-	// Register the chat output renderer for Mermaid diagrams.
+-	// This will be invoked with the data generated by the tools.
+-	// It can also be invoked when rendering old Mermaid diagrams in the chat history.
+-	const renderer = new MermaidChatOutputRenderer(context.extensionUri, webviewManager);
+-	disposables.push(vscode.chat.registerChatOutputRenderer(viewType, renderer));
+-
+-	return vscode.Disposable.from(...disposables);
+-}
+-
+-function writeMermaidToolOutput(sourceCode: string, title: string | undefined): vscode.LanguageModelToolResult {
+-	// Expose the source code as a markdown mermaid code block
+-	const fence = getFenceForContent(sourceCode);
+-	const result = new vscode.LanguageModelToolResult([
+-		new vscode.LanguageModelTextPart(`${fence}mermaid\n${sourceCode}\n${fence}`)
+-	]);
+-
+-	// And store custom data in the tool result details to indicate that a custom renderer should be used for it.
+-	// Encode source and optional title as JSON.
+-	const data = JSON.stringify({ source: sourceCode, title });
+-	// Add cast to use proposed API
+-	(result as vscode.ExtendedLanguageModelToolResult2).toolResultDetails2 = {
+-		mime,
+-		value: new TextEncoder().encode(data),
+-	};
+-
+-	return result;
+-}
+-
+-function getFenceForContent(content: string): string {
+-	const backtickMatch = content.matchAll(/`+/g);
+-	if (!backtickMatch) {
+-		return '```';
+-	}
+-
+-	const maxBackticks = Math.max(...Array.from(backtickMatch, s => s[0].length));
+-	return '`'.repeat(Math.max(3, maxBackticks + 1));
+-}
+-
+-interface MermaidData {
+-	readonly title: string | undefined;
+-	readonly source: string;
+-}
+-
+-function decodeMermaidData(value: Uint8Array): MermaidData {
+-	const text = new TextDecoder().decode(value);
+-
+-	// Try to parse as JSON (new format with title), fall back to plain text (legacy format)
+-	try {
+-		const parsed = JSON.parse(text);
+-		if (typeof parsed === 'object' && typeof parsed.source === 'string') {
+-			return { title: parsed.title, source: parsed.source };
+-		}
+-	} catch {
+-		// Not JSON, treat as legacy plain text format
+-	}
+-
+-	return { title: undefined, source: text };
+-}
+diff --git a/extensions/mermaid-markdown-features/src/editorManager.ts b/extensions/mermaid-markdown-features/src/editorManager.ts
+index 1b6b8b1..b0c20ab 100644
+--- a/extensions/mermaid-markdown-features/src/editorManager.ts
++++ b/extensions/mermaid-markdown-features/src/editorManager.ts
+@@ -176,7 +176,7 @@ class MermaidPreview extends Disposable {
+ 		this._webviewPanel.webview.html = this._getHtml();
+ 
+ 		// Register with the webview manager
+-		this._register(this._webviewManager.registerWebview(this.diagramId, this._webviewPanel.webview, this._mermaidSource, undefined, 'editor'));
++		this._register(this._webviewManager.registerWebview(this.diagramId, this._webviewPanel.webview, this._mermaidSource, undefined));
+ 
+ 		this._register(this._webviewPanel.onDidChangeViewState(e => {
+ 			if (e.webviewPanel.active) {
+diff --git a/extensions/mermaid-markdown-features/src/extension.ts b/extensions/mermaid-markdown-features/src/extension.ts
+index 6f6f0c6..acfb6e2 100644
+--- a/extensions/mermaid-markdown-features/src/extension.ts
++++ b/extensions/mermaid-markdown-features/src/extension.ts
+@@ -3,7 +3,6 @@
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+ import * as vscode from 'vscode';
+-import { registerChatSupport } from './chatOutputRenderer';
+ import { MermaidEditorManager } from './editorManager';
+ import { configSection, injectMermaidConfig } from './markdownMermaid/config';
+ import { extendMarkdownItWithMermaid } from './markdownMermaid/markdownIt';
+@@ -16,10 +15,21 @@ export function activate(context: vscode.ExtensionContext) {
+ 	const editorManager = new MermaidEditorManager(context.extensionUri, webviewManager);
+ 	context.subscriptions.push(editorManager);
+ 
+-	// Register chat support
+-	context.subscriptions.push(registerChatSupport(context, webviewManager, editorManager));
+-
+ 	// Register commands
++	context.subscriptions.push(
++		vscode.commands.registerCommand('_mermaid-markdown.openInEditor', (ctx?: MermaidCommandContext) => {
++			if (typeof ctx?.mermaidSource === 'string') {
++				editorManager.openPreview(ctx.mermaidSource, typeof ctx.title === 'string' ? ctx.title : undefined);
++				return;
++			}
++
++			const webviewInfo = ctx?.mermaidWebviewId ? webviewManager.getWebview(ctx.mermaidWebviewId) : webviewManager.activeWebview;
++			if (webviewInfo) {
++				editorManager.openPreview(webviewInfo.mermaidSource, webviewInfo.title);
++			}
++		})
++	);
++
+ 	context.subscriptions.push(
+ 		vscode.commands.registerCommand('_mermaid-markdown.resetPanZoom', (ctx?: { mermaidWebviewId?: string }) => {
+ 			webviewManager.resetPanZoom(ctx?.mermaidWebviewId);
+diff --git a/extensions/mermaid-markdown-features/src/webviewManager.ts b/extensions/mermaid-markdown-features/src/webviewManager.ts
+index ff10025..fbaa731 100644
+--- a/extensions/mermaid-markdown-features/src/webviewManager.ts
++++ b/extensions/mermaid-markdown-features/src/webviewManager.ts
+@@ -9,7 +9,6 @@ export interface MermaidWebviewInfo {
+ 	readonly webview: vscode.Webview;
+ 	readonly mermaidSource: string;
+ 	readonly title: string | undefined;
+-	readonly type: 'chat' | 'editor';
+ }
+ 
+ export interface MermaidCommandContext {
+@@ -19,7 +18,7 @@ export interface MermaidCommandContext {
+ }
+ 
+ /**
+- * Manages all mermaid webviews (both chat output renderers and editor previews).
++ * Manages Mermaid editor previews.
+  * Tracks the active webview and provides methods for interacting with webviews.
+  */
+ export class MermaidWebviewManager {
+@@ -34,7 +33,7 @@ export class MermaidWebviewManager {
+ 		return this._activeWebviewId ? this._webviews.get(this._activeWebviewId) : undefined;
+ 	}
+ 
+-	public registerWebview(id: string, webview: vscode.Webview, mermaidSource: string, title: string | undefined, type: 'chat' | 'editor'): vscode.Disposable {
++	public registerWebview(id: string, webview: vscode.Webview, mermaidSource: string, title: string | undefined): vscode.Disposable {
+ 		if (this._webviews.has(id)) {
+ 			throw new Error(`Webview with id ${id} is already registered.`);
+ 		}
+@@ -43,8 +42,7 @@ export class MermaidWebviewManager {
+ 			id,
+ 			webview,
+ 			mermaidSource,
+-			title,
+-			type
++			title
+ 		};
+ 		this._webviews.set(id, info);
+ 		return { dispose: () => this.unregisterWebview(id) };
+diff --git a/extensions/mermaid-markdown-features/tsconfig.json b/extensions/mermaid-markdown-features/tsconfig.json
+index 3df59ab..a2cbe0e 100644
+--- a/extensions/mermaid-markdown-features/tsconfig.json
++++ b/extensions/mermaid-markdown-features/tsconfig.json
+@@ -12,11 +12,6 @@
+ 	},
+ 	"include": [
+ 		"src/**/*",
+-		"../../src/vscode-dts/vscode.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.chatOutputRenderer.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.chatParticipantAdditions.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.languageModelThinkingPart.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.chatParticipantPrivate.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.languageModelProxy.d.ts"
++		"../../src/vscode-dts/vscode.d.ts"
+ 	]
+ }

@@ -1,0 +1,67 @@
+{
+  "startedAt": "2026-10-02T11:13:26.926272+00:00",
+  "status": "CAPTURES_COMPLETE",
+  "launchArgs": [
+    "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight",
+    "--user-data-dir",
+    "/private/tmp/lc151ms-wdn5hck0/u",
+    "--extensions-dir",
+    "/private/tmp/lc151ms-wdn5hck0/e",
+    "--shared-data-dir",
+    "/private/tmp/lc151ms-wdn5hck0/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lc151ms-wdn5hck0/ext",
+    "--inspect=19551",
+    "--inspect-sharedprocess=19552",
+    "--remote-debugging-port=19550",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--new-window",
+    "/private/tmp/lc151ms-wdn5hck0/w"
+  ],
+  "guiReleaseAuthorization": "root message GUI\u5df2\u91ca\u653e received before launch",
+  "mainPID": 39925,
+  "coldReady": {
+    "hostPID": 41146,
+    "parentPID": 39925,
+    "apiVersion": "1.135.0",
+    "at": "2026-10-02T11:13:28.705Z",
+    "ordinaryReadFile": true,
+    "ordinaryOpenDocument": true,
+    "ordinaryShowTextDocument": true,
+    "textLength": 32
+  },
+  "reloadRequestedAt": "2026-10-02T11:13:30.802977+00:00",
+  "reloadConsumed": {
+    "id": "ab3a9323ceb7436db81bdaa8c9cdf0fe",
+    "action": "reload",
+    "hostPID": 41146,
+    "at": "2026-10-02T11:13:30.826Z"
+  },
+  "reloadReady": {
+    "hostPID": 41471,
+    "parentPID": 39925,
+    "apiVersion": "1.135.0",
+    "at": "2026-10-02T11:13:31.206Z",
+    "ordinaryReadFile": true,
+    "ordinaryOpenDocument": true,
+    "ordinaryShowTextDocument": true,
+    "textLength": 32
+  },
+  "oldHostExited": true,
+  "publicQuitConsumed": {
+    "id": "35d72b15a9a049f5949bb83ad4c4e378",
+    "action": "quit",
+    "hostPID": 41471,
+    "at": "2026-10-02T11:13:33.128Z"
+  },
+  "waitExitCode": 0,
+  "quitCompletedAt": "2026-10-02T11:13:33.451943+00:00",
+  "portsReleased": {
+    "19550": true,
+    "19551": true,
+    "19552": true
+  },
+  "finishedAt": "2026-10-02T11:13:33.506085+00:00"
+}

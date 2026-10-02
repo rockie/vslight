@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-02T21:15:03.617130+10:00",
+  "status": "PASS",
+  "root": "/private/tmp/lc-prune151-otx6je_c",
+  "utilsSha256": "d5b31113d4a041a156673c49fe79c32dea29de0d932dd8b642e45c38eb422049",
+  "pruneSha256": "0cb8c7bf610cacc18341137a5de593b7171464cdcafd11f386e4938a521ce33b",
+  "tests": [
+    {
+      "case": "missing",
+      "command": [
+        "bash",
+        "/private/tmp/lc-prune151-otx6je_c/missing/run.sh"
+      ],
+      "cwd": "/private/tmp/lc-prune151-otx6je_c/missing",
+      "exit": 4,
+      "stdout": "",
+      "stderr": "Not found: missing\n",
+      "sentinelExecuted": false
+    },
+    {
+      "case": "parent-child",
+      "command": [
+        "bash",
+        "/private/tmp/lc-prune151-otx6je_c/parent-child/run.sh"
+      ],
+      "cwd": "/private/tmp/lc-prune151-otx6je_c/parent-child",
+      "exit": 4,
+      "stdout": "Removed: parent\n",
+      "stderr": "Not found: parent/child\n",
+      "sentinelExecuted": false
+    }
+  ],
+  "removePaths": 254,
+  "duplicates": [],
+  "overlaps": [],
+  "actual151Present": [],
+  "source": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode",
+  "positiveRetainedPaths": [
+    "src/vs/workbench/api/common/extHost.api.impl.ts",
+    "src/vs/base/parts/sandbox"
+  ],
+  "sourceRootVerified": true,
+  "sourceRootCorrection": "First check used enclosing vscodium root; corrected to actual vscode cwd and verified retained positive paths before checking all 254 removals."
+}

@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-02T21:41:45.995222+10:00",
+  "status": "PASS",
+  "referencesChecked": 92,
+  "runtimeRawFilesVerified": 177,
+  "originalMilestoneDefinitionsUnchanged": true,
+  "comparison": "Exact section text ignoring final blank-line count; milestone rows byte-identical",
+  "refreshedReferences": [
+    {
+      "record": "M4-final-acceptance151.json",
+      "reference": "docs/plan/lean-core.records/M8-runtime151.json",
+      "originalCapturedSha256": "29225b051c686299690481a08b8251e3d2229bd0932b6e62727312a007d128ce",
+      "finalSha256": "1f16c1e1fd4e893bd583d3c3736dc63e7fc751fa07b96de75eafe7486de2a49e"
+    },
+    {
+      "record": "M5-final-acceptance151.json",
+      "reference": "M4-final-acceptance151.json",
+      "originalCapturedSha256": "b762b3a337e7e8e9aad480e9c9cdfb11f552edcda0cf02e0a43be55d5f827f93",
+      "finalSha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d"
+    },
+    {
+      "record": "M6-final-acceptance151.json",
+      "reference": "M4-final-acceptance151.json",
+      "originalCapturedSha256": "b762b3a337e7e8e9aad480e9c9cdfb11f552edcda0cf02e0a43be55d5f827f93",
+      "finalSha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d"
+    },
+    {
+      "record": "M6-final-acceptance151.json",
+      "reference": "M5-final-acceptance151.json",
+      "originalCapturedSha256": "00c385aec4bc8a68d60581a816bce6ff6ffe35cd797d70e0100278fc3b0b0da4",
+      "finalSha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e"
+    },
+    {
+      "record": "M7-final-acceptance151.json",
+      "reference": "M5-final-acceptance151.json",
+      "originalCapturedSha256": "00c385aec4bc8a68d60581a816bce6ff6ffe35cd797d70e0100278fc3b0b0da4",
+      "finalSha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e"
+    },
+    {
+      "record": "M7-final-acceptance151.json",
+      "reference": "M6-final-acceptance151.json",
+      "originalCapturedSha256": "564cd563f2b41e317702ec1cd96a19aa84160521d0377334316a0dfefbb68073",
+      "finalSha256": "9c023cb461ea36c515f2229d5175c5935d2e5996fe204a25db4d395e71cd0b1c"
+    },
+    {
+      "record": "M8-final-local-audit151.json",
+      "reference": "M4-final-acceptance151.json",
+      "originalCapturedSha256": "b762b3a337e7e8e9aad480e9c9cdfb11f552edcda0cf02e0a43be55d5f827f93",
+      "finalSha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d"
+    },
+    {
+      "record": "M8-final-local-audit151.json",
+      "reference": "M5-final-acceptance151.json",
+      "originalCapturedSha256": "00c385aec4bc8a68d60581a816bce6ff6ffe35cd797d70e0100278fc3b0b0da4",
+      "finalSha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e"
+    },
+    {
+      "record": "M8-final-local-audit151.json",
+      "reference": "M6-final-acceptance151.json",
+      "originalCapturedSha256": "564cd563f2b41e317702ec1cd96a19aa84160521d0377334316a0dfefbb68073",
+      "finalSha256": "9c023cb461ea36c515f2229d5175c5935d2e5996fe204a25db4d395e71cd0b1c"
+    },
+    {
+      "record": "M8-final-local-audit151.json",
+      "reference": "M7-final-acceptance151.json",
+      "originalCapturedSha256": "d8c64a5d0bede78badc3ae66ca00fc6fb1a41488825ddc83112538c4eb4616db",
+      "finalSha256": "8bad3af55dd4e5190c08d67be1ae75fbd4f065e8192a0011625d66f32abcce57"
+    }
+  ],
+  "originalReferenceHashesPreserved": true,
+  "runtimeAppLogsAndScreenshotsNotModified": true
+}

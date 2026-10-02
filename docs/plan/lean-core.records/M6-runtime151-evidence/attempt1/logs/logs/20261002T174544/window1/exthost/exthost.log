@@ -1,0 +1,17 @@
+2026-10-02 17:45:45.523 [info] Extension host with pid 47396 started
+2026-10-02 17:45:45.523 [info] Skipping acquiring lock for /private/tmp/lcfinal-chkarkup/ui/u/User/workspaceStorage/87222462cdda108ffb51174a9c4d8430.
+2026-10-02 17:45:45.527 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 17:45:45.530 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 17:45:45.547 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 17:45:45.580 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 17:45:45.580 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 17:45:45.587 [info] Eager extensions activated
+2026-10-02 17:45:45.590 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 17:45:45.596 [info] ExtensionService#_doActivateExtension zhuangtongfa.material-theme, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 17:45:45.600 [info] ExtensionService#_doActivateExtension lean-tests.lean-ui-final, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 17:45:47.778 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 17:45:47.781 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 17:45:47.805 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 17:45:47.820 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 20:19:43.295 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 20:19:43.315 [info] Extension host with pid 47396 exiting with code 0

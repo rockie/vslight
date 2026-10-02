@@ -1,0 +1,34 @@
+{
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/raw-before-voice-meta/VSLight.app",
+  "files": 1200,
+  "bytes": 422528282,
+  "docTypesUnchanged": 65,
+  "mermaid": {
+    "markdown-preview-out/index.js": {
+      "bytes": 18642002,
+      "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+    },
+    "chat-webview-out/index-editor.js": {
+      "bytes": 18502766,
+      "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+    },
+    "chat-webview-out/codicon.css": {
+      "bytes": 133000,
+      "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+    }
+  },
+  "unsigned": true,
+  "patch": 144,
+  "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/VSLight-144-unsigned.zip",
+  "zipBytes": 157554736,
+  "zipSha256": "3c9c918d5eedeb5251f4b97365df4062989a8c163e88aa0464e80b060b03d7c8",
+  "baselineAppBytes": 528142131,
+  "baselineZipBytes": 192738926,
+  "inputManifest": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs144-beforemeta.json",
+  "buildLog": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build144.log",
+  "savedAppBytes": 105613849,
+  "savedZipBytes": 35184190,
+  "appReductionPercent": 20.0,
+  "zipReductionPercent": 18.25,
+  "generation": "144-before-meta"
+}

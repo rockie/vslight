@@ -8,9 +8,9 @@
 - **决策 9（sourcemap）：不当 KPI**。体积收益记账口径 = 不产 reh+CLI、摘 sessions/agentHost
   入口、摘 debug/notebook 等 contribution；验收用装机 JS 字节。
 - **决策 10（纯本地边界）**：① 断网可完成主路径（编辑/文件/搜索/Git/终端）；
-  ② 外发连接仅 open-vsx 与自建更新源（当前更新源关闭，仅剩 open-vsx）；
-  ③ 无账号/设置同步参与主路径（认证扩展仅按需被动触发）。
-- 版本号：跟随上游 `1.135.x` + vslight 构建序号（当前 `1.135.06493`）。
+  ② 内置 AI/Remote 网络链移除，扩展市场仍使用 open-vsx，当前更新源关闭；
+  ③ 无账号/设置同步参与主路径（认证扩展仅按需被动触发）。普通扩展、认证和外链仍可按用户操作联网。
+- 版本号：跟随上游 `1.135.x` + vslight 构建序号；当前瘦身验收构建为 `1.135.06566`，尚未发布。
 
 ## 发布物清单（macOS）
 
@@ -21,20 +21,29 @@
 | checksums（sha1/sha256） | prepare_checksums.sh 产出 |
 | release notes | 落点：GitHub releases 页面（`rockie/vslight`） |
 | 迁移说明 | 落点：docs/vslight-migration.md + release notes 首段链接 |
-| versions feed `latest.json` | 待 feed 仓（docs/vslight-update-feed.md） |
+| versions feed（latest.json） | 待 feed 仓（docs/vslight-update-feed.md） |
 
 ## 首次发布前置（阻塞项）
 
-1. **图标**：旧 VSCodium 图标源已删除，当前为**统一占位标**（蓝底白 V，见
-   `docs/vslight-icons.md`）——旧品牌零残留，可发布但视觉为过渡态；正式设计按
-   icons 文档流程替换（含 letterpress 底纹四变体）。验收 = Dock/关于框/底纹目视。
+1. **图标**：正式设计为浅色圆角底、代码尖括号和蓝色闪电，见
+   `docs/vslight-icons.md`。打包后文档关联共用主图标，源资产保留；原生语言资源整理在签名前完成。当前150产物的 Finder/Dock/关于框已验，文档关联字段与三类文件打开正常；本次按用户指示以本地 arm64 验收为准，x64/CI 不要求。
 2. **vslight GitHub org/仓**：发布仓 + versions 仓 + secrets/docker 镜像/AUR/snap/winget
    标识的新归属（当前 workflow 中保留 VSCodium 外部标识，见 Phase 2 残留清单）。
-3. ~~签名/公证~~ **已就绪（2026-09-28）**：Developer ID Application (KITMI PTY LTD,
+3. **签名/公证链已有历史通过记录（2026-09-28）**：Developer ID Application (KITMI PTY LTD,
    M6B2TDZC9H)；凭据在 `dev/osx/codesign.env`（gitignored）。验证通过：
    `spctl -a -vv` → accepted, source=Notarized Developer ID；`stapler validate` OK。
-   产物 `assets/VSLight-darwin-arm64-1.135.06493.zip` (267MB) 与
-   `VSLight.arm64.1.135.06493.dmg` (262MB) 含 sha1/sha256。自更新 feed 就绪后可直接启用。
+   历史版本1.135.06493的 ZIP (267MB) 与 DMG (262MB) 含 sha1/sha256。这份记录对应旧产物。当前151独立副本已完成新的 strict codesign、spctl、公证 Accepted、staple/validate、签名内容校验与 ZIP CRC，全部1209文件/14链接与 signed app 相同，signed 包闭包和15项 strict 签名检查通过；临时凭据已清理，见[151签名记录](plan/lean-core.records/M8-sign151.md)。151实际菜单、快捷键、账户偏好、主题和禁用扩展跨重启保留已通过，见[实际运行](plan/lean-core.records/M8-runtime151.md)；本次本地 arm64 开发与验收已完成；用户取消 x64/CI 验收门，未发布。
+
+## 从旧版升级的发布说明
+
+发布说明首段链接到[从旧版 VSLight 升级](vslight-migration.md#从旧版-vslight-升级)，列明：
+
+- 内置 Chat、语言模型、MCP、语音和 agent-host 服务从默认隐藏变为物理移除。旧 Chat 历史、MCP 配置和凭据留盘，产品不再提供访问入口；稳定 API 按无能力契约响应，第三方自行携带的 AI 实现不因此被禁用。
+- Integrated Browser 和 Simple Browser 入口移除。普通 HTTP(S)/localhost 默认由系统浏览器打开，第三方 opener 机制保留。
+- `vslight chat` 和 `vslight --add-mcp` 提示不可用并 exit 1；`vslight -- chat` 仍可打开同名文件。
+- macOS 原生语言资源保留英文（en/en_GB）、简体中文（zh_CN）和繁体中文（zh_TW），其他原生语言回退英文；工作台语言包仍可用。
+
+当前未签名151 arm64 app 为 **422,443,727 B**，同条件 ZIP 为 **157,530,299 B**；相对固定基线分别减少 **20.01%** 和 **18.27%**，见[151产物账](plan/lean-core.records/M8-artifact151.json)。独立 Mermaid editor 恢复 ELK/tidy-tree/ZenUML 的实际增量已计入；149的32项矩阵、33项交互证据保留原版本。150新增存储修复后的独立 editor 与 Markdown Preview 已通过真实 quit/restart 定向恢复：原文、ID、主题、数值 pan/zoom、完整 SQLite editor 状态严格相等，四张原图经复核，见[150持久化记录](plan/lean-core.records/M3-storage150-final.md)。151只删除终端24条退休默认过滤项，签名副本 app **421,985,205 B**、ZIP **157,386,282 B** 另行计量。用户停用 smoke 后按计划逐项替代验收；151的[真实终端按键与用户覆盖](plan/lean-core.records/M4-terminal-keys151.md)、[四项完整可访问性焦点](plan/lean-core.records/M4-accessibility151.md)均通过。本次本地 arm64 验收已完成，见[最终验收](plan/lean-core.records/M8-final-acceptance151.md)。x64/CI 未运行，按用户指示不属于本次验收范围；未发布。
 
 ## CI 范围（决策 B 落地）
 

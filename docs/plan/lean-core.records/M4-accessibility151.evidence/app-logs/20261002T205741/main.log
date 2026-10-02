@@ -1,0 +1,16 @@
+2026-10-02 20:57:41.852 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 20:57:41.855 [info] StorageMainService: creating application shared storage
+2026-10-02 20:57:41.949 [info] [shared storage] Creating shared storage database at '/Users/rockie/.vslight-shared/sharedStorage/state.vscdb' (wasCreated: false)
+2026-10-02 20:57:41.949 [info] [shared storage] Initializing fallback application storage (path: /private/tmp/av151-4dvltjmt/u/User/globalStorage/state.vscdb)
+2026-10-02 20:57:41.953 [info] [shared storage] Fallback application storage initialized with 3 items
+2026-10-02 20:57:42.203 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 20:57:42.204 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 20:57:42.325 [info] update#setState idle
+2026-10-02 20:57:42.387 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 20:57:43.519 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 20:57:43.519 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 20:57:43.519 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 20:57:44.809 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 20:57:44.809 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 20:57:44.809 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 20:57:52.441 [info] Extension host with pid 30589 exited with code: 0, signal: unknown.

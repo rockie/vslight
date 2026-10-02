@@ -1,0 +1,1 @@
+[{"key": "ctrl+p", "command": "workbench.action.quickOpen", "when": "terminalFocus"}, {"key": "ctrl+e", "command": "lean-tests.terminalKeys.thirdParty", "when": "terminalFocus"}]

@@ -1,0 +1,25 @@
+{
+  "startedAt": "2026-10-02T11:13:26.926272+00:00",
+  "status": "STARTED",
+  "launchArgs": [
+    "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight",
+    "--user-data-dir",
+    "/private/tmp/lc151ms-wdn5hck0/u",
+    "--extensions-dir",
+    "/private/tmp/lc151ms-wdn5hck0/e",
+    "--shared-data-dir",
+    "/private/tmp/lc151ms-wdn5hck0/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lc151ms-wdn5hck0/ext",
+    "--inspect=19551",
+    "--inspect-sharedprocess=19552",
+    "--remote-debugging-port=19550",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--new-window",
+    "/private/tmp/lc151ms-wdn5hck0/w"
+  ],
+  "guiReleaseAuthorization": "root message GUI\u5df2\u91ca\u653e received before launch",
+  "mainPID": 39925
+}

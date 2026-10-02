@@ -1,0 +1,131 @@
+{
+  "at": "2026-10-01T18:55:38.958940+00:00",
+  "status": "ORDINARY_NPM_WELCOME_RELOAD_PASS",
+  "generation": "147+148+149",
+  "launch": {
+    "pid": 91720,
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "args": [
+      "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "--user-data-dir",
+      "/private/tmp/lc149-my6ky2od/u",
+      "--extensions-dir",
+      "/private/tmp/lc149-my6ky2od/e",
+      "--shared-data-dir",
+      "/private/tmp/lc149-my6ky2od/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/lc149-my6ky2od/ext",
+      "--inspect=19501",
+      "--inspect-sharedprocess=19502",
+      "--inspect-extensions=19503",
+      "--remote-debugging-port=19500",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/tmp/lc149-my6ky2od/w"
+    ],
+    "profile": "/private/tmp/lc149-my6ky2od/u",
+    "startedAt": "2026-10-01T18:27:59.890990+00:00",
+    "sha256": {
+      "main.js": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+      "vs/code/electron-utility/sharedProcess/sharedProcessMain.js": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+      "vs/workbench/workbench.desktop.main.js": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "environmentKeys": [
+      "LEAN_ORDINARY_ROOT"
+    ],
+    "desktopLocked": true,
+    "generation": "147+148+149",
+    "fixtureSHA256": "a5403f711fc991f549cf0e117eb447a96b289879c757975a2c2f7ba355f940d5",
+    "manifest": {
+      "name": "lean-ordinary149",
+      "publisher": "lean-private",
+      "version": "0.0.1",
+      "engines": {
+        "vscode": "^1.130.0"
+      },
+      "activationEvents": [
+        "*"
+      ],
+      "main": "./ordinary.js"
+    },
+    "redLaunch": "/private/tmp/lc149-nbm45b_t",
+    "redReason": "fixture engines.vscode=* rejected as insufficient constraint; corrected to ^1.130.0; production unchanged"
+  },
+  "fixtureSHA256": "a5403f711fc991f549cf0e117eb447a96b289879c757975a2c2f7ba355f940d5",
+  "responses": {
+    "ordinary149-01": {
+      "id": "ordinary149-01",
+      "action": "retained",
+      "status": "PASS",
+      "result": {
+        "status": "PASS",
+        "checks": [
+          "HTML language, editor save, file search",
+          "built-in Git diff, stage, commit",
+          "ordinary task executes and stops",
+          "isolated ordinary secret store/get/delete"
+        ]
+      }
+    },
+    "npm149-02": {
+      "id": "npm149-02",
+      "action": "retained-npm",
+      "status": "PASS",
+      "result": {
+        "status": "PASS",
+        "checks": [
+          "ordinary NPM Run/Open/Install commands",
+          "ordinary Run hover without Debug",
+          "real NPM task provider, execution, proof and end event"
+        ],
+        "task": {
+          "name": "lean-proof",
+          "definition": {
+            "type": "npm",
+            "script": "lean-proof"
+          }
+        },
+        "legacyClickSetting": "debug"
+      }
+    },
+    "welcome149-03": {
+      "id": "welcome149-03",
+      "action": "command",
+      "status": "PASS"
+    }
+  },
+  "reload": {
+    "before": {
+      "pid": 92930,
+      "version": "1.135.0"
+    },
+    "after": {
+      "pid": 2142,
+      "version": "1.135.0"
+    },
+    "mainPID": 91720,
+    "at": "2026-10-01T18:40:03.841685+00:00",
+    "response": null,
+    "requestConsumedBeforeReload": true,
+    "oldHostExited": true
+  },
+  "quit": {
+    "mainPID": 91720,
+    "fixtureCommand": "workbench.action.quit",
+    "oldMainExited": true,
+    "hostBeforeQuit": 2142
+  },
+  "retainedProofFiles": {
+    "ordinary.html": "a64761bc4633ceb66fd5a962dd5f969964e4c0b8ce3380c63cda3db93b9359bb",
+    "task-proof.txt": "df5d11c1c5d5d10459ab0ec0acce98a4a04ebe62f015d4eed51070ca00a6dfd9",
+    "npm-proof.txt": "eb920430abec12a747be9525e5cdb7dec7719f93eede0c6d77b10d2df27d7b08"
+  },
+  "runtimeRegistries": "M6-runtime149.json",
+  "mainShared": "M6-main-shared149.json",
+  "limits": [
+    "NPM scripts tree click was checked in the complete actual NpmView module, not clicked in product UI. Actual NPM provider task and Run hover exercised in product.",
+    "Application remains an unsigned isolated test app; full native GUI/smoke waits for desktop unlock."
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "at": "2026-10-02T21:20:28.373415+10:00",
+  "status": "PASS_PACKAGED151_CLI_REJECTIONS_AND_CONTROLS",
+  "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "root": "/private/tmp/lc-cli151-1d5o9bpt",
+  "tests": [
+    {
+      "case": "chat",
+      "command": [
+        "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/bin/vslight",
+        "--user-data-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/u",
+        "--extensions-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/e",
+        "chat"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "chat is unavailable in this product.\n",
+      "signal": null
+    },
+    {
+      "case": "add-mcp",
+      "command": [
+        "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/bin/vslight",
+        "--user-data-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/u",
+        "--extensions-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/e",
+        "--add-mcp",
+        "{\"name\":\"lean-synthetic\",\"command\":\"never-start-this-fixture\"}"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "--add-mcp is unavailable in this product.\n",
+      "signal": null
+    },
+    {
+      "case": "version",
+      "command": [
+        "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/bin/vslight",
+        "--user-data-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/u",
+        "--extensions-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/e",
+        "--version"
+      ],
+      "exit": 0,
+      "stdout": "1.135.06566\n41ec19baf8095b559518922360dcb3e4fee5319c\narm64\n",
+      "stderr": "",
+      "signal": null
+    },
+    {
+      "case": "help",
+      "command": [
+        "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/bin/vslight",
+        "--user-data-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/u",
+        "--extensions-dir",
+        "/private/tmp/lc-cli151-1d5o9bpt/e",
+        "--help"
+      ],
+      "exit": 0,
+      "stdout": "VSLight 1.135.06566\n\nUsage: vslight [options] [paths...]\n\nTo read from stdin, append '-' (e.g. 'ps aux | grep code | vslight -')\n\nOptions\n  -d --diff <file> <file>                    Compare two files with each\n                                             other.\n  -m --merge <path1> <path2> <base> <result> Perform a three-way merge by\n                                             providing paths for two modified\n                                             versions of a file, the common\n                                             origin of both modified versions\n                                             and the output file to save merge\n                                             results.\n  -a --add <folder>                          Add folder(s) to the last active\n                                             window.\n  --remove <folder>                          Remove folder(s) from the last\n                                             active window.\n  -g --goto <file:line[:character]>          Open a file at the path on the\n                                             specified line and character\n                                             position.\n  -n --new-window                            Force to open a new window.\n  -r --reuse-window                          Force to open a file or folder in\n                                             an already opened window.\n  -w --wait                                  Wait for the files to be closed\n                                             before returning.\n  --locale <locale>                          The locale to use (e.g. en-US or\n                                             zh-TW).\n  --user-data-dir <dir>                      Specifies the directory that user\n                                             data is kept in. Can be used to\n                                             open multiple distinct instances\n                                             of Code.\n  --profile <profileName>                    Opens the provided folder or\n                                             workspace with the given profile\n                                             and associates the profile with\n                                             the workspace. If the profile does\n                                             not exist, a new empty one is\n                                             created.\n  -h --help                                  Print usage.\n\nExtensions Management\n  --extensions-dir <dir>              Set the root path for extensions.\n  --list-extensions                   List the installed extensions.\n  --show-versions                     Show versions of installed extensions,\n                                      when using --list-extensions.\n  --category <category>               Filters installed extensions by provided\n                                      category, when using --list-extensions.\n  --install-extension <ext-id | path> Installs or updates an extension. The\n                                      argument is either an extension id or a\n                                      path to a VSIX. The identifier of an\n                                      extension is '${publisher}.${name}'. Use\n                                      '--force' argument to update to latest\n                                      version. To install a specific version\n                                      provide '@${version}'. For example:\n                                      'vscode.csharp@1.2.3'.\n  --pre-release                       Installs the pre-release version of the\n                                      extension, when using\n                                      --install-extension\n  --uninstall-extension <ext-id>      Uninstalls an extension.\n  --update-extensions                 Update the installed extensions.\n  --enable-proposed-api <ext-id>      Enables proposed API features for\n                                      extensions. Can receive one or more\n                                      extension IDs to enable individually.\n\nTroubleshooting\n  -v --version                            Print version.\n  --verbose                               Print verbose output (implies\n                                          --wait).\n  --log <level>                           Log level to use. Default is 'info'.\n                                          Allowed values are 'critical',\n                                          'error', 'warn', 'info', 'debug',\n                                          'trace', 'off'. You can also\n                                          configure the log level of an\n                                          extension by passing extension id and\n                                          log level in the following format:\n                                          '${publisher}.${name}:${logLevel}'.\n                                          For example: 'vscode.csharp:trace'.\n                                          Can receive one or more such\n                                          entries.\n  -s --status                             Print process usage and diagnostics\n                                          information.\n  --prof-startup                          Run CPU profiler during startup.\n  --disable-extensions                    Disable all installed extensions.\n                                          This option is not persisted and is\n                                          effective only when the command opens\n                                          a new window.\n  --disable-extension <ext-id>            Disable the provided extension. This\n                                          option is not persisted and is\n                                          effective only when the command opens\n                                          a new window.\n  --sync <on | off>                       Turn sync on or off.\n  --inspect-extensions <port>             Allow debugging and profiling of\n                                          extensions. Check the developer tools\n                                          for the connection URI.\n  --inspect-brk-extensions <port>         Allow debugging and profiling of\n                                          extensions with the extension host\n                                          being paused after start. Check the\n                                          developer tools for the connection\n                                          URI.\n  --disable-lcd-text                      Disable LCD font rendering.\n  --disable-gpu                           Disable GPU hardware acceleration.\n  --disable-chromium-sandbox              Use this option only when there is\n                                          requirement to launch the application\n                                          as sudo user on Linux or when running\n                                          as an elevated user in an applocker\n                                          environment on Windows.\n  --locate-shell-integration-path <shell> Print the path to a terminal shell\n                                          integration script. Allowed values\n                                          are 'bash', 'pwsh', 'zsh' or 'fish'.\n  --telemetry                             Shows all telemetry events which VS\n                                          code collects.\n  --transient                             Run with temporary data and extension\n                                          directories, as if launched for the\n                                          first time.\n\nSubcommands\n  serve-web    Run a server that displays the editor UI in browsers.\n  agent        Start and interact with AI agent hosts.\n  tunnel       Make the current machine accessible from vscode.dev or other\n               machines through a secure tunnel.\n\n",
+      "stderr": "",
+      "signal": null
+    }
+  ],
+  "explicitAfterDoubleDashFile": "Actual same-name file opening is retained from M6-cli-file.md; CLI source unchanged by subsequent patches."
+}

@@ -1,0 +1,1577 @@
+diff --git a/src/vs/workbench/contrib/terminal/terminal.all.ts b/src/vs/workbench/contrib/terminal/terminal.all.ts
+--- a/src/vs/workbench/contrib/terminal/terminal.all.ts
++++ b/src/vs/workbench/contrib/terminal/terminal.all.ts
+@@ -15,11 +15,9 @@
+ // primary workbench contribution)
+ import '../terminalContrib/accessibility/browser/terminal.accessibility.contribution.js';
+ import '../terminalContrib/autoReplies/browser/terminal.autoReplies.contribution.js';
+-import '../terminalContrib/chatAgentTools/browser/terminal.chatAgentTools.contribution.js';
+ import '../terminalContrib/developer/browser/terminal.developer.contribution.js';
+ import '../terminalContrib/environmentChanges/browser/terminal.environmentChanges.contribution.js';
+ import '../terminalContrib/find/browser/terminal.find.contribution.js';
+-import '../terminalContrib/chat/browser/terminal.chat.contribution.js';
+ import '../terminalContrib/commandGuide/browser/terminal.commandGuide.contribution.js';
+ import '../terminalContrib/history/browser/terminal.history.contribution.js';
+ import '../terminalContrib/inlineHint/browser/terminal.initialHint.contribution.js';
+@@ -36,4 +34,3 @@
+ import '../terminalContrib/suggest/browser/terminal.suggest.contribution.js';
+ import '../terminalContrib/telemetry/browser/terminal.telemetry.contribution.js';
+ import '../terminalContrib/wslRecommendation/browser/terminal.wslRecommendation.contribution.js';
+-import '../terminalContrib/voice/browser/terminal.voice.contribution.js';
+diff --git a/src/vs/workbench/contrib/terminal/terminalContribExports.ts b/src/vs/workbench/contrib/terminal/terminalContribExports.ts
+--- a/src/vs/workbench/contrib/terminal/terminalContribExports.ts
++++ b/src/vs/workbench/contrib/terminal/terminalContribExports.ts
+@@ -7,10 +7,7 @@
+ import { TerminalAccessibilityCommandId, defaultTerminalAccessibilityCommandsToSkipShell } from '../terminalContrib/accessibility/common/terminal.accessibility.js';
+ import { terminalAccessibilityConfiguration } from '../terminalContrib/accessibility/common/terminalAccessibilityConfiguration.js';
+ import { terminalAutoRepliesConfiguration } from '../terminalContrib/autoReplies/common/terminalAutoRepliesConfiguration.js';
+-import { TerminalChatCommandId, TerminalChatContextKeyStrings } from '../terminalContrib/chat/browser/terminalChat.js';
+ import { terminalInitialHintConfiguration } from '../terminalContrib/inlineHint/common/terminalInitialHintConfiguration.js';
+-import { terminalChatAgentToolsConfiguration, TerminalChatAgentToolsSettingId } from '../terminalContrib/chatAgentTools/common/terminalChatAgentToolsConfiguration.js';
+-import { AgentSandboxSettingId } from '../../../platform/sandbox/common/settings.js';
+ import { terminalCommandGuideConfiguration } from '../terminalContrib/commandGuide/common/terminalCommandGuideConfiguration.js';
+ import { TerminalDeveloperCommandId } from '../terminalContrib/developer/common/terminal.developer.js';
+ import { defaultTerminalFindCommandToSkipShell } from '../terminalContrib/find/common/terminal.find.js';
+@@ -29,13 +26,6 @@
+ export const enum TerminalContribCommandId {
+ 	A11yFocusAccessibleBuffer = TerminalAccessibilityCommandId.FocusAccessibleBuffer,
+ 	DeveloperRestartPtyHost = TerminalDeveloperCommandId.RestartPtyHost,
+-	OpenTerminalSettingsLink = TerminalChatCommandId.OpenTerminalSettingsLink,
+-	DisableSessionAutoApproval = TerminalChatCommandId.DisableSessionAutoApproval,
+-	FocusMostRecentChatTerminalOutput = TerminalChatCommandId.FocusMostRecentChatTerminalOutput,
+-	FocusMostRecentChatTerminal = TerminalChatCommandId.FocusMostRecentChatTerminal,
+-	ToggleChatTerminalOutput = TerminalChatCommandId.ToggleChatTerminalOutput,
+-	FocusChatInstanceAction = TerminalChatCommandId.FocusChatInstanceAction,
+-	ContinueInBackground = TerminalChatCommandId.ContinueInBackground,
+ }
+ 
+ // HACK: Export some settings from `terminalContrib/` that are depended upon elsewhere. These are
+@@ -44,28 +34,6 @@
+ export const enum TerminalContribSettingId {
+ 	StickyScrollEnabled = TerminalStickyScrollSettingId.Enabled,
+ 	SuggestEnabled = TerminalSuggestSettingId.Enabled,
+-	AutoApprove = TerminalChatAgentToolsSettingId.AutoApprove,
+-	EnableAutoApprove = TerminalChatAgentToolsSettingId.EnableAutoApprove,
+-	ShellIntegrationTimeout = TerminalChatAgentToolsSettingId.ShellIntegrationTimeout,
+-	OutputLocation = TerminalChatAgentToolsSettingId.OutputLocation,
+-	AgentSandboxEnabled = AgentSandboxSettingId.AgentSandboxEnabled,
+-	AgentSandboxWindowsEnabled = AgentSandboxSettingId.AgentSandboxWindowsEnabled,
+-	AgentSandboxAllowNetwork = AgentSandboxSettingId.AgentSandboxAllowNetwork,
+-	AgentSandboxAllowUnsandboxedCommands = AgentSandboxSettingId.AgentSandboxAllowUnsandboxedCommands,
+-	AgentSandboxRetryWithAllowNetworkRequests = AgentSandboxSettingId.AgentSandboxRetryWithAllowNetworkRequests,
+-	AgentSandboxAllowAutoApprove = AgentSandboxSettingId.AgentSandboxAllowAutoApprove,
+-	AgentSandboxLinuxFileSystem = TerminalChatAgentToolsSettingId.AgentSandboxLinuxFileSystem,
+-	AgentSandboxMacFileSystem = TerminalChatAgentToolsSettingId.AgentSandboxMacFileSystem,
+-	AgentSandboxWindowsFileSystem = TerminalChatAgentToolsSettingId.AgentSandboxWindowsFileSystem,
+-}
+-
+-// HACK: Export some context key strings from `terminalContrib/` that are depended upon elsewhere.
+-// These are soft layer breakers between `terminal/` and `terminalContrib/` but there are
+-// difficulties in removing the dependency. These are explicitly defined here to avoid an eslint
+-// line override.
+-export const enum TerminalContribContextKeyStrings {
+-	ChatHasTerminals = TerminalChatContextKeyStrings.ChatHasTerminals,
+-	ChatHasHiddenTerminals = TerminalChatContextKeyStrings.ChatHasHiddenTerminals,
+ }
+ 
+ // Export configuration schemes from terminalContrib - this is an exception to the eslint rule since
+@@ -73,7 +41,6 @@
+ export const terminalContribConfiguration: IConfigurationNode['properties'] = {
+ 	...terminalAccessibilityConfiguration,
+ 	...terminalAutoRepliesConfiguration,
+-	...terminalChatAgentToolsConfiguration,
+ 	...terminalInitialHintConfiguration,
+ 	...terminalCommandGuideConfiguration,
+ 	...terminalHistoryConfiguration,
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminal.contribution.ts b/src/vs/workbench/contrib/terminal/browser/terminal.contribution.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminal.contribution.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminal.contribution.ts
+@@ -46,7 +46,6 @@
+ import { TerminalProfileService } from './terminalProfileService.js';
+ import { TerminalService } from './terminalService.js';
+ import { TerminalViewPane } from './terminalView.js';
+-import { AgentHostTerminalService, IAgentHostTerminalService } from './agentHostTerminalService.js';
+ 
+ // Register services
+ registerSingleton(ITerminalLogService, TerminalLogService, InstantiationType.Delayed);
+@@ -57,7 +56,6 @@
+ registerSingleton(ITerminalGroupService, TerminalGroupService, InstantiationType.Delayed);
+ registerSingleton(ITerminalInstanceService, TerminalInstanceService, InstantiationType.Delayed);
+ registerSingleton(ITerminalProfileService, TerminalProfileService, InstantiationType.Delayed);
+-registerSingleton(IAgentHostTerminalService, AgentHostTerminalService, InstantiationType.Delayed);
+ 
+ // Register workbench contributions
+ // This contribution blocks startup as it's critical to enable the web embedder window.createTerminal API
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalTabbedView.ts b/src/vs/workbench/contrib/terminal/browser/terminalTabbedView.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminalTabbedView.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalTabbedView.ts
+@@ -8,7 +8,7 @@
+ import { Event } from '../../../../base/common/event.js';
+ import { IConfigurationService } from '../../../../platform/configuration/common/configuration.js';
+ import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
+-import { ITerminalChatService, ITerminalConfigurationService, ITerminalGroupService, ITerminalInstance, ITerminalService, TerminalConnectionState, TerminalDataTransfers } from './terminal.js';
++import { ITerminalConfigurationService, ITerminalGroupService, ITerminalInstance, ITerminalService, TerminalConnectionState, TerminalDataTransfers } from './terminal.js';
+ import { TerminalTabsListSizes, TerminalTabList } from './terminalTabsList.js';
+ import * as dom from '../../../../base/browser/dom.js';
+ import { Action, IAction, Separator } from '../../../../base/common/actions.js';
+@@ -23,11 +23,9 @@
+ import { TerminalContextKeys } from '../common/terminalContextKey.js';
+ import { getInstanceHoverInfo } from './terminalTooltip.js';
+ import { IHoverService } from '../../../../platform/hover/browser/hover.js';
+-import { TerminalTabsChatEntry } from './terminalTabsChatEntry.js';
+ import { containsDragType } from '../../../../platform/dnd/browser/dnd.js';
+ import { getTerminalResourcesFromDragEvent, parseTerminalUri } from './terminalUri.js';
+ import type { IProcessDetails } from '../../../../platform/terminal/common/terminalProcess.js';
+-import { TerminalContribContextKeyStrings } from '../terminalContribExports.js';
+ 
+ const $ = dom.$;
+ 
+@@ -54,7 +52,6 @@
+ 	private _sashDisposables: IDisposable[] | undefined;
+ 
+ 	private _plusButton: HTMLElement | undefined;
+-	private _chatEntry: TerminalTabsChatEntry | undefined;
+ 
+ 	private _tabTreeIndex: number;
+ 	private _terminalContainerIndex: number;
+@@ -77,7 +74,6 @@
+ 	constructor(
+ 		parentElement: HTMLElement,
+ 		@ITerminalService private readonly _terminalService: ITerminalService,
+-		@ITerminalChatService private readonly _terminalChatService: ITerminalChatService,
+ 		@ITerminalConfigurationService private readonly _terminalConfigurationService: ITerminalConfigurationService,
+ 		@ITerminalGroupService private readonly _terminalGroupService: ITerminalGroupService,
+ 		@IInstantiationService private readonly _instantiationService: IInstantiationService,
+@@ -103,7 +99,6 @@
+ 
+ 		this._tabList = this._register(this._instantiationService.createInstance(TerminalTabList, this._tabListElement));
+ 		this._tabListDomElement = this._tabList.getHTMLElement();
+-		this._chatEntry = this._register(this._instantiationService.createInstance(TerminalTabsChatEntry, tabListContainer, this._tabContainer));
+ 
+ 		const terminalOuterContainer = $('.terminal-outer-container');
+ 		this._terminalContainer = $('.terminal-groups-container');
+@@ -135,20 +130,8 @@
+ 		}));
+ 		this._register(Event.any(this._terminalGroupService.onDidChangeInstances, this._terminalGroupService.onDidChangeGroups)(() => {
+ 			this._refreshShowTabs();
+-			this._updateChatTerminalsEntry();
+-		}));
+-
+-		this._register(Event.any(this._terminalChatService.onDidRegisterTerminalInstanceWithToolSession, this._terminalService.onDidChangeInstances, this._terminalService.onDidDisposeInstance)(() => {
+-			this._refreshShowTabs();
+-			this._updateChatTerminalsEntry();
+-		}));
+-
+-		this._register(contextKeyService.onDidChangeContext(e => {
+-			if (e.affectsSome(new Set([TerminalContribContextKeyStrings.ChatHasHiddenTerminals]))) {
+-				this._refreshShowTabs();
+-				this._updateChatTerminalsEntry();
+-			}
+-		}));
++		}));
++
+ 		this._attachEventListeners(parentElement, this._terminalContainer);
+ 
+ 		this._register(this._terminalGroupService.onDidChangePanelOrientation((orientation) => {
+@@ -162,18 +145,13 @@
+ 
+ 		this._splitView = new SplitView(parentElement, { orientation: Orientation.HORIZONTAL, proportionalLayout: false });
+ 		this._setupSplitView(terminalOuterContainer);
+-		this._updateChatTerminalsEntry();
+ 	}
+ 
+ 	private _shouldShowTabs(): boolean {
+ 		const enabled = this._terminalConfigurationService.config.tabs.enabled;
+ 		const hide = this._terminalConfigurationService.config.tabs.hideCondition;
+-		const hiddenChatTerminals = this._terminalChatService.getToolSessionTerminalInstances(true);
+ 		if (!enabled) {
+ 			return false;
+-		}
+-		if (hiddenChatTerminals.length > 0) {
+-			return true;
+ 		}
+ 
+ 		switch (hide) {
+@@ -208,10 +186,6 @@
+ 				this._removeSashListener();
+ 			}
+ 		}
+-	}
+-
+-	private _updateChatTerminalsEntry(): void {
+-		this._chatEntry?.update();
+ 	}
+ 
+ 	private _getLastListWidth(): number {
+@@ -342,12 +316,10 @@
+ 		const hasText = this._tabListElement.clientWidth > TerminalTabsListSizes.MidpointViewWidth;
+ 		this._tabContainer.classList.toggle('has-text', hasText);
+ 		this._terminalIsTabsNarrowContextKey.set(!hasText);
+-		this._updateChatTerminalsEntry();
+ 	}
+ 
+ 	layout(width: number, height: number): void {
+-		const chatItemHeight = this._chatEntry?.element.style.display === 'none' ? 0 : this._chatEntry?.element.clientHeight;
+-		this._height = height - (chatItemHeight ?? 0);
++		this._height = height;
+ 		this._width = width;
+ 		this._splitView.layout(width);
+ 		if (this._shouldShowTabs()) {
+@@ -485,7 +457,6 @@
+ 	private _setEmptyAreaDropState(active: boolean): void {
+ 		this._tabListContainer.classList.toggle('drop-target', active);
+ 		this._tabContainer.classList.toggle('drop-target', active);
+-		this._chatEntry?.element.classList.toggle('drop-target', active);
+ 	}
+ 
+ 	private _resetEmptyAreaDropState(): void {
+diff --git a/src/vs/workbench/contrib/terminal/common/terminal.ts b/src/vs/workbench/contrib/terminal/common/terminal.ts
+--- a/src/vs/workbench/contrib/terminal/common/terminal.ts
++++ b/src/vs/workbench/contrib/terminal/common/terminal.ts
+@@ -97,7 +97,6 @@
+ 	remoteAuthority: string | undefined;
+ 	os: OperatingSystem;
+ 	allowAutomationShell?: boolean;
+-	allowAgentHostShell?: boolean;
+ }
+ 
+ export type FontWeight = 'normal' | 'bold' | number;
+@@ -494,8 +493,6 @@
+ 	SetDimensions = 'workbench.action.terminal.setDimensions',
+ 	FocusHover = 'workbench.action.terminal.focusHover',
+ 	ShowEnvironmentContributions = 'workbench.action.terminal.showEnvironmentContributions',
+-	StartVoice = 'workbench.action.terminal.startVoice',
+-	StopVoice = 'workbench.action.terminal.stopVoice',
+ 	RevealCommand = 'workbench.action.terminal.revealCommand',
+ }
+ 
+@@ -554,7 +551,6 @@
+ 	TerminalCommandId.Toggle,
+ 	TerminalCommandId.FocusHover,
+ 	AccessibilityCommandId.OpenAccessibilityHelp,
+-	TerminalCommandId.StopVoice,
+ 	TerminalCommandId.SendSignal,
+ 	'workbench.action.tasks.rerunForActiveTerminal',
+ 	'editor.action.toggleTabFocusMode',
+@@ -648,17 +644,6 @@
+ 	'workbench.action.zoomReset',
+ 	'notification.acceptPrimaryAction',
+ 	'runCommands',
+-	'workbench.action.terminal.chat.start',
+-	'workbench.action.terminal.chat.close',
+-	'workbench.action.terminal.chat.discard',
+-	'workbench.action.terminal.chat.makeRequest',
+-	'workbench.action.terminal.chat.cancel',
+-	'workbench.action.terminal.chat.feedbackHelpful',
+-	'workbench.action.terminal.chat.feedbackUnhelpful',
+-	'workbench.action.terminal.chat.feedbackReportIssue',
+-	'workbench.action.terminal.chat.runCommand',
+-	'workbench.action.terminal.chat.insertCommand',
+-	'workbench.action.terminal.chat.viewInChat',
+ 	...defaultTerminalContribCommandsToSkipShell,
+ ];
+ 
+diff --git a/src/vs/platform/terminal/common/terminal.ts b/src/vs/platform/terminal/common/terminal.ts
+--- a/src/vs/platform/terminal/common/terminal.ts
++++ b/src/vs/platform/terminal/common/terminal.ts
+@@ -30,9 +30,6 @@
+ 	AutomationProfileLinux = 'terminal.integrated.automationProfile.linux',
+ 	AutomationProfileMacOs = 'terminal.integrated.automationProfile.osx',
+ 	AutomationProfileWindows = 'terminal.integrated.automationProfile.windows',
+-	AgentHostProfileLinux = 'terminal.integrated.agentHostProfile.linux',
+-	AgentHostProfileMacOs = 'terminal.integrated.agentHostProfile.osx',
+-	AgentHostProfileWindows = 'terminal.integrated.agentHostProfile.windows',
+ 	ProfilesWindows = 'terminal.integrated.profiles.windows',
+ 	ProfilesMacOs = 'terminal.integrated.profiles.osx',
+ 	ProfilesLinux = 'terminal.integrated.profiles.linux',
+diff --git a/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts b/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
+--- a/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
++++ b/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
+@@ -168,63 +168,6 @@
+ 				}
+ 			]
+ 		},
+-		[TerminalSettingId.AgentHostProfileLinux]: {
+-			restricted: true,
+-			markdownDescription: localize('terminal.integrated.agentHostProfile.linux', "The terminal profile to use on Linux for agent host terminals, including shells launched by AI agent tools. Accepts either a profile name from {0} or an inline profile object. When unset, falls back to {1}. Currently applies to the local agent host. Only the executable `path` is honored today; `args` and `env` from the profile are ignored. Remote agent hosts need remote-side shell configuration because local resolved paths may be invalid on the remote.", '`#terminal.integrated.profiles.linux#`', '`#terminal.integrated.defaultProfile.linux#`'),
+-			type: ['string', 'object', 'null'],
+-			default: null,
+-			'anyOf': [
+-				{ type: 'null' },
+-				{ type: 'string' },
+-				terminalAutomationProfileSchema
+-			],
+-			defaultSnippets: [
+-				{
+-					body: {
+-						path: '${1}',
+-						icon: '${2}'
+-					}
+-				}
+-			]
+-		},
+-		[TerminalSettingId.AgentHostProfileMacOs]: {
+-			restricted: true,
+-			markdownDescription: localize('terminal.integrated.agentHostProfile.osx', "The terminal profile to use on macOS for agent host terminals, including shells launched by AI agent tools. Accepts either a profile name from {0} or an inline profile object. When unset, falls back to {1}. Currently applies to the local agent host. Only the executable `path` is honored today; `args` and `env` from the profile are ignored. Remote agent hosts need remote-side shell configuration because local resolved paths may be invalid on the remote.", '`#terminal.integrated.profiles.osx#`', '`#terminal.integrated.defaultProfile.osx#`'),
+-			type: ['string', 'object', 'null'],
+-			default: null,
+-			'anyOf': [
+-				{ type: 'null' },
+-				{ type: 'string' },
+-				terminalAutomationProfileSchema
+-			],
+-			defaultSnippets: [
+-				{
+-					body: {
+-						path: '${1}',
+-						icon: '${2}'
+-					}
+-				}
+-			]
+-		},
+-		[TerminalSettingId.AgentHostProfileWindows]: {
+-			restricted: true,
+-			markdownDescription: localize('terminal.integrated.agentHostProfile.windows', "The terminal profile to use on Windows for agent host terminals, including shells launched by AI agent tools. Accepts either a profile name from {0} or an inline profile object. When unset, falls back to {1}. Currently applies to the local agent host. Only the executable `path` is honored today; `args` and `env` from the profile are ignored. Remote agent hosts need remote-side shell configuration because local resolved paths may be invalid on the remote.", '`#terminal.integrated.profiles.windows#`', '`#terminal.integrated.defaultProfile.windows#`'),
+-			type: ['string', 'object', 'null'],
+-			default: null,
+-			'anyOf': [
+-				{ type: 'null' },
+-				{ type: 'string' },
+-				terminalAutomationProfileSchema
+-			],
+-			defaultSnippets: [
+-				{
+-					body: {
+-						path: '${1}',
+-						icon: '${2}'
+-					}
+-				}
+-			]
+-		},
+ 		[TerminalSettingId.ProfilesWindows]: {
+ 			restricted: true,
+ 			markdownDescription: createTerminalProfileMarkdownDescription(Platform.Windows),
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalProfileResolverService.ts b/src/vs/workbench/contrib/terminal/browser/terminalProfileResolverService.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminalProfileResolverService.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalProfileResolverService.ts
+@@ -189,18 +189,6 @@
+ 	}
+ 
+ 	private async _getUnresolvedDefaultProfile(options: IShellLaunchConfigResolveOptions): Promise<ITerminalProfile> {
+-		// If agent host shell is allowed, prefer that.
+-		if (options.allowAgentHostShell) {
+-			const raw = this._configurationService.getValue(`terminal.integrated.agentHostProfile.${this._getOsKey(options.os)}`);
+-			if (isString(raw)) {
+-				await this._terminalProfileService.profilesReady;
+-			}
+-			const agentHostShellProfile = this._getUnresolvedAgentHostShellProfile(options);
+-			if (agentHostShellProfile) {
+-				return agentHostShellProfile;
+-			}
+-		}
+-
+ 		// If automation shell is allowed, prefer that
+ 		if (options.allowAutomationShell) {
+ 			const automationShellProfile = this._getUnresolvedAutomationShellProfile(options);
+@@ -278,31 +266,6 @@
+ 		if (this._isValidAutomationProfile(automationProfile, options.os)) {
+ 			automationProfile.icon = this._getCustomIcon(automationProfile.icon) || Codicon.tools;
+ 			return automationProfile;
+-		}
+-
+-		return undefined;
+-	}
+-
+-	private _getUnresolvedAgentHostShellProfile(options: IShellLaunchConfigResolveOptions): ITerminalProfile | undefined {
+-		const agentHostProfile = this._configurationService.getValue(`terminal.integrated.agentHostProfile.${this._getOsKey(options.os)}`);
+-
+-		// Allow a string value as a reference to a named profile under
+-		// `terminal.integrated.profiles.<os>` — same convention as
+-		// `terminal.integrated.defaultProfile.<os>` — so users don't have
+-		// to inline the path when they already have the profile defined.
+-		if (isString(agentHostProfile)) {
+-			const named = this._terminalProfileService.availableProfiles.find(p => p.profileName === agentHostProfile && !p.isAutoDetected);
+-			if (named) {
+-				const cloned = deepClone(named);
+-				cloned.icon = this._getCustomIcon(cloned.icon) || Codicon.tools;
+-				return cloned;
+-			}
+-			return undefined;
+-		}
+-
+-		if (this._isValidAutomationProfile(agentHostProfile, options.os)) {
+-			agentHostProfile.icon = this._getCustomIcon(agentHostProfile.icon) || Codicon.tools;
+-			return agentHostProfile;
+ 		}
+ 
+ 		return undefined;
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalMenus.ts b/src/vs/workbench/contrib/terminal/browser/terminalMenus.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminalMenus.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalMenus.ts
+@@ -18,13 +18,9 @@
+ import { terminalStrings } from '../common/terminalStrings.js';
+ import { ACTIVE_GROUP, AUX_WINDOW_GROUP, SIDE_GROUP } from '../../../services/editor/common/editorService.js';
+ import { DisposableStore } from '../../../../base/common/lifecycle.js';
+-import { HasSpeechProvider } from '../../speech/common/speechService.js';
+-import { ChatContextKeys } from '../../chat/common/actions/chatContextKeys.js';
+ import { hasKey } from '../../../../base/common/types.js';
+-import { TerminalContribContextKeyStrings } from '../terminalContribExports.js';
+ 
+ export const enum TerminalContextMenuGroup {
+-	Chat = '0_chat',
+ 	Create = '1_create',
+ 	Edit = '3_edit',
+ 	Clear = '5_clear',
+@@ -39,17 +35,6 @@
+ 	Configure = '7_configure'
+ }
+ 
+-/**
+- * True when a dictation engine is available for the terminal: either the
+- * built-in on-device engine (with AI features enabled) or the speech
+- * extension's provider. Used to gate the "Start Dictation" context menu entry
+- * so it only shows when dictation can actually be started.
+- */
+-const TerminalDictationAvailable = ContextKeyExpr.or(
+-	HasSpeechProvider,
+-	ContextKeyExpr.and(ChatContextKeys.enabled, ChatContextKeys.speechToTextConfigured)
+-);
+-
+ export function setupTerminalMenus(): void {
+ 	MenuRegistry.appendMenuItems(
+ 		[
+@@ -192,18 +177,6 @@
+ 					},
+ 					group: TerminalContextMenuGroup.Edit,
+ 					order: 3
+-				}
+-			},
+-			{
+-				id: MenuId.TerminalInstanceContext,
+-				item: {
+-					command: {
+-						id: TerminalCommandId.StartVoice,
+-						title: localize('workbench.action.terminal.startVoiceContext', "Start Dictation"),
+-					},
+-					group: TerminalContextMenuGroup.Edit,
+-					order: 4,
+-					when: ContextKeyExpr.and(TerminalDictationAvailable, TerminalContextKeys.terminalDictationInProgress.toNegated())
+ 				}
+ 			},
+ 		]
+@@ -319,18 +292,6 @@
+ 				id: MenuId.TerminalEditorInstanceContext,
+ 				item: {
+ 					command: {
+-						id: TerminalCommandId.StartVoice,
+-						title: localize('workbench.action.terminal.startVoiceContext', "Start Dictation"),
+-					},
+-					group: TerminalContextMenuGroup.Edit,
+-					order: 4,
+-					when: ContextKeyExpr.and(TerminalDictationAvailable, TerminalContextKeys.terminalDictationInProgress.toNegated())
+-				}
+-			},
+-			{
+-				id: MenuId.TerminalEditorInstanceContext,
+-				item: {
+-					command: {
+ 						id: TerminalCommandId.SizeToContentWidth,
+ 						title: terminalStrings.toggleSizeToContentWidth
+ 					},
+@@ -447,7 +408,6 @@
+ 					group: 'navigation',
+ 					order: 0,
+ 					when: ContextKeyExpr.and(
+-						ContextKeyExpr.not(TerminalContribContextKeyStrings.ChatHasHiddenTerminals),
+ 						ContextKeyExpr.equals('view', TERMINAL_VIEW_ID),
+ 						ContextKeyExpr.has(`config.${TerminalSettingId.TabsEnabled}`),
+ 						ContextKeyExpr.or(
+@@ -560,32 +520,6 @@
+ 					isHiddenByDefault: true
+ 				},
+ 			},
+-			{
+-				id: MenuId.ViewTitle,
+-				item: {
+-					command: {
+-						id: TerminalCommandId.StartVoice,
+-						title: localize('workbench.action.terminal.startVoice', "Start Dictation"),
+-					},
+-					group: 'navigation',
+-					order: 9,
+-					when: ContextKeyExpr.and(ContextKeyExpr.equals('view', TERMINAL_VIEW_ID), TerminalContextKeys.terminalDictationInProgress.toNegated()),
+-					isHiddenByDefault: true
+-				},
+-			},
+-			{
+-				id: MenuId.ViewTitle,
+-				item: {
+-					command: {
+-						id: TerminalCommandId.StopVoice,
+-						title: localize('workbench.action.terminal.stopVoice', "Stop Dictation"),
+-					},
+-					group: 'navigation',
+-					order: 9,
+-					when: ContextKeyExpr.and(ContextKeyExpr.equals('view', TERMINAL_VIEW_ID), TerminalContextKeys.terminalDictationInProgress),
+-					isHiddenByDefault: true
+-				},
+-			},
+ 		]
+ 	);
+ 
+@@ -790,28 +724,6 @@
+ 			group: 'navigation',
+ 			order: 8,
+ 			when: ResourceContextKey.Scheme.isEqualTo(Schemas.vscodeTerminal),
+-			isHiddenByDefault: true
+-		});
+-		MenuRegistry.appendMenuItem(menuId, {
+-			command: {
+-				id: TerminalCommandId.StartVoice,
+-				title: localize('workbench.action.terminal.startVoiceEditor', "Start Dictation"),
+-				icon: Codicon.mic
+-			},
+-			group: 'navigation',
+-			order: 9,
+-			when: ContextKeyExpr.and(ResourceContextKey.Scheme.isEqualTo(Schemas.vscodeTerminal), TerminalContextKeys.terminalDictationInProgress.negate()),
+-			isHiddenByDefault: true
+-		});
+-		MenuRegistry.appendMenuItem(menuId, {
+-			command: {
+-				id: TerminalCommandId.StopVoice,
+-				title: localize('workbench.action.terminal.stopVoiceEditor', "Stop Dictation"),
+-				icon: Codicon.run
+-			},
+-			group: 'navigation',
+-			order: 10,
+-			when: ContextKeyExpr.and(ResourceContextKey.Scheme.isEqualTo(Schemas.vscodeTerminal), HasSpeechProvider, TerminalContextKeys.terminalDictationInProgress),
+ 			isHiddenByDefault: true
+ 		});
+ 	}
+diff --git a/src/vs/workbench/contrib/terminal/common/terminalContextKey.ts b/src/vs/workbench/contrib/terminal/common/terminalContextKey.ts
+--- a/src/vs/workbench/contrib/terminal/common/terminalContextKey.ts
++++ b/src/vs/workbench/contrib/terminal/common/terminalContextKey.ts
+@@ -7,7 +7,6 @@
+ import { ContextKeyExpr, RawContextKey } from '../../../../platform/contextkey/common/contextkey.js';
+ import { TerminalSettingId } from '../../../../platform/terminal/common/terminal.js';
+ import { TERMINAL_VIEW_ID } from './terminal.js';
+-import { TerminalContribContextKeyStrings } from '../terminalContribExports.js';
+ 
+ export const enum TerminalContextKeyStrings {
+ 	IsOpen = 'terminalIsOpen',
+@@ -41,7 +40,6 @@
+ 	ShellType = 'terminalShellType',
+ 	InTerminalRunCommandPicker = 'inTerminalRunCommandPicker',
+ 	TerminalShellIntegrationEnabled = 'terminalShellIntegrationEnabled',
+-	DictationInProgress = 'terminalDictationInProgress'
+ }
+ 
+ export namespace TerminalContextKeys {
+@@ -141,13 +139,10 @@
+ 	/** Whether shell integration is enabled in the active terminal. This only considers full VS Code shell integration. */
+ 	export const terminalShellIntegrationEnabled = new RawContextKey<boolean>(TerminalContextKeyStrings.TerminalShellIntegrationEnabled, false, localize('terminalShellIntegrationEnabled', "Whether shell integration is enabled in the active terminal"));
+ 
+-	/** Whether a speech to text (dictation) session is in progress. */
+-	export const terminalDictationInProgress = new RawContextKey<boolean>(TerminalContextKeyStrings.DictationInProgress, false);
+ 
+ 	export const shouldShowViewInlineActions = ContextKeyExpr.and(
+ 		ContextKeyExpr.equals('view', TERMINAL_VIEW_ID),
+ 		ContextKeyExpr.notEquals(`config.${TerminalSettingId.TabsHideCondition}`, 'never'),
+-		ContextKeyExpr.not(TerminalContribContextKeyStrings.ChatHasHiddenTerminals),
+ 		ContextKeyExpr.or(
+ 			ContextKeyExpr.not(`config.${TerminalSettingId.TabsEnabled}`),
+ 			ContextKeyExpr.and(
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminal.ts b/src/vs/workbench/contrib/terminal/browser/terminal.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminal.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminal.ts
+@@ -35,7 +35,6 @@
+ import type { TerminalEditorInput } from './terminalEditorInput.js';
+ import type { MaybePromise } from '../../../../base/common/async.js';
+ import { isNumber, type SingleOrMany } from '../../../../base/common/types.js';
+-import type { ToolConfirmationAction } from '../../chat/common/tools/languageModelToolsService.js';
+ 
+ export const ITerminalService = createDecorator<ITerminalService>('terminalService');
+ export const ITerminalConfigurationService = createDecorator<ITerminalConfigurationService>('terminalConfigurationService');
+@@ -43,7 +42,6 @@
+ export const ITerminalEditingService = createDecorator<ITerminalEditingService>('terminalEditingService');
+ export const ITerminalGroupService = createDecorator<ITerminalGroupService>('terminalGroupService');
+ export const ITerminalInstanceService = createDecorator<ITerminalInstanceService>('terminalInstanceService');
+-export const ITerminalChatService = createDecorator<ITerminalChatService>('terminalChatService');
+ 
+ /**
+  * A terminal contribution that gets created whenever a terminal is created. A contribution has
+@@ -101,225 +99,6 @@
+ 
+ 	getRegisteredBackends(): IterableIterator<ITerminalBackend>;
+ 	didRegisterBackend(backend: ITerminalBackend): void;
+-}
+-
+-/**
+- * A lightweight command detection source for terminals connected via the Agent Host Protocol.
+- * Provides a subset of {@link ICommandDetectionCapability} driven by AHP protocol actions
+- * (`terminal/commandExecuted`, `terminal/commandFinished`) rather than local shell integration.
+- */
+-export interface IAhpTerminalCommandSource extends IDisposable {
+-	readonly commands: readonly ITerminalCommand[];
+-	readonly executingCommandObject: ITerminalCommand | undefined;
+-	readonly onCommandExecuted: Event<ITerminalCommand>;
+-	readonly onCommandFinished: Event<ITerminalCommand>;
+-	getCommandById(id: string): ITerminalCommand | undefined;
+-}
+-
+-/**
+- * Service enabling communication between the chat tool implementation in terminal contrib and workbench contribs.
+- * Acts as a communication mechanism for chat-related terminal features.
+- */
+-export interface IChatTerminalToolProgressPart {
+-	readonly elementIndex: number;
+-	readonly contentIndex: number;
+-	focusTerminal(): Promise<void>;
+-	toggleOutputFromKeyboard(): Promise<void>;
+-	toggleOutputFromAction(): Promise<void>;
+-	continueInBackground(): void;
+-	focusOutput(): void;
+-	getCommandAndOutputAsText(): string | undefined;
+-}
+-
+-/** A read-only output stream rendered by chat without a workbench terminal instance. */
+-export interface IChatTerminalOutputSource {
+-	readonly onDidChange: Event<void>;
+-	readonly output: string;
+-	/**
+-	 * Whether the underlying command has finished. A command can exit without
+-	 * reporting an {@link exitCode}, so completion must be read from here
+-	 * rather than inferred from the code being present.
+-	 */
+-	readonly hasExited: boolean;
+-	readonly exitCode: number | undefined;
+-}
+-
+-export interface ITerminalChatService {
+-	readonly _serviceBrand: undefined;
+-
+-	/**
+-	 * Fired when a terminal instance is registered for a tool session id. This can happen after
+-	 * the chat UI first renders, enabling late binding of the focus action.
+-	 */
+-	readonly onDidRegisterTerminalInstanceWithToolSession: Event<ITerminalInstance>;
+-	readonly onDidRegisterOutputSource: Event<string>;
+-
+-	/**
+-	 * Associate a tool session id with a terminal instance. The association is automatically
+-	 * cleared when the instance is disposed.
+-	 */
+-	registerTerminalInstanceWithToolSession(terminalToolSessionId: string | undefined, instance: ITerminalInstance): void;
+-
+-	/**
+-	 * Resolve a terminal instance by its tool session id.
+-	 * @param terminalToolSessionId The tool session id provided in toolSpecificData.
+-	 * If no tool session ID is provided, we do nothing.
+-	 */
+-	getTerminalInstanceByToolSessionId(terminalToolSessionId: string): Promise<ITerminalInstance | undefined>;
+-
+-	/**
+-	 * Associate a terminal execution id (the per-invocation id used by `RunInTerminalTool`)
+-	 * with a terminal instance. The association is automatically cleared when the instance is
+-	 * disposed or when the returned disposable is disposed.
+-	 */
+-	registerTerminalInstanceWithExecutionId(terminalExecutionId: string, instance: ITerminalInstance): IDisposable;
+-
+-	/**
+-	 * Resolve a terminal instance by its execution id (the per-invocation id used by
+-	 * `RunInTerminalTool`). Returns undefined if no active execution exists for the id.
+-	 */
+-	getTerminalInstanceByExecutionId(terminalExecutionId: string): ITerminalInstance | undefined;
+-
+-	/**
+-	 * Returns the list of terminal instances that have been registered with a tool session id.
+-	 * This is used for surfacing tool-driven/background terminals in UI (eg. quick picks).
+-	 */
+-	getToolSessionTerminalInstances(hiddenOnly?: boolean): readonly ITerminalInstance[];
+-
+-	/**
+-	 * Returns the tool session ID for a given terminal instance, if it has been registered.
+-	 * @param instance The terminal instance to look up
+-	 * @returns The tool session ID if found, undefined otherwise
+-	 */
+-	getToolSessionIdForInstance(instance: ITerminalInstance): string | undefined;
+-
+-	/**
+-	 * Associate a chat session with a terminal instance. This is used to retrieve the chat
+-	 * session title for display purposes.
+-	 * @param chatSessionResource The chat session resource URI
+-	 * @param instance The terminal instance
+-	 */
+-	registerTerminalInstanceWithChatSession(chatSessionResource: URI, instance: ITerminalInstance): void;
+-
+-	/**
+-	 * Returns the chat session resource for a given terminal instance, if it has been registered.
+-	 * @param instance The terminal instance to look up
+-	 * @returns The chat session resource if found, undefined otherwise
+-	 */
+-	getChatSessionResourceForInstance(instance: ITerminalInstance): URI | undefined;
+-
+-	/**
+-	 * Check if a terminal is a background terminal (tool-driven terminal that may be hidden from
+-	 * normal UI).
+-	 * @param terminalToolSessionId The tool session ID to check, if provided
+-	 * @returns True if the terminal is a background terminal, false otherwise
+-	 */
+-	isBackgroundTerminal(terminalToolSessionId?: string): boolean;
+-
+-	registerOutputSource(terminalToolSessionId: string, source: IChatTerminalOutputSource): IDisposable;
+-	getOutputSource(terminalToolSessionId: string | undefined): IChatTerminalOutputSource | undefined;
+-
+-	/**
+-	 * Register a chat terminal tool progress part for tracking and focus management.
+-	 * @param part The progress part to register
+-	 * @returns A disposable that unregisters the progress part when disposed
+-	 */
+-	registerProgressPart(part: IChatTerminalToolProgressPart): IDisposable;
+-
+-	/**
+-	 * Set the currently focused progress part.
+-	 * @param part The progress part to focus
+-	 */
+-	setFocusedProgressPart(part: IChatTerminalToolProgressPart): void;
+-
+-	/**
+-	 * Clear the focused state from a progress part.
+-	 * @param part The progress part to clear focus from
+-	 */
+-	clearFocusedProgressPart(part: IChatTerminalToolProgressPart): void;
+-
+-	/**
+-	 * Get the currently focused progress part, if any.
+-	 * @returns The focused progress part or undefined if none is focused
+-	 */
+-	getFocusedProgressPart(): IChatTerminalToolProgressPart | undefined;
+-
+-	/**
+-	 * Get the most recently registered progress part, if any.
+-	 * @returns The most recent progress part or undefined if none exist
+-	 */
+-	getMostRecentProgressPart(): IChatTerminalToolProgressPart | undefined;
+-
+-	/**
+-	 * Enable or disable auto approval for all commands in a specific session.
+-	 * @param chatSessionResource The chat session resource URI
+-	 * @param enabled Whether to enable or disable session auto approval
+-	 */
+-	setChatSessionAutoApproval(chatSessionResource: URI, enabled: boolean): void;
+-
+-	/**
+-	 * Check if a session has auto approval enabled for all commands.
+-	 * @param chatSessionResource The chat session resource URI
+-	 * @returns True if the session has auto approval enabled
+-	 */
+-	hasChatSessionAutoApproval(chatSessionResource: URI): boolean;
+-
+-	/**
+-	 * Add a session-scoped auto-approve rule.
+-	 * @param chatSessionResource The chat session resource URI
+-	 * @param key The rule key (command or regex pattern)
+-	 * @param value The rule value (approval boolean or object with approve and matchCommandLine)
+-	 */
+-	addSessionAutoApproveRule(chatSessionResource: URI, key: string, value: boolean | { approve: boolean; matchCommandLine?: boolean }): void;
+-
+-	/**
+-	 * Get all session-scoped auto-approve rules for a specific chat session.
+-	 * @param chatSessionResource The chat session resource URI
+-	 * @returns A record of all session-scoped auto-approve rules for the session
+-	 */
+-	getSessionAutoApproveRules(chatSessionResource: URI): Readonly<Record<string, boolean | { approve: boolean; matchCommandLine?: boolean }>>;
+-
+-	/**
+-	 * Generate auto-approve rule actions for a command line that was not evaluated by the
+-	 * built-in run in terminal tool, such as terminal confirmations surfaced by agent host
+-	 * sessions. The command line is parsed into sub-commands and evaluated against the
+-	 * persisted configuration rules only (never workbench session rules, which agent hosts
+-	 * do not consume) to produce the same persistent-rule suggestions the built-in tool
+-	 * offers.
+-	 * @param commandLine The full command line being confirmed
+-	 * @param language The language to parse the command line with
+-	 * @returns The actions to show in the confirmation dropdown, or undefined if the command
+-	 * line could not be analyzed
+-	 */
+-	getAutoApproveActions(commandLine: string, language: 'shellscript' | 'powershell'): Promise<ToolConfirmationAction[] | undefined>;
+-
+-	/**
+-	 * Signal that a foreground terminal tool invocation should continue in the background.
+-	 * This causes the tool to return its current output immediately while the terminal keeps running.
+-	 * @param terminalToolSessionId The tool session ID to continue in background
+-	 */
+-	continueInBackground(terminalToolSessionId: string): void;
+-
+-	/**
+-	 * Event fired when a terminal tool invocation should continue in the background.
+-	 */
+-	readonly onDidContinueInBackground: Event<string>;
+-
+-	/**
+-	 * Register an AHP command source for a tool session. The source provides command detection
+-	 * events for terminals connected via the Agent Host Protocol.
+-	 * @param terminalToolSessionId The tool session ID to associate with the source
+-	 * @param source The AHP command source
+-	 * @returns A disposable that unregisters the source when disposed
+-	 */
+-	registerAhpCommandSource(terminalToolSessionId: string, source: IAhpTerminalCommandSource, promisedTerminal: Promise<ITerminalInstance>): IDisposable;
+-
+-	/**
+-	 * Retrieve the AHP command source for a given tool session.
+-	 * @param terminalToolSessionId The tool session ID to look up
+-	 * @returns The AHP command source if registered, undefined otherwise
+-	 */
+-	getAhpCommandSource(terminalToolSessionId: string): IAhpTerminalCommandSource | undefined;
+ }
+ 
+ /**
+diff --git a/src/vs/workbench/contrib/tasks/browser/abstractTaskService.ts b/src/vs/workbench/contrib/tasks/browser/abstractTaskService.ts
+--- a/src/vs/workbench/contrib/tasks/browser/abstractTaskService.ts
++++ b/src/vs/workbench/contrib/tasks/browser/abstractTaskService.ts
+@@ -48,7 +48,6 @@
+ import { ITerminalProfileResolverService } from '../../terminal/common/terminal.js';
+ 
+ import { CommandString, ConfiguringTask, ContributedTask, CustomTask, ExecutionEngine, InMemoryTask, InstancePolicy, ITaskConfig, ITaskEvent, ITaskIdentifier, ITaskInactiveEvent, ITaskProcessEndedEvent, ITaskSet, JsonSchemaVersion, KeyedTaskIdentifier, RerunAllRunningTasksCommandId, RuntimeType, Task, TASK_RUNNING_STATE, TaskDefinition, TaskEventKind, TaskGroup, TaskRunSource, TaskSettingId, TaskSorter, TaskSourceKind, TasksSchemaProperties, USER_TASKS_GROUP_KEY } from '../common/tasks.js';
+-import { ChatAgentLocation, ChatModeKind } from '../../chat/common/constants.js';
+ import { CustomExecutionSupportedContext, ICustomizationProperties, IProblemMatcherRunOptions, ITaskFilter, ITaskProvider, ITaskService, IWorkspaceFolderTaskResult, ProcessExecutionSupportedContext, ServerlessWebContext, ShellExecutionSupportedContext, TaskCommandsRegistered, TaskExecutionSupportedContext, TasksAvailableContext } from '../common/taskService.js';
+ import { ITaskExecuteResult, ITaskResolver, ITaskSummary, ITaskSystem, ITaskSystemInfo, ITaskTerminateResponse, TaskError, TaskErrors, TaskExecuteKind, Triggers, VerifiedTask } from '../common/taskSystem.js';
+ import { getTemplates as getTaskTemplates } from '../common/taskTemplates.js';
+@@ -85,9 +84,6 @@
+ import { IPreferencesService } from '../../../services/preferences/common/preferences.js';
+ import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
+ import { IViewsService } from '../../../services/views/common/viewsService.js';
+-import { CHAT_OPEN_ACTION_ID } from '../../chat/browser/actions/chatActions.js';
+-import { IChatAgentService } from '../../chat/common/participants/chatAgents.js';
+-import { IChatService } from '../../chat/common/chatService/chatService.js';
+ import { configureTaskIcon, isWorkspaceFolder, ITaskQuickPickEntry, QUICKOPEN_DETAIL_CONFIG, QUICKOPEN_SKIP_CONFIG, TaskQuickPick } from './taskQuickPick.js';
+ import { IHostService } from '../../../services/host/browser/host.js';
+ import * as dom from '../../../../base/browser/dom.js';
+@@ -253,7 +249,6 @@
+ 	private _onDidChangeTaskProviders = this._register(new Emitter<void>());
+ 	public onDidChangeTaskProviders = this._onDidChangeTaskProviders.event;
+ 	private readonly _taskRunStartTimes = new Map<string, number>();
+-	private readonly _taskRunSources = new Map<string, TaskRunSource>();
+ 
+ 	private _activatedTaskProviders: Set<string> = new Set();
+ 
+@@ -296,8 +291,6 @@
+ 		@ILifecycleService private readonly _lifecycleService: ILifecycleService,
+ 		@IRemoteAgentService remoteAgentService: IRemoteAgentService,
+ 		@IInstantiationService private readonly _instantiationService: IInstantiationService,
+-		@IChatService private readonly _chatService: IChatService,
+-		@IChatAgentService private readonly _chatAgentService: IChatAgentService,
+ 		@IHostService private readonly _hostService: IHostService
+ 	) {
+ 		super();
+@@ -414,7 +407,6 @@
+ 						this._handleLongRunningTaskCompletion(processEndedEvent, durationMs);
+ 					}
+ 					this._taskRunStartTimes.delete(e.taskId);
+-					this._taskRunSources.delete(e.taskId);
+ 					break;
+ 				}
+ 				case TaskEventKind.Inactive: {
+@@ -428,12 +420,10 @@
+ 						this._handleLongRunningTaskCompletion(processEndedEvent, durationMs);
+ 					}
+ 					this._taskRunStartTimes.delete(e.taskId);
+-					this._taskRunSources.delete(e.taskId);
+ 					break;
+ 				}
+ 				case TaskEventKind.Terminated:
+ 					this._taskRunStartTimes.delete(e.taskId);
+-					this._taskRunSources.delete(e.taskId);
+ 					break;
+ 			}
+ 			if (e.kind === TaskEventKind.Changed) {
+@@ -511,11 +501,6 @@
+ 		// If threshold is 0, always show notifications (no minimum duration)
+ 		// Otherwise, only show if duration meets or exceeds the threshold
+ 		if (notificationThreshold === -1 || (notificationThreshold > 0 && durationMs < notificationThreshold)) {
+-			return;
+-		}
+-
+-		const taskRunSource = this._taskRunSources.get(event.taskId);
+-		if (taskRunSource === TaskRunSource.ChatAgent) {
+ 			return;
+ 		}
+ 
+@@ -796,48 +781,17 @@
+ 		this._workspace = setup[4];
+ 	}
+ 
+-	protected _showOutput(runSource: TaskRunSource = TaskRunSource.User, userRequested?: boolean, errorMessage?: string): void {
++	protected _showOutput(runSource: TaskRunSource = TaskRunSource.User, userRequested?: boolean): void {
+ 		if (!VirtualWorkspaceContext.getValue(this._contextKeyService) && ((runSource === TaskRunSource.User) || (runSource === TaskRunSource.ConfigurationChange))) {
+ 			if (userRequested) {
+ 				this._outputService.showChannel(this._outputChannel.id, true);
+ 			} else {
+-				const chatEnabled = this._chatService.isEnabled(ChatAgentLocation.Chat);
+-				const actions = [];
+-				if (chatEnabled && errorMessage) {
+-					const beforeJSONregex = /^(.*?)\s*\{[\s\S]*$/;
+-					const matches = errorMessage.match(beforeJSONregex);
+-					if (matches && matches.length > 1) {
+-						const message = matches[1];
+-						const customMessage = message === errorMessage
+-							? `\`${message}\``
+-							: `\`${message}\`\n\`\`\`json${errorMessage}\`\`\``;
+-
+-
+-						const defaultAgent = this._chatAgentService.getDefaultAgent(ChatAgentLocation.Chat);
+-						if (defaultAgent) {
+-							actions.push({
+-								label: nls.localize('troubleshootWithChat', "Fix with AI"),
+-								run: async () => {
+-									this._commandService.executeCommand(CHAT_OPEN_ACTION_ID, {
+-										mode: ChatModeKind.Agent,
+-										query: `Fix this task configuration error: ${customMessage}`
+-									});
+-								}
+-							});
+-						}
+-					}
+-				}
+-				actions.push({
++				this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPrompt', 'There are task errors. See the output for details.'), [{
+ 					label: nls.localize('showOutput', "Show Output"),
+ 					run: () => {
+ 						this._outputService.showChannel(this._outputChannel.id, true);
+ 					}
+-				});
+-				if (chatEnabled && actions.length > 1) {
+-					this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPromptChat', 'There are task errors. Use chat to fix them or view the output for details.'), actions);
+-				} else {
+-					this._notificationService.prompt(Severity.Warning, nls.localize('taskServiceOutputPrompt', 'There are task errors. See the output for details.'), actions);
+-				}
++				}]);
+ 			}
+ 		}
+ 	}
+@@ -2095,10 +2049,6 @@
+ 	}
+ 
+ 	private async _handleExecuteResult(executeResult: ITaskExecuteResult, runSource?: TaskRunSource): Promise<ITaskSummary> {
+-		if (runSource && executeResult.task._id) {
+-			this._taskRunSources.set(executeResult.task._id, runSource);
+-		}
+-
+ 		if (runSource === TaskRunSource.User) {
+ 			await this._setRecentlyUsedTask(executeResult.task);
+ 		}
+@@ -2327,7 +2277,7 @@
+ 					if (!isCancellationError(error)) {
+ 						if (error && Types.isString((error as { message?: string }).message)) {
+ 							this._log(`Error: ${(error as { message: string }).message}\n`);
+-							this._showOutput(undefined, undefined, (error as { message: string }).message);
++							this._showOutput();
+ 						} else {
+ 							this._log('Unknown error received while collecting tasks from providers.');
+ 							this._showOutput();
+@@ -2637,7 +2587,7 @@
+ 		await ProblemMatcherRegistry.onReady();
+ 		const taskSystemInfo: ITaskSystemInfo | undefined = this._getTaskSystemInfo(workspaceFolder.uri.scheme);
+ 		const problemReporter = new ProblemReporter(this._outputChannel);
+-		const problemReporterListener = problemReporter.onDidError(error => this._showOutput(runSource, undefined, error));
++		const problemReporterListener = problemReporter.onDidError(() => this._showOutput(runSource));
+ 		const parseResult = TaskConfig.parse(workspaceFolder, undefined, taskSystemInfo ? taskSystemInfo.platform : Platform.platform, workspaceFolderConfiguration.config, problemReporter, TaskConfig.TaskConfigSource.TasksJson, this._contextKeyService);
+ 		problemReporterListener.dispose();
+ 		let hasErrors = false;
+@@ -2678,7 +2628,7 @@
+ 			}
+ 			if (isAffected) {
+ 				this._log(nls.localize({ key: 'TaskSystem.invalidTaskJsonOther', comment: ['Message notifies of an error in one of several places there is tasks related json, not necessarily in a file named tasks.json'] }, 'Error: The content of the tasks json in {0} has syntax errors. Please correct them before executing a task.', location));
+-				this._showOutput(undefined, undefined, nls.localize({ key: 'TaskSystem.invalidTaskJsonOther', comment: ['Message notifies of an error in one of several places there is tasks related json, not necessarily in a file named tasks.json'] }, 'Error: The content of the tasks json in {0} has syntax errors. Please correct them before executing a task.', location));
++				this._showOutput();
+ 				return { config, hasParseErrors: true };
+ 			}
+ 		}
+@@ -2858,7 +2808,7 @@
+ 			}
+ 			if (isAffected) {
+ 				this._log(nls.localize('TaskSystem.invalidTaskJson', 'Error: The content of the tasks.json file has syntax errors. Please correct them before executing a task.'));
+-				this._showOutput(undefined, undefined, nls.localize('TaskSystem.invalidTaskJson', 'Error: The content of the tasks.json file has syntax errors. Please correct them before executing a task.'));
++				this._showOutput();
+ 				return { config: undefined, hasParseErrors: true };
+ 			}
+ 		}
+@@ -2911,7 +2861,7 @@
+ 			this._notificationService.error(nls.localize('TaskSystem.unknownError', 'An error has occurred while running a task. See task log for details.'));
+ 		}
+ 		if (showOutput) {
+-			this._showOutput(undefined, undefined, Types.isString(err) ? err as string : undefined);
++			this._showOutput();
+ 		}
+ 	}
+ 
+diff --git a/src/vs/workbench/contrib/tasks/electron-browser/taskService.ts b/src/vs/workbench/contrib/tasks/electron-browser/taskService.ts
+--- a/src/vs/workbench/contrib/tasks/electron-browser/taskService.ts
++++ b/src/vs/workbench/contrib/tasks/electron-browser/taskService.ts
+@@ -48,8 +48,6 @@
+ import { IInstantiationService } from '../../../../platform/instantiation/common/instantiation.js';
+ import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
+ import { IAccessibilitySignalService } from '../../../../platform/accessibilitySignal/browser/accessibilitySignalService.js';
+-import { IChatService } from '../../chat/common/chatService/chatService.js';
+-import { IChatAgentService } from '../../chat/common/participants/chatAgents.js';
+ import { IHostService } from '../../../services/host/browser/host.js';
+ 
+ interface IWorkspaceFolderConfigurationResult {
+@@ -96,8 +94,6 @@
+ 		@IInstantiationService instantiationService: IInstantiationService,
+ 		@IRemoteAgentService remoteAgentService: IRemoteAgentService,
+ 		@IAccessibilitySignalService accessibilitySignalService: IAccessibilitySignalService,
+-		@IChatService _chatService: IChatService,
+-		@IChatAgentService _chatAgentService: IChatAgentService,
+ 		@IHostService _hostService: IHostService
+ 	) {
+ 		super(configurationService,
+@@ -136,8 +132,6 @@
+ 			lifecycleService,
+ 			remoteAgentService,
+ 			instantiationService,
+-			_chatService,
+-			_chatAgentService,
+ 			_hostService
+ 		);
+ 		this._register(lifecycleService.onBeforeShutdown(event => event.veto(this.beforeShutdown(), 'veto.tasks')));
+diff --git a/src/vs/workbench/contrib/terminal/browser/xterm/decorationAddon.ts b/src/vs/workbench/contrib/terminal/browser/xterm/decorationAddon.ts
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/decorationAddon.ts
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/decorationAddon.ts
+@@ -27,13 +27,6 @@
+ import { ILifecycleService } from '../../../../services/lifecycle/common/lifecycle.js';
+ import { IHoverService } from '../../../../../platform/hover/browser/hover.js';
+ import { MarkdownString } from '../../../../../base/common/htmlContent.js';
+-import { IChatContextPickService } from '../../../chat/browser/attachments/chatContextPickService.js';
+-import { IChatWidgetService } from '../../../chat/browser/chat.js';
+-import { IInstantiationService } from '../../../../../platform/instantiation/common/instantiation.js';
+-import { TerminalContext } from '../../../chat/browser/actions/chatContext.js';
+-import { getTerminalUri, parseTerminalUri } from '../terminalUri.js';
+-import { URI } from '../../../../../base/common/uri.js';
+-import { ChatAgentLocation } from '../../../chat/common/constants.js';
+ import { isString } from '../../../../../base/common/types.js';
+ 
+ interface IDisposableDecoration { decoration: IDecoration; disposables: IDisposable[]; command?: ITerminalCommand; markProperties?: IMarkProperties }
+@@ -53,7 +46,6 @@
+ 	readonly onDidRequestCopyAsHtml = this._onDidRequestCopyAsHtml.event;
+ 
+ 	constructor(
+-		private readonly _resource: URI | undefined,
+ 		private readonly _capabilities: ITerminalCapabilityStore,
+ 		@IClipboardService private readonly _clipboardService: IClipboardService,
+ 		@IContextMenuService private readonly _contextMenuService: IContextMenuService,
+@@ -66,9 +58,6 @@
+ 		@IAccessibilitySignalService private readonly _accessibilitySignalService: IAccessibilitySignalService,
+ 		@INotificationService private readonly _notificationService: INotificationService,
+ 		@IHoverService private readonly _hoverService: IHoverService,
+-		@IChatContextPickService private readonly _contextPickService: IChatContextPickService,
+-		@IChatWidgetService private readonly _chatWidgetService: IChatWidgetService,
+-		@IInstantiationService private readonly _instantiationService: IInstantiationService
+ 	) {
+ 		super();
+ 		this._register(toDisposable(() => this._dispose()));
+@@ -412,9 +401,9 @@
+ 			}),
+ 			dom.addDisposableListener(element, dom.EventType.CONTEXT_MENU, async (e) => {
+ 				e.stopImmediatePropagation();
+-				const chatActions = await this._getCommandActions(command);
++				const commandActions = await this._getCommandActions(command);
+ 				const actions = this._getContextMenuActions();
+-				this._contextMenuService.showContextMenu({ getAnchor: () => element, getActions: () => [...actions, ...chatActions] });
++				this._contextMenuService.showContextMenu({ getAnchor: () => element, getActions: () => [...actions, ...commandActions] });
+ 			}),
+ 		];
+ 	}
+@@ -436,11 +425,6 @@
+ 		const registeredMenuItems = this._registeredMenuItems.get(command);
+ 		if (registeredMenuItems?.length) {
+ 			actions.push(...registeredMenuItems, new Separator());
+-		}
+-
+-		const attachToChatAction = this._createAttachToChatAction(command);
+-		if (attachToChatAction) {
+-			actions.push(attachToChatAction, new Separator());
+ 		}
+ 
+ 		if (command.command !== '') {
+@@ -525,48 +509,6 @@
+ 			run: () => this._openerService.open('https://code.visualstudio.com/docs/terminal/shell-integration')
+ 		});
+ 		return actions;
+-	}
+-
+-	private _createAttachToChatAction(command: ITerminalCommand): IAction | undefined {
+-		const chatIsEnabled = this._chatWidgetService.getWidgetsByLocations(ChatAgentLocation.Chat).some(w => w.attachmentCapabilities.supportsTerminalAttachments);
+-		if (!chatIsEnabled) {
+-			return undefined;
+-		}
+-		const labelAttachToChat = localize("terminal.attachToChat", 'Attach To Chat');
+-		return {
+-			class: undefined, tooltip: labelAttachToChat, id: 'terminal.attachToChat', label: labelAttachToChat, enabled: true,
+-			run: async () => {
+-				let widget = this._chatWidgetService.lastFocusedWidget ?? this._chatWidgetService.getWidgetsByLocations(ChatAgentLocation.Chat)?.find(w => w.attachmentCapabilities.supportsTerminalAttachments);
+-
+-				// If no widget found (e.g., after window reload when chat hasn't been focused), open chat view
+-				if (!widget) {
+-					widget = await this._chatWidgetService.revealWidget();
+-				}
+-
+-				if (!widget) {
+-					return;
+-				}
+-
+-				let terminalContext: TerminalContext | undefined;
+-				if (this._resource) {
+-					const parsedUri = parseTerminalUri(this._resource);
+-					terminalContext = this._instantiationService.createInstance(TerminalContext, getTerminalUri(parsedUri.workspaceId, parsedUri.instanceId!, undefined, command.id));
+-				}
+-
+-				if (terminalContext && widget.attachmentCapabilities.supportsTerminalAttachments) {
+-					try {
+-						const attachment = await terminalContext.asAttachment(widget);
+-						if (attachment) {
+-							widget.attachmentModel.addContext(attachment);
+-							widget.focusInput();
+-							return;
+-						}
+-					} catch (err) {
+-					}
+-					this._store.add(this._contextPickService.registerChatContextItem(terminalContext));
+-				}
+-			}
+-		};
+ 	}
+ 
+ 	private _showToggleVisibilityQuickPick() {
+diff --git a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+--- a/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
++++ b/src/vs/workbench/contrib/terminal/browser/xterm/xtermTerminal.ts
+@@ -45,7 +45,6 @@
+ import { equals } from '../../../../../base/common/objects.js';
+ import type { IProgressState } from '@xterm/addon-progress';
+ import type { CommandDetectionCapability } from '../../../../../platform/terminal/common/capabilities/commandDetectionCapability.js';
+-import { URI } from '../../../../../base/common/uri.js';
+ import { isNumber } from '../../../../../base/common/types.js';
+ import { clamp } from '../../../../../base/common/numbers.js';
+ import { LayoutSettings } from '../../../../services/layout/browser/layoutService.js';
+@@ -210,7 +209,6 @@
+ 	 * outside of this class such that {@link raw} is not nullable.
+ 	 */
+ 	constructor(
+-		resource: URI | undefined,
+ 		xtermCtor: typeof RawXtermTerminal,
+ 		options: IXtermTerminalOptions,
+ 		private readonly _onDidExecuteText: Event<void> | undefined,
+@@ -324,7 +322,7 @@
+ 		this._updateUnicodeVersion();
+ 		this._markNavigationAddon = this._instantiationService.createInstance(MarkNavigationAddon, options.capabilities);
+ 		this.raw.loadAddon(this._markNavigationAddon);
+-		this._decorationAddon = this._instantiationService.createInstance(DecorationAddon, resource, this._capabilities);
++		this._decorationAddon = this._instantiationService.createInstance(DecorationAddon, this._capabilities);
+ 		this._register(this._decorationAddon.onDidRequestRunCommand(e => this._onDidRequestRunCommand.fire(e)));
+ 		this._register(this._decorationAddon.onDidRequestCopyAsHtml(e => this._onDidRequestCopyAsHtml.fire(e)));
+ 		this.raw.loadAddon(this._decorationAddon);
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalService.ts b/src/vs/workbench/contrib/terminal/browser/terminalService.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminalService.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalService.ts
+@@ -1114,7 +1114,7 @@
+ 	async createDetachedTerminal(options: IDetachedXTermOptions): Promise<IDetachedTerminalInstance> {
+ 		const ctor = await TerminalInstance.getXtermConstructor(this._keybindingService, this._contextKeyService);
+ 		const capabilities = options.capabilities ?? new TerminalCapabilityStore();
+-		const xterm = this._instantiationService.createInstance(XtermTerminal, undefined, ctor, {
++		const xterm = this._instantiationService.createInstance(XtermTerminal, ctor, {
+ 			cols: options.cols,
+ 			rows: options.rows,
+ 			xtermColorProvider: options.colorProvider,
+diff --git a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
+--- a/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
++++ b/src/vs/workbench/contrib/terminal/browser/terminalInstance.ts
+@@ -811,7 +811,7 @@
+ 		}
+ 
+ 		const disableShellIntegrationReporting = (this.shellLaunchConfig.executable === undefined || this.shellType === undefined) || !shellIntegrationSupportedShellTypes.includes(this.shellType);
+-		const xterm = this._scopedInstantiationService.createInstance(XtermTerminal, this._resource, Terminal, {
++		const xterm = this._scopedInstantiationService.createInstance(XtermTerminal, Terminal, {
+ 			cols: this._cols,
+ 			rows: this._rows,
+ 			xtermColorProvider: this._scopedInstantiationService.createInstance(TerminalInstanceColorProvider, this._targetRef),
+@@ -1732,8 +1732,7 @@
+ 
+ 		// Fire onExit BEFORE running any disposition logic (in particular before
+ 		// `dispose()` below, which fires `onDisposed`). Consumers racing
+-		// `onExit` against `onDisposed` (e.g. the chat agent run-in-terminal
+-		// execute strategies) need to see the exit code event first so they can
++		// `onExit` against `onDisposed` need to see the exit code event first so they can
+ 		// return the captured exit code. Otherwise `onDisposed` wins the race
+ 		// and the strategy treats the exit as the terminal having been closed
+ 		// without an exit code, leaving commands like `exit 42` stuck in a
+diff --git a/src/vs/workbench/contrib/terminal/test/browser/xterm/xtermTerminal.test.ts b/src/vs/workbench/contrib/terminal/test/browser/xterm/xtermTerminal.test.ts
+--- a/src/vs/workbench/contrib/terminal/test/browser/xterm/xtermTerminal.test.ts
++++ b/src/vs/workbench/contrib/terminal/test/browser/xterm/xtermTerminal.test.ts
+@@ -95,7 +95,7 @@
+ 		XTermBaseCtor = (await importAMDNodeModule<typeof import('@xterm/xterm')>('@xterm/xterm', 'lib/xterm.js')).Terminal;
+ 
+ 		const capabilityStore = store.add(new TerminalCapabilityStore());
+-		xterm = store.add(instantiationService.createInstance(XtermTerminal, undefined, XTermBaseCtor, {
++		xterm = store.add(instantiationService.createInstance(XtermTerminal, XTermBaseCtor, {
+ 			cols: 80,
+ 			rows: 30,
+ 			xtermColorProvider: { getBackgroundColor: () => undefined },
+@@ -331,7 +331,7 @@
+ 				[PANEL_BACKGROUND]: '#ff0000',
+ 				[SIDE_BAR_BACKGROUND]: '#00ff00'
+ 			}));
+-			xterm = store.add(instantiationService.createInstance(XtermTerminal, undefined, XTermBaseCtor, {
++			xterm = store.add(instantiationService.createInstance(XtermTerminal, XTermBaseCtor, {
+ 				cols: 80,
+ 				rows: 30,
+ 				xtermAddonImporter: new TestXtermAddonImporter(),
+@@ -367,7 +367,7 @@
+ 				'terminal.ansiBrightCyan': '#150000',
+ 				'terminal.ansiBrightWhite': '#160000',
+ 			}));
+-			xterm = store.add(instantiationService.createInstance(XtermTerminal, undefined, XTermBaseCtor, {
++			xterm = store.add(instantiationService.createInstance(XtermTerminal, XTermBaseCtor, {
+ 				cols: 80,
+ 				rows: 30,
+ 				xtermAddonImporter: new TestXtermAddonImporter(),
+diff --git a/src/vs/workbench/contrib/terminal/test/browser/xterm/decorationAddon.test.ts b/src/vs/workbench/contrib/terminal/test/browser/xterm/decorationAddon.test.ts
+--- a/src/vs/workbench/contrib/terminal/test/browser/xterm/decorationAddon.test.ts
++++ b/src/vs/workbench/contrib/terminal/test/browser/xterm/decorationAddon.test.ts
+@@ -90,7 +90,7 @@
+ 		}));
+ 		const capabilities = store.add(new TerminalCapabilityStore());
+ 		capabilities.add(TerminalCapability.CommandDetection, store.add(instantiationService.createInstance(CommandDetectionCapability, xterm)));
+-		decorationAddon = store.add(instantiationService.createInstance(DecorationAddon, undefined, capabilities));
++		decorationAddon = store.add(instantiationService.createInstance(DecorationAddon, capabilities));
+ 		xterm.loadAddon(decorationAddon);
+ 	});
+ 
+diff --git a/src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminalAccessibilityHelp.ts b/src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminalAccessibilityHelp.ts
+--- a/src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminalAccessibilityHelp.ts
++++ b/src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminalAccessibilityHelp.ts
+@@ -21,8 +21,6 @@
+ import { TerminalHistoryCommandId } from '../../history/common/terminal.history.js';
+ import { TerminalSuggestCommandId } from '../../suggest/common/terminal.suggest.js';
+ import { TerminalSuggestSettingId } from '../../suggest/common/terminalSuggestConfiguration.js';
+-import { HasSpeechProvider } from '../../../speech/common/speechService.js';
+-import { ChatContextKeys } from '../../../chat/common/actions/chatContextKeys.js';
+ 
+ export const enum ClassName {
+ 	Active = 'active',
+@@ -83,11 +81,6 @@
+ 			content.push(localize('commandPromptMigration', "Consider using powershell instead of command prompt for an improved experience"));
+ 		}
+ 
+-		if (HasSpeechProvider.getValue(this._contextKeyService) ||
+-			(ChatContextKeys.enabled.getValue(this._contextKeyService) && ChatContextKeys.speechToTextConfigured.getValue(this._contextKeyService))) {
+-			content.push(localize('terminalDictation', 'Start or stop dictation in the terminal<keybinding:{0}>.', TerminalCommandId.StartVoice));
+-		}
+-
+ 		if (this._hasShellIntegration) {
+ 			content.push(localize('shellIntegration', "The terminal has a feature called shell integration that offers an enhanced experience and provides useful commands for screen readers such as:"));
+ 			content.push('- ' + localize('goToNextCommand', 'Go to Next Command<keybinding:{0}> in the accessible view', TerminalAccessibilityCommandId.AccessibleBufferGoToNextCommand));
+diff --git a/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts b/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
+--- a/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
++++ b/src/vs/workbench/contrib/terminalContrib/inlineHint/browser/terminal.initialHint.contribution.ts
+@@ -20,8 +20,6 @@
+ import { IKeybindingService } from '../../../../../platform/keybinding/common/keybinding.js';
+ import { ITerminalCapabilityStore, TerminalCapability } from '../../../../../platform/terminal/common/capabilities/capabilities.js';
+ import { AccessibilityVerbositySettingId } from '../../../accessibility/browser/accessibilityConfiguration.js';
+-import { IChatAgent, IChatAgentService } from '../../../chat/common/participants/chatAgents.js';
+-import { ChatAgentLocation } from '../../../chat/common/constants.js';
+ import { IDetachedTerminalInstance, ITerminalConfigurationService, ITerminalContribution, ITerminalInstance, IXtermTerminal } from '../../../terminal/browser/terminal.js';
+ import { registerTerminalContribution, type IDetachedCompatibleTerminalContributionContext, type ITerminalContributionContext } from '../../../terminal/browser/terminalExtensions.js';
+ import { TerminalInstance } from '../../../terminal/browser/terminalInstance.js';
+@@ -29,22 +27,18 @@
+ import './media/terminalInitialHint.css';
+ import { TerminalSuggestCommandId } from '../../suggest/common/terminal.suggest.js';
+ import { TerminalSuggestSettingId } from '../../suggest/common/terminalSuggestConfiguration.js';
+-import { IChatEntitlementService } from '../../../../services/chat/common/chatEntitlementService.js';
+ 
+ const $ = dom.$;
+ 
+ export class InitialHintAddon extends Disposable implements ITerminalAddon {
+ 	private readonly _onDidRequestCreateHint = this._register(new Emitter<void>());
+ 	get onDidRequestCreateHint(): Event<void> { return this._onDidRequestCreateHint.event; }
+-	private readonly _disposables = this._register(new MutableDisposable<DisposableStore>());
+-
+-	constructor(private readonly _capabilities: ITerminalCapabilityStore,
+-		private readonly _onDidChangeAgents: Event<IChatAgent | undefined>) {
++
++	constructor(private readonly _capabilities: ITerminalCapabilityStore) {
+ 		super();
+ 	}
+ 	activate(terminal: RawXtermTerminal): void {
+ 		const store = this._register(new DisposableStore());
+-		this._disposables.value = store;
+ 		const capability = this._capabilities.get(TerminalCapability.CommandDetection);
+ 		if (capability) {
+ 			store.add(Event.once(capability.promptInputModel.onDidStartInput)(() => this._onDidRequestCreateHint.fire()));
+@@ -59,13 +53,7 @@
+ 				}
+ 			}));
+ 		}
+-		const agentListener = this._onDidChangeAgents((e) => {
+-			if (e?.locations.includes(ChatAgentLocation.Terminal)) {
+-				this._onDidRequestCreateHint.fire();
+-				agentListener.dispose();
+-			}
+-		});
+-		this._disposables.value?.add(agentListener);
++
+ 	}
+ }
+ 
+@@ -85,7 +73,6 @@
+ 
+ 	constructor(
+ 		private readonly _ctx: ITerminalContributionContext | IDetachedCompatibleTerminalContributionContext,
+-		@IChatAgentService private readonly _chatAgentService: IChatAgentService,
+ 		@IConfigurationService private readonly _configurationService: IConfigurationService,
+ 		@IInstantiationService private readonly _instantiationService: IInstantiationService,
+ 		@ITerminalConfigurationService private readonly _terminalConfigurationService: ITerminalConfigurationService,
+@@ -107,7 +94,7 @@
+ 			return;
+ 		}
+ 		this._xterm = xterm;
+-		this._addon = this._register(this._instantiationService.createInstance(InitialHintAddon, this._ctx.instance.capabilities, this._chatAgentService.onDidChangeAgents));
++		this._addon = this._register(this._instantiationService.createInstance(InitialHintAddon, this._ctx.instance.capabilities));
+ 		this._xterm.raw.loadAddon(this._addon);
+ 		this._register(this._addon.onDidRequestCreateHint(() => this._createHint()));
+ 	}
+@@ -210,7 +197,6 @@
+ 
+ 	constructor(
+ 		private readonly _instance: ITerminalInstance,
+-		@IChatEntitlementService private readonly _chatEntitlementService: IChatEntitlementService,
+ 		@ICommandService private readonly _commandService: ICommandService,
+ 		@IConfigurationService private readonly _configurationService: IConfigurationService,
+ 		@IContextMenuService private readonly _contextMenuService: IContextMenuService,
+@@ -218,7 +204,7 @@
+ 	) {
+ 		super();
+ 		this._toDispose.add(_instance.onDidFocus(() => {
+-			if (this._instance.hasFocus && this._isVisible && this._ariaLabel && this._configurationService.getValue(AccessibilityVerbositySettingId.TerminalInlineChat)) {
++			if (this._instance.hasFocus && this._isVisible && this._ariaLabel && this._configurationService.getValue(AccessibilityVerbositySettingId.Terminal)) {
+ 				status(this._ariaLabel);
+ 			}
+ 		}));
+@@ -265,15 +251,7 @@
+ 		const hintElement = $('div.terminal-initial-hint');
+ 		hintElement.style.display = 'block';
+ 
+-		const aiFeaturesHidden = this._chatEntitlementService.sentiment.hidden;
+-
+-		// Copilot CLI hint removed (vslight R-2/ADR-1: zero visible Copilot surface).
+-		// Previously gated on !aiFeaturesHidden; even when AI features were hidden,
+-		// the hint showed the dismissable "Type copilot to use Copilot CLI" text.
+-		// Now: never render — fallback Suggest hint below handles the only legitimate case.
+-
+-		// Suggest hint - only shown when AI features are hidden (otherwise the Copilot CLI hint takes precedence)
+-		const suggestEnabled = aiFeaturesHidden && this._configurationService.getValue<boolean>(TerminalSuggestSettingId.Enabled);
++		const suggestEnabled = this._configurationService.getValue<boolean>(TerminalSuggestSettingId.Enabled);
+ 		const suggestKeybinding = suggestEnabled ? this._keybindingService.lookupKeybinding(TerminalSuggestCommandId.TriggerSuggest) : undefined;
+ 		const suggestKeybindingLabel = suggestKeybinding?.getLabel();
+ 		if (suggestKeybinding && suggestKeybindingLabel) {
+@@ -347,7 +325,7 @@
+ 			this._domNode!.style.paddingLeft = '4px';
+ 
+ 			this._domNode.append(hintElement);
+-			this._ariaLabel = ariaLabel.concat(localize('disableHint', ' Toggle {0} in settings to disable this hint.', AccessibilityVerbositySettingId.TerminalInlineChat));
++			this._ariaLabel = ariaLabel.concat(localize('disableHint', ' Toggle {0} in settings to disable this hint.', AccessibilityVerbositySettingId.Terminal));
+ 
+ 			this._toDispose.add(dom.addDisposableListener(this._domNode, 'click', () => {
+ 				this._domNode?.remove();
+diff --git a/src/vs/workbench/contrib/tasks/common/tasks.ts b/src/vs/workbench/contrib/tasks/common/tasks.ts
+--- a/src/vs/workbench/contrib/tasks/common/tasks.ts
++++ b/src/vs/workbench/contrib/tasks/common/tasks.ts
+@@ -1257,7 +1257,6 @@
+ 	FolderOpen,
+ 	ConfigurationChange,
+ 	Reconnect,
+-	ChatAgent
+ }
+ 
+ export namespace TaskEvent {
+diff --git a/src/vs/workbench/contrib/terminalContrib/inlineHint/test/browser/terminalInitialHint.test.ts b/src/vs/workbench/contrib/terminalContrib/inlineHint/test/browser/terminalInitialHint.test.ts
+--- a/src/vs/workbench/contrib/terminalContrib/inlineHint/test/browser/terminalInitialHint.test.ts
++++ b/src/vs/workbench/contrib/terminalContrib/inlineHint/test/browser/terminalInitialHint.test.ts
+@@ -4,97 +4,62 @@
+  *--------------------------------------------------------------------------------------------*/
+ 
+ import type { Terminal } from '@xterm/xterm';
++import { strictEqual } from 'assert';
++import { getActiveDocument } from '../../../../../../base/browser/dom.js';
++import { toDisposable } from '../../../../../../base/common/lifecycle.js';
+ import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../../../base/test/common/utils.js';
++import { NullLogService } from '../../../../../../platform/log/common/log.js';
++import { TerminalCapability } from '../../../../../../platform/terminal/common/capabilities/capabilities.js';
+ import { ShellIntegrationAddon } from '../../../../../../platform/terminal/common/xterm/shellIntegrationAddon.js';
+-import { workbenchInstantiationService } from '../../../../../test/browser/workbenchTestServices.js';
+-import { NullLogService } from '../../../../../../platform/log/common/log.js';
+-import { getActiveDocument } from '../../../../../../base/browser/dom.js';
+-import { Emitter } from '../../../../../../base/common/event.js';
+-import { strictEqual } from 'assert';
+-import { ExtensionIdentifier } from '../../../../../../platform/extensions/common/extensions.js';
+-import { IChatAgent } from '../../../../chat/common/participants/chatAgents.js';
+ import { importAMDNodeModule } from '../../../../../../amdX.js';
+-import { ChatAgentLocation, ChatModeKind } from '../../../../chat/common/constants.js';
++import { TestXtermLogger } from '../../../../../../platform/terminal/test/common/terminalTestHelpers.js';
++import { writeP } from '../../../../terminal/browser/terminalTestHelpers.js';
+ import { InitialHintAddon } from '../../browser/terminal.initialHint.contribution.js';
+-import { TestXtermLogger } from '../../../../../../platform/terminal/test/common/terminalTestHelpers.js';
+ 
+ suite('Terminal Initial Hint Addon', () => {
+ 	const store = ensureNoDisposablesAreLeakedInTestSuite();
+-	let eventCount = 0;
++	let eventCount: number;
+ 	let xterm: Terminal;
+-	let initialHintAddon: InitialHintAddon;
+-	const onDidChangeAgentsEmitter: Emitter<IChatAgent | undefined> = new Emitter();
+-	const onDidChangeAgents = onDidChangeAgentsEmitter.event;
+-	const agent: IChatAgent = {
+-		id: 'termminal',
+-		name: 'terminal',
+-		extensionId: new ExtensionIdentifier('test'),
+-		extensionVersion: undefined,
+-		extensionPublisherId: 'test',
+-		extensionDisplayName: 'test',
+-		metadata: {},
+-		slashCommands: [{ name: 'test', description: 'test' }],
+-		disambiguation: [],
+-		locations: [ChatAgentLocation.fromRaw('terminal')],
+-		modes: [ChatModeKind.Ask],
+-		invoke: async () => { return {}; }
+-	};
+-	const editorAgent: IChatAgent = {
+-		id: 'editor',
+-		name: 'editor',
+-		extensionId: new ExtensionIdentifier('test-editor'),
+-		extensionVersion: undefined,
+-		extensionPublisherId: 'test-editor',
+-		extensionDisplayName: 'test-editor',
+-		metadata: {},
+-		slashCommands: [{ name: 'test', description: 'test' }],
+-		locations: [ChatAgentLocation.fromRaw('editor')],
+-		modes: [ChatModeKind.Ask],
+-		disambiguation: [],
+-		invoke: async () => { return {}; }
+-	};
++	let shellIntegrationAddon: ShellIntegrationAddon;
++
+ 	setup(async () => {
+-		const instantiationService = workbenchInstantiationService({}, store);
++		eventCount = 0;
+ 		const TerminalCtor = (await importAMDNodeModule<typeof import('@xterm/xterm')>('@xterm/xterm', 'lib/xterm.js')).Terminal;
+ 		xterm = store.add(new TerminalCtor({ logger: TestXtermLogger }));
+-		const shellIntegrationAddon = store.add(new ShellIntegrationAddon('', true, undefined, undefined, new NullLogService));
+-		initialHintAddon = store.add(instantiationService.createInstance(InitialHintAddon, shellIntegrationAddon.capabilities, onDidChangeAgents));
+-		store.add(initialHintAddon.onDidRequestCreateHint(() => eventCount++));
++		shellIntegrationAddon = store.add(new ShellIntegrationAddon('', true, undefined, undefined, new NullLogService));
+ 		const testContainer = document.createElement('div');
+ 		getActiveDocument().body.append(testContainer);
++		store.add(toDisposable(() => testContainer.remove()));
+ 		xterm.open(testContainer);
+-
+ 		xterm.loadAddon(shellIntegrationAddon);
+-		xterm.loadAddon(initialHintAddon);
+ 	});
+ 
+-	suite('Chat providers', () => {
+-		test('hint is not shown when there are no chat providers', () => {
+-			eventCount = 0;
+-			xterm.focus();
+-			strictEqual(eventCount, 0);
+-		});
+-		test('hint is not shown when there is just an editor agent', () => {
+-			eventCount = 0;
+-			onDidChangeAgentsEmitter.fire(editorAgent);
+-			xterm.focus();
+-			strictEqual(eventCount, 0);
+-		});
+-		test('hint is shown when there is a terminal chat agent', () => {
+-			eventCount = 0;
+-			onDidChangeAgentsEmitter.fire(editorAgent);
+-			xterm.focus();
+-			strictEqual(eventCount, 0);
+-			onDidChangeAgentsEmitter.fire(agent);
+-			strictEqual(eventCount, 1);
+-		});
+-		test('hint is not shown again when another terminal chat agent is added if it has already shown', () => {
+-			eventCount = 0;
+-			onDidChangeAgentsEmitter.fire(agent);
+-			xterm.focus();
+-			strictEqual(eventCount, 1);
+-			onDidChangeAgentsEmitter.fire(agent);
+-			strictEqual(eventCount, 1);
+-		});
++	function loadHintAddon(): void {
++		const addon = store.add(new InitialHintAddon(shellIntegrationAddon.capabilities));
++		store.add(addon.onDidRequestCreateHint(() => eventCount++));
++		xterm.loadAddon(addon);
++	}
++
++	test('focus alone does not show a hint without shell integration', () => {
++		loadHintAddon();
++		xterm.focus();
++		strictEqual(eventCount, 0);
++	});
++
++	test('a newly detected shell prompt requests the ordinary hint without a chat provider', async () => {
++		loadHintAddon();
++		await writeP(xterm, '\x1b]633;A\x07');
++		strictEqual(eventCount, 1);
++	});
++
++	test('an existing shell integration requests a hint at first input only', async () => {
++		await writeP(xterm, '\x1b]633;A\x07');
++		strictEqual(shellIntegrationAddon.capabilities.has(TerminalCapability.CommandDetection), true);
++		loadHintAddon();
++		strictEqual(eventCount, 0);
++		await writeP(xterm, '\x1b]633;B\x07');
++		strictEqual(eventCount, 1);
++		await writeP(xterm, 'echo hello\x1b]633;C\x07\r\nhello\r\n\x1b]633;D;0\x07\x1b]633;A\x07\x1b]633;B\x07');
++		strictEqual(eventCount, 1);
+ 	});
+ });
+diff --git a/src/vs/workbench/contrib/terminalContrib/accessibility/test/browser/bufferContentTracker.test.ts b/src/vs/workbench/contrib/terminalContrib/accessibility/test/browser/bufferContentTracker.test.ts
+--- a/src/vs/workbench/contrib/terminalContrib/accessibility/test/browser/bufferContentTracker.test.ts
++++ b/src/vs/workbench/contrib/terminalContrib/accessibility/test/browser/bufferContentTracker.test.ts
+@@ -80,7 +80,7 @@
+ 			capabilities.add(TerminalCapability.NaiveCwdDetection, null!);
+ 		}
+ 		const TerminalCtor = (await importAMDNodeModule<typeof import('@xterm/xterm')>('@xterm/xterm', 'lib/xterm.js')).Terminal;
+-		xterm = store.add(instantiationService.createInstance(XtermTerminal, undefined, TerminalCtor, {
++		xterm = store.add(instantiationService.createInstance(XtermTerminal, TerminalCtor, {
+ 			cols: 80,
+ 			rows: 30,
+ 			xtermColorProvider: { getBackgroundColor: () => undefined },
+diff --git a/src/vs/workbench/contrib/terminalContrib/suggest/browser/terminal.suggest.contribution.ts b/src/vs/workbench/contrib/terminalContrib/suggest/browser/terminal.suggest.contribution.ts
+--- a/src/vs/workbench/contrib/terminalContrib/suggest/browser/terminal.suggest.contribution.ts
++++ b/src/vs/workbench/contrib/terminalContrib/suggest/browser/terminal.suggest.contribution.ts
+@@ -519,7 +519,6 @@
+ 	f1: false,
+ 	precondition: ContextKeyExpr.and(ContextKeyExpr.or(TerminalContextKeys.processSupported, TerminalContextKeys.terminalHasBeenCreated), TerminalContextKeys.isOpen, TerminalContextKeys.focus, TerminalContextKeys.suggestWidgetVisible, SimpleSuggestContext.HasFocusedSuggestion),
+ 	keybinding: {
+-		// HACK: Force weight to be higher than that to start terminal chat
+ 		weight: KeybindingWeight.ExternalExtension + 2,
+ 		primary: KeyMod.CtrlCmd | KeyCode.Space,
+ 		secondary: [KeyMod.CtrlCmd | KeyCode.KeyI],
+diff --git a/src/vs/workbench/contrib/terminal/test/browser/terminalProfileService.integrationTest.ts b/src/vs/workbench/contrib/terminal/test/browser/terminalProfileService.integrationTest.ts
+--- a/src/vs/workbench/contrib/terminal/test/browser/terminalProfileService.integrationTest.ts
++++ b/src/vs/workbench/contrib/terminal/test/browser/terminalProfileService.integrationTest.ts
+@@ -101,7 +101,13 @@
+ class TestTerminalInstanceService implements Partial<ITerminalInstanceService> {
+ 	private _profiles: Map<string, ITerminalProfile[]> = new Map();
+ 	private _hasReturnedNone = true;
++	getRegisteredBackends(): IterableIterator<ITerminalBackend> {
++		return [this._getBackend(undefined)].values();
++	}
+ 	async getBackend(remoteAuthority: string | undefined): Promise<ITerminalBackend> {
++		return this._getBackend(remoteAuthority);
++	}
++	private _getBackend(remoteAuthority: string | undefined): ITerminalBackend {
+ 		return {
+ 			getProfiles: async () => {
+ 				if (this._hasReturnedNone) {

@@ -1,0 +1,34 @@
+{
+  "present": true,
+  "search": "mcp",
+  "bodyText": "Showing 2 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource\nMarkdown: Change Preview Security Settings\n-\nMarkdown Language Features\nMerge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+  "lists": [
+    {
+      "role": "list",
+      "count": null,
+      "label": "Keybindings"
+    }
+  ],
+  "rows": [
+    {
+      "text": "Markdown: Change Preview Security Settings\n-\nMarkdown Language Features",
+      "aria": "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+      "id": "",
+      "labels": [
+        "Add Keybinding (Enter)",
+        "Markdown: Change Preview Security Settings (markdown.showPreviewSecuritySelector)",
+        "Shift+Option+UpArrow"
+      ]
+    },
+    {
+      "text": "Merge Conflict: Previous Conflict\nmerge-conflict.previous\n-\nMerge Conflict",
+      "aria": "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+      "id": "merge-conflict.previous",
+      "labels": [
+        "Add Keybinding (Enter)",
+        "Merge Conflict: Previous Conflict (merge-conflict.previous)",
+        "Command+C"
+      ]
+    }
+  ]
+}

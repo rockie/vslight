@@ -1,0 +1,96 @@
+{
+  "at": "2026-10-02T21:41:20.863472+10:00",
+  "status": "PASS_FINAL_PROGRESS_DOCUMENTATION_DIFF_AND_JSON",
+  "checks": [
+    {
+      "label": "progress",
+      "command": [
+        "bash",
+        ".agents/skills/dev-plan/scripts/check_progress.sh",
+        "docs/plan/lean-core.md",
+        "."
+      ],
+      "exit": 0,
+      "stdout": "---\n进度:6/8 · 里程碑表 8 行 · 记录 8 行(已完成 6) · ERROR 0 · WARN 0\n",
+      "stderr": ""
+    },
+    {
+      "label": "product-docs",
+      "command": [
+        "python3",
+        ".agents/skills/documentation-writer/scripts/check_doc.py",
+        "README.md",
+        "docs/extensions-compatibility.md",
+        "docs/vslight-icons.md",
+        "docs/vslight-release.md",
+        "docs/usage.md",
+        "docs/vslight-migration.md",
+        "--repo-root",
+        "."
+      ],
+      "exit": 0,
+      "stdout": "== README.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/extensions-compatibility.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-icons.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-release.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/usage.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/vslight-migration.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n\n没有错误\n",
+      "stderr": ""
+    },
+    {
+      "label": "new-records",
+      "command": [
+        "python3",
+        ".agents/skills/documentation-writer/scripts/check_doc.py",
+        "docs/plan/lean-core.records/M7.md",
+        "docs/plan/lean-core.records/M8-final-local-audit151.md",
+        "docs/plan/lean-core.records/M8.md",
+        "docs/plan/lean-core.records/M8-docs-final-audit.md",
+        "docs/plan/lean-core.records/M8-remaining-gates.md",
+        "docs/plan/lean-core.records/M2-resources.md",
+        "--repo-root",
+        "."
+      ],
+      "exit": 0,
+      "stdout": "== docs/plan/lean-core.records/M7.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8-final-local-audit151.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8-docs-final-audit.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M8-remaining-gates.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n== docs/plan/lean-core.records/M2-resources.md\n  [统计] {'标记': {}, 'Mermaid 图': 0, 'HTML 图链接': 0}\n\n没有错误\n",
+      "stderr": ""
+    },
+    {
+      "label": "diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "json151Parsed": 221,
+  "productionBuildOrHelperDrift": 0,
+  "currentInputCi": "UNVERIFIED; local-only authorization",
+  "published": false,
+  "initialDocumentationFailure": {
+    "file": "M2-resources.md",
+    "line": 77,
+    "error": "Unqualified build/lib/electron.ts path was interpreted at repository root",
+    "resolution": "Linked actual generated source file; production unchanged"
+  },
+  "ownedRuntimeCleanup": {
+    "liveOwnedPids": [],
+    "liveOwnedListeners": [],
+    "untouchedInstalledMainPid": 1627,
+    "checkedPids": [
+      38116,
+      39925,
+      40135,
+      41146,
+      41471
+    ],
+    "checkedPorts": [
+      19540,
+      19542,
+      19550,
+      19551,
+      19552
+    ]
+  },
+  "closingReferenceAudit": "M8-final-reference-audit151.json",
+  "closedAt": "2026-10-02T21:42:00.215856+10:00"
+}

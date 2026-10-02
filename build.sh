@@ -29,6 +29,12 @@ if [[ "${SHOULD_BUILD}" == "yes" ]]; then
 
     npm run gulp "vscode-darwin-${VSCODE_ARCH}-min-packing"
 
+    # Consolidate resources before timestamps, signing, notarization or archives.
+    macos_resource_python="${PYTHON:-python3}"
+    "${macos_resource_python}" -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else "Python 3.11+ is required for macOS resource pruning")'
+    app_name=$(node -p "require('./product.json').nameLong")
+    "${macos_resource_python}" ../dev/prune-macos-resources.py "../VSCode-darwin-${VSCODE_ARCH}/${app_name}.app"
+
     find "../VSCode-darwin-${VSCODE_ARCH}" -print0 | xargs -0 touch -c
 
     . ../build_cli.sh

@@ -1,0 +1,5 @@
+{"event":"PREFLIGHT","pid":29377,"hostPID":30589,"native":{"appActive":true,"AXWindowCount":1,"AXWindowsStatus":0,"bundleURL":"/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app","locked":false,"onConsole":true,"pid":29377,"running":true},"documentHasFocus":true}
+{"action":"terminal-view","status":"FOUR_GATE_ROW_PASS","contentCheck":"REAL_DOM_AX_CONTENT_SUBSET_PASS","retired":0,"visible":true,"documentHasFocus":true,"closed":true,"restore":true}
+{"action":"terminal-help","status":"FOUR_GATE_ROW_PASS","contentCheck":"REAL_DOM_AX_CONTENT_SUBSET_PASS","retired":0,"visible":true,"documentHasFocus":true,"closed":true,"restore":true}
+{"action":"editor-help","status":"FOUR_GATE_ROW_PASS","contentCheck":"REAL_DOM_AX_CONTENT_SUBSET_PASS","retired":0,"visible":true,"documentHasFocus":true,"closed":true,"restore":true}
+{"action":"hover-view","status":"FOUR_GATE_ROW_PASS","contentCheck":"REAL_DOM_AX_CONTENT_SUBSET_PASS","retired":0,"visible":true,"documentHasFocus":true,"closed":true,"restore":true}

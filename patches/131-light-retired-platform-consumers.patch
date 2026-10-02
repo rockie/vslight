@@ -1,0 +1,1515 @@
+diff --git a/src/vs/platform/userDataProfile/electron-main/userDataProfile.ts b/src/vs/platform/userDataProfile/electron-main/userDataProfile.ts
+--- a/src/vs/platform/userDataProfile/electron-main/userDataProfile.ts
++++ b/src/vs/platform/userDataProfile/electron-main/userDataProfile.ts
+@@ -4,25 +4,18 @@
+  *--------------------------------------------------------------------------------------------*/
+ 
+ import { Event } from '../../../base/common/event.js';
+-import { joinPath } from '../../../base/common/resources.js';
+ import { INativeEnvironmentService } from '../../environment/common/environment.js';
+ import { IFileService } from '../../files/common/files.js';
+ import { refineServiceDecorator } from '../../instantiation/common/instantiation.js';
+ import { ILogService } from '../../log/common/log.js';
+-import { IProductService } from '../../product/common/productService.js';
+ import { IUriIdentityService } from '../../uriIdentity/common/uriIdentity.js';
+-import { IUserDataProfilesService, WillCreateProfileEvent, WillRemoveProfileEvent, IUserDataProfile, AGENTS_WINDOW_PROFILE_ID } from '../common/userDataProfile.js';
++import { IUserDataProfilesService, WillCreateProfileEvent, WillRemoveProfileEvent, IUserDataProfile } from '../common/userDataProfile.js';
+ import { UserDataProfilesService } from '../node/userDataProfile.js';
+ import { IAnyWorkspaceIdentifier, IEmptyWorkspaceIdentifier } from '../../workspace/common/workspace.js';
+ import { IStateService } from '../../state/node/state.js';
+-import { URI } from '../../../base/common/uri.js';
+-import { NativeParsedArgs } from '../../environment/common/argv.js';
+-import { env } from '../../../base/common/process.js';
+-import { join, resolve } from '../../../base/common/path.js';
+ 
+ export const IUserDataProfilesMainService = refineServiceDecorator<IUserDataProfilesService, IUserDataProfilesMainService>(IUserDataProfilesService);
+ export interface IUserDataProfilesMainService extends IUserDataProfilesService {
+-	createAgentsWindowProfile(): Promise<IUserDataProfile>;
+ 	getProfileForWorkspace(workspaceIdentifier: IAnyWorkspaceIdentifier): IUserDataProfile | undefined;
+ 	unsetWorkspace(workspaceIdentifier: IAnyWorkspaceIdentifier, transient?: boolean): void;
+ 	getAssociatedEmptyWindows(): IEmptyWorkspaceIdentifier[];
+@@ -32,7 +25,6 @@
+ 
+ export class UserDataProfilesMainService extends UserDataProfilesService implements IUserDataProfilesMainService {
+ 
+-	private readonly agentPluginsHome: URI;
+ 
+ 	constructor(
+ 		@IStateService stateService: IStateService,
+@@ -40,26 +32,8 @@
+ 		@INativeEnvironmentService environmentService: INativeEnvironmentService,
+ 		@IFileService fileService: IFileService,
+ 		@ILogService logService: ILogService,
+-		@IProductService productService: IProductService,
+ 	) {
+ 		super(stateService, uriIdentityService, environmentService, fileService, logService);
+-		this.agentPluginsHome = URI.file(getAgentPluginsPath(environmentService.args, joinPath(environmentService.userHome, productService.dataFolderName)));
+-	}
+-
+-	protected override createDefaultProfile(): IUserDataProfile {
+-		return {
+-			...super.createDefaultProfile(),
+-			agentPluginsHome: this.agentPluginsHome
+-		};
+-	}
+-
+-	async createAgentsWindowProfile(): Promise<IUserDataProfile> {
+-		const existing = this.profiles.find(p => p.id === AGENTS_WINDOW_PROFILE_ID);
+-		if (existing) {
+-			return existing;
+-		}
+-
+-		return this.createProfile(AGENTS_WINDOW_PROFILE_ID, 'Agents');
+ 	}
+ 
+ 	getAssociatedEmptyWindows(): IEmptyWorkspaceIdentifier[] {
+@@ -70,22 +44,3 @@
+ 		return emptyWindows;
+ 	}
+ }
+-
+-function getAgentPluginsPath(args: NativeParsedArgs, userHome: URI): string {
+-	const cliAgentPluginsDir = args['agent-plugins-dir'];
+-	if (cliAgentPluginsDir) {
+-		return resolve(cliAgentPluginsDir);
+-	}
+-
+-	const vscodeAgentPlugins = env['VSCODE_AGENT_PLUGINS'];
+-	if (vscodeAgentPlugins) {
+-		return vscodeAgentPlugins;
+-	}
+-
+-	const vscodePortable = env['VSCODE_PORTABLE'];
+-	if (vscodePortable) {
+-		return join(vscodePortable, 'agent-plugins');
+-	}
+-
+-	return joinPath(userHome, 'agent-plugins').fsPath;
+-}
+diff --git a/src/vs/platform/userDataProfile/common/userDataProfile.ts b/src/vs/platform/userDataProfile/common/userDataProfile.ts
+--- a/src/vs/platform/userDataProfile/common/userDataProfile.ts
++++ b/src/vs/platform/userDataProfile/common/userDataProfile.ts
+@@ -21,19 +21,6 @@
+ import { escapeRegExpCharacters } from '../../../base/common/strings.js';
+ import { isString, Mutable } from '../../../base/common/types.js';
+ 
+-export const AGENTS_WINDOW_PROFILE_ID = 'agents';
+-
+-const AGENTS_WINDOW_PROFILE_FLAGS: UseDefaultProfileFlags = {
+-	settings: true,
+-	keybindings: true,
+-	prompts: true,
+-	mcp: true,
+-	languageModels: true,
+-	snippets: true,
+-	tasks: true,
+-	extensions: true,
+-};
+-
+ export const enum ProfileResourceType {
+ 	Settings = 'settings',
+ 	Keybindings = 'keybindings',
+@@ -69,12 +56,10 @@
+ 	readonly extensionsResource: URI;
+ 	readonly mcpResource: URI;
+ 	readonly languageModelsResource: URI;
+-	readonly agentPluginsHome: URI;
+ 	readonly cacheHome: URI;
+ 	readonly useDefaultFlags?: UseDefaultProfileFlags;
+ 	readonly isInternal?: boolean;
+ 	readonly isTransient?: boolean;
+-	readonly isAgentsWindowProfile?: boolean;
+ 	readonly workspaces?: readonly URI[];
+ }
+ 
+@@ -95,7 +80,6 @@
+ 		&& URI.isUri(candidate.extensionsResource)
+ 		&& URI.isUri(candidate.mcpResource)
+ 		&& URI.isUri(candidate.languageModelsResource)
+-		&& URI.isUri(candidate.agentPluginsHome)
+ 	);
+ }
+ 
+@@ -175,18 +159,15 @@
+ 		extensionsResource: URI.revive(profile.extensionsResource).with({ scheme }),
+ 		mcpResource: URI.revive(profile.mcpResource).with({ scheme }),
+ 		languageModelsResource: URI.revive(profile.languageModelsResource).with({ scheme }),
+-		agentPluginsHome: URI.revive(profile.agentPluginsHome),
+ 		cacheHome: URI.revive(profile.cacheHome).with({ scheme }),
+ 		useDefaultFlags: profile.useDefaultFlags,
+ 		isTransient: profile.isTransient,
+ 		isInternal: profile.isInternal,
+-		isAgentsWindowProfile: profile.isAgentsWindowProfile,
+ 		workspaces: profile.workspaces?.map(w => URI.revive(w)),
+ 	};
+ }
+ 
+ export function toUserDataProfile(id: string, name: string, location: URI, profilesCacheHome: URI, options?: IUserDataProfileOptions, defaultProfile?: IUserDataProfile): IUserDataProfile {
+-	const isAgentsWindowProfile = id === AGENTS_WINDOW_PROFILE_ID;
+ 	return {
+ 		id,
+ 		name,
+@@ -202,12 +183,10 @@
+ 		extensionsResource: defaultProfile && options?.useDefaultFlags?.extensions ? defaultProfile.extensionsResource : joinPath(location, 'extensions.json'),
+ 		mcpResource: defaultProfile && options?.useDefaultFlags?.mcp ? defaultProfile.mcpResource : joinPath(location, 'mcp.json'),
+ 		languageModelsResource: defaultProfile && options?.useDefaultFlags?.languageModels ? defaultProfile.languageModelsResource : joinPath(location, 'chatLanguageModels.json'),
+-		agentPluginsHome: defaultProfile ? defaultProfile.agentPluginsHome : joinPath(location, 'agent-plugins'),
+ 		cacheHome: joinPath(profilesCacheHome, id),
+ 		useDefaultFlags: options?.useDefaultFlags,
+ 		isTransient: options?.transient,
+-		isInternal: isAgentsWindowProfile || options?.transient,
+-		isAgentsWindowProfile,
++		isInternal: options?.transient,
+ 		workspaces: options?.workspaces,
+ 	};
+ }
+@@ -297,7 +276,7 @@
+ 						this.profilesCacheHome,
+ 						{
+ 							icon: storedProfile.icon,
+-							useDefaultFlags: id === AGENTS_WINDOW_PROFILE_ID ? AGENTS_WINDOW_PROFILE_FLAGS : storedProfile.useDefaultFlags,
++							useDefaultFlags: storedProfile.useDefaultFlags,
+ 						},
+ 						defaultProfile));
+ 				}
+@@ -386,7 +365,7 @@
+ 		if (!profileCreationPromise) {
+ 			profileCreationPromise = (async () => {
+ 				try {
+-					const existing = this.profiles.find(p => p.id === id || (id !== AGENTS_WINDOW_PROFILE_ID && !p.isTransient && !options?.transient && p.name === name));
++					const existing = this.profiles.find(p => p.id === id || (!p.isTransient && !options?.transient && p.name === name));
+ 					if (existing) {
+ 						throw new Error(`Profile with ${name} name already exists`);
+ 					}
+@@ -399,9 +378,9 @@
+ 					const profile = toUserDataProfile(
+ 						id,
+ 						name,
+-						this.uriIdentityService.extUri.joinPath(this.profilesHome, ...(id === AGENTS_WINDOW_PROFILE_ID ? [SYSTEM_PROFILES_HOME, id] : [id])),
++						this.uriIdentityService.extUri.joinPath(this.profilesHome, id),
+ 						this.profilesCacheHome,
+-						id === AGENTS_WINDOW_PROFILE_ID ? {} : options,
++						options,
+ 						this.defaultProfile);
+ 					await this.fileService.createFolder(profile.location);
+ 
+@@ -429,10 +408,6 @@
+ 	}
+ 
+ 	async updateProfile(profile: IUserDataProfile, options: IUserDataProfileUpdateOptions): Promise<IUserDataProfile> {
+-		if (profile.isAgentsWindowProfile) {
+-			throw new Error('Cannot update agents window profile');
+-		}
+-
+ 		const profilesToUpdate: IUserDataProfile[] = [];
+ 		for (const existing of this.profiles) {
+ 			let profileToUpdate: Mutable<IUserDataProfile> | undefined;
+@@ -594,10 +569,6 @@
+ 
+ 	getProfileForWorkspace(workspaceIdentifier: IAnyWorkspaceIdentifier): IUserDataProfile | undefined {
+ 		const workspace = this.getWorkspace(workspaceIdentifier);
+-
+-		if (URI.isUri(workspace) && this.uriIdentityService.extUri.isEqual(workspace, this.environmentService.agentSessionsWorkspace)) {
+-			return this.profiles.find(p => p.isAgentsWindowProfile);
+-		}
+ 
+ 		return URI.isUri(workspace)
+ 			? this.profiles.find(p => p.workspaces?.some(w => this.uriIdentityService.extUri.isEqual(w, workspace)))
+diff --git a/src/vs/platform/userDataProfile/test/electron-main/userDataProfileMainService.test.ts b/src/vs/platform/userDataProfile/test/electron-main/userDataProfileMainService.test.ts
+--- a/src/vs/platform/userDataProfile/test/electron-main/userDataProfileMainService.test.ts
++++ b/src/vs/platform/userDataProfile/test/electron-main/userDataProfileMainService.test.ts
+@@ -15,7 +15,6 @@
+ import { UserDataProfilesMainService } from '../../electron-main/userDataProfile.js';
+ import { SaveStrategy, StateService } from '../../../state/node/stateService.js';
+ import { UriIdentityService } from '../../../uriIdentity/common/uriIdentityService.js';
+-import { IProductService } from '../../../product/common/productService.js';
+ import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+ 
+ const ROOT = URI.file('tests').with({ scheme: 'vscode-tests' });
+@@ -39,6 +38,8 @@
+ 
+ suite('UserDataProfileMainService', () => {
+ 
++	teardown(async () => stateService.close());
++
+ 	const disposables = ensureNoDisposablesAreLeakedInTestSuite();
+ 	let testObject: UserDataProfilesMainService;
+ 	let environmentService: TestEnvironmentService, stateService: StateService;
+@@ -52,8 +53,7 @@
+ 		environmentService = new TestEnvironmentService(joinPath(ROOT, 'User'));
+ 		stateService = disposables.add(new StateService(SaveStrategy.DELAYED, environmentService, logService, fileService));
+ 
+-		const productService: IProductService = { _serviceBrand: undefined, ...product };
+-		testObject = disposables.add(new UserDataProfilesMainService(stateService, disposables.add(new UriIdentityService(fileService)), environmentService, fileService, logService, productService));
++		testObject = disposables.add(new UserDataProfilesMainService(stateService, disposables.add(new UriIdentityService(fileService)), environmentService, fileService, logService));
+ 		await stateService.init();
+ 	});
+ 
+@@ -112,32 +112,6 @@
+ 		assert.strictEqual(testObject.getProfileForWorkspace(workspace)?.id, profile.id);
+ 	});
+ 
+-	test('creating agents window profile should return profile with agent window default flags', async () => {
+-		const profile = await testObject.createAgentsWindowProfile();
+ 
+-		assert.deepStrictEqual(profile.id, 'agents');
+-		assert.deepStrictEqual(profile.name, 'Agents');
+-		assert.deepStrictEqual(profile.isDefault, false);
+-		assert.deepStrictEqual(profile.isAgentsWindowProfile, true);
+-		assert.deepStrictEqual(profile.isInternal, true);
+-		assert.deepStrictEqual(profile.useDefaultFlags, {
+-			settings: true,
+-			keybindings: true,
+-			prompts: true,
+-			mcp: true,
+-			languageModels: true,
+-			snippets: true,
+-			tasks: true,
+-			extensions: true,
+-		});
+-		assert.strictEqual(profile.settingsResource.toString(), testObject.defaultProfile.settingsResource.toString());
+-		assert.strictEqual(profile.keybindingsResource.toString(), testObject.defaultProfile.keybindingsResource.toString());
+-		assert.strictEqual(profile.snippetsHome.toString(), testObject.defaultProfile.snippetsHome.toString());
+-		assert.strictEqual(profile.tasksResource.toString(), testObject.defaultProfile.tasksResource.toString());
+-		assert.strictEqual(profile.extensionsResource.toString(), testObject.defaultProfile.extensionsResource.toString());
+-		assert.strictEqual(profile.promptsHome.toString(), testObject.defaultProfile.promptsHome.toString());
+-		assert.strictEqual(profile.mcpResource.toString(), testObject.defaultProfile.mcpResource.toString());
+-		assert.strictEqual(profile.languageModelsResource.toString(), testObject.defaultProfile.languageModelsResource.toString());
+-	});
+ 
+ });
+diff --git a/src/vs/platform/storage/test/electron-main/storageMainService.test.ts b/src/vs/platform/storage/test/electron-main/storageMainService.test.ts
+--- a/src/vs/platform/storage/test/electron-main/storageMainService.test.ts
++++ b/src/vs/platform/storage/test/electron-main/storageMainService.test.ts
+@@ -51,7 +51,6 @@
+ 		promptsHome: joinPath(inMemoryProfileRoot, 'promptsHome'),
+ 		extensionsResource: joinPath(inMemoryProfileRoot, 'extensionsResource'),
+ 		cacheHome: joinPath(inMemoryProfileRoot, 'cache'),
+-		agentPluginsHome: joinPath(inMemoryProfileRoot, 'agentPluginsHome'),
+ 	};
+ 
+ 	class TestStorageMainService extends StorageMainService {
+@@ -120,7 +119,7 @@
+ 		const environmentService = new NativeEnvironmentService(parseArgs(process.argv, OPTIONS), productService);
+ 		const fileService = disposables.add(new FileService(new NullLogService()));
+ 		const uriIdentityService = disposables.add(new UriIdentityService(fileService));
+-		const testStorageService = disposables.add(new TestStorageMainService(new NullLogService(), environmentService, disposables.add(new UserDataProfilesMainService(disposables.add(new StateService(SaveStrategy.DELAYED, environmentService, new NullLogService(), fileService)), disposables.add(uriIdentityService), environmentService, fileService, new NullLogService(), productService)), lifecycleMainService, fileService, uriIdentityService));
++		const testStorageService = disposables.add(new TestStorageMainService(new NullLogService(), environmentService, disposables.add(new UserDataProfilesMainService(disposables.add(new StateService(SaveStrategy.DELAYED, environmentService, new NullLogService(), fileService)), disposables.add(uriIdentityService), environmentService, fileService, new NullLogService())), lifecycleMainService, fileService, uriIdentityService));
+ 
+ 		disposables.add(testStorageService.applicationStorage);
+ 
+diff --git a/src/vs/platform/window/common/window.ts b/src/vs/platform/window/common/window.ts
+--- a/src/vs/platform/window/common/window.ts
++++ b/src/vs/platform/window/common/window.ts
+@@ -70,12 +70,6 @@
+ 
+ 	readonly waitMarkerFileURI?: URI;
+ 
+-	/**
+-	 * When set, the opened window is asked to open the chat session identified
+-	 * by this resource once it is ready. Used to hand off a session (e.g. from
+-	 * the Agents window) so the new window restores both the folder and session.
+-	 */
+-	readonly chatSessionToOpen?: URI;
+ }
+ 
+ export interface IAddRemoveFoldersRequest {
+@@ -103,33 +97,6 @@
+ }
+ 
+ export interface IOpenEmptyWindowOptions extends IBaseOpenWindowsOptions { }
+-
+-export const enum AgentsWindowOpenSource {
+-	CommandPalette = 'commandPalette',
+-	KeyboardShortcut = 'keyboardShortcut',
+-	TitleBar = 'titleBar',
+-	ChatTitleBar = 'chatTitleBar',
+-	ChatHandoff = 'chatHandoff',
+-	Banner = 'banner',
+-	CommandLine = 'commandLine',
+-	Unknown = 'unknown',
+-}
+-
+-export function isAgentsWindowOpenSource(value: unknown): value is AgentsWindowOpenSource {
+-	switch (value) {
+-		case AgentsWindowOpenSource.CommandPalette:
+-		case AgentsWindowOpenSource.KeyboardShortcut:
+-		case AgentsWindowOpenSource.TitleBar:
+-		case AgentsWindowOpenSource.ChatTitleBar:
+-		case AgentsWindowOpenSource.ChatHandoff:
+-		case AgentsWindowOpenSource.Banner:
+-		case AgentsWindowOpenSource.CommandLine:
+-		case AgentsWindowOpenSource.Unknown:
+-			return true;
+-		default:
+-			return false;
+-	}
+-}
+ 
+ export type IWindowOpenable = IWorkspaceToOpen | IFolderToOpen | IFileToOpen;
+ 
+@@ -500,7 +467,6 @@
+ 	os: IOSConfiguration;
+ 	policiesData?: IStringDictionary<{ definition: PolicyDefinition; value: PolicyValue }>;
+ 
+-	isSessionsWindow?: boolean;
+ }
+ 
+ /**
+diff --git a/src/vs/platform/native/common/native.ts b/src/vs/platform/native/common/native.ts
+--- a/src/vs/platform/native/common/native.ts
++++ b/src/vs/platform/native/common/native.ts
+@@ -5,7 +5,7 @@
+ 
+ import { VSBuffer } from '../../../base/common/buffer.js';
+ import { Event } from '../../../base/common/event.js';
+-import { URI, UriComponents } from '../../../base/common/uri.js';
++import { URI } from '../../../base/common/uri.js';
+ import { MessageBoxOptions, MessageBoxReturnValue, OpenDevToolsOptions, OpenDialogOptions, OpenDialogReturnValue, SaveDialogOptions, SaveDialogReturnValue } from '../../../base/parts/sandbox/common/electronTypes.js';
+ import { ISerializableCommandAction } from '../../action/common/action.js';
+ import { INativeOpenDialogOptions } from '../../dialogs/common/dialogs.js';
+@@ -13,7 +13,7 @@
+ import { IV8Profile } from '../../profiling/common/profiling.js';
+ import { AuthInfo, Credentials } from '../../request/common/request.js';
+ import { IPartsSplash } from '../../theme/common/themeService.js';
+-import { AgentsWindowOpenSource, IColorScheme, IOpenedAuxiliaryWindow, IOpenedMainWindow, IOpenEmptyWindowOptions, IOpenWindowOptions, IPoint, IRectangle, IWindowOpenable } from '../../window/common/window.js';
++import { IColorScheme, IOpenedAuxiliaryWindow, IOpenedMainWindow, IOpenEmptyWindowOptions, IOpenWindowOptions, IPoint, IRectangle, IWindowOpenable } from '../../window/common/window.js';
+ 
+ export interface IToastOptions {
+ 	readonly id: string;
+@@ -52,11 +52,6 @@
+ 	readonly maxEntries: number;
+ }
+ 
+-export interface IOpenAgentsWindowOptions {
+-	readonly folderUri?: UriComponents;
+-	readonly sessionResource?: UriComponents;
+-	readonly source?: AgentsWindowOpenSource;
+-}
+ 
+ export interface ICPUProperties {
+ 	model: string;
+@@ -243,7 +238,6 @@
+ 	openWindow(options?: IOpenEmptyWindowOptions): Promise<void>;
+ 	openWindow(toOpen: IWindowOpenable[], options?: IOpenWindowOptions): Promise<void>;
+ 
+-	openAgentsWindow(options?: IOpenAgentsWindowOptions): Promise<void>;
+ 
+ 	/**
+ 	 * Registers this window's set of system-wide (OS global) keybindings with the main process,
+diff --git a/src/vs/platform/native/electron-main/nativeHostMainService.ts b/src/vs/platform/native/electron-main/nativeHostMainService.ts
+--- a/src/vs/platform/native/electron-main/nativeHostMainService.ts
++++ b/src/vs/platform/native/electron-main/nativeHostMainService.ts
+@@ -27,7 +27,7 @@
+ import { createDecorator, IInstantiationService } from '../../instantiation/common/instantiation.js';
+ import { ILifecycleMainService, IRelaunchOptions } from '../../lifecycle/electron-main/lifecycleMainService.js';
+ import { ILogService } from '../../log/common/log.js';
+-import { FocusMode, ICommonNativeHostService, INativeHostOptions, INativeSystemWideKeybinding, INativeSystemWideKeybindingResult, INativeZipFile, INativeZipOptions, IOpenAgentsWindowOptions, IOSProperties, IOSProxy, IOSProxyConfig, IOSStatistics, IStartTracingOptions, IToastOptions, IToastResult, PowerSaveBlockerType, SystemIdleState, ThermalState } from '../common/native.js';
++import { FocusMode, ICommonNativeHostService, INativeHostOptions, INativeSystemWideKeybinding, INativeSystemWideKeybindingResult, INativeZipFile, INativeZipOptions, IOSProperties, IOSProxy, IOSProxyConfig, IOSStatistics, IStartTracingOptions, IToastOptions, IToastResult, PowerSaveBlockerType, SystemIdleState, ThermalState } from '../common/native.js';
+ import { IGlobalKeybindingsMainService } from '../../globalKeybindings/electron-main/globalKeybindingsMainService.js';
+ import { IProductService } from '../../product/common/productService.js';
+ import { IPartsSplash } from '../../theme/common/themeService.js';
+@@ -276,7 +276,7 @@
+ 
+ 	private async doOpenWindow(windowId: number | undefined, toOpen: IWindowOpenable[], options: IOpenWindowOptions = Object.create(null)): Promise<void> {
+ 		if (toOpen.length > 0) {
+-			const windows = await this.windowsMainService.open({
++			await this.windowsMainService.open({
+ 				context: OpenContext.API,
+ 				contextWindowId: windowId,
+ 				urisToOpen: toOpen,
+@@ -296,14 +296,6 @@
+ 				forceTempProfile: options.forceTempProfile,
+ 			});
+ 
+-			// Hand off a chat session to the opened window so it restores both the
+-			// folder and the session (e.g. the Agents window "Open in VS Code" flow).
+-			// Only meaningful when exactly one window is opened so the session is
+-			// not sent to an ambiguous target.
+-			const chatSessionToOpen = options.chatSessionToOpen;
+-			if (chatSessionToOpen && windows.length === 1) {
+-				windows[0].sendWhenReady('vscode:openChatSession', CancellationToken.None, URI.revive(chatSessionToOpen).toString());
+-			}
+ 		}
+ 	}
+ 
+@@ -312,17 +304,6 @@
+ 			context: OpenContext.API,
+ 			contextWindowId: windowId
+ 		}, options);
+-	}
+-
+-	async openAgentsWindow(windowId: number | undefined, options?: IOpenAgentsWindowOptions): Promise<void> {
+-		const windows = await this.windowsMainService.openAgentsWindow({
+-			context: OpenContext.API,
+-			contextWindowId: windowId,
+-			cli: this.environmentMainService.args,
+-		}, options?.folderUri ? URI.revive(options.folderUri) : undefined, options?.sessionResource ? URI.revive(options.sessionResource) : undefined, options?.source);
+-		if (windows.length > 0) {
+-			windows[0].focus();
+-		}
+ 	}
+ 
+ 	async syncSystemWideKeybindings(windowId: number | undefined, keybindings: INativeSystemWideKeybinding[]): Promise<INativeSystemWideKeybindingResult> {
+diff --git a/src/vs/workbench/test/electron-browser/workbenchTestServices.ts b/src/vs/workbench/test/electron-browser/workbenchTestServices.ts
+--- a/src/vs/workbench/test/electron-browser/workbenchTestServices.ts
++++ b/src/vs/workbench/test/electron-browser/workbenchTestServices.ts
+@@ -9,7 +9,7 @@
+ import { Event } from '../../../base/common/event.js';
+ import { DisposableStore, IDisposable } from '../../../base/common/lifecycle.js';
+ import { Schemas } from '../../../base/common/network.js';
+-import { URI, UriComponents } from '../../../base/common/uri.js';
++import { URI } from '../../../base/common/uri.js';
+ import { IModelService } from '../../../editor/common/services/model.js';
+ import { ModelService } from '../../../editor/common/services/modelService.js';
+ import { TestConfigurationService } from '../../../platform/configuration/test/common/testConfigurationService.js';
+@@ -103,7 +103,6 @@
+ 		throw new Error('Method not implemented.');
+ 	}
+ 
+-	async openAgentsWindow(_options?: { folderUri?: UriComponents; sessionResource?: UriComponents }): Promise<void> { }
+ 
+ 	async syncSystemWideKeybindings(_keybindings: INativeSystemWideKeybinding[]): Promise<INativeSystemWideKeybindingResult> { return { failed: [] }; }
+ 
+diff --git a/src/vs/platform/windows/electron-main/windows.ts b/src/vs/platform/windows/electron-main/windows.ts
+--- a/src/vs/platform/windows/electron-main/windows.ts
++++ b/src/vs/platform/windows/electron-main/windows.ts
+@@ -17,7 +17,7 @@
+ import { ILogService } from '../../log/common/log.js';
+ import { IProductService } from '../../product/common/productService.js';
+ import { IThemeMainService } from '../../theme/electron-main/themeMainService.js';
+-import { AgentsWindowOpenSource, IOpenEmptyWindowOptions, IWindowOpenable, IWindowSettings, TitlebarStyle, WindowMinimumSize, hasNativeTitlebar, useNativeFullScreen, useWindowControlsOverlay, zoomLevelToZoomFactor } from '../../window/common/window.js';
++import { IOpenEmptyWindowOptions, IWindowOpenable, IWindowSettings, TitlebarStyle, WindowMinimumSize, hasNativeTitlebar, useNativeFullScreen, useWindowControlsOverlay, zoomLevelToZoomFactor } from '../../window/common/window.js';
+ import { ICodeWindow, IWindowState, WindowMode, defaultWindowState } from '../../window/electron-main/window.js';
+ 
+ export const IWindowsMainService = createDecorator<IWindowsMainService>('windowsMainService');
+@@ -41,7 +41,6 @@
+ 	openExtensionDevelopmentHostWindow(extensionDevelopmentPath: string[], openConfig: IOpenConfiguration): Promise<ICodeWindow[]>;
+ 	openExistingWindow(window: ICodeWindow, openConfig: IOpenConfiguration): void;
+ 
+-	openAgentsWindow(openConfig: IOpenConfiguration, folderUri?: URI, sessionResource?: URI, source?: AgentsWindowOpenSource): Promise<ICodeWindow[]>;
+ 
+ 	sendToFocused(channel: string, ...args: unknown[]): void;
+ 	sendToOpeningWindow(channel: string, ...args: unknown[]): void;
+diff --git a/src/vs/platform/windows/electron-main/windowsMainService.ts b/src/vs/platform/windows/electron-main/windowsMainService.ts
+--- a/src/vs/platform/windows/electron-main/windowsMainService.ts
++++ b/src/vs/platform/windows/electron-main/windowsMainService.ts
+@@ -37,7 +37,7 @@
+ import { IProtocolMainService } from '../../protocol/electron-main/protocol.js';
+ import { getRemoteAuthority } from '../../remote/common/remoteHosts.js';
+ import { IStateService } from '../../state/node/state.js';
+-import { AgentsWindowOpenSource, IAddRemoveFoldersRequest, INativeOpenFileRequest, INativeWindowConfiguration, IOpenEmptyWindowOptions, IPath, IPathsToWaitFor, isFileToOpen, isFolderToOpen, isWorkspaceToOpen, IWindowOpenable, IWindowSettings } from '../../window/common/window.js';
++import { IAddRemoveFoldersRequest, INativeOpenFileRequest, INativeWindowConfiguration, IOpenEmptyWindowOptions, IPath, IPathsToWaitFor, isFileToOpen, isFolderToOpen, isWorkspaceToOpen, IWindowOpenable, IWindowSettings } from '../../window/common/window.js';
+ import { CodeWindow } from './windowImpl.js';
+ import { IOpenConfiguration, IOpenEmptyConfiguration, IWindowsCountChangedEvent, IWindowsMainService, OpenContext, getLastFocused } from './windows.js';
+ import { findWindowOnExtensionDevelopmentPath, findWindowOnFile, findWindowOnWorkspaceOrFolder } from './windowsFinder.js';
+@@ -58,7 +58,6 @@
+ import { IAuxiliaryWindow } from '../../auxiliaryWindow/electron-main/auxiliaryWindow.js';
+ import { ICSSDevelopmentService } from '../../cssDev/node/cssDevService.js';
+ import { ResourceSet } from '../../../base/common/map.js';
+-import { VSBuffer } from '../../../base/common/buffer.js';
+ 
+ //#region Helper Interfaces
+ 
+@@ -288,51 +287,6 @@
+ 		// Handle `<app> --wait`
+ 		this.handleWaitMarkerFile(openConfig, [window]);
+ 
+-		// Handle `<app> chat`
+-		this.handleChatRequest(openConfig, [window]);
+-	}
+-
+-	async openAgentsWindow(openConfig: IOpenConfiguration, folderUri?: URI, sessionResource?: URI, source?: AgentsWindowOpenSource): Promise<ICodeWindow[]> {
+-		this.logService.trace('windowsManager#openAgentsWindow');
+-
+-		// Open in a new browser window with the agent sessions workspace
+-		const windows = await this.open(await this.ensureAgentsWindow(openConfig));
+-
+-		// Single IPC carrying the folder to pre-select and an optional existing-
+-		// session resource to open. The handler in the agents window sequences
+-		// them (folder → open session) so the session-open doesn't race the
+-		// folder-resolve.
+-		if (windows.length > 0) {
+-			const openSource = source ?? (openConfig.cli.agents ? AgentsWindowOpenSource.CommandLine : AgentsWindowOpenSource.Unknown);
+-			windows[0].sendWhenReady('vscode:selectAgentsFolder', CancellationToken.None, folderUri?.toJSON(), sessionResource?.toJSON(), openSource);
+-		}
+-
+-		return windows;
+-	}
+-
+-	private async ensureAgentsWindow(openConfig: IOpenConfiguration): Promise<IOpenConfiguration> {
+-		const agentSessionsWorkspaceUri = this.environmentMainService.agentSessionsWorkspace;
+-		if (!agentSessionsWorkspaceUri) {
+-			throw new Error('Agents workspace is not configured');
+-		}
+-
+-		// Ensure the workspace file exists
+-		const workspaceExists = await this.fileService.exists(agentSessionsWorkspaceUri);
+-		if (!workspaceExists) {
+-			const emptyWorkspaceContent = JSON.stringify({ folders: [] }, null, '\t');
+-			await this.fileService.writeFile(agentSessionsWorkspaceUri, VSBuffer.fromString(emptyWorkspaceContent));
+-		}
+-
+-		return {
+-			urisToOpen: [{ workspaceUri: agentSessionsWorkspaceUri }],
+-			userEnv: openConfig.userEnv,
+-			cli: openConfig.cli,
+-			noRecentEntry: true,
+-			context: openConfig.context,
+-			contextWindowId: openConfig.contextWindowId,
+-			initialStartup: openConfig.initialStartup,
+-			forceNewWindow: true,
+-		};
+ 	}
+ 
+ 	async open(openConfig: IOpenConfiguration): Promise<ICodeWindow[]> {
+@@ -493,8 +447,6 @@
+ 		// Handle `<app> --wait`
+ 		this.handleWaitMarkerFile(openConfig, usedWindows);
+ 
+-		// Handle `<app> chat`
+-		this.handleChatRequest(openConfig, usedWindows);
+ 
+ 		return usedWindows;
+ 	}
+@@ -518,26 +470,6 @@
+ 		}
+ 	}
+ 
+-	private handleChatRequest(openConfig: IOpenConfiguration, usedWindows: ICodeWindow[]): void {
+-		if (openConfig.context !== OpenContext.CLI || !openConfig.cli.chat || usedWindows.length === 0) {
+-			return;
+-		}
+-
+-		let windowHandlingChatRequest: ICodeWindow | undefined;
+-		if (usedWindows.length === 1) {
+-			windowHandlingChatRequest = usedWindows[0];
+-		} else {
+-			const chatRequestFolder = openConfig.cli._[0]; // chat request gets cwd() as folder to open
+-			if (chatRequestFolder) {
+-				windowHandlingChatRequest = findWindowOnWorkspaceOrFolder(usedWindows, URI.file(chatRequestFolder));
+-			}
+-		}
+-
+-		if (windowHandlingChatRequest) {
+-			windowHandlingChatRequest.sendWhenReady('vscode:handleChatRequest', CancellationToken.None, openConfig.cli.chat);
+-			windowHandlingChatRequest.focus();
+-		}
+-	}
+ 
+ 	private async doOpen(
+ 		openConfig: IOpenConfiguration,
+@@ -772,9 +704,6 @@
+ 	private resolveContextWindow(openConfig: IOpenConfiguration, forceNewWindow: boolean): { windowToUse: ICodeWindow | undefined; forceNewWindow: boolean } {
+ 		if (!forceNewWindow && typeof openConfig.contextWindowId === 'number') {
+ 			const contextWindow = this.getWindowById(openConfig.contextWindowId);
+-			if (contextWindow?.config?.isSessionsWindow) {
+-				return { windowToUse: undefined, forceNewWindow: true }; // do not replace the agents window
+-			}
+ 			return { windowToUse: contextWindow, forceNewWindow };
+ 		}
+ 		return { windowToUse: undefined, forceNewWindow };
+@@ -1516,11 +1445,11 @@
+ 		const lastActiveWindow = this.getLastActiveWindow();
+ 		const newWindowProfile = windowConfig?.newWindowProfile
+ 			? this.userDataProfilesMainService.profiles.find(profile => profile.name === windowConfig.newWindowProfile) : undefined;
+-		const defaultProfile = newWindowProfile ?? (lastActiveWindow?.profile?.isAgentsWindowProfile ? undefined : lastActiveWindow?.profile) ?? this.userDataProfilesMainService.defaultProfile;
++		const defaultProfile = newWindowProfile ?? lastActiveWindow?.profile ?? this.userDataProfilesMainService.defaultProfile;
+ 
+ 		let window: ICodeWindow | undefined;
+ 		if (!options.forceNewWindow && !options.forceNewTabbedWindow) {
+-			window = options.windowToUse || (lastActiveWindow?.config?.isSessionsWindow ? undefined : lastActiveWindow);
++			window = options.windowToUse || lastActiveWindow;
+ 			if (window) {
+ 				window.focus();
+ 			}
+@@ -1597,7 +1526,6 @@
+ 
+ 			cssModules: this.cssDevelopmentService.isEnabled ? await this.cssDevelopmentService.getCssModules() : undefined,
+ 
+-			isSessionsWindow: false, // vslight: sessions window removed; always open a normal workbench window
+ 		};
+ 
+ 		// New window
+@@ -1610,7 +1538,6 @@
+ 				state,
+ 				extensionDevelopmentPath: configuration.extensionDevelopmentPath,
+ 				isExtensionTestHost: !!configuration.extensionTestsPath,
+-				isSessionsWindow: configuration.isSessionsWindow
+ 			});
+ 			mark('code/didCreateCodeWindow');
+ 
+@@ -1724,19 +1651,15 @@
+ 
+ 		const workspace = configuration.workspace ?? toWorkspaceIdentifier(configuration.backupPath, false);
+ 
+-		if (configuration.isSessionsWindow) {
+-			configuration.profiles.profile = this.userDataProfilesMainService.profiles.find(p => p.isAgentsWindowProfile) ?? await this.userDataProfilesMainService.createAgentsWindowProfile();
+-		} else {
+-			const profilePromise = this.resolveProfileForBrowserWindow(options, workspace, defaultProfile);
+-			const profile = profilePromise instanceof Promise ? await profilePromise : profilePromise;
+-			configuration.profiles.profile = profile;
+-
+-			if (!configuration.extensionDevelopmentPath) {
+-				// Associate the configured profile to the workspace
+-				// unless the window is for extension development,
+-				// where we do not persist the associations
+-				await this.userDataProfilesMainService.setProfileForWorkspace(workspace, profile);
+-			}
++		const profilePromise = this.resolveProfileForBrowserWindow(options, workspace, defaultProfile);
++		const profile = profilePromise instanceof Promise ? await profilePromise : profilePromise;
++		configuration.profiles.profile = profile;
++
++		if (!configuration.extensionDevelopmentPath) {
++			// Associate the configured profile to the workspace
++			// unless the window is for extension development,
++			// where we do not persist the associations
++			await this.userDataProfilesMainService.setProfileForWorkspace(workspace, profile);
+ 		}
+ 
+ 		// Load it
+diff --git a/src/vs/platform/windows/electron-main/windowImpl.ts b/src/vs/platform/windows/electron-main/windowImpl.ts
+--- a/src/vs/platform/windows/electron-main/windowImpl.ts
++++ b/src/vs/platform/windows/electron-main/windowImpl.ts
+@@ -52,7 +52,6 @@
+ 	readonly state: IWindowState;
+ 	readonly extensionDevelopmentPath?: string[];
+ 	readonly isExtensionTestHost?: boolean;
+-	readonly isSessionsWindow?: boolean;
+ }
+ 
+ interface ITouchBarSegment extends electron.SegmentedControlSegment {
+diff --git a/src/vs/platform/launch/electron-main/launchMainService.ts b/src/vs/platform/launch/electron-main/launchMainService.ts
+--- a/src/vs/platform/launch/electron-main/launchMainService.ts
++++ b/src/vs/platform/launch/electron-main/launchMainService.ts
+@@ -143,11 +143,6 @@
+ 			await this.windowsMainService.openExtensionDevelopmentHostWindow(args.extensionDevelopmentPath, baseConfig);
+ 		}
+ 
+-		// Agents window
+-		else if (args['agents']) {
+-			usedWindows = await this.windowsMainService.openAgentsWindow(baseConfig);
+-		}
+-
+ 		// Start without file/folder arguments
+ 		else if (!args._.length && !args['folder-uri'] && !args['file-uri']) {
+ 			let openNewWindow = false;
+diff --git a/src/vs/platform/update/electron-main/updateRelaunchArguments.ts b/src/vs/platform/update/electron-main/updateRelaunchArguments.ts
+--- a/src/vs/platform/update/electron-main/updateRelaunchArguments.ts
++++ b/src/vs/platform/update/electron-main/updateRelaunchArguments.ts
+@@ -19,9 +19,6 @@
+ 	'builtin-extensions-dir',
+ 	'extensions-download-dir',
+ 	'shared-data-dir',
+-	'agents-user-data-dir',
+-	'agents-extensions-dir',
+-	'agent-plugins-dir',
+ 	// Localization
+ 	'locale',
+ 	// Diagnostics
+@@ -85,9 +82,6 @@
+ 	'builtin-extensions-dir',
+ 	'extensions-download-dir',
+ 	'shared-data-dir',
+-	'agents-user-data-dir',
+-	'agents-extensions-dir',
+-	'agent-plugins-dir',
+ 	'crash-reporter-directory',
+ 	'trace-startup-file',
+ ]);
+diff --git a/src/vs/platform/workspaces/electron-main/workspacesHistoryMainService.ts b/src/vs/platform/workspaces/electron-main/workspacesHistoryMainService.ts
+--- a/src/vs/platform/workspaces/electron-main/workspacesHistoryMainService.ts
++++ b/src/vs/platform/workspaces/electron-main/workspacesHistoryMainService.ts
+@@ -11,7 +11,7 @@
+ import { Disposable } from '../../../base/common/lifecycle.js';
+ import { Schemas } from '../../../base/common/network.js';
+ import { isMacintosh, isWindows } from '../../../base/common/platform.js';
+-import { basename, dirname, extUriBiasedIgnorePathCase, isEqual, originalFSPath } from '../../../base/common/resources.js';
++import { basename, extUriBiasedIgnorePathCase, originalFSPath } from '../../../base/common/resources.js';
+ import { URI } from '../../../base/common/uri.js';
+ import { Promises } from '../../../base/node/pfs.js';
+ import { localize } from '../../../nls.js';
+@@ -22,7 +22,6 @@
+ import { IApplicationStorageMainService } from '../../storage/electron-main/storageMainService.js';
+ import { IRecent, IRecentFile, IRecentFolder, IRecentlyOpened, IRecentWorkspace, isRecentFile, isRecentFolder, isRecentWorkspace, restoreRecentlyOpened, toStoreData } from '../common/workspaces.js';
+ import { IWorkspaceIdentifier, WORKSPACE_EXTENSION } from '../../workspace/common/workspace.js';
+-import { getWorkspaceIdentifier } from '../common/workspaceIdentifier.js';
+ import { IWorkspacesManagementMainService } from './workspacesManagementMainService.js';
+ import { ResourceMap } from '../../../base/common/map.js';
+ import { IDialogMainService } from '../../dialogs/electron-main/dialogMainService.js';
+@@ -108,7 +107,6 @@
+ 
+ 					// Add to recent documents (Windows only, macOS later)
+ 					// Skip in portable mode to avoid leaving traces on the machine
+-					// Skip in the sessions app to avoid polluting the jump list
+ 					if (isWindows && recent.fileUri.scheme === Schemas.file && !this.environmentMainService.isPortable) {
+ 						app.addRecentDocument(recent.fileUri.fsPath);
+ 					}
+@@ -117,7 +115,7 @@
+ 		}
+ 
+ 		const mergedEntries = await this.mergeEntriesFromStorage({ workspaces, files });
+-		workspaces = this.canonicalizeAgentSessionsWorkspaces(mergedEntries.workspaces);
++		workspaces = mergedEntries.workspaces;
+ 		files = mergedEntries.files;
+ 
+ 		if (workspaces.length > WorkspacesHistoryMainService.MAX_TOTAL_RECENT_ENTRIES) {
+@@ -199,41 +197,9 @@
+ 		const recentlyOpened = await this.mergeEntriesFromStorage();
+ 
+ 		return {
+-			workspaces: this.canonicalizeAgentSessionsWorkspaces(recentlyOpened.workspaces),
++			workspaces: recentlyOpened.workspaces,
+ 			files: recentlyOpened.files
+ 		};
+-	}
+-
+-	private canonicalizeAgentSessionsWorkspaces(workspaces: Array<IRecentWorkspace | IRecentFolder>): Array<IRecentWorkspace | IRecentFolder> {
+-		const result: Array<IRecentWorkspace | IRecentFolder> = [];
+-		let agentsWindowAdded = false;
+-
+-		for (const recent of workspaces) {
+-			if (isRecentWorkspace(recent) && this.isAgentSessionsWorkspace(recent.workspace)) {
+-				if (!agentsWindowAdded) {
+-					agentsWindowAdded = true;
+-					result.push({
+-						workspace: getWorkspaceIdentifier(this.environmentMainService.agentSessionsWorkspace),
+-						label: localize('agentsWindowRecentWorkspace', "Agents Window")
+-					});
+-				}
+-			} else {
+-				result.push(recent);
+-			}
+-		}
+-
+-		return result;
+-	}
+-
+-	private isAgentSessionsWorkspace(workspace: IWorkspaceIdentifier): boolean {
+-		if (isEqual(workspace.configPath, this.environmentMainService.agentSessionsWorkspace)) {
+-			return true;
+-		}
+-
+-		// Recents can retain Agents workspaces from other profile and worktree user-data directories.
+-		const agentSessionsWorkspace = this.environmentMainService.agentSessionsWorkspace;
+-		return basename(workspace.configPath) === basename(agentSessionsWorkspace)
+-			&& basename(dirname(workspace.configPath)) === basename(dirname(agentSessionsWorkspace));
+ 	}
+ 
+ 	private async mergeEntriesFromStorage(existingEntries?: IRecentlyOpened): Promise<IRecentlyOpened> {
+diff --git a/src/vs/platform/telemetry/common/telemetry.ts b/src/vs/platform/telemetry/common/telemetry.ts
+--- a/src/vs/platform/telemetry/common/telemetry.ts
++++ b/src/vs/platform/telemetry/common/telemetry.ts
+@@ -71,21 +71,6 @@
+ 	return modelId?.replace(/[\/\\]/g, '|');
+ }
+ 
+-export interface ITelemetryEndpoint {
+-	id: string;
+-	aiKey: string;
+-	sendErrorTelemetry: boolean;
+-}
+-
+-export const ICustomEndpointTelemetryService = createDecorator<ICustomEndpointTelemetryService>('customEndpointTelemetryService');
+-
+-export interface ICustomEndpointTelemetryService {
+-	readonly _serviceBrand: undefined;
+-
+-	publicLog(endpoint: ITelemetryEndpoint, eventName: string, data?: ITelemetryData): void;
+-	publicLogError(endpoint: ITelemetryEndpoint, errorEventName: string, data?: ITelemetryData): void;
+-}
+-
+ // Keys
+ export const currentSessionDateStorageKey = 'telemetry.currentSessionDate';
+ export const firstSessionDateStorageKey = 'telemetry.firstSessionDate';
+diff --git a/src/vs/platform/telemetry/common/telemetryUtils.ts b/src/vs/platform/telemetry/common/telemetryUtils.ts
+--- a/src/vs/platform/telemetry/common/telemetryUtils.ts
++++ b/src/vs/platform/telemetry/common/telemetryUtils.ts
+@@ -13,7 +13,7 @@
+ import { IProductService } from '../../product/common/productService.js';
+ import { getRemoteName } from '../../remote/common/remoteHosts.js';
+ import { verifyMicrosoftInternalDomain } from './commonProperties.js';
+-import { ICustomEndpointTelemetryService, ITelemetryData, ITelemetryEndpoint, ITelemetryService, TelemetryConfiguration, TelemetryLevel, TELEMETRY_CRASH_REPORTER_SETTING_ID, TELEMETRY_OLD_SETTING_ID, TELEMETRY_SETTING_ID } from './telemetry.js';
++import { ITelemetryData, ITelemetryService, TelemetryConfiguration, TelemetryLevel, TELEMETRY_CRASH_REPORTER_SETTING_ID, TELEMETRY_OLD_SETTING_ID, TELEMETRY_SETTING_ID } from './telemetry.js';
+ 
+ /**
+  * A special class used to denoting a telemetry value which should not be clean.
+@@ -44,18 +44,6 @@
+ }
+ 
+ export const NullTelemetryService = new NullTelemetryServiceShape();
+-
+-export class NullEndpointTelemetryService implements ICustomEndpointTelemetryService {
+-	_serviceBrand: undefined;
+-
+-	async publicLog(_endpoint: ITelemetryEndpoint, _eventName: string, _data?: ITelemetryData): Promise<void> {
+-		// noop
+-	}
+-
+-	async publicLogError(_endpoint: ITelemetryEndpoint, _errorEventName: string, _data?: ITelemetryData): Promise<void> {
+-		// noop
+-	}
+-}
+ 
+ export const telemetryLogId = 'telemetry';
+ export const TelemetryLogGroup: LoggerGroup = { id: telemetryLogId, name: localize('telemetryLogName', "Telemetry") };
+diff --git a/src/vs/platform/remoteTunnel/node/tunnelProcessCoordinator.ts b/src/vs/platform/remoteTunnel/node/tunnelProcessCoordinator.ts
+--- a/src/vs/platform/remoteTunnel/node/tunnelProcessCoordinator.ts
++++ b/src/vs/platform/remoteTunnel/node/tunnelProcessCoordinator.ts
+@@ -18,16 +18,9 @@
+ type TunnelCliFactory = (onLog: (message: string) => void) => CodeTunnelCli;
+ 
+ /** The process mode selected from the combined tunnel intents. */
+-export type TunnelProcessMode = 'none' | 'agentHost' | 'remoteAccess' | 'service';
++export type TunnelProcessMode = 'none' | 'remoteAccess' | 'service';
+ /** The connection lifecycle state reported by the coordinator. */
+ export type TunnelProcessConnectionState = 'disconnected' | 'connecting' | 'connected';
+-
+-/** The requested agent-host-only sharing session. */
+-export interface IAgentHostSharingRequest {
+-	readonly token: string;
+-	readonly authProvider: 'github' | 'microsoft';
+-	readonly logLevel: LogLevel;
+-}
+ 
+ /** Credentials passed to `tunnel user login`. */
+ interface ITunnelLoginCredentials {
+@@ -69,7 +62,7 @@
+ 	cancel(): void;
+ }
+ 
+-/** The single, resolved tunnel state shared by Remote Tunnel Access and agent host sharing. */
++/** The resolved Remote Tunnel Access state. */
+ export interface ITunnelProcessStatus {
+ 	readonly mode: TunnelProcessMode;
+ 	readonly tunnelName: string | undefined;
+@@ -81,7 +74,7 @@
+ /** Service identifier for the shared-process tunnel coordinator. */
+ export const ITunnelProcessCoordinator = createDecorator<ITunnelProcessCoordinator>('tunnelProcessCoordinator');
+ 
+-/** Coordinates the one `code tunnel` process used by both shared-process tunnel consumers. */
++/** Coordinates the Remote Tunnel Access `code tunnel` process. */
+ export interface ITunnelProcessCoordinator {
+ 	readonly _serviceBrand: undefined;
+ 	readonly onDidChangeStatus: Event<ITunnelProcessStatus>;
+@@ -90,17 +83,16 @@
+ 	getStatus(): ITunnelProcessStatus;
+ 	getIntendedTunnelName(): string;
+ 	setRemoteAccess(mode: TunnelMode, logLevel: LogLevel): Promise<void>;
+-	setAgentHostSharing(request: IAgentHostSharingRequest | undefined): Promise<void>;
+ 	restart(): Promise<void>;
+ 	setRemoteAccessStatus(status: TunnelStatus): void;
+ }
+ 
+-/** Resolves the process mode from the two independent tunnel intents. */
+-export function resolveTunnelProcessMode(agentHostSharing: boolean, remoteAccess: TunnelMode): TunnelProcessMode {
++/** Resolves the process mode from the Remote Tunnel Access intent. */
++export function resolveTunnelProcessMode(remoteAccess: TunnelMode): TunnelProcessMode {
+ 	if (remoteAccess.active) {
+ 		return remoteAccess.asService ? 'service' : 'remoteAccess';
+ 	}
+-	return agentHostSharing ? 'agentHost' : 'none';
++	return 'none';
+ }
+ 
+ /**
+@@ -125,7 +117,6 @@
+ 
+ 	private readonly _tunnelCli: CodeTunnelCli;
+ 	private _remoteAccess: { mode: TunnelMode; logLevel: LogLevel } = { mode: { active: false }, logLevel: LogLevel.Info };
+-	private _agentHostSharing: IAgentHostSharingRequest | undefined;
+ 	private _currentProcess: ICodeTunnelCliRun | undefined;
+ 	private _queue: Promise<void> = Promise.resolve();
+ 	private _generation = 0;
+@@ -174,10 +165,6 @@
+ 		return this._schedule(wasService && (!mode.active || !mode.asService));
+ 	}
+ 
+-	setAgentHostSharing(request: IAgentHostSharingRequest | undefined): Promise<void> {
+-		this._agentHostSharing = request;
+-		return this._schedule(false);
+-	}
+ 
+ 	restart(): Promise<void> {
+ 		return this._schedule(false, true);
+@@ -311,39 +298,26 @@
+ 		}
+ 
+ 		const args = ['tunnel'];
+-		if (target.mode === 'agentHost') {
+-			args.push('--agent-host-only', '--name', tunnelName!, '--user-data-dir', this.environmentService.userDataPath);
+-			args.push('--delegate-to-editor', '--parent-process-id', String(process.pid));
+-		} else {
+-			args.push('--accept-server-license-terms', '--log', LogLevelToString(target.logLevel));
+-			args.push('--user-data-dir', this.environmentService.userDataPath, '--delegate-to-editor', '--name', tunnelName!, '--parent-process-id', String(process.pid));
+-		}
+-		if (target.mode !== 'agentHost' && this._preventSleep()) {
++		args.push('--accept-server-license-terms', '--log', LogLevelToString(target.logLevel));
++		args.push('--user-data-dir', this.environmentService.userDataPath, '--delegate-to-editor', '--name', tunnelName!, '--parent-process-id', String(process.pid));
++		if (this._preventSleep()) {
+ 			args.push('--no-sleep');
+ 		}
++
+ 		this._launched = this._describeLaunch(target);
+ 		this._startTunnel(args, target.mode, generation);
+ 	}
+ 
+ 	/**
+-	 * The credentials the CLI needs for `tunnel user login`. Deliberately not an
+-	 * {@link IRemoteTunnelSession}: agent host sharing has no session, only a
+-	 * token, and fabricating one with empty ids would misrepresent that.
++	 * The credentials the CLI needs for `tunnel user login`.
+ 	 */
+ 	private _getTarget(): ITunnelTarget {
+ 		if (this._remoteAccess.mode.active) {
+ 			const session = this._remoteAccess.mode.session;
+ 			return {
+-				mode: resolveTunnelProcessMode(!!this._agentHostSharing, this._remoteAccess.mode),
++				mode: resolveTunnelProcessMode(this._remoteAccess.mode),
+ 				login: session.token ? { providerId: session.providerId, token: session.token } : undefined,
+ 				logLevel: this._remoteAccess.logLevel,
+-			};
+-		}
+-		if (this._agentHostSharing) {
+-			return {
+-				mode: resolveTunnelProcessMode(true, this._remoteAccess.mode),
+-				login: { providerId: this._agentHostSharing.authProvider, token: this._agentHostSharing.token },
+-				logLevel: this._agentHostSharing.logLevel,
+ 			};
+ 		}
+ 		return { mode: 'none', login: undefined, logLevel: LogLevel.Info };
+diff --git a/src/vs/platform/remoteTunnel/test/node/tunnelProcessCoordinator.test.ts b/src/vs/platform/remoteTunnel/test/node/tunnelProcessCoordinator.test.ts
+--- a/src/vs/platform/remoteTunnel/test/node/tunnelProcessCoordinator.test.ts
++++ b/src/vs/platform/remoteTunnel/test/node/tunnelProcessCoordinator.test.ts
+@@ -13,7 +13,7 @@
+ import { TestConfigurationService } from '../../../configuration/test/common/testConfigurationService.js';
+ import { ActiveTunnelMode, INACTIVE_TUNNEL_MODE } from '../../common/remoteTunnel.js';
+ import { CodeTunnelCli, CodeTunnelSpawn } from '../../node/codeTunnelCliProcess.js';
+-import { IAgentHostSharingRequest, resolveTunnelProcessMode, TunnelProcessCoordinator } from '../../node/tunnelProcessCoordinator.js';
++import { resolveTunnelProcessMode, TunnelProcessCoordinator } from '../../node/tunnelProcessCoordinator.js';
+ import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+ 
+ interface TestChildProcess {
+@@ -58,24 +58,20 @@
+ 	return { active: true, asService, session: { providerId: 'github', sessionId: 'session', accountLabel: 'account', token: 'token' } };
+ }
+ 
+-function agentRequest(): IAgentHostSharingRequest {
+-	return { token: 'agent-token', authProvider: 'github', logLevel: LogLevel.Info };
+-}
+-
+ function createCoordinator(exitOnKill = true, ordering?: string[], installExitCode = 0) {
+ 	const processes: TestChildProcess[] = [];
+ 	const spawn: CodeTunnelSpawn = (_command: string, args: readonly string[], options: SpawnOptions) => {
+ 		const complete = args.includes('login') || args.includes('status') || args.includes('install') || args.includes('kill') || args.includes('uninstall');
+ 		const isTunnelProcess = args[0] === 'tunnel' && !args.includes('status') && !args.includes('login') && !args.includes('install') && !args.includes('kill') && !args.includes('uninstall');
+ 		if (isTunnelProcess) {
+-			ordering?.push(args.includes('--agent-host-only') ? 'spawn-agent-host' : 'spawn-remote-access');
++			ordering?.push('spawn-remote-access');
+ 		}
+ 		const process = createProcess(args, complete, args.includes('status') ? '{"service_installed":false,"tunnel":null}\n' : undefined, exitOnKill || complete, options.env, args.includes('install') ? installExitCode : 0);
+ 		if (isTunnelProcess && ordering) {
+-			process.child.on('exit', () => ordering.push(args.includes('--agent-host-only') ? 'exit-agent-host' : 'exit-remote-access'));
++			process.child.on('exit', () => ordering.push('exit-remote-access'));
+ 			const kill = process.child.kill;
+ 			process.child.kill = () => {
+-				ordering.push(args.includes('--agent-host-only') ? 'kill-agent-host' : 'kill-remote-access');
++				ordering.push('kill-remote-access');
+ 				return kill.call(process.child);
+ 			};
+ 		}
+@@ -99,43 +95,14 @@
+ suite('TunnelProcessCoordinator', () => {
+ 	ensureNoDisposablesAreLeakedInTestSuite();
+ 
+-	test('resolves the combined intent modes', () => {
++	test('resolves ordinary remote access modes', () => {
+ 		assert.deepStrictEqual([
+-			resolveTunnelProcessMode(false, INACTIVE_TUNNEL_MODE),
+-			resolveTunnelProcessMode(true, INACTIVE_TUNNEL_MODE),
+-			resolveTunnelProcessMode(false, activeMode()),
+-			resolveTunnelProcessMode(true, activeMode()),
+-			resolveTunnelProcessMode(false, activeMode(true)),
+-			resolveTunnelProcessMode(true, activeMode(true)),
+-		], ['none', 'agentHost', 'remoteAccess', 'remoteAccess', 'service', 'service']);
+-	});
+-
+-	test('stops agent-host-only before starting a full tunnel with the same name', async () => {
+-		const { coordinator, processes } = createCoordinator();
+-		try {
+-			await coordinator.setAgentHostSharing(agentRequest());
+-			const agentHost = processes.find(process => process.args.includes('--agent-host-only'))!;
+-			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
+-			const fullTunnel = processes.filter(process => process.args[0] === 'tunnel' && !process.args.includes('--agent-host-only')).at(-1)!;
+-
+-			assert.deepStrictEqual({
+-				agentHostKilledBeforeFullTunnel: processes.indexOf(agentHost) < processes.indexOf(fullTunnel),
+-				agentHostWasStopped: agentHost.wasKilled(),
+-				names: [agentHost.args[agentHost.args.indexOf('--name') + 1], fullTunnel.args[fullTunnel.args.indexOf('--name') + 1]],
+-			}, {
+-				agentHostKilledBeforeFullTunnel: true,
+-				agentHostWasStopped: true,
+-				names: ['test_host', 'test_host'],
+-			});
+-
+-		} finally {
+-			for (const process of processes) {
+-				process.emitExit();
+-			}
+-			await new Promise<void>(resolve => setImmediate(resolve));
+-			coordinator.dispose();
+-		}
+-	});
++			resolveTunnelProcessMode(INACTIVE_TUNNEL_MODE),
++			resolveTunnelProcessMode(activeMode()),
++			resolveTunnelProcessMode(activeMode(true)),
++		], ['none', 'remoteAccess', 'service']);
++	});
++
+ 
+ 	test('leaves a healthy tunnel running when the resolved target is unchanged', async () => {
+ 		const { coordinator, processes } = createCoordinator();
+@@ -143,9 +110,8 @@
+ 			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
+ 			const tunnel = processes.find(process => process.args.includes('--accept-server-license-terms'))!;
+ 
+-			// Remote Tunnel Access stays the winning target, so toggling agent
+-			// host sharing must not disturb the running tunnel.
+-			await coordinator.setAgentHostSharing(agentRequest());
++			// Reapplying the same remote access request preserves the running tunnel.
++			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
+ 
+ 			assert.deepStrictEqual({
+ 				wasKilled: tunnel.wasKilled(),
+@@ -291,39 +257,24 @@
+ 		const ordering: string[] = [];
+ 		const { coordinator, processes } = createCoordinator(false, ordering);
+ 		try {
+-			await coordinator.setAgentHostSharing(agentRequest());
+-			const agentHost = processes.find(process => process.args.includes('--agent-host-only'))!;
+-			const transition = coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
+-			await new Promise<void>(resolve => setImmediate(resolve));
+-			assert.deepStrictEqual(ordering, ['spawn-agent-host', 'kill-agent-host']);
+-
+-			agentHost.emitExit();
++			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
++			const tunnel = processes.find(process => process.args.includes('--accept-server-license-terms'))!;
++			const transition = coordinator.setRemoteAccess({ ...activeMode(), session: { ...activeMode().session, token: 'replacement-token' } }, LogLevel.Info);
++			await new Promise<void>(resolve => setImmediate(resolve));
++			assert.deepStrictEqual(ordering, ['spawn-remote-access', 'kill-remote-access']);
++
++			tunnel.emitExit();
+ 			await transition;
+-			assert.deepStrictEqual(ordering, ['spawn-agent-host', 'kill-agent-host', 'exit-agent-host', 'spawn-remote-access']);
+-		} finally {
+-			for (const process of processes) {
+-				process.emitExit();
+-			}
+-			await new Promise<void>(resolve => setImmediate(resolve));
+-			coordinator.dispose();
+-		}
+-	});
+-
+-	test('resumes agent-host-only when remote access stops', async () => {
+-		const { coordinator, processes } = createCoordinator();
+-		try {
+-			await coordinator.setAgentHostSharing(agentRequest());
+-			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
+-			await coordinator.setRemoteAccess(INACTIVE_TUNNEL_MODE, LogLevel.Info);
+-
+-			assert.deepStrictEqual(processes.filter(process => process.args.includes('--agent-host-only')).map(process => process.args), [
+-				['tunnel', '--agent-host-only', '--name', 'test_host', '--user-data-dir', 'custom-user-data', '--delegate-to-editor', '--parent-process-id', String(process.pid)],
+-				['tunnel', '--agent-host-only', '--name', 'test_host', '--user-data-dir', 'custom-user-data', '--delegate-to-editor', '--parent-process-id', String(process.pid)],
+-			]);
+-		} finally {
+-			coordinator.dispose();
+-		}
+-	});
++			assert.deepStrictEqual(ordering, ['spawn-remote-access', 'kill-remote-access', 'exit-remote-access', 'spawn-remote-access']);
++		} finally {
++			for (const process of processes) {
++				process.emitExit();
++			}
++			await new Promise<void>(resolve => setImmediate(resolve));
++			coordinator.dispose();
++		}
++	});
++
+ 
+ 	test('preserves remote access session and service CLI arguments', async () => {
+ 		const session = createCoordinator();
+@@ -348,24 +299,21 @@
+ 		}
+ 	});
+ 
+-	test('uninstalls the service even when a sharing update preempts the reconcile', async () => {
++	test('uninstalls the service even when a new remote access request preempts the reconcile', async () => {
+ 		const { coordinator, processes } = createCoordinator();
+ 		try {
+ 			await coordinator.setRemoteAccess(activeMode(true), LogLevel.Info);
+-			// Turning the service off owes an uninstall. Starting agent host
+-			// sharing in the same tick bumps the generation and preempts the
+-			// reconcile that would have run it, so the requirement has to
+-			// survive into the replacement generation.
++			// A replacement request must preserve the pending service uninstall.
+ 			const stopService = coordinator.setRemoteAccess(INACTIVE_TUNNEL_MODE, LogLevel.Info);
+-			const share = coordinator.setAgentHostSharing(agentRequest());
+-			await Promise.all([stopService, share]);
++			const replacement = coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
++			await Promise.all([stopService, replacement]);
+ 
+ 			assert.deepStrictEqual({
+ 				uninstalled: processes.some(process => process.args.includes('uninstall')),
+-				agentHostStarted: processes.some(process => process.args.includes('--agent-host-only')),
++				remoteAccessStarted: processes.some(process => process.args.includes('--accept-server-license-terms') && !process.args.includes('install')),
+ 			}, {
+ 				uninstalled: true,
+-				agentHostStarted: true,
++				remoteAccessStarted: true,
+ 			});
+ 		} finally {
+ 			coordinator.dispose();
+@@ -379,15 +327,15 @@
+ 		const firstListener = coordinator.onDidMachineStatus(event => first.push(event.status.type));
+ 		const secondListener = coordinator.onDidMachineStatus(event => second.push(event.status.type));
+ 		try {
+-			await coordinator.setAgentHostSharing(agentRequest());
+-			const agentHost = processes.find(process => process.args.includes('--agent-host-only'))!;
+-			agentHost.stdout.write('__VSCODE_CLI_STATUS__{"type":"connected","tunnelName":"test_host","isAttached":false}\n');
++			await coordinator.setRemoteAccess(activeMode(), LogLevel.Info);
++			const tunnel = processes.find(process => process.args.includes('--accept-server-license-terms'))!;
++			tunnel.stdout.write('__VSCODE_CLI_STATUS__{"type":"connected","tunnelName":"test_host","isAttached":false}\n');
+ 			await new Promise<void>(resolve => setImmediate(resolve));
+ 			assert.deepStrictEqual({
+ 				first,
+ 				second,
+ 				status: coordinator.getStatus().connectionState,
+-				machineStatusEnvironment: agentHost.env?.VSCODE_CLI_MACHINE_STATUS,
++				machineStatusEnvironment: tunnel.env?.VSCODE_CLI_MACHINE_STATUS,
+ 			}, {
+ 				first: ['connected'],
+ 				second: ['connected'],
+diff --git a/src/vs/platform/extensionManagement/common/extensionGalleryService.ts b/src/vs/platform/extensionManagement/common/extensionGalleryService.ts
+--- a/src/vs/platform/extensionManagement/common/extensionGalleryService.ts
++++ b/src/vs/platform/extensionManagement/common/extensionGalleryService.ts
+@@ -1989,18 +1989,6 @@
+ 			}
+ 		}
+ 
+-		if (this.productService.defaultChatAgent) {
+-			deprecated[this.productService.defaultChatAgent.extensionId.toLowerCase()] = {
+-				disallowInstall: true,
+-				extension: {
+-					id: this.productService.defaultChatAgent.chatExtensionId,
+-					displayName: 'GitHub Copilot Chat',
+-					autoMigrate: { storage: false, donotDisable: true },
+-					preRelease: this.productService.quality !== 'stable'
+-				}
+-			};
+-		}
+-
+ 		return { malicious, deprecated, search, autoUpdate };
+ 	}
+ 
+diff --git a/src/vs/platform/update/test/electron-main/updateRelaunchArguments.test.ts b/src/vs/platform/update/test/electron-main/updateRelaunchArguments.test.ts
+--- a/src/vs/platform/update/test/electron-main/updateRelaunchArguments.test.ts
++++ b/src/vs/platform/update/test/electron-main/updateRelaunchArguments.test.ts
+@@ -37,6 +37,11 @@
+ 		});
+ 
+ 		assert.strictEqual(result, '--user-data-dir=C:\\data "--extensions-dir=C:\\path with space\\ext" --disable-gpu --disable-lcd-text');
++	});
++
++	test('drops retired agent environment while preserving ordinary relaunch options', () => {
++		const legacy = { _: [], 'user-data-dir': 'C:\\ordinary', 'agents-user-data-dir': 'C:\\agents', 'agents-extensions-dir': 'C:\\agents-ext', 'agent-plugins-dir': 'C:\\plugins', 'disable-gpu': true } as NativeParsedArgs;
++		assert.strictEqual(getRelaunchArguments(legacy, [], 'C:\\cwd'), '--user-data-dir=C:\\ordinary --disable-gpu');
+ 	});
+ 
+ 	test('returns empty string when no relevant arguments are present', () => {
+diff --git a/src/vs/platform/defaultAccount/common/defaultAccount.ts b/src/vs/platform/defaultAccount/common/defaultAccount.ts
+--- a/src/vs/platform/defaultAccount/common/defaultAccount.ts
++++ b/src/vs/platform/defaultAccount/common/defaultAccount.ts
+@@ -16,25 +16,6 @@
+ 	copilotUpgrade: 'github-copilot/upgrade?utm_source=vscode',
+ } as const;
+ 
+-/**
+- * Outcome of the last `/copilot_internal/managed_settings` fetch.
+- * - A numeric HTTP status code indicates the server responded with that code.
+- * - `'ok'`: response parsed and adapted successfully (including an empty `{}` body).
+- * - `'no-url'`: no `managedSettingsUrl` configured in product.json.
+- * - `'no-response'`: network error, all sessions rejected, or active rate-limit backoff.
+- * - `'parse-error'`: response received but JSON parsing failed.
+- * - `null`: never fetched.
+- */
+-export type ManagedSettingsFetchStatus = number | 'ok' | 'no-url' | 'no-response' | 'parse-error' | null;
+-
+-export const MANAGED_SETTINGS_UPDATE_REQUIRED_ERROR_CODE = 'client_update_required';
+-
+-export interface IManagedSettingsCompatibilityError {
+-	readonly errorCode: typeof MANAGED_SETTINGS_UPDATE_REQUIRED_ERROR_CODE;
+-	readonly clientVersion?: string;
+-	readonly minimumClientVersion?: string;
+-}
+-
+ export interface IDefaultAccountProvider {
+ 	readonly defaultAccount: IDefaultAccount | null;
+ 	readonly onDidChangeDefaultAccount: Event<IDefaultAccount | null>;
+@@ -42,13 +23,6 @@
+ 	readonly onDidChangePolicyData: Event<IPolicyData | null>;
+ 	readonly copilotTokenInfo: ICopilotTokenInfo | null;
+ 	readonly onDidChangeCopilotTokenInfo: Event<ICopilotTokenInfo | null>;
+-	readonly managedSettingsFetchStatus: ManagedSettingsFetchStatus;
+-	/** Timestamp (ms) of the last managed-settings fetch, or `null` if never fetched. */
+-	readonly managedSettingsFetchedAt: number | null;
+-	/** The raw JSON response from the managed-settings endpoint, for diagnostics. */
+-	readonly managedSettingsRawResponse: unknown;
+-	readonly managedSettingsCompatibilityError: IManagedSettingsCompatibilityError | null;
+-	readonly onDidChangeManagedSettingsCompatibilityError: Event<IManagedSettingsCompatibilityError | null>;
+ 	getDefaultAccountAuthenticationProvider(): IDefaultAccountAuthenticationProvider;
+ 
+ 	/**
+@@ -75,13 +49,6 @@
+ 	readonly currentDefaultAccount: IDefaultAccount | null;
+ 	readonly copilotTokenInfo: ICopilotTokenInfo | null;
+ 	readonly onDidChangeCopilotTokenInfo: Event<ICopilotTokenInfo | null>;
+-	readonly managedSettingsFetchStatus: ManagedSettingsFetchStatus;
+-	/** Timestamp (ms) of the last managed-settings fetch, or `null` if never fetched. */
+-	readonly managedSettingsFetchedAt: number | null;
+-	/** The raw JSON response from the managed-settings endpoint, for diagnostics. */
+-	readonly managedSettingsRawResponse: unknown;
+-	readonly managedSettingsCompatibilityError: IManagedSettingsCompatibilityError | null;
+-	readonly onDidChangeManagedSettingsCompatibilityError: Event<IManagedSettingsCompatibilityError | null>;
+ 	getDefaultAccount(): Promise<IDefaultAccount | null>;
+ 	getDefaultAccountAuthenticationProvider(): IDefaultAccountAuthenticationProvider;
+ 	setDefaultAccountProvider(provider: IDefaultAccountProvider): void;
+diff --git a/src/vs/platform/configuration/common/configurationRegistry.ts b/src/vs/platform/configuration/common/configurationRegistry.ts
+--- a/src/vs/platform/configuration/common/configurationRegistry.ts
++++ b/src/vs/platform/configuration/common/configurationRegistry.ts
+@@ -32,33 +32,13 @@
+ 	addedConfigurations?: IConfigurationNode[];
+ }
+ 
+-/**
+- * Declares that a setting's value should be mirrored into the agent host's root
+- * configuration, removing the need to hand-write a forwarder per setting.
+- *
+- * Only the setting's *globally-scoped* value is mirrored — the resolution order
+- * is policy, then user, then application, then default. Workspace and folder
+- * values are deliberately ignored: the agent host root config is shared by every
+- * window connected to a host, so a workspace-specific value would leak across
+- * unrelated windows on a last-writer-wins basis.
+- *
+- * A setting that genuinely needs per-workspace behavior should not use this;
+- * push it through session config instead, where the session → parent → host
+- * chain resolves precedence correctly.
+- */
++/** Legacy setting metadata retained for schema compatibility; no value mirroring runs. */
+ export interface IAgentHostConfigurationSync {
+ 
+ 	/** The agent host root configuration key to write the value to. */
+ 	readonly key: string;
+ 
+-	/**
+-	 * Maps the globally-scoped setting value to the value written to {@link key}.
+-	 * Defaults to the identity, which is what most settings want: the resolver
+-	 * already skips layers whose value does not conform to the declared `type`
+-	 * and falls back to the registered default, so a transform is only needed to
+-	 * change the *shape* of the value (for example mapping an enum to a
+-	 * different representation the agent host expects).
+-	 */
++	/** An optional legacy conversion descriptor, retained as schema data. */
+ 	readonly transform?: (value: unknown) => unknown;
+ 
+ 	/** Which Agent Host targets receive this setting. Defaults to {@link AgentHostConfigurationSyncScope.All}. */
+@@ -161,14 +141,6 @@
+ 	 * Returns the referencing setting keys per policy name.
+ 	 */
+ 	getPolicyReferenceConfigurations(): Map<PolicyName, Set<string>>;
+-
+-	/**
+-	 * Returns the {@link IAgentHostConfigurationSync} descriptor per setting key
+-	 * for every setting that declares one. Includes settings hidden from the
+-	 * Settings UI via `included: false`, which are absent from
+-	 * {@link getConfigurationProperties}.
+-	 */
+-	getAgentHostSyncConfigurations(): Map<string, IAgentHostConfigurationSync>;
+ 
+ 	/**
+ 	 * Returns all excluded configurations settings of all configuration nodes contributed to this registry.
+@@ -413,13 +385,6 @@
+ 	private readonly configurationProperties: IStringDictionary<IRegisteredConfigurationPropertySchema>;
+ 	private readonly policyConfigurations: Map<PolicyName, string>;
+ 	private readonly policyReferenceConfigurations: Map<PolicyName, Set<string>>;
+-	private readonly agentHostSyncConfigurations: Map<string, IAgentHostConfigurationSync>;
+-	/**
+-	 * Agent-host-mirrored setting keys per node that were hidden with
+-	 * `included: false`. Registration deletes those keys from the node's
+-	 * `properties`, so deregistration has no other way to find them.
+-	 */
+-	private readonly excludedAgentHostSyncKeys = new Map<IConfigurationNode, Set<string>>();
+ 	private readonly excludedConfigurationProperties: IStringDictionary<IRegisteredConfigurationPropertySchema>;
+ 	private readonly resourceLanguageSettingsSchema: IJSONSchema;
+ 	private readonly overrideIdentifiers = new Set<string>();
+@@ -449,7 +414,6 @@
+ 		this.configurationProperties = {};
+ 		this.policyConfigurations = new Map<PolicyName, string>();
+ 		this.policyReferenceConfigurations = new Map<PolicyName, Set<string>>();
+-		this.agentHostSyncConfigurations = new Map<string, IAgentHostConfigurationSync>();
+ 		this.excludedConfigurationProperties = {};
+ 
+ 		contributionRegistry.registerSchema(resourceLanguageSettingsSchemaId, this.resourceLanguageSettingsSchema);
+@@ -757,18 +721,6 @@
+ 	private doDeregisterConfigurations(configurations: IConfigurationNode[], bucket: Set<string>): void {
+ 
+ 		const deregisterConfiguration = (configuration: IConfigurationNode) => {
+-			// Properties hidden with `included: false` are stripped from
+-			// `configuration.properties` at registration time, so the loop below
+-			// cannot see them. Clean their mirroring entries from the side table
+-			// recorded when they were excluded.
+-			const excludedSyncKeys = this.excludedAgentHostSyncKeys.get(configuration);
+-			if (excludedSyncKeys) {
+-				for (const key of excludedSyncKeys) {
+-					bucket.add(key);
+-					this.agentHostSyncConfigurations.delete(key);
+-				}
+-				this.excludedAgentHostSyncKeys.delete(configuration);
+-			}
+ 			if (configuration.properties) {
+ 				for (const key in configuration.properties) {
+ 					bucket.add(key);
+@@ -776,7 +728,6 @@
+ 					if (property?.policy?.name) {
+ 						this.policyConfigurations.delete(property.policy.name);
+ 					}
+-					this.agentHostSyncConfigurations.delete(key);
+ 					if (property?.policyReference?.name) {
+ 						const refs = this.policyReferenceConfigurations.get(property.policyReference.name);
+ 						if (refs) {
+@@ -845,11 +796,6 @@
+ 				const excluded = properties[key].hasOwnProperty('included') && !properties[key].included;
+ 				const policyName = properties[key].policy?.name;
+ 				const policyReferenceName = properties[key].policyReference?.name;
+-				const agentHostSync = properties[key].agentHost;
+-
+-				if (agentHostSync) {
+-					this.agentHostSyncConfigurations.set(key, agentHostSync);
+-				}
+ 
+ 				if (excluded) {
+ 					this.excludedConfigurationProperties[key] = properties[key];
+@@ -861,19 +807,6 @@
+ 						this.addPolicyReferenceConfiguration(policyReferenceName, key);
+ 						bucket.add(key);
+ 					}
+-					if (agentHostSync) {
+-						// Hidden settings still mirror to the agent host; the bucket
+-						// entry is what makes the change observable to the syncer.
+-						bucket.add(key);
+-						// `delete properties[key]` below erases the only link back to
+-						// this node, so remember the key for deregistration.
+-						let excludedSyncKeys = this.excludedAgentHostSyncKeys.get(configuration);
+-						if (!excludedSyncKeys) {
+-							excludedSyncKeys = new Set<string>();
+-							this.excludedAgentHostSyncKeys.set(configuration, excludedSyncKeys);
+-						}
+-						excludedSyncKeys.add(key);
+-					}
+ 					delete properties[key];
+ 				} else {
+ 					bucket.add(key);
+@@ -927,9 +860,7 @@
+ 		return this.policyReferenceConfigurations;
+ 	}
+ 
+-	getAgentHostSyncConfigurations(): Map<string, IAgentHostConfigurationSync> {
+-		return this.agentHostSyncConfigurations;
+-	}
++
+ 
+ 	getExcludedConfigurationProperties(): IStringDictionary<IRegisteredConfigurationPropertySchema> {
+ 		return this.excludedConfigurationProperties;
+@@ -1138,13 +1069,6 @@
+ 	if (schema.policy?.name && configurationRegistry.getPolicyConfigurations().get(schema.policy?.name) !== undefined) {
+ 		return nls.localize('config.policy.duplicate', "Cannot register '{0}'. The associated policy {1} is already registered with {2}. To attach another setting to the same policy, use 'policyReference'.", property, schema.policy?.name, configurationRegistry.getPolicyConfigurations().get(schema.policy?.name));
+ 	}
+-	if (schema.agentHost) {
+-		for (const [owner, sync] of configurationRegistry.getAgentHostSyncConfigurations()) {
+-			if (sync.key === schema.agentHost.key && owner !== property) {
+-				return nls.localize('config.agentHost.duplicate', "Cannot register '{0}'. The agent host configuration key '{1}' is already mirrored from '{2}'.", property, schema.agentHost.key, owner);
+-			}
+-		}
+-	}
+ 	return null;
+ }
+ 
+diff --git a/src/vs/workbench/test/browser/componentFixtures/fixtureUtils.ts b/src/vs/workbench/test/browser/componentFixtures/fixtureUtils.ts
+--- a/src/vs/workbench/test/browser/componentFixtures/fixtureUtils.ts
++++ b/src/vs/workbench/test/browser/componentFixtures/fixtureUtils.ts
+@@ -573,11 +573,6 @@
+ 		currentDefaultAccount: null,
+ 		copilotTokenInfo: null,
+ 		onDidChangeCopilotTokenInfo: new Emitter<null>().event,
+-		managedSettingsFetchStatus: null,
+-		managedSettingsFetchedAt: null,
+-		managedSettingsRawResponse: null,
+-		managedSettingsCompatibilityError: null,
+-		onDidChangeManagedSettingsCompatibilityError: Event.None,
+ 		getDefaultAccount: async () => null,
+ 		getDefaultAccountAuthenticationProvider: () => ({ id: 'test', name: 'Test', scopes: [], enterprise: false }),
+ 		resolveGitHubUrl: (path: string) => `https://github.com/${path}`,
+diff --git a/src/vs/platform/extensionManagement/test/common/extensionGalleryService.test.ts b/src/vs/platform/extensionManagement/test/common/extensionGalleryService.test.ts
+--- a/src/vs/platform/extensionManagement/test/common/extensionGalleryService.test.ts
++++ b/src/vs/platform/extensionManagement/test/common/extensionGalleryService.test.ts
+@@ -158,6 +158,20 @@
+ 		return new ExtensionGalleryServiceWithNoStorageService(requestService, logService, environmentService, NullTelemetryService, fileService, productService, configurationService, allowedExtensionsService, createExtensionGalleryManifestService());
+ 	}
+ 
++	test('control manifest keeps ordinary deprecations without adding a retired Chat migration', async () => {
++		productService = {
++			...productService,
++			extensionsGallery: { serviceUrl: 'https://marketplace.test', controlUrl: 'https://marketplace.test/control', extensionUrlTemplate: '', resourceUrlTemplate: '', nlsBaseUrl: '', itemUrl: '' },
++			defaultChatAgent: { ...productService.defaultChatAgent, extensionId: 'retired.agent', chatExtensionId: 'retired.chat' }
++		};
++		const requestService = new RecordingRequestService(() => requestContext(200, {
++			malicious: [], deprecated: { 'ordinary.old': { extension: { id: 'ordinary.new', displayName: 'Ordinary New' } } }
++		}));
++		const manifest = await createExtensionGalleryService(requestService).getExtensionsControlManifest();
++		assert.deepStrictEqual(manifest.deprecated, { 'ordinary.old': { extension: { id: 'ordinary.new', displayName: 'Ordinary New' } } });
++		assert.deepStrictEqual(requestService.requests, [{ type: 'GET', url: 'https://marketplace.test/control' }]);
++	});
++
+ 	test('marketplace machine id', async () => {
+ 		const headers = await resolveMarketplaceHeaders(product.version, productService, environmentService, configurationService, fileService, storageService, NullTelemetryService);
+ 		assert.ok(headers['X-Market-User-Id']);
+diff --git a/src/vs/platform/configuration/test/common/configurationRegistry.test.ts b/src/vs/platform/configuration/test/common/configurationRegistry.test.ts
+--- a/src/vs/platform/configuration/test/common/configurationRegistry.test.ts
++++ b/src/vs/platform/configuration/test/common/configurationRegistry.test.ts
+@@ -22,6 +22,27 @@
+ 		configurationRegistry.deregisterConfigurations(configurationRegistry.getConfigurations());
+ 		configurationRegistry.deregisterDefaultConfigurations(configurationRegistry.getRegisteredDefaultConfigurations());
+ 	}
++
++	test('legacy agent metadata cannot reject ordinary settings or advertise hidden settings as updates', () => {
++		const events: string[][] = [];
++		const listener = configurationRegistry.onDidUpdateConfiguration(event => events.push([...event.properties]));
++		try {
++			configurationRegistry.registerConfiguration({
++				id: 'ordinaryMetadataCompatibility',
++				properties: {
++					'ordinary.first': { type: 'string', default: 'first', agentHost: { key: 'legacy.key' } },
++					'ordinary.second': { type: 'string', default: 'second', agentHost: { key: 'legacy.key' } },
++					'ordinary.hidden': { type: 'string', included: false, agentHost: { key: 'legacy.hidden' } }
++				}
++			});
++			assert.strictEqual(configurationRegistry.getConfigurationProperties()['ordinary.first'].default, 'first');
++			assert.strictEqual(configurationRegistry.getConfigurationProperties()['ordinary.second'].default, 'second');
++			assert.strictEqual(configurationRegistry.getConfigurationProperties()['ordinary.hidden'], undefined);
++			assert.deepStrictEqual(events, [['ordinary.first', 'ordinary.second']]);
++		} finally {
++			listener.dispose();
++		}
++	});
+ 
+ 	test('configuration override', async () => {
+ 		configurationRegistry.registerConfiguration({

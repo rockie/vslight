@@ -1,0 +1,1698 @@
+{
+  "recordedAtUTC": "2026-10-01T18:49:50.916395+00:00",
+  "scope": "147/149 private source candidates; no shared source/prune/plan mutation; no GUI/CDP operations",
+  "actualRedRuntime": {
+    "record": "M6-runtime145-cold.json",
+    "sha256": "7eacae750ec959d8de7ac230c2396d392a6ded8a9672aa6bd98c45c01f0d5600",
+    "version": "actual145+146",
+    "schemaProof": {
+      "cold": {
+        "notebook.codeActionsOnSave": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "markdownDescription": "Run a series of Code Actions for a notebook on save. Code Actions must be specified and the editor must not be shutting down. When `#files.autoSave#` is set to `afterDelay`, Code Actions will only be run when the file is saved explicitly. Example: `\"notebook.source.organizeImports\": \"explicit\"`",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "boolean"
+            ],
+            "enum": [
+              "explicit",
+              "never",
+              true,
+              false
+            ]
+          },
+          "default": {},
+          "section": {
+            "id": "editor",
+            "title": "Editor",
+            "order": 5
+          },
+          "defaultDefaultValue": {},
+          "scope": 6,
+          "restricted": false,
+          "properties": {}
+        },
+        "search.experimental.closedNotebookRichContentResults": {
+          "type": "boolean",
+          "description": "Show notebook editor rich content results for closed notebooks. Please refresh your search results after changing this setting.",
+          "default": false,
+          "section": {
+            "id": "search",
+            "title": "Search",
+            "order": 13
+          },
+          "defaultDefaultValue": false,
+          "scope": 4,
+          "restricted": false
+        },
+        "accessibility.verbosity.notebook": {
+          "description": "Provide information about how to focus the cell container or inner editor when a notebook cell is focused.",
+          "type": "boolean",
+          "default": true,
+          "tags": [
+            "accessibility"
+          ],
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.verbosity.debug": {
+          "description": "Provide information about how to access the debug console accessibility help dialog when the debug console or run and debug viewlet is focused. Note that a reload of the window is required for this to take effect.",
+          "type": "boolean",
+          "default": true,
+          "tags": [
+            "accessibility"
+          ],
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.lineHasBreakpoint": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a breakpoint.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when the active line has a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when the active line has a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.onDebugBreak": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when the debugger stopped on a breakpoint.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when the debugger stopped on a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when the debugger stopped on a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.notebookCellCompleted": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution is successfully completed.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when a notebook cell execution is successfully completed.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when a notebook cell execution is successfully completed.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.notebookCellFailed": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution fails.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when a notebook cell execution fails.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when a notebook cell execution fails.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.debugWatchVariableAnnouncements": {
+          "type": "boolean",
+          "description": "Controls whether variable changes should be announced in the debug watch view.",
+          "default": true,
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        }
+      },
+      "welcome": {
+        "notebook.codeActionsOnSave": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          ],
+          "markdownDescription": "Run a series of Code Actions for a notebook on save. Code Actions must be specified and the editor must not be shutting down. When `#files.autoSave#` is set to `afterDelay`, Code Actions will only be run when the file is saved explicitly. Example: `\"notebook.source.organizeImports\": \"explicit\"`",
+          "type": "object",
+          "additionalProperties": {
+            "type": [
+              "string",
+              "boolean"
+            ],
+            "enum": [
+              "explicit",
+              "never",
+              true,
+              false
+            ]
+          },
+          "default": {},
+          "section": {
+            "id": "editor",
+            "title": "Editor",
+            "order": 5
+          },
+          "defaultDefaultValue": {},
+          "scope": 6,
+          "restricted": false,
+          "properties": {}
+        },
+        "search.experimental.closedNotebookRichContentResults": {
+          "type": "boolean",
+          "description": "Show notebook editor rich content results for closed notebooks. Please refresh your search results after changing this setting.",
+          "default": false,
+          "section": {
+            "id": "search",
+            "title": "Search",
+            "order": 13
+          },
+          "defaultDefaultValue": false,
+          "scope": 4,
+          "restricted": false
+        },
+        "accessibility.verbosity.notebook": {
+          "description": "Provide information about how to focus the cell container or inner editor when a notebook cell is focused.",
+          "type": "boolean",
+          "default": true,
+          "tags": [
+            "accessibility"
+          ],
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.verbosity.debug": {
+          "description": "Provide information about how to access the debug console accessibility help dialog when the debug console or run and debug viewlet is focused. Note that a reload of the window is required for this to take effect.",
+          "type": "boolean",
+          "default": true,
+          "tags": [
+            "accessibility"
+          ],
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.lineHasBreakpoint": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a breakpoint.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when the active line has a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when the active line has a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.onDebugBreak": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when the debugger stopped on a breakpoint.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when the debugger stopped on a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when the debugger stopped on a breakpoint.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.notebookCellCompleted": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution is successfully completed.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when a notebook cell execution is successfully completed.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when a notebook cell execution is successfully completed.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.signals.notebookCellFailed": {
+          "type": "object",
+          "tags": [
+            "accessibility"
+          ],
+          "additionalProperties": false,
+          "default": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "description": "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution fails.",
+          "properties": {
+            "sound": {
+              "description": "Plays a sound when a notebook cell execution fails.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "on",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable sound when a screen reader is attached.",
+                "Enable sound.",
+                "Disable sound."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            },
+            "announcement": {
+              "description": "Announces when a notebook cell execution fails.",
+              "type": "string",
+              "enum": [
+                "auto",
+                "off"
+              ],
+              "default": "auto",
+              "enumDescriptions": [
+                "Enable announcement, will only play when in screen reader optimized mode.",
+                "Disable announcement."
+              ],
+              "tags": [
+                "accessibility"
+              ]
+            }
+          },
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": {
+            "sound": "auto",
+            "announcement": "auto"
+          },
+          "scope": 5,
+          "restricted": false
+        },
+        "accessibility.debugWatchVariableAnnouncements": {
+          "type": "boolean",
+          "description": "Controls whether variable changes should be announced in the debug watch view.",
+          "default": true,
+          "section": {
+            "id": "accessibility",
+            "title": "Accessibility"
+          },
+          "defaultDefaultValue": true,
+          "scope": 5,
+          "restricted": false
+        }
+      }
+    },
+    "requiredOtherRetirement": {
+      "schemaIDs": [
+        "notebook.codeActionsOnSave",
+        "search.experimental.closedNotebookRichContentResults",
+        "accessibility.verbosity.notebook",
+        "accessibility.verbosity.debug",
+        "accessibility.signals.lineHasBreakpoint",
+        "accessibility.signals.onDebugBreak",
+        "accessibility.signals.notebookCellCompleted",
+        "accessibility.signals.notebookCellFailed",
+        "accessibility.debugWatchVariableAnnouncements"
+      ],
+      "other147": [
+        "Notebook Breadcrumbs menu entries (3)",
+        "notebookEditors language hint field/default",
+        "Mermaid notebook.output positive branches (2)",
+        "NPM Debug tree/hover/lens/JS-debug consumer and manifests",
+        "Exact ordinary UI text mentioning retired Debug/Notebook features"
+      ],
+      "149": [
+        "workbench.editor.autoLockGroups property/default workbench.input.interactive"
+      ]
+    }
+  },
+  "patch147": {
+    "patch": "/Users/rockie/Documents/gh-xgent/vscodium/patches/147-light-retired-notebook-debug-settings.patch",
+    "sha256": "eab769cfd3b1a15b5b6249ffdf14c287863cdb3f83b6cb08246c76904fb02a69",
+    "baseline": "independent complete copy of frozen145 private source, no applied147 prior to replay",
+    "source147": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/vscode",
+    "replay": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay/vscode",
+    "patchReplayExit": 0,
+    "changedFilesByteEqual": true,
+    "changedFiles": [
+      "src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts",
+      "src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts",
+      "src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts",
+      "src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts",
+      "src/vs/workbench/contrib/search/browser/search.contribution.ts",
+      "src/vs/workbench/services/search/common/search.ts",
+      "src/vs/workbench/browser/workbench.contribution.ts",
+      "src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts",
+      "src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts",
+      "src/vs/workbench/browser/actions/listCommands.ts",
+      "src/vs/editor/common/config/editorOptions.ts",
+      "src/vs/platform/terminal/common/terminalPlatformConfiguration.ts",
+      "extensions/mermaid-markdown-features/package.json",
+      "extensions/npm/package.json",
+      "extensions/npm/package.nls.json",
+      "extensions/npm/src/scriptHover.ts",
+      "extensions/npm/src/npmView.ts",
+      "extensions/npm/src/npmMain.ts",
+      "extensions/npm/src/tasks.ts"
+    ],
+    "pruneSuggestions": [
+      "extensions/npm/src/npmScriptLens.ts",
+      "src/vs/platform/accessibilitySignal/browser/media/break.mp3"
+    ],
+    "replayNoEmit": {
+      "core": {
+        "exit": 0,
+        "bytes": 0,
+        "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-core.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "npm": {
+        "exit": 0,
+        "bytes": 0,
+        "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-npm.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "npm-browser": {
+        "exit": 0,
+        "bytes": 0,
+        "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-npm-browser.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "regressions147": {
+    "settings": {
+      "kind": "Actual complete accessibilityConfiguration/accessibilitySignalService/codeActionsContribution/codeActions registration/workbenchConfiguration/terminal profiles modules. No GUI or live CDP. UI/Audio listener boundary throws if executed; DI host fixtures supply only events/config/provider inputs.",
+      "rows": [
+        {
+          "source": "before",
+          "status": "PASS",
+          "retiredSchemasCount": 9,
+          "actualSearchConfigurationRegistration": true,
+          "retiredSignalDescriptors": 4,
+          "ordinaryVerbosity": 13,
+          "ordinarySignalRegistryCount": 23,
+          "ordinaryCodeActionDynamicSourceKindsAndKeybindingEnums": true,
+          "ordinaryTaskCompletionAnnouncement": true,
+          "retiredSignalReads": 0,
+          "notebookLanguageHintField": true,
+          "ordinaryLanguageHintAndTerminalProfiles": true,
+          "boundaries": [
+            "src/vs/workbench/contrib/search/browser/searchActionsNav.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsRemoveReplace.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsFind.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchTreeModel/searchModel.ts (unchanged UI/provider boundary)",
+            "Search ViewPaneContainer class",
+            "src/vs/workbench/contrib/search/browser/searchView.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchWidget.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchQuickAccess.contribution.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsTopBar.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsCopy.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/quickTextSearch/textSearchQuickAccess.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsTextQuickAccess.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/search.common.contribution.ts (unchanged UI/provider boundary)",
+            "DOM addDisposableListener throws if called",
+            "src/vs/workbench/contrib/search/browser/searchActionsBase.ts (unchanged UI/provider boundary)"
+          ],
+          "actualRuntimeInputs": 218
+        },
+        {
+          "source": "after",
+          "status": "PASS",
+          "retiredSchemasCount": 0,
+          "actualSearchConfigurationRegistration": true,
+          "retiredSignalDescriptors": 0,
+          "ordinaryVerbosity": 13,
+          "ordinarySignalRegistryCount": 23,
+          "ordinaryCodeActionDynamicSourceKindsAndKeybindingEnums": true,
+          "ordinaryTaskCompletionAnnouncement": true,
+          "retiredSignalReads": 0,
+          "notebookLanguageHintField": false,
+          "ordinaryLanguageHintAndTerminalProfiles": true,
+          "boundaries": [
+            "DOM addDisposableListener throws if called",
+            "Search ViewPaneContainer class",
+            "src/vs/workbench/contrib/search/browser/searchActionsFind.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchView.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchWidget.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchTreeModel/searchModel.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsTopBar.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsNav.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsRemoveReplace.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsCopy.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsTextQuickAccess.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchQuickAccess.contribution.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/search.common.contribution.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/quickTextSearch/textSearchQuickAccess.ts (unchanged UI/provider boundary)",
+            "src/vs/workbench/contrib/search/browser/searchActionsBase.ts (unchanged UI/provider boundary)"
+          ],
+          "actualRuntimeInputs": 218
+        }
+      ]
+    },
+    "npm": {
+      "kind": "Actual complete retained NPM source modules with host API fixture; red before Debug consumer and old profile issue, green ordinary Run/Open/hover/tasks/install after",
+      "rows": [
+        {
+          "source": "before",
+          "status": "PASS",
+          "actualRuntimeInputs": 81,
+          "legacyDebugClick": "undefined/no ordinary command",
+          "normalOpenRunClicks": true,
+          "unknownClickFallback": "undefined",
+          "debugTreeAndHoverCommands": 2,
+          "debuggerExecution": 1,
+          "ordinaryRunTaskAndHoverTask": true,
+          "ordinaryInstallTask": true,
+          "hoverDebugLink": true,
+          "debugCodeLensRegistered": 1,
+          "debugConfigReads": [
+            "debug.javascript.codelens.npmScripts"
+          ],
+          "manifestDebugCommand": true,
+          "manifestDebugMenus": 3,
+          "boundaries": [
+            "VS Code host API constructors/events/tasks.executeTask/commands.executeCommand mocked; no real shell/UI/debugger launch. Actual tasks.ts and readScripts.ts and npmView/scriptHover/lens-before bundled; actual workspace package JSON/lock files and real JSONC parser."
+          ]
+        },
+        {
+          "source": "after",
+          "status": "PASS",
+          "actualRuntimeInputs": 80,
+          "legacyDebugClick": "npm.runScript",
+          "normalOpenRunClicks": true,
+          "unknownClickFallback": "vscode.open",
+          "debugTreeAndHoverCommands": 0,
+          "debuggerExecution": 0,
+          "ordinaryRunTaskAndHoverTask": true,
+          "ordinaryInstallTask": true,
+          "hoverDebugLink": false,
+          "debugCodeLensRegistered": 0,
+          "debugConfigReads": [],
+          "manifestDebugCommand": false,
+          "manifestDebugMenus": 0,
+          "boundaries": [
+            "VS Code host API constructors/events/tasks.executeTask/commands.executeCommand mocked; no real shell/UI/debugger launch. Actual tasks.ts and readScripts.ts and npmView/scriptHover/lens-before bundled; actual workspace package JSON/lock files and real JSONC parser."
+          ]
+        }
+      ]
+    },
+    "menus": {
+      "rows": [
+        {
+          "source": "before",
+          "status": "PASS",
+          "kind": "Verbatim TypeScript AST action declaration with actual Action2/MenuRegistry/CommandsRegistry/BreadcrumbsConfig; actual Mermaid manifest when strings with actual ContextKeyExpr parser/evaluation.",
+          "actualRuntimeInputs": 49,
+          "breadcrumbMenuCounts": {
+            "CommandPalette": 1,
+            "MenubarAppearanceMenu": 1,
+            "StickyScrollContext": 1,
+            "NotebookToolbar": 1,
+            "NotebookStickyScrollContext": 1,
+            "NotebookToolbarContext": 1
+          },
+          "ordinaryBreadcrumbToggle": true,
+          "mermaidContextMatrix": [
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "markdown.preview",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "vscode.markdown.preview.editor",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "notebook.output",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "vscode.mermaid-markdown-features.preview",
+              "result": false
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "markdown.preview",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "vscode.markdown.preview.editor",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "notebook.output",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "vscode.mermaid-markdown-features.preview",
+              "result": true
+            }
+          ],
+          "limits": [
+            "Extracted exactly one unchanged-shape complete action declaration; Breadcrumbs widget DOM is not instantiated. Manifest expressions evaluated with ordinary context fixture, final app menu capture is separate."
+          ]
+        },
+        {
+          "source": "after",
+          "status": "PASS",
+          "kind": "Verbatim TypeScript AST action declaration with actual Action2/MenuRegistry/CommandsRegistry/BreadcrumbsConfig; actual Mermaid manifest when strings with actual ContextKeyExpr parser/evaluation.",
+          "actualRuntimeInputs": 49,
+          "breadcrumbMenuCounts": {
+            "CommandPalette": 1,
+            "MenubarAppearanceMenu": 1,
+            "StickyScrollContext": 1,
+            "NotebookToolbar": 0,
+            "NotebookStickyScrollContext": 0,
+            "NotebookToolbarContext": 0
+          },
+          "ordinaryBreadcrumbToggle": true,
+          "mermaidContextMatrix": [
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "markdown.preview",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "vscode.markdown.preview.editor",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "notebook.output",
+              "result": false
+            },
+            {
+              "command": "_mermaid-markdown.openInEditor",
+              "webviewId": "vscode.mermaid-markdown-features.preview",
+              "result": false
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "markdown.preview",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "vscode.markdown.preview.editor",
+              "result": true
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "notebook.output",
+              "result": false
+            },
+            {
+              "command": "_mermaid-markdown.copySource",
+              "webviewId": "vscode.mermaid-markdown-features.preview",
+              "result": true
+            }
+          ],
+          "limits": [
+            "Extracted exactly one unchanged-shape complete action declaration; Breadcrumbs widget DOM is not instantiated. Manifest expressions evaluated with ordinary context fixture, final app menu capture is separate."
+          ]
+        }
+      ]
+    }
+  },
+  "regressionArtifacts147": {
+    "noemit147-npm-browser.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/noemit147-npm-browser.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "npm-result.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/npm-result.json",
+      "bytes": 1933,
+      "sha256": "1ceb5009a3591a917bed526c6bf0625f5cd27c5ae489cb9ca1bab59b46596076"
+    },
+    "replay-noemit-npm.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-npm.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "menus-after-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/menus-after-metafile.json",
+      "bytes": 56859,
+      "sha256": "757b020d6e62b1c1553e44a0d226e8282d4e7cbdbd8a0f1b053f3919e5a4de6e"
+    },
+    "npm-before-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/npm-before-metafile.json",
+      "bytes": 85545,
+      "sha256": "aa3b90f95faba109e144f6f8fc350daba880b3dcbcb0db148de261618ad4e42d"
+    },
+    "menus-before-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/menus-before-metafile.json",
+      "bytes": 56860,
+      "sha256": "03b18bf7671d041b128f565b7de137b1168ad98ca02c77af5cdef11c11a31bad"
+    },
+    "settings-result.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/settings-result.json",
+      "bytes": 4506,
+      "sha256": "34e2b91b84499e1aa98ba448ce96347f5a5d4da665e0892c869f4d83bcd3fd0b"
+    },
+    "noemit147.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/noemit147.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test-npm.mjs": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/test-npm.mjs",
+      "bytes": 10899,
+      "sha256": "3ad99020b5bd4e77005a8fad6d63cbf4440b2f0a42605a510ca406a3417b0904"
+    },
+    "settings-after-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/settings-after-metafile.json",
+      "bytes": 384849,
+      "sha256": "28489cc4184d7ebec470159be8fe5fd8626470ef0a23e5ee13bebc239e202cf4"
+    },
+    "test-menus.mjs": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/test-menus.mjs",
+      "bytes": 4644,
+      "sha256": "7cd7ec44d863573d7079b671aad054d6354424f22dc6c12bd58aeb8de1d1bc78"
+    },
+    "replay-noemit-npm-browser.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-npm-browser.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "noemit147-npm.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/noemit147-npm.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "test-settings.mjs": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/test-settings.mjs",
+      "bytes": 9321,
+      "sha256": "47bde53b10c9056adfdebae73982b8a80496bf3a2996bedd9d75472177cbc24a"
+    },
+    "replay-noemit-core.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/replay-noemit-core.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "menus-result.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/menus-result.json",
+      "bytes": 4220,
+      "sha256": "cf47eb49e9ae12a6da560873a7719b1cd626aaf59e0bd7e084b6615fc612bf96"
+    },
+    "settings-before-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/settings-before-metafile.json",
+      "bytes": 384850,
+      "sha256": "26b357a4c2cec70d4bab455710aef62917a99ecaf8715abba51c99a24bbeaf6f"
+    },
+    "npm-after-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-retired-settings147-oe0hroa3/npm-after-metafile.json",
+      "bytes": 83641,
+      "sha256": "af2ba5e22bddd15007ac9dd58b9d889e9096d4794b5641ea20bdefb3b67dc2eb"
+    }
+  },
+  "pruneConsumerProof": [
+    {
+      "path": "extensions/npm/src/npmScriptLens.ts",
+      "owner": "NpmScriptLensProvider",
+      "beforeConsumer": "extensions/npm/src/npmMain.ts import/constructor",
+      "afterConsumerCount": 0,
+      "reason": "Only Debug CodeLens provider reads debug.javascript.codelens.npmScripts and calls retired JS-debug commands; ordinary task/Run/hover sources remain."
+    },
+    {
+      "path": "src/vs/platform/accessibilitySignal/browser/media/break.mp3",
+      "owner": "Sound.break / AccessibilitySignal.break and onDebugBreak",
+      "beforeConsumers": 2,
+      "afterConsumerCount": 0,
+      "reason": "Two dedicated Debug signals alone use Sound.break. All ordinary error/warning/task/terminal/diff/save/format/inline sound descriptors retained."
+    }
+  ],
+  "patch149": {
+    "patch": "/Users/rockie/Documents/gh-xgent/vscodium/patches/149-light-autolock-interactive-option.patch",
+    "sha256": "d681ff55e2e2ef39fd0c59122ecea37e5e8a92ff247993a01a0c359043a455bb",
+    "privateSource": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/vscode",
+    "baseline": "full independent copy of frozen147 private source",
+    "sourceBaselinePatchCheckExit": 0,
+    "independentSingleFileReplayExit": 0,
+    "replayByteEqual": true,
+    "fullGraphNoEmit": {
+      "exit": 0,
+      "bytes": 0,
+      "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/noemit149.log"
+    },
+    "pruneSuggestions": [],
+    "regression": {
+      "kind": "Actual module red/green against authoritative145 autoLockGroups schema; only retired Interactive Window extra removed, ordinary editor options/defaults/dynamic extension metadata preserved",
+      "rows": [
+        {
+          "source": "before",
+          "status": "PASS",
+          "actualModuleInputs": 70,
+          "interactiveAutoLockProperty": true,
+          "interactiveDefault": true,
+          "ordinaryOptionsByteEqual": [
+            "default",
+            "workbench.editorinputs.searchEditorInput",
+            "workbench.editor.processExplorer",
+            "workbench.editors.gettingStartedInput",
+            "terminalEditor",
+            "vscode.markdown.editor",
+            "imagePreview.previewEditor",
+            "vscode.audioPreview",
+            "vscode.videoPreview",
+            "mainThreadWebview-markdown.preview",
+            "mainThreadWebview-browserPreview"
+          ],
+          "defaultEnabledOrdinaryIDs": [
+            "terminalEditor",
+            "workbench.editor.processExplorer",
+            "mainThreadWebview-browserPreview"
+          ],
+          "markdownPreviewDeduplication": true,
+          "ordinaryThirdPartyDynamicRegistrationAndAssociationEnums": true,
+          "binaryAndLargeFileSchemas": true,
+          "limits": [
+            "Actual complete DynamicEditorConfigurations module and real Registry/configuration registry/events. Editor resolver registered-editor list supplied from cold app schema with explicit ordinary provider fixture; no editor DOM or GUI."
+          ]
+        },
+        {
+          "source": "after",
+          "status": "PASS",
+          "actualModuleInputs": 70,
+          "interactiveAutoLockProperty": false,
+          "interactiveDefault": false,
+          "ordinaryOptionsByteEqual": [
+            "default",
+            "workbench.editorinputs.searchEditorInput",
+            "workbench.editor.processExplorer",
+            "workbench.editors.gettingStartedInput",
+            "terminalEditor",
+            "vscode.markdown.editor",
+            "imagePreview.previewEditor",
+            "vscode.audioPreview",
+            "vscode.videoPreview",
+            "mainThreadWebview-markdown.preview",
+            "mainThreadWebview-browserPreview"
+          ],
+          "defaultEnabledOrdinaryIDs": [
+            "terminalEditor",
+            "workbench.editor.processExplorer",
+            "mainThreadWebview-browserPreview"
+          ],
+          "markdownPreviewDeduplication": true,
+          "ordinaryThirdPartyDynamicRegistrationAndAssociationEnums": true,
+          "binaryAndLargeFileSchemas": true,
+          "limits": [
+            "Actual complete DynamicEditorConfigurations module and real Registry/configuration registry/events. Editor resolver registered-editor list supplied from cold app schema with explicit ordinary provider fixture; no editor DOM or GUI."
+          ]
+        }
+      ]
+    }
+  },
+  "knownEditorAudit149": [
+    {
+      "id": "default",
+      "classification": "keep ordinary",
+      "entity": "Text/default resolver",
+      "source": [
+        "vscode/src/vs/workbench/common/editor.ts",
+        "vscode/src/vs/workbench/browser/parts/editor/textEditor.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/common/editor.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/src/vs/workbench/browser/parts/editor/textEditor.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "workbench.editorinputs.searchEditorInput",
+      "classification": "keep ordinary",
+      "entity": "SearchEditorInput / SearchEditorContribution resolver",
+      "source": [
+        "vscode/src/vs/workbench/contrib/searchEditor/browser/constants.ts",
+        "vscode/src/vs/workbench/contrib/searchEditor/browser/searchEditor.contribution.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/searchEditor/browser/constants.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/src/vs/workbench/contrib/searchEditor/browser/searchEditor.contribution.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "workbench.editor.processExplorer",
+      "classification": "keep ordinary",
+      "entity": "ProcessExplorerEditor/Input",
+      "source": [
+        "vscode/src/vs/workbench/contrib/processExplorer/browser/processExplorerEditorInput.ts",
+        "vscode/src/vs/workbench/contrib/processExplorer/browser/processExplorerEditor.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/processExplorer/browser/processExplorerEditorInput.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/src/vs/workbench/contrib/processExplorer/browser/processExplorerEditor.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "workbench.editors.gettingStartedInput",
+      "classification": "keep ordinary",
+      "entity": "GettingStartedInput/Welcome registration restored142",
+      "source": [
+        "vscode/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedInput.ts",
+        "vscode/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStartedInput.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "terminalEditor",
+      "classification": "keep ordinary",
+      "entity": "TerminalEditorInput / TerminalMainContribution resolver",
+      "source": [
+        "vscode/src/vs/workbench/contrib/terminal/browser/terminal.ts",
+        "vscode/src/vs/workbench/contrib/terminal/browser/terminalMainContribution.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/terminal/browser/terminal.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/src/vs/workbench/contrib/terminal/browser/terminalMainContribution.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "vscode.markdown.editor",
+      "classification": "keep ordinary",
+      "entity": "Markdown extension custom editor",
+      "source": [
+        "vscode/extensions/markdown-language-features/package.json"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/extensions/markdown-language-features/package.json",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "imagePreview.previewEditor",
+      "classification": "keep ordinary",
+      "entity": "Media Preview image custom editor",
+      "source": [
+        "vscode/extensions/media-preview/src/imagePreview/index.ts",
+        "vscode/extensions/media-preview/package.json"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/extensions/media-preview/src/imagePreview/index.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/extensions/media-preview/package.json",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "vscode.audioPreview",
+      "classification": "keep ordinary",
+      "entity": "Media Preview audio custom editor",
+      "source": [
+        "vscode/extensions/media-preview/src/audioPreview.ts",
+        "vscode/extensions/media-preview/package.json"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/extensions/media-preview/src/audioPreview.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/extensions/media-preview/package.json",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "vscode.videoPreview",
+      "classification": "keep ordinary",
+      "entity": "Media Preview video custom editor",
+      "source": [
+        "vscode/extensions/media-preview/src/videoPreview.ts",
+        "vscode/extensions/media-preview/package.json"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/extensions/media-preview/src/videoPreview.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/extensions/media-preview/package.json",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "workbench.input.interactive",
+      "classification": "retire precise extra149",
+      "entity": "InteractiveEditorInput physically pruned; statically appended schema option only",
+      "source": [
+        "vscode/src/vs/workbench/contrib/interactive/browser/interactiveEditorInput.ts",
+        "vscode/src/vs/workbench/browser/parts/editor/editorConfiguration.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/interactive/browser/interactiveEditorInput.ts",
+          "existsIn147": false
+        },
+        {
+          "path": "vscode/src/vs/workbench/browser/parts/editor/editorConfiguration.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "mainThreadWebview-markdown.preview",
+      "classification": "keep generic/ordinary preview compatibility",
+      "entity": "Markdown preview WebviewPanel type; general mainThreadWebview-${viewType} editor ID",
+      "source": [
+        "vscode/src/vs/workbench/contrib/webviewPanel/browser/webviewEditorInput.ts",
+        "vscode/extensions/markdown-language-features/src/preview/preview.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/webviewPanel/browser/webviewEditorInput.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/extensions/markdown-language-features/src/preview/preview.ts",
+          "existsIn147": true
+        }
+      ]
+    },
+    {
+      "id": "mainThreadWebview-browserPreview",
+      "classification": "keep ordinary third-party preview compatibility",
+      "entity": "Optional third-party Live Preview type via generic WebviewPanel contract; not built-in pruned simpleBrowser.view",
+      "source": [
+        "vscode/src/vs/workbench/contrib/webviewPanel/browser/webviewEditorInput.ts",
+        "vscode/extensions/simple-browser/src/simpleBrowserView.ts"
+      ],
+      "retainedEntitySourceFacts": [
+        {
+          "path": "vscode/src/vs/workbench/contrib/webviewPanel/browser/webviewEditorInput.ts",
+          "existsIn147": true
+        },
+        {
+          "path": "vscode/extensions/simple-browser/src/simpleBrowserView.ts",
+          "existsIn147": false
+        }
+      ]
+    }
+  ],
+  "regressionArtifacts149": {
+    "autolock-before-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/autolock-before-metafile.json",
+      "bytes": 108515,
+      "sha256": "58a5802583170dd068eb62660d7c6573ecc3b85efc8435cf2befabfe5ccc85e6"
+    },
+    "autolock-result.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/autolock-result.json",
+      "bytes": 2650,
+      "sha256": "1c9bdf0d615143a7cdb8bce54abdfd87d580df22df2f908aeb8cde366f9adf64"
+    },
+    "noemit149.log": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/noemit149.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "autolock-after-metafile.json": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/autolock-after-metafile.json",
+      "bytes": 108514,
+      "sha256": "12f233265bf4bb527797accc8b6f3db997780ffaf1fb2789736b100e19e5d105"
+    },
+    "test-autolock.mjs": {
+      "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-autolock149-f16f6t7c/test-autolock.mjs",
+      "bytes": 5513,
+      "sha256": "b224b2e96f7464738b54c70da5dfb9856c463eabd9e79e8f2066eef4407af3b6"
+    }
+  },
+  "preservedContract": {
+    "actorCheck": "src/tsconfig.json original full strict graph unchanged; native noEmit exit0. No APIimpl/proposal permissions/protocol contracts changed by147/149.",
+    "ordinaryIAiEditTelemetryAndInlineProviders": "147/149 do not modify tracking/telemetry/provider code;144/145 actual dual-side provider evidence retained in M4-inline-unification/M4-ai-stats records.",
+    "ordinaryProfiling": "workbench.extensions.*Profile and ordinary debug.inspect/developer tooling untouched.",
+    "ordinaryNpmScriptClassification": "tasks.ts isDebugScript may tag user Node --inspect command lines with ordinary TaskGroup.Rebuild; this launches no debugger API/JS-debug command and preserves task execution semantics.",
+    "ordinaryWebviews": "Generic third-party WebviewPanel/custom editor contracts and ordinary Markdown/Mermaid/media previews retained.",
+    "legacyProfiles": "AI stats/coauthor true/all profile stays intact; old npm.scriptExplorerAction=debug explicitly runs ordinary task. No schema/observer retains old notebook/debug keys."
+  },
+  "remainingEvidence": [
+    "Broader ordinary CodeActions/a11y/Breadcrumbs/Markdown/Mermaid actual UI and other plan/auth/CI/native gates are owned by parent; module green and registry snapshots do not replace them.",
+    "Actual legacy NPM tree click GUI is not asserted: actual147 NpmView module maps debug to ordinary Run, final app preserves old setting and real provider task/hover/commands pass.",
+    "Other legacy Notebook/Debug keys were not written into this final profile; actual schema absence and shared static-descriptor module regression provide the separate negative evidence."
+  ],
+  "limitations": [
+    "Private source module regressions with explicit host/browser boundaries are not final app registry proof.",
+    "Source candidate147/149 green does not rewrite actual145+146 red snapshot.",
+    "All initial unknown retirement-ID expressions are audited in M6 JSON with their concrete producer/input/prefix/nested-schema limits; keyword counts are not a proof of total removal."
+  ],
+  "actualFinalRuntime": {
+    "record": "M6-runtime149.json",
+    "sha256": "0892d8b5de5b5f7df7d8d54335a9081ea0d184063512fafe0104a28e8a850885",
+    "artifactVersion": "parent full rebuilt actual147+148+149 app",
+    "phases": {
+      "cold149": {
+        "capturedAtUTC": "2026-10-01T18:30:33.461Z",
+        "counts": {
+          "commands": 2123,
+          "commandMetadata": 891,
+          "statusbarModels": 1,
+          "statusbarEntries": 2,
+          "settings": 1565,
+          "excludedSettings": 10,
+          "keybindings": 975,
+          "menuIDs": 286,
+          "menuIDsWithItems": 134,
+          "menuItems": 2397,
+          "containers": 9,
+          "views": 39,
+          "viewsWelcomeIDs": 4,
+          "viewsWelcomeEntries": 32,
+          "singletons": 247,
+          "workbenchInstances": 1,
+          "rendererChannelServers": 3,
+          "walkthroughInstances": 0,
+          "walkthroughSteps": 0,
+          "commandLinks": 41
+        },
+        "retiredSchemaIDsPresent": [],
+        "staticCandidateComparison": {
+          "resolvedCommandCandidateCount": 1375,
+          "resolvedSettingCandidateCount": 336,
+          "registrationShapedCandidateCount": 960,
+          "registrationShapedHandlerMatches": [],
+          "allRetiredCandidateCommandSurfaceMatches": [],
+          "supersetOrdinaryHandlerMatches": [
+            "workbench.action.closeModalEditor",
+            "workbench.action.quickOpen",
+            "workbench.action.quickOpenWithModes"
+          ],
+          "settingMatches": [],
+          "nonCommandScalarCollisions": [
+            "",
+            "error",
+            "notebook",
+            "scope",
+            "variable"
+          ]
+        },
+        "genericLogTotalHits": 0,
+        "newGenericErrorTextCount": 0
+      },
+      "welcome149": {
+        "capturedAtUTC": "2026-10-01T18:37:53.513Z",
+        "counts": {
+          "commands": 2179,
+          "commandMetadata": 891,
+          "statusbarModels": 1,
+          "statusbarEntries": 4,
+          "settings": 1565,
+          "excludedSettings": 10,
+          "keybindings": 975,
+          "menuIDs": 286,
+          "menuIDsWithItems": 135,
+          "menuItems": 2412,
+          "containers": 9,
+          "views": 39,
+          "viewsWelcomeIDs": 4,
+          "viewsWelcomeEntries": 32,
+          "singletons": 247,
+          "workbenchInstances": 1,
+          "rendererChannelServers": 4,
+          "walkthroughInstances": 1,
+          "walkthroughSteps": 30,
+          "commandLinks": 74
+        },
+        "retiredSchemaIDsPresent": [],
+        "staticCandidateComparison": {
+          "resolvedCommandCandidateCount": 1375,
+          "resolvedSettingCandidateCount": 336,
+          "registrationShapedCandidateCount": 960,
+          "registrationShapedHandlerMatches": [],
+          "allRetiredCandidateCommandSurfaceMatches": [],
+          "supersetOrdinaryHandlerMatches": [
+            "workbench.action.closeModalEditor",
+            "workbench.action.quickOpen",
+            "workbench.action.quickOpenWithModes"
+          ],
+          "settingMatches": [],
+          "nonCommandScalarCollisions": [
+            "",
+            "error",
+            "notebook",
+            "scope",
+            "variable"
+          ]
+        },
+        "genericLogTotalHits": 5,
+        "newGenericErrorTextCount": 5
+      },
+      "reload149": {
+        "capturedAtUTC": "2026-10-01T18:40:54.511Z",
+        "counts": {
+          "commands": 2152,
+          "commandMetadata": 891,
+          "statusbarModels": 1,
+          "statusbarEntries": 4,
+          "settings": 1565,
+          "excludedSettings": 10,
+          "keybindings": 975,
+          "menuIDs": 286,
+          "menuIDsWithItems": 134,
+          "menuItems": 2404,
+          "containers": 9,
+          "views": 39,
+          "viewsWelcomeIDs": 4,
+          "viewsWelcomeEntries": 32,
+          "singletons": 247,
+          "workbenchInstances": 1,
+          "rendererChannelServers": 4,
+          "walkthroughInstances": 1,
+          "walkthroughSteps": 30,
+          "commandLinks": 74
+        },
+        "retiredSchemaIDsPresent": [],
+        "staticCandidateComparison": {
+          "resolvedCommandCandidateCount": 1375,
+          "resolvedSettingCandidateCount": 336,
+          "registrationShapedCandidateCount": 960,
+          "registrationShapedHandlerMatches": [],
+          "allRetiredCandidateCommandSurfaceMatches": [],
+          "supersetOrdinaryHandlerMatches": [
+            "workbench.action.closeModalEditor",
+            "workbench.action.quickOpen",
+            "workbench.action.quickOpenWithModes"
+          ],
+          "settingMatches": [],
+          "nonCommandScalarCollisions": [
+            "",
+            "error",
+            "notebook",
+            "scope",
+            "variable"
+          ]
+        },
+        "genericLogTotalHits": 5,
+        "newGenericErrorTextCount": 0
+      }
+    },
+    "reloadProof": {
+      "path": "/private/tmp/lc149-my6ky2od/reload149-after.json",
+      "sha256": "be8ab68fc6711190c73aff751b3f5bc6ad500dbda5cf531af9a8d137011acaf5",
+      "data": {
+        "before": {
+          "pid": 92930,
+          "version": "1.135.0"
+        },
+        "after": {
+          "pid": 2142,
+          "version": "1.135.0"
+        },
+        "mainPID": 91720,
+        "at": "2026-10-01T18:40:03.841685+00:00",
+        "response": null,
+        "requestConsumedBeforeReload": true,
+        "oldHostExited": true
+      }
+    },
+    "parentOrdinaryEvidence": {
+      "npm149-02-request.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/npm149-02-request.json",
+        "sha256": "fe8619b808ab33f1d85d3b7aa38b6aae377a9fcbc504f72d15a15e663e8f7265",
+        "data": {
+          "id": "npm149-02",
+          "action": "retained-npm"
+        }
+      },
+      "npm149-02-response.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/npm149-02-response.json",
+        "sha256": "71c162a50dc4bf01094c420e7656e44c2e4d0ed1e507aadd111295d6289d6e15",
+        "data": {
+          "id": "npm149-02",
+          "action": "retained-npm",
+          "status": "PASS",
+          "result": {
+            "status": "PASS",
+            "checks": [
+              "ordinary NPM Run/Open/Install commands",
+              "ordinary Run hover without Debug",
+              "real NPM task provider, execution, proof and end event"
+            ],
+            "task": {
+              "name": "lean-proof",
+              "definition": {
+                "type": "npm",
+                "script": "lean-proof"
+              }
+            },
+            "legacyClickSetting": "debug"
+          }
+        }
+      },
+      "ordinary149-01-request.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/ordinary149-01-request.json",
+        "sha256": "302d29dd91e0315e481be3e79104a5a1d051fd155c44f2268763c5dcc1bbd8fa",
+        "data": {
+          "id": "ordinary149-01",
+          "action": "retained"
+        }
+      },
+      "ordinary149-01-response.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/ordinary149-01-response.json",
+        "sha256": "712b8c719cfe9916c902d0ab14be4dd13ec82706d96f078ccd3702176237b744",
+        "data": {
+          "id": "ordinary149-01",
+          "action": "retained",
+          "status": "PASS",
+          "result": {
+            "status": "PASS",
+            "checks": [
+              "HTML language, editor save, file search",
+              "built-in Git diff, stage, commit",
+              "ordinary task executes and stops",
+              "isolated ordinary secret store/get/delete"
+            ]
+          }
+        }
+      },
+      "welcome149-03-request.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/welcome149-03-request.json",
+        "sha256": "8c938c44dccc95858f0a1e714dc5cef1d0eaf0e8538d3d9e9c1bf55a723bb69d",
+        "data": {
+          "id": "welcome149-03",
+          "action": "command",
+          "command": "workbench.action.openWalkthrough"
+        }
+      },
+      "welcome149-03-response.json": {
+        "path": "/private/tmp/lc149-my6ky2od/ordinary-evidence149/welcome149-03-response.json",
+        "sha256": "ea198589a2e4526f099b90256113b67e2ee0022f2ebbf390e95292ae31dc10ab",
+        "data": {
+          "id": "welcome149-03",
+          "action": "command",
+          "status": "PASS"
+        }
+      }
+    },
+    "legacyNpmClickBoundary": "Parent app evidence proves old debug configuration survives, NPM ordinary commands/Run hover/provider execution and file proof PASS. Actual tree click mapping itself is verified by actual147 NpmView getTreeItem module regression; no GUI tree click is asserted here."
+  }
+}

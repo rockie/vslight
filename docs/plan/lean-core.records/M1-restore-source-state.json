@@ -1,0 +1,65 @@
+{
+  "preparation": {
+    "status": "PREPARED_AWAITING_SHUTDOWN_STATE",
+    "appVersion": "1.135.0",
+    "workspace": "/private/tmp/lean-restore-jdsqe80h/workspace",
+    "documents": [
+      "file:///private/tmp/lean-restore-jdsqe80h/workspace/A.txt",
+      "file:///private/tmp/lean-restore-jdsqe80h/workspace/B.txt"
+    ],
+    "operations": [
+      "show A preview:false",
+      "pin A sticky",
+      "show B preview:true"
+    ],
+    "createdAt": "2026-10-01T11:27:39.932Z"
+  },
+  "source_states": [
+    {
+      "database": "/tmp/lean-restore-jdsqe80h/profile/User/workspaceStorage/d5df99ee946b67c5fa5a2caed3c5586c/state.vscdb",
+      "key": "memento/workbench.parts.editor",
+      "value": {
+        "editorpart.state": {
+          "serializedGrid": {
+            "root": {
+              "type": "branch",
+              "data": [
+                {
+                  "type": "leaf",
+                  "data": {
+                    "id": 0,
+                    "editors": [
+                      {
+                        "id": "workbench.editors.files.fileEditorInput",
+                        "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/lean-restore-jdsqe80h/workspace/A.txt\",\"external\":\"file:///private/tmp/lean-restore-jdsqe80h/workspace/A.txt\",\"path\":\"/private/tmp/lean-restore-jdsqe80h/workspace/A.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                      },
+                      {
+                        "id": "workbench.editors.files.fileEditorInput",
+                        "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/lean-restore-jdsqe80h/workspace/B.txt\",\"external\":\"file:///private/tmp/lean-restore-jdsqe80h/workspace/B.txt\",\"path\":\"/private/tmp/lean-restore-jdsqe80h/workspace/B.txt\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                      }
+                    ],
+                    "mru": [
+                      1,
+                      0
+                    ],
+                    "preview": 1,
+                    "sticky": 0
+                  },
+                  "size": 834
+                }
+              ],
+              "size": 792
+            },
+            "orientation": 0,
+            "width": 792,
+            "height": 834
+          },
+          "activeGroup": 0,
+          "mostRecentActiveGroups": [
+            0
+          ]
+        }
+      }
+    }
+  ]
+}

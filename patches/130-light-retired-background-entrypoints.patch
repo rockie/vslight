@@ -1,0 +1,1483 @@
+diff --git a/src/vs/code/electron-main/app.ts b/src/vs/code/electron-main/app.ts
+--- a/src/vs/code/electron-main/app.ts
++++ b/src/vs/code/electron-main/app.ts
+@@ -44,8 +44,6 @@
+ import { ExtensionHostStarter } from '../../platform/extensions/electron-main/extensionHostStarter.js';
+ import { IExternalTerminalMainService } from '../../platform/externalTerminal/electron-main/externalTerminal.js';
+ import { LinuxExternalTerminalService, MacExternalTerminalService, WindowsExternalTerminalService } from '../../platform/externalTerminal/node/externalTerminalService.js';
+-import { ISandboxHelperMainService } from '../../platform/sandbox/electron-main/sandboxHelperService.js';
+-import { SandboxHelperService } from '../../platform/sandbox/node/sandboxHelper.js';
+ import { LOCAL_FILE_SYSTEM_CHANNEL_NAME } from '../../platform/files/common/diskFileSystemProviderClient.js';
+ import { IFileService } from '../../platform/files/common/files.js';
+ import { DiskFileSystemProviderChannel } from '../../platform/files/electron-main/diskFileSystemProviderServer.js';
+@@ -103,9 +101,6 @@
+ import { WorkspacesMainService } from '../../platform/workspaces/electron-main/workspacesMainService.js';
+ import { IWorkspacesManagementMainService, WorkspacesManagementMainService } from '../../platform/workspaces/electron-main/workspacesManagementMainService.js';
+ import { IPolicyService } from '../../platform/policy/common/policy.js';
+-import { INativeManagedSettingsService, IFileManagedSettingsService } from '../../platform/policy/common/copilotManagedSettings.js';
+-import { NativeManagedSettingsChannel } from '../../platform/policy/common/nativeManagedSettingsIpc.js';
+-import { FileManagedSettingsChannel } from '../../platform/policy/common/fileManagedSettingsIpc.js';
+ import { PolicyChannel } from '../../platform/policy/common/policyIpc.js';
+ import { IUserDataProfilesMainService } from '../../platform/userDataProfile/electron-main/userDataProfile.js';
+ import { IExtensionsProfileScannerService } from '../../platform/extensionManagement/common/extensionsProfileScannerService.js';
+@@ -114,7 +109,6 @@
+ import { UserDataProfilesHandler } from '../../platform/userDataProfile/electron-main/userDataProfilesHandler.js';
+ import { ProfileStorageChangesListenerChannel } from '../../platform/userDataProfile/electron-main/userDataProfileStorageIpc.js';
+ import { Promises, RunOnceScheduler, runWhenGlobalIdle } from '../../base/common/async.js';
+-import { CancellationToken } from '../../base/common/cancellation.js';
+ import { resolveMachineId, resolveSqmId, resolveDevDeviceId, validateDevDeviceId } from '../../platform/telemetry/electron-main/telemetryUtils.js';
+ import { ExtensionsProfileScannerService } from '../../platform/extensionManagement/node/extensionsProfileScannerService.js';
+ import { LoggerChannel } from '../../platform/log/electron-main/logIpc.js';
+@@ -131,15 +125,6 @@
+ import { AuxiliaryWindowsMainService } from '../../platform/auxiliaryWindow/electron-main/auxiliaryWindowsMainService.js';
+ import { normalizeNFC } from '../../base/common/normalization.js';
+ import { ICSSDevelopmentService, CSSDevelopmentService } from '../../platform/cssDev/node/cssDevService.js';
+-import { INativeMcpDiscoveryHelperService, NativeMcpDiscoveryHelperChannelName } from '../../platform/mcp/common/nativeMcpDiscoveryHelper.js';
+-import { NativeMcpDiscoveryHelperService } from '../../platform/mcp/node/nativeMcpDiscoveryHelperService.js';
+-import { IMcpGatewayService, McpGatewayChannelName } from '../../platform/mcp/common/mcpGateway.js';
+-import { McpGatewayService } from '../../platform/mcp/node/mcpGatewayService.js';
+-import { McpGatewayChannel } from '../../platform/mcp/node/mcpGatewayChannel.js';
+-import { IWebContentExtractorService } from '../../platform/webContentExtractor/common/webContentExtractor.js';
+-import { NativeWebContentExtractorService } from '../../platform/webContentExtractor/electron-main/webContentExtractorService.js';
+-import { AgentNetworkFilterService, IAgentNetworkFilterService } from '../../platform/networkFilter/common/networkFilterService.js';
+-import { ITerminalSandboxService, NullTerminalSandboxService } from '../../platform/sandbox/common/terminalSandboxService.js';
+ import ErrorTelemetry from '../../platform/telemetry/electron-main/errorTelemetry.js';
+ 
+ type OSProxyConfigEvent = {
+@@ -1051,15 +1036,6 @@
+ 			this.environmentMainService.continueOn = continueOn ?? undefined;
+ 		}
+ 
+-		// Extract session parameter to open a specific chat session in the target window
+-		const session = params.get('session');
+-		if (session !== null) {
+-			this.logService.trace(`app#handleProtocolUrl() found 'session' as parameter:`, uri.toString(true));
+-
+-			params.delete('session');
+-			uri = uri.with({ query: params.toString() });
+-		}
+-
+ 		// Check if the protocol URL is a window openable to open...
+ 		const windowOpenableFromProtocolUrl = this.getWindowOpenableFromProtocolUrl(uri);
+ 		if (windowOpenableFromProtocolUrl) {
+@@ -1081,11 +1057,6 @@
+ 
+ 				window?.focus(); // this should help ensuring that the right window gets focus when multiple are opened
+ 
+-				// Open chat session in the target window if requested
+-				if (window && session) {
+-					window.sendWhenReady('vscode:openChatSession', CancellationToken.None, session);
+-				}
+-
+ 				return true;
+ 			}
+ 		}
+@@ -1189,11 +1160,6 @@
+ 		// Metered Connection
+ 		const meteredConnectionService = new MeteredConnectionMainService(this.configurationService);
+ 		services.set(IMeteredConnectionService, meteredConnectionService);
+-
+-		// Web Contents Extractor
+-		services.set(ITerminalSandboxService, new SyncDescriptor(NullTerminalSandboxService));
+-		services.set(IAgentNetworkFilterService, new SyncDescriptor(AgentNetworkFilterService, undefined, true));
+-		services.set(IWebContentExtractorService, new SyncDescriptor(NativeWebContentExtractorService, undefined, false /* proxied to other processes */));
+ 
+ 		// Webview Manager
+ 		services.set(IWebviewManagerService, new SyncDescriptor(WebviewMainService));
+@@ -1230,7 +1196,6 @@
+ 		} else if (isLinux) {
+ 			services.set(IExternalTerminalMainService, new SyncDescriptor(LinuxExternalTerminalService));
+ 		}
+-		services.set(ISandboxHelperMainService, new SyncDescriptor(SandboxHelperService));
+ 
+ 		// Backups
+ 		const backupMainService = new BackupMainService(this.environmentMainService, this.configurationService, this.logService, this.stateService);
+@@ -1269,10 +1234,6 @@
+ 		// Proxy Auth
+ 		services.set(IProxyAuthService, new SyncDescriptor(ProxyAuthService));
+ 
+-		// MCP
+-		services.set(INativeMcpDiscoveryHelperService, new SyncDescriptor(NativeMcpDiscoveryHelperService));
+-		services.set(IMcpGatewayService, new SyncDescriptor(McpGatewayService));
+-
+ 		// Dev Only: CSS service (for ESM)
+ 		services.set(ICSSDevelopmentService, new SyncDescriptor(CSSDevelopmentService, undefined, true));
+ 
+@@ -1304,12 +1265,6 @@
+ 		const policyChannel = disposables.add(new PolicyChannel(accessor.get(IPolicyService)));
+ 		mainProcessElectronServer.registerChannel('policy', policyChannel);
+ 		sharedProcessClient.then(client => client.registerChannel('policy', policyChannel));
+-
+-		const nativeManagedSettingsChannel = disposables.add(new NativeManagedSettingsChannel(accessor.get(INativeManagedSettingsService)));
+-		mainProcessElectronServer.registerChannel('nativeManagedSettings', nativeManagedSettingsChannel);
+-
+-		const fileManagedSettingsChannel = disposables.add(new FileManagedSettingsChannel(accessor.get(IFileManagedSettingsService)));
+-		mainProcessElectronServer.registerChannel('fileManagedSettings', fileManagedSettingsChannel);
+ 
+ 		// Local Files
+ 		const diskFileSystemProvider = this.fileService.getProvider(Schemas.file);
+@@ -1361,10 +1316,6 @@
+ 		mainProcessElectronServer.registerChannel('nativeHost', nativeHostChannel);
+ 		sharedProcessClient.then(client => client.registerChannel('nativeHost', nativeHostChannel));
+ 
+-		// Web Content Extractor
+-		const webContentExtractorChannel = ProxyChannel.fromService(accessor.get(IWebContentExtractorService), disposables);
+-		mainProcessElectronServer.registerChannel('webContentExtractor', webContentExtractorChannel);
+-
+ 		// Workspaces
+ 		const workspacesChannel = ProxyChannel.fromService(accessor.get(IWorkspacesService), disposables);
+ 		mainProcessElectronServer.registerChannel('workspaces', workspacesChannel);
+@@ -1398,16 +1349,6 @@
+ 		const externalTerminalChannel = ProxyChannel.fromService(accessor.get(IExternalTerminalMainService), disposables);
+ 		mainProcessElectronServer.registerChannel('externalTerminal', externalTerminalChannel);
+ 
+-		// Sandbox Helper
+-		const sandboxHelperChannel = ProxyChannel.fromService(accessor.get(ISandboxHelperMainService), disposables);
+-		mainProcessElectronServer.registerChannel('sandboxHelper', sandboxHelperChannel);
+-
+-		// MCP
+-		const mcpDiscoveryChannel = ProxyChannel.fromService(accessor.get(INativeMcpDiscoveryHelperService), disposables);
+-		mainProcessElectronServer.registerChannel(NativeMcpDiscoveryHelperChannelName, mcpDiscoveryChannel);
+-		const mcpGatewayChannel = this._register(new McpGatewayChannel(mainProcessElectronServer, accessor.get(IMcpGatewayService), accessor.get(ILoggerMainService)));
+-		mainProcessElectronServer.registerChannel(McpGatewayChannelName, mcpGatewayChannel);
+-
+ 		// Logger
+ 		const loggerChannel = this._register(new LoggerChannel(accessor.get(ILoggerMainService)));
+ 		mainProcessElectronServer.registerChannel('logger', loggerChannel);
+@@ -1431,15 +1372,6 @@
+ 
+ 		const context = isLaunchedFromCli(process.env) ? OpenContext.CLI : OpenContext.DESKTOP;
+ 		const args = this.environmentMainService.args;
+-
+-		// Handle agents window first based on context
+-		if (args['agents']) {
+-			return windowsMainService.openAgentsWindow({
+-				context,
+-				cli: args,
+-				initialStartup: true
+-			});
+-		}
+ 
+ 		// Then check for windows from protocol links to open
+ 		if (initialProtocolUrls) {
+diff --git a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+--- a/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
++++ b/src/vs/code/electron-utility/sharedProcess/sharedProcessMain.ts
+@@ -51,12 +51,11 @@
+ import { ISharedProcessConfiguration } from '../../../platform/sharedProcess/node/sharedProcess.js';
+ import { IStorageService } from '../../../platform/storage/common/storage.js';
+ import { resolveCommonProperties } from '../../../platform/telemetry/common/commonProperties.js';
+-import { ICustomEndpointTelemetryService, ITelemetryService } from '../../../platform/telemetry/common/telemetry.js';
++import { ITelemetryService } from '../../../platform/telemetry/common/telemetry.js';
+ import { TelemetryAppenderChannel } from '../../../platform/telemetry/common/telemetryIpc.js';
+ import { TelemetryLogAppender } from '../../../platform/telemetry/common/telemetryLogAppender.js';
+ import { TelemetryService } from '../../../platform/telemetry/common/telemetryService.js';
+ import { supportsTelemetry, ITelemetryAppender, NullAppender, NullTelemetryService, getPiiPathsFromEnvironment, isInternalTelemetry } from '../../../platform/telemetry/common/telemetryUtils.js';
+-import { CustomEndpointTelemetryService } from '../../../platform/telemetry/node/customEndpointTelemetryService.js';
+ import { ExtensionStorageService, IExtensionStorageService } from '../../../platform/extensionManagement/common/extensionStorage.js';
+ import { IgnoredExtensionsManagementService, IIgnoredExtensionsManagementService } from '../../../platform/userDataSync/common/ignoredExtensions.js';
+ import { IUserDataSyncLocalStoreService, IUserDataSyncLogService, IUserDataSyncEnablementService, IUserDataSyncService, IUserDataSyncStoreManagementService, IUserDataSyncStoreService, IUserDataSyncUtilService, registerConfiguration as registerUserDataSyncConfiguration, IUserDataSyncResourceProviderService } from '../../../platform/userDataSync/common/userDataSync.js';
+@@ -122,16 +121,6 @@
+ import { AllowedExtensionsService } from '../../../platform/extensionManagement/common/allowedExtensionsService.js';
+ import { IExtensionGalleryManifestService } from '../../../platform/extensionManagement/common/extensionGalleryManifest.js';
+ import { ExtensionGalleryManifestIPCService } from '../../../platform/extensionManagement/common/extensionGalleryManifestServiceIpc.js';
+-import { ISharedWebContentExtractorService } from '../../../platform/webContentExtractor/common/webContentExtractor.js';
+-import { SharedWebContentExtractorService } from '../../../platform/webContentExtractor/node/sharedWebContentExtractorService.js';
+-import { McpManagementService } from '../../../platform/mcp/node/mcpManagementService.js';
+-import { IAllowedMcpServersService, IMcpGalleryService, IMcpManagementService } from '../../../platform/mcp/common/mcpManagement.js';
+-import { IMcpResourceScannerService, McpResourceScannerService } from '../../../platform/mcp/common/mcpResourceScannerService.js';
+-import { McpGalleryService } from '../../../platform/mcp/common/mcpGalleryService.js';
+-import { McpManagementChannel } from '../../../platform/mcp/common/mcpManagementIpc.js';
+-import { AllowedMcpServersService } from '../../../platform/mcp/common/allowedMcpServersService.js';
+-import { IMcpGalleryManifestService } from '../../../platform/mcp/common/mcpGalleryManifest.js';
+-import { McpGalleryManifestIPCService } from '../../../platform/mcp/common/mcpGalleryManifestServiceIpc.js';
+ import { IMeteredConnectionService } from '../../../platform/meteredConnection/common/meteredConnection.js';
+ import { MeteredConnectionChannelClient, METERED_CONNECTION_CHANNEL } from '../../../platform/meteredConnection/common/meteredConnectionIpc.js';
+ import { ILocalGitService } from '../../../platform/git/common/localGitService.js';
+@@ -338,23 +327,12 @@
+ 		this.server.registerChannel('telemetryAppender', new TelemetryAppenderChannel(appenders));
+ 		services.set(ITelemetryService, telemetryService);
+ 
+-		// Custom Endpoint Telemetry
+-		const customEndpointTelemetryService = new CustomEndpointTelemetryService(configurationService, telemetryService, loggerService, environmentService, productService);
+-		services.set(ICustomEndpointTelemetryService, customEndpointTelemetryService);
+-
+ 		// Extension Management
+ 		services.set(IExtensionsProfileScannerService, new SyncDescriptor(ExtensionsProfileScannerService, undefined, true));
+ 		services.set(IExtensionsScannerService, new SyncDescriptor(ExtensionsScannerService, undefined, true));
+ 		services.set(IExtensionSignatureVerificationService, new SyncDescriptor(ExtensionSignatureVerificationService, undefined, true));
+ 		services.set(IAllowedExtensionsService, new SyncDescriptor(AllowedExtensionsService, undefined, true));
+ 		services.set(INativeServerExtensionManagementService, new SyncDescriptor(ExtensionManagementService, undefined, true));
+-
+-		// MCP Management
+-		services.set(IAllowedMcpServersService, new SyncDescriptor(AllowedMcpServersService, undefined, true));
+-		services.set(IMcpGalleryManifestService, new McpGalleryManifestIPCService(this.server));
+-		services.set(IMcpGalleryService, new SyncDescriptor(McpGalleryService, undefined, true));
+-		services.set(IMcpResourceScannerService, new SyncDescriptor(McpResourceScannerService, undefined, true));
+-		services.set(IMcpManagementService, new SyncDescriptor(McpManagementService, undefined, true));
+ 
+ 		// Extension Gallery
+ 		services.set(IExtensionGalleryManifestService, new ExtensionGalleryManifestIPCService(this.server, logService, productService));
+@@ -399,9 +377,6 @@
+ 		services.set(ITunnelProcessCoordinator, new SyncDescriptor(TunnelProcessCoordinator, [undefined], true));
+ 		services.set(IRemoteTunnelService, new SyncDescriptor(RemoteTunnelService));
+ 
+-		// Web Content Extractor
+-		services.set(ISharedWebContentExtractorService, new SyncDescriptor(SharedWebContentExtractorService));
+-
+ 		// Local Git
+ 		services.set(ILocalGitService, new SyncDescriptor(LocalGitService, undefined, false /* proxied to other processes */));
+ 
+@@ -415,10 +390,6 @@
+ 		const channel = new ExtensionManagementChannel(accessor.get(IExtensionManagementService), () => null);
+ 		this.server.registerChannel('extensions', channel);
+ 
+-		// Mcp Management
+-		const mcpManagementChannel = new McpManagementChannel(accessor.get(IMcpManagementService), () => null);
+-		this.server.registerChannel('mcpManagement', mcpManagementChannel);
+-
+ 		// Language Packs
+ 		const languagePacksChannel = ProxyChannel.fromService(accessor.get(ILanguagePackService), this._store);
+ 		this.server.registerChannel('languagePacks', languagePacksChannel);
+@@ -443,10 +414,6 @@
+ 		const userDataSyncMachineChannel = ProxyChannel.fromService(accessor.get(IUserDataSyncMachinesService), this._store);
+ 		this.server.registerChannel('userDataSyncMachines', userDataSyncMachineChannel);
+ 
+-		// Custom Endpoint Telemetry
+-		const customEndpointTelemetryChannel = ProxyChannel.fromService(accessor.get(ICustomEndpointTelemetryService), this._store);
+-		this.server.registerChannel('customEndpointTelemetry', customEndpointTelemetryChannel);
+-
+ 		const userDataSyncAccountChannel = new UserDataSyncAccountServiceChannel(accessor.get(IUserDataSyncAccountService));
+ 		this.server.registerChannel('userDataSyncAccount', userDataSyncAccountChannel);
+ 
+@@ -468,10 +435,6 @@
+ 		// Remote Tunnel
+ 		const remoteTunnelChannel = ProxyChannel.fromService(accessor.get(IRemoteTunnelService), this._store);
+ 		this.server.registerChannel('remoteTunnel', remoteTunnelChannel);
+-
+-		// Web Content Extractor
+-		const webContentExtractorChannel = ProxyChannel.fromService(accessor.get(ISharedWebContentExtractorService), this._store);
+-		this.server.registerChannel('sharedWebContentExtractor', webContentExtractorChannel);
+ 
+ 		// Local Git
+ 		const localGitChannel = ProxyChannel.fromService(accessor.get(ILocalGitService), this._store);
+diff --git a/src/vs/workbench/workbench.common.main.ts b/src/vs/workbench/workbench.common.main.ts
+--- a/src/vs/workbench/workbench.common.main.ts
++++ b/src/vs/workbench/workbench.common.main.ts
+@@ -57,7 +57,6 @@
+ 
+ import '../platform/actions/common/actions.contribution.js';
+ import '../platform/undoRedo/common/undoRedoService.js';
+-import '../platform/mcp/common/mcpResourceScannerService.js';
+ import './services/workspaces/common/editSessionIdentityService.js';
+ import './services/workspaces/common/canonicalUriService.js';
+ import './services/extensions/browser/extensionUrlHandler.js';
+@@ -71,9 +70,6 @@
+ import './services/textmodelResolver/common/textModelResolverService.js';
+ import './services/editor/browser/editorService.js';
+ import './services/editor/browser/editorResolverService.js';
+-import './services/aiEmbeddingVector/common/aiEmbeddingVectorService.js';
+-import './services/aiRelatedInformation/common/aiRelatedInformationService.js';
+-import './services/aiSettingsSearch/common/aiSettingsSearchService.js';
+ import './services/history/browser/historyService.js';
+ import './services/activity/browser/activityService.js';
+ import './services/keybinding/browser/keybindingService.js';
+@@ -113,9 +109,6 @@
+ import './services/authentication/browser/authenticationExtensionsService.js';
+ import './services/authentication/browser/authenticationUsageService.js';
+ import './services/authentication/browser/authenticationAccessService.js';
+-import './services/authentication/browser/authenticationMcpUsageService.js';
+-import './services/authentication/browser/authenticationMcpAccessService.js';
+-import './services/authentication/browser/authenticationMcpService.js';
+ import './services/authentication/browser/dynamicAuthenticationProviderStorageService.js';
+ import './services/authentication/browser/authenticationQueryService.js';
+ import '../platform/hover/browser/hoverService.js';
+@@ -135,9 +128,6 @@
+ import './services/editor/common/customEditorLabelService.js';
+ import './services/dataChannel/browser/dataChannelService.js';
+ import './services/inlineCompletions/common/inlineCompletionsUnification.js';
+-import './services/chat/common/chatEntitlementService.js';
+-import './services/agentHost/common/agentHostResourceService.js';
+-import '../platform/agentHost/browser/agentHostConnectionsService.js';
+ import './services/log/common/defaultLogLevels.js';
+ 
+ import { InstantiationType, registerSingleton } from '../platform/instantiation/common/extensions.js';
+@@ -163,9 +153,6 @@
+ import { IUserDataSyncLogService } from '../platform/userDataSync/common/userDataSync.js';
+ import { UserDataSyncLogService } from '../platform/userDataSync/common/userDataSyncLog.js';
+ import { AllowedExtensionsService } from '../platform/extensionManagement/common/allowedExtensionsService.js';
+-import { IAllowedMcpServersService, IMcpGalleryService } from '../platform/mcp/common/mcpManagement.js';
+-import { McpGalleryService } from '../platform/mcp/common/mcpGalleryService.js';
+-import { AllowedMcpServersService } from '../platform/mcp/common/allowedMcpServersService.js';
+ import { IWebWorkerService } from '../platform/webWorker/browser/webWorkerService.js';
+ import { WebWorkerService } from '../platform/webWorker/browser/webWorkerServiceImpl.js';
+ 
+@@ -183,8 +170,6 @@
+ registerSingleton(IDownloadService, DownloadService, InstantiationType.Delayed);
+ registerSingleton(IOpenerService, OpenerService, InstantiationType.Delayed);
+ registerSingleton(IWebWorkerService, WebWorkerService, InstantiationType.Delayed);
+-registerSingleton(IMcpGalleryService, McpGalleryService, InstantiationType.Delayed);
+-registerSingleton(IAllowedMcpServersService, AllowedMcpServersService, InstantiationType.Delayed);
+ 
+ //#endregion
+ 
+@@ -195,7 +180,6 @@
+ import './services/accounts/browser/defaultAccount.js';
+ 
+ // Account Policy Gate
+-import './services/policies/browser/accountPolicyGate.contribution.js';
+ 
+ // Policy Telemetry
+ import './services/policies/browser/policyTelemetry.contribution.js';
+@@ -212,24 +196,12 @@
+ import './contrib/performance/browser/performance.contribution.js';
+ 
+ // Notebook — vslight: notebook UI removed; keep the service layer for the extension API
+-import './contrib/notebook/browser/notebook.service.contribution.js';
+ 
+ // Speech
+-import './contrib/speech/browser/speech.contribution.js';
+ 
+ // Chat
+-import './contrib/chat/browser/chat.shared.contribution.js';
+-import './contrib/chat/browser/chat.contribution.js';
+-import './contrib/chat/browser/agentSessions/agentHost/agentHost.contribution.js';
+-import './contrib/chat/browser/chat.view.contribution.js';
+-import './contrib/inlineChat/browser/inlineChat.contribution.js';
+ 
+ // Copilot Voice
+-import './contrib/agentsVoice/browser/agentsVoice.contribution.js';
+-import './contrib/mcp/browser/mcp.contribution.js';
+-import './contrib/mcp/browser/mcp.view.contribution.js';
+-import './contrib/chat/browser/chatSessions/chatSessions.contribution.js';
+-import './contrib/chat/browser/contextContrib/chatContext.contribution.js';
+ import './contrib/imageCarousel/browser/imageCarousel.contribution.js';
+ 
+ // Testing — vslight: testing UI removed; keep the service layer for the extension API
+@@ -273,7 +245,6 @@
+ 
+ // Debug — vslight: debug subsystem removed; keep only the IDebugService registration
+ // (API-layer stub: MainThreadDebugService and other kept services inject it)
+-import './contrib/debug/browser/debug.service.contribution.js';
+ 
+ // Markers
+ import './contrib/markers/browser/markers.contribution.js';
+diff --git a/src/vs/workbench/workbench.desktop.main.ts b/src/vs/workbench/workbench.desktop.main.ts
+--- a/src/vs/workbench/workbench.desktop.main.ts
++++ b/src/vs/workbench/workbench.desktop.main.ts
+@@ -54,11 +54,8 @@
+ import './services/path/electron-browser/pathService.js';
+ import './services/themes/electron-browser/nativeHostColorSchemeService.js';
+ import './services/extensionManagement/electron-browser/extensionManagementService.js';
+-import './services/mcp/electron-browser/mcpGalleryManifestService.js';
+-import './services/mcp/electron-browser/mcpWorkbenchManagementService.js';
+ import './services/encryption/electron-browser/encryptionService.js';
+ import './services/imageResize/electron-browser/imageResizeService.js';
+-import './services/localTranscription/electron-browser/localTranscriptionService.js';
+ import './services/secrets/electron-browser/secretStorageService.js';
+ import './services/localization/electron-browser/languagePackService.js';
+ import './services/telemetry/electron-browser/telemetryService.js';
+@@ -79,7 +76,6 @@
+ import './services/tunnel/browser/tunnelService.js';
+ import '../platform/diagnostics/electron-browser/diagnosticsService.js';
+ import '../platform/profiling/electron-browser/profilingService.js';
+-import '../platform/telemetry/electron-browser/customEndpointTelemetryService.js';
+ import './services/files/electron-browser/elevatedFileService.js';
+ import './services/search/electron-browser/searchService.js';
+ import './services/workingCopy/electron-browser/workingCopyHistoryService.js';
+@@ -88,10 +84,6 @@
+ import '../platform/userDataProfile/electron-browser/userDataProfileStorageService.js';
+ import './services/auxiliaryWindow/electron-browser/auxiliaryWindowService.js';
+ import '../platform/extensionManagement/electron-browser/extensionsProfileScannerService.js';
+-import '../platform/sandbox/electron-browser/sandboxHelperService.js';
+-import '../platform/webContentExtractor/electron-browser/webContentExtractorService.js';
+-import './services/agentHost/electron-browser/agentHostService.js';
+-import '../platform/agentHost/electron-browser/remoteAgentHostService.js';
+ import './services/process/electron-browser/processService.js';
+ import './services/power/electron-browser/powerService.js';
+ 
+@@ -120,7 +112,7 @@
+ import './contrib/codeEditor/electron-browser/codeEditor.contribution.js';
+ 
+ // Debug
+-import './contrib/debug/electron-browser/extensionHostDebugService.js';
++import './services/extensions/electron-browser/extensionHostDebugService.js';
+ 
+ // Extensions Management
+ import './contrib/extensions/electron-browser/extensions.contribution.js';
+@@ -174,7 +166,6 @@
+ import './contrib/multiDiffEditor/browser/multiDiffEditor.contribution.js';
+ 
+ // Chat
+-import './contrib/chat/electron-browser/chat.contribution.js';
+ 
+ // Encryption
+ import './contrib/encryption/electron-browser/encryption.contribution.js';
+@@ -183,7 +174,6 @@
+ import './contrib/emergencyAlert/electron-browser/emergencyAlert.contribution.js';
+ 
+ // MCP
+-import './contrib/mcp/electron-browser/mcp.contribution.js';
+ 
+ // Policy Export
+ import './contrib/policyExport/electron-browser/policyExport.contribution.js';
+diff --git a/src/vs/workbench/workbench.web.main.ts b/src/vs/workbench/workbench.web.main.ts
+--- a/src/vs/workbench/workbench.web.main.ts
++++ b/src/vs/workbench/workbench.web.main.ts
+@@ -43,7 +43,6 @@
+ import './services/extensions/browser/extensionsScannerService.js';
+ import './services/extensionManagement/browser/webExtensionsScannerService.js';
+ import './services/extensionManagement/common/extensionManagementServerService.js';
+-import './services/mcp/browser/mcpWorkbenchManagementService.js';
+ import './services/extensionManagement/browser/extensionGalleryManifestService.js';
+ import './services/telemetry/browser/telemetryService.js';
+ import './services/url/browser/urlService.js';
+@@ -71,8 +70,6 @@
+ import '../platform/extensionResourceLoader/browser/extensionResourceLoaderService.js';
+ import './services/auxiliaryWindow/browser/auxiliaryWindowService.js';
+ import './services/power/browser/powerService.js';
+-import './services/localTranscription/browser/localTranscriptionService.js';
+-import '../platform/sandbox/browser/sandboxHelperService.js';
+ 
+ import { InstantiationType, registerSingleton } from '../platform/instantiation/common/extensions.js';
+ import { IAccessibilityService } from '../platform/accessibility/common/accessibility.js';
+@@ -90,23 +87,13 @@
+ import { IUserDataSyncAccountService, UserDataSyncAccountService } from '../platform/userDataSync/common/userDataSyncAccount.js';
+ import { UserDataAutoSyncService } from '../platform/userDataSync/common/userDataAutoSyncService.js';
+ import { AccessibilityService } from '../platform/accessibility/browser/accessibilityService.js';
+-import { ICustomEndpointTelemetryService } from '../platform/telemetry/common/telemetry.js';
+-import { NullEndpointTelemetryService } from '../platform/telemetry/common/telemetryUtils.js';
+ import { ITitleService } from './services/title/browser/titleService.js';
+ import { BrowserTitleService } from './browser/parts/titlebar/titlebarPart.js';
+ import { ITimerService, TimerService } from './services/timer/browser/timerService.js';
+ import { IDiagnosticsService, NullDiagnosticsService } from '../platform/diagnostics/common/diagnostics.js';
+ import { ILanguagePackService } from '../platform/languagePacks/common/languagePacks.js';
+ import { WebLanguagePacksService } from '../platform/languagePacks/browser/languagePacks.js';
+-import { IWebContentExtractorService, NullWebContentExtractorService, ISharedWebContentExtractorService, NullSharedWebContentExtractorService } from '../platform/webContentExtractor/common/webContentExtractor.js';
+-import { IMcpGalleryManifestService } from '../platform/mcp/common/mcpGalleryManifest.js';
+-import { WorkbenchMcpGalleryManifestService } from './services/mcp/browser/mcpGalleryManifestService.js';
+ import { UserDataSyncResourceProviderService } from '../platform/userDataSync/common/userDataSyncResourceProvider.js';
+-import { IAgentHostService } from '../platform/agentHost/common/agentService.js';
+-import { EditorRemoteAgentHostServiceClient } from './services/agentHost/browser/editorRemoteAgentHostServiceClient.js';
+-import { IRemoteAgentHostService, NullRemoteAgentHostService } from '../platform/agentHost/common/remoteAgentHostService.js';
+-import { BrowserAgentHostDebugLogsExportService, IAgentHostDebugLogsExportService } from './contrib/chat/browser/actions/exportAgentHostDebugLogsAction.js';
+-import './services/agentHost/browser/webAgentHostEnablementService.js';
+ 
+ registerSingleton(IWorkbenchExtensionManagementService, ExtensionManagementService, InstantiationType.Delayed);
+ registerSingleton(IAccessibilityService, AccessibilityService, InstantiationType.Delayed);
+@@ -121,15 +108,8 @@
+ registerSingleton(ITitleService, BrowserTitleService, InstantiationType.Eager);
+ registerSingleton(IExtensionTipsService, ExtensionTipsService, InstantiationType.Delayed);
+ registerSingleton(ITimerService, TimerService, InstantiationType.Delayed);
+-registerSingleton(ICustomEndpointTelemetryService, NullEndpointTelemetryService, InstantiationType.Delayed);
+ registerSingleton(IDiagnosticsService, NullDiagnosticsService, InstantiationType.Delayed);
+ registerSingleton(ILanguagePackService, WebLanguagePacksService, InstantiationType.Delayed);
+-registerSingleton(IWebContentExtractorService, NullWebContentExtractorService, InstantiationType.Delayed);
+-registerSingleton(ISharedWebContentExtractorService, NullSharedWebContentExtractorService, InstantiationType.Delayed);
+-registerSingleton(IMcpGalleryManifestService, WorkbenchMcpGalleryManifestService, InstantiationType.Delayed);
+-registerSingleton(IAgentHostService, EditorRemoteAgentHostServiceClient, InstantiationType.Delayed);
+-registerSingleton(IRemoteAgentHostService, NullRemoteAgentHostService, InstantiationType.Delayed);
+-registerSingleton(IAgentHostDebugLogsExportService, BrowserAgentHostDebugLogsExportService, InstantiationType.Delayed);
+ 
+ //#endregion
+ 
+@@ -149,7 +129,7 @@
+ import './contrib/preferences/browser/keyboardLayoutPicker.js';
+ 
+ // Debug
+-import './contrib/debug/browser/extensionHostDebugService.js';
++import './services/extensions/browser/extensionHostDebugService.js';
+ 
+ // Welcome Banner
+ import './contrib/welcomeBanner/browser/welcomeBanner.contribution.js';
+diff --git a/src/vs/workbench/services/extensions/browser/extensionHostDebugService.ts b/src/vs/workbench/services/extensions/browser/extensionHostDebugService.ts
+new file mode 100644
+--- /dev/null
++++ b/src/vs/workbench/services/extensions/browser/extensionHostDebugService.ts
+@@ -0,0 +1,175 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import { Event } from '../../../../base/common/event.js';
++import { URI, UriComponents } from '../../../../base/common/uri.js';
++import { IChannel } from '../../../../base/parts/ipc/common/ipc.js';
++import { IExtensionHostDebugService, IOpenExtensionWindowResult } from '../../../../platform/debug/common/extensionHostDebug.js';
++import { ExtensionHostDebugBroadcastChannel, ExtensionHostDebugChannelClient } from '../../../../platform/debug/common/extensionHostDebugIpc.js';
++import { IFileService } from '../../../../platform/files/common/files.js';
++import { InstantiationType, registerSingleton } from '../../../../platform/instantiation/common/extensions.js';
++import { ILogService } from '../../../../platform/log/common/log.js';
++import { IStorageService, StorageScope, StorageTarget } from '../../../../platform/storage/common/storage.js';
++import { isFolderToOpen, isWorkspaceToOpen } from '../../../../platform/window/common/window.js';
++import { IWorkspaceContextService, isSingleFolderWorkspaceIdentifier, isWorkspaceIdentifier, toWorkspaceIdentifier, hasWorkspaceFileExtension } from '../../../../platform/workspace/common/workspace.js';
++import { IWorkspace, IWorkspaceProvider } from '../../../browser/web.api.js';
++import { IBrowserWorkbenchEnvironmentService } from '../../../services/environment/browser/environmentService.js';
++import { IHostService } from '../../../services/host/browser/host.js';
++import { IRemoteAgentService } from '../../../services/remote/common/remoteAgentService.js';
++
++class BrowserExtensionHostDebugService extends ExtensionHostDebugChannelClient implements IExtensionHostDebugService {
++
++	private static readonly LAST_EXTENSION_DEVELOPMENT_WORKSPACE_KEY = 'debug.lastExtensionDevelopmentWorkspace';
++
++	private workspaceProvider: IWorkspaceProvider;
++
++	private readonly storageService: IStorageService;
++	private readonly fileService: IFileService;
++
++	constructor(
++		@IRemoteAgentService remoteAgentService: IRemoteAgentService,
++		@IBrowserWorkbenchEnvironmentService environmentService: IBrowserWorkbenchEnvironmentService,
++		@ILogService logService: ILogService,
++		@IHostService hostService: IHostService,
++		@IWorkspaceContextService contextService: IWorkspaceContextService,
++		@IStorageService storageService: IStorageService,
++		@IFileService fileService: IFileService
++	) {
++		const connection = remoteAgentService.getConnection();
++		let channel: IChannel;
++		if (connection) {
++			channel = connection.getChannel(ExtensionHostDebugBroadcastChannel.ChannelName);
++		} else {
++			// Extension host debugging not supported in serverless.
++			channel = { call: async () => Promise.resolve(undefined!), listen: () => Event.None };
++		}
++
++		super(channel);
++
++		this.storageService = storageService;
++		this.fileService = fileService;
++
++		if (environmentService.options && environmentService.options.workspaceProvider) {
++			this.workspaceProvider = environmentService.options.workspaceProvider;
++		} else {
++			this.workspaceProvider = { open: async () => true, workspace: undefined, trusted: undefined };
++			logService.warn('Extension Host Debugging not available due to missing workspace provider.');
++		}
++
++		// Reload window on reload request
++		this._register(this.onReload(event => {
++			if (environmentService.isExtensionDevelopment && environmentService.debugExtensionHost.debugId === event.sessionId) {
++				hostService.reload();
++			}
++		}));
++
++		// Close window on close request
++		this._register(this.onClose(event => {
++			if (environmentService.isExtensionDevelopment && environmentService.debugExtensionHost.debugId === event.sessionId) {
++				hostService.close();
++			}
++		}));
++
++		// Remember workspace as last used for extension development
++		// (unless this is API tests) to restore for a future session
++		if (environmentService.isExtensionDevelopment && !environmentService.extensionTestsLocationURI) {
++			const workspaceId = toWorkspaceIdentifier(contextService.getWorkspace());
++			if (isSingleFolderWorkspaceIdentifier(workspaceId) || isWorkspaceIdentifier(workspaceId)) {
++				const serializedWorkspace = isSingleFolderWorkspaceIdentifier(workspaceId) ? { folderUri: workspaceId.uri.toJSON() } : { workspaceUri: workspaceId.configPath.toJSON() };
++				storageService.store(BrowserExtensionHostDebugService.LAST_EXTENSION_DEVELOPMENT_WORKSPACE_KEY, JSON.stringify(serializedWorkspace), StorageScope.PROFILE, StorageTarget.MACHINE);
++			} else {
++				storageService.remove(BrowserExtensionHostDebugService.LAST_EXTENSION_DEVELOPMENT_WORKSPACE_KEY, StorageScope.PROFILE);
++			}
++		}
++	}
++
++	override async openExtensionDevelopmentHostWindow(args: string[], _debugRenderer: boolean): Promise<IOpenExtensionWindowResult> {
++
++		// Add environment parameters required for debug to work
++		const environment = new Map<string, string>();
++
++		const fileUriArg = this.findArgument('file-uri', args);
++		if (fileUriArg && !hasWorkspaceFileExtension(fileUriArg)) {
++			environment.set('openFile', fileUriArg);
++		}
++
++		const copyArgs = [
++			'extensionDevelopmentPath',
++			'extensionTestsPath',
++			'extensionEnvironment',
++			'debugId',
++			'inspect-brk-extensions',
++			'inspect-extensions',
++		];
++
++		for (const argName of copyArgs) {
++			const value = this.findArgument(argName, args);
++			if (value) {
++				environment.set(argName, value);
++			}
++		}
++
++		// Find out which workspace to open debug window on
++		let debugWorkspace: IWorkspace = undefined;
++		const folderUriArg = this.findArgument('folder-uri', args);
++		if (folderUriArg) {
++			debugWorkspace = { folderUri: URI.parse(folderUriArg) };
++		} else {
++			const fileUriArg = this.findArgument('file-uri', args);
++			if (fileUriArg && hasWorkspaceFileExtension(fileUriArg)) {
++				debugWorkspace = { workspaceUri: URI.parse(fileUriArg) };
++			}
++		}
++
++		const extensionTestsPath = this.findArgument('extensionTestsPath', args);
++		if (!debugWorkspace && !extensionTestsPath) {
++			const lastExtensionDevelopmentWorkspace = this.storageService.get(BrowserExtensionHostDebugService.LAST_EXTENSION_DEVELOPMENT_WORKSPACE_KEY, StorageScope.PROFILE);
++			if (lastExtensionDevelopmentWorkspace) {
++				try {
++					const serializedWorkspace: { workspaceUri?: UriComponents; folderUri?: UriComponents } = JSON.parse(lastExtensionDevelopmentWorkspace);
++					if (serializedWorkspace.workspaceUri) {
++						debugWorkspace = { workspaceUri: URI.revive(serializedWorkspace.workspaceUri) };
++					} else if (serializedWorkspace.folderUri) {
++						debugWorkspace = { folderUri: URI.revive(serializedWorkspace.folderUri) };
++					}
++				} catch (error) {
++					// ignore
++				}
++			}
++		}
++
++		// Validate workspace exists
++		if (debugWorkspace) {
++			const debugWorkspaceResource = isFolderToOpen(debugWorkspace) ? debugWorkspace.folderUri : isWorkspaceToOpen(debugWorkspace) ? debugWorkspace.workspaceUri : undefined;
++			if (debugWorkspaceResource) {
++				const workspaceExists = await this.fileService.exists(debugWorkspaceResource);
++				if (!workspaceExists) {
++					debugWorkspace = undefined;
++				}
++			}
++		}
++
++		// Open debug window as new window. Pass arguments over.
++		const success = await this.workspaceProvider.open(debugWorkspace, {
++			reuse: false, 								// debugging always requires a new window
++			payload: Array.from(environment.entries())	// mandatory properties to enable debugging
++		});
++
++		return { success };
++	}
++
++	private findArgument(key: string, args: string[]): string | undefined {
++		for (const a of args) {
++			const k = `--${key}=`;
++			if (a.indexOf(k) === 0) {
++				return a.substring(k.length);
++			}
++		}
++
++		return undefined;
++	}
++}
++
++registerSingleton(IExtensionHostDebugService, BrowserExtensionHostDebugService, InstantiationType.Delayed);
+diff --git a/src/vs/workbench/services/extensions/electron-browser/extensionHostDebugService.ts b/src/vs/workbench/services/extensions/electron-browser/extensionHostDebugService.ts
+new file mode 100644
+--- /dev/null
++++ b/src/vs/workbench/services/extensions/electron-browser/extensionHostDebugService.ts
+@@ -0,0 +1,10 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import { IExtensionHostDebugService } from '../../../../platform/debug/common/extensionHostDebug.js';
++import { registerMainProcessRemoteService } from '../../../../platform/ipc/electron-browser/services.js';
++import { ExtensionHostDebugChannelClient, ExtensionHostDebugBroadcastChannel } from '../../../../platform/debug/common/extensionHostDebugIpc.js';
++
++registerMainProcessRemoteService(IExtensionHostDebugService, ExtensionHostDebugBroadcastChannel.ChannelName, { channelClientCtor: ExtensionHostDebugChannelClient });
+diff --git a/src/vs/code/node/cli.ts b/src/vs/code/node/cli.ts
+--- a/src/vs/code/node/cli.ts
++++ b/src/vs/code/node/cli.ts
+@@ -37,19 +37,11 @@
+ 		|| !!argv['uninstall-extension']
+ 		|| !!argv['update-extensions']
+ 		|| !!argv['locate-extension']
+-		|| !!argv['add-mcp']
+ 		|| !!argv['telemetry'];
+ }
+ 
+ export async function main(argv: string[]): Promise<void> {
+-	let args: NativeParsedArgs;
+-
+-	try {
+-		args = parseCLIProcessArgv(argv);
+-	} catch (err) {
+-		console.error(err.message);
+-		return;
+-	}
++	const args = parseCLIProcessArgv(argv);
+ 
+ 	for (const subcommand of NATIVE_CLI_COMMANDS) {
+ 		if (args[subcommand]) {
+@@ -95,12 +87,6 @@
+ 		console.log(buildHelpMessage(product.nameLong, executable, product.version, OPTIONS));
+ 	}
+ 
+-	// Help (chat)
+-	else if (args.chat?.help) {
+-		const executable = `${product.applicationName}${isWindows ? '.exe' : ''}`;
+-		console.log(buildHelpMessage(product.nameLong, executable, product.version, OPTIONS.chat.options, { isChat: true }));
+-	}
+-
+ 	// Version Info
+ 	else if (args.version) {
+ 		console.log(buildVersionMessage(product.version, product.commit));
+@@ -249,21 +235,15 @@
+ 			const tempUserDataDir = join(tempParentDir, 'data');
+ 			const tempExtensionsDir = join(tempParentDir, 'extensions');
+ 			const tempSharedDataDir = join(tempParentDir, 'shared');
+-			const tempAgentPluginsDir = join(tempParentDir, 'agent-plugins');
+-			const tempAgentsUserDataDir = join(tempParentDir, 'agents-data');
+-			const tempAgentsExtensionsDir = join(tempParentDir, 'agents-extensions');
+ 
+ 			addArg(argv, '--user-data-dir', tempUserDataDir);
+ 			addArg(argv, '--extensions-dir', tempExtensionsDir);
+ 			addArg(argv, '--shared-data-dir', tempSharedDataDir);
+-			addArg(argv, '--agent-plugins-dir', tempAgentPluginsDir);
+-			addArg(argv, '--agents-user-data-dir', tempAgentsUserDataDir);
+-			addArg(argv, '--agents-extensions-dir', tempAgentsExtensionsDir);
+-
+-			console.log(`State is temporarily stored. Relaunch this state with: ${product.applicationName} --user-data-dir "${tempUserDataDir}" --extensions-dir "${tempExtensionsDir}" --shared-data-dir "${tempSharedDataDir}" --agent-plugins-dir "${tempAgentPluginsDir}" --agents-user-data-dir "${tempAgentsUserDataDir}" --agents-extensions-dir "${tempAgentsExtensionsDir}"`);
+-		}
+-
+-		const hasReadStdinArg = args._.some(arg => arg === '-') || args.chat?._.some(arg => arg === '-');
++
++			console.log(`State is temporarily stored. Relaunch this state with: ${product.applicationName} --user-data-dir "${tempUserDataDir}" --extensions-dir "${tempExtensionsDir}" --shared-data-dir "${tempSharedDataDir}"`);
++		}
++
++		const hasReadStdinArg = args._.some(arg => arg === '-');
+ 		if (hasReadStdinArg) {
+ 			// remove the "-" argument when we read from stdin
+ 			args._ = args._.filter(a => a !== '-');
+@@ -302,15 +282,9 @@
+ 						processCallbacks.push(() => readFromStdinDone.p);
+ 					}
+ 
+-					if (args.chat) {
+-						// Make sure to add tmp file as context to chat
+-						addArg(argv, '--add-file', stdinFilePath);
+-					} else {
+-						// Make sure to open tmp file as editor but ignore
+-						// it in the "recently open" list
+-						addArg(argv, stdinFilePath);
+-						addArg(argv, '--skip-add-to-recently-opened');
+-					}
++
++					addArg(argv, stdinFilePath);
++					addArg(argv, '--skip-add-to-recently-opened');
+ 
+ 					console.log(`Reading from stdin via: ${stdinFilePath}`);
+ 				} catch (e) {
+@@ -323,7 +297,7 @@
+ 				// if we detect that data flows into via stdin after a certain timeout.
+ 				processCallbacks.push(_ => stdinDataListener(1000).then(dataReceived => {
+ 					if (dataReceived) {
+-						console.log(buildStdinMessage(product.applicationName, !!args.chat));
++						console.log(buildStdinMessage(product.applicationName));
+ 					}
+ 				}));
+ 			}
+diff --git a/src/vs/code/node/cliProcessMain.ts b/src/vs/code/node/cliProcessMain.ts
+--- a/src/vs/code/node/cliProcessMain.ts
++++ b/src/vs/code/node/cliProcessMain.ts
+@@ -65,16 +65,8 @@
+ import { FileUserDataProvider } from '../../platform/userData/common/fileUserDataProvider.js';
+ import { addUNCHostToAllowlist, getUNCHost } from '../../base/node/unc.js';
+ import { AllowedExtensionsService } from '../../platform/extensionManagement/common/allowedExtensionsService.js';
+-import { McpManagementCli } from '../../platform/mcp/common/mcpManagementCli.js';
+ import { IExtensionGalleryManifestService } from '../../platform/extensionManagement/common/extensionGalleryManifest.js';
+ import { ExtensionGalleryManifestService } from '../../platform/extensionManagement/common/extensionGalleryManifestService.js';
+-import { IAllowedMcpServersService, IMcpGalleryService, IMcpManagementService } from '../../platform/mcp/common/mcpManagement.js';
+-import { McpManagementService } from '../../platform/mcp/node/mcpManagementService.js';
+-import { IMcpResourceScannerService, McpResourceScannerService } from '../../platform/mcp/common/mcpResourceScannerService.js';
+-import { McpGalleryService } from '../../platform/mcp/common/mcpGalleryService.js';
+-import { AllowedMcpServersService } from '../../platform/mcp/common/allowedMcpServersService.js';
+-import { IMcpGalleryManifestService } from '../../platform/mcp/common/mcpGalleryManifest.js';
+-import { McpGalleryManifestService } from '../../platform/mcp/common/mcpGalleryManifestService.js';
+ import { LINUX_SYSTEM_POLICY_FILE_PATH } from '../../base/common/policy.js';
+ 
+ class CliMain extends Disposable {
+@@ -238,12 +230,6 @@
+ 		// Localizations
+ 		services.set(ILanguagePackService, new SyncDescriptor(NativeLanguagePackService, undefined, false));
+ 
+-		// MCP
+-		services.set(IAllowedMcpServersService, new SyncDescriptor(AllowedMcpServersService, undefined, true));
+-		services.set(IMcpResourceScannerService, new SyncDescriptor(McpResourceScannerService, undefined, true));
+-		services.set(IMcpGalleryManifestService, new SyncDescriptor(McpGalleryManifestService, undefined, true));
+-		services.set(IMcpGalleryService, new SyncDescriptor(McpGalleryService, undefined, true));
+-		services.set(IMcpManagementService, new SyncDescriptor(McpManagementService, undefined, true));
+ 
+ 		// Telemetry
+ 		const appenders: ITelemetryAppender[] = [];
+@@ -333,11 +319,6 @@
+ 			return instantiationService.createInstance(ExtensionManagementCLI, [], new ConsoleLogger(LogLevel.Info, false)).locateExtension(this.argv['locate-extension']);
+ 		}
+ 
+-		// Install MCP server
+-		else if (this.argv['add-mcp']) {
+-			return instantiationService.createInstance(McpManagementCli, new ConsoleLogger(LogLevel.Info, false)).addMcpDefinitions(this.argv['add-mcp']);
+-		}
+-
+ 		// Telemetry
+ 		else if (this.argv['telemetry']) {
+ 			console.log(await buildTelemetryMessage(environmentService.appRoot, environmentService.extensionsPath));
+diff --git a/src/vs/platform/environment/common/argv.ts b/src/vs/platform/environment/common/argv.ts
+--- a/src/vs/platform/environment/common/argv.ts
++++ b/src/vs/platform/environment/common/argv.ts
+@@ -25,16 +25,6 @@
+ 	};
+ 	'serve-web'?: INativeCliOptions;
+ 	'agent'?: INativeCliOptions;
+-	chat?: {
+-		_: string[];
+-		'add-file'?: string[];
+-		mode?: string;
+-		maximize?: boolean;
+-		'reuse-window'?: boolean;
+-		'new-window'?: boolean;
+-		profile?: string;
+-		help?: boolean;
+-	};
+ 
+ 	// arguments
+ 	_: string[];
+@@ -54,7 +44,6 @@
+ 	goto?: boolean;
+ 	'new-window'?: boolean;
+ 	'reuse-window'?: boolean;
+-	'agents'?: boolean;
+ 	locale?: string;
+ 	'user-data-dir'?: string;
+ 	'prof-startup'?: boolean;
+@@ -76,9 +65,6 @@
+ 	'extensions-download-dir'?: string;
+ 	'builtin-extensions-dir'?: string;
+ 	'shared-data-dir'?: string;
+-	'agent-plugins-dir'?: string;
+-	'agents-user-data-dir'?: string;
+-	'agents-extensions-dir'?: string;
+ 	extensionDevelopmentPath?: string[]; // undefined or array of 1 or more local paths or URIs
+ 	extensionTestsPath?: string; // either a local path or a URI
+ 	extensionDevelopmentKind?: string[];
+@@ -115,9 +101,7 @@
+ 	'export-policy-data'?: string;
+ 	'export-default-keybindings'?: string;
+ 	'install-source'?: string;
+-	'add-mcp'?: string[];
+ 	'disable-updates'?: boolean;
+-	'share-secrets-with-agents-app'?: boolean;
+ 	'transient'?: boolean;
+ 	'use-inmemory-secretstorage'?: boolean;
+ 	'password-store'?: string;
+diff --git a/src/vs/platform/environment/node/argv.ts b/src/vs/platform/environment/node/argv.ts
+--- a/src/vs/platform/environment/node/argv.ts
++++ b/src/vs/platform/environment/node/argv.ts
+@@ -48,20 +48,6 @@
+ export const NATIVE_CLI_COMMANDS = ['tunnel', 'serve-web', 'agent'] as const;
+ 
+ export const OPTIONS: OptionDescriptions<Required<NativeParsedArgs>> = {
+-	'chat': {
+-		type: 'subcommand',
+-		description: 'Pass in a prompt to run in a chat session in the current working directory.',
+-		options: {
+-			'_': { type: 'string[]', description: localize('prompt', "The prompt to use as chat.") },
+-			'mode': { type: 'string', cat: 'o', alias: 'm', args: 'mode', description: localize('chatMode', "The mode to use for the chat session. Available options: 'ask', 'edit', 'agent', or the identifier of a custom mode. Defaults to 'agent'.") },
+-			'add-file': { type: 'string[]', cat: 'o', alias: 'a', args: 'path', description: localize('addFile', "Add files as context to the chat session.") },
+-			'maximize': { type: 'boolean', cat: 'o', description: localize('chatMaximize', "Maximize the chat session view.") },
+-			'reuse-window': { type: 'boolean', cat: 'o', alias: 'r', description: localize('reuseWindowForChat', "Force to use the last active window for the chat session.") },
+-			'new-window': { type: 'boolean', cat: 'o', alias: 'n', description: localize('newWindowForChat', "Force to open an empty window for the chat session.") },
+-			'profile': { type: 'string', 'cat': 'o', args: 'profileName', description: localize('profileName', "Opens the provided folder or workspace with the given profile and associates the profile with the workspace. If the profile does not exist, a new empty one is created.") },
+-			'help': { type: 'boolean', alias: 'h', description: localize('help', "Print usage.") }
+-		}
+-	},
+ 	'serve-web': {
+ 		type: 'subcommand',
+ 		description: 'Run a server that displays the editor UI in browsers.',
+@@ -108,7 +94,6 @@
+ 	'goto': { type: 'boolean', cat: 'o', alias: 'g', args: 'file:line[:character]', description: localize('goto', "Open a file at the path on the specified line and character position.") },
+ 	'new-window': { type: 'boolean', cat: 'o', alias: 'n', description: localize('newWindow', "Force to open a new window.") },
+ 	'reuse-window': { type: 'boolean', cat: 'o', alias: 'r', description: localize('reuseWindow', "Force to open a file or folder in an already opened window.") },
+-	'agents': { type: 'boolean', cat: 'o', deprecates: ['sessions'], description: localize('agents', "Opens the agents window.") },
+ 	'wait': { type: 'boolean', cat: 'o', alias: 'w', description: localize('wait', "Wait for the files to be closed before returning.") },
+ 	'waitMarkerFilePath': { type: 'string' },
+ 	'locale': { type: 'string', cat: 'o', args: 'locale', description: localize('locale', "The locale to use (e.g. en-US or zh-TW).") },
+@@ -121,9 +106,6 @@
+ 	'builtin-extensions-dir': { type: 'string' },
+ 	'shared-data-dir': { type: 'string' },
+ 	'list-extensions': { type: 'boolean', cat: 'e', description: localize('listExtensions', "List the installed extensions.") },
+-	'agent-plugins-dir': { type: 'string' },
+-	'agents-user-data-dir': { type: 'string' },
+-	'agents-extensions-dir': { type: 'string' },
+ 	'show-versions': { type: 'boolean', cat: 'e', description: localize('showVersions', "Show versions of installed extensions, when using --list-extensions.") },
+ 	'category': { type: 'string', allowEmptyValue: true, cat: 'e', description: localize('category', "Filters installed extensions by provided category, when using --list-extensions."), args: 'category' },
+ 	'install-extension': { type: 'string[]', cat: 'e', args: 'ext-id | path', description: localize('installExtension', "Installs or updates an extension. The argument is either an extension id or a path to a VSIX. The identifier of an extension is '${publisher}.${name}'. Use '--force' argument to update to latest version. To install a specific version provide '@${version}'. For example: 'vscode.csharp@1.2.3'.") },
+@@ -132,7 +114,6 @@
+ 	'update-extensions': { type: 'boolean', cat: 'e', description: localize('updateExtensions', "Update the installed extensions.") },
+ 	'enable-proposed-api': { type: 'string[]', allowEmptyValue: true, cat: 'e', args: 'ext-id', description: localize('experimentalApis', "Enables proposed API features for extensions. Can receive one or more extension IDs to enable individually.") },
+ 
+-	'add-mcp': { type: 'string[]', cat: 'm', args: 'json', description: localize('addMcp', "Adds a Model Context Protocol server definition to the user profile. Accepts JSON input in the form '{\"name\":\"server-name\",\"command\":...}'") },
+ 
+ 	'version': { type: 'boolean', cat: 't', alias: 'v', description: localize('version', "Print version.") },
+ 	'verbose': { type: 'boolean', cat: 't', global: true, description: localize('verbose', "Print verbose output (implies --wait).") },
+@@ -187,7 +168,6 @@
+ 	'disable-telemetry': { type: 'boolean' },
+ 	'telemetry-level': { type: 'string' },
+ 	'disable-updates': { type: 'boolean' },
+-	'share-secrets-with-agents-app': { type: 'boolean' },
+ 	'transient': { type: 'boolean', cat: 't', description: localize('transient', "Run with temporary data and extension directories, as if launched for the first time.") },
+ 	'use-inmemory-secretstorage': { type: 'boolean', deprecates: ['disable-keytar'] },
+ 	'password-store': { type: 'string' },
+@@ -462,17 +442,16 @@
+ 	return lines;
+ }
+ 
+-export function buildHelpMessage(productName: string, executableName: string, version: string, options: OptionDescriptions<unknown> | Record<string, Option<'boolean'> | Option<'string'> | Option<'string[]'> | Subcommand<Record<string, unknown>>>, capabilities?: { noPipe?: boolean; noInputFiles?: boolean; isChat?: boolean }): string {
++export function buildHelpMessage(productName: string, executableName: string, version: string, options: OptionDescriptions<unknown> | Record<string, Option<'boolean'> | Option<'string'> | Option<'string[]'> | Subcommand<Record<string, unknown>>>, capabilities?: { noPipe?: boolean; noInputFiles?: boolean }): string {
+ 	const columns = (process.stdout).isTTY && (process.stdout).columns || 80;
+-	const inputFiles = capabilities?.noInputFiles ? '' : capabilities?.isChat ? ` [${localize('cliPrompt', 'prompt')}]` : ` [${localize('paths', 'paths')}...]`;
+-	const subcommand = capabilities?.isChat ? ' chat' : '';
++	const inputFiles = capabilities?.noInputFiles ? '' : ` [${localize('paths', 'paths')}...]`;
+ 
+ 	const help = [`${productName} ${version}`];
+ 	help.push('');
+-	help.push(`${localize('usage', "Usage")}: ${executableName}${subcommand} [${localize('options', "options")}]${inputFiles}`);
++	help.push(`${localize('usage', "Usage")}: ${executableName} [${localize('options', "options")}]${inputFiles}`);
+ 	help.push('');
+ 	if (capabilities?.noPipe !== true) {
+-		help.push(buildStdinMessage(executableName, capabilities?.isChat));
++		help.push(buildStdinMessage(executableName));
+ 		help.push('');
+ 	}
+ 	const optionsByCategory: { [P in keyof typeof helpCategories]?: Record<string, Option<'boolean'> | Option<'string'> | Option<'string[]'>> } = {};
+@@ -513,22 +492,10 @@
+ 	return help.join('\n');
+ }
+ 
+-export function buildStdinMessage(executableName: string, isChat?: boolean): string {
+-	let example: string;
+-	if (isWindows) {
+-		if (isChat) {
+-			example = `echo Hello World | ${executableName} chat <prompt> -`;
+-		} else {
+-			example = `echo Hello World | ${executableName} -`;
+-		}
+-	} else {
+-		if (isChat) {
+-			example = `ps aux | grep code | ${executableName} chat <prompt> -`;
+-		} else {
+-			example = `ps aux | grep code | ${executableName} -`;
+-		}
+-	}
+-
++export function buildStdinMessage(executableName: string): string {
++	const example = isWindows
++		? `echo Hello World | ${executableName} -`
++		: `ps aux | grep code | ${executableName} -`;
+ 	return localize('stdinUsage', "To read from stdin, append '-' (e.g. '{0}')", example);
+ }
+ 
+diff --git a/src/vs/platform/environment/node/argvHelper.ts b/src/vs/platform/environment/node/argvHelper.ts
+--- a/src/vs/platform/environment/node/argvHelper.ts
++++ b/src/vs/platform/environment/node/argvHelper.ts
+@@ -11,6 +11,17 @@
+ import { ErrorReporter, NATIVE_CLI_COMMANDS, OPTIONS, parseArgs } from './argv.js';
+ 
+ function parseAndValidate(cmdLineArgs: string[], reportWarnings: boolean): NativeParsedArgs {
++	const separator = cmdLineArgs.indexOf('--');
++	const commandArgs = separator < 0 ? cmdLineArgs : cmdLineArgs.slice(0, separator);
++	const unsupportedArgs = parseArgs<NativeParsedArgs & { 'add-mcp'?: string[] }>(commandArgs, {
++		...OPTIONS,
++		'add-mcp': { type: 'string[]', allowEmptyValue: true }
++	});
++	const unavailable = Object.hasOwn(unsupportedArgs, 'add-mcp') ? '--add-mcp' : unsupportedArgs._[0] === 'chat' ? 'chat' : undefined;
++	if (unavailable) {
++		throw new Error(`${unavailable} is unavailable in this product.`);
++	}
++
+ 	const onMultipleValues = (id: string, val: string) => {
+ 		console.warn(localize('multipleValues', "Option '{0}' is defined more than once. Using value '{1}'.", id, val));
+ 	};
+diff --git a/src/vs/code/electron-main/main.ts b/src/vs/code/electron-main/main.ts
+--- a/src/vs/code/electron-main/main.ts
++++ b/src/vs/code/electron-main/main.ts
+@@ -63,9 +63,6 @@
+ import { NativePolicyService } from '../../platform/policy/node/nativePolicyService.js';
+ import { FilePolicyService } from '../../platform/policy/common/filePolicyService.js';
+ import { MultiplexPolicyService } from '../../platform/policy/common/multiplexPolicyService.js';
+-import { GITHUB_COPILOT_MACOS_BUNDLE_ID, GITHUB_COPILOT_WIN32_POLICY_NAME, GITHUB_COPILOT_WIN32_REGISTRY_PATH, INativeManagedSettingsService, IFileManagedSettingsService, MANAGED_SETTINGS_FILE_NAME, MANAGED_SETTINGS_LINUX_FILE_PATH, MANAGED_SETTINGS_MACOS_FILE_PATH, MANAGED_SETTINGS_WINDOWS_DIR, NullNativeManagedSettingsService, NullFileManagedSettingsService } from '../../platform/policy/common/copilotManagedSettings.js';
+-import { FileManagedSettingsService } from '../../platform/policy/common/fileManagedSettingsService.js';
+-import { NativeManagedSettingsService } from '../../platform/policy/node/nativeManagedSettingsService.js';
+ import { DisposableStore } from '../../base/common/lifecycle.js';
+ import { IUriIdentityService } from '../../platform/uriIdentity/common/uriIdentity.js';
+ import { UriIdentityService } from '../../platform/uriIdentity/common/uriIdentityService.js';
+@@ -227,37 +224,6 @@
+ 			policyServices.push(disposables.add(new FilePolicyService(URI.file(LINUX_SYSTEM_POLICY_FILE_PATH), fileService, logService)));
+ 		} else if (environmentMainService.policyFile) {
+ 			policyServices.push(disposables.add(new FilePolicyService(environmentMainService.policyFile, fileService, logService)));
+-		}
+-
+-		let nativeManagedSettingsService: NativeManagedSettingsService | undefined;
+-		if (isWindows) {
+-			nativeManagedSettingsService = disposables.add(new NativeManagedSettingsService(logService, GITHUB_COPILOT_WIN32_POLICY_NAME, { registryPath: GITHUB_COPILOT_WIN32_REGISTRY_PATH }));
+-		} else if (isMacintosh) {
+-			nativeManagedSettingsService = disposables.add(new NativeManagedSettingsService(logService, GITHUB_COPILOT_MACOS_BUNDLE_ID));
+-		}
+-		if (nativeManagedSettingsService) {
+-			services.set(INativeManagedSettingsService, nativeManagedSettingsService);
+-		} else {
+-			services.set(INativeManagedSettingsService, new NullNativeManagedSettingsService());
+-		}
+-
+-		// File-based managed settings
+-		let fileManagedSettingsPath: string | undefined;
+-		if (isWindows) {
+-			const programFiles = process.env['ProgramFiles'];
+-			if (programFiles) {
+-				fileManagedSettingsPath = join(programFiles, MANAGED_SETTINGS_WINDOWS_DIR, MANAGED_SETTINGS_FILE_NAME);
+-			}
+-		} else if (isMacintosh) {
+-			fileManagedSettingsPath = MANAGED_SETTINGS_MACOS_FILE_PATH;
+-		} else if (isLinux) {
+-			fileManagedSettingsPath = MANAGED_SETTINGS_LINUX_FILE_PATH;
+-		}
+-		if (fileManagedSettingsPath) {
+-			const fileManagedSettingsService = disposables.add(new FileManagedSettingsService(URI.file(fileManagedSettingsPath), fileService, logService));
+-			services.set(IFileManagedSettingsService, fileManagedSettingsService);
+-		} else {
+-			services.set(IFileManagedSettingsService, new NullFileManagedSettingsService());
+ 		}
+ 
+ 		if (policyServices.length > 1) {
+@@ -597,23 +563,7 @@
+ 			}
+ 		}
+ 
+-		if (args.chat) {
+-			if (args.chat['new-window']) {
+-				// Apply `--new-window` flag to the main arguments
+-				args['new-window'] = true;
+-			} else if (args.chat['reuse-window']) {
+-				// Apply `--reuse-window` flag to the main arguments
+-				args['reuse-window'] = true;
+-			} else if (args.chat['profile']) {
+-				// Apply `--profile` flag to the main arguments
+-				args['profile'] = args.chat['profile'];
+-			} else {
+-				// Unless we are started with specific instructions about
+-				// new windows or reusing existing ones, always take the
+-				// current working directory as workspace to open.
+-				args._ = [cwd()];
+-			}
+-		}
++
+ 
+ 		return args;
+ 	}
+diff --git a/build/next/index.ts b/build/next/index.ts
+--- a/build/next/index.ts
++++ b/build/next/index.ts
+@@ -97,13 +97,8 @@
+ // Desktop workbench and code entry points
+ const desktopEntryPoints = [
+ 	'vs/workbench/workbench.desktop.main',
+-	'vs/sessions/sessions.desktop.main',
+-	'vs/workbench/contrib/debug/node/telemetryApp',
+ 	'vs/platform/files/node/watcher/watcherMain',
+-	'vs/platform/localTranscription/node/localTranscriptionMain',
+ 	'vs/platform/terminal/node/ptyHostMain',
+-	'vs/platform/agentHost/node/agentHostMain',
+-	'vs/platform/agentHost/node/diffWorkerMain',
+ 	'vs/workbench/api/node/extensionHostProcess',
+ ];
+ 
+@@ -111,19 +106,12 @@
+ 	'vs/code/node/cliProcessMain',
+ 	'vs/code/electron-utility/sharedProcess/sharedProcessMain',
+ 	'vs/code/electron-browser/workbench/workbench',
+-	'vs/sessions/electron-browser/sessions',
+ ];
+ 
+ // Web entry points (used in server-web and vscode-web)
+ const webEntryPoints = [
+ 	'vs/workbench/workbench.web.main.internal',
+ 	'vs/code/browser/workbench/workbench',
+-];
+-
+-// Additional web-only entry points (CDN build only, not in server-web)
+-const sessionsWebEntryPoint = 'vs/sessions/sessions.web.main.internal';
+-const webOnlyEntryPoints = [
+-	sessionsWebEntryPoint,
+ ];
+ 
+ const keyboardMapEntryPoints = [
+@@ -137,8 +125,6 @@
+ 	'vs/workbench/api/node/extensionHostProcess',
+ 	'vs/platform/files/node/watcher/watcherMain',
+ 	'vs/platform/terminal/node/ptyHostMain',
+-	'vs/platform/agentHost/node/agentHostMain',
+-	'vs/platform/agentHost/node/diffWorkerMain',
+ ];
+ 
+ // Bootstrap files per target
+@@ -180,7 +166,6 @@
+ 		case 'web':
+ 			return [
+ 				...workerEntryPoints,
+-				...webOnlyEntryPoints,
+ 				'vs/workbench/workbench.web.main.internal', // web workbench only (no browser shell)
+ 				...keyboardMapEntryPoints,
+ 			];
+@@ -215,8 +200,6 @@
+ 			return new Set([
+ 				'vs/workbench/workbench.desktop.main',
+ 				'vs/code/electron-browser/workbench/workbench',
+-				'vs/sessions/sessions.desktop.main',
+-				'vs/sessions/electron-browser/sessions',
+ 			]);
+ 		case 'server':
+ 			return new Set(); // Server has no UI
+@@ -228,7 +211,6 @@
+ 		case 'web':
+ 			return new Set([
+ 				'vs/workbench/workbench.web.main.internal',
+-				'vs/sessions/sessions.web.main.internal',
+ 			]);
+ 		default:
+ 			throw new Error(`Unknown target: ${target}`);
+@@ -248,9 +230,6 @@
+ 	// SVGs referenced from CSS (needed for transpile/dev builds where CSS is copied as-is)
+ 	'vs/workbench/browser/media/code-icon.svg',
+ 	'vs/workbench/browser/parts/editor/media/letterpress*.svg',
+-	'vs/workbench/contrib/chat/browser/widget/media/chatPet/**/*.{gif,png}',
+-	'vs/sessions/contrib/chat/browser/media/*.svg',
+-	'vs/sessions/contrib/welcome/browser/media/themePreviews/*.svg'
+ ];
+ 
+ // Resources for desktop target
+@@ -260,8 +239,6 @@
+ 	// HTML
+ 	'vs/code/electron-browser/workbench/workbench.html',
+ 	'vs/code/electron-browser/workbench/workbench-dev.html',
+-	'vs/sessions/electron-browser/sessions.html',
+-	'vs/sessions/electron-browser/sessions-dev.html',
+ 	'vs/workbench/services/extensions/worker/webWorkerExtensionHostIframe.html',
+ 	'vs/workbench/contrib/webview/browser/pre/*.html',
+ 
+@@ -285,7 +262,6 @@
+ 
+ 	// Media - audio
+ 	'vs/platform/accessibilitySignal/browser/media/*.mp3',
+-	'vs/workbench/contrib/agentsVoice/browser/media/*.mp3',
+ 
+ 	// Media - images
+ 	'vs/workbench/contrib/welcomeGettingStarted/common/media/**/*.svg',
+@@ -295,11 +271,7 @@
+ 	'vs/workbench/services/extensionManagement/common/media/*.svg',
+ 	'vs/workbench/services/extensionManagement/common/media/*.png',
+ 	'vs/workbench/browser/parts/editor/media/*.png',
+-	'vs/workbench/contrib/debug/browser/media/*.png',
+-
+-	// Sessions - built-in prompts and skills
+-	'vs/sessions/prompts/*.prompt.md',
+-	'vs/sessions/skills/**/SKILL.md',
++
+ ];
+ 
+ // Resources for server target (minimal - no UI)
+@@ -346,7 +318,6 @@
+ 
+ 	// Media - audio
+ 	'vs/platform/accessibilitySignal/browser/media/*.mp3',
+-	'vs/workbench/contrib/agentsVoice/browser/media/*.mp3',
+ 
+ 	// Media - images
+ 	'vs/workbench/contrib/welcomeGettingStarted/common/media/**/*.svg',
+@@ -374,7 +345,6 @@
+ 
+ 	// Media - audio
+ 	'vs/platform/accessibilitySignal/browser/media/*.mp3',
+-	'vs/workbench/contrib/agentsVoice/browser/media/*.mp3',
+ 
+ 	// Media - images
+ 	'vs/workbench/contrib/welcomeGettingStarted/common/media/**/*.svg',
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -29,8 +29,6 @@
+ import { compileNonNativeExtensionsBuildTask, compileNativeExtensionsBuildTask, compileAllExtensionsBuildTask, compileExtensionMediaBuildTask, cleanExtensionsBuildTask } from './gulpfile.extensions.ts';
+ import { copyCodiconsTask } from './lib/compilation.ts';
+ import { ensureOSProxyResolverPlatformPackage, getOSProxyResolverExcludeFilter, getOSProxyResolverPlatformFiles } from './lib/osProxyResolver.ts';
+-import { readAgentSdkResults } from './agent-sdk/common.ts';
+-import { readDictationRuntimeResults } from './dictation-runtime/common.ts';
+ import { useEsbuildTranspile } from './buildConfig.ts';
+ import { promisify } from 'util';
+ import globCallback from 'glob';
+@@ -238,22 +236,6 @@
+ 	return hash;
+ }
+ 
+-// foundry-local-sdk (on-device chat dictation) ships a prebuilt N-API addon
+-// (`foundry_local_napi.node`) inside its tarball, and its native core libraries
+-// are fetched per-RID into `foundry-local-core/<platform>-<arch>/` at install
+-// time. The addon requires a newer glibc than VS Code's minimum supported Linux
+-// distros, so we deliberately do NOT ship any of this native payload: it is
+-// downloaded on demand at runtime, only on supported platforms, into a per-user
+-// cache (see `src/vs/platform/localTranscription/node/foundryLocalRuntime.ts`).
+-// Exclude every prebuilt addon and core library from the package here.
+-function getFoundryLocalExcludeFilter(): string[] {
+-	return [
+-		'**',
+-		'!**/foundry-local-sdk/prebuilds/**',
+-		'!**/foundry-local-sdk/foundry-local-core/**',
+-	];
+-}
+-
+ function packageTask(platform: string, arch: string, sourceFolderName: string, destinationFolderName: string, _opts?: { stats?: boolean }) {
+ 	const destination = path.join(path.dirname(root), destinationFolderName);
+ 	platform = platform || process.platform;
+@@ -322,20 +304,6 @@
+ 				json.date = readISODate(out);
+ 				json.checksums = checksums;
+ 				json.version = version;
+-				// Stamp agentSdks from the per-platform results file produced
+-				// by `build/agent-sdk/produce.ts` (an earlier pipeline step).
+-				// Local dev: file absent → empty → not stamped.
+-				const agentSdks = readAgentSdkResults();
+-				if (Object.keys(agentSdks).length > 0) {
+-					json.agentSdks = agentSdks;
+-				}
+-				// Stamp dictationRuntime from the per-platform results file
+-				// produced by `build/dictation-runtime/produce.ts`. Local dev /
+-				// unsupported target: file absent → undefined → not stamped.
+-				const dictationRuntime = readDictationRuntimeResults();
+-				if (dictationRuntime) {
+-					json.dictationRuntime = dictationRuntime;
+-				}
+ 				return json;
+ 			}))
+ 			.pipe(es.through(function (file) {
+@@ -367,7 +335,6 @@
+ 		ensureOSProxyResolverPlatformPackage(platform, arch);
+ 		const osProxyResolverPlatformPackage = gulp.src(getOSProxyResolverPlatformFiles(platform, arch), { base: '.', dot: true, allowEmpty: true });
+ 		const deps = es.merge(cleanedDeps, osProxyResolverPlatformPackage)
+-			.pipe(filter(getFoundryLocalExcludeFilter()))
+ 			.pipe(filter(getOSProxyResolverExcludeFilter(platform, arch)))
+ 			.pipe(jsFilter)
+ 			.pipe(util.rewriteSourceMappingURL(sourceMappingURLBase))
+diff --git a/build/gulpfile.reh.ts b/build/gulpfile.reh.ts
+--- a/build/gulpfile.reh.ts
++++ b/build/gulpfile.reh.ts
+@@ -31,7 +31,6 @@
+ import buildfile from './buildfile.ts';
+ import { fetchUrls } from './lib/fetch.ts';
+ import { downloadFeedPackage } from './lib/azureFeed.ts';
+-import { readAgentSdkResults } from './agent-sdk/common.ts';
+ 
+ 
+ const rcedit = promisify(rceditCallback);
+@@ -413,16 +412,6 @@
+ 				json.commit = commit;
+ 				json.date = readISODate(sourceFolderName);
+ 				json.version = version;
+-				// Stamp agentSdks from the per-platform results file produced
+-				// by `build/agent-sdk/produce.ts`. REH-only: REH-web is
+-				// browser-served and the agent host is node-only, so the
+-				// SDK config has no consumer there.
+-				if (type === 'reh') {
+-					const agentSdks = readAgentSdkResults();
+-					if (Object.keys(agentSdks).length > 0) {
+-						json.agentSdks = agentSdks;
+-					}
+-				}
+ 				return json;
+ 			}))
+ 			.pipe(es.through(function (file) {
+diff --git a/src/vs/code/electron-utility/sharedProcess/contrib/storageDataCleaner.ts b/src/vs/code/electron-utility/sharedProcess/contrib/storageDataCleaner.ts
+--- a/src/vs/code/electron-utility/sharedProcess/contrib/storageDataCleaner.ts
++++ b/src/vs/code/electron-utility/sharedProcess/contrib/storageDataCleaner.ts
+@@ -7,6 +7,7 @@
+ import { onUnexpectedError } from '../../../../base/common/errors.js';
+ import { Disposable } from '../../../../base/common/lifecycle.js';
+ import { join } from '../../../../base/common/path.js';
++import { URI } from '../../../../base/common/uri.js';
+ import { Promises } from '../../../../base/node/pfs.js';
+ import { INativeEnvironmentService } from '../../../../platform/environment/common/environment.js';
+ import { ILogService } from '../../../../platform/log/common/log.js';
+@@ -56,8 +57,8 @@
+ 					return; // keep workspace storage for empty extension development workspaces
+ 				}
+ 
+-				if (workspaceStorageFolder === getWorkspaceIdentifier(this.environmentService.agentSessionsWorkspace).id) {
+-					return; // keep workspace storage for the agents window (permanent built-in surface)
++				if (workspaceStorageFolder === getWorkspaceIdentifier(URI.joinPath(this.environmentService.appSettingsHome, 'agent-sessions.code-workspace')).id) {
++					return; // Preserve historical workspace storage across upgrades.
+ 				}
+ 
+ 				const windows = await this.nativeHostService.getWindows({ includeAuxiliaryWindows: false });
+diff --git a/src/vs/code/test/electron-utility/sharedProcess/contrib/storageDataCleaner.test.ts b/src/vs/code/test/electron-utility/sharedProcess/contrib/storageDataCleaner.test.ts
+--- a/src/vs/code/test/electron-utility/sharedProcess/contrib/storageDataCleaner.test.ts
++++ b/src/vs/code/test/electron-utility/sharedProcess/contrib/storageDataCleaner.test.ts
+@@ -36,7 +36,7 @@
+ 		await Promises.rm(testDir);
+ 	});
+ 
+-	test('preserves agents window workspace storage', async () => {
++	test('preserves historical agents workspace storage', async () => {
+ 		const agentSessionsWorkspace = URI.file(join(testDir, 'agent-sessions.code-workspace'));
+ 		const agentsWindowFolder = getWorkspaceIdentifier(agentSessionsWorkspace).id;
+ 		const md5LikeFolder = '0'.repeat(32); // simulates a real (non-empty) workspace
+@@ -48,9 +48,13 @@
+ 			await fs.promises.mkdir(join(workspaceStorageHome, folder));
+ 		}
+ 
++		const historicalState = Buffer.from('historical workspace state');
++		const historicalFile = join(workspaceStorageHome, agentsWindowFolder, 'state.vscdb');
++		await fs.promises.writeFile(historicalFile, historicalState);
++
+ 		const environmentService = {
+ 			workspaceStorageHome: URI.file(workspaceStorageHome).with({ scheme: Schemas.file }),
+-			agentSessionsWorkspace
++			appSettingsHome: URI.file(testDir)
+ 		} as INativeEnvironmentService;
+ 
+ 		const nativeHostService = {
+@@ -72,5 +76,6 @@
+ 
+ 		const remaining = (await Promises.readdir(workspaceStorageHome)).sort();
+ 		assert.deepStrictEqual(remaining, [agentsWindowFolder, md5LikeFolder, 'ext-dev'].sort());
++		assert.deepStrictEqual(await fs.promises.readFile(historicalFile), historicalState);
+ 	});
+ });
+diff --git a/src/vs/workbench/electron-browser/desktop.main.ts b/src/vs/workbench/electron-browser/desktop.main.ts
+--- a/src/vs/workbench/electron-browser/desktop.main.ts
++++ b/src/vs/workbench/electron-browser/desktop.main.ts
+@@ -52,9 +52,6 @@
+ import { IUserDataProfilesService, reviveProfile } from '../../platform/userDataProfile/common/userDataProfile.js';
+ import { UserDataProfilesService } from '../../platform/userDataProfile/common/userDataProfileIpc.js';
+ import { PolicyChannelClient } from '../../platform/policy/common/policyIpc.js';
+-import { NativeManagedSettingsChannelClient } from '../../platform/policy/common/nativeManagedSettingsIpc.js';
+-import { INativeManagedSettingsService, IFileManagedSettingsService, IManagedSettingsService } from '../../platform/policy/common/copilotManagedSettings.js';
+-import { FileManagedSettingsChannelClient } from '../../platform/policy/common/fileManagedSettingsIpc.js';
+ import { IPolicyService } from '../../platform/policy/common/policy.js';
+ import { UserDataProfileService } from '../services/userDataProfile/common/userDataProfileService.js';
+ import { IUserDataProfileService } from '../services/userDataProfile/common/userDataProfile.js';
+@@ -66,7 +63,7 @@
+ import { mainWindow } from '../../base/browser/window.js';
+ import { IDefaultAccountService } from '../../platform/defaultAccount/common/defaultAccount.js';
+ import { DefaultAccountService } from '../services/accounts/browser/defaultAccount.js';
+-import { AccountPolicyService, IAccountPolicyGateService } from '../services/policies/common/accountPolicyService.js';
++import { AccountPolicyService } from '../services/policies/common/accountPolicyService.js';
+ import { MultiplexPolicyService } from '../../platform/policy/common/multiplexPolicyService.js';
+ 
+ export class DesktopMain extends Disposable {
+@@ -219,19 +216,13 @@
+ 		// Policies
+ 		let policyService: IPolicyService;
+ 		const policyChannel = this.configuration.policiesData ? this._register(new PolicyChannelClient(this.configuration.policiesData, mainProcessService.getChannel('policy'))) : undefined;
+-		const nativeManagedSettings = this._register(new NativeManagedSettingsChannelClient(mainProcessService.getChannel('nativeManagedSettings'), logService));
+-		serviceCollection.set(INativeManagedSettingsService, nativeManagedSettings);
+-		const fileManagedSettings = this._register(new FileManagedSettingsChannelClient(mainProcessService.getChannel('fileManagedSettings')));
+-		serviceCollection.set(IFileManagedSettingsService, fileManagedSettings);
+-		const accountPolicy = this._register(new AccountPolicyService(logService, defaultAccountService, policyChannel, nativeManagedSettings, fileManagedSettings));
+-		serviceCollection.set(IManagedSettingsService, accountPolicy);
++		const accountPolicy = this._register(new AccountPolicyService(logService, defaultAccountService));
+ 		if (policyChannel) {
+ 			policyService = this._register(new MultiplexPolicyService([policyChannel, accountPolicy], logService));
+ 		} else {
+ 			policyService = accountPolicy;
+ 		}
+ 		serviceCollection.set(IPolicyService, policyService);
+-		serviceCollection.set(IAccountPolicyGateService, accountPolicy);
+ 
+ 		// Shared Process
+ 		const sharedProcessService = new SharedProcessService(this.configuration.windowId, logService);
+diff --git a/src/vs/workbench/browser/web.main.ts b/src/vs/workbench/browser/web.main.ts
+--- a/src/vs/workbench/browser/web.main.ts
++++ b/src/vs/workbench/browser/web.main.ts
+@@ -69,7 +69,6 @@
+ import { dirname, joinPath } from '../../base/common/resources.js';
+ import { IUserDataProfile, IUserDataProfilesService } from '../../platform/userDataProfile/common/userDataProfile.js';
+ import { IPolicyService } from '../../platform/policy/common/policy.js';
+-import { IManagedSettingsService, INativeManagedSettingsService, NullNativeManagedSettingsService } from '../../platform/policy/common/copilotManagedSettings.js';
+ import { IRemoteExplorerService } from '../services/remote/common/remoteExplorerService.js';
+ import { DisposableTunnel, TunnelProtocol } from '../../platform/tunnel/common/tunnel.js';
+ import { ILabelService } from '../../platform/label/common/label.js';
+@@ -98,7 +97,7 @@
+ import { INotificationService, Severity } from '../../platform/notification/common/notification.js';
+ import { IDefaultAccountService } from '../../platform/defaultAccount/common/defaultAccount.js';
+ import { DefaultAccountService } from '../services/accounts/browser/defaultAccount.js';
+-import { AccountPolicyService, IAccountPolicyGateService } from '../services/policies/common/accountPolicyService.js';
++import { AccountPolicyService } from '../services/policies/common/accountPolicyService.js';
+ 
+ export interface IBrowserMainWorkbench {
+ 	startup(): IInstantiationService;
+@@ -368,11 +367,8 @@
+ 		serviceCollection.set(IDefaultAccountService, defaultAccountService);
+ 
+ 		// Policies
+-		serviceCollection.set(INativeManagedSettingsService, new NullNativeManagedSettingsService());
+ 		const policyService = new AccountPolicyService(logService, defaultAccountService);
+ 		serviceCollection.set(IPolicyService, policyService);
+-		serviceCollection.set(IAccountPolicyGateService, policyService);
+-		serviceCollection.set(IManagedSettingsService, policyService);
+ 
+ 		const configurationService = await this.createWorkspaceAndDependentServices(serviceCollection, workspace, environmentService, userDataProfileService, userDataProfilesService, fileService, remoteAgentService, uriIdentityService, policyService, logService, loggerService, remoteAuthorityResolverService, productService);
+ 
+diff --git a/build/npm/postinstall.ts b/build/npm/postinstall.ts
+--- a/build/npm/postinstall.ts
++++ b/build/npm/postinstall.ts
+@@ -319,52 +319,7 @@
+ 	fs.writeFileSync(stateFile, JSON.stringify(_state));
+ 	fs.writeFileSync(stateContentsFile, JSON.stringify(computeContents()));
+ 
+-	// foundry-local-sdk (on-device chat dictation) resolves its prebuilt N-API
+-	// addon and native core libraries from fixed, package-relative paths. We do
+-	// not ship that native payload (its addon requires a newer glibc than our
+-	// minimum supported Linux distros); it is downloaded on demand at runtime
+-	// into a per-user cache. Patch the SDK loader so it honors the
+-	// `VSCODE_FOUNDRY_LOCAL_NATIVE_DIR` env var (pointing at that cache) for both
+-	// the addon and the core libraries, falling back to the original
+-	// package-relative logic so dev-from-source still works. Idempotent.
+-	for (const dir of ['', 'remote']) {
+-		const coreInteropFile = path.join(root, dir, 'node_modules', 'foundry-local-sdk', 'dist', 'detail', 'coreInterop.js');
+-		if (!fs.existsSync(coreInteropFile)) {
+-			continue;
+-		}
+-		const content = fs.readFileSync(coreInteropFile, 'utf8');
+-		// Apply the addon and core patches independently. They previously shared
+-		// a single `VSCODE_FOUNDRY_LOCAL_NATIVE_DIR` presence check, so if only
+-		// one SDK needle changed the file was left half-patched and every later
+-		// run skipped it entirely — and since packaging removes both native
+-		// fallbacks, a missing half makes shipped dictation unusable. Use a
+-		// distinct marker per half and apply whichever is absent.
+-		const addonMarker = '// VSCODE_PATCH:foundry-addon-native-dir';
+-		const coreMarker = '// VSCODE_PATCH:foundry-core-native-dir';
+-		const addonNeedle = `    const platformKey = \`\${platform}-\${arch}\`;\n    // The prebuilt addon ships inside the SDK package under prebuilds/<platform>/\n    const sdkRoot = path.resolve(__dirname, '..', '..');`;
+-		const addonReplacement = `    const platformKey = \`\${platform}-\${arch}\`;\n    ${addonMarker}: prefer the on-demand native runtime cache when present.\n    const overrideDir = process.env.VSCODE_FOUNDRY_LOCAL_NATIVE_DIR;\n    if (overrideDir) {\n        const overridePath = path.join(overrideDir, 'prebuilds', platformKey, 'foundry_local_napi.node');\n        if (fs.existsSync(overridePath)) {\n            return require(overridePath);\n        }\n    }\n    // The prebuilt addon ships inside the SDK package under prebuilds/<platform>/\n    const sdkRoot = path.resolve(__dirname, '..', '..');`;
+-		const coreNeedle = `        const platformKey = \`\${platform}-\${arch}\`;\n        // Resolve the native binary directory at foundry-local-core/<platform>,`;
+-		const coreReplacement = `        const platformKey = \`\${platform}-\${arch}\`;\n        ${coreMarker}: prefer the on-demand native runtime cache when present.\n        const overrideDir = process.env.VSCODE_FOUNDRY_LOCAL_NATIVE_DIR;\n        if (overrideDir) {\n            const overrideExt = CoreInterop._getLibraryExtension();\n            const overrideCorePath = path.join(overrideDir, 'foundry-local-core', platformKey, \`Microsoft.AI.Foundry.Local.Core\${overrideExt}\`);\n            if (fs.existsSync(overrideCorePath)) {\n                config.params['FoundryLocalCorePath'] = overrideCorePath;\n                return overrideCorePath;\n            }\n        }\n        // Resolve the native binary directory at foundry-local-core/<platform>,`;
+-		let patched = content;
+-		if (!patched.includes(addonMarker)) {
+-			if (patched.includes(addonNeedle)) {
+-				patched = patched.replace(addonNeedle, addonReplacement);
+-			} else {
+-				log(dir || '.', 'WARNING: foundry-local-sdk coreInterop.js loadAddon shape changed; skipped addon override patch');
+-			}
+-		}
+-		if (!patched.includes(coreMarker)) {
+-			if (patched.includes(coreNeedle)) {
+-				patched = patched.replace(coreNeedle, coreReplacement);
+-			} else {
+-				log(dir || '.', 'WARNING: foundry-local-sdk coreInterop.js _resolveDefaultCorePath shape changed; skipped core override patch');
+-			}
+-		}
+-		if (content !== patched) {
+-			fs.writeFileSync(coreInteropFile, patched);
+-			log(dir || '.', 'Patched foundry-local-sdk coreInterop.js (on-demand native runtime override)');
+-		}
+-	}
++
+ }
+ 
+ main().catch(err => {

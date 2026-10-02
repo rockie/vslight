@@ -1,0 +1,1522 @@
+{
+  "status": "PASS",
+  "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "at": "2026-10-02T10:21:50.586144+10:00",
+  "results": [
+    {
+      "language": "en",
+      "workbenchLocale": "en",
+      "pid": 48761,
+      "ready": {
+        "hostPid": 50018,
+        "parentPid": 48761,
+        "root": "/private/tmp/native149-igkua3xm/en",
+        "version": "1.135.0"
+      },
+      "nativePreferences": {
+        "appKit": {
+          "commonStrings": {
+            "Cancel": "Cancel",
+            "Don’t Save": "Don’t Save",
+            "OK": "OK"
+          },
+          "commonStringsResource": null,
+          "developmentLocalization": "en",
+          "identifier": "com.apple.AppKit",
+          "localizations": [
+            "de",
+            "he",
+            "en_AU",
+            "ar",
+            "el",
+            "ja",
+            "en",
+            "uk",
+            "es_419",
+            "zh_CN",
+            "es",
+            "sl",
+            "da",
+            "it",
+            "sk",
+            "pt_PT",
+            "ms",
+            "sv",
+            "cs",
+            "ko",
+            "Base",
+            "no",
+            "hu",
+            "zh_HK",
+            "tr",
+            "pl",
+            "zh_TW",
+            "es_US",
+            "en_GB",
+            "vi",
+            "ru",
+            "fr_CA",
+            "fr",
+            "fi",
+            "id",
+            "nl",
+            "th",
+            "pt",
+            "ro",
+            "hr",
+            "hi",
+            "ca"
+          ],
+          "path": "/System/Library/Frameworks/AppKit.framework",
+          "preferredLocalizations": [
+            "en"
+          ]
+        },
+        "argumentDomainAppleLanguages": [
+          "en"
+        ],
+        "effectiveAppleLanguages": [
+          "en"
+        ],
+        "electronFramework": {
+          "developmentLocalization": "en",
+          "identifier": "com.github.Electron.framework",
+          "localizations": [
+            "en_NEUTER",
+            "en",
+            "en_MASCULINE",
+            "zh_CN",
+            "zh_CN_FEMININE",
+            "zh_TW_NEUTER",
+            "zh_TW_FEMININE",
+            "en_GB_MASCULINE",
+            "zh_TW_MASCULINE",
+            "zh_TW",
+            "en_GB",
+            "en_GB_NEUTER",
+            "zh_CN_NEUTER",
+            "en_GB_FEMININE",
+            "en_FEMININE",
+            "zh_CN_MASCULINE"
+          ],
+          "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework",
+          "preferredLocalizations": [
+            "en"
+          ],
+          "selectedLocalePak": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Resources/en.lproj/locale.pak"
+        },
+        "executable": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+        "mainBundle": {
+          "developmentLocalization": "en",
+          "identifier": "com.vslight",
+          "localizations": [
+            "en",
+            "zh_CN",
+            "zh_TW",
+            "en_GB"
+          ],
+          "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "preferredLocalizations": [
+            "en"
+          ]
+        },
+        "nsApplicationExists": 0,
+        "nsLocalePreferredLanguages": [
+          "en"
+        ],
+        "persistentAppAppleLanguages": null,
+        "persistentGlobalAppleLanguages": [
+          "zh-Hans-CN"
+        ],
+        "persistentGlobalAppleLocale": "zh_CN",
+        "phase": "dyld-constructor-before-electron-main",
+        "processId": 48761,
+        "schemaVersion": 1
+      },
+      "menus": "Apple\nVSLight\nFile\nEdit\nSelection\nView\nGo\nTerminal\nWindow\nHelp\n",
+      "actions": [
+        {
+          "id": "bce6ddc7-f058-481c-9759-f49a13f9991a",
+          "action": "files",
+          "status": "PASS",
+          "result": {
+            "tabs": [
+              "/private/tmp/native149-igkua3xm/en/w/native.txt",
+              "/private/tmp/native149-igkua3xm/en/w/native.md",
+              "/private/tmp/native149-igkua3xm/en/w/native.py"
+            ]
+          }
+        },
+        {
+          "id": "162052c4-364c-4d07-a087-229404dd367c",
+          "action": "open",
+          "status": "PASS"
+        },
+        {
+          "id": "11c31ffc-d0e6-4027-8a61-bb9ef534a3ab",
+          "action": "save",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "language": "zh-CN",
+      "workbenchLocale": "zh-CN",
+      "pid": 60968,
+      "ready": {
+        "hostPid": 62217,
+        "parentPid": 60968,
+        "root": "/private/tmp/native149-igkua3xm/zh-CN",
+        "version": "1.135.0"
+      },
+      "nativePreferences": {
+        "appKit": {
+          "commonStrings": {
+            "Cancel": "取消",
+            "Don’t Save": "不保存",
+            "OK": "好"
+          },
+          "commonStringsResource": null,
+          "developmentLocalization": "en",
+          "identifier": "com.apple.AppKit",
+          "localizations": [
+            "de",
+            "he",
+            "en_AU",
+            "ar",
+            "el",
+            "ja",
+            "en",
+            "uk",
+            "es_419",
+            "zh_CN",
+            "es",
+            "sl",
+            "da",
+            "it",
+            "sk",
+            "pt_PT",
+            "ms",
+            "sv",
+            "cs",
+            "ko",
+            "Base",
+            "no",
+            "hu",
+            "zh_HK",
+            "tr",
+            "pl",
+            "zh_TW",
+            "es_US",
+            "en_GB",
+            "vi",
+            "ru",
+            "fr_CA",
+            "fr",
+            "fi",
+            "id",
+            "nl",
+            "th",
+            "pt",
+            "ro",
+            "hr",
+            "hi",
+            "ca"
+          ],
+          "path": "/System/Library/Frameworks/AppKit.framework",
+          "preferredLocalizations": [
+            "zh_CN"
+          ]
+        },
+        "argumentDomainAppleLanguages": [
+          "zh-CN"
+        ],
+        "effectiveAppleLanguages": [
+          "zh-CN"
+        ],
+        "electronFramework": {
+          "developmentLocalization": "en",
+          "identifier": "com.github.Electron.framework",
+          "localizations": [
+            "en_NEUTER",
+            "en",
+            "en_MASCULINE",
+            "zh_CN",
+            "zh_CN_FEMININE",
+            "zh_TW_NEUTER",
+            "zh_TW_FEMININE",
+            "en_GB_MASCULINE",
+            "zh_TW_MASCULINE",
+            "zh_TW",
+            "en_GB",
+            "en_GB_NEUTER",
+            "zh_CN_NEUTER",
+            "en_GB_FEMININE",
+            "en_FEMININE",
+            "zh_CN_MASCULINE"
+          ],
+          "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework",
+          "preferredLocalizations": [
+            "zh_CN"
+          ],
+          "selectedLocalePak": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Resources/zh_CN.lproj/locale.pak"
+        },
+        "executable": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+        "mainBundle": {
+          "developmentLocalization": "en",
+          "identifier": "com.vslight",
+          "localizations": [
+            "en",
+            "zh_CN",
+            "zh_TW",
+            "en_GB"
+          ],
+          "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "preferredLocalizations": [
+            "zh_CN"
+          ]
+        },
+        "nsApplicationExists": 0,
+        "nsLocalePreferredLanguages": [
+          "zh-CN"
+        ],
+        "persistentAppAppleLanguages": null,
+        "persistentGlobalAppleLanguages": [
+          "zh-Hans-CN"
+        ],
+        "persistentGlobalAppleLocale": "zh_CN",
+        "phase": "dyld-constructor-before-electron-main",
+        "processId": 60968,
+        "schemaVersion": 1
+      },
+      "menus": "Apple\nVSLight\n文件\n编辑\n选择\n查看\n转到\n终端\n窗口\n帮助\n",
+      "actions": [
+        {
+          "id": "561fc393-ab25-4401-8b59-c836d78c66c6",
+          "action": "files",
+          "status": "PASS",
+          "result": {
+            "tabs": [
+              "/private/tmp/native149-igkua3xm/zh-CN/w/native.txt",
+              "/private/tmp/native149-igkua3xm/zh-CN/w/native.md",
+              "/private/tmp/native149-igkua3xm/zh-CN/w/native.py"
+            ]
+          }
+        },
+        {
+          "id": "4faba1f7-9dba-4497-a5fd-748c9b7b2107",
+          "action": "open",
+          "status": "PASS"
+        },
+        {
+          "id": "2bbf4e47-1e72-4c76-a603-538c5b84a395",
+          "action": "save",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "language": "zh-TW",
+      "workbenchLocale": "zh-TW",
+      "pid": 66849,
+      "ready": {
+        "hostPid": 68097,
+        "parentPid": 66849,
+        "root": "/private/tmp/native149-igkua3xm/zh-TW",
+        "version": "1.135.0"
+      },
+      "nativePreferences": {
+        "appKit": {
+          "commonStrings": {
+            "Cancel": "取消",
+            "Don’t Save": "不儲存",
+            "OK": "好"
+          },
+          "commonStringsResource": null,
+          "developmentLocalization": "en",
+          "identifier": "com.apple.AppKit",
+          "localizations": [
+            "de",
+            "he",
+            "en_AU",
+            "ar",
+            "el",
+            "ja",
+            "en",
+            "uk",
+            "es_419",
+            "zh_CN",
+            "es",
+            "sl",
+            "da",
+            "it",
+            "sk",
+            "pt_PT",
+            "ms",
+            "sv",
+            "cs",
+            "ko",
+            "Base",
+            "no",
+            "hu",
+            "zh_HK",
+            "tr",
+            "pl",
+            "zh_TW",
+            "es_US",
+            "en_GB",
+            "vi",
+            "ru",
+            "fr_CA",
+            "fr",
+            "fi",
+            "id",
+            "nl",
+            "th",
+            "pt",
+            "ro",
+            "hr",
+            "hi",
+            "ca"
+          ],
+          "path": "/System/Library/Frameworks/AppKit.framework",
+          "preferredLocalizations": [
+            "zh_TW"
+          ]
+        },
+        "argumentDomainAppleLanguages": [
+          "zh-TW"
+        ],
+        "effectiveAppleLanguages": [
+          "zh-TW"
+        ],
+        "electronFramework": {
+          "developmentLocalization": "en",
+          "identifier": "com.github.Electron.framework",
+          "localizations": [
+            "en_NEUTER",
+            "en",
+            "en_MASCULINE",
+            "zh_CN",
+            "zh_CN_FEMININE",
+            "zh_TW_NEUTER",
+            "zh_TW_FEMININE",
+            "en_GB_MASCULINE",
+            "zh_TW_MASCULINE",
+            "zh_TW",
+            "en_GB",
+            "en_GB_NEUTER",
+            "zh_CN_NEUTER",
+            "en_GB_FEMININE",
+            "en_FEMININE",
+            "zh_CN_MASCULINE"
+          ],
+          "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework",
+          "preferredLocalizations": [
+            "zh_TW"
+          ],
+          "selectedLocalePak": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Resources/zh_TW.lproj/locale.pak"
+        },
+        "executable": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+        "mainBundle": {
+          "developmentLocalization": "en",
+          "identifier": "com.vslight",
+          "localizations": [
+            "en",
+            "zh_CN",
+            "zh_TW",
+            "en_GB"
+          ],
+          "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "preferredLocalizations": [
+            "zh_TW"
+          ]
+        },
+        "nsApplicationExists": 0,
+        "nsLocalePreferredLanguages": [
+          "zh-TW"
+        ],
+        "persistentAppAppleLanguages": null,
+        "persistentGlobalAppleLanguages": [
+          "zh-Hans-CN"
+        ],
+        "persistentGlobalAppleLocale": "zh_CN",
+        "phase": "dyld-constructor-before-electron-main",
+        "processId": 66849,
+        "schemaVersion": 1
+      },
+      "menus": "Apple\nVSLight\n檔案\n編輯\n選取項目\n檢視\n移至\n終端機\n視窗\n說明\n",
+      "actions": [
+        {
+          "id": "91d902b1-b133-4918-b837-df99a27bc19d",
+          "action": "files",
+          "status": "PASS",
+          "result": {
+            "tabs": [
+              "/private/tmp/native149-igkua3xm/zh-TW/w/native.txt",
+              "/private/tmp/native149-igkua3xm/zh-TW/w/native.md",
+              "/private/tmp/native149-igkua3xm/zh-TW/w/native.py"
+            ]
+          }
+        },
+        {
+          "id": "dcfc3867-3fab-4770-bd0f-d16952b784bb",
+          "action": "open",
+          "status": "PASS"
+        },
+        {
+          "id": "d8e5c3d7-da10-4aac-892d-cc258d19b517",
+          "action": "save",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "language": "fr",
+      "workbenchLocale": "en",
+      "pid": 68351,
+      "ready": {
+        "hostPid": 69559,
+        "parentPid": 68351,
+        "root": "/private/tmp/native149-igkua3xm/fr",
+        "version": "1.135.0"
+      },
+      "nativePreferences": {
+        "appKit": {
+          "commonStrings": {
+            "Cancel": "Cancel",
+            "Don’t Save": "Don’t Save",
+            "OK": "OK"
+          },
+          "commonStringsResource": null,
+          "developmentLocalization": "en",
+          "identifier": "com.apple.AppKit",
+          "localizations": [
+            "de",
+            "he",
+            "en_AU",
+            "ar",
+            "el",
+            "ja",
+            "en",
+            "uk",
+            "es_419",
+            "zh_CN",
+            "es",
+            "sl",
+            "da",
+            "it",
+            "sk",
+            "pt_PT",
+            "ms",
+            "sv",
+            "cs",
+            "ko",
+            "Base",
+            "no",
+            "hu",
+            "zh_HK",
+            "tr",
+            "pl",
+            "zh_TW",
+            "es_US",
+            "en_GB",
+            "vi",
+            "ru",
+            "fr_CA",
+            "fr",
+            "fi",
+            "id",
+            "nl",
+            "th",
+            "pt",
+            "ro",
+            "hr",
+            "hi",
+            "ca"
+          ],
+          "path": "/System/Library/Frameworks/AppKit.framework",
+          "preferredLocalizations": [
+            "en"
+          ]
+        },
+        "argumentDomainAppleLanguages": [
+          "fr"
+        ],
+        "effectiveAppleLanguages": [
+          "fr"
+        ],
+        "electronFramework": {
+          "developmentLocalization": "en",
+          "identifier": "com.github.Electron.framework",
+          "localizations": [
+            "en_NEUTER",
+            "en",
+            "en_MASCULINE",
+            "zh_CN",
+            "zh_CN_FEMININE",
+            "zh_TW_NEUTER",
+            "zh_TW_FEMININE",
+            "en_GB_MASCULINE",
+            "zh_TW_MASCULINE",
+            "zh_TW",
+            "en_GB",
+            "en_GB_NEUTER",
+            "zh_CN_NEUTER",
+            "en_GB_FEMININE",
+            "en_FEMININE",
+            "zh_CN_MASCULINE"
+          ],
+          "path": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework",
+          "preferredLocalizations": [
+            "en"
+          ],
+          "selectedLocalePak": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/Electron Framework.framework/Resources/en.lproj/locale.pak"
+        },
+        "executable": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+        "mainBundle": {
+          "developmentLocalization": "en",
+          "identifier": "com.vslight",
+          "localizations": [
+            "en",
+            "zh_CN",
+            "zh_TW",
+            "en_GB"
+          ],
+          "path": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "preferredLocalizations": [
+            "en"
+          ]
+        },
+        "nsApplicationExists": 0,
+        "nsLocalePreferredLanguages": [
+          "fr"
+        ],
+        "persistentAppAppleLanguages": null,
+        "persistentGlobalAppleLanguages": [
+          "zh-Hans-CN"
+        ],
+        "persistentGlobalAppleLocale": "zh_CN",
+        "phase": "dyld-constructor-before-electron-main",
+        "processId": 68351,
+        "schemaVersion": 1
+      },
+      "menus": "Apple\nVSLight\nFile\nEdit\nSelection\nView\nGo\nTerminal\nWindow\nHelp\n",
+      "actions": [
+        {
+          "id": "e841b50f-639b-40b2-ad2e-20e05aaadbfe",
+          "action": "files",
+          "status": "PASS",
+          "result": {
+            "tabs": [
+              "/private/tmp/native149-igkua3xm/fr/w/native.txt",
+              "/private/tmp/native149-igkua3xm/fr/w/native.md",
+              "/private/tmp/native149-igkua3xm/fr/w/native.py"
+            ]
+          }
+        },
+        {
+          "id": "b0855b73-a4b0-492d-a11b-7ee5fdc71545",
+          "action": "open",
+          "status": "PASS"
+        },
+        {
+          "id": "ccbcdc44-de57-4ae0-b539-4b71179fcfde",
+          "action": "save",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "globalPreferencesUnchanged": true,
+  "dialogs": {
+    "en": {
+      "open": [
+        {
+          "value": "",
+          "role": "AXWindow",
+          "title": "native.txt — w"
+        },
+        {
+          "role": "AXGroup",
+          "title": "native.txt — w",
+          "value": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Shared"
+        },
+        {
+          "value": "Favorites",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Setapp"
+        },
+        {
+          "value": "Applications",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "Desktop",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "Documents",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Downloads",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Pictures"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Movies"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Wisdom Journey"
+        },
+        {
+          "value": "Locations",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "rockie",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Rockie的MacBook Pro",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Macintosh HD",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Network"
+        },
+        {
+          "value": "Tags",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "红色"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "橙色"
+        },
+        {
+          "value": "黄色",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "绿色",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "蓝色"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "紫色"
+        },
+        {
+          "value": "灰色",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "All Tags…"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Media"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Music"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Photos"
+        },
+        {
+          "title": "",
+          "value": "Movies",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "Where:",
+          "role": "AXPopUpButton",
+          "value": "w"
+        },
+        {
+          "value": "",
+          "title": "New Folder",
+          "role": "AXButton"
+        },
+        {
+          "title": "Cancel",
+          "value": "",
+          "role": "AXButton"
+        },
+        {
+          "value": "",
+          "role": "AXButton",
+          "title": "Open"
+        }
+      ],
+      "save": [
+        {
+          "value": "",
+          "title": "native.txt — w",
+          "role": "AXWindow"
+        },
+        {
+          "value": "",
+          "role": "AXGroup",
+          "title": "native.txt — w"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Where:"
+        },
+        {
+          "value": "w",
+          "role": "AXPopUpButton",
+          "title": "Where:"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Save As:"
+        },
+        {
+          "role": "AXTextField",
+          "value": "native-save.txt",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Tags:"
+        },
+        {
+          "role": "AXButton",
+          "title": "Cancel",
+          "value": ""
+        },
+        {
+          "role": "AXButton",
+          "title": "Save",
+          "value": ""
+        }
+      ]
+    },
+    "zh-CN": {
+      "open": [
+        {
+          "role": "AXWindow",
+          "title": "native.txt — w",
+          "value": ""
+        },
+        {
+          "title": "native.txt — w",
+          "value": "",
+          "role": "AXGroup"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "共享"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "个人收藏"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Setapp"
+        },
+        {
+          "value": "应用程序",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "桌面"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "文稿"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "下载",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "图片",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "影片"
+        },
+        {
+          "value": "Wisdom Journey",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "位置",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "rockie",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Rockie的MacBook Pro"
+        },
+        {
+          "value": "Macintosh HD",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "网络",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "标签"
+        },
+        {
+          "title": "",
+          "value": "红色",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "橙色"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "黄色"
+        },
+        {
+          "value": "绿色",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "蓝色",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "紫色"
+        },
+        {
+          "title": "",
+          "value": "灰色",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "所有标签…",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "媒体",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "音乐",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "照片"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "影片"
+        },
+        {
+          "role": "AXPopUpButton",
+          "title": "位置：",
+          "value": "w"
+        },
+        {
+          "role": "AXButton",
+          "value": "",
+          "title": "新建文件夹"
+        },
+        {
+          "value": "",
+          "title": "取消",
+          "role": "AXButton"
+        },
+        {
+          "value": "",
+          "title": "打开",
+          "role": "AXButton"
+        }
+      ],
+      "save": [
+        {
+          "title": "native.txt — w",
+          "value": "",
+          "role": "AXWindow"
+        },
+        {
+          "title": "native.txt — w",
+          "value": "",
+          "role": "AXGroup"
+        },
+        {
+          "title": "",
+          "value": "位置：",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "位置：",
+          "role": "AXPopUpButton",
+          "value": "w"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "保存为："
+        },
+        {
+          "title": "",
+          "role": "AXTextField",
+          "value": "native-save.txt"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "标签："
+        },
+        {
+          "value": "",
+          "title": "取消",
+          "role": "AXButton"
+        },
+        {
+          "title": "保存",
+          "value": "",
+          "role": "AXButton"
+        }
+      ]
+    },
+    "zh-TW": {
+      "open": [
+        {
+          "role": "AXWindow",
+          "value": "",
+          "title": "native.txt — w"
+        },
+        {
+          "title": "native.txt — w",
+          "value": "",
+          "role": "AXGroup"
+        },
+        {
+          "title": "",
+          "value": "已共享",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "喜好項目",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Setapp",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "應用程式",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "桌面",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "文件"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "下載項目"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "圖片",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "影片",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Wisdom Journey"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "位置"
+        },
+        {
+          "title": "",
+          "value": "rockie",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "Rockie的MacBook Pro",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Macintosh HD"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "網路",
+          "title": ""
+        },
+        {
+          "value": "標籤",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "红色",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "橙色"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "黄色"
+        },
+        {
+          "title": "",
+          "value": "绿色",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "value": "蓝色",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "紫色",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "灰色"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "所有標籤⋯"
+        },
+        {
+          "title": "",
+          "value": "媒體",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "音樂"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "照片"
+        },
+        {
+          "title": "",
+          "value": "影片",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXPopUpButton",
+          "title": "位置：",
+          "value": "w"
+        },
+        {
+          "value": "",
+          "title": "新增檔案夾",
+          "role": "AXButton"
+        },
+        {
+          "title": "取消",
+          "value": "",
+          "role": "AXButton"
+        },
+        {
+          "role": "AXButton",
+          "title": "打開",
+          "value": ""
+        }
+      ],
+      "save": [
+        {
+          "role": "AXWindow",
+          "title": "native.txt — w",
+          "value": ""
+        },
+        {
+          "value": "",
+          "title": "native.txt — w",
+          "role": "AXGroup"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "位置："
+        },
+        {
+          "title": "位置：",
+          "role": "AXPopUpButton",
+          "value": "w"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "儲存為："
+        },
+        {
+          "title": "",
+          "role": "AXTextField",
+          "value": "native-save.txt"
+        },
+        {
+          "value": "標籤：",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXButton",
+          "title": "取消",
+          "value": ""
+        },
+        {
+          "role": "AXButton",
+          "title": "儲存",
+          "value": ""
+        }
+      ]
+    },
+    "fr": {
+      "open": [
+        {
+          "role": "AXWindow",
+          "value": "",
+          "title": "native.txt — w"
+        },
+        {
+          "role": "AXGroup",
+          "value": "",
+          "title": "native.txt — w"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Shared"
+        },
+        {
+          "value": "Favorites",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "value": "Setapp",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "Applications",
+          "title": ""
+        },
+        {
+          "value": "Desktop",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "value": "Documents",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "value": "Downloads",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Pictures"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Movies"
+        },
+        {
+          "title": "",
+          "value": "Wisdom Journey",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "",
+          "role": "AXStaticText",
+          "value": "Locations"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "rockie"
+        },
+        {
+          "value": "Rockie的MacBook Pro",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Macintosh HD"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Network"
+        },
+        {
+          "value": "Tags",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "红色"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "橙色",
+          "title": ""
+        },
+        {
+          "value": "黄色",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "value": "绿色",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "role": "AXStaticText",
+          "value": "蓝色",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "紫色",
+          "role": "AXStaticText"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "灰色",
+          "title": ""
+        },
+        {
+          "title": "",
+          "value": "All Tags…",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Media",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "value": "Music",
+          "role": "AXStaticText",
+          "title": ""
+        },
+        {
+          "value": "Photos",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "value": "Movies",
+          "title": "",
+          "role": "AXStaticText"
+        },
+        {
+          "title": "Where:",
+          "value": "w",
+          "role": "AXPopUpButton"
+        },
+        {
+          "title": "New Folder",
+          "value": "",
+          "role": "AXButton"
+        },
+        {
+          "value": "",
+          "role": "AXButton",
+          "title": "Cancel"
+        },
+        {
+          "title": "Open",
+          "value": "",
+          "role": "AXButton"
+        }
+      ],
+      "save": [
+        {
+          "role": "AXWindow",
+          "title": "native.txt — w",
+          "value": ""
+        },
+        {
+          "value": "",
+          "title": "native.txt — w",
+          "role": "AXGroup"
+        },
+        {
+          "role": "AXStaticText",
+          "value": "Where:",
+          "title": ""
+        },
+        {
+          "role": "AXPopUpButton",
+          "value": "w",
+          "title": "Where:"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Save As:"
+        },
+        {
+          "role": "AXTextField",
+          "title": "",
+          "value": "native-save.txt"
+        },
+        {
+          "role": "AXStaticText",
+          "title": "",
+          "value": "Tags:"
+        },
+        {
+          "title": "Cancel",
+          "role": "AXButton",
+          "value": ""
+        },
+        {
+          "role": "AXButton",
+          "title": "Save",
+          "value": ""
+        }
+      ]
+    }
+  }
+}

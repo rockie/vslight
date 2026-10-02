@@ -1,0 +1,77 @@
+{
+  "at": "2026-10-02 21:27 +1000",
+  "status": "PASS_M5_ALL_EXIT_GATES",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "precondition": "M4 completed in plan before M5 acceptance",
+  "gates": [
+    "V5 browser runtime closure and actual UI",
+    "V9 retired Browser/mixed ordinary recovery",
+    "User-adjusted static/CLI gates",
+    "Full typecheck/build and actual host",
+    "Ordinary Webview/HTML/system URL handoff/profiling"
+  ],
+  "allGates": "PASS",
+  "gaps": [],
+  "references": [
+    {
+      "path": "M4-final-acceptance151.json",
+      "sha256": "7027b637449c9e8ea7376c261212bc94345306d45779330c8950054bdd0b844d",
+      "originalCapturedSha256": "b762b3a337e7e8e9aad480e9c9cdfb11f552edcda0cf02e0a43be55d5f827f93",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M8-build151.json",
+      "sha256": "ad2272ab4666e0f89c16f92239dcb3f0a380280c594bb13bd5cba43fd9671a8a"
+    },
+    {
+      "path": "M6-runtime151-audit.json",
+      "sha256": "3c918574065f33d3d6ad7e4fc7491e6f2fb1098ee01f164eb38df19e1afe45a8"
+    },
+    {
+      "path": "M6-main-shared151.json",
+      "sha256": "dc230212f97f2f37d28016092d60700e40b9a050b36ffb0a3cd6a00d83d79db5"
+    },
+    {
+      "path": "M8-runtime151.json",
+      "sha256": "1f16c1e1fd4e893bd583d3c3736dc63e7fc751fa07b96de75eafe7486de2a49e"
+    },
+    {
+      "path": "M6-final-restore.json",
+      "sha256": "a75d70c9de33b5b6336ada4d8638e9308b8e34310a4546497d58acef5ddde69b"
+    },
+    {
+      "path": "M6-storage150-regression.md",
+      "sha256": "f359f7896d5793474c2116adf3d6a0844eb26320ae98bf821cdfc88bbd316dd0"
+    },
+    {
+      "path": "M6-cli151.json",
+      "sha256": "b4e1a439e183cdae04783131c2ce47868e91db29293c0186fbf7b5811090f668"
+    },
+    {
+      "path": "M4-final-host145.json",
+      "sha256": "665d30782a7c09fcc4c62f1ca7813e9db5282fc69e112fe5fec8ecd421fb8093"
+    },
+    {
+      "path": "M4-ordinary149.json",
+      "sha256": "c1c8a6a7cddcdff989b7fb4e6b8966f1c6dc10c24fb0ded903965ffd4a98906c"
+    },
+    {
+      "path": "M5-external-links145.json",
+      "sha256": "32f082c85b03e1ca9c009c6e5ad094d6e9daaa2663a694af90e2e64d8850e813"
+    },
+    {
+      "path": "M5-external-links149-resume.json",
+      "sha256": "cfb85e93310077d4ed7bcd699b3fdf3ba657f7554dcb6c1f47be81c3f6cf1551"
+    },
+    {
+      "path": "M5-profiling145.json",
+      "sha256": "2dd76c33f5b83a4b42257fa0495c1085fd04c5895fa400b412eeaa87306d488e"
+    }
+  ],
+  "generationPolicy": "Unchanged original 138/145/149 paths retain their original actual provenance; Storage changes covered by 150 and terminal by actual151.",
+  "closingReferenceRecheck": {
+    "at": "2026-10-02T21:41:20.107124+10:00",
+    "reason": "Original M4 reference captured before M8-runtime151 summary gained subsequent completed-gate links; raw captured files/logs independently match. Dependent summary references refreshed in order; original hashes retained.",
+    "runtimeRawFilesVerified": 177
+  }
+}

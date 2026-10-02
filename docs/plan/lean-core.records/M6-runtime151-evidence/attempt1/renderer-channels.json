@@ -1,0 +1,29 @@
+[
+  {
+    "index": 0,
+    "context": "window:1,module:vs/platform/files/node/watcher/watcherMain",
+    "registeredChannelNames": [],
+    "pendingChannelNames": [],
+    "activeRequestCount": 0
+  },
+  {
+    "index": 1,
+    "context": "window:1",
+    "registeredChannelNames": [
+      "remoteResourceHandler",
+      "urlHandler"
+    ],
+    "pendingChannelNames": [],
+    "activeRequestCount": 0
+  },
+  {
+    "index": 2,
+    "context": "window:1",
+    "registeredChannelNames": [
+      "userDataSyncUtil",
+      "extensionRecommendationNotification"
+    ],
+    "pendingChannelNames": [],
+    "activeRequestCount": 0
+  }
+]

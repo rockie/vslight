@@ -1,0 +1,42 @@
+[
+  {
+    "mode": "unauthorized",
+    "pid": 2843,
+    "exit": 0,
+    "passed": true,
+    "result": {
+      "runId": "final-host138-unauthorized-1790865535",
+      "started": "2026-10-01T14:38:58.017Z",
+      "status": "passed",
+      "checks": [
+        "stable local APIs, pure constructors, inert registrations and never events",
+        "unauthorized permission failure: 87 proposed paths",
+        "ordinary findFiles2 proposal retains permission check",
+        "ordinary command, document and status bar",
+        "retired API commands absent",
+        "ordinary Webview ping/pong"
+      ],
+      "finished": "2026-10-01T14:38:58.227Z"
+    }
+  },
+  {
+    "mode": "authorized",
+    "pid": 4293,
+    "exit": 0,
+    "passed": true,
+    "result": {
+      "runId": "final-host138-authorized-1790865538",
+      "started": "2026-10-01T14:39:00.222Z",
+      "status": "passed",
+      "checks": [
+        "stable local APIs, pure constructors, inert registrations and never events",
+        "authorized unavailable: 87 proposed paths",
+        "authorized ordinary findFiles2 proposal retains behavior",
+        "ordinary command, document and status bar",
+        "retired API commands absent",
+        "ordinary Webview ping/pong"
+      ],
+      "finished": "2026-10-01T14:39:00.537Z"
+    }
+  }
+]

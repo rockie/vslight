@@ -1,0 +1,556 @@
+diff --git a/extensions/git/package.json b/extensions/git/package.json
+--- a/extensions/git/package.json
++++ b/extensions/git/package.json
+@@ -10,8 +10,6 @@
+   },
+   "aiKey": "0c6ae279ed8443289764825290e4f9e2-1a736e7c-1324-4338-be46-fc2a58ae4d14-7255",
+   "enabledApiProposals": [
+-    "agentSessionsWorkspace",
+-    "agentsWindowConfiguration",
+     "canonicalUriProvider",
+     "contribEditSessions",
+     "contribEditorContentMenu",
+@@ -3287,11 +3285,7 @@
+           "type": "boolean",
+           "scope": "resource",
+           "description": "%config.enabled%",
+-          "default": true,
+-          "agentsWindow": {
+-            "default": true,
+-            "readOnly": true
+-          }
++          "default": true
+         },
+         "git.path": {
+           "type": [
+@@ -3326,10 +3320,7 @@
+         "git.autorefresh": {
+           "type": "boolean",
+           "description": "%config.autorefresh%",
+-          "default": true,
+-          "agentsWindow": {
+-            "default": true
+-          }
++          "default": true
+         },
+         "git.autofetch": {
+           "type": [
+@@ -3346,10 +3337,7 @@
+           "default": false,
+           "tags": [
+             "usesOnlineServices"
+-          ],
+-          "agentsWindow": {
+-            "default": true
+-          }
++          ]
+         },
+         "git.autofetchPeriod": {
+           "type": "number",
+@@ -3408,10 +3396,7 @@
+           "type": "boolean",
+           "description": "%config.branchRandomNameEnable%",
+           "default": false,
+-          "scope": "resource",
+-          "agentsWindow": {
+-            "default": true
+-          }
++          "scope": "resource"
+         },
+         "git.branchRandomName.dictionary": {
+           "type": "array",
+@@ -3442,11 +3427,7 @@
+         "git.confirmSync": {
+           "type": "boolean",
+           "description": "%config.confirmSync%",
+-          "default": true,
+-          "agentsWindow": {
+-            "default": false,
+-            "readOnly": true
+-          }
++          "default": true
+         },
+         "git.confirmCommittedDelete": {
+           "type": "boolean",
+@@ -3644,21 +3625,13 @@
+           ],
+           "markdownDescription": "%config.postCommitCommand%",
+           "scope": "resource",
+-          "default": "none",
+-          "agentsWindow": {
+-            "default": "none",
+-            "readOnly": true
+-          }
++          "default": "none"
+         },
+         "git.rememberPostCommitCommand": {
+           "type": "boolean",
+           "description": "%config.rememberPostCommitCommand%",
+           "scope": "resource",
+-          "default": false,
+-          "agentsWindow": {
+-            "default": false,
+-            "readOnly": true
+-          }
++          "default": false
+         },
+         "git.openAfterClone": {
+           "type": "string",
+@@ -3721,10 +3694,7 @@
+           "type": "boolean",
+           "scope": "resource",
+           "default": false,
+-          "description": "%config.detectWorktrees%",
+-          "agentsWindow": {
+-            "default": false
+-          }
++          "description": "%config.detectWorktrees%"
+         },
+         "git.detectWorktreesLimit": {
+           "type": "number",
+@@ -3756,22 +3726,6 @@
+           "default": false,
+           "description": "%config.alwaysSignOff%"
+         },
+-        "git.addAICoAuthor": {
+-          "type": "string",
+-          "enum": [
+-            "off",
+-            "chatAndAgent",
+-            "all"
+-          ],
+-          "enumDescriptions": [
+-            "%config.addAICoAuthor.off%",
+-            "%config.addAICoAuthor.chatAndAgent%",
+-            "%config.addAICoAuthor.all%"
+-          ],
+-          "scope": "resource",
+-          "default": "off",
+-          "description": "%config.addAICoAuthor%"
+-        },
+         "git.ignoreSubmodules": {
+           "type": "boolean",
+           "scope": "resource",
+@@ -3800,11 +3754,7 @@
+           "type": "boolean",
+           "description": "%config.showProgress%",
+           "default": true,
+-          "scope": "resource",
+-          "agentsWindow": {
+-            "default": false,
+-            "readOnly": true
+-          }
++          "scope": "resource"
+         },
+         "git.rebaseWhenSync": {
+           "type": "boolean",
+diff --git a/extensions/git/package.nls.json b/extensions/git/package.nls.json
+--- a/extensions/git/package.nls.json
++++ b/extensions/git/package.nls.json
+@@ -246,10 +246,6 @@
+ 	"config.worktreeIncludeFiles": "Configure [glob patterns](https://aka.ms/vscode-glob-patterns) for files and folders that are included when creating a new worktree. Only files and folders that match the patterns and are listed in `.gitignore` will be copied to the newly created worktree.",
+ 	"config.alwaysShowStagedChangesResourceGroup": "Always show the Staged Changes resource group.",
+ 	"config.alwaysSignOff": "Controls the signoff flag for all commits.",
+-	"config.addAICoAuthor": "Controls whether a 'Co-authored-by' trailer is automatically added to the commit message when AI-generated code is included in the commit.",
+-	"config.addAICoAuthor.off": "Never add the AI co-author trailer.",
+-	"config.addAICoAuthor.chatAndAgent": "Add the AI co-author trailer when code from chat or agent edits is included.",
+-	"config.addAICoAuthor.all": "Add the AI co-author trailer when any AI-generated code is included, such as inline completions, chat, or agent edits.",
+ 	"config.ignoreSubmodules": "Ignore modifications to submodules in the file tree.",
+ 	"config.ignoredRepositories": "List of Git repositories to ignore.",
+ 	"config.scanRepositories": "List of paths to search for Git repositories in.",
+diff --git a/extensions/git/src/artifactProvider.ts b/extensions/git/src/artifactProvider.ts
+--- a/extensions/git/src/artifactProvider.ts
++++ b/extensions/git/src/artifactProvider.ts
+@@ -4,7 +4,7 @@
+  *--------------------------------------------------------------------------------------------*/
+ 
+ import { LogOutputChannel, SourceControlArtifactProvider, SourceControlArtifactGroup, SourceControlArtifact, Event, EventEmitter, l10n, workspace, Uri, Disposable, Command } from 'vscode';
+-import { coalesce, dispose, filterEvent, IDisposable, isCopilotWorktreeFolder } from './util';
++import { coalesce, dispose, filterEvent, IDisposable } from './util';
+ import { Repository } from './repository';
+ import type { Ref, Worktree } from './api/git';
+ import { RefType } from './api/git.constants';
+@@ -78,14 +78,6 @@
+ 		private readonly repository: Repository,
+ 		private readonly logger: LogOutputChannel
+ 	) {
+-		// If this is the agents window we don't need to initialize the
+-		// repository artifacts provider since the agents window does not
+-		// have the Repository explorer view.
+-		if (workspace.isAgentSessionsWorkspace) {
+-			this._groups = [];
+-			return;
+-		}
+-
+ 		this._groups = [
+ 			{ id: 'branches', name: l10n.t('Branches'), icon: Icons.branch, supportsFolders: true },
+ 			{ id: 'stashes', name: l10n.t('Stashes'), icon: Icons.stash, supportsFolders: false },
+@@ -187,9 +179,7 @@
+ 					]).join(' \u2022 '),
+ 					icon: w.main
+ 						? Icons.repository
+-						: isCopilotWorktreeFolder(w.path)
+-							? Icons.chatWorktree
+-							: Icons.worktree
++						: Icons.worktree
+ 				}));
+ 			}
+ 		} catch (err) {
+diff --git a/extensions/git/src/fileSystemProvider.ts b/extensions/git/src/fileSystemProvider.ts
+--- a/extensions/git/src/fileSystemProvider.ts
++++ b/extensions/git/src/fileSystemProvider.ts
+@@ -138,10 +138,10 @@
+ 			return repository;
+ 		}
+ 
+-		// In case of the empty window, or the agent sessions window, no repositories are open
++		// In case of the empty window, no repositories are open
+ 		// so we need to explicitly open a repository before we can serve git content for the
+ 		// given git resource.
+-		if (workspace.workspaceFolders === undefined || workspace.isAgentSessionsWorkspace) {
++		if (workspace.workspaceFolders === undefined) {
+ 			const fsPath = typeof uri === 'string' ? uri : fromGitUri(uri).path;
+ 			this.logger.info(`[GitFileSystemProvider][getOrOpenRepository] Opening repository for ${fsPath}`);
+ 
+diff --git a/extensions/git/src/historyProvider.ts b/extensions/git/src/historyProvider.ts
+--- a/extensions/git/src/historyProvider.ts
++++ b/extensions/git/src/historyProvider.ts
+@@ -420,33 +420,6 @@
+ 			this.logger.error(`[GitHistoryProvider][resolveHistoryItem] Failed to resolve history item '${historyItemId}': ${err}`);
+ 			return undefined;
+ 		}
+-	}
+-
+-	async resolveHistoryItemChatContext(historyItemId: string): Promise<string | undefined> {
+-		try {
+-			const changes = await this.repository.showChanges(historyItemId);
+-			return changes;
+-		} catch (err) {
+-			this.logger.error(`[GitHistoryProvider][resolveHistoryItemChatContext] Failed to resolve history item '${historyItemId}': ${err}`);
+-		}
+-
+-		return undefined;
+-	}
+-
+-	async resolveHistoryItemChangeRangeChatContext(historyItemId: string, historyItemParentId: string, path: string, token: CancellationToken): Promise<string | undefined> {
+-		try {
+-			const changes = await this.repository.showChangesBetween(historyItemParentId, historyItemId, path);
+-
+-			if (token.isCancellationRequested) {
+-				return undefined;
+-			}
+-
+-			return `Output of git log -p ${historyItemParentId}..${historyItemId} -- ${path}:\n\n${changes}`;
+-		} catch (err) {
+-			this.logger.error(`[GitHistoryProvider][resolveHistoryItemChangeRangeChatContext] Failed to resolve history item change range '${historyItemId}' for '${path}': ${err}`);
+-		}
+-
+-		return undefined;
+ 	}
+ 
+ 	async resolveHistoryItemRefsCommonAncestor(historyItemRefs: string[]): Promise<string | undefined> {
+diff --git a/extensions/git/src/icons.ts b/extensions/git/src/icons.ts
+--- a/extensions/git/src/icons.ts
++++ b/extensions/git/src/icons.ts
+@@ -15,7 +15,6 @@
+ export const Icons = {
+ 	account: new ThemeIcon('account'),
+ 	branch: new ThemeIcon('git-branch'),
+-	chatWorktree: new ThemeIcon('chat-sparkle'),
+ 	head: new ThemeIcon('target'),
+ 	remoteBranch: new ThemeIcon('cloud'),
+ 	repository: new ThemeIcon('repo'),
+diff --git a/extensions/git/src/model.ts b/extensions/git/src/model.ts
+--- a/extensions/git/src/model.ts
++++ b/extensions/git/src/model.ts
+@@ -1117,11 +1117,6 @@
+ 			return false;
+ 		}
+ 
+-		// Allow opening repositories in the agent session workspace
+-		if (workspace.isAgentSessionsWorkspace) {
+-			return false;
+-		}
+-
+ 		const workspaceFolders = workspace.workspaceFolders
+ 			.filter(folder => folder.uri.scheme === 'file');
+ 
+diff --git a/extensions/git/src/repository.ts b/extensions/git/src/repository.ts
+--- a/extensions/git/src/repository.ts
++++ b/extensions/git/src/repository.ts
+@@ -26,7 +26,7 @@
+ import { IRemoteSourcePublisherRegistry } from './remotePublisher';
+ import { StatusBarCommands } from './statusbar';
+ import { toGitUri } from './uri';
+-import { anyEvent, combinedDisposable, debounceEvent, dispose, EmptyDisposable, eventToPromise, filterEvent, find, getCommitShortHash, IDisposable, isCopilotWorktreeFolder, isDescendant, isLinuxSnap, isRemote, isWindows, Limiter, onceEvent, pathEquals, relativePath } from './util';
++import { anyEvent, combinedDisposable, debounceEvent, dispose, EmptyDisposable, eventToPromise, filterEvent, find, getCommitShortHash, IDisposable, isDescendant, isLinuxSnap, isRemote, isWindows, Limiter, onceEvent, pathEquals, relativePath } from './util';
+ import { IFileWatcher, watch } from './watch';
+ import { ISourceControlHistoryItemDetailsProviderRegistry } from './historyItemDetailsProvider';
+ import { GitArtifactProvider } from './artifactProvider';
+@@ -368,17 +368,15 @@
+ 		onDidChange(_ => this.updateEnablement(), null, this.disposables);
+ 		this.updateEnablement();
+ 
+-		if (!workspace.isAgentSessionsWorkspace) {
+-			this.repository.onDidChangeOperations(() => {
+-				// Disable input box when the commit operation is running
+-				this.repository.sourceControl.inputBox.enabled = !this.repository.operations.isRunning(OperationKind.Commit);
+-			}, null, this.disposables);
+-		}
++		this.repository.onDidChangeOperations(() => {
++			// Disable input box when the commit operation is running
++			this.repository.sourceControl.inputBox.enabled = !this.repository.operations.isRunning(OperationKind.Commit);
++		}, null, this.disposables);
+ 	}
+ 
+ 	private updateEnablement(): void {
+ 		const config = workspace.getConfiguration('git', Uri.file(this.repository.root));
+-		const showProgress = config.get<boolean>('showProgress') === true && !workspace.isAgentSessionsWorkspace;
++		const showProgress = config.get<boolean>('showProgress') === true;
+ 
+ 		if (showProgress) {
+ 			this.enable();
+@@ -951,17 +949,12 @@
+ 
+ 		this.disposables.push(new FileEventLogger(onRepositoryWorkingTreeFileChange, onRepositoryDotGitFileChange, logger));
+ 
+-		// Parent source control. Repositories opened in the Sessions app
+-		// don't use the parent/child relationship and it is expected for
+-		// a worktree repository to be opened while the main repository
+-		// is closed.
+-		const parentRoot = workspace.isAgentSessionsWorkspace
+-			? undefined
+-			: repository.kind === 'submodule'
+-				? repository.dotGit.superProjectPath
+-				: repository.kind === 'worktree' && repository.dotGit.commonPath
+-					? path.dirname(repository.dotGit.commonPath)
+-					: undefined;
++		// Parent source control
++		const parentRoot = repository.kind === 'submodule'
++			? repository.dotGit.superProjectPath
++			: repository.kind === 'worktree' && repository.dotGit.commonPath
++				? path.dirname(repository.dotGit.commonPath)
++				: undefined;
+ 		const parent = parentRoot
+ 			? this.repositoryResolver.getRepository(parentRoot)?.sourceControl
+ 			: undefined;
+@@ -970,20 +963,11 @@
+ 		const icon = repository.kind === 'submodule'
+ 			? new ThemeIcon('archive')
+ 			: repository.kind === 'worktree'
+-				? isCopilotWorktreeFolder(repository.root)
+-					? new ThemeIcon('chat-sparkle')
+-					: new ThemeIcon('worktree')
++				? new ThemeIcon('worktree')
+ 				: new ThemeIcon('repo');
+ 
+-		// Hidden
+-		// This is a temporary solution to hide:
+-		// * repositories in the empty window
+-		// * worktrees created by Copilot when the main repository
+-		//   is opened. Users can still manually open the worktree
+-		//   from the Repositories view.
+-		this._isHidden = workspace.workspaceFolders === undefined ||
+-			(repository.kind === 'worktree' &&
+-				isCopilotWorktreeFolder(repository.root) && parent !== undefined);
++		// Hide repositories in the empty window until explicitly revealed.
++		this._isHidden = workspace.workspaceFolders === undefined;
+ 
+ 		const root = Uri.file(repository.root);
+ 		this._sourceControl = scm.createSourceControl('git', 'Git', root, icon, this._isHidden, parent);
+@@ -1270,9 +1254,6 @@
+ 			async () => {
+ 				await this.repository.add(resources.map(r => r.fsPath), opts);
+ 				this.closeDiffEditors([], [...resources.map(r => r.fsPath)]);
+-
+-				// Accept working set changes across all chat sessions
+-				commands.executeCommand('_chat.editSessions.accept', resources);
+ 			},
+ 			() => {
+ 				const resourcePaths = resources.map(r => r.fsPath);
+@@ -1330,12 +1311,6 @@
+ 				this.closeDiffEditors([...resources.length !== 0 ?
+ 					resources.map(r => r.fsPath) :
+ 					this.indexGroup.resourceStates.map(r => r.resourceUri.fsPath)], []);
+-
+-				// Clear AI contribution tracking for reverted resources
+-				const uris = resources.length !== 0
+-					? resources
+-					: this.indexGroup.resourceStates.map(r => r.resourceUri);
+-				commands.executeCommand('_aiEdits.clearAiContributions', uris);
+ 			},
+ 			() => {
+ 				const config = workspace.getConfiguration('git', Uri.file(this.repository.root));
+@@ -1417,9 +1392,6 @@
+ 				}
+ 
+ 				this.closeDiffEditors([], [...toClean, ...toRestore]);
+-
+-				// Clear AI contribution tracking for discarded resources
+-				commands.executeCommand('_aiEdits.clearAiContributions', resources);
+ 			});
+ 	}
+ 
+@@ -1460,9 +1432,6 @@
+ 						opts.requireUserConfig = config.get<boolean>('requireGitUserConfig');
+ 					}
+ 
+-					// Add AI co-author trailer if applicable
+-					message = await this.appendAICoAuthorTrailer(message, indexResources, workingGroupResources);
+-
+ 					await this.repository.commit(message, opts);
+ 					await this.commitOperationCleanup(message, indexResources, workingGroupResources);
+ 				},
+@@ -1480,67 +1449,6 @@
+ 			this.inputBox.value = await this.getInputTemplate();
+ 		}
+ 		this.closeDiffEditors(indexResources, workingGroupResources);
+-
+-		// Accept working set changes across all chat sessions
+-		const resources = indexResources.length !== 0
+-			? indexResources.map(r => Uri.file(r))
+-			: workingGroupResources.map(r => Uri.file(r));
+-		commands.executeCommand('_chat.editSessions.accept', resources);
+-
+-		// Clear AI contribution tracking for committed resources
+-		commands.executeCommand('_aiEdits.clearAiContributions', resources);
+-	}
+-
+-	private static readonly AI_CO_AUTHOR_TRAILER = 'Co-authored-by: Copilot <copilot@github.com>';
+-
+-	private async appendAICoAuthorTrailer(
+-		message: string | undefined,
+-		indexResources: string[],
+-		workingGroupResources: string[]
+-	): Promise<string | undefined> {
+-		if (!message) {
+-			return message;
+-		}
+-
+-		const chatConfig = workspace.getConfiguration('chat');
+-		if (chatConfig.get<boolean>('disableAIFeatures', false)) {
+-			return message;
+-		}
+-
+-		const config = workspace.getConfiguration('git', Uri.file(this.root));
+-		// Make sure that AI CoAuthor is off
+-		const addAICoAuthor = config.get<'off' | 'chatAndAgent' | 'all'>('addAICoAuthor', 'off');
+-
+-		if (addAICoAuthor === 'off') {
+-			return message;
+-		}
+-
+-		// Don't add if trailer is already present
+-		if (message.includes(Repository.AI_CO_AUTHOR_TRAILER)) {
+-			return message;
+-		}
+-
+-		const resources = indexResources.length !== 0
+-			? indexResources.map(r => Uri.file(r))
+-			: workingGroupResources.map(r => Uri.file(r));
+-
+-		if (resources.length === 0) {
+-			return message;
+-		}
+-
+-		try {
+-			const level = addAICoAuthor === 'all' ? 'all' : 'chatAndAgent';
+-			const hasAiContributions = await commands.executeCommand<boolean>('_aiEdits.hasAiContributions', resources, level);
+-			if (hasAiContributions) {
+-				// Ensure proper trailer formatting: blank line before trailers
+-				const trimmed = message.trimEnd();
+-				return `${trimmed}\n\n${Repository.AI_CO_AUTHOR_TRAILER}`;
+-			}
+-		} catch {
+-			// Command may not be available (e.g., in web environment)
+-		}
+-
+-		return message;
+ 	}
+ 
+ 	private commitOperationGetOptimisticResourceGroups(opts: CommitOptions): GitResourceGroups {
+@@ -1614,9 +1522,6 @@
+ 				}
+ 
+ 				this.closeDiffEditors([], [...toClean, ...toCheckout]);
+-
+-				// Clear AI contribution tracking for discarded resources
+-				commands.executeCommand('_aiEdits.clearAiContributions', resources);
+ 			},
+ 			() => {
+ 				const resourcePaths = resources.map(r => r.fsPath);
+@@ -2174,9 +2079,6 @@
+ 				}
+ 
+ 				await this.repository.checkout(treeish, [], opts);
+-
+-				// Clear all AI contribution tracking on branch switch
+-				commands.executeCommand('_aiEdits.clearAllAiContributions');
+ 			});
+ 	}
+ 
+@@ -2184,9 +2086,6 @@
+ 		const refLabel = opts.detached ? getCommitShortHash(Uri.file(this.root), treeish) : treeish;
+ 		await this.run(Operation.CheckoutTracking(refLabel), async () => {
+ 			await this.repository.checkout(treeish, [], { ...opts, track: true });
+-
+-			// Clear all AI contribution tracking on branch switch
+-			commands.executeCommand('_aiEdits.clearAllAiContributions');
+ 		});
+ 	}
+ 
+@@ -2218,11 +2117,6 @@
+ 	async reset(treeish: string, hard?: boolean): Promise<void> {
+ 		await this.run(Operation.Reset, async () => {
+ 			await this.repository.reset(treeish, hard);
+-
+-			if (hard) {
+-				// Clear all AI contribution tracking on hard reset
+-				commands.executeCommand('_aiEdits.clearAllAiContributions');
+-			}
+ 		});
+ 	}
+ 
+diff --git a/extensions/git/src/util.ts b/extensions/git/src/util.ts
+--- a/extensions/git/src/util.ts
++++ b/extensions/git/src/util.ts
+@@ -4,7 +4,7 @@
+  *--------------------------------------------------------------------------------------------*/
+ 
+ import { Event, Disposable, EventEmitter, SourceControlHistoryItemRef, l10n, workspace, Uri, DiagnosticSeverity, env, SourceControlHistoryItem } from 'vscode';
+-import { basename, dirname, normalize, sep, relative } from 'path';
++import { dirname, normalize, sep, relative } from 'path';
+ import { Readable } from 'stream';
+ import { promises as fs, createReadStream } from 'fs';
+ import byline from 'byline';
+@@ -866,7 +866,3 @@
+ 
+ 	return descriptionSegments.join(' \u2022 ');
+ }
+-
+-export function isCopilotWorktreeFolder(path: string): boolean {
+-	return basename(path).startsWith('copilot-') || basename(path).startsWith('agents-');
+-}
+diff --git a/extensions/git/tsconfig.json b/extensions/git/tsconfig.json
+--- a/extensions/git/tsconfig.json
++++ b/extensions/git/tsconfig.json
+@@ -11,7 +11,6 @@
+ 	"include": [
+ 		"src/**/*",
+ 		"../../src/vscode-dts/vscode.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.agentSessionsWorkspace.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.canonicalUriProvider.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.findFiles2.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.editSessionIdentityProvider.d.ts",
+diff --git a/src/vscode-dts/vscode.proposed.scmHistoryProvider.d.ts b/src/vscode-dts/vscode.proposed.scmHistoryProvider.d.ts
+--- a/src/vscode-dts/vscode.proposed.scmHistoryProvider.d.ts
++++ b/src/vscode-dts/vscode.proposed.scmHistoryProvider.d.ts
+@@ -31,8 +31,6 @@
+ 		provideHistoryItemChanges(historyItemId: string, historyItemParentId: string | undefined, token: CancellationToken): ProviderResult<SourceControlHistoryItemChange[]>;
+ 
+ 		resolveHistoryItem(historyItemId: string, token: CancellationToken): ProviderResult<SourceControlHistoryItem>;
+-		resolveHistoryItemChatContext(historyItemId: string, token: CancellationToken): ProviderResult<string>;
+-		resolveHistoryItemChangeRangeChatContext(historyItemId: string, historyItemParentId: string, path: string, token: CancellationToken): ProviderResult<string>;
+ 		resolveHistoryItemRefsCommonAncestor(historyItemRefs: string[], token: CancellationToken): ProviderResult<string>;
+ 	}
+ 

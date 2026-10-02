@@ -1,0 +1,24 @@
+diff --git a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+--- a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
++++ b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+@@ -33,11 +33,6 @@
+ 		// registered yet via the editor resolver infrastructure
+ 
+ 		{
+-			id: 'workbench.input.interactive',
+-			label: localize('interactiveWindow', 'Interactive Window'),
+-			priority: toRegisteredEditorPriorityInfo(RegisteredEditorPriority.builtin)
+-		},
+-		{
+ 			id: 'mainThreadWebview-markdown.preview',
+ 			label: localize('markdownPreview', "Markdown Preview"),
+ 			priority: toRegisteredEditorPriorityInfo(RegisteredEditorPriority.builtin)
+@@ -54,8 +49,6 @@
+ 		// List some editor types that the above `AUTO_LOCK_EXTRA_EDITORS`
+ 		// already covers to avoid duplicates.
+ 
+-		'vscode-interactive-input',
+-		'interactive',
+ 		'vscode.markdown.preview.editor'
+ 	]);
+ 

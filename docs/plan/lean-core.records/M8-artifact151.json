@@ -1,0 +1,64 @@
+{
+  "at": "2026-10-02T19:18:26.676862+10:00",
+  "generation": "151",
+  "app": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "unsigned": true,
+  "files": 1199,
+  "bytes": 422443727,
+  "appContentsUnchangedByArchiving": true,
+  "macosFloor": "12.0",
+  "docTypesCount": 65,
+  "docTypesUnchangedFrom150": true,
+  "URLTypesUnchangedFrom150": true,
+  "zip": "/private/tmp/lean-core-build151-c480juxs/VSLight-151-unsigned.zip",
+  "zipBytes": 157530299,
+  "zipSha256": "8266e5ab9f6dfc114e94a5dc96e8185689eb42b90695f4b20cf757e854cfe366",
+  "zipCreation": {
+    "startedAt": "2026-10-02T19:18:13.814399+10:00",
+    "endedAt": "2026-10-02T19:18:25.932108+10:00",
+    "durationSeconds": 12.117691583998749,
+    "command": [
+      "ditto",
+      "-c",
+      "-k",
+      "--sequesterRsrc",
+      "--keepParent",
+      "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "/private/tmp/lean-core-build151-c480juxs/VSLight-151-unsigned.zip"
+    ],
+    "cwd": "/Users/rockie/Documents/gh-xgent/vscodium",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "zipCRC": {
+    "startedAt": "2026-10-02T19:18:25.932977+10:00",
+    "endedAt": "2026-10-02T19:18:26.434002+10:00",
+    "durationSeconds": 0.501056332999724,
+    "command": [
+      "/opt/homebrew/bin/python3.12",
+      "-c",
+      "import sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); bad=z.testzip(); print(\"entries=\"+str(len(z.infolist()))+\" firstBad=\"+repr(bad)); sys.exit(1 if bad else 0)",
+      "/private/tmp/lean-core-build151-c480juxs/VSLight-151-unsigned.zip"
+    ],
+    "cwd": "/Users/rockie/Documents/gh-xgent/vscodium",
+    "exit": 0,
+    "stdout": "entries=3811 firstBad=None\n",
+    "stderr": ""
+  },
+  "baselineAppBytes": 528142131,
+  "baselineZipBytes": 192738926,
+  "appReductionPercent": 20.01,
+  "zipReductionPercent": 18.27,
+  "inputManifest": "/private/tmp/lean-core-build151-c480juxs/build-inputs.json",
+  "inputManifestSha256": "f6fc4ff04b5b1c4828dc8c1f353f0a2bdb16affa7a5883a8d8fae2ee64fb5cd6",
+  "measurement": "Regular files summed once; symlinks excluded. Same Node24.18.0/Electron43.7.5/CI=true/arm64/ditto unsigned baseline. Signature/publication not performed.",
+  "status": "PASS_UNSIGNED_ARTIFACT_AND_CRC_SUBSET_ONLY",
+  "remaining": "151 actual packaged registry/ordinary terminal controls/native GUI/real quit lifecycle and independent signed/notary/staple chain are pending. Current-input dual-arch CI not run per local-only user instruction; M8/Release not complete.",
+  "signed": false,
+  "published": false,
+  "deltaFrom150": {
+    "appBytes": -755,
+    "zipBytes": -2127
+  }
+}

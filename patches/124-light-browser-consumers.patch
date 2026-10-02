@@ -1,0 +1,163 @@
+diff --git a/src/vs/platform/accessibility/browser/accessibleView.ts b/src/vs/platform/accessibility/browser/accessibleView.ts
+index bf737eb..062018d 100644
+--- a/src/vs/platform/accessibility/browser/accessibleView.ts
++++ b/src/vs/platform/accessibility/browser/accessibleView.ts
+@@ -51,7 +51,6 @@ export const enum AccessibleViewProviderId {
+ 	SessionsChanges = 'sessionsChanges',
+ 	Survey = 'survey',
+ 	Automations = 'automations',
+-	BrowserElementCommenting = 'browserElementCommenting',
+ 	ChatPetAchievements = 'chatPetAchievements',
+ }
+ 
+diff --git a/src/vs/platform/actions/common/actions.ts b/src/vs/platform/actions/common/actions.ts
+index 2f40460..f6b7107 100644
+--- a/src/vs/platform/actions/common/actions.ts
++++ b/src/vs/platform/actions/common/actions.ts
+@@ -311,10 +311,6 @@ export class MenuId {
+ 	static readonly MultiDiffEditorFileToolbar = new MenuId('MultiDiffEditorFileToolbar');
+ 	static readonly DiffEditorHunkToolbar = new MenuId('DiffEditorHunkToolbar');
+ 	static readonly DiffEditorSelectionToolbar = new MenuId('DiffEditorSelectionToolbar');
+-	static readonly BrowserNavigationToolbar = new MenuId('BrowserNavigationToolbar');
+-	static readonly BrowserActionsToolbar = new MenuId('BrowserActionsToolbar');
+-	static readonly BrowserChatActionsMenu = new MenuId('BrowserChatActionsMenu');
+-	static readonly BrowserEmulationToolbar = new MenuId('BrowserEmulationToolbar');
+ 	static readonly AgentSessionsViewerFilterSubMenu = new MenuId('AgentSessionsViewerFilterSubMenu');
+ 	static readonly AgentSessionsExternalFilterSubMenu = new MenuId('AgentSessionsExternalFilterSubMenu');
+ 	static readonly AgentSessionsContext = new MenuId('AgentSessionsContext');
+diff --git a/src/vs/platform/native/electron-main/auth.ts b/src/vs/platform/native/electron-main/auth.ts
+index fa2e9b4..ca2962a 100644
+--- a/src/vs/platform/native/electron-main/auth.ts
++++ b/src/vs/platform/native/electron-main/auth.ts
+@@ -10,7 +10,6 @@ import { hash } from '../../../base/common/hash.js';
+ import { Disposable } from '../../../base/common/lifecycle.js';
+ import { URI } from '../../../base/common/uri.js';
+ import { generateUuid } from '../../../base/common/uuid.js';
+-import { BrowserSession } from '../../browserView/electron-main/browserSession.js';
+ import { IConfigurationService } from '../../configuration/common/configuration.js';
+ import { IEncryptionMainService } from '../../encryption/common/encryptionService.js';
+ import { IEnvironmentMainService } from '../../environment/electron-main/environmentMainService.js';
+@@ -23,7 +22,6 @@ import { IWindowsMainService } from '../../windows/electron-main/windows.js';
+ 
+ type LoginEvent = {
+ 	event?: ElectronEvent;
+-	webContents?: WebContents;
+ 	authInfo: AuthInfo;
+ 	callback?: (username?: string, password?: string) => void;
+ };
+@@ -61,7 +59,7 @@ export class ProxyAuthService extends Disposable implements IProxyAuthService {
+ 	}
+ 
+ 	private registerListeners(): void {
+-		const onLogin = Event.fromNodeEventEmitter<LoginEvent>(app, 'login', (event: ElectronEvent, webContents: WebContents, req: AuthenticationResponseDetails, authInfo: ElectronAuthInfo, callback) => ({ event, webContents, authInfo: { ...authInfo, attempt: req.firstAuthAttempt ? 1 : 2 }, callback } satisfies LoginEvent));
++		const onLogin = Event.fromNodeEventEmitter<LoginEvent>(app, 'login', (event: ElectronEvent, _webContents: WebContents, req: AuthenticationResponseDetails, authInfo: ElectronAuthInfo, callback) => ({ event, authInfo: { ...authInfo, attempt: req.firstAuthAttempt ? 1 : 2 }, callback } satisfies LoginEvent));
+ 		this._register(onLogin(this.onLogin, this));
+ 	}
+ 
+@@ -69,18 +67,11 @@ export class ProxyAuthService extends Disposable implements IProxyAuthService {
+ 		return this.onLogin({ authInfo });
+ 	}
+ 
+-	private async onLogin({ event, webContents, authInfo, callback }: LoginEvent): Promise<Credentials | undefined> {
++	private async onLogin({ event, authInfo, callback }: LoginEvent): Promise<Credentials | undefined> {
+ 		if (!authInfo.isProxy) {
+ 			return; // only for proxy
+ 		}
+ 
+-		// Browser view webContents have their own login handler that
+-		// supplies tunnel proxy credentials directly. Skip the global
+-		// handler so we don't race with it or show a dialog.
+-		if (webContents && BrowserSession.isBrowserViewWebContents(webContents)) {
+-			return;
+-		}
+-
+ 		// Signal we handle this event on our own, otherwise
+ 		// Electron will ignore our provided credentials.
+ 		event?.preventDefault();
+diff --git a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+index b722e85..2873c9c 100644
+--- a/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
++++ b/src/vs/workbench/browser/parts/editor/editorConfiguration.ts
+@@ -24,7 +24,6 @@ export class DynamicEditorConfigurations extends Disposable implements IWorkbenc
+ 
+ 	private static readonly AUTO_LOCK_DEFAULT_ENABLED = new Set<string>([
+ 		'terminalEditor',
+-		'mainThreadWebview-simpleBrowser.view',
+ 		'mainThreadWebview-browserPreview',
+ 		'workbench.editor.processExplorer'
+ 	]);
+@@ -44,11 +43,6 @@ export class DynamicEditorConfigurations extends Disposable implements IWorkbenc
+ 			label: localize('markdownPreview', "Markdown Preview"),
+ 			priority: toRegisteredEditorPriorityInfo(RegisteredEditorPriority.builtin)
+ 		},
+-		{
+-			id: 'mainThreadWebview-simpleBrowser.view',
+-			label: localize('simpleBrowser', "Simple Browser"),
+-			priority: toRegisteredEditorPriorityInfo(RegisteredEditorPriority.builtin)
+-		},
+ 		{
+ 			id: 'mainThreadWebview-browserPreview',
+ 			label: localize('livePreview', "Live Preview"),
+diff --git a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+index c1ab480..0800a20 100644
+--- a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
++++ b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+@@ -59,7 +59,6 @@ export const enum AccessibilityVerbositySettingId {
+ 	SessionsChanges = 'accessibility.verbosity.sessionsChanges',
+ 	Survey = 'accessibility.verbosity.survey',
+ 	Automations = 'accessibility.verbosity.automations',
+-	BrowserElementCommenting = 'accessibility.verbosity.browserElementCommenting'
+ }
+ 
+ const baseVerbosityProperty: IConfigurationPropertySchema = {
+@@ -197,10 +196,6 @@ const configuration: IConfigurationNode = {
+ 			description: localize('verbosity.automations', 'Provide information about how to use Automations management views, including keyboard navigation and how to inspect scheduled runs.'),
+ 			...baseVerbosityProperty
+ 		},
+-		[AccessibilityVerbositySettingId.BrowserElementCommenting]: {
+-			description: localize('verbosity.browserElementCommenting', 'Provide information about how to access element commenting accessibility help in the Integrated Browser.'),
+-			...baseVerbosityProperty
+-		},
+ 		'accessibility.signalOptions.volume': {
+ 			'description': localize('accessibility.signalOptions.volume', "The volume of the sounds in percent (0-100)."),
+ 			'type': 'number',
+diff --git a/src/vs/workbench/contrib/preferences/browser/settingsLayout.ts b/src/vs/workbench/contrib/preferences/browser/settingsLayout.ts
+index 71c303d..f8b15fa 100644
+--- a/src/vs/workbench/contrib/preferences/browser/settingsLayout.ts
++++ b/src/vs/workbench/contrib/preferences/browser/settingsLayout.ts
+@@ -154,11 +154,6 @@ export const tocData: ITOCEntry<string> = {
+ 					id: 'workbench/screencastmode',
+ 					label: localize('screencastMode', "Screencast Mode"),
+ 					settings: ['screencastMode.*']
+-				},
+-				{
+-					id: 'workbench/browser',
+-					label: localize('browser', "Browser"),
+-					settings: ['workbench.browser.*']
+ 				}
+ 			]
+ 		},
+diff --git a/src/vs/workbench/contrib/remote/common/remote.contribution.ts b/src/vs/workbench/contrib/remote/common/remote.contribution.ts
+index fb3edaa..1f5771f 100644
+--- a/src/vs/workbench/contrib/remote/common/remote.contribution.ts
++++ b/src/vs/workbench/contrib/remote/common/remote.contribution.ts
+@@ -265,8 +265,8 @@ Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration)
+ 								enum: ['notify', 'openBrowser', 'openBrowserOnce', 'openPreview', 'silent', 'ignore'],
+ 								enumDescriptions: [
+ 									localize('remote.portsAttributes.notify', "Shows a notification when a port is automatically forwarded."),
+-									localize('remote.portsAttributes.openBrowser', "Opens the browser when the port is automatically forwarded. Depending on your settings, this could open an embedded browser."),
+-									localize('remote.portsAttributes.openBrowserOnce', "Opens the browser when the port is automatically forwarded, but only the first time the port is forward during a session. Depending on your settings, this could open an embedded browser."),
++									localize('remote.portsAttributes.openBrowser', "Opens the external browser when the port is automatically forwarded."),
++									localize('remote.portsAttributes.openBrowserOnce', "Opens the external browser when the port is automatically forwarded, but only the first time the port is forwarded during a session."),
+ 									localize('remote.portsAttributes.openPreview', "Opens a preview in the same window when the port is automatically forwarded."),
+ 									localize('remote.portsAttributes.silent', "Shows no notification and takes no action when this port is automatically forwarded."),
+ 									localize('remote.portsAttributes.ignore', "This port will not be automatically forwarded.")
+@@ -322,7 +322,7 @@ Registry.as<IConfigurationRegistry>(ConfigurationExtensions.Configuration)
+ 						enum: ['notify', 'openBrowser', 'openPreview', 'silent', 'ignore'],
+ 						enumDescriptions: [
+ 							localize('remote.portsAttributes.notify', "Shows a notification when a port is automatically forwarded."),
+-							localize('remote.portsAttributes.openBrowser', "Opens the browser when the port is automatically forwarded. Depending on your settings, this could open an embedded browser."),
++							localize('remote.portsAttributes.openBrowser', "Opens the external browser when the port is automatically forwarded."),
+ 							localize('remote.portsAttributes.openPreview', "Opens a preview in the same window when the port is automatically forwarded."),
+ 							localize('remote.portsAttributes.silent', "Shows no notification and takes no action when this port is automatically forwarded."),
+ 							localize('remote.portsAttributes.ignore', "This port will not be automatically forwarded.")

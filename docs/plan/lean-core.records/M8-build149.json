@@ -1,0 +1,160 @@
+{
+  "plan": "../lean-core.md",
+  "generation": "147+148+149",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "upstream": "08d4889f9ec4a1685d257b9b95de036c8e1ce1e5",
+  "build": {
+    "generation": "147+148+149",
+    "exit": 0,
+    "completedAt": "2026-10-01T18:22:04.411468+00:00",
+    "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build149.log",
+    "inputManifest": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs149.json"
+  },
+  "app": {
+    "at": "2026-10-01T18:31:42.787140+00:00",
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "files": 1199,
+    "bytes": 422445837,
+    "docTypesUnchanged": true,
+    "docTypesCount": 65,
+    "URLTypesUnchanged": true,
+    "macosFloor": "12.0",
+    "mermaid": {
+      "markdown-preview-out/index.js": {
+        "bytes": 18642002,
+        "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+      },
+      "chat-webview-out/index-editor.js": {
+        "bytes": 18502766,
+        "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+      },
+      "chat-webview-out/codicon.css": {
+        "bytes": 133000,
+        "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+      }
+    },
+    "unsigned": true,
+    "generation": "147+148+149",
+    "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/VSLight-149-unsigned.zip",
+    "zipBytes": 157531058,
+    "zipSha256": "efbfd27247170d6e6a0d07e26a3981c3369de6ad217a08caaec4797a987e6e5e",
+    "zipCRCExit": 0,
+    "baselineAppBytes": 528142131,
+    "baselineZipBytes": 192738926,
+    "inputManifest": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs149.json",
+    "buildLog": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build149.log",
+    "measurement": "Regular files summed once; symlinks excluded. asar/unpacked not double counted. Same Node24.18.0/Electron43.7.5/CI=true/arm64/ditto unsigned baseline.",
+    "savedAppBytes": 105696294,
+    "appReductionPercent": 20.01,
+    "savedZipBytes": 35207868,
+    "zipReductionPercent": 18.27
+  },
+  "node": "24.18.0",
+  "npm": "11.16",
+  "electron": "43.7.5",
+  "pruneEntries": 254,
+  "nativeNoEmit": {
+    "exit": 0,
+    "log": "/tmp/lean-core-tsgo149.log",
+    "bytes": 0,
+    "final21ChangedFilesByteEqualToActualBuildSource": true,
+    "driverNode": "26.1.0 (validation wrapper only; complete build uses24.18.0)"
+  },
+  "staticSmoke": {
+    "exit": 0,
+    "PASS": 57,
+    "FAIL": 0,
+    "SKIP": 0,
+    "log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/smoke149-static.log",
+    "scope": "L1/L2 --skip-ui; not complete UI gate"
+  },
+  "packageChecker": {
+    "exit": 0,
+    "json": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/package149-final.json",
+    "copy": "M7-runtime149.json",
+    "debugBreakSoundAbsent": true
+  },
+  "production": {
+    "at": "2026-10-01T18:30:17.708194+00:00",
+    "exit": 0,
+    "graphUnique": 146,
+    "graphOccurrences": 199,
+    "resolvedUnique": 122,
+    "resolvedOccurrences": 173,
+    "emptyOptional": 26,
+    "problems": [],
+    "retired": [],
+    "stderrBytes": 1094,
+    "nodeVersion": "v24.18.0",
+    "retiredPatterns": [
+      "playwright-core",
+      "@microsoft/mxc-sdk",
+      "@vscode/sandbox-runtime",
+      "foundry-local-sdk",
+      "@foundry-local-core/*",
+      "@pondwader/socks5-server",
+      "@github/copilot*",
+      "@vscode/copilot-api",
+      "copilot-api",
+      "vscode-copilot-api",
+      "@openai/codex*",
+      "@anthropic-ai/claude-agent-sdk*"
+    ],
+    "initialHarnessFalsePositive": {
+      "package": "@xterm/addon-ligatures",
+      "classification": "retained ordinary terminal dependency; removed erroneous private harness candidate, product checker classification unchanged"
+    }
+  },
+  "syntax": {
+    "at": "2026-10-01T18:21:29.232659+00:00",
+    "jsonCount": 43,
+    "shellCount": 3,
+    "workflows": [
+      ".github/workflows/ci-build-macos.yml",
+      ".github/workflows/publish-insider-macos.yml",
+      ".github/workflows/publish-stable-macos.yml"
+    ],
+    "actionlint": "/private/tmp/lean-actionlint-rc48may5/actionlint",
+    "errors": [],
+    "actionlintVersion": "1.7.12",
+    "actionlintExit": 0,
+    "actionlintOutput": "",
+    "archive": "/private/tmp/lean-actionlint-rc48may5/actionlint_1.7.12_darwin_arm64.tar.gz",
+    "checksumVerification": "SHA256 verified against official release checksums before first extract attempt",
+    "workflowChangesAfterBuild": {
+      ".github/workflows/ci-build-macos.yml": "055d0c84d99e137708b9ab44099282c7f0d117273e216e78f7b6ac36b35faffa",
+      ".github/workflows/publish-insider-macos.yml": "39e87bbd4b049c94662e39d8cdb8451b8289a77c807f518a7eb92f8b01ec6d4e",
+      ".github/workflows/publish-stable-macos.yml": "9378475e2b878430c73aac1e60c176454ec3e7170093eb1c92b6628e00f11cc1"
+    },
+    "workflowFix": "Quote existing keychain cleanup path in both publish workflows; no application source/build inputs affected."
+  },
+  "postBuildValidationChanges": {
+    "productionSourcesUnchanged": true,
+    "changes": [
+      {
+        "path": "dev/check-lean-runtime.py",
+        "buildSHA256": "ac8deee8d7a6084eee58eb02feb18a03e2880315eae6dd120b85897d73a56727",
+        "currentSHA256": "83cb6d78281cd0a4ec78c2470cc88688ccd15c13c9beb7056720501efd26738d",
+        "scope": "validation helper or workflow-only; no application compile/pack source change"
+      },
+      {
+        "path": "dev/test-fixtures/lean-core/external-links-cdp.mjs",
+        "buildSHA256": "51ee937fa75c07c2a2254016bef330266af92f4b6e268d39f66c8cf4b1f56f33",
+        "currentSHA256": "aec87851569cd5ee54f624581f110f3878ba992d8a18922afbbfff85fccde02f",
+        "scope": "validation helper or workflow-only; no application compile/pack source change"
+      }
+    ]
+  },
+  "inputManifest": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs149.json",
+  "sign": "M8-sign149.json",
+  "finalSyntax": {
+    "exit": 0,
+    "counts": {
+      "json": 56,
+      "python": 5,
+      "node": 15,
+      "bash": 3
+    },
+    "report": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/validation149-final.json"
+  }
+}

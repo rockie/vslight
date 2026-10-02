@@ -1,0 +1,15 @@
+{
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/original-baseline-app/VSLight.app",
+  "app_file_bytes": 528125228,
+  "app_files": 2199,
+  "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/VSLight-baseline-unsigned.zip",
+  "zip_bytes": 192733303,
+  "zip_sha256": "4167aed43140f7696c74340aa28618fe4ffeba1de742f32b58f5ca555f10d00d",
+  "build_exit": 0,
+  "version": "1.135.06566",
+  "minimum_macos": "12.0",
+  "electron": "43.7.5",
+  "signing": "unsigned",
+  "archive_command": "ditto -c -k --sequesterRsrc --keepParent",
+  "input_snapshot": "M1-baseline-inputs.json"
+}

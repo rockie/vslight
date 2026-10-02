@@ -1,0 +1,1881 @@
+{
+  "recordedAtUTC": "2026-10-01T17:09:48.569214+00:00",
+  "task": "145",
+  "privateSource": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-ai-stats145-gakj3btt/vscode",
+  "baseline": "frozen144 source including142/143/144",
+  "patch": {
+    "path": "patches/145-light-ai-stats-survey.patch",
+    "sha256": "0c42782251c11f610b5c39046a882758f06af012b7b54ef03050226266af3826",
+    "changedFiles": [
+      "src/vs/workbench/contrib/editTelemetry/browser/editTelemetryContribution.ts",
+      "src/vs/workbench/contrib/editTelemetry/browser/editTelemetry.contribution.ts",
+      "src/vs/workbench/contrib/editTelemetry/browser/settingIds.ts",
+      "src/vs/workbench/services/editor/common/editorResolverService.ts",
+      "src/vs/workbench/browser/parts/editor/editorConfiguration.ts",
+      "src/vs/workbench/workbench.desktop.main.ts",
+      "src/vs/workbench/workbench.web.main.ts",
+      "src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts",
+      "src/vs/workbench/services/editor/test/browser/editorResolverService.test.ts"
+    ],
+    "applyCheckExitCode": 0,
+    "finalFormattingOnly": "empty Surveys section comments and blank line removed at parent request after tests/noEmit green"
+  },
+  "pruneFiles": [
+    "src/vs/workbench/contrib/editTelemetry/browser/editStats/aiStatsFeature.ts",
+    "src/vs/workbench/contrib/editTelemetry/browser/editStats/aiStatsStatusBar.ts",
+    "src/vs/workbench/contrib/editTelemetry/browser/editStats/aiStatsChart.ts",
+    "src/vs/workbench/contrib/editTelemetry/browser/aiContributionFeature.ts",
+    "src/vs/workbench/contrib/editTelemetry/test/browser/aiContributionFeature.test.ts",
+    "src/vs/workbench/contrib/editTelemetry/browser/editStats/media.css",
+    "src/vs/workbench/contrib/surveys/browser/survey.contribution.ts",
+    "src/vs/workbench/contrib/surveys/browser/surveyEditorInput.ts",
+    "src/vs/workbench/contrib/surveys/browser/surveyEditorPane.ts",
+    "src/vs/workbench/contrib/surveys/browser/surveyQuestions.ts",
+    "src/vs/workbench/contrib/surveys/browser/media/surveyEditorPane.css"
+  ],
+  "typecheck": {
+    "command": "node node_modules/@typescript/native/bin/tsc -p src/tsconfig.json --noEmit",
+    "exitCode": 0,
+    "logBytes": 0,
+    "scope": "full source with 11 prune files absent"
+  },
+  "actualContributionRegression": {
+    "kind": "complete actual contribution and registration modules bundled from before/after source",
+    "boundaries": "feature constructors only replaced with disposable sentinels; actual observable/event/configuration/command/singleton implementations retained",
+    "rows": [
+      {
+        "source": "before",
+        "case": "legacy-profile-off-ordinary",
+        "created": [
+          "VSCodeWorkspace",
+          "AnnotatedDocuments",
+          "AiStatsFeature",
+          "AiContributionFeature",
+          "AiContributionFeature"
+        ],
+        "readKeys": [
+          "telemetry.editStats.enabled",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor"
+        ],
+        "retiredCommands": 3,
+        "aiSchemaPresent": true,
+        "status": "PASS"
+      },
+      {
+        "source": "before",
+        "case": "ordinary-usage",
+        "created": [
+          "VSCodeWorkspace",
+          "AnnotatedDocuments",
+          "EditTrackingFeature",
+          "AiStatsFeature",
+          "AiContributionFeature"
+        ],
+        "readKeys": [
+          "telemetry.editStats.enabled",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor"
+        ],
+        "retiredCommands": 3,
+        "aiSchemaPresent": true,
+        "status": "PASS"
+      },
+      {
+        "source": "before",
+        "case": "ordinary-telemetry-off",
+        "created": [
+          "VSCodeWorkspace",
+          "AnnotatedDocuments",
+          "AiStatsFeature",
+          "AiContributionFeature"
+        ],
+        "readKeys": [
+          "telemetry.editStats.enabled",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor",
+          "editor.aiStats.enabled",
+          "git.addAICoAuthor"
+        ],
+        "retiredCommands": 3,
+        "aiSchemaPresent": true,
+        "status": "PASS"
+      },
+      {
+        "source": "after",
+        "case": "legacy-profile-off-ordinary",
+        "created": [],
+        "readKeys": [
+          "telemetry.editStats.enabled"
+        ],
+        "retiredCommands": 0,
+        "aiSchemaPresent": false,
+        "status": "PASS"
+      },
+      {
+        "source": "after",
+        "case": "ordinary-usage",
+        "created": [
+          "VSCodeWorkspace",
+          "AnnotatedDocuments",
+          "EditTrackingFeature"
+        ],
+        "readKeys": [
+          "telemetry.editStats.enabled"
+        ],
+        "retiredCommands": 0,
+        "aiSchemaPresent": false,
+        "status": "PASS"
+      },
+      {
+        "source": "after",
+        "case": "ordinary-telemetry-off",
+        "created": [],
+        "readKeys": [
+          "telemetry.editStats.enabled"
+        ],
+        "retiredCommands": 0,
+        "aiSchemaPresent": false,
+        "status": "PASS"
+      }
+    ]
+  },
+  "actualRegistryRegression": {
+    "kind": "actual complete accessibility config, editor resolver config, DynamicEditorConfigurations, before survey command source; survey pane class boundary only, ordinary survey modules retained",
+    "rows": [
+      {
+        "source": "before",
+        "retiredA11ySchemaCount": 3,
+        "agentsMarkdownSchema": true,
+        "legacySettingReads": 2,
+        "legacySettingSubscriptions": 1,
+        "copilotSurveyCommand": true,
+        "copilotSurveyDefinition": "copilot-pmf",
+        "ordinaryA11ySchemaCount": 11,
+        "ordinarySurveyInputs": 2,
+        "retainedAgentsOverrideMetadata": 3,
+        "status": "PASS"
+      },
+      {
+        "source": "after",
+        "retiredA11ySchemaCount": 0,
+        "agentsMarkdownSchema": false,
+        "legacySettingReads": 0,
+        "legacySettingSubscriptions": 0,
+        "copilotSurveyCommand": false,
+        "copilotSurveyDefinition": null,
+        "ordinaryA11ySchemaCount": 11,
+        "ordinarySurveyInputs": 2,
+        "retainedAgentsOverrideMetadata": 3,
+        "status": "PASS"
+      }
+    ],
+    "boundaries": "survey pane class and browser editor-pane registry replaced; DOM audio listener boundary throws if executed; actual configuration/command/accessibility registry and ordinary survey module bodies retained"
+  },
+  "ordinaryInlineRegression": {
+    "kind": "actual-source-process-test",
+    "factoryScope": "three verbatim source members with original checkProposedApiEnabled",
+    "adapterScope": "complete actual MainThreadLanguageFeatures and ExtHostLanguageFeatures bundled from private source",
+    "runtimeInputs": 173,
+    "retiredRuntimeInputs": [],
+    "rows": [
+      {
+        "mode": "unauthorized",
+        "retiredPaths": 2,
+        "providerCalls": 1,
+        "shownCalls": 0,
+        "telemetryCalls": 1,
+        "disposed": 1,
+        "status": "PASS"
+      },
+      {
+        "mode": "authorized",
+        "retiredPaths": 2,
+        "providerCalls": 1,
+        "shownCalls": 1,
+        "telemetryCalls": 1,
+        "disposed": 1,
+        "status": "PASS"
+      }
+    ]
+  },
+  "registryHelper": {
+    "path": "dev/test-fixtures/lean-core/registry.mjs",
+    "sha256": "395788450e022269a1bd03356536d57ff186a5de61b3758351cbb0babad98f05",
+    "regression": {
+      "kind": "actual StatusbarViewModel process module and exact helper function regression; no CDP/GUI",
+      "statusbarFields": [
+        "id",
+        "extensionId",
+        "alignment"
+      ],
+      "getterReads": 0,
+      "rpcCalls": 0,
+      "models": 1,
+      "entries": 1,
+      "actualContextExpression": "lean.ready",
+      "authorityRows": [
+        {
+          "case": "missing-pid",
+          "exitCode": 1,
+          "outputCreated": false,
+          "networkAttempted": false,
+          "status": "PASS"
+        },
+        {
+          "case": "wrong-port",
+          "exitCode": 1,
+          "outputCreated": false,
+          "networkAttempted": false,
+          "status": "PASS"
+        },
+        {
+          "case": "stale-pid",
+          "exitCode": 1,
+          "outputCreated": false,
+          "networkAttempted": false,
+          "status": "PASS"
+        }
+      ],
+      "runtimeInputs": 53,
+      "status": "PASS"
+    },
+    "liveRetest": "pending root-owned final fresh profile; no active auth GUI/CDP touched"
+  },
+  "redRuntimeSnapshot": {
+    "capturedAtUTC": "2026-10-01T15:47:44.377Z",
+    "mainPID": 6084,
+    "profileRoot": "/private/tmp/ordinary138b-3n3pk6ty",
+    "loadedMainSHA256": "ad53b5cb14fe1142dfc0f8ba0a048971f59b41c350a59b499e1f40df049d95e9",
+    "rawDirectory": "/tmp/lean-registry138b-20261002",
+    "counts": {
+      "commands": 2139,
+      "commandMetadata": 889,
+      "settings": 1575,
+      "excludedSettings": 10,
+      "keybindings": 970,
+      "menuIDs": 286,
+      "menuIDsWithItems": 141,
+      "menuItems": 2417,
+      "containers": 9,
+      "views": 39,
+      "viewsWelcomeIDs": 4,
+      "viewsWelcomeEntries": 32,
+      "singletons": 247,
+      "workbenchInstances": 1,
+      "rendererChannelServers": 3,
+      "walkthroughInstances": 0,
+      "walkthroughSteps": 0,
+      "commandLinks": 45
+    },
+    "settings": [
+      {
+        "id": "diffEditor.renderSideBySide",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "diffEditor.useInlineViewWhenSpaceIsLimited",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "diffEditor.renderMarginRevertIcon",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "diffEditor.renderGutterMenu",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "diffEditor.renderIndicators",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "diffEditor.hideUnchangedRegions.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.editor.markdownDefaultEditorInAgentsWindow",
+        "classification": "retire145",
+        "reason": "145 schema and dynamic reader/listener"
+      },
+      {
+        "id": "workbench.editorAssociations",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.diffEditorAssociations",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.editor.hiddenEditorTypes",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "http.proxy",
+        "classification": "retain-inert-proxy-metadata",
+        "reason": "ordinary HTTP proxy setting; no runtime sync consumer"
+      },
+      {
+        "id": "http.proxyKerberosServicePrincipal",
+        "classification": "retain-inert-proxy-metadata",
+        "reason": "ordinary HTTP proxy setting; no runtime sync consumer"
+      },
+      {
+        "id": "http.noProxy",
+        "classification": "retain-inert-proxy-metadata",
+        "reason": "ordinary HTTP proxy setting; no runtime sync consumer"
+      },
+      {
+        "id": "workbench.editor.editorActionsLocation",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.editor.restoreEditors",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.editor.doubleClickTabToToggleEditorGroupSizes",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.sideBar.location",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.panel.defaultLocation",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.panel.opensMaximized",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.secondarySideBar.defaultVisibility",
+        "classification": "fixed142",
+        "reason": "retired agent session startup description/override"
+      },
+      {
+        "id": "workbench.secondarySideBar.forceMaximized",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.secondarySideBar.showLabels",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.statusBar.visible",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.activityBar.location",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.activityBar.autoHide",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.activityBar.compact",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.activityBar.iconClickBehavior",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.navigationControl.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.layoutControl.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.layoutControl.type",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.tips.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "workbench.experimental.modernUI",
+        "classification": "root146",
+        "reason": "ordinary feature retained; stale Agents design phrase"
+      },
+      {
+        "id": "window.title",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "window.commandCenter",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "breadcrumbs.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "files.autoSave",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "search.quickOpen.includeHistory",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "extensions.ignoreRecommendations",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "extensions.allowOpenInModalEditor",
+        "classification": "fixed142",
+        "reason": "retired MCP description"
+      },
+      {
+        "id": "terminal.integrated.automationProfile.linux",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.automationProfile.osx",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.automationProfile.windows",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.profiles.windows",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.profiles.osx",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.profiles.linux",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.tabs.defaultColor",
+        "classification": "retain-false-positive",
+        "reason": "terminal.ansiMagenta contains agent substring"
+      },
+      {
+        "id": "terminal.integrated.tabs.defaultIcon",
+        "classification": "retain-icon-catalog",
+        "reason": "shared ordinary terminal icon enum, no built-in AI implementation"
+      },
+      {
+        "id": "terminal.integrated.defaultLocation",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "terminal.integrated.tabs.allowAgentCliTitle",
+        "classification": "retain-ordinary",
+        "reason": "third-party CLI escape sequence tab title support"
+      },
+      {
+        "id": "terminal.integrated.initialHint",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "terminal.integrated.stickyScroll.ignoredCommands",
+        "classification": "retain-ordinary",
+        "reason": "third-party CLI terminal compatibility"
+      },
+      {
+        "id": "task.notifyWindowOnTaskCompletion",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "editor.defaultFormatter",
+        "classification": "root146",
+        "reason": "ordinary setting retained; stale Mermaid manifest description"
+      },
+      {
+        "id": "editor.defaultFoldingRangeProvider",
+        "classification": "root146",
+        "reason": "ordinary setting retained; same Mermaid manifest description"
+      },
+      {
+        "id": "update.showReleaseNotes",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "accessibility.verbosity.sessionsChanges",
+        "classification": "retire145",
+        "reason": "145 no consumers"
+      },
+      {
+        "id": "accessibility.verbosity.survey",
+        "classification": "retire145",
+        "reason": "145 sole Copilot survey consumer"
+      },
+      {
+        "id": "accessibility.verbosity.automations",
+        "classification": "retire145",
+        "reason": "145 no consumers"
+      },
+      {
+        "id": "editor.aiStats.enabled",
+        "classification": "retire145",
+        "reason": "145 AI statistics statusbar closure"
+      },
+      {
+        "id": "window.menuStyle",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "window.dialogStyle",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "telemetry.feedback.enabled",
+        "classification": "retain-ordinary",
+        "reason": "ordinary issue reporter/NPS/language surveys"
+      },
+      {
+        "id": "[chatagent]",
+        "classification": "retain-plain-file-language",
+        "reason": "plain file grammar/override, no agent service"
+      },
+      {
+        "id": "git.enabled",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.autorefresh",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.autofetch",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.branchRandomName.enable",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.confirmSync",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.postCommitCommand",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.rememberPostCommitCommand",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.detectWorktrees",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      },
+      {
+        "id": "git.addAICoAuthor",
+        "classification": "fixed143-and145",
+        "reason": "143 Git schema/consumers + 145 dangling tracking autorun"
+      },
+      {
+        "id": "git.showProgress",
+        "classification": "retain-inert-override-metadata",
+        "reason": "ordinary setting metadata; no window/configuration application reader"
+      }
+    ],
+    "excludedSettings": [
+      {
+        "id": "window.customMenuBarAltFocus",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "classification": "retain-inert-override-metadata"
+      }
+    ],
+    "commands": [
+      {
+        "id": "workbench.action.openSurvey",
+        "classification": "retire145"
+      },
+      {
+        "id": "_workbench.action.openCopilotSurvey",
+        "classification": "retire145"
+      },
+      {
+        "id": "extensions.actions.searchByCategory.AI",
+        "classification": "retain-marketplace-category"
+      },
+      {
+        "id": "extensions.actions.searchByCategory.Chat",
+        "classification": "retain-marketplace-category"
+      },
+      {
+        "id": "_aiEdits.hasAiContributions",
+        "classification": "retire145"
+      },
+      {
+        "id": "_aiEdits.clearAiContributions",
+        "classification": "retire145"
+      },
+      {
+        "id": "_aiEdits.clearAllAiContributions",
+        "classification": "retire145"
+      }
+    ],
+    "commandMetadata": [
+      {
+        "id": "workbench.action.openSurvey",
+        "classification": "retire145"
+      },
+      {
+        "id": "markdown.editor.insertLinkFromWorkspace",
+        "classification": "retain-ordinary-markdown"
+      },
+      {
+        "id": "markdown.editor.insertImageFromWorkspace",
+        "classification": "retain-ordinary-markdown"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "markdown.showPreviewToSide",
+        "classification": "retain-ordinary-markdown",
+        "reason": "Markdown preview plain-file grammar condition"
+      },
+      {
+        "command": "markdown.togglePreview",
+        "classification": "retain-ordinary-markdown",
+        "reason": "Markdown preview plain-file grammar condition"
+      }
+    ],
+    "menus": [
+      {
+        "id": "CommandPalette",
+        "items": 1082,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "EditorTitle",
+        "items": 96,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "ModalEditorEditorTitle",
+        "items": 11,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "EditorTitleContext",
+        "items": 34,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "ExplorerContext",
+        "items": 36,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "TitleBarUpdate",
+        "items": 1,
+        "classification": "ordinary-menu-or-survey-command145"
+      },
+      {
+        "id": "ChatContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatCodeblock",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatCompareBlock",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatMessageTitle",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatWelcomeContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatMessageFooter",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatSubagentContent",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatExecute",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatExecuteQueue",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInput",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInputSecondary",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInputStatus",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInputSide",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AutomationsDialogInput",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatModePicker",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingWidgetToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingSessionChangesToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingSessionTitleToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingSessionChangesVersionsSubmenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingSessionChangesFileHeaderToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingSessionChangesFileHeaderRightToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingEditorContent",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingEditorHunk",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingDeletedNotebookCell",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInputAttachmentToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingWidgetModifiedFilesToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInputResourceAttachmentContext",
+        "items": 4,
+        "classification": "fixed142"
+      },
+      {
+        "id": "ChatInputSymbolAttachmentContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatInlineResourceAnchorContext",
+        "items": 5,
+        "classification": "fixed142"
+      },
+      {
+        "id": "ChatInlineSymbolAnchorContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatMessageCheckpoint",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatMessageRestoreCheckpoint",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatNewMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditingCodeBlockContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatTitleBarMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatAttachmentsContext",
+        "items": 5,
+        "classification": "fixed142"
+      },
+      {
+        "id": "ChatTipContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatTipToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatToolOutputResourceToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatTextEditorMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatToolOutputResourceContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatMultiDiffContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatConfirmationMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditorInlineGutter",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditorInputExecute",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatEditorInputSide",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "InlineChatEditorAffordance",
+        "items": 1,
+        "classification": "fixed142"
+      },
+      {
+        "id": "AgentSessionsViewerFilterSubMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionsExternalFilterSubMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionsContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionSectionContext",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionsCreateSubMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionsToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionItemToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentSessionSectionToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentsTitleBarControlMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentsChangesToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentsChangesPrimaryActionSubMenu",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "AgentsChangeInlineToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatViewSessionTitleNavigationToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatViewSessionTitleToolbar",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "ChatContextUsageActions",
+        "items": 0,
+        "classification": "retain-empty-id-symbol"
+      },
+      {
+        "id": "extensionsCategoryFilterSubMenu",
+        "items": 20,
+        "classification": "ordinary-menu-or-survey-command145"
+      }
+    ],
+    "retiredMenuItems": [
+      {
+        "id": "ChatInputResourceAttachmentContext",
+        "explicitlyRegistered": true,
+        "items": [
+          {
+            "group": "navigation",
+            "order": 10,
+            "command": {
+              "id": "explorer.openToSide",
+              "title": "Open to the Side"
+            },
+            "when": {
+              "expression": "resourceSet && !explorerResourceIsFolder"
+            }
+          },
+          {
+            "group": "navigation",
+            "order": 20,
+            "command": {
+              "id": "revealInExplorer",
+              "title": "Reveal in Explorer View"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 10,
+            "command": {
+              "id": "copyFilePath",
+              "title": "Copy Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 20,
+            "command": {
+              "id": "copyRelativeFilePath",
+              "title": "Copy Relative Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ChatInlineResourceAnchorContext",
+        "explicitlyRegistered": true,
+        "items": [
+          {
+            "group": "navigation",
+            "order": 10,
+            "command": {
+              "id": "explorer.openToSide",
+              "title": "Open to the Side"
+            },
+            "when": {
+              "expression": "resourceSet && !explorerResourceIsFolder"
+            }
+          },
+          {
+            "group": "navigation",
+            "order": 20,
+            "command": {
+              "id": "revealInExplorer",
+              "title": "Reveal in Explorer View"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 10,
+            "command": {
+              "id": "copyFilePath",
+              "title": "Copy Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 20,
+            "command": {
+              "id": "copyRelativeFilePath",
+              "title": "Copy Relative Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "navigation",
+            "order": 20,
+            "command": {
+              "id": "revealFileInOS",
+              "title": "Reveal in Finder"
+            },
+            "when": {
+              "expression": "resourceScheme == 'file' || resourceScheme == 'vscode-userdata'"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ChatAttachmentsContext",
+        "explicitlyRegistered": true,
+        "items": [
+          {
+            "group": "navigation",
+            "order": 10,
+            "command": {
+              "id": "explorer.openToSide",
+              "title": "Open to the Side"
+            },
+            "when": {
+              "expression": "isFileSystemResource && !explorerResourceIsFolder"
+            }
+          },
+          {
+            "group": "navigation",
+            "order": 20,
+            "command": {
+              "id": "revealInExplorer",
+              "title": "Reveal in Explorer View"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 10,
+            "command": {
+              "id": "copyFilePath",
+              "title": "Copy Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "1_cutcopypaste",
+            "order": 20,
+            "command": {
+              "id": "copyRelativeFilePath",
+              "title": "Copy Relative Path"
+            },
+            "when": {
+              "expression": "isFileSystemResource"
+            }
+          },
+          {
+            "group": "navigation",
+            "order": 20,
+            "command": {
+              "id": "revealFileInOS",
+              "title": "Reveal in Finder"
+            },
+            "when": {
+              "expression": "resourceScheme == 'file' || resourceScheme == 'vscode-userdata'"
+            }
+          }
+        ]
+      },
+      {
+        "id": "InlineChatEditorAffordance",
+        "explicitlyRegistered": true,
+        "items": [
+          {
+            "command": {
+              "id": "editor.action.quickFix",
+              "title": {
+                "value": "Quick Fix...",
+                "original": "Quick Fix..."
+              },
+              "precondition": {
+                "expression": "editorHasCodeActionsProvider && !editorReadonly"
+              },
+              "icon": {
+                "id": "light-bulb"
+              }
+            },
+            "id": {
+              "id": "InlineChatEditorAffordance"
+            },
+            "group": "1_quickfix",
+            "order": 0,
+            "when": {
+              "expression": "editorHasCodeActionsProvider && !editorReadonly"
+            }
+          }
+        ]
+      }
+    ],
+    "trimmedContainersViewsWelcomeViewsAIEntries": 0,
+    "statusbars": {
+      "captured": false,
+      "reason": "old helper did not capture model arrays; no zero claim from default-false configuration"
+    },
+    "dedicatedStatusbarSource": {
+      "id": "aiStatsStatusBar",
+      "activation": "editor.aiStats.enabled=true",
+      "closure": "AiStatsFeature -> AiStatsStatusBar -> chart/CSS; removed145"
+    },
+    "ordinaryStatusbarSource": {
+      "id": "editTelemetry",
+      "consumer": "EditTrackingFeature ordinary source tracking; retained"
+    }
+  },
+  "inertAgentsMetadataException": {
+    "actual138Overrides": [
+      {
+        "id": "diffEditor.renderSideBySide",
+        "metadata": {
+          "default": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "diffEditor.useInlineViewWhenSpaceIsLimited",
+        "metadata": {
+          "default": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "diffEditor.renderMarginRevertIcon",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "diffEditor.renderGutterMenu",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "diffEditor.renderIndicators",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "diffEditor.hideUnchangedRegions.enabled",
+        "metadata": {
+          "default": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.editorAssociations",
+        "metadata": {
+          "default": {
+            "*.md": "vscode.markdown.editor"
+          }
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.diffEditorAssociations",
+        "metadata": {
+          "default": {
+            "*.md": "vscode.markdown.editor"
+          }
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.editor.hiddenEditorTypes",
+        "metadata": {
+          "default": [
+            "vscode.markdown.preview.editor"
+          ]
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.editor.editorActionsLocation",
+        "metadata": {
+          "default": "default",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.editor.restoreEditors",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.editor.doubleClickTabToToggleEditorGroupSizes",
+        "metadata": {
+          "default": "maximize",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.sideBar.location",
+        "metadata": {
+          "default": "left",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.panel.defaultLocation",
+        "metadata": {
+          "default": "bottom",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.panel.opensMaximized",
+        "metadata": {
+          "default": "never",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.secondarySideBar.defaultVisibility",
+        "metadata": {
+          "default": "visibleInWorkspace",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.secondarySideBar.forceMaximized",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.secondarySideBar.showLabels",
+        "metadata": {
+          "default": true,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.statusBar.visible",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.activityBar.location",
+        "metadata": {
+          "default": "default",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.activityBar.autoHide",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.activityBar.compact",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.activityBar.iconClickBehavior",
+        "metadata": {
+          "default": "toggle",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.navigationControl.enabled",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.layoutControl.enabled",
+        "metadata": {
+          "default": true,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.layoutControl.type",
+        "metadata": {
+          "default": "both",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "workbench.tips.enabled",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "window.title",
+        "metadata": {
+          "default": "${appName}",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "window.commandCenter",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "breadcrumbs.enabled",
+        "metadata": {
+          "default": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "files.autoSave",
+        "metadata": {
+          "default": "afterDelay"
+        },
+        "origin": "core"
+      },
+      {
+        "id": "search.quickOpen.includeHistory",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "extensions.ignoreRecommendations",
+        "metadata": {
+          "default": true,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "terminal.integrated.defaultLocation",
+        "metadata": {
+          "default": "view",
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "terminal.integrated.initialHint",
+        "metadata": {
+          "default": false
+        },
+        "origin": "core"
+      },
+      {
+        "id": "task.notifyWindowOnTaskCompletion",
+        "metadata": {
+          "default": -1
+        },
+        "origin": "core"
+      },
+      {
+        "id": "update.showReleaseNotes",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": "core"
+      },
+      {
+        "id": "window.menuStyle",
+        "metadata": {
+          "default": "custom"
+        },
+        "origin": "core"
+      },
+      {
+        "id": "window.dialogStyle",
+        "metadata": {
+          "default": "custom"
+        },
+        "origin": "core"
+      },
+      {
+        "id": "git.enabled",
+        "metadata": {
+          "default": true,
+          "readOnly": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.autorefresh",
+        "metadata": {
+          "default": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.autofetch",
+        "metadata": {
+          "default": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.branchRandomName.enable",
+        "metadata": {
+          "default": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.confirmSync",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.postCommitCommand",
+        "metadata": {
+          "default": "none",
+          "readOnly": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.rememberPostCommitCommand",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.detectWorktrees",
+        "metadata": {
+          "default": false
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      },
+      {
+        "id": "git.showProgress",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "origin": {
+          "id": "vscode.git",
+          "displayName": "Git"
+        }
+      }
+    ],
+    "actual138ExcludedOverrides": [
+      {
+        "id": "window.customMenuBarAltFocus",
+        "metadata": {
+          "default": false,
+          "readOnly": true
+        },
+        "classification": "retain-inert-override-metadata"
+      }
+    ],
+    "actual145Assignments": [
+      "src/vs/workbench/services/editor/common/editorResolverService.ts:52:\t\t\tagentsWindow: {",
+      "src/vs/workbench/services/editor/common/editorResolverService.ts:62:\t\t\tagentsWindow: {",
+      "src/vs/workbench/services/editor/common/editorResolverService.ts:73:\t\t\tagentsWindow: {",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:211:\t\t\tagentsWindow: { default: true },",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:222:\t\t\tagentsWindow: { default: true },",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:228:\t\t\tagentsWindow: { default: false },",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:234:\t\t\tagentsWindow: { default: false },",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:245:\t\t\tagentsWindow: { default: false },",
+      "src/vs/editor/common/config/editorConfigurationSchema.ts:277:\t\t\tagentsWindow: { default: true },",
+      "src/vs/workbench/services/themes/common/themeConfiguration.ts:89:\t...(isWeb ? { agentsWindow: { default: true } } : {}),",
+      "src/vs/workbench/browser/workbench.contribution.ts:84:\t\t\t\tagentsWindow: { default: 'default', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:415:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:447:\t\t\t\tagentsWindow: { default: 'maximize', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:557:\t\t\t\tagentsWindow: { default: 'left', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:569:\t\t\t\tagentsWindow: { default: 'bottom', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:581:\t\t\t\tagentsWindow: { default: 'never', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:595:\t\t\t\tagentsWindow: { default: 'visibleInWorkspace', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:602:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:608:\t\t\t\tagentsWindow: { default: true, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:614:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:652:\t\t\t\tagentsWindow: { default: 'default', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:658:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:664:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:675:\t\t\t\tagentsWindow: { default: 'toggle', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:846:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:854:\t\t\t\tagentsWindow: { default: true, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:866:\t\t\t\tagentsWindow: { default: 'both', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:872:\t\t\t\tagentsWindow: { default: false },",
+      "src/vs/workbench/browser/workbench.contribution.ts:928:\t\t\t\tagentsWindow: { default: '${appName}', readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:941:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/workbench.contribution.ts:977:\t\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/browser/parts/editor/editorConfiguration.ts:160:\t\t\t\t\tagentsWindow: {",
+      "src/vs/workbench/browser/parts/editor/editorConfiguration.ts:181:\t\t\t\t\tagentsWindow: {",
+      "src/vs/workbench/browser/parts/editor/breadcrumbs.ts:130:\t\t\tagentsWindow: { default: true },",
+      "src/vs/workbench/electron-browser/desktop.contribution.ts:289:\t\t\t\tagentsWindow: { default: 'custom' },",
+      "src/vs/workbench/electron-browser/desktop.contribution.ts:297:\t\t\t\tagentsWindow: { default: 'custom' },",
+      "src/vs/platform/update/common/update.config.contribution.ts:86:\t\t\tagentsWindow: { default: false, readOnly: true },",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:150:\t\t\t\t\t\t\tagentsWindow: {",
+      "src/vs/workbench/contrib/tasks/browser/task.contribution.ts:573:\t\t\tagentsWindow: { default: -1 },",
+      "src/vs/workbench/contrib/files/browser/files.contribution.ts:273:\t\t\tagentsWindow: { default: 'afterDelay' },",
+      "src/vs/workbench/contrib/search/browser/search.contribution.ts:169:\t\t\tagentsWindow: { default: false },",
+      "src/vs/workbench/contrib/terminalContrib/inlineHint/common/terminalInitialHintConfiguration.ts:21:\t\tagentsWindow: { default: false },",
+      "src/vs/workbench/contrib/terminal/common/terminalConfiguration.ts:126:\t\tagentsWindow: { default: 'view', readOnly: true },",
+      "src/vs/workbench/contrib/welcomeGettingStarted/browser/gettingStarted.contribution.ts:321:\t\t\tagentsWindow: { default: 'none', readOnly: true },",
+      "src/vs/workbench/contrib/extensions/browser/extensions.contribution.ts:197:\t\t\t\tagentsWindow: { default: true, readOnly: true },"
+    ],
+    "actualReads": [
+      {
+        "source": "src/vs/workbench/api/common/configurationExtensionPoint.ts:326",
+        "behavior": "existing proposal permission validation reads contributed field and deletes unauthorized data, no default/readOnly application"
+      },
+      {
+        "source": "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:1167",
+        "behavior": "parses override:agentsWindow filter; no tag producer remains"
+      },
+      {
+        "source": "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:160",
+        "behavior": "isAgentsWindowReadOnly initialized false; no assignment to true found across retained source"
+      },
+      {
+        "source": "src/vs/workbench/contrib/preferences/browser/settingsTree.ts",
+        "behavior": "7 reads of false flag only; no schema reader"
+      },
+      {
+        "source": "src/vs/workbench/contrib/preferences/browser/settingsEditorSettingIndicators.ts",
+        "behavior": "2 reads of false flag only; no schema reader"
+      },
+      {
+        "source": "src/vs/workbench/contrib/issue/browser/issueReporterOverlay.ts:729",
+        "behavior": "source picker only VSCode/Extension/Marketplace; unavailable old enum source presets reset; legacy display paths retained"
+      },
+      {
+        "source": "src/vs/workbench/contrib/issue/browser/issueFormService.ts:418",
+        "behavior": "legacy issueSource input selects template, no agent window/action"
+      }
+    ],
+    "consumerSearch": [
+      "src/vs/platform/extensions/common/extensionsApiProposals.ts:19:\t\tproposal: 'https://raw.githubusercontent.com/microsoft/vscode/main/src/vscode-dts/vscode.proposed.agentsWindowConfiguration.d.ts',",
+      "src/vs/workbench/contrib/preferences/common/preferences.ts:99:export const AGENTS_WINDOW_SETTING_TAG = 'override:agentsWindow';",
+      "src/vs/workbench/contrib/preferences/browser/settingsEditorSettingIndicators.ts:374:\t\t} else if (element.isAgentsWindowReadOnly) {",
+      "src/vs/workbench/contrib/preferences/browser/settingsEditorSettingIndicators.ts:579:\t} else if (element.isAgentsWindowReadOnly) {",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:174:\t\telement.hasPolicyValue || element.isAgentsWindowReadOnly ? element.scopeValue :",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:1309:\t\ttemplate.button.parentElement?.classList.toggle('hide', dataElement.hasPolicyValue || dataElement.isAgentsWindowReadOnly);",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:1731:\t\ttemplate.includeExcludeWidget.setValue(value, { isReadOnly: dataElement.hasPolicyValue || dataElement.isAgentsWindowReadOnly });",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:1802:\t\ttemplate.inputBox.setEnabled(!dataElement.hasPolicyValue && !dataElement.isAgentsWindowReadOnly);",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:1952:\t\ttemplate.selectBox.setEnabled(!dataElement.hasPolicyValue && !dataElement.isAgentsWindowReadOnly);",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:2023:\t\ttemplate.inputBox.setEnabled(!dataElement.hasPolicyValue && !dataElement.isAgentsWindowReadOnly);",
+      "src/vs/workbench/contrib/preferences/browser/settingsTree.ts:2106:\t\tif (dataElement.hasPolicyValue || dataElement.isAgentsWindowReadOnly) {",
+      "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:23:import { AGENTS_WINDOW_SETTING_TAG, ENABLE_EXTENSION_TOGGLE_SETTINGS, ENABLE_LANGUAGE_FILTER, MODIFIED_SETTING_TAG, POLICY_SETTING_TAG, compareTwoNullableNumbers, wordifyKey } from '../common/preferences.js';",
+      "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:160:\tisAgentsWindowReadOnly = false;",
+      "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:1167:\tquery = query.replace(`@${AGENTS_WINDOW_SETTING_TAG}`, () => {",
+      "src/vs/workbench/contrib/preferences/browser/settingsTreeModels.ts:1168:\t\ttags.push(AGENTS_WINDOW_SETTING_TAG);",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:152:\t\t\t\t\t\t\t\tmarkdownDescription: nls.localize('scope.agentsWindow', \"Configuration overrides for the Agents window. Allows specifying a different default value and read-only behavior for this setting when running in the Agents window.\\n\\n**Note**: This is a proposed API. To use it, extensions must include `agentsWindowConfiguration` in their `enabledApiProposals`.\"),",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:155:\t\t\t\t\t\t\t\t\t\tdescription: nls.localize('scope.agentsWindow.default', 'The default value for this setting in the Agents window.'),",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:159:\t\t\t\t\t\t\t\t\t\tdescription: nls.localize('scope.agentsWindow.readOnly', 'When true, this setting cannot be changed by the user in the Agents window.'),",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:326:\t\t\t\tif (propertyConfiguration.agentsWindow && !isProposedApiEnabled(extension.description, 'agentsWindowConfiguration')) {",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:327:\t\t\t\t\textension.collector.error(nls.localize('config.property.agentsWindow.proposed', \"Extension '{0}' CANNOT use 'agentsWindow' property on configuration '{1}' without enabling the 'agentsWindowConfiguration' API proposal.\", extension.description.identifier.value, key));",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:328:\t\t\t\t\tdelete propertyConfiguration.agentsWindow;"
+    ],
+    "windowOrConfigurationApplicationReaders": [],
+    "authority": "root directed ordinary metadata and existing permission contract retained; no API impl/permission edits145"
+  },
+  "inertAgentHostProxyMetadata": {
+    "ids": [
+      "http.proxy",
+      "http.proxyKerberosServicePrincipal",
+      "http.noProxy"
+    ],
+    "consumerSearch": [
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:330:\t\t\t\tif (propertyConfiguration.agentHost) {",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:331:\t\t\t\t\textension.collector.error(nls.localize('config.property.agentHost.unsupported', \"Extension '{0}' CANNOT use the 'agentHost' property on configuration '{1}'.\", extension.description.identifier.value, key));",
+      "src/vs/workbench/api/common/configurationExtensionPoint.ts:332:\t\t\t\t\tdelete propertyConfiguration.agentHost;",
+      "src/vs/platform/request/common/request.ts:277:\t\t\t\t\tagentHost: { key: 'http.proxy', scope: AgentHostConfigurationSyncScope.Ambient, transform: value => typeof value === 'string' ? value : '' },",
+      "src/vs/platform/request/common/request.ts:289:\t\t\t\t\tagentHost: { key: 'http.proxyKerberosServicePrincipal', scope: AgentHostConfigurationSyncScope.Ambient, transform: value => typeof value === 'string' ? value : '' },",
+      "src/vs/platform/request/common/request.ts:296:\t\t\t\t\tagentHost: { key: 'http.noProxy', scope: AgentHostConfigurationSyncScope.Ambient, transform: value => Array.isArray(value) ? value : [] },"
+    ],
+    "applicationReaders": []
+  },
+  "productMetadata": {
+    "frozen144PrivateSource": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-ai-stats145-gakj3btt/vscode/product.json",
+    "sha256": "7f84efe52829b0901431dd8924b31574480cc75d7920747025ef2b6d8833111d",
+    "voiceWsUrlPresent": false,
+    "dedicatedAITopLevelKeys": [],
+    "AINameThirdPartyProposalEntries": [
+      {
+        "extension": "ms-toolsai.vscode-ai",
+        "retainedProposals": [
+          "authenticationChallenges"
+        ]
+      },
+      {
+        "extension": "TeamsDevApp.vscode-ai-foundry",
+        "retainedProposals": [
+          "authenticationChallenges"
+        ]
+      },
+      {
+        "extension": "ms-toolsai.vscode-ai-remote",
+        "retainedProposals": [
+          "resolvers",
+          "authenticationChallenges"
+        ]
+      },
+      {
+        "extension": "ms-windows-ai-studio.vscode-foundry-training",
+        "retainedProposals": [
+          "resolvers"
+        ]
+      },
+      {
+        "extension": "ms-vscode.vscode-speech",
+        "retainedProposals": []
+      },
+      {
+        "extension": "FoundryLocal.foundry-local-chat",
+        "retainedProposals": []
+      },
+      {
+        "extension": "Microsoft.foundry-local-chat",
+        "retainedProposals": []
+      },
+      {
+        "extension": "ms-wmcp.windows-mcp-server-extension",
+        "retainedProposals": []
+      },
+      {
+        "extension": "openai.chatgpt",
+        "retainedProposals": []
+      },
+      {
+        "extension": "ms-vscode.vscode-chat-customizations-evaluations",
+        "retainedProposals": [
+          "contribEditorContentMenu"
+        ]
+      }
+    ],
+    "reason": "third-party compatibility allowlist, often empty, no host implementation; final144 app was also read voiceWsUrl absent before root replaced output for final145 build"
+  },
+  "remainingTextCandidates": [
+    {
+      "file": "src/vs/workbench/browser/workbench.contribution.ts:882",
+      "before": ", matching the Agents window design.",
+      "after": ".",
+      "status": "root assigned146"
+    },
+    {
+      "file": "extensions/mermaid-markdown-features/package.nls.json:3",
+      "before": "Adds Mermaid diagram support to built-in chats, Markdown previews, and notebooks.",
+      "after": "Adds Mermaid diagram support to Markdown previews and notebooks.",
+      "status": "root assigned146"
+    }
+  ],
+  "limitations": [
+    "actual-source process regressions replace named feature/DOM/editor-pane boundaries and do not prove final native UI/host",
+    "final root fresh profile must set old editor.aiStats.enabled=true and git.addAICoAuthor=all; Cold/Reload real registries/statusbar model/clean logs and ordinary provider required",
+    "M6 original serializer proxy-log pollution and rejected auth-target replay remain documented; fresh identity-bound final clean capture pending",
+    "main/shared process channel maps are outside renderer CDP coverage"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "query": "@command:editor.action.clipboardCopyAction",
+  "ids": [
+    "editor.action.clipboardCopyAction"
+  ],
+  "dom": {
+    "present": true,
+    "search": "@command:editor.action.clipboardCopyAction",
+    "rows": [
+      {
+        "text": "Copy\n⌘\nC\n-\nSystem",
+        "aria": "Copy (editor.action.clipboardCopyAction)",
+        "id": ""
+      }
+    ]
+  },
+  "retiredMatches": 0
+}

@@ -4,6 +4,11 @@
 
 ## Table of Contents
 
+- [VSLight usage changes](#vslight-usage)
+   - [Links and browser previews](#vslight-links)
+   - [Mermaid diagrams](#vslight-mermaid)
+   - [Chat and MCP command-line requests](#vslight-cli)
+   - [Native and workbench languages](#vslight-languages)
 - [Sign in with GitHub](#signin-github)
 - [Accounts authentication](https://github.com/VSCodium/vscodium/blob/master/docs/accounts-authentication.md)
 - [How do I run VSCodium in portable mode?](#portable)
@@ -11,6 +16,45 @@
 - [How do I press and hold a key and have it repeat in VSCodium?](#press-and-hold)
 - [How do I open VSCodium from the terminal?](#terminal-support)
    - [From Linux .tar.gz](#from-linux-targz)
+
+## <a id="vslight-usage"></a>VSLight usage changes
+
+The sections below this VSLight section retain upstream VSCodium instructions. VSLight uses the `vslight` command; its data directories and removed features are described in the [migration guide](vslight-migration.md).
+
+Host Chat, MCP, speech and agent-host services are removed. Stored Chat history and MCP configuration are not deleted, but VSLight no longer provides their host access or execution features. Extensions with their own AI implementation may still offer AI features; see [extension compatibility](extensions-compatibility.md#vslight-host-limits).
+
+### <a id="vslight-links"></a>Links and browser previews
+
+Integrated Browser and Simple Browser are removed. Ordinary HTTP(S) and localhost links use the existing external opener, which defaults to the system browser. Registered third-party openers can still handle links. An old Simple Browser opener preference does not restore it; an unmatched opener falls back through the normal external-opening path. Ordinary extension Webviews remain available.
+
+### <a id="vslight-mermaid"></a>Mermaid diagrams
+
+Write a fenced `mermaid` block in Markdown and open the Markdown preview. Use **Open Diagram in Editor** to open a diagram separately, **Reset Pan and Zoom** to reset its position, and **Copy Diagram Source** to copy its original Mermaid text. Diagram source, theme and pan/zoom values survive a normal restart.
+
+Flowchart, sequence, state, ELK, tidy-tree and ZenUML diagrams remain available. Invalid syntax displays an error; long errors wrap in the diagram editor. ZenUML retains its add-on's white canvas in a dark theme.
+
+### <a id="vslight-cli"></a>Chat and MCP command-line requests
+
+The packaged CLI rejects both requests with exit code 1 and a readable message:
+
+```sh
+vslight chat
+# chat is unavailable in this product.
+vslight --add-mcp '{"name":"example","command":"node"}'
+# --add-mcp is unavailable in this product.
+```
+
+To pass a file named `chat` as a normal file argument, use the explicit argument separator:
+
+```sh
+vslight -- chat
+```
+
+Ordinary version reporting and extension installation remain available.
+
+### <a id="vslight-languages"></a>Native and workbench languages
+
+The macOS native resources retain English (`en`, `en_GB`), Simplified Chinese (`zh_CN`) and Traditional Chinese (`zh_TW`). Other native languages fall back to English. This applies to native resources; the workbench language-pack mechanism remains available for editor and workbench text. Install a language pack and restart VSLight to apply its workbench language.
 
 ## <a id="signin-github"></a>Sign in with GitHub
 
@@ -73,4 +117,8 @@ On Linux, when installed with a package manager, `codium` has been installed in 
 
 ### <a id="from-linux-targz"></a>From Linux .tar.gz
 
-When the archive `VSCodium-linux-<arch>-<version>.tar.gz` is extracted, the main entry point for VSCodium is `./bin/codium`.
+When the archive `VSCodium-linux-<arch>-<version>.tar.gz` is extracted, run the VSCodium entry point from the extracted directory:
+
+```sh
+./bin/codium
+```

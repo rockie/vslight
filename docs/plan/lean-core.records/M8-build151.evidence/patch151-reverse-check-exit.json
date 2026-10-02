@@ -1,0 +1,16 @@
+{
+  "startedAt": "2026-10-02T19:18:13.401642+10:00",
+  "endedAt": "2026-10-02T19:18:13.414732+10:00",
+  "durationSeconds": 0.013055708999672788,
+  "command": [
+    "git",
+    "apply",
+    "--reverse",
+    "--check",
+    "/Users/rockie/Documents/gh-xgent/vscodium/patches/151-light-terminal-retired-command-filters.patch"
+  ],
+  "cwd": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode",
+  "exit": 0,
+  "stdout": "",
+  "stderr": ""
+}

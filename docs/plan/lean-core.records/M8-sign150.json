@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-02T10:56:12.117161+10:00",
+  "generation": "150",
+  "status": "SIGN_NOTARY_STAPLE_STRICT_SPCTL_PASS_CLEANUP_EXIT0",
+  "sourceApp": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "signedApp": "/private/tmp/sign150-hktfpzl0/VSCode-darwin-arm64/VSLight.app",
+  "signedRegularFiles": 1209,
+  "signedAppBytes": 421985960,
+  "zip": "/private/tmp/sign150-hktfpzl0/VSLight-150-signed.zip",
+  "zipBytes": 157388380,
+  "zipSha256": "55f2e2ce6e34246e9ddb023f49c5b3be2cdd89625c3deda7bdced2c2f33e7d4f",
+  "notary": {
+    "message": "Processing complete",
+    "status": "Accepted",
+    "id": "e1cc1ecb-a94b-430a-9f81-d3803d092e32"
+  },
+  "runner": {
+    "exit": 0,
+    "completedAt": "2026-10-02T00:48:36.995200+00:00"
+  },
+  "cleanup": {
+    "restored": false,
+    "equal": true,
+    "privateKeychainRemoved": true,
+    "privateP12Removed": true
+  },
+  "contentAudit": "M8-sign150-content.json",
+  "zipCRC": "Not independently run on final signed ZIP before user pause; unsigned ZIP CRC exit0",
+  "credentials": "Existing authorized credential file, temporary keychain/P12 deleted, exact search list pre/post equal",
+  "notReleased": true
+}

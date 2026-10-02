@@ -86,7 +86,6 @@
       "documentFiltersExclusive",
       "fileSearchProvider",
       "findTextInFiles",
-      "notebookLiveShare",
       "terminalDimensions",
       "terminalDataWriteEvent",
       "textSearchProvider"
@@ -95,8 +94,7 @@
       "portsAttributes",
       "findTextInFiles",
       "workspaceTrust",
-      "tunnels",
-      "browser"
+      "tunnels"
     ],
     "ms-toolsai.vscode-ai-remote": [
       "resolvers",
@@ -106,7 +104,6 @@
       "resolvers"
     ],
     "ms-python.python": [
-      "codeActionAI",
       "contribEditorContentMenu",
       "quickPickSortByLabel",
       "portsAttributes",
@@ -114,8 +111,6 @@
       "quickPickItemTooltip",
       "terminalDataWriteEvent",
       "terminalExecuteCommandEvent",
-      "notebookReplDocument",
-      "notebookVariableProvider",
       "terminalShellEnv"
     ],
     "ms-python.vscode-python-envs": [
@@ -123,9 +118,7 @@
       "terminalDataWriteEvent",
       "taskExecutionTerminal"
     ],
-    "ms-dotnettools.dotnet-interactive-vscode": [
-      "notebookMessaging"
-    ],
+    "ms-dotnettools.dotnet-interactive-vscode": [],
     "GitHub.codespaces": [
       "contribEditSessions",
       "contribMenuBarHome",
@@ -134,8 +127,7 @@
       "resolvers",
       "tunnels",
       "terminalDataWriteEvent",
-      "treeViewReveal",
-      "notebookKernelSource"
+      "treeViewReveal"
     ],
     "ms-vscode.azure-repos": [
       "extensionRuntime",
@@ -201,21 +193,14 @@
       "portsAttributes",
       "findTextInFiles",
       "workspaceTrust",
-      "tunnels",
-      "browser"
+      "tunnels"
     ],
     "ms-vscode.lsif-browser": [
       "documentFiltersExclusive"
     ],
-    "ms-vscode.vscode-speech": [
-      "speech"
-    ],
+    "ms-vscode.vscode-speech": [],
     "GitHub.vscode-pull-request-github": [
       "activeComment",
-      "chatContextProvider",
-      "chatParticipantAdditions",
-      "chatParticipantPrivate",
-      "chatSessionsProvider",
       "codiconDecoration",
       "codeActionRanges",
       "commentingRangeHint",
@@ -232,10 +217,8 @@
       "contribMultiDiffEditorMenus",
       "contribShareMenu",
       "diffCommand",
-      "languageModelToolResultAudience",
       "markdownAlertSyntax",
       "quickDiffProvider",
-      "remoteCodingAgents",
       "shareProvider",
       "tabInputMultiDiff",
       "tabInputTextMerge",
@@ -260,36 +243,19 @@
     ],
     "ms-python.vscode-pylance": [
       "terminalShellEnv",
-      "portsAttributes",
-      "codeActionAI"
+      "portsAttributes"
     ],
     "ms-python.debugpy": [
       "contribViewsWelcome",
-      "debugVisualization",
       "portsAttributes"
     ],
-    "ms-toolsai.jupyter-renderers": [
-      "contribNotebookStaticPreloads"
-    ],
+    "ms-toolsai.jupyter-renderers": [],
     "ms-toolsai.jupyter": [
-      "notebookDeprecated",
-      "notebookMessaging",
-      "notebookMime",
       "portsAttributes",
       "quickPickSortByLabel",
-      "notebookKernelSource",
-      "interactiveWindow",
-      "notebookControllerAffinityHidden",
-      "contribNotebookStaticPreloads",
-      "quickPickItemTooltip",
-      "notebookExecution",
-      "notebookCellExecution",
-      "notebookVariableProvider",
-      "notebookReplDocument"
+      "quickPickItemTooltip"
     ],
-    "donjayamanne.kusto": [
-      "notebookVariableProvider"
-    ],
+    "donjayamanne.kusto": [],
     "ms-toolsai.tensorboard": [
       "portsAttributes"
     ],
@@ -304,8 +270,7 @@
       "extensionsAny"
     ],
     "ms-vscode.cpptools": [
-      "terminalDataWriteEvent",
-      "chatParticipantAdditions"
+      "terminalDataWriteEvent"
     ],
     "vscjava.vscode-java-pack": [],
     "ms-dotnettools.csdevkit": [
@@ -314,10 +279,7 @@
     "ms-dotnettools.vscodeintellicode-csharp": [
       "inlineCompletionsAdditions"
     ],
-    "ms-dotnettools.vscode-dotnet-modernize": [
-      "chatParticipantAdditions",
-      "chatPromptFiles"
-    ],
+    "ms-dotnettools.vscode-dotnet-modernize": [],
     "microsoft-IsvExpTools.powerplatform-vscode": [
       "fileSearchProvider",
       "textSearchProvider"
@@ -326,37 +288,16 @@
       "fileSearchProvider",
       "textSearchProvider"
     ],
-    "TeamsDevApp.ms-teams-vscode-extension": [
-      "chatParticipantAdditions",
-      "languageModelSystem",
-      "mcpServerDefinitions"
-    ],
+    "TeamsDevApp.ms-teams-vscode-extension": [],
     "ms-toolsai.datawrangler": [],
     "ms-vscode.vscode-commander": [],
-    "ms-autodev.vscode-autodev": [
-      "chatParticipantAdditions"
-    ],
-    "vscjava.migrate-java-to-azure": [
-      "chatParticipantAdditions",
-      "chatParticipantPrivate"
-    ],
-    "vscjava.vscode-java-upgrade": [
-      "chatParticipantAdditions",
-      "chatParticipantPrivate"
-    ],
-    "FoundryLocal.foundry-local-chat": [
-      "chatProvider"
-    ],
-    "Microsoft.foundry-local-chat": [
-      "chatProvider"
-    ],
-    "ms-wmcp.windows-mcp-server-extension": [
-      "mcpToolDefinitions"
-    ],
-    "openai.chatgpt": [
-      "languageModelProxy",
-      "chatSessionsProvider"
-    ],
+    "ms-autodev.vscode-autodev": [],
+    "vscjava.migrate-java-to-azure": [],
+    "vscjava.vscode-java-upgrade": [],
+    "FoundryLocal.foundry-local-chat": [],
+    "Microsoft.foundry-local-chat": [],
+    "ms-wmcp.windows-mcp-server-extension": [],
+    "openai.chatgpt": [],
     "TypeScriptTeam.vscode-typescript": [
       "editorHoverVerbosityLevel",
       "multiDocumentHighlightProvider"
@@ -365,11 +306,8 @@
       "editorHoverVerbosityLevel",
       "multiDocumentHighlightProvider"
     ],
-    "ms-vscode.vscode-eng-codereview": [
-      "chatContextProvider"
-    ],
+    "ms-vscode.vscode-eng-codereview": [],
     "ms-vscode.vscode-chat-customizations-evaluations": [
-      "chatSessionCustomizationProvider",
       "contribEditorContentMenu"
     ],
     "jeanp413.open-remote-ssh": [

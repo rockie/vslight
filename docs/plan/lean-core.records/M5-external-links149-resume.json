@@ -1,0 +1,440 @@
+{
+  "status": "FOUR_EXACT_URI_RECEIPTS_PASS_ONE_MANUAL_THREE_AUTOMATIC",
+  "at": "2026-10-02T00:35:46.399202+00:00",
+  "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "mainPID": 14681,
+  "hostPID": 16103,
+  "results": [
+    {
+      "surface": "terminal-visible",
+      "index": 4,
+      "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=4#fragment%20space",
+      "startedAt": "2026-10-02T00:35:30.216Z",
+      "click": {
+        "surface": "terminal-visible",
+        "context": {
+          "key": "9A879BDA3BBBFEA4E1C1D6EB170AA5D0:1",
+          "id": 1,
+          "uniqueId": "-6202768381025313193.3433474846614238826",
+          "origin": "vscode-file://vscode-app",
+          "name": "",
+          "frameId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "sessionId": "9A879BDA3BBBFEA4E1C1D6EB170AA5D0",
+          "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "targetType": "page",
+          "rootTargetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3"
+        },
+        "point": {
+          "x": 407.73643410852713,
+          "y": 638,
+          "rectangle": {
+            "x": 368,
+            "y": 617,
+            "width": 932,
+            "height": 252
+          },
+          "cols": 129,
+          "rows": 18,
+          "cellWidth": 7.224806201550388,
+          "cellHeight": 14,
+          "text": "LEAN 80a249748537 terminal-visible 4\nhttps://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=4#fragment%20\nspace\n "
+        },
+        "mode": "limited product-target CDP Meta+mouse click",
+        "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+        "terminalState": {
+          "surface": "terminal-visible",
+          "index": 4,
+          "url": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=4#fragment%20space",
+          "ready": true,
+          "name": "Lean terminal-visible 4",
+          "banner": "LEAN 80a249748537 terminal-visible 4",
+          "dimensions": {
+            "columns": 129,
+            "rows": 18
+          },
+          "openedAt": "2026-10-02T00:35:30.308Z"
+        }
+      },
+      "chrome": {
+        "receiptSource": "native Chrome exact tab URL, read only",
+        "tabId": 1319598514,
+        "windowId": 1319596821,
+        "actualHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=4#fragment%20space",
+        "exactOriginalURI": true
+      },
+      "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+      "productTabs": [],
+      "browserTabs": [],
+      "completedAt": "2026-10-02T00:35:34.253Z",
+      "nativePromptPressed": true
+    },
+    {
+      "surface": "terminal-osc8",
+      "index": 3,
+      "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=3#fragment%20space",
+      "startedAt": "2026-10-02T00:35:35.087Z",
+      "click": {
+        "surface": "terminal-osc8",
+        "context": {
+          "key": "9ED4F5BE20B09C77D97A2C5A5E40F36F:1",
+          "id": 1,
+          "uniqueId": "-6202768381025313193.3433474846614238826",
+          "origin": "vscode-file://vscode-app",
+          "name": "",
+          "frameId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "sessionId": "9ED4F5BE20B09C77D97A2C5A5E40F36F",
+          "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "targetType": "page",
+          "rootTargetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3"
+        },
+        "point": {
+          "x": 407.73643410852713,
+          "y": 638,
+          "rectangle": {
+            "x": 368,
+            "y": 617,
+            "width": 932,
+            "height": 252
+          },
+          "cols": 129,
+          "rows": 18,
+          "cellWidth": 7.224806201550388,
+          "cellHeight": 14,
+          "text": "LEAN 80a249748537 terminal-osc8 3\nExternal URL 3\n "
+        },
+        "mode": "limited product-target CDP Meta+mouse click",
+        "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+        "terminalState": {
+          "surface": "terminal-osc8",
+          "index": 3,
+          "url": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=3#fragment%20space",
+          "ready": true,
+          "name": "Lean terminal-osc8 3",
+          "banner": "LEAN 80a249748537 terminal-osc8 3",
+          "dimensions": {
+            "columns": 129,
+            "rows": 18
+          },
+          "openedAt": "2026-10-02T00:35:35.152Z"
+        }
+      },
+      "chrome": {
+        "receiptSource": "native Chrome exact tab URL, read only",
+        "tabId": 1319598517,
+        "windowId": 1319596821,
+        "actualHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=3#fragment%20space",
+        "exactOriginalURI": true
+      },
+      "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+      "productTabs": [],
+      "browserTabs": [],
+      "completedAt": "2026-10-02T00:35:40.948Z",
+      "nativePromptPressed": true
+    },
+    {
+      "surface": "terminal-osc8",
+      "index": 4,
+      "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=4#fragment%20space",
+      "startedAt": "2026-10-02T00:35:42.046Z",
+      "click": {
+        "surface": "terminal-osc8",
+        "context": {
+          "key": "352B7F546D2FDC2BCA67371326A28BCB:1",
+          "id": 1,
+          "uniqueId": "-6202768381025313193.3433474846614238826",
+          "origin": "vscode-file://vscode-app",
+          "name": "",
+          "frameId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "sessionId": "352B7F546D2FDC2BCA67371326A28BCB",
+          "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+          "targetType": "page",
+          "rootTargetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3"
+        },
+        "point": {
+          "x": 407.73643410852713,
+          "y": 638,
+          "rectangle": {
+            "x": 368,
+            "y": 617,
+            "width": 932,
+            "height": 252
+          },
+          "cols": 129,
+          "rows": 18,
+          "cellWidth": 7.224806201550388,
+          "cellHeight": 14,
+          "text": "LEAN 80a249748537 terminal-osc8 4\nExternal URL 4\n "
+        },
+        "mode": "limited product-target CDP Meta+mouse click",
+        "targetId": "C8A4A8640A4E491ADAD9EA2B01FBBFF3",
+        "terminalState": {
+          "surface": "terminal-osc8",
+          "index": 4,
+          "url": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=4#fragment%20space",
+          "ready": true,
+          "name": "Lean terminal-osc8 4",
+          "banner": "LEAN 80a249748537 terminal-osc8 4",
+          "dimensions": {
+            "columns": 129,
+            "rows": 18
+          },
+          "openedAt": "2026-10-02T00:35:42.167Z"
+        }
+      },
+      "chrome": {
+        "receiptSource": "native Chrome exact tab URL, read only",
+        "tabId": 1319598520,
+        "windowId": 1319596821,
+        "actualHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=4#fragment%20space",
+        "exactOriginalURI": true
+      },
+      "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+      "productTabs": [],
+      "browserTabs": [],
+      "completedAt": "2026-10-02T00:35:46.086Z",
+      "nativePromptPressed": true
+    }
+  ],
+  "firstRow": {
+    "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space",
+    "actualHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space",
+    "status": "PASS",
+    "source": "User supplied exact address bar URL; independently read native Chrome matching test tab URL",
+    "priorAutomaticHelperExit": 1,
+    "automaticFailure": "Kimi foreground matching tab unavailable after native Open",
+    "serverGET": true,
+    "nativePromptAXMatchedFullURI": true,
+    "rawAutomaticResult": {
+      "surface": "terminal-visible",
+      "index": 3,
+      "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space",
+      "startedAt": "2026-10-02T00:29:32.419Z",
+      "click": {
+        "surface": "terminal-visible",
+        "context": {
+          "key": "FA8E64AF22098DCA8070D5E8DB2E2091:1",
+          "id": 1,
+          "uniqueId": "-6350170419289731179.4989968763361468034",
+          "origin": "vscode-file://vscode-app",
+          "name": "",
+          "frameId": "69903F9992AE90F7E8999EED05348FB2",
+          "sessionId": "FA8E64AF22098DCA8070D5E8DB2E2091",
+          "targetId": "69903F9992AE90F7E8999EED05348FB2",
+          "targetType": "page",
+          "rootTargetId": "69903F9992AE90F7E8999EED05348FB2"
+        },
+        "point": {
+          "x": 407.7431506849315,
+          "y": 638,
+          "rectangle": {
+            "x": 368,
+            "y": 617,
+            "width": 1055,
+            "height": 252
+          },
+          "cols": 146,
+          "rows": 18,
+          "cellWidth": 7.226027397260274,
+          "cellHeight": 14,
+          "text": "LEAN 80a249748537 terminal-visible 3\nhttp://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space\n "
+        },
+        "mode": "limited product-target CDP Meta+mouse click",
+        "targetId": "69903F9992AE90F7E8999EED05348FB2",
+        "terminalState": {
+          "surface": "terminal-visible",
+          "index": 3,
+          "url": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space",
+          "ready": true,
+          "name": "Lean terminal-visible 3",
+          "banner": "LEAN 80a249748537 terminal-visible 3",
+          "dimensions": {
+            "columns": 146,
+            "rows": 18
+          },
+          "openedAt": "2026-10-02T00:29:32.552Z"
+        }
+      },
+      "status": "BLOCKED_OR_FAIL_NO_ACCEPTANCE",
+      "reason": "Chrome new active test tab blocked: extension_error",
+      "productTabs": [],
+      "browserTabs": [],
+      "completedAt": "2026-10-02T00:31:33.851Z"
+    }
+  },
+  "cleanup": {
+    "normalQuitExit": 0,
+    "serverPID": 14680
+  },
+  "nativeDialogs": {
+    "terminal-visible-3": [
+      {
+        "role": "AXWindow",
+        "title": "w",
+        "value": ""
+      },
+      {
+        "value": "",
+        "title": "w",
+        "role": "AXGroup"
+      },
+      {
+        "title": "",
+        "value": "Do you want VSLight to open the external website?",
+        "role": "AXStaticText"
+      },
+      {
+        "value": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=3#fragment%20space",
+        "role": "AXStaticText",
+        "title": ""
+      },
+      {
+        "title": "Open",
+        "role": "AXButton",
+        "value": ""
+      },
+      {
+        "role": "AXButton",
+        "value": "",
+        "title": "Copy"
+      },
+      {
+        "role": "AXButton",
+        "value": "",
+        "title": "Configure Trusted Domains"
+      },
+      {
+        "value": "",
+        "role": "AXButton",
+        "title": "Cancel"
+      }
+    ],
+    "terminal-visible-4": [
+      {
+        "role": "AXWindow",
+        "value": "",
+        "title": "w"
+      },
+      {
+        "value": "",
+        "role": "AXGroup",
+        "title": "w"
+      },
+      {
+        "value": "Do you want VSLight to open the external website?",
+        "role": "AXStaticText",
+        "title": ""
+      },
+      {
+        "role": "AXStaticText",
+        "title": "",
+        "value": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-visible&index=4#fragment%20space"
+      },
+      {
+        "value": "",
+        "title": "Open",
+        "role": "AXButton"
+      },
+      {
+        "title": "Copy",
+        "value": "",
+        "role": "AXButton"
+      },
+      {
+        "value": "",
+        "role": "AXButton",
+        "title": "Configure Trusted Domains"
+      },
+      {
+        "title": "Cancel",
+        "role": "AXButton",
+        "value": ""
+      }
+    ],
+    "terminal-osc8-3": [
+      {
+        "role": "AXWindow",
+        "value": "",
+        "title": "w"
+      },
+      {
+        "title": "w",
+        "value": "",
+        "role": "AXGroup"
+      },
+      {
+        "title": "",
+        "value": "Do you want VSLight to open the external website?",
+        "role": "AXStaticText"
+      },
+      {
+        "role": "AXStaticText",
+        "title": "",
+        "value": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=3#fragment%20space"
+      },
+      {
+        "title": "Open",
+        "value": "",
+        "role": "AXButton"
+      },
+      {
+        "title": "Copy",
+        "value": "",
+        "role": "AXButton"
+      },
+      {
+        "value": "",
+        "role": "AXButton",
+        "title": "Configure Trusted Domains"
+      },
+      {
+        "title": "Cancel",
+        "value": "",
+        "role": "AXButton"
+      }
+    ],
+    "terminal-osc8-4": [
+      {
+        "value": "",
+        "role": "AXWindow",
+        "title": "w"
+      },
+      {
+        "role": "AXGroup",
+        "title": "w",
+        "value": ""
+      },
+      {
+        "value": "Do you want VSLight to open the external website?",
+        "title": "",
+        "role": "AXStaticText"
+      },
+      {
+        "title": "",
+        "value": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=80a249748537&surface=terminal-osc8&index=4#fragment%20space",
+        "role": "AXStaticText"
+      },
+      {
+        "value": "",
+        "title": "Open",
+        "role": "AXButton"
+      },
+      {
+        "role": "AXButton",
+        "title": "Copy",
+        "value": ""
+      },
+      {
+        "value": "",
+        "title": "Configure Trusted Domains",
+        "role": "AXButton"
+      },
+      {
+        "role": "AXButton",
+        "value": "",
+        "title": "Cancel"
+      }
+    ]
+  },
+  "priorSixteenSource": "M5-external-links145.md; unchanged routes",
+  "helperPostExecutionChange": "Added pre-click exact-URL tab-ID snapshot; original three native rows each used a distinct first-click URI. Executed helper hash was not frozen; current hash is not attributed to execution."
+}

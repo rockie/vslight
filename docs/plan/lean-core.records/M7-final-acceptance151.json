@@ -1,0 +1,67 @@
+{
+  "at": "2026-10-02 21:35 +1000",
+  "status": "PASS_M7_ALL_EXIT_GATES",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "preconditions": [
+    "M5 completed",
+    "M6 completed"
+  ],
+  "allGates": "PASS",
+  "gaps": [],
+  "gates": [
+    "Actual production graph and all three package layouts; ordinary copy retained",
+    "Adjusted actual static/CLI negative gates",
+    "Two prune injections exit4 and caller stops",
+    "Full noEmit/compile/build",
+    "254 prune paths absent; no duplicate/overlap",
+    "Actual desktop and remote install byte ledgers"
+  ],
+  "references": [
+    {
+      "path": "M5-final-acceptance151.json",
+      "sha256": "6bd4ec79ad67e7a40863835090cdc1a834c62fecf3c6673b911db8394498d64e",
+      "originalCapturedSha256": "00c385aec4bc8a68d60581a816bce6ff6ffe35cd797d70e0100278fc3b0b0da4",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M6-final-acceptance151.json",
+      "sha256": "9c023cb461ea36c515f2229d5175c5935d2e5996fe204a25db4d395e71cd0b1c",
+      "originalCapturedSha256": "564cd563f2b41e317702ec1cd96a19aa84160521d0377334316a0dfefbb68073",
+      "finalReferenceRecheckAt": "2026-10-02T21:41:20.107124+10:00"
+    },
+    {
+      "path": "M8-build151.json",
+      "sha256": "ad2272ab4666e0f89c16f92239dcb3f0a380280c594bb13bd5cba43fd9671a8a"
+    },
+    {
+      "path": "M7-remote151.json",
+      "sha256": "fdfda0bf0b29052eb2f03551cbe4ba7eb6cbe97b3f16fdffec473ef6c836b427"
+    },
+    {
+      "path": "M7-prune151.json",
+      "sha256": "439b5e24b6a814a7e4c1e69b040167a5baea168328156624fc5471f4fb0729bd"
+    },
+    {
+      "path": "M8-artifact151.json",
+      "sha256": "ef63b49987c9f408343432ee93c313e0acbc178aa21c16d371d69feacf667d9f"
+    },
+    {
+      "path": "M8-post-runtime-payload151.json",
+      "sha256": "5d80506803d63775ebf9aff81a20e719bf7c4ef0653cfabea4565e8b46254057"
+    },
+    {
+      "path": "M8-crc-static-final.json",
+      "sha256": "7b43b7c0ecb520e08d55646d607cc4a28668b9dc33dab013470e5276d0686361"
+    },
+    {
+      "path": "M6-cli151.json",
+      "sha256": "b4e1a439e183cdae04783131c2ce47868e91db29293c0186fbf7b5811090f668"
+    }
+  ],
+  "remoteLimit": "ignore-scripts production installation only; no REH/native runtime claim",
+  "closingReferenceRecheck": {
+    "at": "2026-10-02T21:41:20.107124+10:00",
+    "reason": "Original M4 reference captured before M8-runtime151 summary gained subsequent completed-gate links; raw captured files/logs independently match. Dependent summary references refreshed in order; original hashes retained.",
+    "runtimeRawFilesVerified": 177
+  }
+}

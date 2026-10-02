@@ -1,0 +1,16 @@
+{
+  "cliExit": 0,
+  "result": {
+    "runId": "file138-1790866768",
+    "status": "PASS",
+    "observed": {
+      "uri": "file:///private/tmp/fc138-5bx6ysyo/w/chat",
+      "content": "ordinary chat file stays unchanged\n",
+      "dirty": false
+    },
+    "hostPid": 53651,
+    "parentPid": 53644
+  },
+  "fileUnchanged": true,
+  "root": "/tmp/fc138-5bx6ysyo"
+}

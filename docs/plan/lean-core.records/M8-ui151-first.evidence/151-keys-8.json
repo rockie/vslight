@@ -1,0 +1,10 @@
+{
+  "query": "playwright",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "playwright",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

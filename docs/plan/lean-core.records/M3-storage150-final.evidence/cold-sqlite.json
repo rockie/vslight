@@ -1,0 +1,71 @@
+{
+  "editors": [
+    {
+      "editorpart.state": {
+        "serializedGrid": {
+          "root": {
+            "type": "branch",
+            "data": [
+              {
+                "type": "leaf",
+                "data": {
+                  "id": 0,
+                  "editors": [
+                    {
+                      "id": "workbench.editors.webviewInput",
+                      "value": "{\"origin\":\"c0447b4e-92ee-4d48-8424-5025d6e93d1c\",\"viewType\":\"mainThreadWebview-vscode.mermaid-markdown-features.preview\",\"providedId\":\"vscode.mermaid-markdown-features.preview\",\"title\":\"Mermaid fixture: flowchart\",\"options\":{\"retainContextWhenHidden\":false,\"allowScripts\":true,\"forwardUntrustedKeypressEvents\":true,\"localResourceRoots\":[{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out\",\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features/chat-webview-out\",\"scheme\":\"file\"}]},\"extensionLocation\":{\"$mid\":1,\"path\":\"/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features\",\"scheme\":\"file\"},\"extensionId\":\"vscode.mermaid-markdown-features\",\"state\":\"{\\\"mermaidSource\\\":\\\"flowchart TD\\\\n  A[\u4e2d\u6587\u5f00\u59cb] --> B{\u662f\u5426\u6210\u529f}\\\\n  B -->|\u662f| C[\u4fdd\u5b58\u7ed3\u679c]\\\\n  B -->|\u5426| D[\u68c0\u67e5\u8f93\u5165]\\\\n  D --> A\\\\n\\\",\\\"panZoom\\\":{\\\"scale\\\":1.25,\\\"translateX\\\":429.75,\\\"translateY\\\":225}}\",\"iconPath\":{\"id\":\"graph\"},\"group\":0}"
+                    },
+                    {
+                      "id": "workbench.editors.files.fileEditorInput",
+                      "value": "{\"resourceJSON\":{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/mermaid/flowchart.md\",\"external\":\"file:///private/tmp/lcfinal-chkarkup/mermaid/flowchart.md\",\"path\":\"/private/tmp/lcfinal-chkarkup/mermaid/flowchart.md\",\"scheme\":\"file\"},\"encoding\":\"utf8\"}"
+                    },
+                    {
+                      "id": "workbench.editors.webviewInput",
+                      "value": "{\"origin\":\"eeb6d9df-b4ab-4482-bd44-daf3a2684b73\",\"viewType\":\"mainThreadWebview-markdown.preview\",\"providedId\":\"markdown.preview\",\"title\":\"Preview flowchart.md\",\"options\":{\"enableFindWidget\":true,\"allowScripts\":true,\"allowForms\":false,\"forwardUntrustedKeypressEvents\":true,\"localResourceRoots\":[{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/github\",\"external\":\"file:///private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/github\",\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/github\",\"scheme\":\"file\"},{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features\",\"external\":\"file:///private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features\",\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features\",\"scheme\":\"file\"},{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-math\",\"external\":\"file:///private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-math\",\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-math\",\"scheme\":\"file\"},{\"$mid\":1,\"fsPath\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features\",\"external\":\"file:///private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features\",\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/mermaid-markdown-features\",\"scheme\":\"file\"},{\"$mid\":1,\"external\":\"file:///private/tmp/lcfinal-chkarkup/mermaid\",\"path\":\"/private/tmp/lcfinal-chkarkup/mermaid\",\"scheme\":\"file\"}]},\"extensionLocation\":{\"$mid\":1,\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features\",\"scheme\":\"file\"},\"extensionId\":\"vscode.markdown-language-features\",\"state\":\"{\\\"resource\\\":\\\"file:///private/tmp/lcfinal-chkarkup/mermaid/flowchart.md\\\",\\\"line\\\":0,\\\"resourceColumn\\\":1,\\\"locked\\\":false}\",\"iconPath\":{\"light\":{\"$mid\":1,\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/preview-light.svg\",\"scheme\":\"file\"},\"dark\":{\"$mid\":1,\"path\":\"/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/media/preview-dark.svg\",\"scheme\":\"file\"}},\"group\":0}"
+                    }
+                  ],
+                  "mru": [
+                    2,
+                    1,
+                    0
+                  ],
+                  "preview": 1
+                },
+                "size": 829
+              }
+            ],
+            "size": 1092
+          },
+          "orientation": 0,
+          "width": 1092,
+          "height": 829
+        },
+        "activeGroup": 0,
+        "mostRecentActiveGroups": [
+          0
+        ]
+      }
+    }
+  ],
+  "sentinels": [
+    {
+      "db": "u/User/workspaceStorage/877bb066c8efe95acdd1902b35bce660/state.vscdb",
+      "preserved": {
+        "chat.sessions.lean-history-sentinel": "SYNTHETIC_OLD_CHAT_HISTORY_PRESERVE",
+        "mcp.lean-old-config": "{\"servers\":{\"historical\":{\"command\":\"synthetic-never-run\"}}}",
+        "secret://lean-history-synthetic": "SYNTHETIC_OPAQUE_CREDENTIAL_PRESERVE",
+        "lean-synthetic-auth-Lean Old Account": "[{\"id\":\"lean-tests.lean-ui-final\",\"allowed\":true}]"
+      }
+    },
+    {
+      "db": "u/User/globalStorage/state.vscdb",
+      "preserved": {
+        "chat.sessions.lean-history-sentinel": "SYNTHETIC_OLD_CHAT_HISTORY_PRESERVE",
+        "mcp.lean-old-config": "{\"servers\":{\"historical\":{\"command\":\"synthetic-never-run\"}}}",
+        "secret://lean-history-synthetic": "SYNTHETIC_OPAQUE_CREDENTIAL_PRESERVE",
+        "lean-synthetic-auth-Lean Old Account": "[{\"id\":\"lean-tests.lean-ui-final\",\"allowed\":true}]"
+      }
+    }
+  ],
+  "historicalFileExact": true
+}

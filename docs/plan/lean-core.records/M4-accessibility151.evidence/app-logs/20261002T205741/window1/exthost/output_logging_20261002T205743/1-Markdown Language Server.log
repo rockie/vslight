@@ -1,0 +1,4 @@
+(node:30881) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/dist/serverWorkerMain.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/extensions/markdown-language-features/package.json.
+(Use `VSLight Helper (Plugin) --trace-warnings ...` to show where the warning was created)

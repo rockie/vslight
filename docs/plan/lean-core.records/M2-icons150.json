@@ -1,0 +1,60 @@
+{
+  "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "ready": {
+    "status": "READY_FOR_ICON_OBSERVATION",
+    "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "pid": 36898,
+    "ready": {
+      "hostPid": 38207,
+      "parentPid": 36898,
+      "root": "/private/tmp/icon150-6aq7dwa4",
+      "version": "1.135.0"
+    },
+    "at": "2026-10-02T10:46:34.724435+10:00",
+    "finderRevealedExactApp": true
+  },
+  "observation": {
+    "at": "2026-10-02T10:49:11.418993+10:00",
+    "source": "User reply to exact private artifact GUI observation question",
+    "answer": "三个图标都正常",
+    "acceptedScope": "Finder and Dock icons normal; actual About window contains complete version data and does not display a separate icon",
+    "ownPID": 36898,
+    "clarifiedAnswer": "两处图标正常，关于内容完整"
+  },
+  "nativeAbout": [
+    {
+      "title": "native.txt — w",
+      "value": "",
+      "role": "AXWindow"
+    },
+    {
+      "value": "",
+      "role": "AXGroup",
+      "title": "native.txt — w"
+    },
+    {
+      "title": "",
+      "value": "VSLight",
+      "role": "AXStaticText"
+    },
+    {
+      "title": "",
+      "value": "\nVersion: 1.135.06566\nCommit: 41ec19baf8095b559518922360dcb3e4fee5319c\nDate: 2026-10-02T00:33:53.924Z (13 mins ago)\nElectron: 43.7.5\nElectronBuildId: undefined\nChromium: 150.0.7871.250\nNode.js: 24.21.0\nV8: 15.0.245.31-electron.0\nOS: Darwin arm64 25.6.0",
+      "role": "AXStaticText"
+    },
+    {
+      "value": "",
+      "title": "OK",
+      "role": "AXButton"
+    },
+    {
+      "value": "",
+      "role": "AXButton",
+      "title": "Copy"
+    }
+  ],
+  "cleanup": {
+    "normalQuitExit": 0
+  },
+  "screenshot": "/private/tmp/icon150-6aq7dwa4/evidence/about.png"
+}

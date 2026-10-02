@@ -1,0 +1,507 @@
+{
+  "at": "2026-10-01T18:47:15.123655+00:00",
+  "status": "PASS",
+  "rawApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "signedApp": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign149-rwc9y8ux/VSCode-darwin-arm64/VSLight.app",
+  "unchangedRegularFiles": 1166,
+  "addedRegularFiles": 10,
+  "changedRegularFiles": 33,
+  "removed": [],
+  "unexpected": [],
+  "plistChangedKeys": [
+    "NSAppleEventsUsageDescription",
+    "NSAudioCaptureUsageDescription",
+    "NSCameraUsageDescription",
+    "NSLocalNetworkUsageDescription",
+    "NSMicrophoneUsageDescription"
+  ],
+  "docAndURLTypesUnchanged": true,
+  "changes": [
+    {
+      "path": "Contents/CodeResources",
+      "kind": "notary staple ticket, validated by stapler and spctl",
+      "before": null,
+      "after": {
+        "bytes": 2325,
+        "sha256": "b0059965bb6b4fdb460259bfa044500f53a7fc95325e8c0e772aa42022d2be24"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 10992,
+        "sha256": "2764ca164c4fa5a45ab222334dc463b0afc4b8bdb193bf9b02e77bad34c772d2"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2442,
+        "sha256": "41b27daab76e01def237a2fb452d86d6442b461fa28013fc3abfd1a86d89c743"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2442,
+        "sha256": "95920ec9421fbb6d2efe69b0b33724d9e685b6c563f467ec8baa8c0a8df5444a"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2660,
+        "sha256": "d58b0c9687abafae7b2c70249e2c9d28076e21cd1979de75f293c9778491bc31"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 2200,
+        "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b"
+      }
+    },
+    {
+      "path": "Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata",
+      "before": null,
+      "after": {
+        "bytes": 378428,
+        "sha256": "d9f2b11f74aed24488f138bfbe86eb1a887ac7de3f122d29c41c317bf5949177"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 195322960,
+        "sha256": "21cb55de8417ef4435108a1f7c7718abdc2909dcdd4a6682d2231ffe09a5e549"
+      },
+      "after": {
+        "bytes": 194205696,
+        "sha256": "823c29381c2fe8c60b6562e393c12e9f3605fc2c44608e5658a6b4d83f9fb94b"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 1210848,
+        "sha256": "26e5d100e7cd83dff5ab9b5300a66a294c4a7fcb01101f283eb7c7eec846a9bb"
+      },
+      "after": {
+        "bytes": 1222896,
+        "sha256": "1a0ec0005271ae3b22a28bead4256f7157a6d156aa4fb8fc95d2c47671dd817f"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libEGL.dylib",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 91952,
+        "sha256": "63dd8fcfee2290b8bde45c85853bdcb569efd343a01b5926ad98cb441e65921c"
+      },
+      "after": {
+        "bytes": 109664,
+        "sha256": "bd7dd576f46e77d0e24a83ac7d2e1ea053ac9d75f835fa5e209287fadacb0699"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libGLESv2.dylib",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 6278400,
+        "sha256": "79f97d0962a8a285caf926cdb2b9038069f1ef5f1a7114c26bed7cbe27e6a641"
+      },
+      "after": {
+        "bytes": 6260192,
+        "sha256": "00815fca448f2fabd6c97bcf2a9f4a1594c7514609378dbb82672211aa5ed050"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 2230784,
+        "sha256": "3d21757dd028afa5716fbafa2fe56f8a394a4131dc809cb3f91010125f6c8d7d"
+      },
+      "after": {
+        "bytes": 2236096,
+        "sha256": "e034d1c4fe279be46c6c82c62854ea111198cfccf78eb74f3176255b15a84afe"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 16574256,
+        "sha256": "41855c43c45d34b723e3be7845c9a74c2bd267473652d2ae31e2b0cc5365ecf7"
+      },
+      "after": {
+        "bytes": 16496144,
+        "sha256": "7687c695998ede2bb7f27abbd7f9cfe579723bfcd49e84ab01589d5a4553c565"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/Mantle",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 126544,
+        "sha256": "41e3584ee53d84abf69f3731a58ac72d59ce935d86767d775fcb7cd59253831b"
+      },
+      "after": {
+        "bytes": 144128,
+        "sha256": "858cb722b8312f8e237ce0f8c3ee2427a4f67d482ee013e30b8ae34ce76ba36d"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 352864,
+        "sha256": "1e33ffa509c0868dcb66d1546892172737d6531488a074e442552e2f952dce12"
+      },
+      "after": {
+        "bytes": 369136,
+        "sha256": "d249f27c341673b162492737617fdcb6dcd6e401c5cf6ce9222f07228e41422f"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 125696,
+        "sha256": "d08b5285df563c516346fbb976c37091fbeec63bb10a7511240e3d4b56a65700"
+      },
+      "after": {
+        "bytes": 144032,
+        "sha256": "23a47743d0362b3aa9979c5bab70f2c79a57eac5f2ab2ac6a56f79e5b41b82e7"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 145408,
+        "sha256": "3a5f64f2cac1636fbd63a06f1794d3113f98690dd34ad92baeb011a2f52c2d59"
+      },
+      "after": {
+        "bytes": 162864,
+        "sha256": "c07f08a69eeb2d3a2371bb2d7d24442938787b4b44f7542ffb230d7cb211e796"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/MacOS/VSLight Helper (GPU)",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 203600,
+        "sha256": "f48ef4b7b92cf19cde947991ceca0056f98c47ae005679b856ce4abeed740514"
+      },
+      "after": {
+        "bytes": 221168,
+        "sha256": "1ec6e91e004c51e6e1967558d49dcdb68818a8205d89564a9d2c24d59584858f"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin)",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 203600,
+        "sha256": "7d3376ceeb99ce078966777c8b1f324f9f6eefd495a6ef03b13b2dc8c48b88d5"
+      },
+      "after": {
+        "bytes": 221424,
+        "sha256": "271d92e7be53a0f2165c86821f5a70fe2877b2f32c4f5a167c77d6b881291ef9"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/MacOS/VSLight Helper (Renderer)",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 203600,
+        "sha256": "eec0a5e2dc7ef27ded7e88f3ec8632f98fe93c26d2344ae9d858b6cf765407e4"
+      },
+      "after": {
+        "bytes": 221168,
+        "sha256": "5fdf0b48c68bbf9f9f1774729610da056034ec1d71375a841010bc8f5f251088"
+      }
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 203584,
+        "sha256": "9e45fe8e094e8f0f9540e3cddc76a5c61df15dd29c7927d3f2ca2edc9653a973"
+      },
+      "after": {
+        "bytes": 221168,
+        "sha256": "479a58e64ff551f878f771698adad03a40145f79bde080f385b2df6da490fbf1"
+      }
+    },
+    {
+      "path": "Contents/Info.plist",
+      "kind": "main bundle plist",
+      "before": {
+        "bytes": 35380,
+        "sha256": "aa157b3cec5d0c247a39469e5b977d39ce68978c7cfbd91bb648d59f21bafb85"
+      },
+      "after": {
+        "bytes": 35737,
+        "sha256": "79c97621b4d2de7da8709583663aaf64f14d188f752a5c1351f608b4f5cdea53"
+      }
+    },
+    {
+      "path": "Contents/MacOS/VSLight",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 33968,
+        "sha256": "4751f35ad2f7e7c21c81c6596a9d6faa2ce1f6c6c9641aa51c4ae3a1926ed3b7"
+      },
+      "after": {
+        "bytes": 52864,
+        "sha256": "0663f8049cd7dc4bc24ce9c66a7fae6190fad39f3f08bbd55e5d94cc7c15066e"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/extensions/git/node_modules/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 80496,
+        "sha256": "87f988042ece939b45ce170bbd5089e8cf5489a8d9a908b8727516d4d16bf6db"
+      },
+      "after": {
+        "bytes": 98288,
+        "sha256": "a263d00006b925cc7ec9062d7957f434b18c85e32567ceb7e12137d38b7369e1"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/libmsalruntime.dylib",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 6603872,
+        "sha256": "199205f181f827fb48db5ae7daf451623082a6f8e0a559fa9a538eb31d228a39"
+      },
+      "after": {
+        "bytes": 6550864,
+        "sha256": "1d2ecc9ce96236bc86c8f0582c2d844dd7c4431ab72d8f3d973a2873b1ee2e62"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/msal-node-runtime.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 359456,
+        "sha256": "417682aa85c5a14767c4aa8fbd3d5e4429359d4132986aead70f831056dc52e3"
+      },
+      "after": {
+        "bytes": 342736,
+        "sha256": "aa2ac7e51b38a451fe31d606e842b473f196852ff574cb3d79d86127b5eaba61"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 467184,
+        "sha256": "c8d8d2aba956deb4086c8b3911f75c7a4cec26774d17e9fbba58a0494f2e824f"
+      },
+      "after": {
+        "bytes": 482720,
+        "sha256": "4a48fc3869a067a4e0024f4b296b43ff141c899f188f9100bcd9a985dc64cafc"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 16704,
+        "sha256": "5dbf2eb1fa0884923a60980e523bc053a252fded3d4535437a985d07520547b3"
+      },
+      "after": {
+        "bytes": 34864,
+        "sha256": "40e70594307b305907b918606468b489855eb9238aae83c14539e46b782dd771"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 80480,
+        "sha256": "e8d09ff872ffeb3d2ab4fac992c3fb45e80a1c9255e7fa68bc4f0eb5f35bc8f2"
+      },
+      "after": {
+        "bytes": 98272,
+        "sha256": "a8c84a8cd29819c0a56ee1cf40999950b5ef0a8b2e6dd6c499193c164ce469f9"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 52288,
+        "sha256": "4101294bbcdbacbfcfd43f5b6758966c1bef06aa64b15af63f6c295b74c83f27"
+      },
+      "after": {
+        "bytes": 70256,
+        "sha256": "4484f2a38bf4f69bba23d52d6d41a58d9d1104f5fa3ef7003f584dfd2f5f13a4"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 6632912,
+        "sha256": "6246763c418c25c2d0f99c2416b9f600ae62bc5416adb3a36912952be6047571"
+      },
+      "after": {
+        "bytes": 6612624,
+        "sha256": "fbd6c878eb9b92de5991a1a1eabb23e6fec7289b54a9654686a197129316aa95"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 4528512,
+        "sha256": "6ef40346bf31fcce79d9614c7745c198542925a0c7d4911e1ffe794c53392ac1"
+      },
+      "after": {
+        "bytes": 4521264,
+        "sha256": "7df01f69806253c83669add6ed6b3685b95297d93c132d6111ffad61910a7462"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 501464,
+        "sha256": "84f19bdfd77c9776542f6e249f11f6380b6949222146c3fb6ef87464ac6396bd"
+      },
+      "after": {
+        "bytes": 516816,
+        "sha256": "79bb953128e7ae0ce08fbe07f7fce578fc7cba44bab315c6ba45135098f00aa8"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 1886784,
+        "sha256": "f6f8edf871289e37b57b940202965cfbbd7ecbedeb6b922954ec209c3b8ec9dc"
+      },
+      "after": {
+        "bytes": 1894080,
+        "sha256": "1a4a4ced4d1e46e2c8ebd9049bf67802ac89cb7b46dfa11a04500ed11fcd2587"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 60320,
+        "sha256": "73df5f8b3c8e47ab4f97bab695c3f17db68bb02a9013b5dec34fce8d518f1031"
+      },
+      "after": {
+        "bytes": 78240,
+        "sha256": "d91912ac1f1da6ae6eba8618d9985016525f0760796dfe999c16d9ab02222df7"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 541248,
+        "sha256": "4cc85d32febc2bf85078c4dd918cc1f6be576215d348054c29caeb188e25c713"
+      },
+      "after": {
+        "bytes": 590640,
+        "sha256": "9abcf5c94a69c521b655ae5680e0052c5369e75d0ede940ffb99a711a9cd35db"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 51040,
+        "sha256": "ab559eda9f21ec3907305a1f199144695bb5c861c7da5b25bbb16b10d8bdf934"
+      },
+      "after": {
+        "bytes": 69024,
+        "sha256": "61cdf23863cab01af4fb2ee32b5eb6456f30480be0870bb785cf8c96fb74da71"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 91704,
+        "sha256": "a9e5be7487067791fe55702101408c0e173d512ee18a24b2d3c343d3ac16d20c"
+      },
+      "after": {
+        "bytes": 109424,
+        "sha256": "83ad9db8cde2af59705bfe587860972b7b93574abab019565d3939a94940db19"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 50688,
+        "sha256": "16c539fd08278d87c346ce8f009d02108d871de5495a57cf6632a9765b2ff3ab"
+      },
+      "after": {
+        "bytes": 69488,
+        "sha256": "f97f0129b9602eb9ebe57942c2c103f9d7ec56a5c2eb9e1ae7d57247a64e8115"
+      }
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+      "kind": "Mach-O signature",
+      "before": {
+        "bytes": 51480,
+        "sha256": "3afecd047bc2a6975e8eb29233a6ed19960d95a89374a6a8809f2f8f48483f93"
+      },
+      "after": {
+        "bytes": 69456,
+        "sha256": "55fc09593b9e2e261c5148295c0d60b7f9b887ba8a14725e569d77a3c1144886"
+      }
+    }
+  ]
+}

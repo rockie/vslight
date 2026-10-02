@@ -1,0 +1,15 @@
+[
+  {
+    "index": 0,
+    "entries": [
+      {
+        "id": "status.problems",
+        "alignment": 0
+      },
+      {
+        "id": "status.notifications",
+        "alignment": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,550 @@
+{
+  "root_commit": "f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "upstream_commit": "08d4889f9ec4a1685d257b9b95de036c8e1ce1e5",
+  "workspace": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/vscodium",
+  "build_log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/build.log",
+  "build_exit": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-baseline-vvqrjd3q/build.exit",
+  "node": "24.18.0",
+  "electron": "43.7.5",
+  "arch": "arm64",
+  "CI": true,
+  "signing": "unsigned; final comparison must use an equivalent unsigned archive as well as distribution archive",
+  "build_session": 81605,
+  "reference_smoke_session": 30522,
+  "release_version": "1.135.06566",
+  "build_sourceversion": "41ec19baf8095b559518922360dcb3e4fee5319c",
+  "inputs": [
+    {
+      "path": "patches/00-binary-fix-name.patch",
+      "sha256": "eb4dda2faa88f699f8ae23398f56514c6f0ea0ae8147dd14c440f69e590ef71f",
+      "bytes": 1587
+    },
+    {
+      "path": "patches/00-brand-remove-branding.patch",
+      "sha256": "9d5ac1dfeccaccb0f2b333aba4d9a2aab4f1719d87998a40a85362dfa211aad5",
+      "bytes": 168042
+    },
+    {
+      "path": "patches/00-build-disable-esbuild.patch",
+      "sha256": "a9d65cfbbf90fd748d22dd8cfff7d20293d107e928203a095d13e59d8ea5e78c",
+      "bytes": 251
+    },
+    {
+      "path": "patches/00-build-disable-mangle.patch",
+      "sha256": "9fe6e2b3e7a0fdc9e10b026951f23f8dd34b4a62f1b8a5573b93257f3314918e",
+      "bytes": 1456
+    },
+    {
+      "path": "patches/00-build-download-extensions-from-gh.patch",
+      "sha256": "1dfff397f9194adb906892511d57fe1f454c0c226ed0e32c803bde781b35ed30",
+      "bytes": 497
+    },
+    {
+      "path": "patches/00-build-package-missing-dependencies.patch",
+      "sha256": "e3fba1e29bf41d0c900cc16fafaefde5cc9e15a30c74b98e6689d298129aac89",
+      "bytes": 376
+    },
+    {
+      "path": "patches/00-build-replace-unicode.patch",
+      "sha256": "3f131765f689f6287d30e8cd5846b2bef85615441441028d44a2746664428262",
+      "bytes": 746
+    },
+    {
+      "path": "patches/00-build-update-sourcemap-url.patch",
+      "sha256": "59c3e8d2bf81dc9248c0c873a0801ce53d79e527900e5fa92b6bc49b274cb494",
+      "bytes": 4460
+    },
+    {
+      "path": "patches/00-cloud-remove.patch",
+      "sha256": "e1217f9be94dd7eb5ad3c8856a43fc2b32d812363f33bd093476ddb44414c2cb",
+      "bytes": 3093
+    },
+    {
+      "path": "patches/00-community-add-announcements.patch",
+      "sha256": "dbe00a16f805967c3c445b5096b69081a01d43958d425070a136314027bcce5b",
+      "bytes": 4588
+    },
+    {
+      "path": "patches/00-copilot-disable-terminal-suggest.patch",
+      "sha256": "9181186263872f9915c5fe896794d544def01b5e77f86551f1fbe7790b80a270",
+      "bytes": 1725
+    },
+    {
+      "path": "patches/00-copilot-fix-action-condition.patch",
+      "sha256": "3a51b3f5ed6f7a8c43aafc50ba9410529b43db0564a2e586a516b228bf2836a7",
+      "bytes": 12212
+    },
+    {
+      "path": "patches/00-ext-git-ai-coauthor-off.patch",
+      "sha256": "f9f473bce11b1597de718dc4701bd51579d4f3c441f7b1c3d0eedefef99689e9",
+      "bytes": 468
+    },
+    {
+      "path": "patches/00-ext-github-authentication-use-pat.patch",
+      "sha256": "a164346b2b0e47e5796bcd36a33a0e6895ef2ffd3ff27fe0bf26a9ed522493c6",
+      "bytes": 1430
+    },
+    {
+      "path": "patches/00-ext-github-remove-vscodedev.patch",
+      "sha256": "5fd81aec78958d582c7655a88c4ba94d6be080c09287e3ec92c091a511d2e50e",
+      "bytes": 7414
+    },
+    {
+      "path": "patches/00-extension-disable-signature-verification.patch",
+      "sha256": "02ae9bff811559a95d4db8467f6db3899c032bedbdf18c99b97e4490a3cec432",
+      "bytes": 1068
+    },
+    {
+      "path": "patches/00-remote-add-missing-dependencies.patch",
+      "sha256": "23cf1487d595d10a7274904be91b597f5d718df484829e89024bcfff2f2bdb6c",
+      "bytes": 865
+    },
+    {
+      "path": "patches/00-remote-add-url.patch",
+      "sha256": "cfa8de5fce5b7c3c0defe00136c33459a27db52ea4e164ba5ce96d6f1dfbcfc7",
+      "bytes": 1040
+    },
+    {
+      "path": "patches/00-remote-disable-client-validation.patch",
+      "sha256": "43941aa950dfd543bae8a08b10649704576c04e3fbea18786cdd27aa5ba18e0d",
+      "bytes": 2845
+    },
+    {
+      "path": "patches/00-remote-remove-missing-vsda.patch",
+      "sha256": "9424d915e15bbeeb3f7ce599f7cc1c82c77e37df099c9502efe38d30be6f3eef",
+      "bytes": 4966
+    },
+    {
+      "path": "patches/00-security-add-command-filter.patch",
+      "sha256": "04560b23d89fb063d755c4553ca2a9bfeb30d713de7604658174d4156b5fe468",
+      "bytes": 8114
+    },
+    {
+      "path": "patches/00-settings-fix-migration-folder-scope.patch",
+      "sha256": "556a53b3915dc05c8dcb8cc652f27c1417839de298e07d30cb31df254d7b41c7",
+      "bytes": 2298
+    },
+    {
+      "path": "patches/00-settings-gallery.patch",
+      "sha256": "9e210dab33d5d38e335d025cf29abf7b9914defce9652c55cc6bf28fa53be2cf",
+      "bytes": 2226
+    },
+    {
+      "path": "patches/00-settings-user-product.patch",
+      "sha256": "448587a362307e3bc527583866ae53a2f0194c215e5374fa900bb8f50388a5d9",
+      "bytes": 3551
+    },
+    {
+      "path": "patches/00-telemetry-disable.patch",
+      "sha256": "be7de72ef8ed64bd18d059dbaadd97071a7949a9da9d6b3d39a63203c852eb1d",
+      "bytes": 4031
+    },
+    {
+      "path": "patches/00-tunnel-disable-recommendation.patch",
+      "sha256": "0e4bcf1233b54b989c4bd42a2f40acc0be7cb85f1dd7ab93d083f387bfdabfb3",
+      "bytes": 706
+    },
+    {
+      "path": "patches/00-ui-custom-font.patch",
+      "sha256": "1e9e42a74d5b37227285fd5348bbf66724bea1c685a597a5d8c3b861483da31a",
+      "bytes": 275500
+    },
+    {
+      "path": "patches/00-ui-improve-eol-banner.patch",
+      "sha256": "b9ffd3eaf1997ca68d5c0b8874e04b7c39ffe4ed415323abfffda231e2ffa5c9",
+      "bytes": 3074
+    },
+    {
+      "path": "patches/00-ui-remove-ask-vscode.patch",
+      "sha256": "0adb19e29e542e3b6e898cdd141624812dc53adf132c47b28326005f34eb7347",
+      "bytes": 2088
+    },
+    {
+      "path": "patches/00-ui-report-issue.patch",
+      "sha256": "4de02e27966c12fd7a6ec0f7162c1088d2359317daa10f2cb6a4481096126d3c",
+      "bytes": 5741
+    },
+    {
+      "path": "patches/00-update-rename-cache-path.patch",
+      "sha256": "bee02db192415b84480fc22c10ae8ac601d3efbe81e0c78404dcef53750ab2a8",
+      "bytes": 710
+    },
+    {
+      "path": "patches/00-vsce-use-custom-lib.patch",
+      "sha256": "7905ad6b18de01bf3872249da58a61782de9917f1dafd727132daf945e380b37",
+      "bytes": 15467
+    },
+    {
+      "path": "patches/10-version-add-release.patch",
+      "sha256": "a445b748e2a8c6cc587425367f8fe14763ff657828ff513f1102a1b12217b1a4",
+      "bytes": 1625
+    },
+    {
+      "path": "patches/100-light-remove-telemetry-sdk.patch",
+      "sha256": "d8eca33d429355b55bfe527300c0eee71748ca9f93863b3e7b5f917fb1184cb5",
+      "bytes": 30403
+    },
+    {
+      "path": "patches/101-light-prune-mermaid.patch",
+      "sha256": "9d5a3dc592590dcaee70bc701fb7b3b0252adce4c280e72d5216bcdb2c8832b9",
+      "bytes": 1679
+    },
+    {
+      "path": "patches/102-light-remove-dev-tunnels.patch",
+      "sha256": "a8f9baf2cab2d6ec930ce5c64c76e02c4f37f04ff7a3d26dd30adf321414f6c1",
+      "bytes": 31023
+    },
+    {
+      "path": "patches/103-light-update-electron.patch",
+      "sha256": "6973f217f650a2860872f9a2ffc0b7987b9b3123bed4a0b2c378fe6e4911a5d2",
+      "bytes": 17217
+    },
+    {
+      "path": "patches/104-light-product-nil-guards.patch",
+      "sha256": "976ca46968fff39f3ca549c61478d335aebd8cd5356036c363c7fe013281f1c7",
+      "bytes": 8918
+    },
+    {
+      "path": "patches/105-light-remove-dead-watermark.patch",
+      "sha256": "0325df56561bbb78452fe6af9d12607ad2180d8aaf512555e3d4b432d480338b",
+      "bytes": 1844
+    },
+    {
+      "path": "patches/106-light-remove-terminal-copilot-hint.patch",
+      "sha256": "62727a2e071635a76bd601404efcdb2d35ed53540b93e592735a7326685d1099",
+      "bytes": 2847
+    },
+    {
+      "path": "patches/107-light-remove-search-chat-context.patch",
+      "sha256": "cbdde309d4e4a6dd58085796e5dde16e7b1f69658c5056d030070534acea79eb",
+      "bytes": 13593
+    },
+    {
+      "path": "patches/108-light-gate-chat-palette-actions.patch",
+      "sha256": "d6eaa38958a68c896e342c4af6fae083fa45838e2a3dcd2d0b7038b7a31a5934",
+      "bytes": 1070
+    },
+    {
+      "path": "patches/109-light-remove-notebook-mru-command.patch",
+      "sha256": "6035e8d3eed5103a3c0857cb7060972e6ba1240a14443dcbefc3568baa276be5",
+      "bytes": 1612
+    },
+    {
+      "path": "patches/11-update-use-github-release.patch",
+      "sha256": "43aefd80f491d6a909eaff14d45ecca40256b81376eee73a859ea616bb53a07b",
+      "bytes": 31555
+    },
+    {
+      "path": "patches/110-light-remove-copilot-statusbar-entry.patch",
+      "sha256": "d66d1a2fca61628d49a3140f019f8f20c1b1e1464cb995c5601909941b37c20d",
+      "bytes": 813
+    },
+    {
+      "path": "patches/111-light-hide-accounts-activity.patch",
+      "sha256": "532c61473ef3eb4c6cc4560d445e0c48a133ce4433a48fe26610bf8cca41fbaf",
+      "bytes": 863
+    },
+    {
+      "path": "patches/112-light-remove-about-copilot-versions.patch",
+      "sha256": "67e4a1edc0f0b1d451e7da9771ea97e6b1a23b6d9bd9bb46aeb43f4c8e8390d7",
+      "bytes": 1142
+    },
+    {
+      "path": "patches/113-light-build-date-stamp.patch",
+      "sha256": "85ee85c72ffcdbd0e2caa0ac782c6abe7583e4d5f253c7db4ebb5969bb10b238",
+      "bytes": 916
+    },
+    {
+      "path": "patches/12-update-add-cooldown.patch",
+      "sha256": "3ee428ad8bdb54cf904ad749cac9e86053631f2836d8f3640a788ea5bfa950b1",
+      "bytes": 3895
+    },
+    {
+      "path": "patches/20-keymap-use-custom-lib.patch",
+      "sha256": "1dc11f4ee1b8ed70513443f22ca9b6c01e7ea1f748f5d866e11d2a9f99e8ae92",
+      "bytes": 5892
+    },
+    {
+      "path": "patches/21-policy-use-custom-lib.patch",
+      "sha256": "9e93548890a54c3b566bfa7702a65ad5a17ae4f5af963c8aaf554d892adbb372",
+      "bytes": 21467
+    },
+    {
+      "path": "patches/30-build-add-missing-dependencies.patch",
+      "sha256": "d72260710872ac417589a5dd47a3829a598d3e2954f6bcd38931ed47bab7ccac",
+      "bytes": 1523
+    },
+    {
+      "path": "patches/40-cli-use-reh-archive.patch",
+      "sha256": "9b1ed81416f84222e569304decf7a55d7f215215757df193e87a229c45838675",
+      "bytes": 12098
+    },
+    {
+      "path": "patches/50-build-improve-gulp-tasks.patch",
+      "sha256": "49f355ab52ff1729cab33059cae8bbd58bbf550af9ddd87a1bcaa5e8ba01342a",
+      "bytes": 2535
+    },
+    {
+      "path": "patches/51-build-disable-non-ascii.patch",
+      "sha256": "d73924e37c85c27493c09b5b225e8f84285d94e2832784e604d7a0d69edf483a",
+      "bytes": 1091
+    },
+    {
+      "path": "patches/52-ext-copilot-remove-it.json",
+      "sha256": "0c805ef237cd65ca9682c0bec7d979acfdf2ca6552aebd36cc93c0b78fdab375",
+      "bytes": 10415
+    },
+    {
+      "path": "patches/53-ext-copilot-remove-it.patch",
+      "sha256": "e15344326aab1c21c12c73a1bc06d424876154cb056a45dbaa5d1b9d42616d87",
+      "bytes": 133476
+    },
+    {
+      "path": "patches/60-security-add-option-for-malicious-ext.patch",
+      "sha256": "21d01fd845ba8598f1e6c9b6b182036aa10e5eebaba1d4422cc2f0004886ff46",
+      "bytes": 1482
+    },
+    {
+      "path": "patches/61-extension-close-connection.patch",
+      "sha256": "2b704345dec03b2d3338409aafba2a736fe0fe564b863c5a9c6b478a8726a6f4",
+      "bytes": 944
+    },
+    {
+      "path": "patches/80-ui-disable-onboarding.json",
+      "sha256": "f5c7977ad743cae8a840a3649caa15c5256a9b16f665f068cbbb5a4e89e9cf0f",
+      "bytes": 108
+    },
+    {
+      "path": "patches/81-ui-disable-onboarding.patch",
+      "sha256": "371085a05c357d927f8aa435617e651ec3d43be653b43c7603ec64ad992be570",
+      "bytes": 3085
+    },
+    {
+      "path": "patches/91-light-remove-remote.patch",
+      "sha256": "b1790d6489a820c14cf525be42aff71a5704de536543c518ce12057dfb6035c2",
+      "bytes": 23368
+    },
+    {
+      "path": "patches/92-light-remove-sessions.patch",
+      "sha256": "abaf75d295b7c3d134483235e6ebb42c83fa7ba573f54b2b329b771d959717b9",
+      "bytes": 10778
+    },
+    {
+      "path": "patches/93-light-remove-debug.patch",
+      "sha256": "4ba3fac4042c8400369b34deb5fc159d2722fe095c139a623b4fbc227d15132f",
+      "bytes": 2608
+    },
+    {
+      "path": "patches/94-light-remove-notebook.patch",
+      "sha256": "72e5cfb93ad3947c97d50b53dec1d1994e3d85a25a3fce2c1be89c395c300bca",
+      "bytes": 11436
+    },
+    {
+      "path": "patches/95-light-remove-testing-welcome.patch",
+      "sha256": "ef35c63a596b77604b8d5de3a440490554a2af6f02bc7ad1ed2f812fbf6e9019",
+      "bytes": 5960
+    },
+    {
+      "path": "patches/96-light-remove-policy-watcher.patch",
+      "sha256": "93b1cab9c2e2596193c6f6db09a7f8caac5e8ce0727e0fa540b45bd629b488cf",
+      "bytes": 6347
+    },
+    {
+      "path": "patches/97-light-remove-chat.patch",
+      "sha256": "3a16add4309706cfd1b09c024885b11689ccb17c149d968f6b2d3ba10d39213d",
+      "bytes": 382
+    },
+    {
+      "path": "patches/98-light-remove-welcome-media.patch",
+      "sha256": "6f288e2e92603c9e98c5ac4846fc279a25a0a057280ddf91c747aedb362377ea",
+      "bytes": 387
+    },
+    {
+      "path": "patches/99-light-copilot-residual.patch",
+      "sha256": "c3edcc2223600d783fb62516d8229b5b3f74151308a55f54c2015b0d7d274720",
+      "bytes": 129535
+    },
+    {
+      "path": "patches/alpine/reh/00-build-docker.patch",
+      "sha256": "d7bdefc9ea0922794901740141435258e06cb72b83ef8280a6f23d0b34960c72",
+      "bytes": 1241
+    },
+    {
+      "path": "patches/helper/settings.patch",
+      "sha256": "ae6b5115b569efe9fa5bcbfd9ab421f72b30e96e3f5583dc5f57c1f286113dac",
+      "bytes": 706
+    },
+    {
+      "path": "patches/insider/19-system-extensions.patch",
+      "sha256": "aed931485e8ecd663b3bc75bedd369b1f24747b1b6cf9b5642b0e27fe7c846ae",
+      "bytes": 896
+    },
+    {
+      "path": "patches/light/prune.json",
+      "sha256": "e04945fb9570edebea6ae7048e59770d632a8204abf2190b65de3e3c0b670edf",
+      "bytes": 3998
+    },
+    {
+      "path": "patches/linux/00-asset-fix-rpm-version.patch",
+      "sha256": "60752bfdde0f1070fefe906fd48af3a67ee62581cb2d48eeb6a4426373b3fa8d",
+      "bytes": 558
+    },
+    {
+      "path": "patches/linux/00-build-improve-qemu.patch",
+      "sha256": "f8a96dacfa063a601d580938492f571900812e44ec846a8a9037f0b605b3480e",
+      "bytes": 907
+    },
+    {
+      "path": "patches/linux/00-cli-fix-unused.patch",
+      "sha256": "9be9a2d843b9558b676f1d97c3218740e389a3e9444e00e21e18a111a7c50580",
+      "bytes": 1060
+    },
+    {
+      "path": "patches/linux/00-env-improve-xdg-path.patch",
+      "sha256": "19eaf84fa95ec6f7d7f88aaa651385bb1ec5fb55542abeaee50536fee2e2a60a",
+      "bytes": 1279
+    },
+    {
+      "path": "patches/linux/00-log-use-state-home.patch",
+      "sha256": "78850134d5189b7bb0495a3d20715075fb0f164e31f70332f5d47be923b3edb3",
+      "bytes": 7099
+    },
+    {
+      "path": "patches/linux/00-policy-use-custom-path.patch",
+      "sha256": "f7cf427cc48e1d494dd6402a65e45e09fec3b07715e5cf5c9d866a4ef2ed8f32",
+      "bytes": 411
+    },
+    {
+      "path": "patches/linux/00-terminal-cmd-in-shell.patch",
+      "sha256": "7fa5d0b32dabaa706b4e7156a5f62744566ec3fa6c7f4ec40e1b2e98fac6be5c",
+      "bytes": 823
+    },
+    {
+      "path": "patches/linux/31-build-fix-dependencies.patch",
+      "sha256": "f1196f0a3b3bda425155dcb3ea696226ca7ffcea435595d675cd282afbefc58b",
+      "bytes": 32281
+    },
+    {
+      "path": "patches/linux/41-arch-add-support.patch",
+      "sha256": "88af7bf4471e5cb4deb180789779b2dfe7c6715902bf8bbe6510e7442cb583ad",
+      "bytes": 6155
+    },
+    {
+      "path": "patches/linux/42-arch-add-ppc64le.patch",
+      "sha256": "f0174d5af8b4317cdd1b3dc4052cc4c3645889df5def5d60f134ceaf35afec49",
+      "bytes": 15167
+    },
+    {
+      "path": "patches/linux/43-arch-add-riscv64.patch",
+      "sha256": "c13166fa5b0b89f07457dfc3afb017ae258ca92710e190ad81b7327700fedd70",
+      "bytes": 8691
+    },
+    {
+      "path": "patches/linux/44-arch-add-loong64.patch",
+      "sha256": "668d73feda345000d26e81abf1d8613de691eba0ad31b82faa534743304cdfba",
+      "bytes": 4635
+    },
+    {
+      "path": "patches/linux/45-arch-add-s390x.patch",
+      "sha256": "ac912a25d76746fe82755f8a69a74fdbbe755d1839e78b2c9315c6ebc1524011",
+      "bytes": 12926
+    },
+    {
+      "path": "patches/linux/46-arch-add-arm32.patch",
+      "sha256": "2d9a066542960c45380923e367d5d34781d931d4ff6a4baf49490b67d817bee6",
+      "bytes": 311
+    },
+    {
+      "path": "patches/linux/client/00-build-disable-remote.patch",
+      "sha256": "43dc9077532de1eae7ba826fd0e47e83583f920b157c6957275185bf6a448e8a",
+      "bytes": 464
+    },
+    {
+      "path": "patches/linux/client/00-system-support-16k-page-size.patch",
+      "sha256": "373ff7c234dfe8b922f7e719bdd4466609565e4860f53aa8ba490d71daa2bec5",
+      "bytes": 706
+    },
+    {
+      "path": "patches/linux/reh/s390x/00-build-override-dependency.patch",
+      "sha256": "db25c7ba71d1e938d78149ecbdf1917bbb053ce9d12f8a72ecd654c6b86183de",
+      "bytes": 1030
+    },
+    {
+      "path": "patches/osx/00-ui-update-emulated-urls.patch",
+      "sha256": "5d52e821fd4cde9f32d2592c9210467f537e2e3352c5042f56e23fc4679d733a",
+      "bytes": 762
+    },
+    {
+      "path": "patches/windows/00-build-min-version-win7.patch",
+      "sha256": "4ac0265f589649d5422733d5c919af7e52bd29fdf0c023eb74213934c83d1875",
+      "bytes": 271
+    },
+    {
+      "path": "patches/windows/00-build-replace-signature.patch",
+      "sha256": "3ca90a3227ec4b1e7fd6434f2e19d9e8d5047317fd0999ea3a6bd5f82afe48bb",
+      "bytes": 7262
+    },
+    {
+      "path": "patches/windows/00-remote-use-open-ext.patch",
+      "sha256": "8ca0cabe25a6e10495db08680fe24d31bc6aa057d3619426db35bf5920289f2d",
+      "bytes": 3173
+    },
+    {
+      "path": "patches/windows/41-cli-fix-update-url.patch",
+      "sha256": "f0a5875a1bdbea1c755053537b68817c93c421ecaa8b8310ab7c162b4beb5aab",
+      "bytes": 320
+    },
+    {
+      "path": "patches/windows/70-build-contextmenu-appx.patch",
+      "sha256": "289a771ba499318ef6152530daa7791e3dd83dbce76b172e4d450a979ac9fcab",
+      "bytes": 2228
+    },
+    {
+      "path": "patches/windows/71-build-disable-appx.patch",
+      "sha256": "1798f949cca83fc50b92b5d6abba43adda65635142b59c8c82bc34b82d5e67a9",
+      "bytes": 4394
+    },
+    {
+      "path": "prepare_vscode.sh",
+      "sha256": "7ff971c0bc30ce84a0273f7234c3c3355c1ae18a8ceb3ef4d2b21e8663d8954a",
+      "bytes": 13529
+    },
+    {
+      "path": "build.sh",
+      "sha256": "3a17faf67c84bdd364f34f19b167e090697502587b5d37961ed4ef0e486d14c5",
+      "bytes": 2496
+    },
+    {
+      "path": "utils.sh",
+      "sha256": "d5b31113d4a041a156673c49fe79c32dea29de0d932dd8b642e45c38eb422049",
+      "bytes": 2436
+    },
+    {
+      "path": "product.json",
+      "sha256": "1b1302af62a453f76884ce73975ec722be6e5aab62961004f31e9b588f99c272",
+      "bytes": 13594
+    },
+    {
+      "path": "npmrc",
+      "sha256": "bc705fd0fb37de369867a0bd7372d3a40ef1a455943023c3d5f63c903ebe9f6f",
+      "bytes": 64
+    },
+    {
+      "path": "dev/build.sh",
+      "sha256": "45efb4fd2cd99e8d198409cb2267faafe19d253e556208bc98b94dbdf359f5fd",
+      "bytes": 4563
+    },
+    {
+      "path": "dev/run-build.sh",
+      "sha256": "a04560bbab1a5d4c8b7b61ba7127acbe68281f484f1b952b3082d082b6ab7a42",
+      "bytes": 608
+    },
+    {
+      "path": "version.sh",
+      "sha256": "2e5edd5c05c26fee4df743c79c1c354914f3634f8e29763597c10f009e297879",
+      "bytes": 546
+    }
+  ],
+  "input_digest": "6f0f3a244d535169882a4c6933d3b88fe504ce8549be5651393fb33d50e6bac0",
+  "created_at": "2026-10-01T21:06:37+10:00"
+}

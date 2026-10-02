@@ -1,0 +1,10 @@
+{
+  "query": "agent sessions",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "agent sessions",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

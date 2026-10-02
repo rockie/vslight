@@ -1,0 +1,24 @@
+{
+  "recordedAtUTC": "2026-10-02T11:17:28.314572+00:00",
+  "publicQuitConsumed": {
+    "id": "35d72b15a9a049f5949bb83ad4c4e378",
+    "action": "quit",
+    "hostPID": 41471,
+    "at": "2026-10-02T11:13:33.128Z"
+  },
+  "waitExitCode": 0,
+  "forcedCleanupUsed": false,
+  "capturedMainUtilityPIDsGone": {
+    "39925": true,
+    "40135": true,
+    "40136": true,
+    "41146": true,
+    "41470": true,
+    "41471": true
+  },
+  "portsReleased": {
+    "19550": true,
+    "19551": true,
+    "19552": true
+  }
+}

@@ -1,0 +1,1453 @@
+{
+  "status": "PARTIAL_REAL_SYSTEM_EXIT_16_OF_20",
+  "sourceBuild": "145+146 (independent unsigned app; before149 overwrite)",
+  "collectedAtUTC": "2026-10-01T18:21:36.614617+00:00",
+  "root": "/private/tmp/ell145-4kvrbik_",
+  "pointer": "/tmp/lean-external-links145-path",
+  "launch": {
+    "root": "/private/tmp/ell145-4kvrbik_",
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "profile": "/private/tmp/ell145-4kvrbik_/u",
+    "serverPID": 55757,
+    "serverPort": 19481,
+    "cdpPort": 19520,
+    "launchMode": "open -g -n (background; no focus/input command)",
+    "fixtureSHA256": "61ae33eae34a6384a77296fce28838c9e9749a631c6fbd06eaae4bfc414eafe0",
+    "expectedWorkbenchSHA256": "4d8b395feacab225a3ad8fc8711d15545337f93d4d5ab18720fd89e274a50a1a",
+    "legacyOpener": {
+      "*": "simpleBrowser.open"
+    },
+    "mainPID": 55759
+  },
+  "ready": {
+    "extensionId": "lean-tests.lean-links-runtime-fixture",
+    "root": "/private/tmp/ell145-4kvrbik_",
+    "runId": "0dbb592182a9",
+    "bootId": "70f311f1-c6c3-4f64-a5a1-1ff96f6b0d90",
+    "hostPID": 56970,
+    "parentPID": 55759,
+    "vscodeVersion": "1.135.0",
+    "workspace": "/tmp/ell145-4kvrbik_/w",
+    "legacyConfiguration": {
+      "*": "simpleBrowser.open"
+    },
+    "matrix": {
+      "bases": [
+        "http://localhost:19481",
+        "http://127.0.0.1:19481",
+        "http://[::1]:19481",
+        "http://0.0.0.0:19481",
+        "https://example.com"
+      ],
+      "suffix": "/lean%20core/%E4%B8%AD?encoded=%252F&plain=value",
+      "fragment": "#fragment%20space",
+      "surfaces": [
+        "webview",
+        "markdown",
+        "terminal-visible",
+        "terminal-osc8"
+      ]
+    },
+    "urls": {
+      "webview": [
+        "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+        "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+        "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+        "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+        "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space"
+      ],
+      "markdown": [
+        "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+        "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+        "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+        "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+        "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space"
+      ],
+      "terminal-visible": [
+        "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space",
+        "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space",
+        "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space",
+        "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=3#fragment%20space",
+        "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=4#fragment%20space"
+      ],
+      "terminal-osc8": [
+        "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=0#fragment%20space",
+        "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=1#fragment%20space",
+        "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=2#fragment%20space",
+        "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=3#fragment%20space",
+        "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=4#fragment%20space"
+      ]
+    }
+  },
+  "matrix": {
+    "status": "PARTIAL_OR_ROW_ONLY",
+    "authority": {
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "root": "/private/tmp/ell145-4kvrbik_",
+      "profile": "/private/tmp/ell145-4kvrbik_/u",
+      "pid": 55759,
+      "port": 19520,
+      "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+      "scriptHash": "4d8b395feacab225a3ad8fc8711d15545337f93d4d5ab18720fd89e274a50a1a",
+      "fixtureSHA256": "61ae33eae34a6384a77296fce28838c9e9749a631c6fbd06eaae4bfc414eafe0",
+      "bootId": "70f311f1-c6c3-4f64-a5a1-1ff96f6b0d90",
+      "runId": "0dbb592182a9",
+      "hostPID": 56970,
+      "legacyConfiguration": {
+        "*": "simpleBrowser.open"
+      },
+      "loaded": {
+        "scriptId": "9",
+        "SHA256": "4d8b395feacab225a3ad8fc8711d15545337f93d4d5ab18720fd89e274a50a1a",
+        "workbenchTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+      }
+    },
+    "rows": [
+      {
+        "surface": "webview",
+        "index": 0,
+        "originalURI": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+        "startedAt": "2026-10-01T18:08:52.953Z",
+        "click": {
+          "surface": "webview",
+          "context": {
+            "key": "45681A7239139915F91FDEC24A0021CF:2",
+            "id": 2,
+            "uniqueId": "-279238614206004391.3214876980612736374",
+            "origin": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc",
+            "name": "",
+            "frameId": "1643AE06849DDE77AD663C51BACACB02",
+            "sessionId": "45681A7239139915F91FDEC24A0021CF",
+            "targetId": "5F8F1335419FBE3F33A46C5DEF622CFE",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc/index.html?id=2921b700-196b-4da7-a275-9ed1baf6e81a&parentId=1&origin=83009ba7-7587-4930-b5ae-fbb67d16b148&swVersion=6&extensionId=lean-tests.lean-links-runtime-fixture&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+            "attributeHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+            "dataHref": null,
+            "text": "External URL 0",
+            "run": "0dbb592182a9",
+            "index": 0
+          },
+          "selector": "#link-0",
+          "point": {
+            "x": 412.8203125,
+            "y": 142.828125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598454,
+          "borrowed": true,
+          "tabURL": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=0#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "Ordinary external links",
+            "input": "FC",
+            "viewType": "mainThreadWebview-leanLinks",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:53.352Z"
+      },
+      {
+        "surface": "webview",
+        "index": 1,
+        "originalURI": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+        "startedAt": "2026-10-01T18:08:53.353Z",
+        "click": {
+          "surface": "webview",
+          "context": {
+            "key": "45681A7239139915F91FDEC24A0021CF:2",
+            "id": 2,
+            "uniqueId": "-279238614206004391.3214876980612736374",
+            "origin": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc",
+            "name": "",
+            "frameId": "1643AE06849DDE77AD663C51BACACB02",
+            "sessionId": "45681A7239139915F91FDEC24A0021CF",
+            "targetId": "5F8F1335419FBE3F33A46C5DEF622CFE",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc/index.html?id=2921b700-196b-4da7-a275-9ed1baf6e81a&parentId=1&origin=83009ba7-7587-4930-b5ae-fbb67d16b148&swVersion=6&extensionId=lean-tests.lean-links-runtime-fixture&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+            "attributeHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+            "dataHref": null,
+            "text": "External URL 1",
+            "run": "0dbb592182a9",
+            "index": 1
+          },
+          "selector": "#link-1",
+          "point": {
+            "x": 411.7421875,
+            "y": 170.828125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598457,
+          "borrowed": true,
+          "tabURL": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=1#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "Ordinary external links",
+            "input": "FC",
+            "viewType": "mainThreadWebview-leanLinks",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:53.752Z"
+      },
+      {
+        "surface": "webview",
+        "index": 2,
+        "originalURI": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+        "startedAt": "2026-10-01T18:08:53.753Z",
+        "click": {
+          "surface": "webview",
+          "context": {
+            "key": "45681A7239139915F91FDEC24A0021CF:2",
+            "id": 2,
+            "uniqueId": "-279238614206004391.3214876980612736374",
+            "origin": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc",
+            "name": "",
+            "frameId": "1643AE06849DDE77AD663C51BACACB02",
+            "sessionId": "45681A7239139915F91FDEC24A0021CF",
+            "targetId": "5F8F1335419FBE3F33A46C5DEF622CFE",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc/index.html?id=2921b700-196b-4da7-a275-9ed1baf6e81a&parentId=1&origin=83009ba7-7587-4930-b5ae-fbb67d16b148&swVersion=6&extensionId=lean-tests.lean-links-runtime-fixture&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+            "attributeHref": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+            "dataHref": null,
+            "text": "External URL 2",
+            "run": "0dbb592182a9",
+            "index": 2
+          },
+          "selector": "#link-2",
+          "point": {
+            "x": 412.6484375,
+            "y": 198.828125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598460,
+          "borrowed": true,
+          "tabURL": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=2#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "Ordinary external links",
+            "input": "FC",
+            "viewType": "mainThreadWebview-leanLinks",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:54.149Z"
+      },
+      {
+        "surface": "webview",
+        "index": 3,
+        "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+        "startedAt": "2026-10-01T18:08:54.151Z",
+        "click": {
+          "surface": "webview",
+          "context": {
+            "key": "45681A7239139915F91FDEC24A0021CF:2",
+            "id": 2,
+            "uniqueId": "-279238614206004391.3214876980612736374",
+            "origin": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc",
+            "name": "",
+            "frameId": "1643AE06849DDE77AD663C51BACACB02",
+            "sessionId": "45681A7239139915F91FDEC24A0021CF",
+            "targetId": "5F8F1335419FBE3F33A46C5DEF622CFE",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc/index.html?id=2921b700-196b-4da7-a275-9ed1baf6e81a&parentId=1&origin=83009ba7-7587-4930-b5ae-fbb67d16b148&swVersion=6&extensionId=lean-tests.lean-links-runtime-fixture&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+            "attributeHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+            "dataHref": null,
+            "text": "External URL 3",
+            "run": "0dbb592182a9",
+            "index": 3
+          },
+          "selector": "#link-3",
+          "point": {
+            "x": 412.80078125,
+            "y": 226.828125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598463,
+          "borrowed": true,
+          "tabURL": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=3#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "Ordinary external links",
+            "input": "FC",
+            "viewType": "mainThreadWebview-leanLinks",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:54.555Z"
+      },
+      {
+        "surface": "webview",
+        "index": 4,
+        "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space",
+        "startedAt": "2026-10-01T18:08:54.556Z",
+        "click": {
+          "surface": "webview",
+          "context": {
+            "key": "45681A7239139915F91FDEC24A0021CF:2",
+            "id": 2,
+            "uniqueId": "-279238614206004391.3214876980612736374",
+            "origin": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc",
+            "name": "",
+            "frameId": "1643AE06849DDE77AD663C51BACACB02",
+            "sessionId": "45681A7239139915F91FDEC24A0021CF",
+            "targetId": "5F8F1335419FBE3F33A46C5DEF622CFE",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://0nr4tbc7i0e7a5g0fmuf56ajk2hfccg9ddfkv6jhl3v907j5p8hc/index.html?id=2921b700-196b-4da7-a275-9ed1baf6e81a&parentId=1&origin=83009ba7-7587-4930-b5ae-fbb67d16b148&swVersion=6&extensionId=lean-tests.lean-links-runtime-fixture&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space",
+            "attributeHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space",
+            "dataHref": null,
+            "text": "External URL 4",
+            "run": "0dbb592182a9",
+            "index": 4
+          },
+          "selector": "#link-4",
+          "point": {
+            "x": 412.91015625,
+            "y": 254.828125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598466,
+          "borrowed": true,
+          "tabURL": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=webview&index=4#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "Ordinary external links",
+            "input": "FC",
+            "viewType": "mainThreadWebview-leanLinks",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:54.955Z"
+      },
+      {
+        "surface": "markdown",
+        "index": 0,
+        "originalURI": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+        "startedAt": "2026-10-01T18:08:55.081Z",
+        "click": {
+          "surface": "markdown",
+          "context": {
+            "key": "EA5254F48ADAB5E7140A9A4C70237440:2",
+            "id": 2,
+            "uniqueId": "6564642809192267253.-903678646199278981",
+            "origin": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v",
+            "name": "",
+            "frameId": "C5C212BEC9917351DF82CFD20ECCA2E0",
+            "sessionId": "EA5254F48ADAB5E7140A9A4C70237440",
+            "targetId": "889461185D4FF1FC1551BEC09055F974",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v/index.html?id=79e4b117-0ba5-4ba0-9a80-6878472bedfd&parentId=1&origin=4d69797d-7bc4-4a08-9fd0-fb433e71b43b&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+            "attributeHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+            "dataHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+            "text": "External URL 0",
+            "run": "0dbb592182a9",
+            "index": 0
+          },
+          "selector": "a[data-href*=\"surface=markdown\"][data-href*=\"index=0\"],a[href*=\"surface=markdown\"][href*=\"index=0\"]",
+          "point": {
+            "x": 447.7890625,
+            "y": 155.1484375,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598469,
+          "borrowed": true,
+          "tabURL": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=0#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "ordinary-links.md",
+            "input": "n1",
+            "uri": "file:///private/tmp/ell145-4kvrbik_/w/ordinary-links.md",
+            "active": false
+          },
+          {
+            "label": "Preview ordinary-links.md",
+            "input": "FC",
+            "viewType": "mainThreadWebview-markdown.preview",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:55.761Z"
+      },
+      {
+        "surface": "markdown",
+        "index": 1,
+        "originalURI": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+        "startedAt": "2026-10-01T18:08:55.763Z",
+        "click": {
+          "surface": "markdown",
+          "context": {
+            "key": "EA5254F48ADAB5E7140A9A4C70237440:2",
+            "id": 2,
+            "uniqueId": "6564642809192267253.-903678646199278981",
+            "origin": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v",
+            "name": "",
+            "frameId": "C5C212BEC9917351DF82CFD20ECCA2E0",
+            "sessionId": "EA5254F48ADAB5E7140A9A4C70237440",
+            "targetId": "889461185D4FF1FC1551BEC09055F974",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v/index.html?id=79e4b117-0ba5-4ba0-9a80-6878472bedfd&parentId=1&origin=4d69797d-7bc4-4a08-9fd0-fb433e71b43b&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+            "attributeHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+            "dataHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+            "text": "External URL 1",
+            "run": "0dbb592182a9",
+            "index": 1
+          },
+          "selector": "a[data-href*=\"surface=markdown\"][data-href*=\"index=1\"],a[href*=\"surface=markdown\"][href*=\"index=1\"]",
+          "point": {
+            "x": 446.625,
+            "y": 193.546875,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598472,
+          "borrowed": true,
+          "tabURL": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=1#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "ordinary-links.md",
+            "input": "n1",
+            "uri": "file:///private/tmp/ell145-4kvrbik_/w/ordinary-links.md",
+            "active": false
+          },
+          {
+            "label": "Preview ordinary-links.md",
+            "input": "FC",
+            "viewType": "mainThreadWebview-markdown.preview",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:56.165Z"
+      },
+      {
+        "surface": "markdown",
+        "index": 2,
+        "originalURI": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+        "startedAt": "2026-10-01T18:08:56.166Z",
+        "click": {
+          "surface": "markdown",
+          "context": {
+            "key": "EA5254F48ADAB5E7140A9A4C70237440:2",
+            "id": 2,
+            "uniqueId": "6564642809192267253.-903678646199278981",
+            "origin": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v",
+            "name": "",
+            "frameId": "C5C212BEC9917351DF82CFD20ECCA2E0",
+            "sessionId": "EA5254F48ADAB5E7140A9A4C70237440",
+            "targetId": "889461185D4FF1FC1551BEC09055F974",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v/index.html?id=79e4b117-0ba5-4ba0-9a80-6878472bedfd&parentId=1&origin=4d69797d-7bc4-4a08-9fd0-fb433e71b43b&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+            "attributeHref": "http://%5B::1%5D:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+            "dataHref": "http://%5B::1%5D:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+            "text": "External URL 2",
+            "run": "0dbb592182a9",
+            "index": 2
+          },
+          "selector": "a[data-href*=\"surface=markdown\"][data-href*=\"index=2\"],a[href*=\"surface=markdown\"][href*=\"index=2\"]",
+          "point": {
+            "x": 447.60546875,
+            "y": 231.9453125,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598475,
+          "borrowed": true,
+          "tabURL": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=2#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "ordinary-links.md",
+            "input": "n1",
+            "uri": "file:///private/tmp/ell145-4kvrbik_/w/ordinary-links.md",
+            "active": false
+          },
+          {
+            "label": "Preview ordinary-links.md",
+            "input": "FC",
+            "viewType": "mainThreadWebview-markdown.preview",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:56.569Z"
+      },
+      {
+        "surface": "markdown",
+        "index": 3,
+        "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+        "startedAt": "2026-10-01T18:08:56.571Z",
+        "click": {
+          "surface": "markdown",
+          "context": {
+            "key": "EA5254F48ADAB5E7140A9A4C70237440:2",
+            "id": 2,
+            "uniqueId": "6564642809192267253.-903678646199278981",
+            "origin": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v",
+            "name": "",
+            "frameId": "C5C212BEC9917351DF82CFD20ECCA2E0",
+            "sessionId": "EA5254F48ADAB5E7140A9A4C70237440",
+            "targetId": "889461185D4FF1FC1551BEC09055F974",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v/index.html?id=79e4b117-0ba5-4ba0-9a80-6878472bedfd&parentId=1&origin=4d69797d-7bc4-4a08-9fd0-fb433e71b43b&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+            "attributeHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+            "dataHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+            "text": "External URL 3",
+            "run": "0dbb592182a9",
+            "index": 3
+          },
+          "selector": "a[data-href*=\"surface=markdown\"][data-href*=\"index=3\"],a[href*=\"surface=markdown\"][href*=\"index=3\"]",
+          "point": {
+            "x": 447.76953125,
+            "y": 270.34375,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598478,
+          "borrowed": true,
+          "tabURL": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=3#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "ordinary-links.md",
+            "input": "n1",
+            "uri": "file:///private/tmp/ell145-4kvrbik_/w/ordinary-links.md",
+            "active": false
+          },
+          {
+            "label": "Preview ordinary-links.md",
+            "input": "FC",
+            "viewType": "mainThreadWebview-markdown.preview",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:56.976Z"
+      },
+      {
+        "surface": "markdown",
+        "index": 4,
+        "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+        "startedAt": "2026-10-01T18:08:56.978Z",
+        "click": {
+          "surface": "markdown",
+          "context": {
+            "key": "EA5254F48ADAB5E7140A9A4C70237440:2",
+            "id": 2,
+            "uniqueId": "6564642809192267253.-903678646199278981",
+            "origin": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v",
+            "name": "",
+            "frameId": "C5C212BEC9917351DF82CFD20ECCA2E0",
+            "sessionId": "EA5254F48ADAB5E7140A9A4C70237440",
+            "targetId": "889461185D4FF1FC1551BEC09055F974",
+            "targetType": "iframe",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "anchor": {
+            "documentURL": "vscode-webview://1tv8ibbd8168jmeuinthms7bia6f91r8i2r08m0fedpaafuc5c3v/index.html?id=79e4b117-0ba5-4ba0-9a80-6878472bedfd&parentId=1&origin=4d69797d-7bc4-4a08-9fd0-fb433e71b43b&swVersion=6&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app",
+            "href": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+            "attributeHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+            "dataHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+            "text": "External URL 4",
+            "run": "0dbb592182a9",
+            "index": 4
+          },
+          "selector": "a[data-href*=\"surface=markdown\"][data-href*=\"index=4\"],a[href*=\"surface=markdown\"][href*=\"index=4\"]",
+          "point": {
+            "x": 447.8828125,
+            "y": 308.7421875,
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "mode": "limited product-target CDP trusted mouse click"
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598481,
+          "borrowed": true,
+          "tabURL": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=markdown&index=4#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [
+          {
+            "label": "ordinary-links.md",
+            "input": "n1",
+            "uri": "file:///private/tmp/ell145-4kvrbik_/w/ordinary-links.md",
+            "active": false
+          },
+          {
+            "label": "Preview ordinary-links.md",
+            "input": "FC",
+            "viewType": "mainThreadWebview-markdown.preview",
+            "active": true
+          }
+        ],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:57.376Z"
+      },
+      {
+        "surface": "terminal-visible",
+        "index": 0,
+        "originalURI": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space",
+        "startedAt": "2026-10-01T18:08:57.377Z",
+        "click": {
+          "surface": "terminal-visible",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-visible 0\nhttp://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-visible",
+            "index": 0,
+            "url": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-visible 0",
+            "banner": "LEAN 0dbb592182a9 terminal-visible 0",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:08:57.499Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598484,
+          "borrowed": true,
+          "tabURL": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=0#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:08:58.694Z"
+      },
+      {
+        "surface": "terminal-visible",
+        "index": 1,
+        "originalURI": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space",
+        "startedAt": "2026-10-01T18:08:58.696Z",
+        "click": {
+          "surface": "terminal-visible",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-visible 1\nhttp://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-visible",
+            "index": 1,
+            "url": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-visible 1",
+            "banner": "LEAN 0dbb592182a9 terminal-visible 1",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:08:58.804Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598487,
+          "borrowed": true,
+          "tabURL": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=1#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:09:00.016Z"
+      },
+      {
+        "surface": "terminal-visible",
+        "index": 2,
+        "originalURI": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space",
+        "startedAt": "2026-10-01T18:09:00.019Z",
+        "click": {
+          "surface": "terminal-visible",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-visible 2\nhttp://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-visible",
+            "index": 2,
+            "url": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-visible 2",
+            "banner": "LEAN 0dbb592182a9 terminal-visible 2",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:00.124Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598490,
+          "borrowed": true,
+          "tabURL": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=2#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:09:01.336Z"
+      },
+      {
+        "surface": "terminal-visible",
+        "index": 3,
+        "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=3#fragment%20space",
+        "startedAt": "2026-10-01T18:09:01.337Z",
+        "click": {
+          "surface": "terminal-visible",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-visible 3\nhttp://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=3#fragment%20space\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-visible",
+            "index": 3,
+            "url": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=3#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-visible 3",
+            "banner": "LEAN 0dbb592182a9 terminal-visible 3",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:01.443Z"
+          }
+        },
+        "status": "BLOCKED_OR_FAIL_NO_ACCEPTANCE",
+        "reason": "Chrome new active test tab blocked: extension_error",
+        "completedAt": "2026-10-01T18:09:14.888Z"
+      },
+      {
+        "surface": "terminal-visible",
+        "index": 4,
+        "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=4#fragment%20space",
+        "startedAt": "2026-10-01T18:09:14.890Z",
+        "click": {
+          "surface": "terminal-visible",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-visible 4\nhttps://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=4#fragment%20space\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-visible",
+            "index": 4,
+            "url": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-visible&index=4#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-visible 4",
+            "banner": "LEAN 0dbb592182a9 terminal-visible 4",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:14.928Z"
+          }
+        },
+        "status": "BLOCKED_OR_FAIL_NO_ACCEPTANCE",
+        "reason": "Chrome new active test tab blocked: extension_error",
+        "completedAt": "2026-10-01T18:09:28.016Z"
+      },
+      {
+        "surface": "terminal-osc8",
+        "index": 0,
+        "originalURI": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=0#fragment%20space",
+        "startedAt": "2026-10-01T18:09:28.018Z",
+        "click": {
+          "surface": "terminal-osc8",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-osc8 0\nExternal URL 0\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-osc8",
+            "index": 0,
+            "url": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=0#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-osc8 0",
+            "banner": "LEAN 0dbb592182a9 terminal-osc8 0",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:28.110Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598493,
+          "borrowed": true,
+          "tabURL": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=0#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://localhost:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=0#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:09:29.333Z"
+      },
+      {
+        "surface": "terminal-osc8",
+        "index": 1,
+        "originalURI": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=1#fragment%20space",
+        "startedAt": "2026-10-01T18:09:29.335Z",
+        "click": {
+          "surface": "terminal-osc8",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-osc8 1\nExternal URL 1\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-osc8",
+            "index": 1,
+            "url": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=1#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-osc8 1",
+            "banner": "LEAN 0dbb592182a9 terminal-osc8 1",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:29.428Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598496,
+          "borrowed": true,
+          "tabURL": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=1#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://127.0.0.1:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=1#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:09:30.657Z"
+      },
+      {
+        "surface": "terminal-osc8",
+        "index": 2,
+        "originalURI": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=2#fragment%20space",
+        "startedAt": "2026-10-01T18:09:30.658Z",
+        "click": {
+          "surface": "terminal-osc8",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-osc8 2\nExternal URL 2\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-osc8",
+            "index": 2,
+            "url": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=2#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-osc8 2",
+            "banner": "LEAN 0dbb592182a9 terminal-osc8 2",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:30.744Z"
+          }
+        },
+        "chrome": {
+          "session": "lean-core-runtime",
+          "findAction": "find_tab matching URL active=true",
+          "tabId": 1319598499,
+          "borrowed": true,
+          "tabURL": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=2#fragment%20space",
+          "evaluationCode": "location.href",
+          "actualHref": "http://[::1]:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=2#fragment%20space",
+          "exactOriginalURI": true
+        },
+        "productTabs": [],
+        "browserTabs": [],
+        "status": "REAL_ROUTE_EXACT_CHROME_URI_PASS",
+        "completedAt": "2026-10-01T18:09:31.975Z"
+      },
+      {
+        "surface": "terminal-osc8",
+        "index": 3,
+        "originalURI": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=3#fragment%20space",
+        "startedAt": "2026-10-01T18:09:31.977Z",
+        "click": {
+          "surface": "terminal-osc8",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-osc8 3\nExternal URL 3\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-osc8",
+            "index": 3,
+            "url": "http://0.0.0.0:19481/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=3#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-osc8 3",
+            "banner": "LEAN 0dbb592182a9 terminal-osc8 3",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:32.060Z"
+          }
+        },
+        "status": "BLOCKED_OR_FAIL_NO_ACCEPTANCE",
+        "reason": "Chrome new active test tab blocked: extension_error",
+        "completedAt": "2026-10-01T18:09:45.149Z"
+      },
+      {
+        "surface": "terminal-osc8",
+        "index": 4,
+        "originalURI": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=4#fragment%20space",
+        "startedAt": "2026-10-01T18:09:45.151Z",
+        "click": {
+          "surface": "terminal-osc8",
+          "context": {
+            "key": "12F9C7590C8CE8B994D847A5F5122339:1",
+            "id": 1,
+            "uniqueId": "6078660356323460575.7250260323566274001",
+            "origin": "vscode-file://vscode-app",
+            "name": "",
+            "frameId": "929660C68853280FCFE2BF8498AFC8D2",
+            "sessionId": "12F9C7590C8CE8B994D847A5F5122339",
+            "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+            "targetType": "page",
+            "rootTargetId": "929660C68853280FCFE2BF8498AFC8D2"
+          },
+          "point": {
+            "x": 407.734693877551,
+            "y": 638.9921875,
+            "rectangle": {
+              "x": 368,
+              "y": 617.9921875,
+              "width": 1062,
+              "height": 252
+            },
+            "cols": 147,
+            "rows": 18,
+            "cellWidth": 7.224489795918367,
+            "cellHeight": 14,
+            "text": "LEAN 0dbb592182a9 terminal-osc8 4\nExternal URL 4\n "
+          },
+          "mode": "limited product-target CDP Meta+mouse click",
+          "targetId": "929660C68853280FCFE2BF8498AFC8D2",
+          "terminalState": {
+            "surface": "terminal-osc8",
+            "index": 4,
+            "url": "https://example.com/lean%20core/%E4%B8%AD?encoded=%252F&plain=value&run=0dbb592182a9&surface=terminal-osc8&index=4#fragment%20space",
+            "ready": true,
+            "name": "Lean terminal-osc8 4",
+            "banner": "LEAN 0dbb592182a9 terminal-osc8 4",
+            "dimensions": {
+              "columns": 147,
+              "rows": 18
+            },
+            "openedAt": "2026-10-01T18:09:45.257Z"
+          }
+        },
+        "status": "BLOCKED_OR_FAIL_NO_ACCEPTANCE",
+        "reason": "Chrome new active test tab blocked: extension_error",
+        "completedAt": "2026-10-01T18:09:58.309Z"
+      }
+    ]
+  },
+  "authorityAfter": {
+    "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "root": "/private/tmp/ell145-4kvrbik_",
+    "profile": "/private/tmp/ell145-4kvrbik_/u",
+    "pid": 55759,
+    "port": 19520,
+    "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/workbench/workbench.desktop.main.js",
+    "scriptHash": "4d8b395feacab225a3ad8fc8711d15545337f93d4d5ab18720fd89e274a50a1a",
+    "fixtureSHA256": "61ae33eae34a6384a77296fce28838c9e9749a631c6fbd06eaae4bfc414eafe0",
+    "bootId": "70f311f1-c6c3-4f64-a5a1-1ff96f6b0d90",
+    "runId": "0dbb592182a9",
+    "hostPID": 56970,
+    "legacyConfiguration": {
+      "*": "simpleBrowser.open"
+    }
+  },
+  "passed": 16,
+  "total": 20,
+  "nativePromptObservation": {
+    "actualWorkbenchDOMDialogs": [],
+    "scopedReadOnlyAX": {
+      "pid": 55759,
+      "windows": []
+    },
+    "screenLocked": "Parent actual CGSession audit reported locked=1/onConsole=false; no global input sent.",
+    "interpretation": "INFERRED: external trusted-domain native confirmation may be pending. Actual sheet/button/URI not readable, therefore not confirmed and remaining rows not accepted."
+  },
+  "sourceReferences": [
+    {
+      "path": "vscode/extensions/simple-browser/src/extension.ts",
+      "SHA256": "95954b5bbcd3b315e5d46aed1801f5649fa59b963574b2bb4e9957a18ad2b792"
+    },
+    {
+      "path": "vscode/src/vs/workbench/contrib/externalUriOpener/common/configuration.ts",
+      "SHA256": "872bdf02c0c74ab13474aebe679301be55b7e23a46e94569ea770640fa32f3f7"
+    },
+    {
+      "path": "vscode/src/vs/workbench/contrib/externalUriOpener/common/externalUriOpenerService.ts",
+      "SHA256": "cd4964b78f14d0ca3c4deabd1a4109a0671672f6e1c550e0fce1cb85430d03a6"
+    },
+    {
+      "path": "vscode/src/vs/workbench/contrib/terminalContrib/links/browser/terminalLinkOpeners.ts",
+      "SHA256": "d3f444dd0e551277df6fb704b4217bc279e515f7e2a456efbdb21a98c4a5a8e1"
+    },
+    {
+      "path": "vscode/src/vs/workbench/contrib/url/browser/trustedDomainsValidator.ts",
+      "SHA256": "d1f9859d020a12ee72baf1dda244cab5057d2e03387ea71adbbf002297ba32c2"
+    },
+    {
+      "path": "vscode/src/vs/workbench/electron-browser/parts/dialogs/dialog.contribution.ts",
+      "SHA256": "9b7ddc2f84401adb74692497e39ff582805a12f823e53be3e68dd266c5c17827"
+    }
+  ],
+  "helpers": {
+    "links.js": {
+      "SHA256": "61ae33eae34a6384a77296fce28838c9e9749a631c6fbd06eaae4bfc414eafe0",
+      "sameAsLaunched": true
+    },
+    "external-links-cdp.mjs": {
+      "currentSHA256": "aec87851569cd5ee54f624581f110f3878ba992d8a18922afbbfff85fccde02f",
+      "latestChangesAfterCapture": [
+        "read-only own-dialog snapshot",
+        "optional receipt timeout 12000..120000 ms",
+        "dispatch progress message",
+        "tab observation even when Chrome receipt fails"
+      ],
+      "verification": "node --check; two deliberate pre-HTTP failures. Final matrix was captured before these followup conveniences."
+    }
+  },
+  "guardFailures": [
+    {
+      "case": "wrong-port-before-http",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "{\"status\":\"FAILED_NO_ACCEPTANCE\",\"reason\":\"Only this task PID and port19520 are allowed.\"}"
+    },
+    {
+      "case": "wrong-endpoint-before-http",
+      "exit": 1,
+      "stdout": "",
+      "stderr": "{\"status\":\"FAILED_NO_ACCEPTANCE\",\"reason\":\"Expected isolated loopback CDP endpoint.\"}"
+    }
+  ],
+  "cleanup": {
+    "app": {
+      "request": {
+        "id": "links-quit-3bf84ae4-e4d6-4cc1-9ad9-b803fc1db75a",
+        "action": "quit"
+      },
+      "mainPID": 55759,
+      "normalFixtureQuit": true,
+      "quitIntent": {
+        "id": "links-quit-3bf84ae4-e4d6-4cc1-9ad9-b803fc1db75a",
+        "bootId": "70f311f1-c6c3-4f64-a5a1-1ff96f6b0d90",
+        "hostPID": 56970,
+        "parentPID": 55759,
+        "at": "2026-10-01T18:17:12.091Z"
+      },
+      "mainExited": true,
+      "checkedAt": 1790878633.245409
+    },
+    "server": {
+      "serverPID": 55757,
+      "signal": "SIGTERM",
+      "serverExited": true,
+      "checkedAt": 1790878648.1146932
+    },
+    "ports19481and19520Released": true
+  },
+  "preservedFailures": [
+    "evidence/first-webview-0/failure.json",
+    "evidence/second-webview-0/webview-0.json",
+    "evidence/matrix/matrix.json",
+    "evidence/matrix-final/terminal-visible-3.json",
+    "evidence/matrix-final/terminal-visible-4.json",
+    "evidence/matrix-final/terminal-osc8-3.json",
+    "evidence/matrix-final/terminal-osc8-4.json"
+  ],
+  "acceptanceBoundary": "16 exact system Chrome receipts plus no product Browser tab. Four terminal remote/wildcard host rows are unaccepted. Does not mark V5/M5/V9 or all runtime gates complete."
+}

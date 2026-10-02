@@ -1,0 +1,18 @@
+
+DevTools listening on ws://127.0.0.1:19560/devtools/browser/45a5877f-9b96-4287-893c-60661dbf69bb
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-02T10:48:32.506Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:48:32.514Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-02T10:48:32.615Z][0m [shared storage] Creating shared storage database at '/private/tmp/lcfinal-chkarkup/ui/s/sharedStorage/state.vscdb' (wasCreated: false)
+[90m[main 2026-10-02T10:48:32.615Z][0m [shared storage] Initializing fallback application storage (path: /private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/state.vscdb)
+[90m[main 2026-10-02T10:48:32.618Z][0m [shared storage] Fallback application storage initialized with 61 items
+[90m[main 2026-10-02T10:48:32.702Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:48:32.703Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:48:32.744Z][0m update#setState idle
+[90m[main 2026-10-02T10:48:32.932Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+(node:25607) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `VSLight --trace-deprecation ...` to show where the warning was created)
+[90m[main 2026-10-02T10:48:34.126Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T10:48:34.127Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T10:48:34.127Z][0m update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+[90m[main 2026-10-02T10:48:51.726Z][0m Extension host with pid 26830 exited with code: 0, signal: unknown.

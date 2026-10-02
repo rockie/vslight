@@ -113,7 +113,7 @@ echo "${jsonTmp}" > product.json && unset jsonTmp
 # are not part of this product; readers of these keys are nil-safe (checked at 1.135).
 # defaultChatAgent/trustedExtensionAuthAccess/builtInExtensionsEnabledWithAutoUpdates
 # are upstream-supplied Copilot integration; this product ships no Copilot surface.
-jsonTmp=$( jq 'del(
+jsonTmp=$( jq --slurpfile retired ../build/retired-api-proposals.json 'del(
   .serverApplicationName,
   .serverDataFolderName,
   .tunnelApplicationName,
@@ -123,8 +123,17 @@ jsonTmp=$( jq 'del(
   .sessionsWindowAllowedExtensions,
   .defaultChatAgent,
   .trustedExtensionAuthAccess,
-  .builtInExtensionsEnabledWithAutoUpdates
-)' product.json )
+  .builtInExtensionsEnabledWithAutoUpdates,
+  .agentsTelemetryAppName,
+  .agentSdks,
+  .copilotVersions,
+  .dictationRuntime,
+  .voiceWsUrl,
+  .mcpGallery,
+  .trustedMcpAuthAccess,
+  .chatParticipantRegistry,
+  .chatSessionRecommendations
+) | .extensionEnabledApiProposals |= with_entries(.value -= $retired[0])' product.json )
 echo "${jsonTmp}" > product.json && unset jsonTmp
 
 cat product.json
@@ -242,7 +251,7 @@ mv .npmrc.bak .npmrc
 # }}}
 
 # {{{ vslight post-npm-ci platform prune — drop non-target platform binaries from
-# installed packages (ripgrep-universal ~51MB, mxc-sdk ~22MB on darwin-arm64).
+# installed ripgrep-universal package.
 # Unlike apply_actions this must not hard-fail: package contents drift with upstream,
 # so a missing package or missing target dir is a warning, not exit 4.
 prune_to_platform_dir() {
@@ -273,7 +282,6 @@ case "${OS_NAME}" in
 esac
 
 prune_to_platform_dir "node_modules/@vscode/ripgrep-universal/bin" "${NPM_BIN_PLATFORM}-${VSCODE_ARCH}"
-prune_to_platform_dir "node_modules/@microsoft/mxc-sdk/bin" "${VSCODE_ARCH}"
 
 # declaration maps ship inside published packages; they serve library consumers'
 # editors, not the product — delete so the package contains no .map at all

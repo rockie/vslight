@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-01T16:30:10.859195+00:00",
+  "status": "SIGN_NOTARY_STAPLE_PASS_GUI_CI_PENDING",
+  "patch": 144,
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/VSCode-darwin-arm64/VSLight.app",
+  "appBytes": 422070060,
+  "files": 1210,
+  "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/VSLight-144-signed.zip",
+  "zipBytes": 157415672,
+  "zipSha256": "fc7b1194ffc818d91de3fdc57f1122a263c708cdc50d398321d9b1a80cb2256c",
+  "notaryId": "b51a47d8-9900-4f7e-ba6f-23663c637b19",
+  "notaryStatus": "Accepted",
+  "strictCodesignBeforeAndAfterStaple": true,
+  "spctlAccepted": true,
+  "stapleValidate": true,
+  "zipCrcPassed": true,
+  "cleanup": {
+    "restored": false,
+    "equal": true,
+    "privateKeychainRemoved": true,
+    "privateP12Removed": true
+  },
+  "inputs": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs144-beforemeta.json",
+  "macosFloor": "12.0",
+  "logs": {
+    "codesign-verify.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/codesign-verify.log",
+    "codesign-display.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/codesign-display.log",
+    "notary-result.json": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/notary-result.json",
+    "staple.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/staple.log",
+    "staple-validate.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/staple-validate.log",
+    "spctl.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/spctl.log",
+    "codesign-after-staple.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/codesign-after-staple.log",
+    "zip-test.log": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/zip-test.log"
+  },
+  "published": false
+}

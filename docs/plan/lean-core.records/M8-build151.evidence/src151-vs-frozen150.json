@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-02T19:19:26.241521+10:00",
+  "source150": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/vscode/src",
+  "source151": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src",
+  "files150": 5213,
+  "files151": 5213,
+  "changes": [
+    {
+      "path": "src/vs/workbench/contrib/terminal/common/terminal.ts",
+      "before": {
+        "kind": "regular",
+        "sha256": "77a81b4db4b04ea8e897ab9a2ab877136c67bb274b82f8c1a3faa98daa907baf"
+      },
+      "after": {
+        "kind": "regular",
+        "sha256": "5fd803f6451e977bb288b9aaab35b93a27661ca581ecea9fdc0a45184d482deb"
+      }
+    }
+  ]
+}

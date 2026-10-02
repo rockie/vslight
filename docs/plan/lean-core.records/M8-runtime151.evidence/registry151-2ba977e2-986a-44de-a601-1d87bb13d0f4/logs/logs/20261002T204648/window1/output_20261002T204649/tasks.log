@@ -1,0 +1,14 @@
+Error: the task 'lean-terminal151: terminal151-task-e29bffc0-b086-4568-aa37-6097702add18' neither specifies a command nor a dependsOn property. The task will be ignored. Its definition is:
+{
+    "type": "shell",
+    "id": "shell,printf '%s\\n' 'TASK151_e29bffc0-b086-4568-aa37-6097702add18' > '/private/tmp/lcfinal-chkarkup/ui/w/terminal151-task-e29bffc0-b086-4568-aa37-6097702add18.txt'; while :; do sleep 1; done,",
+    "problemMatcher": [],
+    "label": "lean-terminal151: terminal151-task-e29bffc0-b086-4568-aa37-6097702add18"
+}
+Error: the task 'lean-terminal151: terminal151-task-e29bffc0-b086-4568-aa37-6097702add18' neither specifies a command nor a dependsOn property. The task will be ignored. Its definition is:
+{
+    "type": "shell",
+    "id": "shell,printf '%s\\n' 'TASK151_e29bffc0-b086-4568-aa37-6097702add18' > '/private/tmp/lcfinal-chkarkup/ui/w/terminal151-task-e29bffc0-b086-4568-aa37-6097702add18.txt'; while :; do sleep 1; done,",
+    "problemMatcher": [],
+    "label": "lean-terminal151: terminal151-task-e29bffc0-b086-4568-aa37-6097702add18"
+}

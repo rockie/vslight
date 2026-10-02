@@ -1,0 +1,122 @@
+{
+  "keychain-settings": {
+    "stage": "keychain-settings",
+    "status": "finished",
+    "at": "2026-10-02T19:32:30.216521+10:00",
+    "exit": 0
+  },
+  "staple-validate": {
+    "stage": "staple-validate",
+    "status": "finished",
+    "at": "2026-10-02T19:36:29.385053+10:00",
+    "exit": 0
+  },
+  "spctl": {
+    "stage": "spctl",
+    "status": "finished",
+    "at": "2026-10-02T19:36:30.307746+10:00",
+    "exit": 0
+  },
+  "notary-submit": {
+    "stage": "notary-submit",
+    "status": "finished",
+    "at": "2026-10-02T19:36:28.286816+10:00",
+    "exit": 0
+  },
+  "key-partition": {
+    "stage": "key-partition",
+    "status": "finished",
+    "at": "2026-10-02T19:32:30.384456+10:00",
+    "exit": 0
+  },
+  "content-audit": {
+    "stage": "content-audit",
+    "status": "finished",
+    "at": "2026-10-02T19:36:41.594622+10:00",
+    "exit": 0
+  },
+  "signed-zip-crc": {
+    "stage": "signed-zip-crc",
+    "status": "finished",
+    "at": "2026-10-02T19:36:40.029787+10:00",
+    "exit": 0
+  },
+  "keychain-unlock": {
+    "stage": "keychain-unlock",
+    "status": "finished",
+    "at": "2026-10-02T19:32:30.260698+10:00",
+    "exit": 0
+  },
+  "codesign-display": {
+    "stage": "codesign-display",
+    "status": "finished",
+    "at": "2026-10-02T19:34:35.584793+10:00",
+    "exit": 0
+  },
+  "notarization-zip": {
+    "stage": "notarization-zip",
+    "status": "finished",
+    "at": "2026-10-02T19:34:44.519743+10:00",
+    "exit": 0
+  },
+  "signing": {
+    "stage": "signing",
+    "status": "finished",
+    "at": "2026-10-02T19:34:35.339673+10:00",
+    "exit": 0
+  },
+  "signed-runtime": {
+    "stage": "signed-runtime",
+    "status": "finished",
+    "at": "2026-10-02T19:36:40.890154+10:00",
+    "exit": 0
+  },
+  "staple": {
+    "stage": "staple",
+    "status": "finished",
+    "at": "2026-10-02T19:36:29.015210+10:00",
+    "exit": 0
+  },
+  "certificate-import": {
+    "stage": "certificate-import",
+    "status": "finished",
+    "at": "2026-10-02T19:32:30.333447+10:00",
+    "exit": 0
+  },
+  "codesign-verify": {
+    "stage": "codesign-verify",
+    "status": "finished",
+    "at": "2026-10-02T19:34:35.529551+10:00",
+    "exit": 0
+  },
+  "cleanup": {
+    "stage": "cleanup",
+    "status": "finished",
+    "at": "2026-10-02T19:36:41.671567+10:00",
+    "exit": 0
+  },
+  "notary-store": {
+    "stage": "notary-store",
+    "status": "finished",
+    "at": "2026-10-02T19:34:46.728881+10:00",
+    "exit": 0
+  },
+  "codesign-after-staple": {
+    "stage": "codesign-after-staple",
+    "status": "finished",
+    "at": "2026-10-02T19:36:30.541859+10:00",
+    "exit": 0
+  },
+  "signed-zip": {
+    "stage": "signed-zip",
+    "status": "finished",
+    "at": "2026-10-02T19:36:39.519104+10:00",
+    "exit": 0
+  },
+  "keychain-create": {
+    "stage": "keychain-create",
+    "status": "finished",
+    "at": "2026-10-02T19:32:30.173152+10:00",
+    "exit": 0
+  }
+}

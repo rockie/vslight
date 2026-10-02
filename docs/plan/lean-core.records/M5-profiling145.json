@@ -1,0 +1,23 @@
+{
+  "status": "ACTUAL_PROFILER_START_STOP_DATA_PASS",
+  "runningState": 2,
+  "stoppedState": 0,
+  "nodes": 70,
+  "samples": 1021093,
+  "timeDeltas": 1021093,
+  "durationMicros": 158150685,
+  "artifact": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/actual-extension-host.cpuprofile",
+  "bytes": 16365536,
+  "sha256": "bfc42c2b5460446d99aff6afde7dc065785cc6dfc52d573f8ba00d0509149abd",
+  "export": "Own-data snapshot of actual ExtensionHostProfileService result; native Save dialog not used",
+  "startCommand": {
+    "id": "profiling145-start",
+    "action": "command",
+    "status": "PASS"
+  },
+  "stopCommand": {
+    "id": "profiling145-stop",
+    "action": "command",
+    "status": "PASS"
+  }
+}

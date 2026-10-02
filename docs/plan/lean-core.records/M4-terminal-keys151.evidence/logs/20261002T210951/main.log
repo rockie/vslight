@@ -1,0 +1,13 @@
+2026-10-02 21:09:51.426 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:09:51.426 [info] StorageMainService: creating application shared storage
+2026-10-02 21:09:51.426 [info] [shared storage] Creating shared storage database at '/private/tmp/lc-key151-mivqeuwq/s/sharedStorage/state.vscdb' (wasCreated: false)
+2026-10-02 21:09:51.426 [info] [shared storage] Initializing fallback application storage (path: /private/tmp/lc-key151-mivqeuwq/u/User/globalStorage/state.vscdb)
+2026-10-02 21:09:51.431 [info] [shared storage] Fallback application storage initialized with 40 items
+2026-10-02 21:09:51.538 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:09:51.539 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:09:51.684 [info] update#setState idle
+2026-10-02 21:09:51.748 [info] vslight: policy-watcher unavailable, managed OS policies are disabled.
+2026-10-02 21:09:52.905 [info] update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+2026-10-02 21:09:52.905 [info] update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+2026-10-02 21:09:52.905 [info] update#isLatestVersion() - releaseAge: 54, minReleaseAge: 1
+2026-10-02 21:10:14.744 [info] Extension host with pid 37662 exited with code: 0, signal: unknown.

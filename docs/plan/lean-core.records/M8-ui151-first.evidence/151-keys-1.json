@@ -1,0 +1,60 @@
+{
+  "query": "chat",
+  "ids": [
+    "editor.changeDropType",
+    "editor.changePasteType",
+    "editor.action.changeTabDisplaySize",
+    "workbench.editSessions.actions.resetAuth",
+    "editor.action.transpose",
+    "extensions.actions.searchByCategory.Chat",
+    "workbench.action.terminal.changeColorActiveTab",
+    "workbench.action.terminal.changeIconActiveTab"
+  ],
+  "dom": {
+    "present": true,
+    "search": "chat",
+    "rows": [
+      {
+        "text": "editor.changeDropType\n⌘\n。\ndropWidgetVisible\nSystem",
+        "aria": "editor.changeDropType",
+        "id": "editor.changeDropType"
+      },
+      {
+        "text": "editor.changePasteType\n⌘\n。\npasteWidgetVisible\nSystem",
+        "aria": "editor.changePasteType",
+        "id": "editor.changePasteType"
+      },
+      {
+        "text": "Change Tab Display Size\neditor.action.changeTabDisplaySize\n-\nSystem",
+        "aria": "Change Tab Display Size (editor.action.changeTabDisplaySize)",
+        "id": "editor.action.changeTabDisplaySize"
+      },
+      {
+        "text": "Cloud Changes: Turn off Cloud Changes...\n-\nSystem",
+        "aria": "Cloud Changes: Turn off Cloud Changes... (workbench.editSessions.actions.resetAuth)",
+        "id": ""
+      },
+      {
+        "text": "Transpose Characters around the Cursor\n-\nSystem",
+        "aria": "Transpose Characters around the Cursor (editor.action.transpose)",
+        "id": ""
+      },
+      {
+        "text": "extensions.actions.searchByCategory.Chat\n-\nSystem",
+        "aria": "extensions.actions.searchByCategory.Chat",
+        "id": "extensions.actions.searchByCategory.Chat"
+      },
+      {
+        "text": "workbench.action.terminal.changeColorActiveTab\n-\nSystem",
+        "aria": "workbench.action.terminal.changeColorActiveTab",
+        "id": "workbench.action.terminal.changeColorActiveTab"
+      },
+      {
+        "text": "workbench.action.terminal.changeIconActiveTab\n-\nSystem",
+        "aria": "workbench.action.terminal.changeIconActiveTab",
+        "id": "workbench.action.terminal.changeIconActiveTab"
+      }
+    ]
+  },
+  "retiredMatches": 0
+}

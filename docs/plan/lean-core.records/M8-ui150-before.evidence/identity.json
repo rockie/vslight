@@ -1,0 +1,43 @@
+{
+  "root": "/private/tmp/lcfinal-chkarkup",
+  "app": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+  "source": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002",
+  "mermaidWorkspaceId": "877bb066c8efe95acdd1902b35bce660",
+  "relocations": [
+    {
+      "db": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb.backup",
+      "key": "history.entries"
+    },
+    {
+      "db": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb.backup",
+      "key": "memento/workbench.editors.files.textFileEditor"
+    },
+    {
+      "db": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb",
+      "key": "history.entries"
+    },
+    {
+      "db": "u/User/workspaceStorage/79fbbd3ca0ea69ad0d52480f1405964f/state.vscdb",
+      "key": "memento/workbench.editors.files.textFileEditor"
+    }
+  ],
+  "node": "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+  "files": [
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight",
+      "sha256": "4751f35ad2f7e7c21c81c6596a9d6faa2ce1f6c6c9641aa51c4ae3a1926ed3b7"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/out/main.js",
+      "sha256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.js",
+      "sha256": "8111cd1af92cd2486cfd16f41febbd5ee92ee202b943a86ecb62f83be3aa39ca"
+    },
+    {
+      "path": "/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+      "sha256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79"
+    }
+  ]
+}

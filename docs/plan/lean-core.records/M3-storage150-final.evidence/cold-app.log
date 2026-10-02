@@ -1,0 +1,14 @@
+
+DevTools listening on ws://127.0.0.1:19570/devtools/browser/f1754989-61cf-461c-af8c-0d7c2681ed17
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-02T07:34:36.539Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T07:34:36.547Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-02T07:34:36.652Z][0m [shared storage] Creating shared storage database at '/private/tmp/lcfinal-chkarkup/mermaid/s/sharedStorage/state.vscdb' (wasCreated: false)
+[90m[main 2026-10-02T07:34:36.652Z][0m [shared storage] Initializing fallback application storage (path: /private/tmp/lcfinal-chkarkup/mermaid/u/User/globalStorage/state.vscdb)
+[90m[main 2026-10-02T07:34:36.654Z][0m [shared storage] Fallback application storage initialized with 46 items
+[90m[main 2026-10-02T07:34:36.737Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T07:34:36.738Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T07:34:37.889Z][0m update#disable - updates are disabled by user preference
+[90m[main 2026-10-02T07:34:37.889Z][0m update#setState disabled
+[90m[main 2026-10-02T07:34:38.116Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T07:34:40.081Z][0m Extension host with pid 36475 exited with code: 0, signal: unknown.

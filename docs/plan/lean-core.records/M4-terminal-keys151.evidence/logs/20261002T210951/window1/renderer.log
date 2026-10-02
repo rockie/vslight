@@ -1,0 +1,4 @@
+2026-10-02 21:09:51.767 [info] Loading development extension at /private/tmp/lc-key151-mivqeuwq/ext
+2026-10-02 21:09:51.815 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 21:09:52.902 [info] Started local extension host with pid 37662.
+2026-10-02 21:09:54.407 [info] [perf] Render performance baseline is 7ms

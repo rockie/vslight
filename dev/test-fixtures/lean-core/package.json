@@ -1,0 +1,13 @@
+{
+  "name": "lean-core-fixture",
+  "displayName": "Lean Core Fixture",
+  "publisher": "lean-tests",
+  "version": "0.0.1",
+  "private": true,
+  "engines": { "vscode": "^1.135.0" },
+  "main": "./extension.js",
+  "activationEvents": ["onStartupFinished"],
+  "contributes": {
+    "commands": [{ "command": "leanCore.echo", "title": "Lean Core: Echo" }]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-02T21:19:19.614523+10:00",
+  "status": "PASS_POST_RUNTIME_FULL_SIGNED_PAYLOAD_UNCHANGED",
+  "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "filesAndSymlinks": 1223,
+  "manifest": "docs/plan/lean-core.records/M8-local151-carriers.json",
+  "manifestSha256": "0c18640acaaccecc3ab343b3f92881fde0a060e41ae00ecd7e597f80244bbe05",
+  "mismatch": [],
+  "extra": [],
+  "regularBytes": 421985205,
+  "installedAppUnmodified": true,
+  "unchangedZipAndManifestCopies": [
+    {
+      "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight-151-signed.zip",
+      "bytes": 157386282,
+      "sha256": "5a6768d4c9dfb126eaa65f66c64080baf993145352d77707a9c2d5b4b9b618eb"
+    },
+    {
+      "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight-151-unsigned.zip",
+      "bytes": 157530299,
+      "sha256": "8266e5ab9f6dfc114e94a5dc96e8185689eb42b90695f4b20cf757e854cfe366"
+    },
+    {
+      "path": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/build-inputs.json",
+      "bytes": 241514,
+      "sha256": "f6fc4ff04b5b1c4828dc8c1f353f0a2bdb16affa7a5883a8d8fae2ee64fb5cd6"
+    }
+  ]
+}

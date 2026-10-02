@@ -1,0 +1,34 @@
+{
+  "status": "FAIL",
+  "root": "/private/tmp/lc-key151-mivqeuwq",
+  "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+  "startedAt": "2026-10-02T11:07:02.734Z",
+  "checks": [],
+  "mainPID": 34539,
+  "hostPID": 35821,
+  "args": [
+    "--user-data-dir",
+    "/private/tmp/lc-key151-mivqeuwq/u",
+    "--extensions-dir",
+    "/private/tmp/lc-key151-mivqeuwq/e",
+    "--shared-data-dir",
+    "/private/tmp/lc-key151-mivqeuwq/s",
+    "--extensionDevelopmentPath",
+    "/private/tmp/lc-key151-mivqeuwq/ext",
+    "--remote-debugging-port=19542",
+    "--skip-welcome",
+    "--skip-release-notes",
+    "--disable-workspace-trust",
+    "--locale",
+    "en",
+    "/private/tmp/lc-key151-mivqeuwq/w"
+  ],
+  "authority": "34539 34520 /Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lc-key151-mivqeuwq/u --extensions-dir /private/tmp/lc-key151-mivqeuwq/e --shared-data-dir /private/tmp/lc-key151-mivqeuwq/s --extensionDevelopmentPath /private/tmp/lc-key151-mivqeuwq/ext --remote-debugging-port=19542 --skip-welcome --skip-release-notes --disable-workspace-trust --locale en /private/tmp/lc-key151-mivqeuwq/w\n",
+  "error": "Error: Command failed: /private/tmp/lc-key151-mivqeuwq/ui-driver 34539 focus\n\n    at genericNodeError (node:internal/errors:985:15)\n    at wrappedFn (node:internal/errors:539:14)\n    at ChildProcess.exithandler (node:child_process:417:12)\n    at ChildProcess.emit (node:events:509:28)\n    at maybeClose (node:internal/child_process:1124:16)\n    at ChildProcess._handle.onexit (node:internal/child_process:306:5)",
+  "restoreError": "Error: Fixture restore response absent\n    at until (file:///private/tmp/lc-key151-mivqeuwq/run.mjs:4:173)\n    at async request (file:///private/tmp/lc-key151-mivqeuwq/run.mjs:5:208)\n    at async file:///private/tmp/lc-key151-mivqeuwq/run.mjs:42:268",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "finishedAt": "2026-10-02T11:07:30.933Z"
+}

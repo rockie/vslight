@@ -1,0 +1,58 @@
+{
+  "launch": {
+    "pid": 27483,
+    "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "args": [
+      "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight",
+      "--user-data-dir",
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/u",
+      "--extensions-dir",
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/e",
+      "--shared-data-dir",
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/s",
+      "--extensionDevelopmentPath",
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/ext",
+      "--inspect=19501",
+      "--inspect-sharedprocess=19502",
+      "--inspect-extensions=19503",
+      "--remote-debugging-port=19500",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/w"
+    ],
+    "profile": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy/u",
+    "startedAt": "2026-10-01T17:10:48.157408+00:00",
+    "sha256": {
+      "main.js": "09643e096b5489af8d3a308581af7b94d81c30c78afbf32775491bda3e3f16ce",
+      "vs/code/electron-utility/sharedProcess/sharedProcessMain.js": "13778cd8bcb9c5f61def3054dbd60c7c9c80253886b188e524524f59a8978707"
+    },
+    "environmentKeys": [
+      "LEAN_ORDINARY_ROOT"
+    ],
+    "desktopLocked": true
+  },
+  "ready": {
+    "pid": 28808,
+    "version": "1.135.0"
+  },
+  "response": {
+    "id": "retained145-01",
+    "action": "retained",
+    "status": "PASS",
+    "result": {
+      "status": "PASS",
+      "checks": [
+        "HTML language, editor save, file search",
+        "built-in Git diff, stage, commit",
+        "ordinary task executes and stops",
+        "isolated ordinary secret store/get/delete"
+      ]
+    }
+  },
+  "root": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-runtime145-kfi5v0yy",
+  "fixtureSha256": {
+    "ordinary.js": "5ee2abb7e6396c3155d0db358bcf181075489c1239bc4638b10b8d5e98c62c55"
+  }
+}

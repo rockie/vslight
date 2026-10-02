@@ -1,0 +1,19 @@
+{
+  "id": "806b51cd-f4a5-430a-983a-c4d20617be9a",
+  "action": "terminal-clipboard",
+  "status": "PASS",
+  "result": {
+    "status": "PASS",
+    "checks": [
+      "integrated terminal sendText and disk proof",
+      "clipboard roundtrip, editor paste command and disk proof"
+    ]
+  },
+  "launch": {
+    "root": "/private/tmp/ord149-02m3s2vk",
+    "pid": 54840,
+    "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "fixtureSHA256": "dd1da71d3fc703c490f6f6d9d50799ee0be359e3a02c92606600e4dff6858437"
+  },
+  "at": "2026-10-02 10:16 +1000"
+}

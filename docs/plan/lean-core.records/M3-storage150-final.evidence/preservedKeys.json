@@ -1,0 +1,6 @@
+{
+  "chat.sessions.lean-history-sentinel": "SYNTHETIC_OLD_CHAT_HISTORY_PRESERVE",
+  "mcp.lean-old-config": "{\"servers\":{\"historical\":{\"command\":\"synthetic-never-run\"}}}",
+  "secret://lean-history-synthetic": "SYNTHETIC_OPAQUE_CREDENTIAL_PRESERVE",
+  "lean-synthetic-auth-Lean Old Account": "[{\"id\":\"lean-tests.lean-ui-final\",\"allowed\":true}]"
+}

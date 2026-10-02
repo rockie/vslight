@@ -1,0 +1,265 @@
+{
+  "capturedAt": "2026-10-02T11:13:32.642Z",
+  "status": "RUNTIME_CAPTURED_UNASSESSED",
+  "role": "main",
+  "authority": {
+    "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "profile": "/private/tmp/lc151ms-wdn5hck0/u",
+    "pid": 39925,
+    "parentPID": 39910,
+    "mainPID": 39925,
+    "port": 19551,
+    "listener": "127.0.0.1:19551",
+    "executable": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight"
+  },
+  "module": {
+    "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/main.js",
+    "scriptId": "141",
+    "diskSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+    "loadedSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+    "callback": "uncaughtException",
+    "bindingNames": {
+      "channelServer": "Vf",
+      "ipcServer": "qf",
+      "utilityProcess": "Ls"
+    }
+  },
+  "identity": {
+    "channelServer": {
+      "binding": "Vf",
+      "constructorMatches": true,
+      "methods": [
+        "constructor",
+        "registerChannel",
+        "sendResponse",
+        "send",
+        "sendBuffer",
+        "onRawMessage",
+        "onPromise",
+        "onEventListen",
+        "disposeActiveRequest",
+        "collectPendingRequest",
+        "flushPendingRequests",
+        "dispose"
+      ],
+      "location": {
+        "scriptId": "141",
+        "lineNumber": 30,
+        "columnNumber": 14302
+      }
+    },
+    "ipcServer": {
+      "binding": "qf",
+      "constructorMatches": true,
+      "methods": [
+        "constructor",
+        "getChannel",
+        "getMulticastEvent",
+        "registerChannel",
+        "dispose"
+      ],
+      "location": {
+        "scriptId": "141",
+        "lineNumber": 32,
+        "columnNumber": 2463
+      }
+    },
+    "utilityProcess": {
+      "binding": "Ls",
+      "constructorMatches": true,
+      "methods": [
+        "constructor",
+        "log",
+        "validateCanStart",
+        "start",
+        "doStart",
+        "createEnv",
+        "registerListeners",
+        "once",
+        "postMessage",
+        "connect",
+        "enableInspectPort",
+        "kill",
+        "onDidExitOrCrashOrKill",
+        "waitForExit"
+      ],
+      "location": {
+        "scriptId": "141",
+        "lineNumber": 45,
+        "columnNumber": 12234
+      }
+    }
+  },
+  "servers": {
+    "channelServer": {
+      "instances": [
+        {
+          "registeredChannels": [
+            "encryption",
+            "extensionHostStarter",
+            "extensionhostdebugservice",
+            "externalTerminal",
+            "keyboardLayout",
+            "localFilesystem",
+            "localPty",
+            "logger",
+            "menubar",
+            "meteredConnection",
+            "nativeHost",
+            "policy",
+            "process",
+            "sign",
+            "storage",
+            "update",
+            "url",
+            "userDataProfiles",
+            "utilityProcessWorker",
+            "webview",
+            "workspaces"
+          ],
+          "channelCount": 21,
+          "activeRequestCount": 37,
+          "pendingChannelCount": 0
+        },
+        {
+          "registeredChannels": [
+            "localFilesystem",
+            "logger",
+            "meteredConnection",
+            "nativeHost",
+            "policy",
+            "profileStorageListener",
+            "storage",
+            "userDataProfiles"
+          ],
+          "channelCount": 8,
+          "activeRequestCount": 13,
+          "pendingChannelCount": 0
+        }
+      ],
+      "excludedDerivedPrototypeCount": 0
+    },
+    "ipcServer": {
+      "instances": [
+        {
+          "registeredChannels": [
+            "encryption",
+            "extensionHostStarter",
+            "extensionhostdebugservice",
+            "externalTerminal",
+            "keyboardLayout",
+            "localFilesystem",
+            "localPty",
+            "logger",
+            "menubar",
+            "meteredConnection",
+            "nativeHost",
+            "policy",
+            "process",
+            "sign",
+            "storage",
+            "update",
+            "url",
+            "userDataProfiles",
+            "utilityProcessWorker",
+            "webview",
+            "workspaces"
+          ],
+          "channelCount": 21,
+          "connectionCount": 1
+        },
+        {
+          "registeredChannels": [
+            "diagnostics",
+            "launch"
+          ],
+          "channelCount": 2,
+          "connectionCount": 0
+        }
+      ],
+      "excludedDerivedPrototypeCount": 2
+    }
+  },
+  "channelNames": [
+    "diagnostics",
+    "encryption",
+    "extensionHostStarter",
+    "extensionhostdebugservice",
+    "externalTerminal",
+    "keyboardLayout",
+    "launch",
+    "localFilesystem",
+    "localPty",
+    "logger",
+    "menubar",
+    "meteredConnection",
+    "nativeHost",
+    "policy",
+    "process",
+    "profileStorageListener",
+    "sign",
+    "storage",
+    "update",
+    "url",
+    "userDataProfiles",
+    "utilityProcessWorker",
+    "webview",
+    "workspaces"
+  ],
+  "utilities": {
+    "instances": [
+      {
+        "pid": 41471,
+        "type": "extensionHost",
+        "name": "extension-host",
+        "entryPoint": "vs/workbench/api/node/extensionHostProcess",
+        "parentPID": 39925
+      },
+      {
+        "pid": 40135,
+        "type": "shared-process",
+        "name": "shared-process",
+        "entryPoint": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+        "parentPID": 39925
+      },
+      {
+        "pid": 41470,
+        "type": "fileWatcher",
+        "name": "file-watcher",
+        "entryPoint": "vs/platform/files/node/watcher/watcherMain",
+        "parentPID": 39925
+      }
+    ],
+    "inactiveInstanceCount": 0,
+    "excludedDerivedPrototypeCount": 1,
+    "registered": [
+      {
+        "pid": 40135,
+        "name": "shared-process",
+        "parentPID": 39925
+      },
+      {
+        "pid": 41470,
+        "name": "file-watcher [1]",
+        "parentPID": 39925
+      },
+      {
+        "pid": 41471,
+        "name": "extension-host [1]",
+        "parentPID": 39925
+      }
+    ]
+  },
+  "boundaries": {
+    "noAppLaunch": true,
+    "noImports": true,
+    "existingCallbackModuleOnly": true,
+    "exactPrototypesOnly": true,
+    "noServiceFactories": true,
+    "noDIGet": true,
+    "noChannelCalls": true,
+    "noEnvironmentOrStartupArgumentsSerialized": true,
+    "noAcceptanceVerdict": true
+  },
+  "authorityRecheckedAfterCapture": true
+}

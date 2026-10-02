@@ -1,0 +1,266 @@
+{
+  "unsigned": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/raw-before-voice-meta/VSLight.app",
+  "signed": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-sign144-dn6rn4w4/VSCode-darwin-arm64/VSLight.app",
+  "changed": [
+    {
+      "path": "Contents/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2325
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework",
+      "kind": "mach-o",
+      "before": 195322960,
+      "after": 194205696
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler",
+      "kind": "mach-o",
+      "before": 1210848,
+      "after": 1222896
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libEGL.dylib",
+      "kind": "mach-o",
+      "before": 91952,
+      "after": 109664
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libGLESv2.dylib",
+      "kind": "mach-o",
+      "before": 6278400,
+      "after": 6260192
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib",
+      "kind": "mach-o",
+      "before": 2230784,
+      "after": 2236096
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib",
+      "kind": "mach-o",
+      "before": 16574256,
+      "after": 16496144
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 10992
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/Mantle",
+      "kind": "mach-o",
+      "before": 126544,
+      "after": 144128
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2442
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC",
+      "kind": "mach-o",
+      "before": 352864,
+      "after": 369136
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2442
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt",
+      "kind": "mach-o",
+      "before": 125696,
+      "after": 144032
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel",
+      "kind": "mach-o",
+      "before": 145408,
+      "after": 162864
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2660
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/MacOS/VSLight Helper (GPU)",
+      "kind": "mach-o",
+      "before": 203600,
+      "after": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin)",
+      "kind": "mach-o",
+      "before": 203600,
+      "after": 221424
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/MacOS/VSLight Helper (Renderer)",
+      "kind": "mach-o",
+      "before": 203600,
+      "after": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper",
+      "kind": "mach-o",
+      "before": 203584,
+      "after": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 2200
+    },
+    {
+      "path": "Contents/Info.plist",
+      "kind": "plist",
+      "before": 35380,
+      "after": 35737
+    },
+    {
+      "path": "Contents/MacOS/VSLight",
+      "kind": "mach-o",
+      "before": 33968,
+      "after": 52864
+    },
+    {
+      "path": "Contents/Resources/app/extensions/git/node_modules/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "mach-o",
+      "before": 80496,
+      "after": 98288
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/libmsalruntime.dylib",
+      "kind": "mach-o",
+      "before": 6603872,
+      "after": 6550864
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/msal-node-runtime.node",
+      "kind": "mach-o",
+      "before": 359456,
+      "after": 342736
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+      "kind": "mach-o",
+      "before": 467184,
+      "after": 482720
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+      "kind": "mach-o",
+      "before": 16704,
+      "after": 34864
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "mach-o",
+      "before": 80480,
+      "after": 98272
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+      "kind": "mach-o",
+      "before": 52288,
+      "after": 70256
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+      "kind": "mach-o",
+      "before": 6632912,
+      "after": 6612624
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+      "kind": "mach-o",
+      "before": 4528512,
+      "after": 4521264
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+      "kind": "mach-o",
+      "before": 501464,
+      "after": 516816
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+      "kind": "mach-o",
+      "before": 1886784,
+      "after": 1894080
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+      "kind": "mach-o",
+      "before": 60320,
+      "after": 78240
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+      "kind": "mach-o",
+      "before": 541248,
+      "after": 590640
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+      "kind": "mach-o",
+      "before": 51040,
+      "after": 69024
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+      "kind": "mach-o",
+      "before": 91704,
+      "after": 109424
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+      "kind": "mach-o",
+      "before": 50688,
+      "after": 69488
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+      "kind": "mach-o",
+      "before": 51480,
+      "after": 69456
+    },
+    {
+      "path": "Contents/_CodeSignature/CodeResources",
+      "kind": "signature",
+      "before": null,
+      "after": 378760
+    }
+  ],
+  "unexpected": [],
+  "contentFilesUnchanged": 1129
+}

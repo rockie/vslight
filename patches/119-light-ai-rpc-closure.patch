@@ -1,0 +1,3675 @@
+diff --git a/src/vs/workbench/api/browser/extensionHost.contribution.ts b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+--- a/src/vs/workbench/api/browser/extensionHost.contribution.ts
++++ b/src/vs/workbench/api/browser/extensionHost.contribution.ts
+@@ -16,14 +16,8 @@
+ import { CSSExtensionPoint } from '../../services/themes/browser/cssExtensionPoint.js';
+ 
+ // --- mainThread participants
+-import './mainThreadAgentEditorComments.js';
+ import './mainThreadLocalization.js';
+ import './mainThreadBulkEdits.js';
+-import './mainThreadLanguageModels.js';
+-import './mainThreadChatAgents2.js';
+-import './mainThreadChatCodeMapper.js';
+-import './mainThreadLanguageModelTools.js';
+-import './mainThreadEmbeddings.js';
+ import './mainThreadCodeInsets.js';
+ import './mainThreadCLICommands.js';
+ import './mainThreadClipboard.js';
+@@ -57,7 +51,6 @@
+ import './mainThreadQuickOpen.js';
+ import './mainThreadRemoteConnectionData.js';
+ import './mainThreadSaveParticipant.js';
+-import './mainThreadSpeech.js';
+ import './mainThreadEditSessionIdentityParticipant.js';
+ import './mainThreadSCM.js';
+ import './mainThreadSearch.js';
+@@ -91,17 +84,6 @@
+ import './mainThreadSecretState.js';
+ import './mainThreadShare.js';
+ import './mainThreadProfileContentHandlers.js';
+-import './mainThreadAiRelatedInformation.js';
+-import './mainThreadAiEmbeddingVector.js';
+-import './mainThreadAiSettingsSearch.js';
+-import './mainThreadMcp.js';
+-import './mainThreadChatContext.js';
+-import './mainThreadChatDebug.js';
+-import './mainThreadChatStatus.js';
+-import './mainThreadChatQuota.js';
+-import './mainThreadChatInputNotification.js';
+-import './mainThreadChatOutputRenderer.js';
+-import './mainThreadChatSessions.js';
+ import './mainThreadDataChannels.js';
+ import './mainThreadMeteredConnection.js';
+ import './mainThreadGitExtensionService.js';
+diff --git a/src/vs/workbench/api/browser/mainThreadWebviewManager.ts b/src/vs/workbench/api/browser/mainThreadWebviewManager.ts
+--- a/src/vs/workbench/api/browser/mainThreadWebviewManager.ts
++++ b/src/vs/workbench/api/browser/mainThreadWebviewManager.ts
+@@ -11,7 +11,6 @@
+ import { MainThreadWebviewsViews } from './mainThreadWebviewViews.js';
+ import * as extHostProtocol from '../common/extHost.protocol.js';
+ import { extHostCustomer, IExtHostContext } from '../../services/extensions/common/extHostCustomers.js';
+-import { MainThreadChatOutputRenderer } from './mainThreadChatOutputRenderer.js';
+ 
+ @extHostCustomer
+ export class MainThreadWebviewManager extends Disposable {
+@@ -33,7 +32,5 @@
+ 		const webviewViews = this._register(instantiationService.createInstance(MainThreadWebviewsViews, context, webviews));
+ 		context.set(extHostProtocol.MainContext.MainThreadWebviewViews, webviewViews);
+ 
+-		const chatOutputRenderers = this._register(instantiationService.createInstance(MainThreadChatOutputRenderer, context, webviews));
+-		context.set(extHostProtocol.MainContext.MainThreadChatOutputRenderer, chatOutputRenderers);
+ 	}
+ }
+diff --git a/src/vs/workbench/api/browser/mainThreadEditorTabs.ts b/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
+--- a/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
++++ b/src/vs/workbench/api/browser/mainThreadEditorTabs.ts
+@@ -16,7 +16,6 @@
+ import { EditorInput } from '../../common/editor/editorInput.js';
+ import { SideBySideEditorInput } from '../../common/editor/sideBySideEditorInput.js';
+ import { AbstractTextResourceEditorInput } from '../../common/editor/textResourceEditorInput.js';
+-import { ChatEditorInput } from '../../contrib/chat/browser/widgetHosts/editor/chatEditorInput.js';
+ import { CustomEditorInput } from '../../contrib/customEditor/browser/customEditorInput.js';
+ import { InteractiveEditorInput } from '../../contrib/interactive/browser/interactiveEditorInput.js';
+ import { MergeEditorInput } from '../../contrib/mergeEditor/browser/mergeEditorInput.js';
+@@ -198,11 +197,6 @@
+ 			};
+ 		}
+ 
+-		if (editor instanceof ChatEditorInput) {
+-			return {
+-				kind: TabInputKind.ChatEditorInput,
+-			};
+-		}
+ 
+ 		if (editor instanceof MultiDiffEditorInput) {
+ 			const diffEditors: TextDiffInputDto[] = [];
+diff --git a/src/vs/workbench/api/browser/mainThreadSCM.ts b/src/vs/workbench/api/browser/mainThreadSCM.ts
+--- a/src/vs/workbench/api/browser/mainThreadSCM.ts
++++ b/src/vs/workbench/api/browser/mainThreadSCM.ts
+@@ -230,14 +230,6 @@
+ 		return historyItem ? toISCMHistoryItem(historyItem) : undefined;
+ 	}
+ 
+-	async resolveHistoryItemChatContext(historyItemId: string, token?: CancellationToken): Promise<string | undefined> {
+-		return this.proxy.$resolveHistoryItemChatContext(this.handle, historyItemId, token ?? CancellationToken.None);
+-	}
+-
+-	async resolveHistoryItemChangeRangeChatContext(historyItemId: string, historyItemParentId: string, path: string, token?: CancellationToken): Promise<string | undefined> {
+-		return this.proxy.$resolveHistoryItemChangeRangeChatContext(this.handle, historyItemId, historyItemParentId, path, token ?? CancellationToken.None);
+-	}
+-
+ 	async resolveHistoryItemRefsCommonAncestor(historyItemRefs: string[], token: CancellationToken): Promise<string | undefined> {
+ 		return this.proxy.$resolveHistoryItemRefsCommonAncestor(this.handle, historyItemRefs, token ?? CancellationToken.None);
+ 	}
+diff --git a/src/vs/workbench/api/common/extHostSCM.ts b/src/vs/workbench/api/common/extHostSCM.ts
+--- a/src/vs/workbench/api/common/extHostSCM.ts
++++ b/src/vs/workbench/api/common/extHostSCM.ts
+@@ -1173,32 +1173,6 @@
+ 		}
+ 	}
+ 
+-	async $resolveHistoryItemChatContext(sourceControlHandle: number, historyItemId: string, token: CancellationToken): Promise<string | undefined> {
+-		try {
+-			const historyProvider = this._sourceControls.get(sourceControlHandle)?.historyProvider;
+-			const chatContext = await historyProvider?.resolveHistoryItemChatContext(historyItemId, token);
+-
+-			return chatContext ?? undefined;
+-		}
+-		catch (err) {
+-			this.logService.error('ExtHostSCM#$resolveHistoryItemChatContext', err);
+-			return undefined;
+-		}
+-	}
+-
+-	async $resolveHistoryItemChangeRangeChatContext(sourceControlHandle: number, historyItemId: string, historyItemParentId: string, path: string, token: CancellationToken): Promise<string | undefined> {
+-		try {
+-			const historyProvider = this._sourceControls.get(sourceControlHandle)?.historyProvider;
+-			const chatContext = await historyProvider?.resolveHistoryItemChangeRangeChatContext?.(historyItemId, historyItemParentId, path, token);
+-
+-			return chatContext ?? undefined;
+-		}
+-		catch (err) {
+-			this.logService.error('ExtHostSCM#$resolveHistoryItemChangeRangeChatContext', err);
+-			return undefined;
+-		}
+-	}
+-
+ 	async $resolveHistoryItemRefsCommonAncestor(sourceControlHandle: number, historyItemRefs: string[], token: CancellationToken): Promise<string | undefined> {
+ 		try {
+ 			const historyProvider = this._sourceControls.get(sourceControlHandle)?.historyProvider;
+diff --git a/src/vs/workbench/api/common/extHost.protocol.ts b/src/vs/workbench/api/common/extHost.protocol.ts
+--- a/src/vs/workbench/api/common/extHost.protocol.ts
++++ b/src/vs/workbench/api/common/extHost.protocol.ts
+@@ -9,7 +9,6 @@
+ import { SerializedError } from '../../../base/common/errors.js';
+ import { IRelativePattern } from '../../../base/common/glob.js';
+ import { IMarkdownString } from '../../../base/common/htmlContent.js';
+-import { IJSONSchema } from '../../../base/common/jsonSchema.js';
+ import { IDisposable } from '../../../base/common/lifecycle.js';
+ import { IAuthorizationProtectedResourceMetadata, IAuthorizationServerMetadata, IAuthorizationTokenResponse } from '../../../base/common/oauth.js';
+ import * as performance from '../../../base/common/performance.js';
+@@ -32,9 +31,10 @@
+ import { ISerializedModelContentChangedEvent } from '../../../editor/common/textModelEvents.js';
+ import { IAccessibilityInformation } from '../../../platform/accessibility/common/accessibility.js';
+ import { ILocalizedString } from '../../../platform/action/common/action.js';
++import { CDPEvent, CDPRequest, CDPResponse } from '../../../platform/browserView/common/cdp/types.js';
+ import { ConfigurationTarget, IConfigurationChange, IConfigurationData, IConfigurationOverrides } from '../../../platform/configuration/common/configuration.js';
++import { ConfigurationScope } from '../../../platform/configuration/common/configurationRegistry.js';
+ import { LinkPresentationKind } from '../../../platform/dataChannel/common/dataChannel.js';
+-import { ConfigurationScope } from '../../../platform/configuration/common/configurationRegistry.js';
+ import { IEditorOptions } from '../../../platform/editor/common/editor.js';
+ import { IExtensionIdWithVersion } from '../../../platform/extensionManagement/common/extensionStorage.js';
+ import { ExtensionIdentifier, IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+@@ -57,19 +57,7 @@
+ import { SaveReason } from '../../common/editor.js';
+ import { IRevealOptions, ITreeItem, IViewBadge } from '../../common/views.js';
+ import { CallHierarchyItem } from '../../contrib/callHierarchy/common/callHierarchy.js';
+-import { IChatAgentMetadata, IChatAgentRequest, IChatAgentResult, UserSelectedTools } from '../../contrib/chat/common/participants/chatAgents.js';
+-import { ICodeMapperRequest, ICodeMapperResult } from '../../contrib/chat/common/editing/chatCodeMapperService.js';
+-import { IChatContextItem } from '../../contrib/chat/common/contextContrib/chatContext.js';
+-import { IChatProgressHistoryResponseContent, IChatRequestModeInstructions, IChatRequestVariableData } from '../../contrib/chat/common/model/chatModel.js';
+-import { ChatResponseClearToPreviousToolInvocationReason, IChatContentInlineReference, IChatExternalEditsDto, IChatFollowup, IChatMultiDiffData, IChatMultiDiffDataSerialized, IChatNotebookEdit, IChatProgress, IChatTask, IChatTaskDto, IChatUserActionEvent, IChatVoteAction } from '../../contrib/chat/common/chatService/chatService.js';
+-import { IChatSessionItem, IChatSessionProviderOptionGroup, IChatSessionProviderOptionItem } from '../../contrib/chat/common/chatSessionsService.js';
+-import { IChatRequestVariableValue } from '../../contrib/chat/common/attachments/chatVariables.js';
+-import { ChatAgentLocation } from '../../contrib/chat/common/constants.js';
+-import { IChatMessage, IChatResponsePart, ILanguageModelChatInfoOptions, ILanguageModelChatMetadataAndIdentifier, ILanguageModelChatRequestOptions, ILanguageModelChatSelector } from '../../contrib/chat/common/languageModels.js';
+-import { IPreparedToolInvocation, IStreamedToolInvocation, IToolInvocation, IToolInvocationPreparationContext, IToolInvocationStreamContext, IToolProgressStep, IToolResult, ToolDataSource } from '../../contrib/chat/common/tools/languageModelToolsService.js';
+-import { IPromptFileContext, IPromptFileResource } from '../../contrib/chat/common/promptSyntax/service/promptsService.js';
+ import { DebugConfigurationProviderTriggerKind, IAdapterDescriptor, IConfig, IDebugSessionReplMode, IDebugTestRunReference, IDebugVisualization, IDebugVisualizationContext, IDebugVisualizationTreeItem, MainThreadDebugVisualization } from '../../contrib/debug/common/debug.js';
+-import { McpCollectionDefinition, McpConnectionState, McpServerDefinition, McpServerLaunch } from '../../contrib/mcp/common/mcpTypes.js';
+ import * as notebookCommon from '../../contrib/notebook/common/notebookCommon.js';
+ import { CellExecutionUpdateType } from '../../contrib/notebook/common/notebookExecutionService.js';
+ import { ICellExecutionComplete, ICellExecutionStateUpdate } from '../../contrib/notebook/common/notebookExecutionStateService.js';
+@@ -78,12 +66,9 @@
+ import { InputValidationType } from '../../contrib/scm/common/scm.js';
+ import { IWorkspaceSymbol, NotebookPriorityInfo } from '../../contrib/search/common/search.js';
+ import { IRawClosedNotebookFileMatch } from '../../contrib/search/common/searchNotebookHelpers.js';
+-import { IKeywordRecognitionEvent, ISpeechProviderMetadata, ISpeechToTextEvent, ITextToSpeechEvent } from '../../contrib/speech/common/speechService.js';
+ import { CoverageDetails, ExtensionRunTestsRequest, ICallProfileRunHandler, IFileCoverage, ISerializedTestResults, IStartControllerTests, ITestItem, ITestMessage, ITestRunProfile, ITestRunTask, ResolvedTestRunRequest, TestControllerCapability, TestMessageFollowupRequest, TestMessageFollowupResponse, TestResultState, TestsDiffOp } from '../../contrib/testing/common/testTypes.js';
+ import { Timeline, TimelineChangeEvent, TimelineOptions, TimelineProviderDescriptor } from '../../contrib/timeline/common/timeline.js';
+ import { TypeHierarchyItem } from '../../contrib/typeHierarchy/common/typeHierarchy.js';
+-import { RelatedInformationResult, RelatedInformationType } from '../../services/aiRelatedInformation/common/aiRelatedInformation.js';
+-import { AiSettingsSearchProviderOptions, AiSettingsSearchResult } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
+ import { AuthenticationSession, AuthenticationSessionAccount, AuthenticationSessionsChangeEvent, IAuthenticationConstraint, IAuthenticationCreateSessionOptions, IAuthenticationGetSessionsOptions, IAuthenticationWwwAuthenticateRequest } from '../../services/authentication/common/authentication.js';
+ import { EditorGroupColumn } from '../../services/editor/common/editorGroupColumn.js';
+ import { IExtensionDescriptionDelta, IStaticWorkspaceData } from '../../services/extensions/common/extensionHostProtocol.js';
+@@ -101,8 +86,6 @@
+ import { IExtHostDocumentSaveDelegate } from './extHostDocumentData.js';
+ import { TerminalShellExecutionCommandLineConfidence } from './extHostTypes.js';
+ import * as tasks from './shared/tasks.js';
+-import { PromptsType } from '../../contrib/chat/common/promptSyntax/promptTypes.js';
+-import { CDPEvent, CDPRequest, CDPResponse } from '../../../platform/browserView/common/cdp/types.js';
+ 
+ export type IconPathDto =
+ 	| UriComponents
+@@ -213,12 +196,6 @@
+ 	clientId: string;
+ 	clientSecret?: string;
+ 	authorizationServer: UriComponents;
+-}
+-
+-export interface IXaaProviderDiscovery {
+-	issuer: UriComponents;
+-	serverMetadata: IAuthorizationServerMetadata;
+-	clientId?: string;
+ }
+ 
+ export interface MainThreadAuthenticationShape extends IDisposable {
+@@ -874,18 +851,17 @@
+ //#region --- tabs model
+ 
+ export const enum TabInputKind {
+-	UnknownInput,
+-	TextInput,
+-	TextDiffInput,
+-	TextMergeInput,
+-	NotebookInput,
+-	NotebookDiffInput,
+-	CustomEditorInput,
+-	WebviewEditorInput,
+-	TerminalEditorInput,
+-	InteractiveEditorInput,
+-	ChatEditorInput,
+-	MultiDiffEditorInput
++	UnknownInput = 0,
++	TextInput = 1,
++	TextDiffInput = 2,
++	TextMergeInput = 3,
++	NotebookInput = 4,
++	NotebookDiffInput = 5,
++	CustomEditorInput = 6,
++	WebviewEditorInput = 7,
++	TerminalEditorInput = 8,
++	InteractiveEditorInput = 9,
++	MultiDiffEditorInput = 11,
+ }
+ 
+ export const enum TabModelOperationKind {
+@@ -948,10 +924,6 @@
+ 	inputBoxUri: UriComponents;
+ }
+ 
+-export interface ChatEditorInputDto {
+-	kind: TabInputKind.ChatEditorInput;
+-}
+-
+ export interface MultiDiffEditorInputDto {
+ 	kind: TabInputKind.MultiDiffEditorInput;
+ 	diffEditors: TextDiffInputDto[];
+@@ -961,7 +933,7 @@
+ 	kind: TabInputKind.TerminalEditorInput;
+ }
+ 
+-export type AnyInputDto = UnknownInputDto | TextInputDto | TextDiffInputDto | MultiDiffEditorInputDto | TextMergeInputDto | NotebookInputDto | NotebookDiffInputDto | CustomInputDto | WebviewInputDto | InteractiveEditorInputDto | ChatEditorInputDto | TabInputDto;
++export type AnyInputDto = UnknownInputDto | TextInputDto | TextDiffInputDto | MultiDiffEditorInputDto | TextMergeInputDto | NotebookInputDto | NotebookDiffInputDto | CustomInputDto | WebviewInputDto | InteractiveEditorInputDto | TabInputDto;
+ 
+ export interface MainThreadEditorTabsShape extends IDisposable {
+ 	// manage tabs: move, close, rearrange etc
+@@ -1402,27 +1374,6 @@
+ export interface MainThreadInteractiveShape extends IDisposable {
+ }
+ 
+-export interface MainThreadSpeechShape extends IDisposable {
+-	$registerProvider(handle: number, identifier: string, metadata: ISpeechProviderMetadata): void;
+-	$unregisterProvider(handle: number): void;
+-
+-	$emitSpeechToTextEvent(session: number, event: ISpeechToTextEvent): void;
+-	$emitTextToSpeechEvent(session: number, event: ITextToSpeechEvent): void;
+-	$emitKeywordRecognitionEvent(session: number, event: IKeywordRecognitionEvent): void;
+-}
+-
+-export interface ExtHostSpeechShape {
+-	$createSpeechToTextSession(handle: number, session: number, language?: string): Promise<void>;
+-	$cancelSpeechToTextSession(session: number): Promise<void>;
+-
+-	$createTextToSpeechSession(handle: number, session: number, language?: string): Promise<void>;
+-	$synthesizeSpeech(session: number, text: string): Promise<void>;
+-	$cancelTextToSpeechSession(session: number): Promise<void>;
+-
+-	$createKeywordRecognitionSession(handle: number, session: number): Promise<void>;
+-	$cancelKeywordRecognitionSession(session: number): Promise<void>;
+-}
+-
+ export interface BrowserTabDto {
+ 	id: string;
+ 	url: string;
+@@ -1447,461 +1398,14 @@
+ 	$onCDPSessionClosed(sessionId: string): void;
+ }
+ 
+-export interface MainThreadLanguageModelsShape extends IDisposable {
+-	$registerLanguageModelProvider(vendor: string): void;
+-	$onLMProviderChange(vendor: string): void;
+-	$unregisterProvider(vendor: string): void;
+-	$tryStartChatRequest(extension: ExtensionIdentifier, modelIdentifier: string, requestId: number, messages: SerializableObjectWithBuffers<IChatMessage[]>, options: {}, token: CancellationToken): Promise<void>;
+-	$reportResponsePart(requestId: number, chunk: SerializableObjectWithBuffers<IChatResponsePart | IChatResponsePart[]>): Promise<void>;
+-	$reportResponseDone(requestId: number, error: SerializedError | undefined): Promise<void>;
+-	$selectChatModels(selector: ILanguageModelChatSelector): Promise<string[]>;
+-	$countTokens(modelId: string, value: string | IChatMessage, token: CancellationToken): Promise<number>;
+-	$cancelLanguageModelChatRequest(requestId: number): void;
+-	$fileIsIgnored(uri: UriComponents, token: CancellationToken): Promise<boolean>;
+-	$registerFileIgnoreProvider(handle: number): void;
+-	$unregisterFileIgnoreProvider(handle: number): void;
+-}
+-
+-export interface ExtHostLanguageModelsShape {
+-	$provideLanguageModelChatInfo(vendor: string, options: ILanguageModelChatInfoOptions, token: CancellationToken): Promise<ILanguageModelChatMetadataAndIdentifier[]>;
+-	$updateModelAccesslist(data: { from: ExtensionIdentifier; to: ExtensionIdentifier; enabled: boolean }[]): void;
+-	$onChatModelsChange(): void;
+-	$startChatRequest(modelId: string, requestId: number, from: ExtensionIdentifier | undefined, messages: SerializableObjectWithBuffers<IChatMessage[]>, options: ILanguageModelChatRequestOptions, token: CancellationToken): Promise<void>;
+-	$acceptResponsePart(requestId: number, chunk: SerializableObjectWithBuffers<IChatResponsePart | IChatResponsePart[]>): Promise<void>;
+-	$acceptResponseDone(requestId: number, error: SerializedError | undefined): Promise<void>;
+-	$cancelLanguageModelChatRequest(requestId: number): void;
+-	$provideTokenLength(modelId: string, value: string | IChatMessage, token: CancellationToken): Promise<number>;
+-	$isFileIgnored(handle: number, uri: UriComponents, token: CancellationToken): Promise<boolean>;
+-}
+-
+-export type IChatContextItemDto = Dto<IChatContextItem>;
+-
+-export interface ExtHostChatContextShape {
+-	$provideWorkspaceChatContext(handle: number, token: CancellationToken): Promise<IChatContextItem[]>;
+-	$provideExplicitChatContext(handle: number, token: CancellationToken): Promise<IChatContextItem[]>;
+-	$resolveExplicitChatContext(handle: number, context: IChatContextItem, token: CancellationToken): Promise<IChatContextItem>;
+-	$provideResourceChatContext(handle: number, options: { resource: UriComponents; withValue: boolean; viewType?: string }, token: CancellationToken): Promise<IChatContextItem | undefined>;
+-	$resolveResourceChatContext(handle: number, context: IChatContextItem, token: CancellationToken): Promise<IChatContextItem>;
+-	$executeChatContextItemCommand(itemHandle: number): Promise<void>;
+-}
+-
+-export interface MainThreadChatContextShape extends IDisposable {
+-	$registerChatWorkspaceContextProvider(handle: number, id: string): void;
+-	$registerChatExplicitContextProvider(handle: number, id: string): void;
+-	$registerChatResourceContextProvider(handle: number, id: string, selector: ITabSelectorDto): void;
+-	$unregisterChatContextProvider(handle: number): void;
+-	$updateWorkspaceContextItems(handle: number, items: IChatContextItemDto[]): void;
+-	$executeChatContextItemCommand(itemHandle: number): Promise<void>;
+-}
+-
+-export interface IChatDebugEventCommonDto {
+-	readonly id?: string;
+-	readonly sessionResource?: UriComponents;
+-	readonly created: number;
+-	readonly parentEventId?: string;
+-}
+-
+-export interface IChatDebugToolCallEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'toolCall';
+-	readonly toolName: string;
+-	readonly toolCallId?: string;
+-	readonly input?: string;
+-	readonly output?: string;
+-	readonly result?: 'success' | 'error';
+-	readonly durationInMillis?: number;
+-}
+-
+-export interface IChatDebugModelTurnEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'modelTurn';
+-	readonly model?: string;
+-	readonly requestName?: string;
+-	readonly inputTokens?: number;
+-	readonly outputTokens?: number;
+-	readonly cachedTokens?: number;
+-	readonly totalTokens?: number;
+-	readonly copilotUsageNanoAiu?: number;
+-	readonly durationInMillis?: number;
+-}
+-
+-export interface IChatDebugGenericEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'generic';
+-	readonly name: string;
+-	readonly details?: string;
+-	readonly level: number;
+-	readonly category?: string;
+-}
+-
+-export interface IChatDebugSubagentInvocationEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'subagentInvocation';
+-	readonly agentName: string;
+-	readonly description?: string;
+-	readonly status?: 'running' | 'completed' | 'failed';
+-	readonly durationInMillis?: number;
+-	readonly toolCallCount?: number;
+-	readonly modelTurnCount?: number;
+-}
+-
+-export interface IChatDebugMessageSectionDto {
+-	readonly name: string;
+-	readonly content: string;
+-}
+-
+-export interface IChatDebugUserMessageEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'userMessage';
+-	readonly message: string;
+-	readonly sections: readonly IChatDebugMessageSectionDto[];
+-}
+-
+-export interface IChatDebugAgentResponseEventDto extends IChatDebugEventCommonDto {
+-	readonly kind: 'agentResponse';
+-	readonly message: string;
+-	readonly sections: readonly IChatDebugMessageSectionDto[];
+-}
+-
+-export type IChatDebugEventDto = IChatDebugToolCallEventDto | IChatDebugModelTurnEventDto | IChatDebugGenericEventDto | IChatDebugSubagentInvocationEventDto | IChatDebugUserMessageEventDto | IChatDebugAgentResponseEventDto;
+-
+-export interface IChatDebugEventTextContentDto {
+-	readonly kind: 'text';
+-	readonly value: string;
+-}
+-
+-export interface IChatDebugEventMessageContentDto {
+-	readonly kind: 'message';
+-	readonly type: 'user' | 'agent';
+-	readonly message: string;
+-	readonly sections: readonly IChatDebugMessageSectionDto[];
+-}
+-
+-export interface IChatDebugEventToolCallContentDto {
+-	readonly kind: 'toolCall';
+-	readonly toolName: string;
+-	readonly result?: 'success' | 'error';
+-	readonly durationInMillis?: number;
+-	readonly input?: string;
+-	readonly output?: string;
+-}
+-
+-export interface IChatDebugEventModelTurnContentDto {
+-	readonly kind: 'modelTurn';
+-	readonly requestName: string;
+-	readonly model?: string;
+-	readonly status?: string;
+-	readonly durationInMillis?: number;
+-	readonly timeToFirstTokenInMillis?: number;
+-	readonly requestId?: string;
+-	readonly maxInputTokens?: number;
+-	readonly maxOutputTokens?: number;
+-	readonly inputTokens?: number;
+-	readonly outputTokens?: number;
+-	readonly cachedTokens?: number;
+-	readonly totalTokens?: number;
+-	readonly requestOptions?: string;
+-	readonly errorMessage?: string;
+-	readonly sections?: readonly IChatDebugMessageSectionDto[];
+-}
+-
+-export interface IChatDebugEventHookContentDto {
+-	readonly kind: 'hook';
+-	readonly hookType: string;
+-	readonly command?: string;
+-	readonly result?: 'success' | 'error' | 'nonBlockingError';
+-	readonly durationInMillis?: number;
+-	readonly input?: string;
+-	readonly output?: string;
+-	readonly exitCode?: number;
+-	readonly errorMessage?: string;
+-}
+-
+-export type IChatDebugResolvedEventContentDto = IChatDebugEventTextContentDto | IChatDebugEventMessageContentDto | IChatDebugEventToolCallContentDto | IChatDebugEventModelTurnContentDto | IChatDebugEventHookContentDto;
+-
+-export interface ExtHostChatDebugShape {
+-	$provideChatDebugLog(handle: number, sessionResource: UriComponents, token: CancellationToken): Promise<IChatDebugEventDto[] | undefined>;
+-	$resolveChatDebugLogEvent(handle: number, eventId: string, token: CancellationToken): Promise<IChatDebugResolvedEventContentDto | undefined>;
+-	$exportChatDebugLog(handle: number, sessionResource: UriComponents, coreEvents: IChatDebugEventDto[], sessionTitle: string | undefined, token: CancellationToken): Promise<VSBuffer | undefined>;
+-	$importChatDebugLog(handle: number, data: VSBuffer, token: CancellationToken): Promise<{ uri: UriComponents; sessionTitle?: string } | undefined>;
+-	$getAvailableDebugSessionResources(handle: number, token: CancellationToken): Promise<{ uri: UriComponents; title?: string }[]>;
+-	$onCoreDebugEvent(event: IChatDebugEventDto): void;
+-}
+-
+-export interface MainThreadChatDebugShape extends IDisposable {
+-	$registerChatDebugLogProvider(handle: number): void;
+-	$unregisterChatDebugLogProvider(handle: number): void;
+-	$acceptChatDebugEvent(handle: number, event: IChatDebugEventDto): void;
+-	$subscribeToCoreDebugEvents(): void;
+-	$unsubscribeFromCoreDebugEvents(): void;
+-}
+-
+-export interface MainThreadEmbeddingsShape extends IDisposable {
+-	$registerEmbeddingProvider(handle: number, identifier: string): void;
+-	$unregisterEmbeddingProvider(handle: number): void;
+-	$computeEmbeddings(embeddingsModel: string, input: string[], token: CancellationToken): Promise<({ values: number[] }[])>;
+-}
+-
+-export interface ExtHostEmbeddingsShape {
+-	$provideEmbeddings(handle: number, input: string[], token: CancellationToken): Promise<{ values: number[] }[]>;
+-	$acceptEmbeddingModels(models: string[]): void;
+-}
+-
+-export interface IExtensionChatAgentMetadata extends Dto<IChatAgentMetadata> {
+-	hasFollowups?: boolean;
+-}
+-
+-export interface IDynamicChatAgentProps {
+-	name: string;
+-	publisherName: string;
+-	description?: string;
+-	fullName?: string;
+-}
+-
+-export interface IChatAgentProgressShape {
+-	$handleProgressChunk(requestId: string, chunks: (IChatProgressDto | [IChatProgressDto, number])[]): Promise<void>;
+-	$handleAnchorResolve(requestId: string, handle: string, anchor: Dto<IChatContentInlineReference>): void;
+-}
+-
+-export interface MainThreadChatAgentsShape2 extends IChatAgentProgressShape, IDisposable {
+-	$registerAgent(handle: number, extension: ExtensionIdentifier, id: string, metadata: IExtensionChatAgentMetadata, dynamicProps: IDynamicChatAgentProps | undefined): void;
+-	$registerChatParticipantDetectionProvider(handle: number): void;
+-	$unregisterChatParticipantDetectionProvider(handle: number): void;
+-	$registerPromptFileProvider(handle: number, type: string, extension: ExtensionIdentifier): void;
+-	$unregisterPromptFileProvider(handle: number): void;
+-	$onDidChangePromptFiles(handle: number): void;
+-	$registerChatSessionCustomizationProvider(handle: number, chatSessionType: string, metadata: IChatSessionCustomizationProviderMetadataDto, extension: ExtensionIdentifier): void;
+-	$unregisterChatSessionCustomizationProvider(handle: number): void;
+-	$onDidChangeCustomizations(handle: number): void;
+-	$registerAgentCompletionsProvider(handle: number, id: string, triggerCharacters: string[]): void;
+-	$unregisterAgentCompletionsProvider(handle: number, id: string): void;
+-	$updateAgent(handle: number, metadataUpdate: IExtensionChatAgentMetadata): void;
+-	$unregisterAgent(handle: number): void;
+-
+-	$transferActiveChatSession(toWorkspace: UriComponents): Promise<void>;
+-	$provideCustomAgents(token: CancellationToken): Promise<ICustomAgentDto[]>;
+-	$provideInstructions(token: CancellationToken): Promise<IInstructionDto[]>;
+-	$provideSkills(token: CancellationToken): Promise<ISkillDto[]>;
+-	$provideSlashCommands(token: CancellationToken): Promise<ISlashCommandDto[]>;
+-	$provideHooks(token: CancellationToken): Promise<IHookDto[]>;
+-	$providePlugins(token: CancellationToken): Promise<IPluginDto[]>;
+-}
+-
+-export interface ICodeMapperTextEdit {
+-	uri: URI;
+-	edits: languages.TextEdit[];
+-}
+-
+-export interface ICodeMapperNotebookEditDto {
+-	uri: URI;
+-	edits: ICellEditOperationDto[];
+-}
+-
+-export type ICodeMapperProgressDto = Dto<ICodeMapperTextEdit> | Dto<ICodeMapperNotebookEditDto>;
+-
+-export interface MainThreadCodeMapperShape extends IDisposable {
+-	$registerCodeMapperProvider(handle: number, displayName: string): void;
+-	$unregisterCodeMapperProvider(handle: number): void;
+-	$handleProgress(requestId: string, data: ICodeMapperProgressDto): Promise<void>;
+-}
+-
+-export interface IChatAgentCompletionItem {
+-	id: string;
+-	fullName?: string;
+-	icon?: string;
+-	insertText?: string;
+-	label: string | languages.CompletionItemLabel;
+-	value: IChatRequestVariableValueDto;
+-	detail?: string;
+-	documentation?: string | IMarkdownString;
+-	command?: ICommandDto;
+-}
+-
+-export type IChatContentProgressDto =
+-	| Dto<Exclude<IChatProgressHistoryResponseContent, IChatTask | IChatMultiDiffData>>
+-	| IChatMultiDiffDataSerialized
+-	| IChatTaskDto;
+-
+-export type IChatAgentHistoryEntryDto = {
+-	request: IChatAgentRequest;
+-	response: ReadonlyArray<IChatContentProgressDto>;
+-	result: IChatAgentResult;
+-};
+-
+-export interface IChatSessionContextDto {
+-	readonly chatSessionResource: UriComponents;
+-	readonly isUntitled: boolean;
+-	readonly initialSessionOptions?: ReadonlyArray<{ optionId: string; value: string }>;
+-}
+-
+-export interface IChatAgentInvokeResult extends IChatAgentResult {
+-	/** Error callstack for telemetry only. Stripped at the RPC boundary — never persisted or sent to the model. */
+-	errorCallstack?: string;
+-	/** Error name (e.g. 'ChatQuotaExceeded', 'TypeError') for telemetry only. */
+-	errorName?: string;
+-}
+-
+-export interface ExtHostChatAgentsShape2 {
+-	$invokeAgent(handle: number, request: Dto<IChatAgentRequest>, context: { history: IChatAgentHistoryEntryDto[]; chatSessionContext?: IChatSessionContextDto }, token: CancellationToken): Promise<IChatAgentInvokeResult | undefined>;
+-	$provideFollowups(request: Dto<IChatAgentRequest>, handle: number, result: IChatAgentResult, context: { history: IChatAgentHistoryEntryDto[] }, token: CancellationToken): Promise<IChatFollowup[]>;
+-	$acceptFeedback(handle: number, result: IChatAgentResult, voteAction: IChatVoteAction): void;
+-	$handleQuestionCarouselAnswer(requestId: string, resolveId: string, answers: Record<string, unknown> | undefined): void;
+-	$acceptAction(handle: number, result: IChatAgentResult, action: IChatUserActionEvent): void;
+-	$invokeCompletionProvider(handle: number, query: string, token: CancellationToken): Promise<IChatAgentCompletionItem[]>;
+-	$provideChatTitle(handle: number, context: IChatAgentHistoryEntryDto[], token: CancellationToken): Promise<string | undefined>;
+-	$provideChatSummary(handle: number, context: IChatAgentHistoryEntryDto[], token: CancellationToken): Promise<string | undefined>;
+-	$releaseSession(sessionResource: UriComponents): void;
+-	$detectChatParticipant(handle: number, request: Dto<IChatAgentRequest>, context: { history: IChatAgentHistoryEntryDto[] }, options: { participants: IChatParticipantMetadata[]; location: ChatAgentLocation }, token: CancellationToken): Promise<IChatParticipantDetectionResult | null | undefined>;
+-	$providePromptFiles(handle: number, type: PromptsType, context: IPromptFileContext, token: CancellationToken): Promise<Dto<IPromptFileResource>[] | undefined>;
+-	$provideChatSessionCustomizations(handle: number, sessionResource: UriComponents, token: CancellationToken): Promise<IChatSessionCustomizationItemDto[] | undefined>;
+-	$provideSourceFolders(handle: number, sessionResource: UriComponents, type: string, token: CancellationToken): Promise<IChatSessionCustomizationSourceFolderDto[] | undefined>;
+-	$setRequestTools(requestId: string, tools: UserSelectedTools): void;
+-	$setYieldRequested(requestId: string, value: boolean): void;
+-	$acceptActiveChatSession(sessionResource: UriComponents | undefined): void;
+-	$onDidChangeCustomAgents(): void;
+-	$onDidChangeInstructions(): void;
+-	$onDidChangeSkills(): void;
+-	$onDidChangeSlashCommands(): void;
+-	$onDidChangeHooks(): void;
+-	$onDidChangePlugins(): void;
+-}
+-
+-export type IChatResourceSourceDto = 'local' | 'user' | 'extension' | 'plugin' | 'builtin';
+-
+-export interface IChatResourceDto {
+-	readonly uri: UriComponents;
+-	readonly name: string;
+-	readonly description?: string;
+-	readonly source: IChatResourceSourceDto;
+-	readonly extensionId?: string;
+-	readonly pluginUri?: UriComponents;
+-	readonly sessionTypes?: readonly string[];
+-}
+-
+-export interface ICustomAgentDto extends IChatResourceDto {
+-	readonly argumentHint?: string;
+-	readonly tools?: readonly string[];
+-	readonly model?: readonly string[];
+-	readonly userInvocable: boolean;
+-	readonly disableModelInvocation: boolean;
+-	readonly enabled: boolean;
+-}
+-
+-export interface IInstructionDto extends IChatResourceDto {
+-	readonly pattern?: string;
+-}
+-
+-export interface ISkillDto extends IChatResourceDto {
+-	readonly userInvocable: boolean;
+-	readonly disableModelInvocation: boolean;
+-}
+-
+-export interface ISlashCommandDto extends IChatResourceDto {
+-	readonly argumentHint?: string;
+-	readonly userInvocable: boolean;
+-}
+-
+-export interface IHookDto {
+-	readonly uri: UriComponents;
+-	readonly sessionTypes?: readonly string[];
+-	readonly source: IChatResourceSourceDto;
+-	readonly extensionId?: string;
+-	readonly pluginUri?: UriComponents;
+-}
+-
+ export interface IPluginDto {
+ 	readonly uri: UriComponents;
+-}
+-
+-export interface IChatSessionCustomizationProviderMetadataDto {
+-	readonly label: string;
+-	readonly iconId?: string;
+-	readonly supportedTypes?: readonly string[];
+-}
+-
+-export interface IChatSessionCustomizationItemDto {
+-	readonly uri: UriComponents;
+-	readonly type: string;
+-	readonly name: string;
+-	readonly source: IChatResourceSourceDto;
+-	readonly description?: string;
+-	readonly groupKey?: string;
+-	readonly badge?: string;
+-	readonly extensionId?: string;
+-	readonly pluginUri?: UriComponents;
+-	readonly pluginLabel?: string;
+-	readonly badgeTooltip?: string;
+-	readonly userInvocable?: boolean;
+-}
+-
+-export interface IChatSessionCustomizationSourceFolderDto {
+-	readonly uri: UriComponents;
+-	readonly label: string;
+-	readonly source: IChatResourceSourceDto;
+-}
+-export interface IChatParticipantMetadata {
+-	participant: string;
+-	command?: string;
+-	disambiguation: { category: string; description: string; examples: string[] }[];
+-}
+-
+-export interface IChatParticipantDetectionResult {
+-	participant: string;
+-	command?: string;
+-}
+-
+-export interface IToolDataDto {
+-	id: string;
+-	toolReferenceName?: string;
+-	legacyToolReferenceFullNames?: readonly string[];
+-	fullReferenceName: string | undefined;
+-	tags?: readonly string[];
+-	displayName: string;
+-	userDescription?: string;
+-	modelDescription: string;
+-	source: Dto<ToolDataSource>;
+-	inputSchema?: IJSONSchema;
+-}
+-
+-export interface ILanguageModelChatSelectorDto {
+-	vendor?: string;
+-	family?: string;
+-	version?: string;
+-	id?: string;
+-}
+-
+-export interface IToolDefinitionDto extends IToolDataDto {
+-	icon?: IconPathDto;
+-	models?: ILanguageModelChatSelectorDto[];
+-	toolSet?: string;
+-}
+-
+-export interface MainThreadLanguageModelToolsShape extends IDisposable {
+-	$getTools(): Promise<Dto<IToolDataDto>[]>;
+-	$acceptToolProgress(callId: string, progress: IToolProgressStep): void;
+-	$invokeTool(dto: Dto<IToolInvocation>, token?: CancellationToken): Promise<Dto<IToolResult> | SerializableObjectWithBuffers<Dto<IToolResult>>>;
+-	$countTokensForInvocation(callId: string, input: string, token: CancellationToken): Promise<number>;
+-	$registerTool(id: string, hasHandleToolStream: boolean): void;
+-	$registerToolWithDefinition(extensionId: ExtensionIdentifier, definition: IToolDefinitionDto, hasHandleToolStream: boolean): void;
+-	$unregisterTool(name: string): void;
+-}
+-
+-export type IChatRequestVariableValueDto = Dto<IChatRequestVariableValue>;
+-
+-export interface ExtHostLanguageModelToolsShape {
+-	$onDidChangeTools(tools: IToolDataDto[]): void;
+-	$invokeTool(dto: Dto<IToolInvocation>, token: CancellationToken): Promise<Dto<IToolResult> | SerializableObjectWithBuffers<Dto<IToolResult>>>;
+-	$countTokensForInvocation(callId: string, input: string, token: CancellationToken): Promise<number>;
+-
+-	$handleToolStream(toolId: string, context: IToolInvocationStreamContext, token: CancellationToken): Promise<IStreamedToolInvocation | undefined>;
+-	$prepareToolInvocation(toolId: string, context: IToolInvocationPreparationContext, token: CancellationToken): Promise<IPreparedToolInvocation | undefined>;
+ }
+ 
+ export interface MainThreadUrlsShape extends IDisposable {
+ 	$registerUriHandler(handle: number, extensionId: ExtensionIdentifier, extensionDisplayName: string): Promise<void>;
+ 	$unregisterUriHandler(handle: number): Promise<void>;
+ 	$createAppUri(uri: UriComponents): Promise<UriComponents>;
+-}
+-
+-export interface IChatResponseProgressFileTreeData {
+-	label: string;
+-	uri: URI;
+-	children?: IChatResponseProgressFileTreeData[];
+ }
+ 
+ export type IDocumentContextDto = {
+@@ -1910,16 +1414,6 @@
+ 	ranges: IRange[];
+ };
+ 
+-export type IChatProgressDto =
+-	| Dto<Exclude<IChatProgress, IChatTask | IChatNotebookEdit>>
+-	| IChatTaskDto
+-	| IChatNotebookEditDto
+-	| IChatExternalEditsDto
+-	| IChatResponseClearToPreviousToolInvocationDto
+-	| IChatBeginToolInvocationDto
+-	| IChatUpdateToolInvocationDto
+-	| IChatUsageDto;
+-
+ export interface ExtHostUrlsShape {
+ 	$handleExternalUri(handle: number, uri: UriComponents): Promise<void>;
+ }
+@@ -1932,21 +1426,6 @@
+ export interface ExtHostUriOpenersShape {
+ 	$canOpenUri(id: string, uri: UriComponents, token: CancellationToken): Promise<languages.ExternalUriOpenerPriority>;
+ 	$openUri(id: string, context: { resolvedUri: UriComponents; sourceUri: UriComponents }, token: CancellationToken): Promise<void>;
+-}
+-
+-export interface MainThreadChatOutputRendererShape extends IDisposable {
+-	$registerChatOutputRenderer(viewType: string, extensionId: ExtensionIdentifier, extensionLocation: UriComponents): void;
+-	$unregisterChatOutputRenderer(viewType: string): void;
+-}
+-
+-export interface IChatOutputRenderContextDto {
+-	readonly codeBlockContext?: {
+-		readonly languageIdentifier: string;
+-	};
+-}
+-
+-export interface ExtHostChatOutputRendererShape {
+-	$renderChatOutput(viewType: string, mime: string, valueData: VSBuffer, webviewHandle: string, context: IChatOutputRenderContextDto, token: CancellationToken): Promise<void>;
+ }
+ 
+ export interface MainThreadProfileContentHandlersShape {
+@@ -2201,25 +1680,6 @@
+ 	$unregisterQuickDiffProvider(handle: number): Promise<void>;
+ 	$createSourceControlDiffInformation(handle: number, uri: UriComponents): Promise<void>;
+ 	$disposeSourceControlDiffInformation(handle: number): Promise<void>;
+-}
+-
+-export interface IAgentEditorCommentDto {
+-	id: string;
+-	range: IRange;
+-	body: string;
+-	author?: string;
+-}
+-
+-export interface MainThreadAgentEditorCommentsShape extends IDisposable {
+-	$createAgentEditorComments(handle: number, uri: UriComponents): Promise<void>;
+-	$addComment(handle: number, range: IRange, body: string): Promise<void>;
+-	$deleteComment(handle: number, id: string): Promise<void>;
+-	$disposeAgentEditorComments(handle: number): Promise<void>;
+-}
+-
+-export interface ExtHostAgentEditorCommentsShape {
+-	$acceptAgentEditorComments(handle: number, comments: IAgentEditorCommentDto[], acceptsComments: boolean): void;
+-	$revealAgentEditorComment(handle: number, id: string): void;
+ }
+ 
+ export interface IDocumentDiffLineChangeDto {
+@@ -2360,14 +1820,6 @@
+ 	readonly returns?: string;
+ }
+ 
+-export interface ICodeMapperRequestDto extends Dto<ICodeMapperRequest> {
+-	requestId: string;
+-}
+-
+-export interface ExtHostCodeMapperShape {
+-	$mapCode(handle: number, request: ICodeMapperRequestDto, token: CancellationToken): Promise<ICodeMapperResult | null | undefined>;
+-}
+-
+ export interface ExtHostCommandsShape {
+ 	$executeContributedCommand(id: string, ...args: unknown[]): Promise<unknown>;
+ 	$getContributedCommandMetadata(): Promise<{ [id: string]: string | ICommandMetadataDto }>;
+@@ -2555,35 +2007,6 @@
+ 	$onDidChangeDynamicAuthProviderTokens(authProviderId: string, clientId: string, tokens?: (IAuthorizationTokenResponse & { created_at: number })[]): Promise<void>;
+ }
+ 
+-export interface ExtHostAiRelatedInformationShape {
+-	$provideAiRelatedInformation(handle: number, query: string, token: CancellationToken): Promise<RelatedInformationResult[]>;
+-}
+-
+-export interface MainThreadAiRelatedInformationShape {
+-	$getAiRelatedInformation(query: string, types: RelatedInformationType[]): Promise<RelatedInformationResult[]>;
+-	$registerAiRelatedInformationProvider(handle: number, type: RelatedInformationType): void;
+-	$unregisterAiRelatedInformationProvider(handle: number): void;
+-}
+-
+-export interface ExtHostAiSettingsSearchShape {
+-	$startSearch(handle: number, query: string, option: AiSettingsSearchProviderOptions, token: CancellationToken): Promise<void>;
+-}
+-
+-export interface MainThreadAiSettingsSearchShape {
+-	$registerAiSettingsSearchProvider(handle: number): void;
+-	$unregisterAiSettingsSearchProvider(handle: number): void;
+-	$handleSearchResult(handle: number, result: AiSettingsSearchResult): void;
+-}
+-
+-export interface ExtHostAiEmbeddingVectorShape {
+-	$provideAiEmbeddingVector(handle: number, strings: string[], token: CancellationToken): Promise<number[][]>;
+-}
+-
+-export interface MainThreadAiEmbeddingVectorShape {
+-	$registerAiEmbeddingVectorProvider(model: string, handle: number): void;
+-	$unregisterAiEmbeddingVectorProvider(handle: number): void;
+-}
+-
+ export interface ExtHostSecretStateShape {
+ 	$onDidChangePassword(e: { extensionId: string; key: string }): Promise<void>;
+ }
+@@ -2749,75 +2172,6 @@
+ 	label: string;
+ 	description?: string;
+ 	iconPath?: IconPathDto;
+-}
+-
+-export interface IChatNotebookEditDto {
+-	uri: UriComponents;
+-	edits: ICellEditOperationDto[];
+-	kind: 'notebookEdit';
+-	done?: boolean;
+-}
+-
+-export interface IChatResponseClearToPreviousToolInvocationDto {
+-	kind: 'clearToPreviousToolInvocation';
+-	reason: ChatResponseClearToPreviousToolInvocationReason;
+-}
+-
+-export interface IChatBeginToolInvocationDto {
+-	kind: 'beginToolInvocation';
+-	toolCallId: string;
+-	toolName: string;
+-	streamData?: {
+-		partialInput?: unknown;
+-	};
+-	subagentInvocationId?: string;
+-}
+-
+-export interface IChatUpdateToolInvocationDto {
+-	kind: 'updateToolInvocation';
+-	toolCallId: string;
+-	streamData: {
+-		partialInput?: unknown;
+-	};
+-}
+-
+-export interface IChatUsageDto {
+-	kind: 'usage';
+-	promptTokens: number;
+-	completionTokens: number;
+-	outputBuffer?: number;
+-	copilotCredits?: number;
+-	promptTokenDetails?: readonly { category: string; label: string; percentageOfPrompt: number }[];
+-}
+-
+-export interface IQuotaSnapshotDto {
+-	readonly percentRemaining: number;
+-	readonly unlimited: boolean;
+-	readonly hasQuota?: boolean;
+-	readonly resetAt?: number;
+-	readonly usageBasedBilling?: boolean;
+-	readonly entitlement?: number;
+-	readonly quotaRemaining?: number;
+-}
+-
+-export interface IRateLimitSnapshotDto {
+-	readonly percentRemaining: number;
+-	readonly unlimited: boolean;
+-	readonly resetDate?: string;
+-}
+-
+-export interface IQuotaSnapshotsDto {
+-	readonly resetDate?: string;
+-	readonly resetDateHasTime?: boolean;
+-	readonly usageBasedBilling?: boolean;
+-	readonly canUpgradePlan?: boolean;
+-	readonly chat?: IQuotaSnapshotDto;
+-	readonly completions?: IQuotaSnapshotDto;
+-	readonly premiumChat?: IQuotaSnapshotDto;
+-	readonly additionalUsageEnabled?: boolean;
+-	readonly additionalUsageCount?: number;
+-	readonly sessionRateLimit?: IRateLimitSnapshotDto;
+-	readonly weeklyRateLimit?: IRateLimitSnapshotDto;
+ }
+ 
+ export type ICellEditOperationDto =
+@@ -3206,8 +2560,6 @@
+ 	$provideHistoryItems(sourceControlHandle: number, options: ISCMHistoryOptions, token: CancellationToken): Promise<SCMHistoryItemDto[] | undefined>;
+ 	$provideHistoryItemChanges(sourceControlHandle: number, historyItemId: string, historyItemParentId: string | undefined, token: CancellationToken): Promise<SCMHistoryItemChangeDto[] | undefined>;
+ 	$resolveHistoryItem(sourceControlHandle: number, historyItemId: string, token: CancellationToken): Promise<SCMHistoryItemDto | undefined>;
+-	$resolveHistoryItemChatContext(sourceControlHandle: number, historyItemId: string, token: CancellationToken): Promise<string | undefined>;
+-	$resolveHistoryItemChangeRangeChatContext(sourceControlHandle: number, historyItemId: string, historyItemParentId: string, path: string, token: CancellationToken): Promise<string | undefined>;
+ 	$resolveHistoryItemRefsCommonAncestor(sourceControlHandle: number, historyItemRefs: string[], token: CancellationToken): Promise<string | undefined>;
+ 
+ 	$provideArtifactGroups(sourceControlHandle: number, token: CancellationToken): Promise<SCMArtifactGroupDto[] | undefined>;
+@@ -3669,44 +3021,6 @@
+ 	$disposeTestFollowups(id: number[]): void;
+ }
+ 
+-export interface IStartMcpOptions {
+-	launch: McpServerLaunch.Serialized;
+-	defaultCwd?: UriComponents;
+-	errorOnUserInteraction?: boolean;
+-}
+-
+-export interface ExtHostMcpShape {
+-	$substituteVariables(workspaceFolder: UriComponents | undefined, value: McpServerLaunch.Serialized): Promise<McpServerLaunch.Serialized>;
+-	$resolveMcpLaunch(collectionId: string, label: string): Promise<McpServerLaunch.Serialized | undefined>;
+-	$startMcp(id: number, opts: IStartMcpOptions): void;
+-	$stopMcp(id: number): void;
+-	$sendMessage(id: number, message: string): void;
+-	$waitForInitialCollectionProviders(): Promise<void>;
+-	$onDidChangeMcpServerDefinitions(servers: McpServerDefinition.Serialized[]): void;
+-	$onDidChangeGatewayServers(gatewayId: string, servers: { label: string; address: UriComponents }[]): void;
+-}
+-
+-export interface IMcpAuthenticationDetails {
+-	authorizationServer: UriComponents;
+-	authorizationServerMetadata: IAuthorizationServerMetadata;
+-	resourceMetadata: IAuthorizationProtectedResourceMetadata | undefined;
+-	scopes: string[] | undefined;
+-	clientId?: string;
+-	/**
+-	 * When true, the MCP server has opted into enterprise-managed authentication
+-	 * (OAuth Identity Assertion Authorization Grant). The main thread is expected
+-	 * to route token acquisition through the XAA authentication provider for the
+-	 * configured issuer rather than the per-resource dynamic auth provider.
+-	 */
+-	enterpriseManaged?: boolean;
+-}
+-
+-export interface IMcpAuthenticationOptions {
+-	errorOnUserInteraction?: boolean;
+-	forceNewRegistration?: boolean;
+-	clientId?: string;
+-}
+-
+ export const enum IAuthResourceMetadataSource {
+ 	Header = 'header',
+ 	WellKnown = 'wellKnown',
+@@ -3717,24 +3031,6 @@
+ 	ResourceMetadata = 'resourceMetadata',
+ 	WellKnown = 'wellKnown',
+ 	Default = 'default',
+-}
+-
+-export interface IAuthMetadataSource {
+-	resourceMetadataSource: IAuthResourceMetadataSource;
+-	serverMetadataSource: IAuthServerMetadataSource;
+-}
+-
+-export interface MainThreadMcpShape {
+-	$onDidChangeState(id: number, state: McpConnectionState): void;
+-	$onDidPublishLog(id: number, level: LogLevel, log: string): void;
+-	$onDidReceiveMessage(id: number, message: string): void;
+-	$upsertMcpCollection(collection: McpCollectionDefinition.FromExtHost, servers: McpServerDefinition.Serialized[]): void;
+-	$deleteMcpCollection(collectionId: string): void;
+-	$getTokenFromServerMetadata(id: number, authDetails: IMcpAuthenticationDetails, options?: IMcpAuthenticationOptions): Promise<string | undefined>;
+-	$getTokenForProviderId(id: number, providerId: string, scopes: string[], options?: IMcpAuthenticationOptions): Promise<string | undefined>;
+-	$logMcpAuthSetup(data: IAuthMetadataSource): void;
+-	$startMcpGateway(chatSessionResource?: UriComponents): Promise<{ servers: { label: string; address: UriComponents }[]; gatewayId: string } | undefined>;
+-	$disposeMcpGateway(gatewayId: string): void;
+ }
+ 
+ export interface MainThreadDataChannelsShape extends IDisposable {
+@@ -3828,141 +3124,6 @@
+ 	$markTestRetired(testIds: string[] | undefined): void;
+ }
+ 
+-export type ChatStatusItemDto = {
+-	id: string;
+-	title: string | { label: string; link: string; helpText?: string };
+-	description: string;
+-	detail: string | undefined;
+-	tooltip: string | undefined;
+-};
+-
+-export interface MainThreadChatStatusShape {
+-	$setEntry(id: string, entry: ChatStatusItemDto): void;
+-	$disposeEntry(id: string): void;
+-}
+-
+-export interface MainThreadChatQuotaShape extends IDisposable {
+-	$updateQuotas(quotas: IQuotaSnapshotsDto): void;
+-}
+-
+-export interface ExtHostChatQuotaShape {
+-}
+-
+-export const enum ChatInputNotificationSeverityDto {
+-	Info = 0,
+-	Warning = 1,
+-	Error = 2,
+-}
+-
+-export type ChatInputNotificationActionDto = {
+-	label: string;
+-	commandId: string;
+-	commandArgs?: unknown[];
+-};
+-
+-export type ChatInputNotificationDto = {
+-	id: string;
+-	severity: ChatInputNotificationSeverityDto;
+-	message: string;
+-	description: string | undefined;
+-	actions: ChatInputNotificationActionDto[];
+-	dismissible: boolean;
+-	autoDismissOnMessage: boolean;
+-	sessionTypes: readonly string[] | undefined;
+-};
+-
+-export interface MainThreadChatInputNotificationShape {
+-	$setNotification(notification: ChatInputNotificationDto): void;
+-	$disposeNotification(id: string): void;
+-}
+-
+-export type IChatSessionHistoryItemDto = {
+-	id?: string;
+-	type: 'request';
+-	prompt: string;
+-	participant: string;
+-	command?: string;
+-	variableData?: Dto<IChatRequestVariableData>;
+-	modelId?: string;
+-	modeInstructions?: Dto<IChatRequestModeInstructions>;
+-} | {
+-	type: 'response';
+-	parts: IChatProgressDto[];
+-	participant: string;
+-	details?: string;
+-};
+-
+-export type IChatSessionRequestHistoryItemDto = Extract<IChatSessionHistoryItemDto, { type: 'request' }>;
+-
+-
+-
+-export interface ChatSessionContentContextDto {
+-	readonly initialSessionOptions?: ReadonlyArray<{ optionId: string; value: string }>;
+-}
+-
+-export interface IChatNewSessionRequestDto {
+-	readonly prompt: string;
+-	readonly command?: string;
+-
+-	readonly initialSessionOptions?: ReadonlyArray<{ optionId: string; value: string }>;
+-}
+-
+-export interface IChatSessionDto {
+-	resource: UriComponents;
+-	title?: string;
+-	history: Array<IChatSessionHistoryItemDto>;
+-	hasActiveResponseCallback: boolean;
+-	hasRequestHandler: boolean;
+-	hasForkHandler: boolean;
+-	supportsInterruption: boolean;
+-	options?: Record<string, string | IChatSessionProviderOptionItem>;
+-}
+-
+-export interface IChatSessionProviderOptions {
+-	optionGroups?: readonly IChatSessionProviderOptionGroup[];
+-	newSessionOptions?: Record<string, string | IChatSessionProviderOptionItem>;
+-}
+-
+-export interface IChatSessionItemsChange {
+-	readonly addedOrUpdated: readonly Dto<IChatSessionItem>[];
+-	readonly removed: readonly UriComponents[];
+-}
+-
+-export interface MainThreadChatSessionsShape extends IDisposable {
+-	$registerChatSessionItemController(controllerHandle: number, chatSessionType: string, supportsResolve: boolean): void;
+-	$updateChatSessionItemControllerCapabilities(controllerHandle: number, supportsResolve: boolean): void;
+-	$unregisterChatSessionItemController(controllerHandle: number): void;
+-	$updateChatSessionItems(controllerHandle: number, change: IChatSessionItemsChange): Promise<void>;
+-	$addOrUpdateChatSessionItem(controllerHandle: number, item: Dto<IChatSessionItem>): Promise<void>;
+-	$onDidCommitChatSessionItem(controllerHandle: number, original: UriComponents, modified: UriComponents): void;
+-	$registerChatSessionContentProvider(handle: number, chatSessionScheme: string): void;
+-	$unregisterChatSessionContentProvider(handle: number): void;
+-	$onDidChangeChatSessionOptions(handle: number, sessionResource: UriComponents, updates: Record<string, string | IChatSessionProviderOptionItem>): void;
+-	$onDidChangeChatSessionProviderOptions(handle: number): void;
+-
+-	$updateChatSessionInputState(controllerHandle: number, sessionResource: UriComponents, optionGroups: readonly IChatSessionProviderOptionGroup[]): void;
+-
+-	$handleProgressChunk(handle: number, sessionResource: UriComponents, requestId: string, chunks: (IChatProgressDto | [IChatProgressDto, number])[]): Promise<void>;
+-	$handleAnchorResolve(handle: number, sessionResource: UriComponents, requestId: string, requestHandle: string, anchor: Dto<IChatContentInlineReference>): void;
+-	$handleProgressComplete(handle: number, sessionResource: UriComponents, requestId: string): void;
+-}
+-
+-export interface ExtHostChatSessionsShape {
+-	$refreshChatSessionItems(providerHandle: number, token: CancellationToken): Promise<void>;
+-	$onDidChangeChatSessionItemState(providerHandle: number, sessionResource: UriComponents, archived: boolean): void;
+-	$newChatSessionItem(controllerHandle: number, request: IChatNewSessionRequestDto, token: CancellationToken): Promise<Dto<IChatSessionItem> | undefined>;
+-
+-	$provideChatSessionContent(providerHandle: number, sessionResource: UriComponents, context: ChatSessionContentContextDto, token: CancellationToken): Promise<IChatSessionDto>;
+-	$interruptChatSessionActiveResponse(providerHandle: number, sessionResource: UriComponents, requestId: string): Promise<void>;
+-	$disposeChatSessionContent(providerHandle: number, sessionResource: UriComponents): Promise<void>;
+-	$invokeChatSessionRequestHandler(providerHandle: number, sessionResource: UriComponents, request: IChatAgentRequest, history: any[], token: CancellationToken): Promise<IChatAgentResult>;
+-	$provideChatSessionProviderOptions(providerHandle: number, token: CancellationToken): Promise<IChatSessionProviderOptions | undefined>;
+-	$provideHandleOptionsChange(providerHandle: number, sessionResource: UriComponents, updates: Record<string, string | IChatSessionProviderOptionItem | undefined>, token: CancellationToken): Promise<void>;
+-	$forkChatSession(providerHandle: number, sessionResource: UriComponents, request: IChatSessionRequestHistoryItemDto | undefined, token: CancellationToken): Promise<Dto<IChatSessionItem>>;
+-	$resolveChatSessionItem(providerHandle: number, sessionResource: UriComponents, token: CancellationToken): Promise<Dto<IChatSessionItem> | undefined>;
+-	$provideChatSessionInputState(controllerHandle: number, sessionResource: UriComponents | undefined, token: CancellationToken): Promise<IChatSessionProviderOptionGroup[] | undefined>;
+-}
+-
+ export interface GitRefQueryDto {
+ 	readonly contains?: string;
+ 	readonly count?: number;
+@@ -4045,11 +3206,6 @@
+ export const MainContext = {
+ 	MainThreadAuthentication: createProxyIdentifier<MainThreadAuthenticationShape>('MainThreadAuthentication'),
+ 	MainThreadBulkEdits: createProxyIdentifier<MainThreadBulkEditsShape>('MainThreadBulkEdits'),
+-	MainThreadLanguageModels: createProxyIdentifier<MainThreadLanguageModelsShape>('MainThreadLanguageModels'),
+-	MainThreadEmbeddings: createProxyIdentifier<MainThreadEmbeddingsShape>('MainThreadEmbeddings'),
+-	MainThreadChatAgents2: createProxyIdentifier<MainThreadChatAgentsShape2>('MainThreadChatAgents2'),
+-	MainThreadCodeMapper: createProxyIdentifier<MainThreadCodeMapperShape>('MainThreadCodeMapper'),
+-	MainThreadLanguageModelTools: createProxyIdentifier<MainThreadLanguageModelToolsShape>('MainThreadChatSkills'),
+ 	MainThreadGitExtension: createProxyIdentifier<MainThreadGitExtensionShape>('MainThreadGitExtension'),
+ 	MainThreadClipboard: createProxyIdentifier<MainThreadClipboardShape>('MainThreadClipboard'),
+ 	MainThreadCommands: createProxyIdentifier<MainThreadCommandsShape>('MainThreadCommands'),
+@@ -4075,13 +3231,11 @@
+ 	MainThreadOutputService: createProxyIdentifier<MainThreadOutputServiceShape>('MainThreadOutputService'),
+ 	MainThreadProgress: createProxyIdentifier<MainThreadProgressShape>('MainThreadProgress'),
+ 	MainThreadQuickDiff: createProxyIdentifier<MainThreadQuickDiffShape>('MainThreadQuickDiff'),
+-	MainThreadAgentEditorComments: createProxyIdentifier<MainThreadAgentEditorCommentsShape>('MainThreadAgentEditorComments'),
+ 	MainThreadDocumentDiff: createProxyIdentifier<MainThreadDocumentDiffShape>('MainThreadDocumentDiff'),
+ 	MainThreadQuickOpen: createProxyIdentifier<MainThreadQuickOpenShape>('MainThreadQuickOpen'),
+ 	MainThreadStatusBar: createProxyIdentifier<MainThreadStatusBarShape>('MainThreadStatusBar'),
+ 	MainThreadSecretState: createProxyIdentifier<MainThreadSecretStateShape>('MainThreadSecretState'),
+ 	MainThreadStorage: createProxyIdentifier<MainThreadStorageShape>('MainThreadStorage'),
+-	MainThreadSpeech: createProxyIdentifier<MainThreadSpeechShape>('MainThreadSpeechProvider'),
+ 	MainThreadTelemetry: createProxyIdentifier<MainThreadTelemetryShape>('MainThreadTelemetry'),
+ 	MainThreadMeteredConnection: createProxyIdentifier<MainThreadMeteredConnectionShape>('MainThreadMeteredConnection'),
+ 	MainThreadTerminalService: createProxyIdentifier<MainThreadTerminalServiceShape>('MainThreadTerminalService'),
+@@ -4117,23 +3271,11 @@
+ 	MainThreadTimeline: createProxyIdentifier<MainThreadTimelineShape>('MainThreadTimeline'),
+ 	MainThreadTesting: createProxyIdentifier<MainThreadTestingShape>('MainThreadTesting'),
+ 	MainThreadLocalization: createProxyIdentifier<MainThreadLocalizationShape>('MainThreadLocalizationShape'),
+-	MainThreadMcp: createProxyIdentifier<MainThreadMcpShape>('MainThreadMcpShape'),
+-	MainThreadAiRelatedInformation: createProxyIdentifier<MainThreadAiRelatedInformationShape>('MainThreadAiRelatedInformation'),
+-	MainThreadAiEmbeddingVector: createProxyIdentifier<MainThreadAiEmbeddingVectorShape>('MainThreadAiEmbeddingVector'),
+-	MainThreadChatStatus: createProxyIdentifier<MainThreadChatStatusShape>('MainThreadChatStatus'),
+-	MainThreadChatQuota: createProxyIdentifier<MainThreadChatQuotaShape>('MainThreadChatQuota'),
+-	MainThreadChatInputNotification: createProxyIdentifier<MainThreadChatInputNotificationShape>('MainThreadChatInputNotification'),
+-	MainThreadAiSettingsSearch: createProxyIdentifier<MainThreadAiSettingsSearchShape>('MainThreadAiSettingsSearch'),
+ 	MainThreadDataChannels: createProxyIdentifier<MainThreadDataChannelsShape>('MainThreadDataChannels'),
+-	MainThreadChatSessions: createProxyIdentifier<MainThreadChatSessionsShape>('MainThreadChatSessions'),
+-	MainThreadChatOutputRenderer: createProxyIdentifier<MainThreadChatOutputRendererShape>('MainThreadChatOutputRenderer'),
+-	MainThreadChatContext: createProxyIdentifier<MainThreadChatContextShape>('MainThreadChatContext'),
+-	MainThreadChatDebug: createProxyIdentifier<MainThreadChatDebugShape>('MainThreadChatDebug'),
+ 	MainThreadBrowsers: createProxyIdentifier<MainThreadBrowsersShape>('MainThreadBrowsers'),
+ };
+ 
+ export const ExtHostContext = {
+-	ExtHostCodeMapper: createProxyIdentifier<ExtHostCodeMapperShape>('ExtHostCodeMapper'),
+ 	ExtHostCommands: createProxyIdentifier<ExtHostCommandsShape>('ExtHostCommands'),
+ 	ExtHostConfiguration: createProxyIdentifier<ExtHostConfigurationShape>('ExtHostConfiguration'),
+ 	ExtHostDiagnostics: createProxyIdentifier<ExtHostDiagnosticsShape>('ExtHostDiagnostics'),
+@@ -4152,7 +3294,6 @@
+ 	ExtHostLanguageFeatures: createProxyIdentifier<ExtHostLanguageFeaturesShape>('ExtHostLanguageFeatures'),
+ 	ExtHostQuickOpen: createProxyIdentifier<ExtHostQuickOpenShape>('ExtHostQuickOpen'),
+ 	ExtHostQuickDiff: createProxyIdentifier<ExtHostQuickDiffShape>('ExtHostQuickDiff'),
+-	ExtHostAgentEditorComments: createProxyIdentifier<ExtHostAgentEditorCommentsShape>('ExtHostAgentEditorComments'),
+ 	ExtHostStatusBar: createProxyIdentifier<ExtHostStatusBarShape>('ExtHostStatusBar'),
+ 	ExtHostShare: createProxyIdentifier<ExtHostShareShape>('ExtHostShare'),
+ 	ExtHostExtensionService: createProxyIdentifier<ExtHostExtensionServiceShape>('ExtHostExtensionService'),
+@@ -4177,7 +3318,6 @@
+ 	ExtHostStorage: createProxyIdentifier<ExtHostStorageShape>('ExtHostStorage'),
+ 	ExtHostUrls: createProxyIdentifier<ExtHostUrlsShape>('ExtHostUrls'),
+ 	ExtHostUriOpeners: createProxyIdentifier<ExtHostUriOpenersShape>('ExtHostUriOpeners'),
+-	ExtHostChatOutputRenderer: createProxyIdentifier<ExtHostChatOutputRendererShape>('ExtHostChatOutputRenderer'),
+ 	ExtHostProfileContentHandlers: createProxyIdentifier<ExtHostProfileContentHandlersShape>('ExtHostProfileContentHandlers'),
+ 	ExtHostOutputService: createProxyIdentifier<ExtHostOutputServiceShape>('ExtHostOutputService'),
+ 	ExtHostLabelService: createProxyIdentifier<ExtHostLabelServiceShape>('ExtHostLabelService'),
+@@ -4188,16 +3328,6 @@
+ 	ExtHostNotebookRenderers: createProxyIdentifier<ExtHostNotebookRenderersShape>('ExtHostNotebookRenderers'),
+ 	ExtHostNotebookDocumentSaveParticipant: createProxyIdentifier<ExtHostNotebookDocumentSaveParticipantShape>('ExtHostNotebookDocumentSaveParticipant'),
+ 	ExtHostInteractive: createProxyIdentifier<ExtHostInteractiveShape>('ExtHostInteractive'),
+-	ExtHostChatAgents2: createProxyIdentifier<ExtHostChatAgentsShape2>('ExtHostChatAgents'),
+-	ExtHostLanguageModelTools: createProxyIdentifier<ExtHostLanguageModelToolsShape>('ExtHostChatSkills'),
+-	ExtHostChatProvider: createProxyIdentifier<ExtHostLanguageModelsShape>('ExtHostChatProvider'),
+-	ExtHostChatContext: createProxyIdentifier<ExtHostChatContextShape>('ExtHostChatContext'),
+-	ExtHostChatDebug: createProxyIdentifier<ExtHostChatDebugShape>('ExtHostChatDebug'),
+-	ExtHostSpeech: createProxyIdentifier<ExtHostSpeechShape>('ExtHostSpeech'),
+-	ExtHostEmbeddings: createProxyIdentifier<ExtHostEmbeddingsShape>('ExtHostEmbeddings'),
+-	ExtHostAiRelatedInformation: createProxyIdentifier<ExtHostAiRelatedInformationShape>('ExtHostAiRelatedInformation'),
+-	ExtHostAiEmbeddingVector: createProxyIdentifier<ExtHostAiEmbeddingVectorShape>('ExtHostAiEmbeddingVector'),
+-	ExtHostAiSettingsSearch: createProxyIdentifier<ExtHostAiSettingsSearchShape>('ExtHostAiSettingsSearch'),
+ 	ExtHostTheming: createProxyIdentifier<ExtHostThemingShape>('ExtHostTheming'),
+ 	ExtHostTunnelService: createProxyIdentifier<ExtHostTunnelServiceShape>('ExtHostTunnelService'),
+ 	ExtHostManagedSockets: createProxyIdentifier<ExtHostManagedSocketsShape>('ExtHostManagedSockets'),
+@@ -4208,10 +3338,7 @@
+ 	ExtHostTelemetry: createProxyIdentifier<ExtHostTelemetryShape>('ExtHostTelemetry'),
+ 	ExtHostMeteredConnection: createProxyIdentifier<ExtHostMeteredConnectionShape>('ExtHostMeteredConnection'),
+ 	ExtHostLocalization: createProxyIdentifier<ExtHostLocalizationShape>('ExtHostLocalization'),
+-	ExtHostMcp: createProxyIdentifier<ExtHostMcpShape>('ExtHostMcp'),
+ 	ExtHostDataChannels: createProxyIdentifier<ExtHostDataChannelsShape>('ExtHostDataChannels'),
+-	ExtHostChatSessions: createProxyIdentifier<ExtHostChatSessionsShape>('ExtHostChatSessions'),
+-	ExtHostChatQuota: createProxyIdentifier<ExtHostChatQuotaShape>('ExtHostChatQuota'),
+ 	ExtHostGitExtension: createProxyIdentifier<ExtHostGitExtensionShape>('ExtHostGitExtension'),
+ 	ExtHostBrowsers: createProxyIdentifier<ExtHostBrowsersShape>('ExtHostBrowsers'),
+ };
+diff --git a/src/vs/workbench/api/common/extHostTypeConverters.ts b/src/vs/workbench/api/common/extHostTypeConverters.ts
+--- a/src/vs/workbench/api/common/extHostTypeConverters.ts
++++ b/src/vs/workbench/api/common/extHostTypeConverters.ts
+@@ -5,21 +5,17 @@
+ 
+ import type * as vscode from 'vscode';
+ import { asArray, coalesce, isNonEmptyArray } from '../../../base/common/arrays.js';
+-import { VSBuffer, decodeBase64, encodeBase64 } from '../../../base/common/buffer.js';
+-import { IStringDictionary } from '../../../base/common/collections.js';
++import { VSBuffer, encodeBase64 } from '../../../base/common/buffer.js';
+ import { IDataTransferFile, IDataTransferItem, UriList } from '../../../base/common/dataTransfer.js';
+ import { createSingleCallFunction } from '../../../base/common/functional.js';
+ import * as htmlContent from '../../../base/common/htmlContent.js';
+ import { DisposableStore } from '../../../base/common/lifecycle.js';
+ import { ResourceMap, ResourceSet } from '../../../base/common/map.js';
+ import * as marked from '../../../base/common/marked/marked.js';
+-import { parse, revive } from '../../../base/common/marshalling.js';
+-import { MarshalledId } from '../../../base/common/marshallingIds.js';
++import { parse } from '../../../base/common/marshalling.js';
+ import { Mimes } from '../../../base/common/mime.js';
+ import { cloneAndChange } from '../../../base/common/objects.js';
+-import { OS } from '../../../base/common/platform.js';
+ import { IPrefixTreeNode, WellDefinedPrefixTree } from '../../../base/common/prefixTree.js';
+-import { basename } from '../../../base/common/resources.js';
+ import { ThemeIcon } from '../../../base/common/themables.js';
+ import { isDefined, isEmptyObject, isNumber, isString, isUndefinedOrNull } from '../../../base/common/types.js';
+ import { URI, UriComponents, isUriComponents } from '../../../base/common/uri.js';
+@@ -35,27 +31,12 @@
+ import * as languages from '../../../editor/common/languages.js';
+ import { EndOfLineSequence, TrackedRangeStickiness } from '../../../editor/common/model.js';
+ import { ITextEditorOptions } from '../../../platform/editor/common/editor.js';
+-import { IExtensionDescription, IRelaxedExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+-import { ILogService } from '../../../platform/log/common/log.js';
++import { IExtensionDescription } from '../../../platform/extensions/common/extensions.js';
+ import { IMarkerData, IRelatedInformation, MarkerSeverity, MarkerTag } from '../../../platform/markers/common/markers.js';
+ import { ProgressLocation as MainProgressLocation } from '../../../platform/progress/common/progress.js';
+ import { DEFAULT_EDITOR_ASSOCIATION, SaveReason } from '../../common/editor.js';
+ import { IViewBadge } from '../../common/views.js';
+-import { IChatAgentRequest, IChatAgentResult } from '../../contrib/chat/common/participants/chatAgents.js';
+-import { IChatRequestModeInstructions } from '../../contrib/chat/common/model/chatModel.js';
+-import { IChatAgentMarkdownContentWithVulnerability, IChatAutoModeResolutionPart, IChatCodeCitation, IChatCommandButton, IChatConfirmation, IChatContentInlineReference, IChatContentReference, IChatExtensionsContent, IChatExternalToolInvocationUpdate, IChatFollowup, IChatHookPart, IChatMarkdownContent, IChatMoveMessage, IChatMultiDiffDataSerialized, IChatProgressMessage, IChatPullRequestContent, IChatQuestionCarousel, IChatResponseCodeblockUriPart, IChatTaskDto, IChatTaskResult, IChatTerminalToolInvocationData, IChatTextEdit, IChatThinkingPart, IChatToolInvocationSerialized, IChatTreeData, IChatUserActionEvent, IChatVoiceProgressPart, IChatWarningMessage, IChatInfoMessage, IChatWorkspaceEdit } from '../../contrib/chat/common/chatService/chatService.js';
+-import { LocalChatSessionUri } from '../../contrib/chat/common/model/chatUri.js';
+-import { ChatRequestToolReferenceEntry, IChatRequestVariableEntry, isElementVariableEntry, isImageVariableEntry, isPromptFileVariableEntry, isPromptTextVariableEntry } from '../../contrib/chat/common/attachments/chatVariableEntries.js';
+-import { coerceImageBuffer } from '../../contrib/chat/common/chatImageExtraction.js';
+-import { ChatSessionStatus, IChatSessionItem } from '../../contrib/chat/common/chatSessionsService.js';
+-import { ChatAgentLocation } from '../../contrib/chat/common/constants.js';
+-import { ChatRequestHooks, resolveEffectiveCommand } from '../../contrib/chat/common/promptSyntax/hookSchema.js';
+-import { type IParsedHookCommand } from '../../../platform/agentPlugins/common/pluginParsers.js';
+-import { IToolInvocationContext, IToolResult, IToolResultInputOutputDetails, IToolResultOutputDetails, ToolDataSource, ToolInvocationPresentation } from '../../contrib/chat/common/tools/languageModelToolsService.js';
+-import * as chatProvider from '../../contrib/chat/common/languageModels.js';
+-import { IChatMessageDataPart, IChatResponseDataPart, IChatResponsePromptTsxPart, IChatResponseTextPart } from '../../contrib/chat/common/languageModels.js';
+ import { DebugTreeItemCollapsibleState, IDebugVisualizationTreeItem } from '../../contrib/debug/common/debug.js';
+-import { McpServerDefinition as McpServerDefinitionType, McpServerLaunch, McpServerTransportType } from '../../contrib/mcp/common/mcpTypes.js';
+ import * as notebooks from '../../contrib/notebook/common/notebookCommon.js';
+ import { CellEditType } from '../../contrib/notebook/common/notebookCommon.js';
+ import { ICellRange } from '../../contrib/notebook/common/notebookRange.js';
+@@ -63,16 +44,13 @@
+ import * as search from '../../contrib/search/common/search.js';
+ import { TestId } from '../../contrib/testing/common/testId.js';
+ import { CoverageDetails, DetailType, ICoverageCount, IFileCoverage, ISerializedTestResults, ITestErrorMessage, ITestItem, ITestRunProfileReference, ITestTag, TestMessageType, TestResultItem, TestRunProfileBitset, denamespaceTestTag, namespaceTestTag } from '../../contrib/testing/common/testTypes.js';
+-import { AiSettingsSearchResult, AiSettingsSearchResultKind } from '../../services/aiSettingsSearch/common/aiSettingsSearch.js';
+ import { EditorGroupColumn } from '../../services/editor/common/editorGroupColumn.js';
+ import { ACTIVE_GROUP, SIDE_GROUP } from '../../services/editor/common/editorService.js';
+-import { checkProposedApiEnabled, isProposedApiEnabled } from '../../services/extensions/common/extensions.js';
+-import { Dto, SerializableObjectWithBuffers } from '../../services/extensions/common/proxyIdentifier.js';
++import { Dto } from '../../services/extensions/common/proxyIdentifier.js';
+ import * as extHostProtocol from './extHost.protocol.js';
+ import { CommandsConverter } from './extHostCommands.js';
+ import { getPrivateApiFor } from './extHostTestingPrivateApi.js';
+ import * as types from './extHostTypes.js';
+-import { LanguageModelDataPart, LanguageModelPromptTsxPart, LanguageModelTextPart } from './extHostTypes.js';
+ 
+ export namespace Command {
+ 
+@@ -2296,985 +2274,6 @@
+ 	}
+ }
+ 
+-export namespace ChatFollowup {
+-	export function from(followup: vscode.ChatFollowup, request: IChatAgentRequest | undefined): IChatFollowup {
+-		return {
+-			kind: 'reply',
+-			agentId: followup.participant ?? request?.agentId ?? '',
+-			subCommand: followup.command ?? request?.command,
+-			message: followup.prompt,
+-			title: followup.label
+-		};
+-	}
+-
+-	export function to(followup: IChatFollowup): vscode.ChatFollowup {
+-		return {
+-			prompt: followup.message,
+-			label: followup.title,
+-			participant: followup.agentId,
+-			command: followup.subCommand,
+-		};
+-	}
+-}
+-
+-export namespace LanguageModelChatMessageRole {
+-	export function to(role: chatProvider.ChatMessageRole): vscode.LanguageModelChatMessageRole {
+-		switch (role) {
+-			case chatProvider.ChatMessageRole.System: return types.LanguageModelChatMessageRole.System;
+-			case chatProvider.ChatMessageRole.User: return types.LanguageModelChatMessageRole.User;
+-			case chatProvider.ChatMessageRole.Assistant: return types.LanguageModelChatMessageRole.Assistant;
+-		}
+-	}
+-
+-	export function from(role: vscode.LanguageModelChatMessageRole): chatProvider.ChatMessageRole {
+-		switch (role) {
+-			case types.LanguageModelChatMessageRole.System: return chatProvider.ChatMessageRole.System;
+-			case types.LanguageModelChatMessageRole.User: return chatProvider.ChatMessageRole.User;
+-			case types.LanguageModelChatMessageRole.Assistant: return chatProvider.ChatMessageRole.Assistant;
+-		}
+-		return chatProvider.ChatMessageRole.User;
+-	}
+-}
+-
+-export namespace LanguageModelChatMessage {
+-
+-	export function to(message: chatProvider.IChatMessage): vscode.LanguageModelChatMessage {
+-		const content = message.content.map(c => {
+-			if (c.type === 'text') {
+-				return new LanguageModelTextPart(c.value, c.audience);
+-			} else if (c.type === 'tool_result') {
+-				const content: (LanguageModelTextPart | LanguageModelPromptTsxPart | LanguageModelDataPart)[] = coalesce(c.value.map(part => {
+-					if (part.type === 'text') {
+-						return new types.LanguageModelTextPart(part.value, part.audience);
+-					} else if (part.type === 'data') {
+-						return new types.LanguageModelDataPart(part.data.buffer, part.mimeType);
+-					} else if (part.type === 'prompt_tsx') {
+-						return new types.LanguageModelPromptTsxPart(part.value);
+-					} else {
+-						return undefined; // Strip unknown parts
+-					}
+-				}));
+-				return new types.LanguageModelToolResultPart(c.toolCallId, content, c.isError);
+-			} else if (c.type === 'image_url') {
+-				return new types.LanguageModelDataPart(c.value.data.buffer, c.value.mimeType);
+-			} else if (c.type === 'data') {
+-				return new types.LanguageModelDataPart(c.data.buffer, c.mimeType);
+-			} else if (c.type === 'tool_use') {
+-				return new types.LanguageModelToolCallPart(c.toolCallId, c.name, c.parameters);
+-			}
+-
+-			return undefined;
+-		}).filter(c => c !== undefined);
+-
+-		const role = LanguageModelChatMessageRole.to(message.role);
+-		const result = new types.LanguageModelChatMessage(role, content, message.name);
+-		return result;
+-	}
+-
+-	export function from(message: vscode.LanguageModelChatMessage): chatProvider.IChatMessage {
+-
+-		const role = LanguageModelChatMessageRole.from(message.role);
+-		const name = message.name;
+-
+-		let messageContent = message.content;
+-		if (typeof messageContent === 'string') {
+-			messageContent = [new types.LanguageModelTextPart(messageContent)];
+-		}
+-
+-		const content = messageContent.map((c): chatProvider.IChatMessagePart => {
+-			if (c instanceof types.LanguageModelToolResultPart) {
+-				return {
+-					type: 'tool_result',
+-					toolCallId: c.callId,
+-					value: coalesce(c.content.map(part => {
+-						if (part instanceof types.LanguageModelTextPart) {
+-							return {
+-								type: 'text',
+-								value: part.value,
+-								audience: part.audience,
+-							} satisfies IChatResponseTextPart;
+-						} else if (part instanceof types.LanguageModelPromptTsxPart) {
+-							return {
+-								type: 'prompt_tsx',
+-								value: part.value,
+-							} satisfies IChatResponsePromptTsxPart;
+-						} else if (part instanceof types.LanguageModelDataPart) {
+-							return {
+-								type: 'data',
+-								mimeType: part.mimeType,
+-								data: VSBuffer.wrap(part.data),
+-								audience: part.audience
+-							} satisfies IChatResponseDataPart;
+-						} else {
+-							// Strip unknown parts
+-							return undefined;
+-						}
+-					})),
+-					isError: c.isError
+-				};
+-			} else if (c instanceof types.LanguageModelDataPart) {
+-				if (isImageDataPart(c)) {
+-					const value: chatProvider.IChatImageURLPart = {
+-						mimeType: c.mimeType as chatProvider.ChatImageMimeType,
+-						data: VSBuffer.wrap(c.data),
+-					};
+-
+-					return {
+-						type: 'image_url',
+-						value: value
+-					};
+-				} else {
+-					return {
+-						type: 'data',
+-						mimeType: c.mimeType,
+-						data: VSBuffer.wrap(c.data),
+-						audience: c.audience
+-					} satisfies IChatMessageDataPart;
+-				}
+-			} else if (c instanceof types.LanguageModelToolCallPart) {
+-				return {
+-					type: 'tool_use',
+-					toolCallId: c.callId,
+-					name: c.name,
+-					parameters: c.input
+-				};
+-			} else if (c instanceof types.LanguageModelTextPart) {
+-				return {
+-					type: 'text',
+-					value: c.value
+-				};
+-			} else {
+-				if (typeof c !== 'string') {
+-					throw new Error('Unexpected chat message content type');
+-				}
+-
+-				return {
+-					type: 'text',
+-					value: c
+-				};
+-			}
+-		});
+-
+-		return {
+-			role,
+-			name,
+-			content
+-		};
+-	}
+-}
+-
+-export namespace LanguageModelChatMessage2 {
+-
+-	export function to(message: chatProvider.IChatMessage): vscode.LanguageModelChatMessage2 {
+-		const content = message.content.map(c => {
+-			if (c.type === 'text') {
+-				return new LanguageModelTextPart(c.value, c.audience);
+-			} else if (c.type === 'tool_result') {
+-				const content: (LanguageModelTextPart | LanguageModelPromptTsxPart | LanguageModelDataPart)[] = c.value.map(part => {
+-					if (part.type === 'text') {
+-						return new types.LanguageModelTextPart(part.value, part.audience);
+-					} else if (part.type === 'data') {
+-						return new types.LanguageModelDataPart(part.data.buffer, part.mimeType);
+-					} else {
+-						return new types.LanguageModelPromptTsxPart(part.value);
+-					}
+-				});
+-				return new types.LanguageModelToolResultPart(c.toolCallId, content, c.isError);
+-			} else if (c.type === 'image_url') {
+-				return new types.LanguageModelDataPart(c.value.data.buffer, c.value.mimeType);
+-			} else if (c.type === 'data') {
+-				return new types.LanguageModelDataPart(c.data.buffer, c.mimeType);
+-			} else if (c.type === 'thinking') {
+-				return new types.LanguageModelThinkingPart(c.value, c.id, c.metadata);
+-			} else {
+-				return new types.LanguageModelToolCallPart(c.toolCallId, c.name, c.parameters);
+-			}
+-		});
+-		const role = LanguageModelChatMessageRole.to(message.role);
+-		const result = new types.LanguageModelChatMessage2(role, content, message.name);
+-		return result;
+-	}
+-
+-	export function from(message: vscode.LanguageModelChatMessage2): chatProvider.IChatMessage {
+-
+-		const role = LanguageModelChatMessageRole.from(message.role);
+-		const name = message.name;
+-
+-		let messageContent = message.content;
+-		if (typeof messageContent === 'string') {
+-			messageContent = [new types.LanguageModelTextPart(messageContent)];
+-		}
+-
+-		const content = messageContent.map((c): chatProvider.IChatMessagePart => {
+-			if (c instanceof types.LanguageModelToolResultPart) {
+-				return {
+-					type: 'tool_result',
+-					toolCallId: c.callId,
+-					value: coalesce(c.content.map(part => {
+-						if (part instanceof types.LanguageModelTextPart) {
+-							return {
+-								type: 'text',
+-								value: part.value,
+-								audience: part.audience,
+-							} satisfies IChatResponseTextPart;
+-						} else if (part instanceof types.LanguageModelPromptTsxPart) {
+-							return {
+-								type: 'prompt_tsx',
+-								value: part.value,
+-							} satisfies IChatResponsePromptTsxPart;
+-						} else if (part instanceof types.LanguageModelDataPart) {
+-							return {
+-								type: 'data',
+-								mimeType: part.mimeType,
+-								data: VSBuffer.wrap(part.data),
+-								audience: part.audience
+-							} satisfies IChatResponseDataPart;
+-						} else {
+-							// Strip unknown parts
+-							return undefined;
+-						}
+-					})),
+-					isError: c.isError
+-				};
+-			} else if (c instanceof types.LanguageModelDataPart) {
+-				if (isImageDataPart(c)) {
+-					const value: chatProvider.IChatImageURLPart = {
+-						mimeType: c.mimeType as chatProvider.ChatImageMimeType,
+-						data: VSBuffer.wrap(c.data),
+-					};
+-
+-					return {
+-						type: 'image_url',
+-						value: value
+-					};
+-				} else {
+-					return {
+-						type: 'data',
+-						mimeType: c.mimeType,
+-						data: VSBuffer.wrap(c.data),
+-						audience: c.audience
+-					} satisfies IChatMessageDataPart;
+-				}
+-			} else if (c instanceof types.LanguageModelToolCallPart) {
+-				return {
+-					type: 'tool_use',
+-					toolCallId: c.callId,
+-					name: c.name,
+-					parameters: c.input
+-				};
+-			} else if (c instanceof types.LanguageModelTextPart) {
+-				return {
+-					type: 'text',
+-					value: c.value
+-				};
+-			} else if (c instanceof types.LanguageModelThinkingPart) {
+-				return {
+-					type: 'thinking',
+-					value: c.value,
+-					id: c.id,
+-					metadata: c.metadata
+-				};
+-
+-			} else {
+-				if (typeof c !== 'string') {
+-					throw new Error('Unexpected chat message content type llm 2');
+-				}
+-
+-				return {
+-					type: 'text',
+-					value: c
+-				};
+-			}
+-		});
+-
+-		return {
+-			role,
+-			name,
+-			content
+-		};
+-	}
+-}
+-
+-function isImageDataPart(part: types.LanguageModelDataPart): boolean {
+-	const mime = typeof part.mimeType === 'string' ? part.mimeType.toLowerCase() : '';
+-	switch (mime) {
+-		case 'image/png':
+-		case 'image/jpeg':
+-		case 'image/jpg':
+-		case 'image/gif':
+-		case 'image/webp':
+-		case 'image/bmp':
+-			return true;
+-		default:
+-			return false;
+-	}
+-}
+-
+-export namespace ChatResponseMarkdownPart {
+-	export function from(part: vscode.ChatResponseMarkdownPart): Dto<IChatMarkdownContent> {
+-		return {
+-			kind: 'markdownContent',
+-			content: MarkdownString.from(part.value)
+-		};
+-	}
+-	export function to(part: Dto<IChatMarkdownContent>): vscode.ChatResponseMarkdownPart {
+-		return new types.ChatResponseMarkdownPart(MarkdownString.to(part.content));
+-	}
+-}
+-
+-export namespace ChatResponseCodeblockUriPart {
+-	export function from(part: vscode.ChatResponseCodeblockUriPart): Dto<IChatResponseCodeblockUriPart> {
+-		return {
+-			kind: 'codeblockUri',
+-			uri: part.value,
+-			isEdit: part.isEdit,
+-			undoStopId: part.undoStopId
+-		};
+-	}
+-	export function to(part: Dto<IChatResponseCodeblockUriPart>): vscode.ChatResponseCodeblockUriPart {
+-		return new types.ChatResponseCodeblockUriPart(URI.revive(part.uri), part.isEdit, part.undoStopId);
+-	}
+-}
+-
+-export namespace ChatResponseMarkdownWithVulnerabilitiesPart {
+-	export function from(part: vscode.ChatResponseMarkdownWithVulnerabilitiesPart): Dto<IChatAgentMarkdownContentWithVulnerability> {
+-		return {
+-			kind: 'markdownVuln',
+-			content: MarkdownString.from(part.value),
+-			vulnerabilities: part.vulnerabilities,
+-		};
+-	}
+-	export function to(part: Dto<IChatAgentMarkdownContentWithVulnerability>): vscode.ChatResponseMarkdownWithVulnerabilitiesPart {
+-		return new types.ChatResponseMarkdownWithVulnerabilitiesPart(MarkdownString.to(part.content), part.vulnerabilities);
+-	}
+-}
+-
+-export namespace ChatResponseConfirmationPart {
+-	export function from(part: vscode.ChatResponseConfirmationPart): Dto<IChatConfirmation> {
+-		return {
+-			kind: 'confirmation',
+-			title: part.title,
+-			message: MarkdownString.from(part.message),
+-			data: part.data,
+-			buttons: part.buttons
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseQuestionCarouselPart {
+-	function questionTypeToString(type: vscode.ChatQuestionType): 'text' | 'singleSelect' | 'multiSelect' {
+-		switch (type) {
+-			case types.ChatQuestionType.Text: return 'text';
+-			case types.ChatQuestionType.SingleSelect: return 'singleSelect';
+-			case types.ChatQuestionType.MultiSelect: return 'multiSelect';
+-			default: return 'text';
+-		}
+-	}
+-
+-	function stringToQuestionType(type: 'text' | 'singleSelect' | 'multiSelect'): vscode.ChatQuestionType {
+-		switch (type) {
+-			case 'text': return types.ChatQuestionType.Text;
+-			case 'singleSelect': return types.ChatQuestionType.SingleSelect;
+-			case 'multiSelect': return types.ChatQuestionType.MultiSelect;
+-			default: return types.ChatQuestionType.Text;
+-		}
+-	}
+-
+-	export function from(part: vscode.ChatResponseQuestionCarouselPart): Dto<IChatQuestionCarousel> {
+-		return {
+-			kind: 'questionCarousel',
+-			questions: part.questions.map(q => ({
+-				id: q.id,
+-				type: questionTypeToString(q.type),
+-				title: q.title,
+-				message: q.message ? MarkdownString.from(q.message) : undefined,
+-				options: q.options?.map(opt => ({ id: opt.id, label: opt.label, value: String(opt.value) })),
+-				defaultValue: q.defaultValue,
+-				allowFreeformInput: q.allowFreeformInput
+-			})),
+-			allowSkip: part.allowSkip
+-		};
+-	}
+-
+-	export function to(part: Dto<IChatQuestionCarousel>): vscode.ChatResponseQuestionCarouselPart {
+-		const questions = part.questions.map(q => new types.ChatQuestion(
+-			q.id,
+-			stringToQuestionType(q.type),
+-			q.title,
+-			{
+-				message: q.message ? (typeof q.message === 'string' ? new types.MarkdownString(q.message) : MarkdownString.to(q.message)) : undefined,
+-				options: q.options?.map(opt => ({
+-					id: opt.id,
+-					label: opt.label,
+-					value: opt.value
+-				})),
+-				defaultValue: q.defaultValue,
+-				allowFreeformInput: q.allowFreeformInput
+-			}
+-		));
+-		return new types.ChatResponseQuestionCarouselPart(questions, part.allowSkip);
+-	}
+-}
+-
+-export namespace ChatResponseFilesPart {
+-	export function from(part: vscode.ChatResponseFileTreePart): IChatTreeData {
+-		const { value, baseUri } = part;
+-		function convert(items: vscode.ChatResponseFileTree[], baseUri: URI): extHostProtocol.IChatResponseProgressFileTreeData[] {
+-			return items.map(item => {
+-				const myUri = URI.joinPath(baseUri, item.name);
+-				return {
+-					label: item.name,
+-					uri: myUri,
+-					children: item.children && convert(item.children, myUri)
+-				};
+-			});
+-		}
+-		return {
+-			kind: 'treeData',
+-			treeData: {
+-				label: basename(baseUri),
+-				uri: baseUri,
+-				children: convert(value, baseUri)
+-			}
+-		};
+-	}
+-	export function to(part: Dto<IChatTreeData>): vscode.ChatResponseFileTreePart {
+-		const treeData = revive<extHostProtocol.IChatResponseProgressFileTreeData>(part.treeData);
+-		function convert(items: extHostProtocol.IChatResponseProgressFileTreeData[]): vscode.ChatResponseFileTree[] {
+-			return items.map(item => {
+-				return {
+-					name: item.label,
+-					children: item.children && convert(item.children)
+-				};
+-			});
+-		}
+-
+-		const baseUri = treeData.uri;
+-		const items = treeData.children ? convert(treeData.children) : [];
+-		return new types.ChatResponseFileTreePart(items, baseUri);
+-	}
+-}
+-
+-export namespace ChatResponseMultiDiffPart {
+-	export function from(part: vscode.ChatResponseMultiDiffPart): IChatMultiDiffDataSerialized {
+-		return {
+-			kind: 'multiDiffData',
+-			multiDiffData: {
+-				title: part.title,
+-				resources: part.value.map(entry => ({
+-					originalUri: entry.originalUri,
+-					modifiedUri: entry.modifiedUri,
+-					goToFileUri: entry.goToFileUri,
+-					added: entry.added,
+-					removed: entry.removed,
+-				}))
+-			},
+-			readOnly: part.readOnly
+-		};
+-	}
+-	export function to(part: IChatMultiDiffDataSerialized): vscode.ChatResponseMultiDiffPart {
+-		const resources = part.multiDiffData.resources.map(resource => ({
+-			originalUri: resource.originalUri ? URI.revive(resource.originalUri) : undefined,
+-			modifiedUri: resource.modifiedUri ? URI.revive(resource.modifiedUri) : undefined,
+-			goToFileUri: resource.goToFileUri ? URI.revive(resource.goToFileUri) : undefined,
+-			added: resource.added,
+-			removed: resource.removed,
+-		}));
+-		return new types.ChatResponseMultiDiffPart(resources, part.multiDiffData.title, part.readOnly);
+-	}
+-}
+-
+-export namespace ChatResponseAnchorPart {
+-	export function from(part: vscode.ChatResponseAnchorPart): Dto<IChatContentInlineReference> {
+-		// Work around type-narrowing confusion between vscode.Uri and URI
+-		const isUri = (thing: unknown): thing is vscode.Uri => URI.isUri(thing);
+-		const isSymbolInformation = (thing: object): thing is vscode.SymbolInformation => 'name' in thing;
+-
+-		return {
+-			kind: 'inlineReference',
+-			name: part.title,
+-			inlineReference: isUri(part.value)
+-				? part.value
+-				: isSymbolInformation(part.value)
+-					? WorkspaceSymbol.from(part.value)
+-					: Location.from(part.value)
+-		};
+-	}
+-
+-	export function to(part: Dto<IChatContentInlineReference>): vscode.ChatResponseAnchorPart {
+-		const value = revive<IChatContentInlineReference>(part);
+-		return new types.ChatResponseAnchorPart(
+-			URI.isUri(value.inlineReference)
+-				? value.inlineReference
+-				: 'location' in value.inlineReference
+-					? WorkspaceSymbol.to(value.inlineReference) as vscode.SymbolInformation
+-					: Location.to(value.inlineReference),
+-			part.name
+-		);
+-	}
+-}
+-
+-export namespace ChatResponseProgressPart {
+-	export function from(part: vscode.ChatResponseProgressPart): Dto<IChatProgressMessage> {
+-		return {
+-			kind: 'progressMessage',
+-			content: MarkdownString.from(part.value)
+-		};
+-	}
+-	export function to(part: Dto<IChatProgressMessage>): vscode.ChatResponseProgressPart {
+-		return new types.ChatResponseProgressPart(part.content.value);
+-	}
+-}
+-
+-export namespace ChatResponseThinkingProgressPart {
+-	export function from(part: vscode.ChatResponseThinkingProgressPart): Dto<IChatThinkingPart> {
+-		return {
+-			kind: 'thinking',
+-			value: part.value,
+-			id: part.id,
+-			metadata: part.metadata
+-		};
+-	}
+-	export function to(part: Dto<IChatThinkingPart>): vscode.ChatResponseThinkingProgressPart {
+-		return new types.ChatResponseThinkingProgressPart(part.value ?? '', part.id, part.metadata);
+-	}
+-}
+-
+-export namespace ChatResponseHookPart {
+-	export function from(part: vscode.ChatResponseHookPart): Dto<IChatHookPart> {
+-		return {
+-			kind: 'hook',
+-			hookType: part.hookType,
+-			stopReason: part.stopReason,
+-			systemMessage: part.systemMessage,
+-			metadata: part.metadata
+-		};
+-	}
+-	export function to(part: Dto<IChatHookPart>): vscode.ChatResponseHookPart {
+-		return new types.ChatResponseHookPart(part.hookType, part.stopReason, part.systemMessage, part.metadata);
+-	}
+-}
+-
+-export namespace ChatResponseVoiceProgressPart {
+-	export function from(part: vscode.ChatResponseVoiceProgressPart): Dto<IChatVoiceProgressPart> {
+-		return {
+-			kind: 'voiceProgress',
+-			id: part.id,
+-			value: part.value,
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseAutoModeResolutionPart {
+-	const validLabels = new Set<IChatAutoModeResolutionPart['predictedLabel']>(['needs_reasoning', 'no_reasoning', 'fallback']);
+-
+-	export function from(part: vscode.ChatResponseAutoModeResolutionPart): Dto<IChatAutoModeResolutionPart> {
+-		const label = validLabels.has(part.predictedLabel as IChatAutoModeResolutionPart['predictedLabel'])
+-			? part.predictedLabel as IChatAutoModeResolutionPart['predictedLabel']
+-			: 'fallback';
+-		return {
+-			kind: 'autoModeResolution',
+-			resolvedModel: part.resolvedModel,
+-			resolvedModelName: part.resolvedModelName,
+-			predictedLabel: label,
+-			confidence: Math.max(0, Math.min(1, part.confidence)),
+-		};
+-	}
+-	export function to(part: Dto<IChatAutoModeResolutionPart>): vscode.ChatResponseAutoModeResolutionPart {
+-		return new types.ChatResponseAutoModeResolutionPart(part.resolvedModel, part.resolvedModelName, part.predictedLabel, part.confidence);
+-	}
+-}
+-
+-export namespace ChatResponseWarningPart {
+-	export function from(part: vscode.ChatResponseWarningPart): Dto<IChatWarningMessage> {
+-		return {
+-			kind: 'warning',
+-			content: MarkdownString.from(part.value)
+-		};
+-	}
+-	export function to(part: Dto<IChatWarningMessage>): vscode.ChatResponseWarningPart {
+-		return new types.ChatResponseWarningPart(part.content.value);
+-	}
+-}
+-
+-export namespace ChatResponseInfoPart {
+-	export function from(part: vscode.ChatResponseInfoPart): Dto<IChatInfoMessage> {
+-		return {
+-			kind: 'info',
+-			content: MarkdownString.from(part.value)
+-		};
+-	}
+-	export function to(part: Dto<IChatInfoMessage>): vscode.ChatResponseInfoPart {
+-		return new types.ChatResponseInfoPart(part.content.value);
+-	}
+-}
+-
+-export namespace ChatResponseExtensionsPart {
+-	export function from(part: vscode.ChatResponseExtensionsPart): Dto<IChatExtensionsContent> {
+-		return {
+-			kind: 'extensions',
+-			extensions: part.extensions
+-		};
+-	}
+-}
+-
+-export namespace ChatResponsePullRequestPart {
+-	export function from(part: Omit<vscode.ChatResponsePullRequestPart, 'command'> & { command?: vscode.Command }, commandsConverter: CommandsConverter, commandDisposables: DisposableStore): Dto<IChatPullRequestContent> {
+-		// If the command isn't in the converter, then this session may have been restored, and the command args don't exist anymore
+-		let command: extHostProtocol.ICommandDto;
+-		if (!part.command) {
+-			if (!part.uri) {
+-				throw new Error('Pull request part must have a command if URI is provided');
+-			}
+-			command = {
+-				title: 'Open Pull Request',
+-				id: 'vscode.open',
+-				arguments: [part.uri]
+-			};
+-		} else {
+-			command = commandsConverter.toInternal(part.command, commandDisposables);
+-		}
+-		return {
+-			kind: 'pullRequest',
+-			author: part.author,
+-			title: part.title,
+-			description: part.description,
+-			uri: part.uri,
+-			linkTag: part.linkTag,
+-			command
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseMovePart {
+-	export function from(part: vscode.ChatResponseMovePart): Dto<IChatMoveMessage> {
+-		return {
+-			kind: 'move',
+-			uri: part.uri,
+-			range: Range.from(part.range),
+-		};
+-	}
+-	export function to(part: Dto<IChatMoveMessage>): vscode.ChatResponseMovePart {
+-		return new types.ChatResponseMovePart(URI.revive(part.uri), Range.to(part.range));
+-	}
+-}
+-
+-export namespace ChatToolInvocationPart {
+-	export function from(part: vscode.ChatToolInvocationPart): IChatToolInvocationSerialized | IChatExternalToolInvocationUpdate {
+-		// Check if toolSpecificData is ChatMcpToolInvocationData (has input and output)
+-		// If so, convert to resultDetails for rendering via ChatInputOutputMarkdownProgressPart
+-		let resultDetails: IToolResultInputOutputDetails | undefined;
+-		let toolSpecificData: any;
+-
+-		if (part.toolSpecificData && isChatMcpToolInvocationData(part.toolSpecificData)) {
+-			// Convert ChatMcpToolInvocationData to IToolResultInputOutputDetails
+-			resultDetails = convertMcpToResultDetails(part.toolSpecificData, part.isError);
+-			toolSpecificData = undefined; // MCP data goes to resultDetails, not toolSpecificData
+-		} else {
+-			toolSpecificData = part.toolSpecificData ? convertToolSpecificData(part.toolSpecificData) : undefined;
+-		}
+-
+-		const presentation = part.presentation === 'hidden'
+-			? ToolInvocationPresentation.Hidden
+-			: part.presentation === 'hiddenAfterComplete'
+-				? ToolInvocationPresentation.HiddenAfterComplete
+-				: undefined;
+-
+-		// When isComplete is explicitly set (not undefined), use the update DTO to enable
+-		// live tool invocation updates. Extensions can push with isComplete: false to start
+-		// an in-progress invocation, then push again with isComplete: true to complete it.
+-		if (part.enablePartialUpdate) {
+-			return {
+-				kind: 'externalToolInvocationUpdate',
+-				toolCallId: part.toolCallId,
+-				toolName: part.toolName,
+-				isComplete: !!part.isComplete,
+-				invocationMessage: part.invocationMessage ? MarkdownString.from(part.invocationMessage) : undefined,
+-				pastTenseMessage: part.pastTenseMessage ? MarkdownString.from(part.pastTenseMessage) : undefined,
+-				toolSpecificData,
+-				subagentInvocationId: part.subAgentInvocationId,
+-				resultDetails
+-			};
+-		}
+-
+-		// Convert extension API ChatToolInvocationPart to internal serialized format (legacy path)
+-		return {
+-			kind: 'toolInvocationSerialized',
+-			toolCallId: part.toolCallId,
+-			toolId: part.toolName,
+-			invocationMessage: part.invocationMessage ? MarkdownString.from(part.invocationMessage) : part.toolName,
+-			originMessage: part.originMessage ? MarkdownString.from(part.originMessage) : undefined,
+-			pastTenseMessage: part.pastTenseMessage ? MarkdownString.from(part.pastTenseMessage) : undefined,
+-			isConfirmed: part.isConfirmed,
+-			isComplete: true,
+-			source: ToolDataSource.External,
+-			// isError: part.isError ?? false,
+-			toolSpecificData,
+-			resultDetails,
+-			presentation,
+-			subAgentInvocationId: part.subAgentInvocationId
+-		};
+-	}
+-
+-	function isChatMcpToolInvocationData(data: any): data is vscode.ChatMcpToolInvocationData {
+-		return data !== null && typeof data === 'object' &&
+-			'input' in data && typeof data.input === 'string' &&
+-			'output' in data && Array.isArray(data.output);
+-	}
+-
+-	function convertMcpToResultDetails(data: vscode.ChatMcpToolInvocationData, isError?: boolean): IToolResultInputOutputDetails {
+-		return {
+-			input: data.input,
+-			output: data.output.map((o) => {
+-				const isText = o.mimeType.startsWith('text/');
+-				return {
+-					type: 'embed' as const,
+-					mimeType: o.mimeType,
+-					value: isText ? VSBuffer.wrap(o.data).toString() : encodeBase64(VSBuffer.wrap(o.data)),
+-					isText: isText,
+-				};
+-			}),
+-			isError: isError ?? false,
+-		};
+-	}
+-
+-	function convertToolSpecificData(data: any): any {
+-		// Convert extension API terminal tool data to internal format
+-		if ('command' in data && 'language' in data) {
+-			return {
+-				kind: 'terminal',
+-				command: data.command,
+-				language: data.language
+-			};
+-		} else if ('commandLine' in data && 'language' in data) {
+-			const presentationOverrides = data.presentationOverrides && typeof data.presentationOverrides.commandLine === 'string' ? {
+-				commandLine: data.presentationOverrides.commandLine,
+-				language: data.presentationOverrides.language
+-			} : undefined;
+-			const result: IChatTerminalToolInvocationData = {
+-				kind: 'terminal',
+-				presentationOverrides,
+-				commandLine: data.commandLine,
+-				language: data.language,
+-				terminalCommandOutput: typeof data.output?.text === 'string' ? {
+-					text: data.output.text,
+-				} : undefined,
+-				terminalCommandState: data.state ? {
+-					exitCode: data.state.exitCode,
+-					duration: data.state.duration,
+-				} : undefined,
+-			};
+-
+-			return result;
+-		} else if ('todoList' in data && Array.isArray(data.todoList)) {
+-			// Convert extension API todo tool data to internal format
+-			return {
+-				kind: 'todoList',
+-				todoList: data.todoList.map((todo: any) => ({
+-					id: String(todo.id),
+-					title: todo.title,
+-					status: todoStatusEnumToString(todo.status)
+-				}))
+-			};
+-		} else if ('input' in data && 'output' in data && !Array.isArray(data.output)) {
+-			// Convert extension API simple tool invocation data to internal format
+-			return {
+-				kind: 'simpleToolInvocation',
+-				input: typeof data.input === 'string' ? data.input : '',
+-				output: typeof data.output === 'string' ? data.output : ''
+-			};
+-		} else if (data && 'values' in data && Array.isArray(data.values)) {
+-			// Convert extension API resources tool data to internal format
+-			return {
+-				kind: 'resources',
+-				values: data.values.map((v: any) => {
+-					if (v instanceof types.Location) {
+-						return Location.from(v);
+-					} else {
+-						return URI.revive(v);
+-					}
+-				})
+-			};
+-		} else if (data instanceof types.ChatSubagentToolInvocationData) {
+-			// Convert extension API subagent tool data to internal format
+-			return {
+-				kind: 'subagent',
+-				description: data.description,
+-				agentName: data.agentName,
+-				prompt: data.prompt,
+-				result: data.result,
+-				modelName: data.modelName,
+-			};
+-		}
+-		return data;
+-	}
+-
+-	function todoStatusEnumToString(status: types.ChatTodoStatus | string): string {
+-		// Handle enum values
+-		switch (status) {
+-			case types.ChatTodoStatus.NotStarted:
+-				return 'not-started';
+-			case types.ChatTodoStatus.InProgress:
+-				return 'in-progress';
+-			case types.ChatTodoStatus.Completed:
+-				return 'completed';
+-			default:
+-				return 'not-started';
+-		}
+-	}
+-
+-	function todoStatusStringToEnum(status: string): types.ChatTodoStatus {
+-		switch (status) {
+-			case 'not-started':
+-				return types.ChatTodoStatus.NotStarted;
+-			case 'in-progress':
+-				return types.ChatTodoStatus.InProgress;
+-			case 'completed':
+-				return types.ChatTodoStatus.Completed;
+-			default:
+-				return types.ChatTodoStatus.NotStarted;
+-		}
+-	}
+-
+-	export function to(part: any): vscode.ChatToolInvocationPart {
+-		const toolInvocation = new types.ChatToolInvocationPart(
+-			part.toolId || part.toolName,
+-			part.toolCallId,
+-			part.errorMessage
+-		);
+-
+-		if (part.invocationMessage) {
+-			toolInvocation.invocationMessage = part.invocationMessage;
+-		}
+-		if (part.originMessage) {
+-			toolInvocation.originMessage = part.originMessage;
+-		}
+-		if (part.pastTenseMessage) {
+-			toolInvocation.pastTenseMessage = part.pastTenseMessage;
+-		}
+-		if (part.isConfirmed !== undefined) {
+-			toolInvocation.isConfirmed = part.isConfirmed;
+-		}
+-		if (part.isComplete !== undefined) {
+-			toolInvocation.isComplete = part.isComplete;
+-		}
+-		if (part.toolSpecificData) {
+-			toolInvocation.toolSpecificData = convertFromInternalToolSpecificData(part.toolSpecificData);
+-		}
+-		toolInvocation.subAgentInvocationId = part.subAgentInvocationId;
+-		toolInvocation.subAgentName = part.subAgentName;
+-
+-		return toolInvocation;
+-	}
+-
+-	function convertFromInternalToolSpecificData(data: any): any {
+-		// Convert internal terminal tool data to extension API format
+-		if (data.kind === 'terminal') {
+-			if (data.commandLine) {
+-				// New format with commandLine
+-				const result: any = {
+-					commandLine: data.commandLine,
+-					language: data.language
+-				};
+-
+-				// Map internal 'terminalCommandOutput' -> extension 'output'
+-				if (data.terminalCommandOutput) {
+-					result.output = {
+-						text: data.terminalCommandOutput.text,
+-						truncated: data.terminalCommandOutput.truncated,
+-						lineCount: data.terminalCommandOutput.lineCount
+-					};
+-				}
+-
+-				// Map internal 'terminalCommandState' -> extension 'state'
+-				if (data.terminalCommandState) {
+-					result.state = {
+-						exitCode: data.terminalCommandState.exitCode,
+-						duration: data.terminalCommandState.duration
+-					};
+-				}
+-
+-				return result;
+-			} else {
+-				// Legacy format with command
+-				return {
+-					command: data.command,
+-					language: data.language
+-				};
+-			}
+-		} else if (data.kind === 'terminal2') {
+-			return {
+-				commandLine: data.commandLine,
+-				language: data.language
+-			};
+-		} else if (data.kind === 'todoList') {
+-			// Convert internal todo tool data to extension API format
+-			return {
+-				todoList: data.todoList.map((todo: any, index: number) => {
+-					const parsed = Number(todo.id);
+-					const id = Number.isFinite(parsed) ? parsed : index;
+-					return {
+-						id,
+-						title: todo.title,
+-						status: todoStatusStringToEnum(todo.status)
+-					};
+-				})
+-			};
+-		}
+-		return data;
+-	}
+-}
+-
+-export namespace ChatTask {
+-	export function from(part: vscode.ChatResponseProgressPart2): IChatTaskDto {
+-		return {
+-			kind: 'progressTask',
+-			content: MarkdownString.from(part.value),
+-		};
+-	}
+-}
+-
+-export namespace ChatTaskResult {
+-	export function from(part: string | void): Dto<IChatTaskResult> {
+-		return {
+-			kind: 'progressTaskResult',
+-			content: typeof part === 'string' ? MarkdownString.from(part) : undefined
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseCommandButtonPart {
+-	export function from(part: vscode.ChatResponseCommandButtonPart, commandsConverter: CommandsConverter, commandDisposables: DisposableStore): Dto<IChatCommandButton> {
+-		// If the command isn't in the converter, then this session may have been restored, and the command args don't exist anymore
+-		const command = commandsConverter.toInternal(part.value, commandDisposables) ?? { command: part.value.command, title: part.value.title };
+-		return {
+-			kind: 'command',
+-			command
+-		};
+-	}
+-	export function to(part: Dto<IChatCommandButton>, commandsConverter: CommandsConverter): vscode.ChatResponseCommandButtonPart {
+-		// If the command isn't in the converter, then this session may have been restored, and the command args don't exist anymore
+-		return new types.ChatResponseCommandButtonPart(commandsConverter.fromInternal(part.command) ?? { command: part.command.id, title: part.command.title });
+-	}
+-}
+-
+-export namespace ChatResponseTextEditPart {
+-	export function from(part: vscode.ChatResponseTextEditPart): Dto<IChatTextEdit> {
+-		return {
+-			kind: 'textEdit',
+-			uri: part.uri,
+-			edits: part.edits.map(e => TextEdit.from(e)),
+-			done: part.isDone
+-		};
+-	}
+-	export function to(part: Dto<IChatTextEdit>): vscode.ChatResponseTextEditPart {
+-		const result = new types.ChatResponseTextEditPart(URI.revive(part.uri), part.edits.map(e => TextEdit.to(e)));
+-		result.isDone = part.done;
+-		return result;
+-	}
+-
+-}
+-
+ export namespace NotebookEdit {
+ 	export function from(edit: vscode.NotebookEdit): extHostProtocol.ICellEditOperationDto {
+ 		if (edit.newCellMetadata) {
+@@ -3299,594 +2298,6 @@
+ 	}
+ }
+ 
+-
+-export namespace ChatResponseNotebookEditPart {
+-	export function from(part: vscode.ChatResponseNotebookEditPart): extHostProtocol.IChatNotebookEditDto {
+-		return {
+-			kind: 'notebookEdit',
+-			uri: part.uri,
+-			edits: part.edits.map(NotebookEdit.from),
+-			done: part.isDone
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseWorkspaceEditPart {
+-	export function from(part: vscode.ChatResponseWorkspaceEditPart): IChatWorkspaceEdit {
+-		return {
+-			kind: 'workspaceEdit',
+-			edits: part.edits.map(e => ({
+-				oldResource: e.oldResource,
+-				newResource: e.newResource,
+-			})),
+-		};
+-	}
+-}
+-
+-export namespace ChatResponseReferencePart {
+-	export function from(part: types.ChatResponseReferencePart): Dto<IChatContentReference> {
+-		const iconPath = ThemeIcon.isThemeIcon(part.iconPath) ? part.iconPath
+-			: URI.isUri(part.iconPath) ? { light: URI.revive(part.iconPath) }
+-				: (part.iconPath && 'light' in part.iconPath && 'dark' in part.iconPath && URI.isUri(part.iconPath.light) && URI.isUri(part.iconPath.dark) ? { light: URI.revive(part.iconPath.light), dark: URI.revive(part.iconPath.dark) }
+-					: undefined);
+-
+-		if (typeof part.value === 'object' && 'variableName' in part.value) {
+-			return {
+-				kind: 'reference',
+-				reference: {
+-					variableName: part.value.variableName,
+-					value: URI.isUri(part.value.value) || !part.value.value ?
+-						part.value.value :
+-						Location.from(part.value.value as vscode.Location)
+-				},
+-				iconPath,
+-				options: part.options
+-			};
+-		}
+-
+-		return {
+-			kind: 'reference',
+-			reference: URI.isUri(part.value) || typeof part.value === 'string' ?
+-				part.value :
+-				Location.from(<vscode.Location>part.value),
+-			iconPath,
+-			options: part.options
+-		};
+-	}
+-	export function to(part: Dto<IChatContentReference>): vscode.ChatResponseReferencePart {
+-		const value = revive<IChatContentReference>(part);
+-
+-		const mapValue = (value: URI | languages.Location): vscode.Uri | vscode.Location => URI.isUri(value) ?
+-			value :
+-			Location.to(value);
+-
+-		return new types.ChatResponseReferencePart(
+-			typeof value.reference === 'string' ? value.reference : 'variableName' in value.reference ? {
+-				variableName: value.reference.variableName,
+-				value: value.reference.value && mapValue(value.reference.value)
+-			} :
+-				mapValue(value.reference)
+-		) as vscode.ChatResponseReferencePart; // 'value' is extended with variableName
+-	}
+-}
+-
+-export namespace ChatResponseCodeCitationPart {
+-	export function from(part: vscode.ChatResponseCodeCitationPart): Dto<IChatCodeCitation> {
+-		return {
+-			kind: 'codeCitation',
+-			value: part.value,
+-			license: part.license,
+-			snippet: part.snippet
+-		};
+-	}
+-}
+-
+-export namespace ChatResponsePart {
+-
+-	export function from(part: vscode.ExtendedChatResponsePart, commandsConverter: CommandsConverter, commandDisposables: DisposableStore): extHostProtocol.IChatProgressDto {
+-		if (part instanceof types.ChatResponseMarkdownPart) {
+-			return ChatResponseMarkdownPart.from(part);
+-		} else if (part instanceof types.ChatResponseAnchorPart) {
+-			return ChatResponseAnchorPart.from(part);
+-		} else if (part instanceof types.ChatResponseReferencePart) {
+-			return ChatResponseReferencePart.from(part);
+-		} else if (part instanceof types.ChatResponseProgressPart) {
+-			return ChatResponseProgressPart.from(part);
+-		} else if (part instanceof types.ChatResponseThinkingProgressPart) {
+-			return ChatResponseThinkingProgressPart.from(part);
+-		} else if (part instanceof types.ChatResponseHookPart) {
+-			return ChatResponseHookPart.from(part);
+-		} else if (part instanceof types.ChatResponseVoiceProgressPart) {
+-			return ChatResponseVoiceProgressPart.from(part);
+-		} else if (part instanceof types.ChatResponseFileTreePart) {
+-			return ChatResponseFilesPart.from(part);
+-		} else if (part instanceof types.ChatResponseMultiDiffPart) {
+-			return ChatResponseMultiDiffPart.from(part);
+-		} else if (part instanceof types.ChatResponseCommandButtonPart) {
+-			return ChatResponseCommandButtonPart.from(part, commandsConverter, commandDisposables);
+-		} else if (part instanceof types.ChatResponseTextEditPart) {
+-			return ChatResponseTextEditPart.from(part);
+-		} else if (part instanceof types.ChatResponseNotebookEditPart) {
+-			return ChatResponseNotebookEditPart.from(part);
+-		} else if (part instanceof types.ChatResponseMarkdownWithVulnerabilitiesPart) {
+-			return ChatResponseMarkdownWithVulnerabilitiesPart.from(part);
+-		} else if (part instanceof types.ChatResponseCodeblockUriPart) {
+-			return ChatResponseCodeblockUriPart.from(part);
+-		} else if (part instanceof types.ChatResponseWarningPart) {
+-			return ChatResponseWarningPart.from(part);
+-		} else if (part instanceof types.ChatResponseInfoPart) {
+-			return ChatResponseInfoPart.from(part);
+-		} else if (part instanceof types.ChatResponseConfirmationPart) {
+-			return ChatResponseConfirmationPart.from(part);
+-		} else if (part instanceof types.ChatResponseQuestionCarouselPart) {
+-			return ChatResponseQuestionCarouselPart.from(part);
+-		} else if (part instanceof types.ChatResponseCodeCitationPart) {
+-			return ChatResponseCodeCitationPart.from(part);
+-		} else if (part instanceof types.ChatResponseMovePart) {
+-			return ChatResponseMovePart.from(part);
+-		} else if (part instanceof types.ChatResponseExtensionsPart) {
+-			return ChatResponseExtensionsPart.from(part);
+-		} else if (part instanceof types.ChatResponsePullRequestPart) {
+-			return ChatResponsePullRequestPart.from(part, commandsConverter, commandDisposables);
+-		} else if (part instanceof types.ChatToolInvocationPart) {
+-			return ChatToolInvocationPart.from(part);
+-		} else if (part instanceof types.ChatResponseWorkspaceEditPart) {
+-			return ChatResponseWorkspaceEditPart.from(part);
+-		} else if (part instanceof types.ChatResponseAutoModeResolutionPart) {
+-			return ChatResponseAutoModeResolutionPart.from(part);
+-		}
+-
+-		return {
+-			kind: 'markdownContent',
+-			content: MarkdownString.from('')
+-		};
+-	}
+-
+-	export function to(part: extHostProtocol.IChatProgressDto, commandsConverter: CommandsConverter): vscode.ChatResponsePart | undefined {
+-		switch (part.kind) {
+-			case 'reference': return ChatResponseReferencePart.to(part);
+-			case 'markdownContent':
+-			case 'inlineReference':
+-			case 'progressMessage':
+-			case 'treeData':
+-			case 'command':
+-				return toContent(part, commandsConverter);
+-		}
+-		return undefined;
+-	}
+-
+-	export function toContent(part: extHostProtocol.IChatContentProgressDto, commandsConverter: CommandsConverter): vscode.ChatResponseMarkdownPart | vscode.ChatResponseFileTreePart | vscode.ChatResponseAnchorPart | vscode.ChatResponseCommandButtonPart | undefined {
+-		switch (part.kind) {
+-			case 'markdownContent': return ChatResponseMarkdownPart.to(part);
+-			case 'inlineReference': return ChatResponseAnchorPart.to(part);
+-			case 'progressMessage': return undefined;
+-			case 'treeData': return ChatResponseFilesPart.to(part);
+-			case 'command': return ChatResponseCommandButtonPart.to(part, commandsConverter);
+-		}
+-
+-		return undefined;
+-	}
+-}
+-
+-export namespace ChatAgentRequest {
+-	export function to(request: IChatAgentRequest, location2: vscode.ChatRequestEditorData | vscode.ChatRequestNotebookData | undefined, model: vscode.LanguageModelChat, modelConfiguration: IStringDictionary<unknown> | undefined, diagnostics: readonly [vscode.Uri, readonly vscode.Diagnostic[]][], tools: Map<vscode.LanguageModelToolInformation, boolean>, extension: IRelaxedExtensionDescription, logService: ILogService): vscode.ChatRequest {
+-
+-		const toolReferences: IChatRequestVariableEntry[] = [];
+-		const variableReferences: IChatRequestVariableEntry[] = [];
+-		for (const v of request.variables.variables) {
+-			if (v.kind === 'tool') {
+-				toolReferences.push(v);
+-			} else if (v.kind === 'toolset') {
+-				toolReferences.push(...v.value);
+-			} else {
+-				variableReferences.push(v);
+-			}
+-		}
+-
+-		const sessionId = LocalChatSessionUri.parseLocalSessionId(request.sessionResource) ?? request.sessionResource.toString();
+-		const requestWithAllProps: vscode.ChatRequest = {
+-			id: request.requestId,
+-			prompt: request.message,
+-			command: request.command,
+-			attempt: request.attempt ?? 0,
+-			enableCommandDetection: request.enableCommandDetection ?? true,
+-			isParticipantDetected: request.isParticipantDetected ?? false,
+-			isVoiceModeInput: request.isVoiceModeInput,
+-			sessionId,
+-			sessionResource: request.sessionResource,
+-			references: variableReferences
+-				.flatMap(v => ChatPromptReference.toReferences(v, diagnostics, logService)),
+-			toolReferences: toolReferences.map(ChatLanguageModelToolReference.to),
+-			location: ChatLocation.to(request.location),
+-			acceptedConfirmationData: request.acceptedConfirmationData,
+-			rejectedConfirmationData: request.rejectedConfirmationData,
+-			location2,
+-			toolInvocationToken: Object.freeze<IToolInvocationContext>({ sessionResource: request.sessionResource, workingDirectory: URI.revive(request.workingDirectory) }) as never,
+-			tools,
+-			model,
+-			modelConfiguration,
+-			editedFileEvents: request.editedFileEvents,
+-			modeInstructions: request.modeInstructions?.content,
+-			modeInstructions2: ChatRequestModeInstructions.to(request.modeInstructions),
+-			permissionLevel: request.permissionLevel,
+-			subAgentInvocationId: request.subAgentInvocationId,
+-			subAgentName: request.subAgentName,
+-			parentRequestId: request.parentRequestId,
+-			hasHooksEnabled: request.hasHooksEnabled ?? false,
+-			hooks: request.hooks ? ChatRequestHooksConverter.to(request.hooks) : undefined,
+-			isSystemInitiated: request.isSystemInitiated,
+-		};
+-
+-		if (!isProposedApiEnabled(extension, 'chatParticipantPrivate')) {
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).id;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).attempt;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).enableCommandDetection;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).isParticipantDetected;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).isVoiceModeInput;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).location;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).location2;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).editedFileEvents;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).sessionId;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).subAgentInvocationId;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).subAgentName;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).parentRequestId;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).hasHooksEnabled;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).hooks;
+-		}
+-
+-		if (!isProposedApiEnabled(extension, 'chatParticipantAdditions')) {
+-			delete requestWithAllProps.acceptedConfirmationData;
+-			delete requestWithAllProps.rejectedConfirmationData;
+-			// eslint-disable-next-line local/code-no-any-casts
+-			delete (requestWithAllProps as any).tools;
+-		}
+-
+-
+-		return requestWithAllProps;
+-	}
+-}
+-
+-export namespace ChatLocation {
+-	export function to(loc: ChatAgentLocation): types.ChatLocation {
+-		switch (loc) {
+-			case ChatAgentLocation.Notebook: return types.ChatLocation.Notebook;
+-			case ChatAgentLocation.Terminal: return types.ChatLocation.Terminal;
+-			case ChatAgentLocation.Chat: return types.ChatLocation.Panel;
+-			case ChatAgentLocation.EditorInline: return types.ChatLocation.Editor;
+-		}
+-	}
+-
+-	export function from(loc: types.ChatLocation): ChatAgentLocation {
+-		switch (loc) {
+-			case types.ChatLocation.Notebook: return ChatAgentLocation.Notebook;
+-			case types.ChatLocation.Terminal: return ChatAgentLocation.Terminal;
+-			case types.ChatLocation.Panel: return ChatAgentLocation.Chat;
+-			case types.ChatLocation.Editor: return ChatAgentLocation.EditorInline;
+-		}
+-	}
+-}
+-
+-export namespace ChatSessionCustomizationType {
+-	export function from(type: types.ChatSessionCustomizationType): string {
+-		return type.id;
+-	}
+-
+-	export function to(id: string): types.ChatSessionCustomizationType {
+-		switch (id) {
+-			case 'agent': return types.ChatSessionCustomizationType.Agent;
+-			case 'skill': return types.ChatSessionCustomizationType.Skill;
+-			case 'instructions': return types.ChatSessionCustomizationType.Instructions;
+-			case 'prompt': return types.ChatSessionCustomizationType.Prompt;
+-			case 'hook': return types.ChatSessionCustomizationType.Hook;
+-			case 'plugins': return types.ChatSessionCustomizationType.Plugins;
+-			default: return new types.ChatSessionCustomizationType(id);
+-		}
+-	}
+-}
+-
+-export namespace ChatPromptReference {
+-	export function toReferences(variable: IChatRequestVariableEntry, diagnostics: readonly [vscode.Uri, readonly vscode.Diagnostic[]][], logService: ILogService): vscode.ChatPromptReference[] {
+-		const reference = to(variable, diagnostics, logService);
+-		if (!reference) {
+-			return [];
+-		}
+-
+-		const element = isElementVariableEntry(variable) ? variable : undefined;
+-		if (!element) {
+-			return [reference];
+-		}
+-
+-		const imageData = coerceImageBuffer(element.imageData);
+-		if (!imageData) {
+-			return [reference];
+-		}
+-
+-		return [
+-			reference,
+-			{
+-				id: `${variable.id}-screenshot`,
+-				name: `${variable.name} screenshot`,
+-				value: new types.ChatReferenceBinaryData(
+-					element.imageMimeType ?? 'image/png',
+-					() => Promise.resolve(imageData),
+-				),
+-			}
+-		];
+-	}
+-
+-	export function to(variable: IChatRequestVariableEntry, diagnostics: readonly [vscode.Uri, readonly vscode.Diagnostic[]][], logService: ILogService): vscode.ChatPromptReference | undefined {
+-		let value: vscode.ChatPromptReference['value'] = variable.value;
+-		if (!value) {
+-			let varStr: string;
+-			try {
+-				varStr = JSON.stringify(variable);
+-			} catch {
+-				varStr = `kind=${variable.kind}, id=${variable.id}, name=${variable.name}`;
+-			}
+-
+-			logService.error(`[ChatPromptReference] Ignoring invalid reference in variable: ${varStr}`);
+-			return undefined;
+-		}
+-
+-		if (isUriComponents(value)) {
+-			value = URI.revive(value);
+-		} else if (value && typeof value === 'object' && 'uri' in value && 'range' in value && isUriComponents(value.uri)) {
+-			value = Location.to(revive(value));
+-		} else if (isImageVariableEntry(variable)) {
+-			const ref = variable.references?.[0]?.reference;
+-			value = new types.ChatReferenceBinaryData(
+-				variable.mimeType ?? 'image/png',
+-				() => Promise.resolve(new Uint8Array(Object.values(variable.value as number[]))),
+-				ref && URI.isUri(ref) ? ref : undefined,
+-				variable.isPasted,
+-				variable.isURL
+-			);
+-		} else if (variable.kind === 'diagnostic') {
+-			const filterSeverity = variable.filterSeverity && DiagnosticSeverity.to(variable.filterSeverity);
+-			const filterUri = variable.filterUri && URI.revive(variable.filterUri).toString();
+-			value = new types.ChatReferenceDiagnostic(diagnostics.map(([uri, d]): [vscode.Uri, vscode.Diagnostic[]] => {
+-				if (variable.filterUri && uri.toString() !== filterUri) {
+-					return [uri, []];
+-				}
+-
+-				return [uri, d.filter(d => {
+-					if (filterSeverity && d.severity > filterSeverity) {
+-						return false;
+-					}
+-					if (variable.filterRange && !editorRange.Range.areIntersectingOrTouching(variable.filterRange, Range.from(d.range))) {
+-						return false;
+-					}
+-
+-					return true;
+-				})];
+-			}).filter(([, d]) => d.length > 0));
+-		}
+-		let toolReferences;
+-		if (isPromptFileVariableEntry(variable) || isPromptTextVariableEntry(variable)) {
+-			if (variable.toolReferences) {
+-				toolReferences = ChatLanguageModelToolReferences.to(variable.toolReferences);
+-			}
+-		}
+-
+-		return {
+-			id: variable.id,
+-			name: variable.name,
+-			range: variable.range && [variable.range.start, variable.range.endExclusive],
+-			toolReferences,
+-			value,
+-			modelDescription: variable.modelDescription,
+-		};
+-	}
+-}
+-
+-export namespace ChatLanguageModelToolReference {
+-	export function to(variable: IChatRequestVariableEntry): vscode.ChatLanguageModelToolReference {
+-		const value = variable.value;
+-		if (value) {
+-			throw new Error('Invalid tool reference');
+-		}
+-
+-		return {
+-			name: variable.id,
+-			range: variable.range && [variable.range.start, variable.range.endExclusive],
+-		};
+-	}
+-}
+-
+-namespace ChatLanguageModelToolReferences {
+-	export function to(variables: readonly ChatRequestToolReferenceEntry[]): vscode.ChatLanguageModelToolReference[] {
+-		const toolReferences = [];
+-		for (const v of variables) {
+-			if (v.kind === 'tool') {
+-				toolReferences.push(ChatLanguageModelToolReference.to(v));
+-			} else if (v.kind === 'toolset') {
+-				toolReferences.push(...v.value.map(ChatLanguageModelToolReference.to));
+-			} else {
+-				throw new Error('Invalid tool reference in prompt variables');
+-			}
+-		}
+-		return toolReferences;
+-	}
+-}
+-
+-export namespace ChatRequestModeInstructions {
+-	export function to(mode: IChatRequestModeInstructions | Dto<IChatRequestModeInstructions> | undefined): vscode.ChatRequestModeInstructions | undefined {
+-		if (mode) {
+-			return {
+-				uri: URI.revive(mode.uri),
+-				name: mode.name,
+-				content: mode.content,
+-				toolReferences: ChatLanguageModelToolReferences.to(revive(mode.toolReferences)),
+-				allowedSubagents: mode.allowedSubagents,
+-				metadata: mode.metadata,
+-				isBuiltin: mode.isBuiltin,
+-			};
+-		}
+-		return undefined;
+-	}
+-
+-	export function from(mode: vscode.ChatRequestModeInstructions | undefined): IChatRequestModeInstructions | undefined {
+-		if (mode) {
+-			return {
+-				uri: mode.uri,
+-				name: mode.name,
+-				content: mode.content,
+-				toolReferences: mode.toolReferences?.map(ref => ({
+-					kind: 'tool' as const,
+-					id: ref.name,
+-					name: ref.name,
+-					value: undefined,
+-					range: ref.range ? { start: ref.range[0], endExclusive: ref.range[1] } : undefined,
+-				})) ?? [],
+-				allowedSubagents: mode.allowedSubagents,
+-				metadata: mode.metadata,
+-				isBuiltin: mode.isBuiltin,
+-			};
+-		}
+-		return undefined;
+-	}
+-}
+-
+-export namespace ChatAgentCompletionItem {
+-	export function from(item: vscode.ChatCompletionItem, commandsConverter: CommandsConverter, disposables: DisposableStore): extHostProtocol.IChatAgentCompletionItem {
+-		return {
+-			id: item.id,
+-			label: item.label,
+-			fullName: item.fullName,
+-			icon: item.icon?.id,
+-			value: item.values[0].value,
+-			insertText: item.insertText,
+-			detail: item.detail,
+-			documentation: item.documentation,
+-			command: commandsConverter.toInternal(item.command, disposables),
+-		};
+-	}
+-}
+-
+-export namespace ChatAgentResult {
+-	export function to(result: IChatAgentResult): vscode.ChatResult {
+-		return {
+-			errorDetails: result.errorDetails,
+-			metadata: reviveMetadata(result.metadata),
+-			nextQuestion: result.nextQuestion,
+-			details: result.details,
+-		};
+-	}
+-	export function from(result: vscode.ChatResult): Dto<IChatAgentResult> {
+-		return {
+-			errorDetails: result.errorDetails,
+-			metadata: result.metadata,
+-			nextQuestion: result.nextQuestion,
+-			details: result.details,
+-		};
+-	}
+-
+-	function reviveMetadata(metadata: IChatAgentResult['metadata']) {
+-		return cloneAndChange(metadata, value => {
+-			if (value.$mid === MarshalledId.LanguageModelToolResult) {
+-				return new types.LanguageModelToolResult(cloneAndChange(value.content, reviveMetadata));
+-			} else if (value.$mid === MarshalledId.LanguageModelTextPart) {
+-				return new types.LanguageModelTextPart(value.value);
+-			} else if (value.$mid === MarshalledId.LanguageModelThinkingPart) {
+-				return new types.LanguageModelThinkingPart(value.value, value.id, value.metadata);
+-			} else if (value.$mid === MarshalledId.LanguageModelPromptTsxPart) {
+-				return new types.LanguageModelPromptTsxPart(value.value);
+-			} else if (value.$mid === MarshalledId.LanguageModelDataPart) {
+-				let buffer: Uint8Array;
+-				// correction for old data serialized pre-303151
+-				if (value.data && typeof value.data === 'object' && value.data.type === 'Buffer' && Array.isArray(value.data.data)) {
+-					buffer = new Uint8Array(value.data.data);
+-				} else if (typeof value.data === 'string') {
+-					try {
+-						buffer = decodeBase64(value.data).buffer;
+-					} catch {
+-						buffer = new Uint8Array(0);
+-					}
+-				} else {
+-					buffer = new Uint8Array(0);
+-				}
+-
+-				return new types.LanguageModelDataPart(buffer, value.mimeType, value.audience);
+-			}
+-
+-			return undefined;
+-		});
+-	}
+-}
+-
+-export namespace ChatAgentUserActionEvent {
+-	export function to(result: IChatAgentResult, event: IChatUserActionEvent, commandsConverter: CommandsConverter): vscode.ChatUserActionEvent | undefined {
+-		if (event.action.kind === 'vote') {
+-			// Is the "feedback" type
+-			return;
+-		}
+-
+-		const ehResult = ChatAgentResult.to(result);
+-		if (event.action.kind === 'command') {
+-			const command = event.action.commandButton.command;
+-			const commandButton = {
+-				command: commandsConverter.fromInternal(command) ?? { command: command.id, title: command.title },
+-			};
+-			const commandAction: vscode.ChatCommandAction = { kind: 'command', commandButton };
+-			return { action: commandAction, result: ehResult };
+-		} else if (event.action.kind === 'followUp') {
+-			const followupAction: vscode.ChatFollowupAction = { kind: 'followUp', followup: ChatFollowup.to(event.action.followup) };
+-			return { action: followupAction, result: ehResult };
+-		} else if (event.action.kind === 'inlineChat') {
+-			return { action: { kind: 'editor', accepted: event.action.action === 'accepted' }, result: ehResult };
+-		} else if (event.action.kind === 'chatEditingSessionAction') {
+-
+-			const outcomes = new Map([
+-				['accepted', types.ChatEditingSessionActionOutcome.Accepted],
+-				['rejected', types.ChatEditingSessionActionOutcome.Rejected],
+-				['saved', types.ChatEditingSessionActionOutcome.Saved],
+-			]);
+-
+-			return {
+-				action: {
+-					kind: 'chatEditingSessionAction',
+-					outcome: outcomes.get(event.action.outcome) ?? types.ChatEditingSessionActionOutcome.Rejected,
+-					uri: URI.revive(event.action.uri),
+-					hasRemainingEdits: event.action.hasRemainingEdits
+-				}, result: ehResult
+-			};
+-		} else if (event.action.kind === 'chatEditingHunkAction') {
+-			const outcomes = new Map([
+-				['accepted', types.ChatEditingSessionActionOutcome.Accepted],
+-				['rejected', types.ChatEditingSessionActionOutcome.Rejected],
+-			]);
+-
+-			return {
+-				action: {
+-					kind: 'chatEditingHunkAction',
+-					outcome: outcomes.get(event.action.outcome) ?? types.ChatEditingSessionActionOutcome.Rejected,
+-					uri: URI.revive(event.action.uri),
+-					hasRemainingEdits: event.action.hasRemainingEdits,
+-					lineCount: event.action.lineCount,
+-					linesAdded: event.action.linesAdded,
+-					linesRemoved: event.action.linesRemoved
+-				}, result: ehResult
+-			};
+-		} else {
+-			return { action: event.action, result: ehResult };
+-		}
+-	}
+-}
+-
+ export namespace TerminalQuickFix {
+ 	export function from(quickFix: vscode.TerminalQuickFixTerminalCommand | vscode.TerminalQuickFixOpener | vscode.Command, converter: Command.ICommandsConverter, disposables: DisposableStore): extHostProtocol.ITerminalQuickFixTerminalCommandDto | extHostProtocol.ITerminalQuickFixOpenerDto | extHostProtocol.ICommandDto | undefined {
+ 		if ('terminalCommand' in quickFix) {
+@@ -4005,107 +2416,6 @@
+ 			collapsibleState: (item.collapsibleState || DebugTreeItemCollapsibleState.None) as DebugTreeItemCollapsibleState,
+ 			contextValue: item.contextValue,
+ 		};
+-	}
+-}
+-
+-export namespace LanguageModelToolSource {
+-	export function to(source: Dto<ToolDataSource>): vscode.LanguageModelToolInformation['source'] {
+-		if (source.type === 'mcp') {
+-			return new types.LanguageModelToolMCPSource(source.label, source.serverLabel || source.label, source.instructions);
+-		} else if (source.type === 'extension') {
+-			return new types.LanguageModelToolExtensionSource(source.extensionId.value, source.label);
+-		} else {
+-			return undefined;
+-		}
+-	}
+-}
+-
+-export namespace LanguageModelToolResult {
+-	export function to(result: IToolResult): vscode.ExtendedLanguageModelToolResult {
+-		const toolResult = new types.LanguageModelToolResult(result.content.map(item => {
+-			if (item.kind === 'text') {
+-				return new types.LanguageModelTextPart(item.value, item.audience);
+-			} else if (item.kind === 'data') {
+-				return new types.LanguageModelDataPart(item.value.data.buffer, item.value.mimeType, item.audience);
+-			} else {
+-				return new types.LanguageModelPromptTsxPart(item.value);
+-			}
+-		})) as vscode.ExtendedLanguageModelToolResult;
+-		if (result.toolMetadata !== undefined) {
+-			toolResult.toolMetadata = result.toolMetadata;
+-		}
+-		if (result.toolResultError) {
+-			toolResult.hasError = !!result.toolResultError;
+-		}
+-		return toolResult;
+-	}
+-
+-	export function from(result: vscode.ExtendedLanguageModelToolResult2, extension: IExtensionDescription): Dto<IToolResult> | SerializableObjectWithBuffers<Dto<IToolResult>> {
+-		if (result.toolResultMessage) {
+-			checkProposedApiEnabled(extension, 'chatParticipantPrivate');
+-		}
+-
+-		const checkAudienceApi = (item: LanguageModelTextPart | LanguageModelDataPart) => {
+-			if (item.audience) {
+-				checkProposedApiEnabled(extension, 'languageModelToolResultAudience');
+-			}
+-		};
+-
+-		let hasBuffers = false;
+-		let detailsDto: Dto<Array<URI | types.Location> | IToolResultInputOutputDetails | IToolResultOutputDetails | undefined> = undefined;
+-		if (Array.isArray(result.toolResultDetails)) {
+-			detailsDto = result.toolResultDetails?.map(detail => {
+-				return URI.isUri(detail) ? detail : Location.from(detail as vscode.Location);
+-			});
+-		} else {
+-			if (result.toolResultDetails2) {
+-				detailsDto = {
+-					output: {
+-						type: 'data',
+-						mimeType: (result.toolResultDetails2 as vscode.ToolResultDataOutput).mime,
+-						value: VSBuffer.wrap((result.toolResultDetails2 as vscode.ToolResultDataOutput).value),
+-					}
+-				} satisfies IToolResultOutputDetails;
+-				hasBuffers = true;
+-			}
+-		}
+-
+-		const dto: Dto<IToolResult> = {
+-			content: result.content.map(item => {
+-				if (item instanceof types.LanguageModelTextPart) {
+-					checkAudienceApi(item);
+-					return {
+-						kind: 'text',
+-						value: item.value,
+-						audience: item.audience
+-					};
+-				} else if (item instanceof types.LanguageModelPromptTsxPart) {
+-					return {
+-						kind: 'promptTsx',
+-						value: item.value,
+-					};
+-				} else if (item instanceof types.LanguageModelDataPart) {
+-					checkAudienceApi(item);
+-					hasBuffers = true;
+-					return {
+-						kind: 'data',
+-						value: {
+-							mimeType: item.mimeType,
+-							data: VSBuffer.wrap(item.data)
+-						},
+-						audience: item.audience
+-					};
+-				} else {
+-					throw new Error('Unknown LanguageModelToolResult part type');
+-				}
+-			}),
+-			toolResultMessage: MarkdownString.fromStrict(result.toolResultMessage),
+-			toolResultDetails: detailsDto,
+-			toolMetadata: result.toolMetadata,
+-			toolResultError: result.hasError,
+-		};
+-
+-		return hasBuffers ? new SerializableObjectWithBuffers(dto) : dto;
+ 	}
+ }
+ 
+@@ -4165,84 +2475,6 @@
+ 	}
+ }
+ 
+-export namespace AiSettingsSearch {
+-	export function fromSettingsSearchResult(result: vscode.SettingsSearchResult): AiSettingsSearchResult {
+-		return {
+-			query: result.query,
+-			kind: fromSettingsSearchResultKind(result.kind),
+-			settings: result.settings
+-		};
+-	}
+-
+-	function fromSettingsSearchResultKind(kind: number): AiSettingsSearchResultKind {
+-		switch (kind) {
+-			case AiSettingsSearchResultKind.EMBEDDED:
+-				return AiSettingsSearchResultKind.EMBEDDED;
+-			case AiSettingsSearchResultKind.LLM_RANKED:
+-				return AiSettingsSearchResultKind.LLM_RANKED;
+-			case AiSettingsSearchResultKind.CANCELED:
+-				return AiSettingsSearchResultKind.CANCELED;
+-			default:
+-				throw new Error('Unknown AiSettingsSearchResultKind');
+-		}
+-	}
+-}
+-
+-export namespace McpServerDefinition {
+-	function isHttpConfig(candidate: vscode.McpServerDefinition): candidate is vscode.McpHttpServerDefinition {
+-		return !!(candidate as vscode.McpHttpServerDefinition).uri;
+-	}
+-
+-	export function from(item: vscode.McpServerDefinition): McpServerLaunch.Serialized {
+-		return McpServerLaunch.toSerialized(
+-			isHttpConfig(item)
+-				? {
+-					type: McpServerTransportType.HTTP,
+-					uri: item.uri,
+-					headers: Object.entries(item.headers),
+-					authentication: (item as vscode.McpHttpServerDefinition2).authentication ? {
+-						providerId: (item as vscode.McpHttpServerDefinition2).authentication!.providerId,
+-						scopes: (item as vscode.McpHttpServerDefinition2).authentication!.scopes
+-					} : undefined,
+-				}
+-				: {
+-					type: McpServerTransportType.Stdio,
+-					cwd: item.cwd?.fsPath,
+-					args: item.args,
+-					command: item.command,
+-					env: item.env,
+-					envFile: undefined,
+-					sandbox: undefined
+-				}
+-		);
+-	}
+-
+-	/** Converts from the IPC DTO to the API type. */
+-	export function to(dto: McpServerDefinitionType.Serialized): vscode.McpServerDefinition {
+-		const launch = McpServerLaunch.fromSerialized(dto.launch);
+-		if (launch.type === McpServerTransportType.HTTP) {
+-			return new types.McpHttpServerDefinition(
+-				dto.label,
+-				launch.uri,
+-				Object.fromEntries(launch.headers),
+-				dto.cacheNonce === '$$NONE' ? undefined : dto.cacheNonce,
+-			);
+-		} else {
+-			const result = new types.McpStdioServerDefinition(
+-				dto.label,
+-				launch.command,
+-				[...launch.args],
+-				Object.fromEntries(Object.entries(launch.env).map(([key, value]) => [key, value === null ? null : String(value)])),
+-				dto.cacheNonce === '$$NONE' ? undefined : dto.cacheNonce,
+-			);
+-			if (launch.cwd) {
+-				result.cwd = URI.file(launch.cwd);
+-			}
+-			return result;
+-		}
+-	}
+-}
+-
+ export namespace SourceControlInputBoxValidationType {
+ 	export function from(type: number): InputValidationType {
+ 		switch (type) {
+@@ -4257,88 +2489,3 @@
+ 		}
+ 	}
+ }
+-
+-export namespace ChatRequestHooksConverter {
+-	export function to(hooks: ChatRequestHooks): vscode.ChatRequestHooks {
+-		const result: Record<string, vscode.ChatHookCommand[]> = {};
+-		for (const [hookType, commands] of Object.entries(hooks)) {
+-			if (!commands || commands.length === 0) {
+-				continue;
+-			}
+-			const converted: vscode.ChatHookCommand[] = [];
+-			for (const cmd of commands) {
+-				const resolved = ChatHookCommand.to(cmd);
+-				if (resolved) {
+-					converted.push(resolved);
+-				}
+-			}
+-			if (converted.length > 0) {
+-				result[hookType] = converted;
+-			}
+-		}
+-		return result;
+-	}
+-}
+-
+-export namespace ChatHookCommand {
+-	export function to(hook: IParsedHookCommand): vscode.ChatHookCommand | undefined {
+-		const command = resolveEffectiveCommand(hook, OS);
+-		if (!command) {
+-			return undefined;
+-		}
+-		return {
+-			command,
+-			cwd: hook.cwd,
+-			env: hook.env,
+-			timeout: hook.timeout,
+-		};
+-	}
+-}
+-
+-export namespace ChatSessionItem {
+-
+-	function convertStatus(status: vscode.ChatSessionStatus | undefined): ChatSessionStatus | undefined {
+-		if (status === undefined) {
+-			return undefined;
+-		}
+-
+-		switch (status) {
+-			case 0: // vscode.ChatSessionStatus.Failed
+-				return ChatSessionStatus.Failed;
+-			case 1: // vscode.ChatSessionStatus.Completed
+-				return ChatSessionStatus.Completed;
+-			case 2: // vscode.ChatSessionStatus.InProgress
+-				return ChatSessionStatus.InProgress;
+-			case 3: // vscode.ChatSessionStatus.NeedsInput
+-				return ChatSessionStatus.NeedsInput;
+-			default:
+-				return undefined;
+-		}
+-	}
+-
+-	export function from(sessionContent: vscode.ChatSessionItem): Dto<IChatSessionItem> {
+-		// Support both new (created, lastRequestStarted, lastRequestEnded) and old (startTime, endTime) timing properties
+-		const timing = sessionContent.timing;
+-		const created = timing?.created ?? timing?.startTime ?? 0;
+-		const lastRequestStarted = timing?.lastRequestStarted ?? timing?.startTime;
+-		const lastRequestEnded = timing?.lastRequestEnded ?? timing?.endTime;
+-
+-		return {
+-			resource: sessionContent.resource,
+-			label: sessionContent.label,
+-			description: sessionContent.description ? MarkdownString.from(sessionContent.description) : undefined,
+-			badge: sessionContent.badge ? MarkdownString.from(sessionContent.badge) : undefined,
+-			status: convertStatus(sessionContent.status),
+-			archived: sessionContent.archived,
+-			tooltip: MarkdownString.fromStrict(sessionContent.tooltip),
+-			timing: {
+-				created,
+-				lastRequestStarted,
+-				lastRequestEnded,
+-			},
+-			changes: sessionContent.changes instanceof Array ? sessionContent.changes : undefined,
+-			metadata: sessionContent.metadata,
+-			legacyResource: sessionContent.legacyResource,
+-		};
+-	}
+-}
+diff --git a/src/vs/workbench/api/common/extHostTypes.ts b/src/vs/workbench/api/common/extHostTypes.ts
+--- a/src/vs/workbench/api/common/extHostTypes.ts
++++ b/src/vs/workbench/api/common/extHostTypes.ts
+@@ -30,7 +30,7 @@
+ import { SymbolKind, SymbolTag } from './extHostTypes/symbolInformation.js';
+ import { TextEdit } from './extHostTypes/textEdit.js';
+ import { WorkspaceEdit } from './extHostTypes/workspaceEdit.js';
+-import { HookTypeValue } from '../../contrib/chat/common/promptSyntax/hookTypes.js';
++type HookTypeValue = 'SessionStart' | 'SessionEnd' | 'UserPromptSubmit' | 'PreToolUse' | 'PostToolUse' | 'PreCompact' | 'SubagentStart' | 'SubagentStop' | 'Stop' | 'ErrorOccurred';
+ 
+ export { CodeActionKind } from './extHostTypes/codeActionKind.js';
+ export {
+diff --git a/src/vs/workbench/api/common/extHostEditorTabs.ts b/src/vs/workbench/api/common/extHostEditorTabs.ts
+--- a/src/vs/workbench/api/common/extHostEditorTabs.ts
++++ b/src/vs/workbench/api/common/extHostEditorTabs.ts
+@@ -3,6 +3,7 @@
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+ 
++import type * as vscode from 'vscode';
+ import { diffSets } from '../../../base/common/collections.js';
+ import { Emitter } from '../../../base/common/event.js';
+ import { assertReturnsDefined } from '../../../base/common/types.js';
+@@ -11,8 +12,7 @@
+ import { IEditorTabDto, IEditorTabGroupDto, IExtHostEditorTabsShape, MainContext, MainThreadEditorTabsShape, TabInputKind, TabModelOperationKind, TabOperation } from './extHost.protocol.js';
+ import { IExtHostRpcService } from './extHostRpcService.js';
+ import * as typeConverters from './extHostTypeConverters.js';
+-import { ChatEditorTabInput, CustomEditorTabInput, InteractiveWindowInput, NotebookDiffEditorTabInput, NotebookEditorTabInput, TerminalEditorTabInput, TextDiffTabInput, TextMergeTabInput, TextTabInput, WebviewEditorTabInput, TextMultiDiffTabInput } from './extHostTypes.js';
+-import type * as vscode from 'vscode';
++import { CustomEditorTabInput, InteractiveWindowInput, NotebookDiffEditorTabInput, NotebookEditorTabInput, TerminalEditorTabInput, TextDiffTabInput, TextMergeTabInput, TextMultiDiffTabInput, TextTabInput, WebviewEditorTabInput } from './extHostTypes.js';
+ 
+ export interface IExtHostEditorTabs extends IExtHostEditorTabsShape {
+ 	readonly _serviceBrand: undefined;
+@@ -21,7 +21,7 @@
+ 
+ export const IExtHostEditorTabs = createDecorator<IExtHostEditorTabs>('IExtHostEditorTabs');
+ 
+-type AnyTabInput = TextTabInput | TextDiffTabInput | TextMultiDiffTabInput | CustomEditorTabInput | NotebookEditorTabInput | NotebookDiffEditorTabInput | WebviewEditorTabInput | TerminalEditorTabInput | InteractiveWindowInput | ChatEditorTabInput;
++type AnyTabInput = TextTabInput | TextDiffTabInput | TextMultiDiffTabInput | CustomEditorTabInput | NotebookEditorTabInput | NotebookDiffEditorTabInput | WebviewEditorTabInput | TerminalEditorTabInput | InteractiveWindowInput;
+ 
+ class ExtHostEditorTab {
+ 	private _apiObject: vscode.Tab | undefined;
+@@ -98,8 +98,6 @@
+ 				return new TerminalEditorTabInput();
+ 			case TabInputKind.InteractiveEditorInput:
+ 				return new InteractiveWindowInput(URI.revive(this._dto.input.uri), URI.revive(this._dto.input.inputBoxUri));
+-			case TabInputKind.ChatEditorInput:
+-				return new ChatEditorTabInput();
+ 			case TabInputKind.MultiDiffEditorInput:
+ 				return new TextMultiDiffTabInput(this._dto.input.diffEditors.map(diff => new TextDiffTabInput(URI.revive(diff.original), URI.revive(diff.modified))));
+ 			default:
+diff --git a/src/vs/workbench/api/test/common/extHostTypeConverters.test.ts b/src/vs/workbench/api/test/common/extHostTypeConverters.test.ts
+--- a/src/vs/workbench/api/test/common/extHostTypeConverters.test.ts
++++ b/src/vs/workbench/api/test/common/extHostTypeConverters.test.ts
+@@ -6,23 +6,12 @@
+ import assert from 'assert';
+ import { URI, UriComponents } from '../../../../base/common/uri.js';
+ import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+-import { NullLogService } from '../../../../platform/log/common/log.js';
+ import { IconPathDto } from '../../common/extHost.protocol.js';
+-import { ChatPromptReference, ChatRequestModeInstructions, ChatResponseVoiceProgressPart, ChatToolInvocationPart, IconPath } from '../../common/extHostTypeConverters.js';
+-import { ChatReferenceBinaryData, ChatResponseVoiceProgressPart as ExtHostChatResponseVoiceProgressPart, ChatSubagentToolInvocationData, ChatToolInvocationPart as ExtHostChatToolInvocationPart, ThemeColor, ThemeIcon } from '../../common/extHostTypes.js';
+-import { IElementVariableEntry } from '../../../contrib/chat/common/attachments/chatVariableEntries.js';
+-import { IChatRequestModeInstructions } from '../../../contrib/chat/common/model/chatModel.js';
+-import { Dto } from '../../../services/extensions/common/proxyIdentifier.js';
++import { IconPath } from '../../common/extHostTypeConverters.js';
++import { ThemeColor, ThemeIcon } from '../../common/extHostTypes.js';
+ 
+ suite('extHostTypeConverters', function () {
+ 	ensureNoDisposablesAreLeakedInTestSuite();
+-
+-	test('converts voice progress to hidden chat progress', () => {
+-		assert.deepStrictEqual(
+-			ChatResponseVoiceProgressPart.from(new ExtHostChatResponseVoiceProgressPart('investigating', 'Investigating the relevant code.')),
+-			{ kind: 'voiceProgress', id: 'investigating', value: 'Investigating the relevant code.' }
+-		);
+-	});
+ 
+ 	suite('IconPath', function () {
+ 		suite('from', function () {
+@@ -131,183 +120,4 @@
+ 			});
+ 		});
+ 	});
+-
+-	suite('ChatPromptReference', function () {
+-		test('expands an element with a screenshot into text and binary references', async function () {
+-			const variable: IElementVariableEntry = {
+-				id: 'element-1',
+-				name: 'button#submit',
+-				kind: 'element',
+-				value: '<button id="submit">Submit</button>',
+-				imageData: new Uint8Array([1, 2, 3]),
+-				imageMimeType: 'image/jpeg',
+-			};
+-
+-			const references = ChatPromptReference.toReferences(variable, [], new NullLogService());
+-			const binaryReference = references[1].value;
+-			assert.ok(binaryReference instanceof ChatReferenceBinaryData);
+-
+-			assert.deepStrictEqual({
+-				references: references.map(reference => ({
+-					id: reference.id,
+-					name: reference.name,
+-					value: typeof reference.value === 'string'
+-						? reference.value
+-						: reference.value instanceof ChatReferenceBinaryData ? 'ChatReferenceBinaryData' : undefined,
+-				})),
+-				mimeType: binaryReference.mimeType,
+-				data: Array.from(await binaryReference.data()),
+-			}, {
+-				references: [
+-					{ id: 'element-1', name: 'button#submit', value: '<button id="submit">Submit</button>' },
+-					{ id: 'element-1-screenshot', name: 'button#submit screenshot', value: 'ChatReferenceBinaryData' },
+-				],
+-				mimeType: 'image/jpeg',
+-				data: [1, 2, 3],
+-			});
+-		});
+-	});
+-
+-	suite('ChatRequestModeInstructions', function () {
+-		test('to returns undefined for undefined input', function () {
+-			assert.strictEqual(ChatRequestModeInstructions.to(undefined), undefined);
+-		});
+-
+-		test('from returns undefined for undefined input', function () {
+-			assert.strictEqual(ChatRequestModeInstructions.from(undefined), undefined);
+-		});
+-
+-		test('to converts IChatRequestModeInstructions to API type', function () {
+-			const uri = URI.parse('file:///custom-agent');
+-			const input: IChatRequestModeInstructions = {
+-				uri,
+-				name: 'test-mode',
+-				content: 'test content',
+-				toolReferences: [{
+-					kind: 'tool',
+-					id: 'tool1',
+-					name: 'tool1',
+-					value: undefined,
+-					range: { start: 0, endExclusive: 5 },
+-				}],
+-				allowedSubagents: ['agent1', 'agent2'],
+-				metadata: { key: 'value' },
+-				isBuiltin: false,
+-			};
+-
+-			const result = ChatRequestModeInstructions.to(input)!;
+-			assert.deepStrictEqual(result, {
+-				uri,
+-				name: 'test-mode',
+-				content: 'test content',
+-				toolReferences: [{ name: 'tool1', range: [0, 5] }],
+-				allowedSubagents: ['agent1', 'agent2'],
+-				metadata: { key: 'value' },
+-				isBuiltin: false,
+-			});
+-		});
+-
+-		test('to handles Dto with UriComponents', function () {
+-			const input: Dto<IChatRequestModeInstructions> = {
+-				uri: { scheme: 'file', path: '/custom-agent' } as UriComponents,
+-				name: 'test-mode',
+-				content: 'test content',
+-				toolReferences: [],
+-				allowedSubagents: undefined,
+-				metadata: undefined,
+-				isBuiltin: true,
+-			};
+-
+-			const result = ChatRequestModeInstructions.to(input)!;
+-			assert.ok(URI.isUri(result.uri));
+-			assert.strictEqual(result.name, 'test-mode');
+-			assert.strictEqual(result.isBuiltin, true);
+-			assert.deepStrictEqual(result.toolReferences, []);
+-		});
+-
+-		test('from converts API type to IChatRequestModeInstructions', function () {
+-			const uri = URI.parse('file:///custom-agent');
+-			const input = {
+-				uri,
+-				name: 'test-mode',
+-				content: 'test content',
+-				toolReferences: [{ name: 'tool1', range: [0, 5] as [number, number] }],
+-				metadata: { key: 'value' },
+-				isBuiltin: false,
+-			};
+-
+-			const result = ChatRequestModeInstructions.from(input)!;
+-			assert.deepStrictEqual(result, {
+-				uri,
+-				name: 'test-mode',
+-				content: 'test content',
+-				toolReferences: [{
+-					kind: 'tool',
+-					id: 'tool1',
+-					name: 'tool1',
+-					value: undefined,
+-					range: { start: 0, endExclusive: 5 },
+-				}],
+-				allowedSubagents: undefined,
+-				metadata: { key: 'value' },
+-				isBuiltin: false,
+-			});
+-		});
+-
+-		test('from handles missing toolReferences', function () {
+-			const input = {
+-				name: 'test-mode',
+-				content: 'test content',
+-			};
+-
+-			const result = ChatRequestModeInstructions.from(input)!;
+-			assert.deepStrictEqual(result.toolReferences, []);
+-		});
+-
+-		test('roundtrip from -> to preserves data', function () {
+-			const uri = URI.parse('file:///custom-agent');
+-			const apiInput = {
+-				uri,
+-				name: 'roundtrip-mode',
+-				content: 'roundtrip content',
+-				toolReferences: [
+-					{ name: 'tool1' },
+-					{ name: 'tool2', range: [10, 20] as [number, number] },
+-				],
+-				metadata: { flag: true },
+-				isBuiltin: false,
+-			};
+-
+-			const internal = ChatRequestModeInstructions.from(apiInput)!;
+-			const backToApi = ChatRequestModeInstructions.to(internal)!;
+-
+-			assert.strictEqual(backToApi.name, apiInput.name);
+-			assert.strictEqual(backToApi.content, apiInput.content);
+-			assert.strictEqual(backToApi.isBuiltin, apiInput.isBuiltin);
+-			assert.strictEqual(backToApi.uri?.toString(), uri.toString());
+-			assert.strictEqual(backToApi.toolReferences?.length, 2);
+-			assert.strictEqual(backToApi.toolReferences?.[0].name, 'tool1');
+-			assert.strictEqual(backToApi.toolReferences?.[0].range, undefined);
+-			assert.strictEqual(backToApi.toolReferences?.[1].name, 'tool2');
+-			assert.deepStrictEqual(backToApi.toolReferences?.[1].range, [10, 20]);
+-		});
+-	});
+-
+-	suite('ChatToolInvocationPart', function () {
+-		test('converts subagent data with its model name', function () {
+-			const data = new ChatSubagentToolInvocationData('Run tests', 'execution', 'npm test', 'Passed');
+-			data.modelName = 'Execution Model';
+-			const part = new ExtHostChatToolInvocationPart('execution_subagent', 'tool-call-id');
+-			(part as unknown as { toolSpecificData: ChatSubagentToolInvocationData }).toolSpecificData = data;
+-
+-			assert.deepStrictEqual(ChatToolInvocationPart.from(part as unknown as Parameters<typeof ChatToolInvocationPart.from>[0]).toolSpecificData, {
+-				kind: 'subagent',
+-				description: 'Run tests',
+-				agentName: 'execution',
+-				prompt: 'npm test',
+-				result: 'Passed',
+-				modelName: 'Execution Model',
+-			});
+-		});
+-	});
+ });
+diff --git a/src/vs/workbench/api/test/browser/extHostTypeConverter.test.ts b/src/vs/workbench/api/test/browser/extHostTypeConverter.test.ts
+--- a/src/vs/workbench/api/test/browser/extHostTypeConverter.test.ts
++++ b/src/vs/workbench/api/test/browser/extHostTypeConverter.test.ts
+@@ -5,13 +5,12 @@
+ 
+ 
+ import assert from 'assert';
+-import * as extHostTypes from '../../common/extHostTypes.js';
+-import { ChatAgentResult, LanguageModelChatMessage2, MarkdownString, NotebookCellOutputItem, NotebookData, LanguageSelector, WorkspaceEdit } from '../../common/extHostTypeConverters.js';
+ import { isEmptyObject } from '../../../../base/common/types.js';
+ import { URI } from '../../../../base/common/uri.js';
++import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+ import { IWorkspaceTextEditDto } from '../../common/extHost.protocol.js';
+-import { ensureNoDisposablesAreLeakedInTestSuite } from '../../../../base/test/common/utils.js';
+-import { MarshalledId } from '../../../../base/common/marshallingIds.js';
++import { LanguageSelector, MarkdownString, NotebookCellOutputItem, NotebookData, WorkspaceEdit } from '../../common/extHostTypeConverters.js';
++import * as extHostTypes from '../../common/extHostTypes.js';
+ 
+ suite('ExtHostTypeConverter', function () {
+ 
+@@ -71,39 +70,6 @@
+ 		assert.strictEqual(size(data.uris!), 2);
+ 		assert.ok(!!data.uris!['file:///somepath/here']);
+ 		assert.ok(!!data.uris!['file:///somepath/here2']);
+-	});
+-
+-	test('LanguageModelChatMessage2 converters preserve tool-result data parts across the provider boundary #313920', function () {
+-
+-		// Platform converters round-trip data parts unchanged (unknown mime types aren't stripped), so the producer must gate emission (#313920).
+-		const CACHE_CONTROL_MIME = 'cache_control';
+-
+-		const toolResult = new extHostTypes.LanguageModelToolResultPart('call-1', [
+-			new extHostTypes.LanguageModelTextPart('the tool output'),
+-			new extHostTypes.LanguageModelDataPart(new TextEncoder().encode('ephemeral'), CACHE_CONTROL_MIME),
+-		]);
+-		const hostMessage = extHostTypes.LanguageModelChatMessage2.User([toolResult]);
+-
+-		const providerMessage = LanguageModelChatMessage2.to(LanguageModelChatMessage2.from(hostMessage));
+-		const providerToolResult = providerMessage.content[0] as extHostTypes.LanguageModelToolResultPart;
+-		const roundTrippedPart = providerToolResult.content[1] as extHostTypes.LanguageModelDataPart;
+-
+-		assert.deepStrictEqual({
+-			mimeType: roundTrippedPart.mimeType,
+-			decodedData: new TextDecoder().decode(roundTrippedPart.data),
+-			marshalled: roundTrippedPart.toJSON(),
+-			naiveSerialization: JSON.stringify(roundTrippedPart),
+-		}, {
+-			mimeType: 'cache_control',
+-			decodedData: 'ephemeral',
+-			marshalled: {
+-				$mid: MarshalledId.LanguageModelDataPart,
+-				mimeType: 'cache_control',
+-				data: 'ZXBoZW1lcmFs', // base64('ephemeral')
+-				audience: undefined,
+-			},
+-			naiveSerialization: '{"$mid":24,"mimeType":"cache_control","data":"ZXBoZW1lcmFs"}',
+-		});
+ 	});
+ 
+ 	test('NPM script explorer running a script from the hover does not work #65561', function () {
+@@ -177,46 +143,3 @@
+ 		assert.strictEqual(first2.textEdit.insertAsSnippet, true);
+ 	});
+ });
+-
+-suite('ChatAgentResult', function () {
+-
+-	ensureNoDisposablesAreLeakedInTestSuite();
+-
+-	test('reviveMetadata - roundtrips base64-encoded LanguageModelDataPart', function () {
+-		const originalData = new Uint8Array([10, 20, 30, 40]);
+-		const part = new extHostTypes.LanguageModelDataPart(originalData, 'image/png');
+-		const serialized = part.toJSON();
+-
+-		const result = ChatAgentResult.to({ metadata: { part: serialized } });
+-		const revived = result.metadata!.part as extHostTypes.LanguageModelDataPart;
+-
+-		assert.ok(revived instanceof extHostTypes.LanguageModelDataPart);
+-		assert.deepStrictEqual(Array.from(revived.data), Array.from(originalData));
+-		assert.strictEqual(revived.mimeType, 'image/png');
+-	});
+-
+-	test('reviveMetadata - decodes legacy Buffer-like LanguageModelDataPart shape', function () {
+-		const legacySerialized = {
+-			$mid: MarshalledId.LanguageModelDataPart,
+-			data: { type: 'Buffer', data: [1, 2, 3] },
+-			mimeType: 'image/jpeg',
+-		};
+-
+-		const result = ChatAgentResult.to({ metadata: { part: legacySerialized } });
+-		const revived = result.metadata!.part as extHostTypes.LanguageModelDataPart;
+-
+-		assert.ok(revived instanceof extHostTypes.LanguageModelDataPart);
+-		assert.deepStrictEqual(Array.from(revived.data), [1, 2, 3]);
+-		assert.strictEqual(revived.mimeType, 'image/jpeg');
+-	});
+-
+-	test('reviveMetadata - does not throw on malformed LanguageModelDataPart shape', function () {
+-		const malformed = {
+-			$mid: MarshalledId.LanguageModelDataPart,
+-			data: null,
+-			mimeType: 'image/png',
+-		};
+-
+-		assert.doesNotThrow(() => ChatAgentResult.to({ metadata: { part: malformed } }));
+-	});
+-});
+diff --git a/extensions/markdown-language-features/src/preview/markdownEditorProvider.ts b/extensions/markdown-language-features/src/preview/markdownEditorProvider.ts
+--- a/extensions/markdown-language-features/src/preview/markdownEditorProvider.ts
++++ b/extensions/markdown-language-features/src/preview/markdownEditorProvider.ts
+@@ -336,7 +336,6 @@
+ 		const quickDiff = originalDocument
+ 			? this.#wireDocumentDiff(originalDocument, document, editorWebview)
+ 			: this.#wireQuickDiff(document, editorWebview);
+-		const comments = this.#wireComments(document, editorWebview);
+ 		const onDidGrantWorkspaceTrust = vscode.workspace.onDidGrantWorkspaceTrust(() => {
+ 			webviewReady = false;
+ 			this.#configureWebview(document, editorWebview);
+@@ -401,7 +400,6 @@
+ 			onDocumentChange.dispose();
+ 			highlight.dispose();
+ 			quickDiff.dispose();
+-			comments.dispose();
+ 			onDidGrantWorkspaceTrust.dispose();
+ 			onContributionsChanged.dispose();
+ 			onDidSaveTextDocument.dispose();
+@@ -668,60 +666,6 @@
+ 		});
+ 
+ 		return vscode.Disposable.from(onMessage, onDocumentChange);
+-	}
+-
+-	/**
+-	 * Bridges the workbench's agent/session comments (the same store the code
+-	 * editor renders its comments from) to the webview: existing comments are
+-	 * forwarded for rendering, and comments the user adds in the Markdown editor
+-	 * are written back to the shared store so they appear in the code editor too.
+-	 * Comment ranges are converted between {@link vscode.Range} and the source
+-	 * character offsets the webview works in.
+-	 */
+-	#wireComments(document: vscode.TextDocument, editorWebview: AuthenticatedWebview): vscode.Disposable {
+-		const webview = editorWebview.webview;
+-		const commentsProvider = vscode.window.createAgentEditorComments(document.uri);
+-		let webviewReady = false;
+-		let revealedCommentId: string | undefined;
+-
+-		const postComments = () => {
+-			const comments = commentsProvider.comments.map(comment => ({
+-				id: comment.id,
+-				start: document.offsetAt(comment.range.start),
+-				endExclusive: document.offsetAt(comment.range.end),
+-				body: comment.body,
+-				author: comment.author,
+-			}));
+-			editorWebview.postMessage({ type: 'comments', comments, acceptsComments: commentsProvider.acceptsComments });
+-		};
+-		const postReveal = () => {
+-			if (webviewReady && revealedCommentId) {
+-				editorWebview.postMessage({ type: 'revealComment', id: revealedCommentId });
+-			}
+-		};
+-
+-		const onChange = commentsProvider.onDidChange(postComments);
+-		const onDidRevealComment = commentsProvider.onDidRevealComment(id => {
+-			revealedCommentId = id;
+-			postReveal();
+-		});
+-		const onMessage = webview.onDidReceiveMessage((message) => {
+-			if (message.type === 'ready') {
+-				webviewReady = true;
+-				postComments();
+-				postReveal();
+-			} else if (message.type === 'addComment') {
+-				const range = new vscode.Range(
+-					document.positionAt(message.start),
+-					document.positionAt(message.endExclusive),
+-				);
+-				commentsProvider.addComment(range, message.text);
+-			} else if (message.type === 'deleteComment') {
+-				commentsProvider.deleteComment(message.id);
+-			}
+-		});
+-
+-		return vscode.Disposable.from(commentsProvider, onChange, onDidRevealComment, onMessage);
+ 	}
+ 
+ 
+diff --git a/extensions/markdown-language-features/package.json b/extensions/markdown-language-features/package.json
+--- a/extensions/markdown-language-features/package.json
++++ b/extensions/markdown-language-features/package.json
+@@ -8,7 +8,6 @@
+   "license": "MIT",
+   "aiKey": "0c6ae279ed8443289764825290e4f9e2-1a736e7c-1324-4338-be46-fc2a58ae4d14-7255",
+   "enabledApiProposals": [
+-    "agentEditorComments",
+     "customEditorDiffs",
+     "documentDiff",
+     "documentSyntaxHighlighting",
+diff --git a/extensions/markdown-language-features/tsconfig.json b/extensions/markdown-language-features/tsconfig.json
+--- a/extensions/markdown-language-features/tsconfig.json
++++ b/extensions/markdown-language-features/tsconfig.json
+@@ -11,7 +11,6 @@
+ 	"include": [
+ 		"src/**/*",
+ 		"../../src/vscode-dts/vscode.d.ts",
+-		"../../src/vscode-dts/vscode.proposed.agentEditorComments.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.customEditorDiffs.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.documentDiff.d.ts",
+ 		"../../src/vscode-dts/vscode.proposed.documentSyntaxHighlighting.d.ts",

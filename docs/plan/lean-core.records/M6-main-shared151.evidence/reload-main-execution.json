@@ -1,0 +1,27 @@
+{
+  "startedAt": "2026-10-02T11:13:32.215160+00:00",
+  "finishedAt": "2026-10-02T11:13:32.706037+00:00",
+  "args": [
+    "node",
+    "/Users/rockie/Documents/gh-xgent/vscodium/dev/test-fixtures/lean-core/main-shared-registry.mjs",
+    "--role",
+    "main",
+    "--endpoint",
+    "http://127.0.0.1:19551/json/list",
+    "--expected-app",
+    "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "--pid",
+    "39925",
+    "--profile-root",
+    "/private/tmp/lc151ms-wdn5hck0/u",
+    "--expected-port",
+    "19551",
+    "--expected-sha256",
+    "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+    "--output",
+    "/private/tmp/lc151ms-wdn5hck0/captures/reload-main151"
+  ],
+  "exitCode": 0,
+  "stdout": "{\"status\":\"RUNTIME_CAPTURED_UNASSESSED\",\"role\":\"main\",\"pid\":39925,\"channelCount\":24,\"output\":\"/private/tmp/lc151ms-wdn5hck0/captures/reload-main151\"}\n",
+  "stderr": ""
+}

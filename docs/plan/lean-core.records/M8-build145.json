@@ -1,0 +1,28 @@
+{
+  "generation": "145+146",
+  "buildExit": 0,
+  "noEmitExit": 0,
+  "noEmitLogBytes": 0,
+  "buildLog": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build145.log",
+  "sourceCompileZeroErrors": true,
+  "prunePaths": 252,
+  "smokeExit": 0,
+  "smokePassCount": 57,
+  "smokeScope": "L1/L2 only (--skip-ui)",
+  "smokeLog": "/tmp/lean-smoke145-static.log",
+  "productionGraphSummary": {
+    "npmLsExit": 0,
+    "graphNamedUniqueNames": 146,
+    "graphNamedOccurrences": 199,
+    "resolvedUniqueNames": 122,
+    "resolvedOccurrences": 173,
+    "emptyOptionalEntries": 26,
+    "problems": [],
+    "retired": [],
+    "graph": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/production-graph145.json"
+  },
+  "packageCheckerExit": 0,
+  "packageChecker": "M7-runtime145.json",
+  "inputs": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs145.json",
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app"
+}

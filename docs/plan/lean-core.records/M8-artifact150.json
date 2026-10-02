@@ -1,0 +1,23 @@
+{
+  "at": "2026-10-02T10:49:01.572234+10:00",
+  "generation": "150",
+  "app": "/private/tmp/lean-core-build150-z3fs7f_q/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "files": 1199,
+  "bytes": 422444482,
+  "unsigned": true,
+  "macosFloor": "12.0",
+  "docTypesCount": 65,
+  "docTypesUnchanged": true,
+  "URLTypesUnchanged": true,
+  "zip": "/private/tmp/lean-core-build150-z3fs7f_q/VSLight-150-unsigned.zip",
+  "zipBytes": 157532426,
+  "zipSha256": "5d80d6aa325dec8ce3d3f53d1e9deb9b8b4808b8fb5676eefc8b0b4ab3b54500",
+  "zipCRCExit": 0,
+  "baselineAppBytes": 528142131,
+  "baselineZipBytes": 192738926,
+  "appReductionPercent": 20.01,
+  "zipReductionPercent": 18.27,
+  "measurement": "Regular files summed once; symlinks excluded. asar/unpacked not double counted. Same Node24.18.0/Electron43.7.5/CI=true/arm64/ditto unsigned baseline.",
+  "inputManifest": "/private/tmp/lean-core-build150-z3fs7f_q/build-inputs.json",
+  "buildLog": "/private/tmp/lean-core-build150-z3fs7f_q/build.log"
+}

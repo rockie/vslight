@@ -1,0 +1,43 @@
+diff --git a/src/vs/platform/remoteTunnel/test/node/remoteTunnelService.test.ts b/src/vs/platform/remoteTunnel/test/node/remoteTunnelService.test.ts
+--- a/src/vs/platform/remoteTunnel/test/node/remoteTunnelService.test.ts
++++ b/src/vs/platform/remoteTunnel/test/node/remoteTunnelService.test.ts
+@@ -17,7 +17,7 @@
+ import { ActiveTunnelMode, TunnelMode, TunnelStatus } from '../../common/remoteTunnel.js';
+ import { TunnelMachineStatus } from '../../common/tunnelMachineStatus.js';
+ import { RemoteTunnelService } from '../../node/remoteTunnelService.js';
+-import { IAgentHostSharingRequest, ITunnelProcessCoordinator, ITunnelProcessMachineStatus, ITunnelProcessOutput, ITunnelProcessStatus, TunnelProcessConnectionState, TunnelProcessMode } from '../../node/tunnelProcessCoordinator.js';
++import { ITunnelProcessCoordinator, ITunnelProcessMachineStatus, ITunnelProcessOutput, ITunnelProcessStatus, TunnelProcessConnectionState, TunnelProcessMode } from '../../node/tunnelProcessCoordinator.js';
+ import sinon from 'sinon';
+ 
+ class TestTunnelProcessCoordinator implements ITunnelProcessCoordinator {
+@@ -45,10 +45,6 @@
+ 	}
+ 
+ 	setRemoteAccess(_mode: TunnelMode, _logLevel: LogLevel): Promise<void> {
+-		return Promise.resolve();
+-	}
+-
+-	setAgentHostSharing(_request: IAgentHostSharingRequest | undefined): Promise<void> {
+ 		return Promise.resolve();
+ 	}
+ 
+diff --git a/src/vs/platform/workspaces/test/electron-main/workspacesManagementMainService.test.ts b/src/vs/platform/workspaces/test/electron-main/workspacesManagementMainService.test.ts
+--- a/src/vs/platform/workspaces/test/electron-main/workspacesManagementMainService.test.ts
++++ b/src/vs/platform/workspaces/test/electron-main/workspacesManagementMainService.test.ts
+@@ -110,7 +110,7 @@
+ 
+ 		const logService = new NullLogService();
+ 		const fileService = new FileService(logService);
+-		service = new WorkspacesManagementMainService(environmentMainService, logService, new UserDataProfilesMainService(new StateService(SaveStrategy.DELAYED, environmentMainService, logService, fileService), new UriIdentityService(fileService), environmentMainService, fileService, logService, productService), new TestBackupMainService(), new TestDialogMainService());
++		service = new WorkspacesManagementMainService(environmentMainService, logService, new UserDataProfilesMainService(new StateService(SaveStrategy.DELAYED, environmentMainService, logService, fileService), new UriIdentityService(fileService), environmentMainService, fileService, logService), new TestBackupMainService(), new TestDialogMainService());
+ 
+ 		return fs.promises.mkdir(untitledWorkspacesHomePath, { recursive: true });
+ 	});
+diff --git a/src/vs/workbench/test/browser/workbenchTestServices.ts b/src/vs/workbench/test/browser/workbenchTestServices.ts
+--- a/src/vs/workbench/test/browser/workbenchTestServices.ts
++++ b/src/vs/workbench/test/browser/workbenchTestServices.ts
+@@ -2135,4 +2135,3 @@
+ 		throw new Error('Method not implemented.');
+ 	}
+ }
+-

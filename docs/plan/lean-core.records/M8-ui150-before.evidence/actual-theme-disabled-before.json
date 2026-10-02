@@ -1,0 +1,35 @@
+{
+  "status": "FAIL",
+  "app": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+  "root": "/private/tmp/lcfinal-chkarkup/ui",
+  "runs": [],
+  "queries": [],
+  "theme": {
+    "actual": {
+      "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "editorBackground": "rgb(40, 44, 52)",
+      "colors": {
+        "editor.background": "#282c34",
+        "editor.foreground": "#abb2bf",
+        "sideBar.background": "#21252b",
+        "activityBar.background": "#282c34",
+        "statusBar.background": "#21252b"
+      },
+      "rect": {
+        "width": 1440,
+        "height": 886
+      }
+    },
+    "expectedClass": "zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+    "expected": {
+      "editor.background": "#282c34",
+      "editor.foreground": "#abb2bf",
+      "sideBar.background": "#21252b",
+      "activityBar.background": "#282c34",
+      "statusBar.background": "#21252b"
+    },
+    "themeFile": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+    "sha256": "186fbbd1ef99a9fb6548fac7a1d354b925a7f9b98da97ef7649e22e20d08c756"
+  },
+  "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(disabled.inputs.some(x=>x.value==='@disabled lean-disabled-final'))\n\n    at file:///private/tmp/lcfinal-chkarkup/ui/theme-disabled-before.mjs:41:8"
+}

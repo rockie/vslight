@@ -1,0 +1,5 @@
+2026-10-02 17:40:23.827 [info] Loading development extension at /private/tmp/lcfinal-chkarkup/ui/ext
+2026-10-02 17:40:23.872 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 17:40:24.736 [info] Started local extension host with pid 44169.
+2026-10-02 17:40:24.963 [warning] Authentication provider lean-final-synthetic-auth was not declared in the Extension Manifest.
+2026-10-02 17:40:26.282 [warning] [backup tracker] suspended, ignoring register event vscode-userdata:/private/tmp/lcfinal-chkarkup/ui/u/User/settings.json 

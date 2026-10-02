@@ -1,0 +1,16 @@
+2026-10-02 21:09:53.057 [info] Extension host with pid 37662 started
+2026-10-02 21:09:53.057 [info] Skipping acquiring lock for /private/tmp/lc-key151-mivqeuwq/u/User/workspaceStorage/cb27b0ae02a8679747e501c956b51b0d.
+2026-10-02 21:09:53.062 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 21:09:53.065 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 21:09:53.084 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 21:09:53.121 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:09:53.121 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 21:09:53.129 [info] Eager extensions activated
+2026-10-02 21:09:53.132 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:09:53.138 [info] ExtensionService#_doActivateExtension lean-tests.terminal-keys151, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 21:09:53.654 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 21:09:53.657 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 21:09:53.681 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2026-10-02 21:09:53.696 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 21:10:14.739 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 21:10:14.743 [info] Extension host with pid 37662 exiting with code 0

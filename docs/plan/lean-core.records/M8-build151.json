@@ -1,0 +1,804 @@
+{
+  "at": "2026-10-02T19:18:26.738566+10:00",
+  "generation": "151",
+  "root": "/private/tmp/lean-core-build151-c480juxs",
+  "source": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode",
+  "app": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "gitBase": "f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "upstreamCommit": "08d4889f9ec4a1685d257b9b95de036c8e1ce1e5",
+  "build": {
+    "generation": "151",
+    "startedAt": "2026-10-02T18:47:16.400130+10:00",
+    "root": "/private/tmp/lean-core-build151-c480juxs",
+    "command": [
+      "bash",
+      "dev/run-build.sh",
+      "-s"
+    ],
+    "exit": 0,
+    "endedAt": "2026-10-02T18:49:44.332883+10:00",
+    "durationSeconds": 147.9328867919994
+  },
+  "buildLog": "/private/tmp/lean-core-build151-c480juxs/build.log",
+  "inputs": {
+    "manifest": "/private/tmp/lean-core-build151-c480juxs/build-inputs.json",
+    "manifestSha256": "f6fc4ff04b5b1c4828dc8c1f353f0a2bdb16affa7a5883a8d8fae2ee64fb5cd6",
+    "files": 1475,
+    "copiedMatches": 1475,
+    "copiedMismatches": [],
+    "currentMatches": 1468,
+    "currentMismatches": [
+      {
+        "path": "docs/plan/lean-core.md",
+        "category": "documentation",
+        "frozenSha256": "546eb79ca1d5a27074c1ee96f1a604f76b3ab210cb8e0d7382088d9fe3c64a44",
+        "actualSha256": "2f022ad15379f186d268117f470377c9f5867081fbe8c07e84dfa3150589623a"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M4.md",
+        "category": "documentation",
+        "frozenSha256": "1fb8985df2aa6d6920753fb5950c240965a77240d22be824be134e28d9c0613f",
+        "actualSha256": "3a8fa37981cda3e56d1ca8f0b3d74e6b602a13fe604785e1f23e5067a6339d97"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M6-runtime150-final.json",
+        "category": "documentation",
+        "frozenSha256": "e707a0c42fe49e11258008973d43cccd1ee6878a611314a7bbddc6446f147d3a",
+        "actualSha256": "abc1a6c1cc5f58f05e5959d95e0e54c3e78e5d7446b0ddecd854ef4a2c4f7d5b"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M6-runtime150-final.md",
+        "category": "documentation",
+        "frozenSha256": "4035b2ca63a95323c6a96c2deef6fd061a49bee32d2b4997ff4ac06de3d7bcfe",
+        "actualSha256": "0bf2a3b3d875c8f93abc6ab52a8e7cdcbae3e377bbd321fba56f32496d12e21e"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-docs-final-audit.md",
+        "category": "documentation",
+        "frozenSha256": "ad25aa2d764f60223d0ea3bf2df1f6ddc30852fb328a0a537c7dbd19ae4be99f",
+        "actualSha256": "84d0bfd344a3b10abee5f99e9d371704fc052d6bcbb3579c7477b32f84b2f4ad"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8-remaining-gates.md",
+        "category": "documentation",
+        "frozenSha256": "a66ccde980b78b5492efc2430e05f1cfa8ffc28f4866ed3c182614df31a21e91",
+        "actualSha256": "111032876c4d9facad7f4b6aad6a1723c4b067537f8f737b9e46105279122324"
+      },
+      {
+        "path": "docs/plan/lean-core.records/M8.md",
+        "category": "documentation",
+        "frozenSha256": "4601009ae6b57986630fc5ca3c1cf599b2b198764b54c1266e018d3f707a9c27",
+        "actualSha256": "a728e78366f4f32e26eb4bf96716d1b4c16865448428be393f49b95426f0ca64"
+      }
+    ],
+    "categoryCounts": {
+      "agent_configuration": 755,
+      "production_or_build_input": 455,
+      "workflow": 19,
+      "documentation": 223,
+      "validation_helper": 23
+    },
+    "unmanifestedOutsideEvidence": [],
+    "productionFrozen": true,
+    "manifestUnchanged": true
+  },
+  "nativeNoEmit": {
+    "at": "2026-10-02T18:51:50.173478+10:00",
+    "command": [
+      "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+      "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/node_modules/@typescript/native/bin/tsc",
+      "--noEmit",
+      "-p",
+      "src/tsconfig.json"
+    ],
+    "exit": 0,
+    "stdoutBytes": 0,
+    "stderrBytes": 0
+  },
+  "productionGraph": {
+    "commandResult": {
+      "at": "2026-10-02T18:51:48.564245+10:00",
+      "command": [
+        "/Users/rockie/.local/share/mise/installs/node/24.18.0/bin/node",
+        "/Users/rockie/.local/share/mise/installs/node/24.18.0/lib/node_modules/npm/bin/npm-cli.js",
+        "ls",
+        "--omit=dev",
+        "--all",
+        "--json"
+      ],
+      "exit": 0,
+      "stdoutBytes": 32665,
+      "stderrBytes": 1094
+    },
+    "path": "/private/tmp/lean-core-build151-c480juxs/production-graph.json",
+    "graphUnique": 146,
+    "graphOccurrences": 199,
+    "problems": [],
+    "retired": [],
+    "allNames": {
+      "@isaacs/fs-minipass": 1,
+      "@parcel/watcher": 1,
+      "@parcel/watcher-android-arm64": 1,
+      "@parcel/watcher-darwin-arm64": 1,
+      "@parcel/watcher-darwin-x64": 1,
+      "@parcel/watcher-freebsd-x64": 1,
+      "@parcel/watcher-linux-arm-glibc": 1,
+      "@parcel/watcher-linux-arm-musl": 1,
+      "@parcel/watcher-linux-arm64-glibc": 1,
+      "@parcel/watcher-linux-arm64-musl": 1,
+      "@parcel/watcher-linux-x64-glibc": 1,
+      "@parcel/watcher-linux-x64-musl": 1,
+      "@parcel/watcher-win32-arm64": 1,
+      "@parcel/watcher-win32-ia32": 1,
+      "@parcel/watcher-win32-x64": 1,
+      "@tootallnate/once": 1,
+      "@types/semver": 1,
+      "@vscode/codicons": 1,
+      "@vscode/deviceid": 1,
+      "@vscode/diff": 1,
+      "@vscode/fs-copyfile": 1,
+      "@vscode/iconv-lite-umd": 1,
+      "@vscode/native-watchdog": 1,
+      "@vscode/os-proxy-resolver": 1,
+      "@vscode/os-proxy-resolver-darwin-arm64": 1,
+      "@vscode/os-proxy-resolver-darwin-x64": 1,
+      "@vscode/os-proxy-resolver-linux-arm-gnueabihf": 1,
+      "@vscode/os-proxy-resolver-linux-arm64-gnu": 1,
+      "@vscode/os-proxy-resolver-linux-arm64-musl": 1,
+      "@vscode/os-proxy-resolver-linux-x64-gnu": 1,
+      "@vscode/os-proxy-resolver-linux-x64-musl": 1,
+      "@vscode/os-proxy-resolver-win32-arm64-msvc": 1,
+      "@vscode/os-proxy-resolver-win32-x64-msvc": 1,
+      "@vscode/proxy-agent": 1,
+      "@vscode/ripgrep-universal": 1,
+      "@vscode/spdlog": 1,
+      "@vscode/sqlite3": 1,
+      "@vscode/sudo-prompt": 1,
+      "@vscode/tree-sitter-wasm": 1,
+      "@vscode/vscode-languagedetection": 1,
+      "@vscode/windows-ca-certs": 1,
+      "@vscode/windows-mutex": 1,
+      "@vscode/windows-process-tree": 1,
+      "@vscode/windows-registry": 1,
+      "@vscodium/native-keymap": 1,
+      "@xterm/addon-clipboard": 1,
+      "@xterm/addon-image": 1,
+      "@xterm/addon-ligatures": 1,
+      "@xterm/addon-progress": 1,
+      "@xterm/addon-search": 1,
+      "@xterm/addon-serialize": 1,
+      "@xterm/addon-unicode11": 1,
+      "@xterm/addon-webgl": 1,
+      "@xterm/headless": 1,
+      "@xterm/xterm": 9,
+      "agent-base": 4,
+      "base64-js": 1,
+      "bindings": 3,
+      "bl": 1,
+      "buffer": 1,
+      "buffer-crc32": 2,
+      "bufferutil": 2,
+      "bundle-name": 1,
+      "chownr": 2,
+      "chrome-remote-interface": 1,
+      "commander": 2,
+      "debug": 4,
+      "decompress-response": 1,
+      "deep-extend": 1,
+      "default-browser": 1,
+      "default-browser-id": 1,
+      "define-lazy-prop": 1,
+      "detect-libc": 3,
+      "end-of-stream": 2,
+      "expand-template": 1,
+      "file-uri-to-path": 1,
+      "fs-constants": 1,
+      "fs-extra": 1,
+      "github-from-package": 1,
+      "graceful-fs": 2,
+      "http-proxy-agent": 2,
+      "https-proxy-agent": 2,
+      "ieee754": 1,
+      "inherits": 3,
+      "ini": 1,
+      "ip-address": 1,
+      "is-docker": 1,
+      "is-extglob": 1,
+      "is-glob": 1,
+      "is-inside-container": 2,
+      "is-wsl": 1,
+      "jschardet": 1,
+      "jsonfile": 1,
+      "katex": 1,
+      "kerberos": 1,
+      "lru-cache": 1,
+      "mimic-response": 1,
+      "minimist": 3,
+      "minipass": 3,
+      "minizlib": 1,
+      "mkdirp": 1,
+      "mkdirp-classic": 2,
+      "ms": 1,
+      "napi-build-utils": 1,
+      "native-is-elevated": 1,
+      "node-abi": 1,
+      "node-addon-api": 9,
+      "node-pty": 1,
+      "once": 3,
+      "open": 1,
+      "opentype.js": 1,
+      "pend": 1,
+      "picomatch": 1,
+      "prebuild-install": 1,
+      "pump": 2,
+      "rc": 1,
+      "readable-stream": 2,
+      "run-applescript": 1,
+      "safe-buffer": 2,
+      "semver": 2,
+      "simple-concat": 1,
+      "simple-get": 1,
+      "smart-buffer": 1,
+      "socks": 1,
+      "socks-proxy-agent": 1,
+      "string_decoder": 1,
+      "strip-json-comments": 1,
+      "tar": 2,
+      "tar-fs": 1,
+      "tar-stream": 1,
+      "tas-client": 1,
+      "tunnel-agent": 1,
+      "undici": 2,
+      "universalify": 2,
+      "utf-8-validate": 2,
+      "util-deprecate": 1,
+      "uuid": 1,
+      "vscode-oniguruma": 1,
+      "vscode-regexpp": 1,
+      "vscode-textmate": 1,
+      "windows-foreground-love": 1,
+      "wrappy": 1,
+      "ws": 2,
+      "yallist": 1,
+      "yauzl": 1,
+      "yazl": 1
+    },
+    "stderr": "npm warn Unknown project config \"disturl\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"target\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"ms_build_id\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"runtime\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"build_from_source\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"build_from_source_native_keymap\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nnpm warn Unknown project config \"timeout\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n",
+    "stderrAnalysis": {
+      "warningCount": 7,
+      "keys": [
+        "disturl",
+        "target",
+        "ms_build_id",
+        "runtime",
+        "build_from_source",
+        "build_from_source_native_keymap",
+        "timeout"
+      ],
+      "allFromGeneratedProjectNpmrc": true,
+      "unmatchedKeys": [],
+      "dependencyErrors": false
+    }
+  },
+  "package": {
+    "app": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "errors": [],
+    "exit_code": 0,
+    "missing_out": [],
+    "required_packages": {
+      "CRI": {
+        "locations": [
+          {
+            "package": "chrome-remote-interface",
+            "paths": [
+              "chrome-remote-interface"
+            ],
+            "store": "asar"
+          }
+        ],
+        "present": true
+      },
+      "katex": {
+        "locations": [
+          {
+            "package": "katex",
+            "paths": [
+              "katex"
+            ],
+            "store": "asar"
+          }
+        ],
+        "present": true
+      },
+      "node-pty": {
+        "locations": [
+          {
+            "package": "node-pty",
+            "paths": [
+              "node-pty"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "node-pty",
+            "paths": [
+              "node-pty"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "ripgrep": {
+        "locations": [
+          {
+            "package": "@vscode/ripgrep-universal",
+            "paths": [
+              "@vscode/ripgrep-universal"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "@vscode/ripgrep-universal",
+            "paths": [
+              "@vscode/ripgrep-universal"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      },
+      "semver": {
+        "locations": [
+          {
+            "package": "semver",
+            "paths": [
+              "semver"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "semver",
+            "paths": [
+              "semver"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+            ],
+            "store": "node_modules"
+          }
+        ],
+        "present": true
+      },
+      "sqlite": {
+        "locations": [
+          {
+            "package": "@vscode/sqlite3",
+            "paths": [
+              "@vscode/sqlite3"
+            ],
+            "store": "asar"
+          },
+          {
+            "package": "@vscode/sqlite3",
+            "paths": [
+              "@vscode/sqlite3"
+            ],
+            "real_paths": [
+              "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+            ],
+            "store": "node_modules.asar.unpacked"
+          }
+        ],
+        "present": true
+      }
+    },
+    "retired_extensions": [],
+    "retired_out": [],
+    "retired_packages": [],
+    "retired_product_keys": [],
+    "schema_version": 1,
+    "status": "pass",
+    "stores": {
+      "asar": {
+        "header_bytes": 97852,
+        "json_bytes": 97843,
+        "nodes": 2134,
+        "unpacked_files": 26
+      },
+      "node_modules": {
+        "exists": true,
+        "nodes": 58
+      },
+      "node_modules.asar.unpacked": {
+        "exists": true,
+        "nodes": 75
+      },
+      "out": {
+        "nodes": 174
+      }
+    },
+    "summary": {
+      "missing_required_out": 0,
+      "retired_extensions": 0,
+      "retired_out_groups": 0,
+      "retired_package_instances": 0,
+      "retired_product_keys": 0,
+      "structure_or_missing_package_errors": 0
+    }
+  },
+  "packageCommandResult": {
+    "at": "2026-10-02T18:51:47.944249+10:00",
+    "command": [
+      "/opt/homebrew/bin/python3.12",
+      "/Users/rockie/Documents/gh-xgent/vscodium/dev/check-lean-runtime.py",
+      "--app",
+      "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app"
+    ],
+    "exit": 0,
+    "stdoutBytes": 3667,
+    "stderrBytes": 0
+  },
+  "prune": {
+    "entries": 254,
+    "sourcePresent": [],
+    "paths": [
+      "extensions/vscode-test-resolver",
+      "extensions/tunnel-forwarding",
+      "src/vs/server",
+      "cli",
+      "extensions/debug-auto-launch",
+      "extensions/debug-server-ready",
+      "extensions/ipynb",
+      "extensions/notebook-renderers",
+      "build/next/devTunnelsWeb.ts",
+      "build/next/devTunnelsWebEntry.js",
+      "build/next/devTunnelsShims",
+      "src/vs/workbench/api/browser/mainThreadAgentEditorComments.ts",
+      "src/vs/workbench/api/browser/mainThreadAiEmbeddingVector.ts",
+      "src/vs/workbench/api/browser/mainThreadAiRelatedInformation.ts",
+      "src/vs/workbench/api/browser/mainThreadAiSettingsSearch.ts",
+      "src/vs/workbench/api/browser/mainThreadChatAgents2.ts",
+      "src/vs/workbench/api/browser/mainThreadChatCodeMapper.ts",
+      "src/vs/workbench/api/browser/mainThreadChatContext.ts",
+      "src/vs/workbench/api/browser/mainThreadChatDebug.ts",
+      "src/vs/workbench/api/browser/mainThreadChatInputNotification.ts",
+      "src/vs/workbench/api/browser/mainThreadChatOutputRenderer.ts",
+      "src/vs/workbench/api/browser/mainThreadChatQuota.ts",
+      "src/vs/workbench/api/browser/mainThreadChatSessions.ts",
+      "src/vs/workbench/api/browser/mainThreadChatStatus.ts",
+      "src/vs/workbench/api/browser/mainThreadEmbeddings.ts",
+      "src/vs/workbench/api/browser/mainThreadLanguageModelTools.ts",
+      "src/vs/workbench/api/browser/mainThreadLanguageModels.ts",
+      "src/vs/workbench/api/browser/mainThreadMcp.ts",
+      "src/vs/workbench/api/browser/mainThreadSpeech.ts",
+      "src/vs/workbench/api/common/extHostAgentEditorComments.ts",
+      "src/vs/workbench/api/common/extHostAiRelatedInformation.ts",
+      "src/vs/workbench/api/common/extHostAiSettingsSearch.ts",
+      "src/vs/workbench/api/common/extHostChatAgents2.ts",
+      "src/vs/workbench/api/common/extHostChatContext.ts",
+      "src/vs/workbench/api/common/extHostChatDebug.ts",
+      "src/vs/workbench/api/common/extHostChatInputNotification.ts",
+      "src/vs/workbench/api/common/extHostChatOutputRenderer.ts",
+      "src/vs/workbench/api/common/extHostChatQuota.ts",
+      "src/vs/workbench/api/common/extHostChatSessions.ts",
+      "src/vs/workbench/api/common/extHostChatStatus.ts",
+      "src/vs/workbench/api/common/extHostCodeMapper.ts",
+      "src/vs/workbench/api/common/extHostEmbedding.ts",
+      "src/vs/workbench/api/common/extHostEmbeddingVector.ts",
+      "src/vs/workbench/api/common/extHostLanguageModelTools.ts",
+      "src/vs/workbench/api/common/extHostLanguageModels.ts",
+      "src/vs/workbench/api/common/extHostMcp.ts",
+      "src/vs/workbench/api/common/extHostSpeech.ts",
+      "src/vs/workbench/api/node/extHostMcpNode.ts",
+      "src/vs/workbench/api/test/browser/mainThreadChatAgents2.test.ts",
+      "src/vs/workbench/api/test/browser/mainThreadChatInputNotification.test.ts",
+      "src/vs/workbench/api/test/browser/mainThreadChatSessions.test.ts",
+      "src/vs/workbench/api/test/browser/mainThreadLanguageModels.test.ts",
+      "src/vs/workbench/api/test/browser/mainThreadMcp.test.ts",
+      "src/vs/workbench/api/test/common/extHostChatAgents2.test.ts",
+      "src/vs/workbench/api/test/common/extHostMcp.test.ts",
+      "src/vs/workbench/api/test/node/extHostMcpNode.test.ts",
+      "src/vs/workbench/contrib/terminalContrib/chat",
+      "src/vs/workbench/contrib/terminalContrib/chatAgentTools",
+      "src/vs/workbench/contrib/terminalContrib/voice",
+      "src/vs/workbench/contrib/terminal/browser/agentHostPty.ts",
+      "src/vs/workbench/contrib/terminal/browser/agentHostTerminalService.ts",
+      "src/vs/workbench/contrib/terminal/browser/agentHostOutputChannel.ts",
+      "src/vs/workbench/contrib/terminal/browser/ahpTerminalCommandSource.ts",
+      "src/vs/workbench/contrib/terminal/browser/terminalTabsChatEntry.ts",
+      "src/vs/workbench/contrib/terminal/browser/chatTerminalCommandMirror.ts",
+      "src/vs/workbench/contrib/terminal/test/browser/agentHostPty.test.ts",
+      "src/vs/workbench/contrib/terminal/test/browser/agentHostTerminalService.test.ts",
+      "src/vs/workbench/contrib/terminal/test/browser/ahpTerminalCommandSource.test.ts",
+      "src/vs/workbench/contrib/terminal/test/browser/chatTerminalCommandMirror.test.ts",
+      "src/vs/workbench/contrib/terminal/terminalContribChatExports.ts",
+      "src/vs/workbench/contrib/codeEditor/browser/dictation",
+      "src/vs/workbench/contrib/markers/browser/markersChatContext.ts",
+      "src/vs/workbench/contrib/scm/browser/scmHistoryChatContext.ts",
+      "src/vs/workbench/contrib/search/browser/searchChatContext.ts",
+      "src/vs/workbench/contrib/extensions/common/installExtensionsTool.ts",
+      "src/vs/workbench/contrib/extensions/common/searchExtensionsTool.ts",
+      "src/vs/platform/browserView",
+      "src/vs/workbench/contrib/browserView",
+      "src/vs/workbench/services/browserView",
+      "extensions/simple-browser",
+      "src/vs/workbench/api/browser/mainThreadBrowsers.ts",
+      "src/vs/workbench/api/common/extHostBrowsers.ts",
+      "src/vs/workbench/api/test/browser/extHostBrowsers.test.ts",
+      "src/vs/workbench/api/browser/mainThreadBrowserTunnelProxy.ts",
+      "src/vs/workbench/api/common/extHostBrowserTunnelProxy.ts",
+      "src/vs/workbench/api/node/extHostBrowserTunnelProxy.ts",
+      "src/vs/platform/tunnel/common/tunnelProxy.ts",
+      "src/vs/platform/tunnel/node/tunnelProxy.ts",
+      "src/vs/platform/tunnel/node/selfSignedCert.ts",
+      "src/vs/platform/tunnel/test/node/tunnelProxy.test.ts",
+      "src/vs/platform/tunnel/test/node/selfSignedCert.test.ts",
+      "extensions/vscode-api-tests/src/singlefolder-tests/browser.test.ts",
+      "extensions/vscode-api-tests/src/singlefolder-tests/browser.cdp.test.ts",
+      "extensions/vscode-api-tests/src/singlefolder-tests/browser.tools.test.ts",
+      "src/vs/platform/accessibilitySignal/browser/media/requestSent.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/responseReceived1.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/responseReceived2.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/responseReceived3.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/responseReceived4.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/voiceRecordingStarted.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/voiceRecordingStopped.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/chatEditModifiedFile.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/chatUserActionRequired.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/editsKept.mp3",
+      "src/vs/platform/accessibilitySignal/browser/media/editsUndone.mp3",
+      "src/vs/workbench/test/browser/componentFixtures/chat",
+      "src/vs/workbench/test/browser/componentFixtures/sessions",
+      "src/vs/workbench/test/browser/componentFixtures/agentsVoice",
+      "src/vs/workbench/test/browser/componentFixtures/aiStats.fixture.ts",
+      "src/vs/workbench/test/browser/componentFixtures/editor/inlineChatAffordance.fixture.ts",
+      "src/vs/workbench/test/browser/componentFixtures/editor/inlineChatZoneWidget.fixture.ts",
+      "src/vs/workbench/api/common/extHostDebugService.ts",
+      "src/vs/workbench/api/common/extHostInteractive.ts",
+      "src/vs/workbench/api/common/extHostNotebook.ts",
+      "src/vs/workbench/api/common/extHostNotebookDocument.ts",
+      "src/vs/workbench/api/common/extHostNotebookDocumentSaveParticipant.ts",
+      "src/vs/workbench/api/common/extHostNotebookDocuments.ts",
+      "src/vs/workbench/api/common/extHostNotebookEditor.ts",
+      "src/vs/workbench/api/common/extHostNotebookEditors.ts",
+      "src/vs/workbench/api/common/extHostNotebookKernels.ts",
+      "src/vs/workbench/api/common/extHostNotebookRenderers.ts",
+      "src/vs/workbench/api/browser/mainThreadDebugService.ts",
+      "src/vs/workbench/api/browser/mainThreadInteractive.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebook.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookDocuments.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookDocumentsAndEditors.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookDto.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookEditors.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookKernels.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookRenderers.ts",
+      "src/vs/workbench/api/browser/mainThreadNotebookSaveParticipant.ts",
+      "src/vs/workbench/api/node/extHostDebugService.ts",
+      "src/vs/workbench/api/test/browser/extHostNotebook.test.ts",
+      "src/vs/workbench/api/test/browser/extHostNotebookKernel.test.ts",
+      "src/vs/workbench/api/test/browser/TestMainThreadNotebookKernels.ts",
+      "src/vs/workbench/api/test/browser/mainThreadVariableProvider.test.ts",
+      "src/vs/platform/policy/common/copilotManagedSettings.ts",
+      "src/vs/platform/policy/common/fileManagedSettingsIpc.ts",
+      "src/vs/platform/policy/common/fileManagedSettingsService.ts",
+      "src/vs/platform/policy/common/nativeManagedSettingsIpc.ts",
+      "src/vs/platform/policy/node/nativeManagedSettingsService.ts",
+      "src/vs/platform/policy/test/common/copilotManagedSettings.test.ts",
+      "src/vs/platform/policy/test/common/fileManagedSettingsService.test.ts",
+      "src/vs/platform/policy/test/node/nativeManagedSettingsService.test.ts",
+      "src/vs/platform/telemetry/node/customEndpointTelemetryService.ts",
+      "src/vs/platform/telemetry/electron-browser/customEndpointTelemetryService.ts",
+      "src/vs/platform/otel/common/genAiAttributes.ts",
+      "src/vs/platform/otel/common/spanData.ts",
+      "src/vs/platform/otel/node/otlp/localOtlpReceiver.ts",
+      "src/vs/platform/otel/node/otlp/otlpJsonDecode.ts",
+      "src/vs/platform/otel/node/otlp/otlpJsonTypes.ts",
+      "src/vs/platform/otel/node/otlp/outboundForwarder.ts",
+      "src/vs/platform/otel/node/sqlite/otelSqliteStore.ts",
+      "src/vs/platform/otel/test/node/otlp/localOtlpReceiver.test.ts",
+      "src/vs/platform/otel/test/node/otlp/otlpJsonDecode.test.ts",
+      "src/vs/platform/otel/test/node/otlp/outboundForwarder.test.ts",
+      "src/vs/base/common/managedSettings.ts",
+      "build/agent-sdk",
+      "build/dictation-runtime",
+      "build/azure-pipelines/copilot",
+      "build/azure-pipelines/product-copilot.yml",
+      "build/azure-pipelines/product-copilot-recovery.yml",
+      "build/azure-pipelines/common/agent-sdk-produce.yml",
+      "build/azure-pipelines/common/dictation-runtime-produce.yml",
+      "build/azure-pipelines/common/foundry-local.yml",
+      "build/azure-pipelines/common/apply-sdk-canary.yml",
+      "build/azure-pipelines/common/apply-sdk-canary-override.ts",
+      "build/azure-pipelines/common/foundryLocalInstall.ts",
+      "build/azure-pipelines/common/disableFoundryLocalInstall.ts",
+      "build/azure-pipelines/common/checkNativeOptionalDeps.ts",
+      "build/azure-pipelines/common/downloadCopilotVsix.ts",
+      "build/azure-pipelines/common/mixin-vscode-capi.yml",
+      "build/codex",
+      "build/vite/mobile-multi-diff-worker.ts",
+      "build/vite/mobile-multi-diff.ts",
+      "build/vite/mobile-multi-diff.html",
+      "build/lib/test/agentHostDependencies.test.ts",
+      "src/vs/sessions",
+      "src/vs/platform/agentHost",
+      "src/vs/platform/agentPlugins",
+      "src/vs/platform/mcp",
+      "src/vs/platform/localTranscription",
+      "src/vs/platform/sandbox",
+      "src/vs/platform/webContentExtractor",
+      "src/vs/platform/chat",
+      "src/vs/workbench/contrib/chat",
+      "src/vs/workbench/contrib/inlineChat",
+      "src/vs/workbench/contrib/mcp",
+      "src/vs/workbench/contrib/speech",
+      "src/vs/workbench/contrib/agentsVoice",
+      "src/vs/workbench/contrib/welcomeAgentSessions",
+      "src/vs/workbench/contrib/notebook",
+      "src/vs/workbench/contrib/interactive",
+      "src/vs/workbench/contrib/debug",
+      "src/vs/workbench/services/chat",
+      "src/vs/workbench/services/aiSettingsSearch",
+      "src/vs/workbench/services/aiEmbeddingVector",
+      "src/vs/workbench/services/aiRelatedInformation",
+      "src/vs/workbench/services/agentHost",
+      "src/vs/workbench/services/mcp",
+      "src/vs/workbench/services/localTranscription",
+      "src/vs/platform/networkFilter",
+      "src/vs/workbench/contrib/replNotebook",
+      "src/vs/workbench/contrib/remoteCodingAgents",
+      "src/vs/workbench/contrib/search/browser/notebookSearch",
+      "src/vs/workbench/contrib/search/browser/AISearch",
+      "src/vs/workbench/services/notebook",
+      "src/vs/workbench/contrib/authentication/browser/actions/manageTrustedMcpServersForAccountAction.ts",
+      "src/vs/workbench/contrib/authentication/browser/actions/manageAccountPreferencesForMcpServerAction.ts",
+      "src/vs/workbench/services/authentication/browser/authenticationMcpAccessService.ts",
+      "src/vs/workbench/services/authentication/browser/authenticationMcpUsageService.ts",
+      "src/vs/workbench/services/authentication/browser/authenticationMcpService.ts",
+      "src/vs/workbench/services/authentication/test/browser/authenticationMcpAccessService.test.ts",
+      "src/vs/workbench/services/userDataProfile/browser/mcpProfileResource.ts",
+      "src/vs/workbench/contrib/editTelemetry/browser/telemetry/agentHostEditMarkerService.ts",
+      "src/vs/workbench/contrib/editTelemetry/test/browser/agentHostEditMarkerService.test.ts",
+      "src/vs/workbench/contrib/testing/common/testingChatAgentTool.ts",
+      "src/vs/workbench/contrib/testing/test/common/testingChatAgentTool.test.ts",
+      "src/vs/workbench/test/browser/aiCustomizationManagementSectionRegistry.test.ts",
+      "src/vs/workbench/contrib/accessibilitySignals/browser/accessibilitySignalDebuggerContribution.ts",
+      "src/vs/workbench/contrib/bulkEdit/browser/bulkCellEdits.ts",
+      "src/vs/workbench/contrib/bulkEdit/test/browser/bulkCellEdits.test.ts",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/notebookProfile.ts",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/notebookThemes",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/debug.svg",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/ai-powered-suggestions.svg",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/customize-ai.svg",
+      "src/vs/workbench/contrib/welcomeGettingStarted/common/media/multi-file-edits.svg",
+      "src/vs/workbench/contrib/search/browser/searchFindInput.ts",
+      "src/vs/workbench/contrib/search/common/notebookSearch.ts",
+      "src/vs/workbench/contrib/search/test/browser/searchNotebookHelpers.test.ts",
+      "src/vs/workbench/services/policies/browser/accountPolicyGateContribution.ts",
+      "src/vs/workbench/services/policies/browser/accountPolicyGate.contribution.ts",
+      "src/vs/workbench/services/policies/test/browser/accountPolicyGateContribution.test.ts",
+      "src/vs/workbench/services/accounts/browser/managedSettings.ts",
+      "src/vs/workbench/services/accounts/test/browser/managedSettings.test.ts",
+      "src/vs/workbench/services/accounts/test/browser/defaultAccount.test.ts",
+      "src/vs/workbench/browser/chatPills.ts",
+      "src/vs/workbench/browser/chatResourcePill.ts",
+      "src/vs/workbench/browser/chatDropdownPill.ts",
+      "src/vs/workbench/browser/chatChangesPill.ts",
+      "src/vs/workbench/browser/media/chatPills.css",
+      "src/vs/workbench/contrib/terminal/test/browser/chatTerminalMirrorTestUtils.ts",
+      "src/vs/workbench/services/inlineCompletions/common/inlineCompletionsUnification.ts",
+      "src/vs/workbench/contrib/editTelemetry/browser/editStats",
+      "src/vs/workbench/contrib/editTelemetry/browser/aiContributionFeature.ts",
+      "src/vs/workbench/contrib/editTelemetry/test/browser/aiContributionFeature.test.ts",
+      "src/vs/workbench/contrib/surveys/browser/survey.contribution.ts",
+      "src/vs/workbench/contrib/surveys/browser/surveyEditorInput.ts",
+      "src/vs/workbench/contrib/surveys/browser/surveyEditorPane.ts",
+      "src/vs/workbench/contrib/surveys/browser/surveyQuestions.ts",
+      "src/vs/workbench/contrib/surveys/browser/media/surveyEditorPane.css",
+      "extensions/npm/src/npmScriptLens.ts",
+      "src/vs/platform/accessibilitySignal/browser/media/break.mp3"
+    ],
+    "sha256": "0cb8c7bf610cacc18341137a5de593b7171464cdcafd11f386e4938a521ce33b"
+  },
+  "patch151": {
+    "path": "src/vs/workbench/contrib/terminal/common/terminal.ts",
+    "patch": "/Users/rockie/Documents/gh-xgent/vscodium/patches/151-light-terminal-retired-command-filters.patch",
+    "patchSha256": "92282c3d51a074371264fdf60232207d1ecfffe10190d006d851b126a81fc77b",
+    "oldFrozen150Sha256": "77a81b4db4b04ea8e897ab9a2ab877136c67bb274b82f8c1a3faa98daa907baf",
+    "actual151Sha256": "5fd803f6451e977bb288b9aaab35b93a27661ca581ecea9fdc0a45184d482deb",
+    "oldHunkOccurrences": 1,
+    "expected151EqualsActual": true,
+    "removedCommands": [
+      "workbench.action.debug.disconnect",
+      "workbench.action.debug.start",
+      "workbench.action.debug.stop",
+      "workbench.action.debug.run",
+      "workbench.action.debug.restart",
+      "workbench.action.debug.continue",
+      "workbench.action.debug.pause",
+      "workbench.action.debug.stepInto",
+      "workbench.action.debug.stepOut",
+      "workbench.action.debug.stepOver",
+      "sessions.goBack",
+      "sessions.goForward",
+      "sessions.focusActiveSession",
+      "sessions.focusSessionInGrid1",
+      "sessions.focusSessionInGrid2",
+      "sessions.focusSessionInGrid3",
+      "sessions.focusSessionInGrid4",
+      "sessions.focusSessionInGrid5",
+      "sessions.focusSessionInGrid6",
+      "sessions.focusSessionInGrid7",
+      "sessions.focusSessionInGrid8",
+      "sessions.focusSessionInGrid9",
+      "sessionsViewPane.navigatePreviousSession",
+      "sessionsViewPane.navigateNextSession"
+    ],
+    "removedCount": 24,
+    "removedCommandsRemainingIn151": [],
+    "retainedTerminalControls": [
+      "TerminalCommandId.CopySelection",
+      "TerminalCommandId.Paste"
+    ]
+  },
+  "patch151ReverseCheck": {
+    "startedAt": "2026-10-02T19:18:13.401642+10:00",
+    "endedAt": "2026-10-02T19:18:13.414732+10:00",
+    "durationSeconds": 0.013055708999672788,
+    "command": [
+      "git",
+      "apply",
+      "--reverse",
+      "--check",
+      "/Users/rockie/Documents/gh-xgent/vscodium/patches/151-light-terminal-retired-command-filters.patch"
+    ],
+    "cwd": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "node": "24.18.0",
+  "npm": "11.16.0",
+  "electron": "43.7.5",
+  "macosFloor": "12.0",
+  "arch": "arm64",
+  "CI": true,
+  "repeatedBuildCompileNoemitOrTests": false,
+  "remaining": "151 actual packaged registry/ordinary terminal controls/native GUI/real quit lifecycle and independent signed/notary/staple chain are pending. Current-input dual-arch CI not run per local-only user instruction; M8/Release not complete.",
+  "status": "PASS_BUILD_AND_STATIC_SUBSET_ONLY",
+  "sourceComparisonToFrozen150": {
+    "at": "2026-10-02T19:19:26.241521+10:00",
+    "source150": "/Users/rockie/Documents/gh-xgent/lean-core-resume-20261002/build150/vscodium/vscode/src",
+    "source151": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src",
+    "files150": 5213,
+    "files151": 5213,
+    "changes": [
+      {
+        "path": "src/vs/workbench/contrib/terminal/common/terminal.ts",
+        "before": {
+          "kind": "regular",
+          "sha256": "77a81b4db4b04ea8e897ab9a2ab877136c67bb274b82f8c1a3faa98daa907baf"
+        },
+        "after": {
+          "kind": "regular",
+          "sha256": "5fd803f6451e977bb288b9aaab35b93a27661ca581ecea9fdc0a45184d482deb"
+        }
+      }
+    ]
+  },
+  "closedSubset": [
+    "actual complete arm64 build exit0",
+    "native whole-source noEmit exit0/0B (root execution)",
+    "npm production graph146 unique/199 occurrences, retirement/problems0",
+    "actual unsigned package closure pass",
+    "current production/workflow input freeze consistency",
+    "254 prune paths absent",
+    "151 source preimage equals exactly150 plus24 retired filters removed"
+  ]
+}

@@ -1,0 +1,19 @@
+2026-10-02 20:57:43.368 [info] Extension host with pid 30589 started
+2026-10-02 20:57:43.368 [info] Skipping acquiring lock for /private/tmp/av151-4dvltjmt/u/User/workspaceStorage/6fd66838c6fcbc93230654cf20f30224.
+2026-10-02 20:57:43.372 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 20:57:43.374 [info] ExtensionService#_doActivateExtension lean-private.lean-accessibility151, startup: true, activationEvent: '*'
+2026-10-02 20:57:43.376 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 20:57:43.392 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 20:57:43.400 [info] Extension 'lean-private.lean-accessibility151' uses a document selector without scheme. Learn more about this: https://go.microsoft.com/fwlink/?linkid=872305
+2026-10-02 20:57:43.403 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 20:57:43.436 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:57:43.436 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:57:43.442 [info] Eager extensions activated
+2026-10-02 20:57:43.445 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:57:48.268 [info] ExtensionService#_doActivateExtension vscode.extension-editing, startup: false, activationEvent: 'onLanguage:markdown'
+2026-10-02 20:57:48.273 [info] ExtensionService#_doActivateExtension vscode.markdown-language-features, startup: false, activationEvent: 'onLanguage:markdown'
+2026-10-02 20:57:48.438 [info] ExtensionService#_doActivateExtension vscode.markdown-math, startup: false, activationEvent: 'api', root cause: vscode.markdown-language-features
+2026-10-02 20:57:48.441 [info] ExtensionService#_doActivateExtension vscode.mermaid-markdown-features, startup: false, activationEvent: 'api', root cause: vscode.markdown-language-features
+2026-10-02 20:57:48.449 [warning] [vscode.markdown-math] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'markdown.math.macros', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:57:52.439 [info] Extension host terminating: received terminate message from renderer
+2026-10-02 20:57:52.441 [info] Extension host with pid 30589 exiting with code 0

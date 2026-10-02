@@ -1,0 +1,737 @@
+diff --git a/src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts b/src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts
+--- a/src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts
++++ b/src/vs/workbench/contrib/codeActions/browser/codeActionsContribution.ts
+@@ -33,22 +33,6 @@
+ 	};
+ };
+ 
+-const createNotebookCodeActionsAutoSave = (description: string): IJSONSchema => {
+-	return {
+-		type: ['string', 'boolean'],
+-		enum: ['explicit', 'never', true, false],
+-		enumDescriptions: [
+-			nls.localize('explicit', 'Triggers Code Actions only when explicitly saved.'),
+-			nls.localize('never', 'Never triggers Code Actions on save.'),
+-			nls.localize('explicitBoolean', 'Triggers Code Actions only when explicitly saved. This value will be deprecated in favor of "explicit".'),
+-			nls.localize('neverBoolean', 'Triggers Code Actions only when explicitly saved. This value will be deprecated in favor of "never".')
+-		],
+-		default: 'explicit',
+-		description: description
+-	};
+-};
+-
+-
+ const codeActionsOnSaveSchema: IConfigurationPropertySchema = {
+ 	oneOf: [
+ 		{
+@@ -76,37 +60,6 @@
+ 	...editorConfigurationBaseNode,
+ 	properties: {
+ 		'editor.codeActionsOnSave': codeActionsOnSaveSchema
+-	}
+-});
+-
+-const notebookCodeActionsOnSaveSchema: IConfigurationPropertySchema = {
+-	oneOf: [
+-		{
+-			type: 'object',
+-			additionalProperties: {
+-				type: 'string'
+-			},
+-		},
+-		{
+-			type: 'array',
+-			items: { type: 'string' }
+-		}
+-	],
+-	markdownDescription: nls.localize('notebook.codeActionsOnSave', 'Run a series of Code Actions for a notebook on save. Code Actions must be specified and the editor must not be shutting down. When {0} is set to `afterDelay`, Code Actions will only be run when the file is saved explicitly. Example: `"notebook.source.organizeImports": "explicit"`', '`#files.autoSave#`'),
+-	type: 'object',
+-	additionalProperties: {
+-		type: ['string', 'boolean'],
+-		enum: ['explicit', 'never', true, false],
+-		// enum: ['explicit', 'always', 'never'], -- autosave support needs to be built first
+-		// nls.localize('always', 'Always triggers Code Actions on save, including autosave, focus, and window change events.'),
+-	},
+-	default: {}
+-};
+-
+-export const notebookEditorConfiguration = Object.freeze<IConfigurationNode>({
+-	...editorConfigurationBaseNode,
+-	properties: {
+-		'notebook.codeActionsOnSave': notebookCodeActionsOnSaveSchema
+ 	}
+ });
+ 
+@@ -150,15 +103,12 @@
+ 
+ 	private updateConfigurationSchema(allProvidedKinds: Iterable<HierarchicalKind>): void {
+ 		const properties: IJSONSchemaMap = { ...codeActionsOnSaveSchema.properties };
+-		const notebookProperties: IJSONSchemaMap = { ...notebookCodeActionsOnSaveSchema.properties };
+ 		for (const codeActionKind of allProvidedKinds) {
+ 			if (CodeActionKind.Source.contains(codeActionKind) && !properties[codeActionKind.value]) {
+ 				properties[codeActionKind.value] = createCodeActionsAutoSave(nls.localize('codeActionsOnSave.generic', "Controls whether '{0}' actions should be run on file save.", codeActionKind.value));
+-				notebookProperties[codeActionKind.value] = createNotebookCodeActionsAutoSave(nls.localize('codeActionsOnSave.generic', "Controls whether '{0}' actions should be run on file save.", codeActionKind.value));
+ 			}
+ 		}
+ 		codeActionsOnSaveSchema.properties = properties;
+-		notebookCodeActionsOnSaveSchema.properties = notebookProperties;
+ 
+ 		Registry.as<IConfigurationRegistry>(Extensions.Configuration)
+ 			.notifyConfigurationSchemaUpdated(editorConfiguration);
+diff --git a/src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts b/src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts
+--- a/src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts
++++ b/src/vs/workbench/contrib/codeActions/browser/codeActions.contribution.ts
+@@ -7,13 +7,10 @@
+ import { Registry } from '../../../../platform/registry/common/platform.js';
+ import { IWorkbenchContributionsRegistry, Extensions as WorkbenchExtensions } from '../../../common/contributions.js';
+ import { LifecyclePhase } from '../../../services/lifecycle/common/lifecycle.js';
+-import { CodeActionsContribution, editorConfiguration, notebookEditorConfiguration } from './codeActionsContribution.js';
++import { CodeActionsContribution, editorConfiguration } from './codeActionsContribution.js';
+ 
+ Registry.as<IConfigurationRegistry>(Extensions.Configuration)
+ 	.registerConfiguration(editorConfiguration);
+ 
+-Registry.as<IConfigurationRegistry>(Extensions.Configuration)
+-	.registerConfiguration(notebookEditorConfiguration);
+-
+ Registry.as<IWorkbenchContributionsRegistry>(WorkbenchExtensions.Workbench)
+ 	.registerWorkbenchContribution(CodeActionsContribution, LifecyclePhase.Eventually);
+diff --git a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+--- a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
++++ b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+@@ -44,7 +44,6 @@
+ 	MergeEditor = 'accessibility.verbosity.mergeEditor',
+ 	InlineCompletions = 'accessibility.verbosity.inlineCompletions',
+ 	KeybindingsEditor = 'accessibility.verbosity.keybindingsEditor',
+-	Notebook = 'accessibility.verbosity.notebook',
+ 	Editor = 'accessibility.verbosity.editor',
+ 	Hover = 'accessibility.verbosity.hover',
+ 	Notification = 'accessibility.verbosity.notification',
+@@ -52,7 +51,6 @@
+ 	ReplEditor = 'accessibility.verbosity.replEditor',
+ 	Comments = 'accessibility.verbosity.comments',
+ 	DiffEditorActive = 'accessibility.verbosity.diffEditorActive',
+-	Debug = 'accessibility.verbosity.debug',
+ 	Walkthrough = 'accessibility.verbosity.walkthrough',
+ 	SourceControl = 'accessibility.verbosity.sourceControl',
+ 	Find = 'accessibility.verbosity.find',
+@@ -132,10 +130,6 @@
+ 			description: localize('verbosity.keybindingsEditor.description', 'Provide information about how to change a keybinding in the keybindings editor when a row is focused and how to navigate to the results table.'),
+ 			...baseVerbosityProperty
+ 		},
+-		[AccessibilityVerbositySettingId.Notebook]: {
+-			description: localize('verbosity.notebook', 'Provide information about how to focus the cell container or inner editor when a notebook cell is focused.'),
+-			...baseVerbosityProperty
+-		},
+ 		[AccessibilityVerbositySettingId.Hover]: {
+ 			description: localize('verbosity.hover', 'Provide information about how to open the hover in an Accessible View.'),
+ 			...baseVerbosityProperty
+@@ -158,10 +152,6 @@
+ 		},
+ 		[AccessibilityVerbositySettingId.DiffEditorActive]: {
+ 			description: localize('verbosity.diffEditorActive', 'Indicate when a diff editor becomes the active editor.'),
+-			...baseVerbosityProperty
+-		},
+-		[AccessibilityVerbositySettingId.Debug]: {
+-			description: localize('verbosity.debug', 'Provide information about how to access the debug console accessibility help dialog when the debug console or run and debug viewlet is focused. Note that a reload of the window is required for this to take effect.'),
+ 			...baseVerbosityProperty
+ 		},
+ 		[AccessibilityVerbositySettingId.Walkthrough]: {
+@@ -253,20 +243,6 @@
+ 			},
+ 			'tags': ['accessibility']
+ 		},
+-		'accessibility.signals.lineHasBreakpoint': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.lineHasBreakpoint', "Plays a signal - sound (audio cue) and/or announcement (alert) - when the active line has a breakpoint."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.lineHasBreakpoint.sound', "Plays a sound when the active line has a breakpoint."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.lineHasBreakpoint.announcement', "Announces when the active line has a breakpoint."),
+-					...announcementFeatureBase
+-				},
+-			},
+-		},
+ 		'accessibility.signals.lineHasInlineSuggestion': {
+ 			...defaultNoAnnouncement,
+ 			'description': localize('accessibility.signals.lineHasInlineSuggestion', "Plays a sound / audio cue when the active line has an inline suggestion."),
+@@ -367,20 +343,6 @@
+ 				},
+ 			},
+ 		},
+-		'accessibility.signals.onDebugBreak': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.onDebugBreak', "Plays a signal - sound (audio cue) and/or announcement (alert) - when the debugger stopped on a breakpoint."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.onDebugBreak.sound', "Plays a sound when the debugger stopped on a breakpoint."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.onDebugBreak.announcement', "Announces when the debugger stopped on a breakpoint."),
+-					...announcementFeatureBase
+-				},
+-			}
+-		},
+ 		'accessibility.signals.noInlayHints': {
+ 			...signalFeatureBase,
+ 			'description': localize('accessibility.signals.noInlayHints', "Plays a signal - sound (audio cue) and/or announcement (alert) - when trying to read a line with inlay hints that has no inlay hints."),
+@@ -507,34 +469,6 @@
+ 					'description': localize('accessibility.signals.diffLineDeleted.sound', "Plays a sound when the focus moves to an deleted line in Accessible Diff Viewer mode or to the next/previous change."),
+ 					...soundFeatureBase
+ 				}
+-			}
+-		},
+-		'accessibility.signals.notebookCellCompleted': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.notebookCellCompleted', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution is successfully completed."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.notebookCellCompleted.sound', "Plays a sound when a notebook cell execution is successfully completed."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.notebookCellCompleted.announcement', "Announces when a notebook cell execution is successfully completed."),
+-					...announcementFeatureBase
+-				},
+-			}
+-		},
+-		'accessibility.signals.notebookCellFailed': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.notebookCellFailed', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a notebook cell execution fails."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.notebookCellFailed.sound', "Plays a sound when a notebook cell execution fails."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.notebookCellFailed.announcement', "Announces when a notebook cell execution fails."),
+-					...announcementFeatureBase
+-				},
+ 			}
+ 		},
+ 		'accessibility.signals.progress': {
+@@ -577,7 +511,7 @@
+ 		},
+ 		'accessibility.signals.clear': {
+ 			...signalFeatureBase,
+-			'description': localize('accessibility.signals.clear', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a feature is cleared (for example, the terminal, Debug Console, or Output channel)."),
++			'description': localize('accessibility.signals.clear', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a feature is cleared (for example, the terminal or Output channel)."),
+ 			'properties': {
+ 				'sound': {
+ 					'description': localize('accessibility.signals.clear.sound', "Plays a sound when a feature is cleared."),
+@@ -627,27 +561,27 @@
+ 			'type': 'object',
+ 			'tags': ['accessibility'],
+ 			additionalProperties: false,
+-			'markdownDescription': localize('accessibility.signals.format', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a file or notebook is formatted."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.format.sound', "Plays a sound when a file or notebook is formatted."),
++			'markdownDescription': localize('accessibility.signals.format', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a file is formatted."),
++			'properties': {
++				'sound': {
++					'description': localize('accessibility.signals.format.sound', "Plays a sound when a file is formatted."),
+ 					'type': 'string',
+ 					'enum': ['userGesture', 'always', 'never'],
+ 					'default': 'never',
+ 					'enumDescriptions': [
+ 						localize('accessibility.signals.format.userGesture', "Plays the sound when a user explicitly formats a file."),
+-						localize('accessibility.signals.format.always', "Plays the sound whenever a file is formatted, including if it is set to format on save, type, or, paste, or run of a cell."),
++						localize('accessibility.signals.format.always', "Plays the sound whenever a file is formatted, including if it is set to format on save, type, or paste."),
+ 						localize('accessibility.signals.format.never', "Never plays the sound.")
+ 					],
+ 				},
+ 				'announcement': {
+-					'description': localize('accessibility.signals.format.announcement', "Announces when a file or notebook is formatted."),
++					'description': localize('accessibility.signals.format.announcement', "Announces when a file is formatted."),
+ 					'type': 'string',
+ 					'enum': ['userGesture', 'always', 'never'],
+ 					'default': 'never',
+ 					'enumDescriptions': [
+ 						localize('accessibility.signals.format.announcement.userGesture', "Announces when a user explicitly formats a file."),
+-						localize('accessibility.signals.format.announcement.always', "Announces whenever a file is formatted, including if it is set to format on save, type, or, paste, or run of a cell."),
++						localize('accessibility.signals.format.announcement.always', "Announces whenever a file is formatted, including if it is set to format on save, type, or paste."),
+ 						localize('accessibility.signals.format.announcement.never', "Never announces.")
+ 					],
+ 				},
+@@ -661,11 +595,6 @@
+ 			'type': 'boolean',
+ 			'description': localize('accessibility.underlineLinks', "Controls whether links should be underlined in the workbench."),
+ 			'default': false,
+-		},
+-		'accessibility.debugWatchVariableAnnouncements': {
+-			'type': 'boolean',
+-			'description': localize('accessibility.debugWatchVariableAnnouncements', "Controls whether variable changes should be announced in the debug watch view."),
+-			'default': true,
+ 		},
+ 		'accessibility.replEditor.readLastExecutionOutput': {
+ 			'type': 'boolean',
+@@ -694,7 +623,7 @@
+ 		...workbenchConfigurationNodeBase,
+ 		properties: {
+ 			[AccessibilityWorkbenchSettingId.DimUnfocusedEnabled]: {
+-				description: localize('dimUnfocusedEnabled', 'Whether to dim unfocused editors and terminals, which makes it more clear where typed input will go to. This works with the majority of editors with the notable exceptions of those that utilize iframes like notebooks and extension webview editors.'),
++				description: localize('dimUnfocusedEnabled', 'Whether to dim unfocused editors and terminals, which makes it more clear where typed input will go to. This works with the majority of editors with the notable exceptions of those that utilize iframes like extension webview editors.'),
+ 				type: 'boolean',
+ 				default: false,
+ 				tags: ['accessibility'],
+diff --git a/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts b/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
+--- a/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
++++ b/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
+@@ -318,7 +318,6 @@
+ 	public static readonly warning = Sound.register({ fileName: 'warning.mp3' });
+ 	public static readonly success = Sound.register({ fileName: 'success.mp3' });
+ 	public static readonly foldedArea = Sound.register({ fileName: 'foldedAreas.mp3' });
+-	public static readonly break = Sound.register({ fileName: 'break.mp3' });
+ 	public static readonly quickFixes = Sound.register({ fileName: 'quickFixes.mp3' });
+ 	public static readonly taskCompleted = Sound.register({ fileName: 'taskCompleted.mp3' });
+ 	public static readonly taskFailed = Sound.register({ fileName: 'taskFailed.mp3' });
+@@ -439,14 +438,6 @@
+ 		announcementMessage: localize('accessibility.signals.lineHasFoldedArea', 'Folded'),
+ 		settingsKey: 'accessibility.signals.lineHasFoldedArea',
+ 	});
+-	public static readonly break = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.lineHasBreakpoint.name', 'Breakpoint on Line'),
+-		sound: Sound.break,
+-		legacySoundSettingsKey: 'audioCues.lineHasBreakpoint',
+-		legacyAnnouncementSettingsKey: 'accessibility.alert.breakpoint',
+-		announcementMessage: localize('accessibility.signals.lineHasBreakpoint', 'Breakpoint'),
+-		settingsKey: 'accessibility.signals.lineHasBreakpoint',
+-	});
+ 	public static readonly inlineSuggestion = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.lineHasInlineSuggestion.name', 'Inline Suggestion on Line'),
+ 		sound: Sound.quickFixes,
+@@ -469,15 +460,6 @@
+ 		settingsKey: 'accessibility.signals.terminalQuickFix',
+ 	});
+ 
+-	public static readonly onDebugBreak = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.onDebugBreak.name', 'Debugger Stopped on Breakpoint'),
+-		sound: Sound.break,
+-		legacySoundSettingsKey: 'audioCues.onDebugBreak',
+-		legacyAnnouncementSettingsKey: 'accessibility.alert.onDebugBreak',
+-		announcementMessage: localize('accessibility.signals.onDebugBreak', 'Breakpoint'),
+-		settingsKey: 'accessibility.signals.onDebugBreak',
+-	});
+-
+ 	public static readonly noInlayHints = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.noInlayHints', 'No Inlay Hints on Line'),
+ 		sound: Sound.error,
+@@ -530,23 +512,6 @@
+ 		settingsKey: 'accessibility.signals.terminalBell',
+ 	});
+ 
+-	public static readonly notebookCellCompleted = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.notebookCellCompleted', 'Notebook Cell Completed'),
+-		sound: Sound.taskCompleted,
+-		legacySoundSettingsKey: 'audioCues.notebookCellCompleted',
+-		legacyAnnouncementSettingsKey: 'accessibility.alert.notebookCellCompleted',
+-		announcementMessage: localize('accessibility.signals.notebookCellCompleted', 'Notebook Cell Completed'),
+-		settingsKey: 'accessibility.signals.notebookCellCompleted',
+-	});
+-
+-	public static readonly notebookCellFailed = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.notebookCellFailed', 'Notebook Cell Failed'),
+-		sound: Sound.taskFailed,
+-		legacySoundSettingsKey: 'audioCues.notebookCellFailed',
+-		legacyAnnouncementSettingsKey: 'accessibility.alert.notebookCellFailed',
+-		announcementMessage: localize('accessibility.signals.notebookCellFailed', 'Notebook Cell Failed'),
+-		settingsKey: 'accessibility.signals.notebookCellFailed',
+-	});
+ 
+ 	public static readonly diffLineInserted = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.diffLineInserted', 'Diff Line Inserted'),
+@@ -585,7 +550,6 @@
+ 		settingsKey: 'accessibility.signals.codeActionApplied'
+ 	});
+ 
+-
+ 	public static readonly progress = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.progress', 'Progress'),
+ 		sound: Sound.progress,
+diff --git a/src/vs/workbench/contrib/search/browser/search.contribution.ts b/src/vs/workbench/contrib/search/browser/search.contribution.ts
+--- a/src/vs/workbench/contrib/search/browser/search.contribution.ts
++++ b/src/vs/workbench/contrib/search/browser/search.contribution.ts
+@@ -279,11 +279,6 @@
+ 			description: nls.localize('search.quickAccess.preserveInput', "Controls whether the last typed input to Quick Search should be restored when opening it the next time."),
+ 			default: false
+ 		},
+-		'search.experimental.closedNotebookRichContentResults': {
+-			type: 'boolean',
+-			description: nls.localize('search.experimental.closedNotebookResults', "Show notebook editor rich content results for closed notebooks. Please refresh your search results after changing this setting."),
+-			default: false
+-		},
+ 		'search.experimental.useIgnoreFilesInFindFiles': {
+ 			type: 'boolean',
+ 			default: false,
+diff --git a/src/vs/workbench/services/search/common/search.ts b/src/vs/workbench/services/search/common/search.ts
+--- a/src/vs/workbench/services/search/common/search.ts
++++ b/src/vs/workbench/services/search/common/search.ts
+@@ -458,9 +458,6 @@
+ 		preserveInput: boolean;
+ 	};
+ 	defaultViewMode: ViewMode;
+-	experimental: {
+-		closedNotebookRichContentResults: boolean;
+-	};
+ 	searchView: {
+ 		semanticSearchBehavior: string;
+ 		keywordSuggestions: boolean;
+diff --git a/src/vs/workbench/browser/workbench.contribution.ts b/src/vs/workbench/browser/workbench.contribution.ts
+--- a/src/vs/workbench/browser/workbench.contribution.ts
++++ b/src/vs/workbench/browser/workbench.contribution.ts
+@@ -188,7 +188,7 @@
+ 			},
+ 			'workbench.editor.languageDetectionHints': {
+ 				type: 'object',
+-				default: { 'untitledEditors': true, 'notebookEditors': true },
++				default: { 'untitledEditors': true },
+ 				description: localize('workbench.editor.showLanguageDetectionHints', "When enabled, shows a status bar Quick Fix when the editor language doesn't match detected content language."),
+ 				additionalProperties: false,
+ 				properties: {
+@@ -196,10 +196,6 @@
+ 						type: 'boolean',
+ 						description: localize('workbench.editor.showLanguageDetectionHints.editors', "Show in untitled text editors"),
+ 					},
+-					notebookEditors: {
+-						type: 'boolean',
+-						description: localize('workbench.editor.showLanguageDetectionHints.notebook', "Show in notebook editors"),
+-					}
+ 				}
+ 			},
+ 			'workbench.editor.tabActionLocation': {
+@@ -565,7 +561,7 @@
+ 				'type': 'string',
+ 				'enum': ['left', 'bottom', 'top', 'right'],
+ 				'default': 'bottom',
+-				'description': localize('panelDefaultLocation', "Controls the default location of the panel (Terminal, Debug Console, Output, Problems) in a new workspace. It can either show at the bottom, top, right, or left of the editor area."),
++				'description': localize('panelDefaultLocation', "Controls the default location of the panel (Terminal, Output, Problems) in a new workspace. It can either show at the bottom, top, right, or left of the editor area."),
+ 				agentsWindow: { default: 'bottom', readOnly: true },
+ 			},
+ 			'workbench.panel.opensMaximized': {
+diff --git a/src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts b/src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts
+--- a/src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts
++++ b/src/vs/workbench/services/languageDetection/common/languageDetectionWorkerService.ts
+@@ -29,7 +29,6 @@
+ 
+ export type LanguageDetectionHintConfig = {
+ 	untitledEditors: boolean;
+-	notebookEditors: boolean;
+ };
+ 
+ //#region Telemetry events
+diff --git a/src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts b/src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts
+--- a/src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts
++++ b/src/vs/workbench/browser/parts/editor/breadcrumbsControl.ts
+@@ -845,10 +845,7 @@
+ 			menu: [
+ 				{ id: MenuId.CommandPalette },
+ 				{ id: MenuId.MenubarAppearanceMenu, group: '4_editor', order: 2 },
+-				{ id: MenuId.NotebookToolbar, group: 'notebookLayout', order: 2 },
+ 				{ id: MenuId.StickyScrollContext },
+-				{ id: MenuId.NotebookStickyScrollContext, group: 'notebookView', order: 2 },
+-				{ id: MenuId.NotebookToolbarContext, group: 'notebookView', order: 2 }
+ 			]
+ 		});
+ 	}
+diff --git a/src/vs/workbench/browser/actions/listCommands.ts b/src/vs/workbench/browser/actions/listCommands.ts
+--- a/src/vs/workbench/browser/actions/listCommands.ts
++++ b/src/vs/workbench/browser/actions/listCommands.ts
+@@ -973,7 +973,7 @@
+ 				mnemonicTitle: localize({ key: 'mitoggleTreeStickyScroll', comment: ['&& denotes a mnemonic'] }, "&&Toggle Tree Sticky Scroll"),
+ 			},
+ 			category: 'View',
+-			metadata: { description: localize('toggleTreeStickyScrollDescription', "Toggles Sticky Scroll widget at the top of tree structures such as the File Explorer and Debug variables View.") },
++			metadata: { description: localize('toggleTreeStickyScrollDescription', "Toggles Sticky Scroll widget at the top of tree structures such as the File Explorer.") },
+ 			f1: true
+ 		});
+ 	}
+diff --git a/src/vs/editor/common/config/editorOptions.ts b/src/vs/editor/common/config/editorOptions.ts
+--- a/src/vs/editor/common/config/editorOptions.ts
++++ b/src/vs/editor/common/config/editorOptions.ts
+@@ -6382,7 +6382,7 @@
+ 	)),
+ 	glyphMargin: register(new EditorBooleanOption(
+ 		EditorOption.glyphMargin, 'glyphMargin', true,
+-		{ description: nls.localize('glyphMargin', "Controls whether the editor should render the vertical glyph margin. Glyph margin is mostly used for debugging.") }
++		{ description: nls.localize('glyphMargin', "Controls whether the editor should render the vertical glyph margin.") }
+ 	)),
+ 	gotoLocation: register(new EditorGoToLocation()),
+ 	hideCursorInOverviewRuler: register(new EditorBooleanOption(
+diff --git a/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts b/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
+--- a/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
++++ b/src/vs/platform/terminal/common/terminalPlatformConfiguration.ts
+@@ -116,7 +116,7 @@
+ 	properties: {
+ 		[TerminalSettingId.AutomationProfileLinux]: {
+ 			restricted: true,
+-			markdownDescription: localize('terminal.integrated.automationProfile.linux', "The terminal profile to use on Linux for automation-related terminal usage like tasks and debug."),
++			markdownDescription: localize('terminal.integrated.automationProfile.linux', "The terminal profile to use on Linux for automation-related terminal usage like tasks."),
+ 			type: ['object', 'null'],
+ 			default: null,
+ 			'anyOf': [
+@@ -134,7 +134,7 @@
+ 		},
+ 		[TerminalSettingId.AutomationProfileMacOs]: {
+ 			restricted: true,
+-			markdownDescription: localize('terminal.integrated.automationProfile.osx', "The terminal profile to use on macOS for automation-related terminal usage like tasks and debug."),
++			markdownDescription: localize('terminal.integrated.automationProfile.osx', "The terminal profile to use on macOS for automation-related terminal usage like tasks."),
+ 			type: ['object', 'null'],
+ 			default: null,
+ 			'anyOf': [
+@@ -152,7 +152,7 @@
+ 		},
+ 		[TerminalSettingId.AutomationProfileWindows]: {
+ 			restricted: true,
+-			markdownDescription: localize('terminal.integrated.automationProfile.windows', "The terminal profile to use for automation-related terminal usage like tasks and debug. This setting will currently be ignored if {0} (now deprecated) is set.", '`terminal.integrated.automationShell.windows`'),
++			markdownDescription: localize('terminal.integrated.automationProfile.windows', "The terminal profile to use for automation-related terminal usage like tasks. This setting will currently be ignored if {0} (now deprecated) is set.", '`terminal.integrated.automationShell.windows`'),
+ 			type: ['object', 'null'],
+ 			default: null,
+ 			'anyOf': [
+diff --git a/extensions/mermaid-markdown-features/package.json b/extensions/mermaid-markdown-features/package.json
+--- a/extensions/mermaid-markdown-features/package.json
++++ b/extensions/mermaid-markdown-features/package.json
+@@ -57,12 +57,12 @@
+       "webview/context": [
+         {
+           "command": "_mermaid-markdown.openInEditor",
+-          "when": "webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output')",
++          "when": "webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor')",
+           "group": "navigation@1"
+         },
+         {
+           "command": "_mermaid-markdown.copySource",
+-          "when": "webviewId == 'vscode.mermaid-markdown-features.preview' || (webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor' || webviewId == 'notebook.output'))",
++          "when": "webviewId == 'vscode.mermaid-markdown-features.preview' || (webviewSection == 'mermaid' && (webviewId == 'markdown.preview' || webviewId == 'vscode.markdown.preview.editor'))",
+           "group": "navigation@2"
+         },
+         {
+diff --git a/extensions/npm/package.json b/extensions/npm/package.json
+--- a/extensions/npm/package.json
++++ b/extensions/npm/package.json
+@@ -92,11 +92,6 @@
+         "icon": "$(run)"
+       },
+       {
+-        "command": "npm.debugScript",
+-        "title": "%command.debug%",
+-        "icon": "$(debug)"
+-      },
+-      {
+         "command": "npm.openScript",
+         "title": "%command.openScript%"
+       },
+@@ -133,10 +128,6 @@
+           "when": "false"
+         },
+         {
+-          "command": "npm.debugScript",
+-          "when": "false"
+-        },
+-        {
+           "command": "npm.openScript",
+           "when": "false"
+         },
+@@ -196,16 +187,6 @@
+           "command": "npm.runScript",
+           "when": "view == npm && viewItem == script",
+           "group": "inline"
+-        },
+-        {
+-          "command": "npm.debugScript",
+-          "when": "view == npm && viewItem == script",
+-          "group": "inline"
+-        },
+-        {
+-          "command": "npm.debugScript",
+-          "when": "view == npm && viewItem == script",
+-          "group": "navigation@3"
+         }
+       ],
+       "explorer/context": [
+diff --git a/extensions/npm/package.nls.json b/extensions/npm/package.nls.json
+--- a/extensions/npm/package.nls.json
++++ b/extensions/npm/package.nls.json
+@@ -25,14 +25,13 @@
+ 	"config.npm.scriptExplorerExclude": "An array of regular expressions that indicate which scripts should be excluded from the NPM Scripts view.",
+ 	"config.npm.enableRunFromFolder": "Enable running npm scripts contained in a folder from the Explorer context menu.",
+ 	"config.npm.fetchOnlinePackageInfo": "Fetch data from https://registry.npmjs.org and https://registry.bower.io to provide auto-completion and information on hover features on npm dependencies.",
+-	"config.npm.scriptHover": "Display hover with `Run` and `Debug` commands for scripts.",
++	"config.npm.scriptHover": "Display hover with `Run` commands for scripts.",
+ 	"npm.parseError": "Npm task detection: failed to parse the file {0}",
+ 	"taskdef.script": "The npm script to customize.",
+ 	"taskdef.path": "The path to the folder of the package.json file that provides the script. Can be omitted.",
+ 	"view.name": "NPM Scripts",
+ 	"command.refresh": "Refresh",
+ 	"command.run": "Run",
+-	"command.debug": "Debug",
+ 	"command.openScript": "Open",
+ 	"command.runInstall": "Run Install",
+ 	"command.runSelectedScript": "Run Script",
+diff --git a/extensions/npm/src/scriptHover.ts b/extensions/npm/src/scriptHover.ts
+--- a/extensions/npm/src/scriptHover.ts
++++ b/extensions/npm/src/scriptHover.ts
+@@ -3,7 +3,6 @@
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
+ 
+-import { dirname } from 'path';
+ import {
+ 	CancellationToken, commands, ExtensionContext,
+ 	Hover, HoverProvider, MarkdownString, l10n, Position, ProviderResult,
+@@ -12,8 +11,7 @@
+ } from 'vscode';
+ import { INpmScriptInfo, readScripts } from './readScripts';
+ import {
+-	createScriptRunnerTask,
+-	startDebugging
++	createScriptRunnerTask
+ } from './tasks';
+ 
+ 
+@@ -35,7 +33,6 @@
+ 
+ 	constructor(private context: ExtensionContext) {
+ 		context.subscriptions.push(commands.registerCommand('npm.runScriptFromHover', this.runScriptFromHover, this));
+-		context.subscriptions.push(commands.registerCommand('npm.debugScriptFromHover', this.debugScriptFromHover, this));
+ 		context.subscriptions.push(workspace.onDidChangeTextDocument((e) => {
+ 			invalidateHoverScriptsCache(e.document);
+ 		}));
+@@ -66,7 +63,6 @@
+ 				const contents: MarkdownString = new MarkdownString();
+ 				contents.isTrusted = true;
+ 				contents.appendMarkdown(this.createRunScriptMarkdown(name, document.uri));
+-				contents.appendMarkdown(this.createDebugScriptMarkdown(name, document.uri));
+ 				hover = new Hover(contents);
+ 			}
+ 		});
+@@ -83,20 +79,6 @@
+ 			'npm.runScriptFromHover',
+ 			args,
+ 			l10n.t("Run the script as a task")
+-		);
+-	}
+-
+-	private createDebugScriptMarkdown(script: string, documentUri: Uri): string {
+-		const args = {
+-			documentUri: documentUri,
+-			script: script,
+-		};
+-		return this.createMarkdownLink(
+-			l10n.t("Debug Script"),
+-			'npm.debugScriptFromHover',
+-			args,
+-			l10n.t("Runs the script under the debugger"),
+-			'|'
+ 		);
+ 	}
+ 
+@@ -118,13 +100,4 @@
+ 			await tasks.executeTask(task);
+ 		}
+ 	}
+-
+-	public debugScriptFromHover(args: { script: string; documentUri: Uri }) {
+-		const script = args.script;
+-		const documentUri = args.documentUri;
+-		const folder = workspace.getWorkspaceFolder(documentUri);
+-		if (folder) {
+-			startDebugging(this.context, script, dirname(documentUri.fsPath), folder);
+-		}
+-	}
+ }
+diff --git a/extensions/npm/src/npmView.ts b/extensions/npm/src/npmView.ts
+--- a/extensions/npm/src/npmView.ts
++++ b/extensions/npm/src/npmView.ts
+@@ -15,7 +15,6 @@
+ import {
+ 	createInstallationTask, getTaskName, isAutoDetectionEnabled, isWorkspaceFolder, INpmTaskDefinition,
+ 	NpmTaskProvider,
+-	startDebugging,
+ 	detectPackageManager,
+ 	ITaskWithLocation,
+ 	INSTALL_SCRIPT
+@@ -84,7 +83,9 @@
+ 			: task.task.name;
+ 		super(name, TreeItemCollapsibleState.None);
+ 		this.taskLocation = task.location;
+-		const command: ExplorerCommands = name === `${INSTALL_SCRIPT} ` ? 'run' : workspace.getConfiguration('npm').get<ExplorerCommands>('scriptExplorerAction') || 'open';
++		const configuredAction = name === `${INSTALL_SCRIPT} ` ? 'run' : workspace.getConfiguration('npm').get<string>('scriptExplorerAction');
++		// Legacy Debug clicks run the script as an ordinary task.
++		const command: ExplorerCommands = configuredAction === 'run' || configuredAction === 'debug' ? 'run' : 'open';
+ 
+ 		const commandList = {
+ 			'open': {
+@@ -145,7 +146,6 @@
+ 		const subscriptions = context.subscriptions;
+ 		this.extensionContext = context;
+ 		subscriptions.push(commands.registerCommand('npm.runScript', this.runScript, this));
+-		subscriptions.push(commands.registerCommand('npm.debugScript', this.debugScript, this));
+ 		subscriptions.push(commands.registerCommand('npm.openScript', this.openScript, this));
+ 		subscriptions.push(commands.registerCommand('npm.runInstall', this.runInstall, this));
+ 	}
+@@ -154,10 +154,6 @@
+ 		// Call detectPackageManager to trigger the multiple lock files warning.
+ 		await detectPackageManager(script.getFolder().uri, this.context, true);
+ 		tasks.executeTask(script.task);
+-	}
+-
+-	private async debugScript(script: NpmScript) {
+-		startDebugging(this.extensionContext, script.task.definition.script, path.dirname(script.package.resourceUri!.fsPath), script.getFolder());
+ 	}
+ 
+ 	private findScriptPosition(document: TextDocument, script?: NpmScript) {
+diff --git a/extensions/npm/src/npmMain.ts b/extensions/npm/src/npmMain.ts
+--- a/extensions/npm/src/npmMain.ts
++++ b/extensions/npm/src/npmMain.ts
+@@ -10,7 +10,6 @@
+ import { NpmScriptsTreeDataProvider } from './npmView';
+ import { getScriptRunner, getPackageManager, invalidateTasksCache, NpmTaskProvider, hasPackageJson } from './tasks';
+ import { invalidateHoverScriptsCache, NpmScriptHoverProvider } from './scriptHover';
+-import { NpmScriptLensProvider } from './npmScriptLens';
+ import which from 'which';
+ 
+ let treeDataProvider: NpmScriptsTreeDataProvider | undefined;
+@@ -75,7 +74,6 @@
+ 		}
+ 		return '';
+ 	}));
+-	context.subscriptions.push(new NpmScriptLensProvider());
+ 
+ 	context.subscriptions.push(vscode.window.registerTerminalQuickFixProvider('ms-vscode.npm-command', {
+ 		provideTerminalQuickFixes({ outputMatch }) {
+diff --git a/extensions/npm/src/tasks.ts b/extensions/npm/src/tasks.ts
+--- a/extensions/npm/src/tasks.ts
++++ b/extensions/npm/src/tasks.ts
+@@ -6,7 +6,7 @@
+ import {
+ 	TaskDefinition, Task, TaskGroup, WorkspaceFolder, RelativePattern, ShellExecution, Uri, workspace,
+ 	TaskProvider, TextDocument, tasks, TaskScope, QuickPickItem, window, Position, ExtensionContext, env,
+-	ShellQuotedString, ShellQuoting, commands, Location, CancellationTokenSource, l10n
++	ShellQuotedString, ShellQuoting, Location, CancellationTokenSource, l10n
+ } from 'vscode';
+ import * as path from 'path';
+ import * as fs from 'fs';
+@@ -444,18 +444,6 @@
+ 	}
+ }
+ 
+-export async function startDebugging(context: ExtensionContext, scriptName: string, cwd: string, folder: WorkspaceFolder) {
+-	const runScriptCommand = await getRunScriptCommand(scriptName, folder.uri, context, true);
+-
+-	commands.executeCommand(
+-		'extension.js-debug.createDebuggerTerminal',
+-		runScriptCommand.join(' '),
+-		folder,
+-		{ cwd },
+-	);
+-}
+-
+-
+ export type StringMap = { [s: string]: string };
+ 
+ export function findScriptAtPosition(document: TextDocument, buffer: string, position: Position): string | undefined {

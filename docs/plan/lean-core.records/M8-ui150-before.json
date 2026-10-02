@@ -1,0 +1,324 @@
+{
+  "at": "2026-10-02T19:17:33.235774+10:00",
+  "generation": "150",
+  "status": "BEFORE_QUIT_PUBLIC_AND_VISUAL_PASS_NATIVE_PERMISSION_PENDING",
+  "app": "/private/tmp/lcfinal-chkarkup/VSLight.app",
+  "pid": 46653,
+  "hostPid": 47396,
+  "queryCount": 13,
+  "publicBefore": {
+    "status": "PASS",
+    "phase": "before",
+    "extensionId": "lean-tests.lean-ui-final",
+    "configuredTheme": "One Dark Pro",
+    "themeExtension": {
+      "id": "zhuangtongfa.material-theme",
+      "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal",
+      "version": "3.20.2",
+      "isActive": true
+    },
+    "activeColorThemeKind": 2,
+    "syntheticAuth": {
+      "providerId": "lean-final-synthetic-auth",
+      "accountIds": [
+        "synthetic-alpha",
+        "synthetic-beta"
+      ],
+      "selectedAccountId": "synthetic-beta",
+      "selectedSessionId": "synthetic-beta-session",
+      "tokenVerified": true,
+      "accountsProviderCalls": 2,
+      "sessionProviderCalls": 1,
+      "createSessionCalls": 0,
+      "removeSessionCalls": 0,
+      "registeredThroughPublicApi": true,
+      "requestedSilentWithoutExplicitAccount": true
+    },
+    "globalStateSentinelVerified": true,
+    "retiredHistoryAndFakeCredentialSentinelsVerified": true,
+    "preQuitGlobalStateWriteVerified": true,
+    "disabledExtension": {
+      "id": "lean-tests.lean-disabled-final",
+      "manifestPresent": true,
+      "hostVisible": false,
+      "activationMarkerPresent": false
+    },
+    "note": "Theme identity/colors and database/file byte preservation require controller checks; no tokens returned."
+  },
+  "themeDisabledBefore": {
+    "generation": "150",
+    "status": "ACTUAL_THEME_AND_DISABLED_RENDERER_BEFORE_PASS",
+    "pid": 46653,
+    "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+    "theme": {
+      "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+      "editorBackground": "rgb(40, 44, 52)",
+      "colors": {
+        "editor.background": "#282c34",
+        "editor.foreground": "#abb2bf",
+        "sideBar.background": "#21252b",
+        "activityBar.background": "#282c34",
+        "statusBar.background": "#21252b"
+      }
+    },
+    "disabled": {
+      "query": "@disabled lean-disabled-final",
+      "rows": [
+        {
+          "id": "lean-tests.lean-disabled-final",
+          "label": "Synthetic disabled extension persistence sentinel, 0.0.1, Publisher lean-tests,  ",
+          "text": "Synthetic disabled extension persistence sentinel\nlean-tests"
+        }
+      ]
+    },
+    "themeFile": {
+      "path": "/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/themes/OneDark-Pro.json",
+      "sha256": "186fbbd1ef99a9fb6548fac7a1d354b925a7f9b98da97ef7649e22e20d08c756"
+    }
+  },
+  "nativePermission": {
+    "at": "2026-10-02T19:17:33.234777+10:00",
+    "pid": 46653,
+    "trusted": false,
+    "readonly": true,
+    "menuBarError": -25211,
+    "nodeCount": 0,
+    "exit": 1,
+    "applicationHeldOpen": true
+  },
+  "notVerified": [
+    "native full menu",
+    "normal quit and actual process exit",
+    "fresh main/host restart",
+    "SQLite/file preservation after quit",
+    "public account preference/theme/disabled extension state after restart",
+    "new151 actual runtime"
+  ],
+  "files": [
+    {
+      "path": "M8-ui150-before.evidence/active-keys-0.json",
+      "bytes": 639,
+      "sha256": "18c2d78e0421a803e5ec156334f603840574f0fc154461c1e28df9afe3a5d4b3"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-0.png",
+      "bytes": 89400,
+      "sha256": "e21da61c5aa490d77d0ad14bbf347a064d5a54e4c9ce40f092e47ec17af89469"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-1.json",
+      "bytes": 3523,
+      "sha256": "004f3bc692eba89004c1fbeb12c7dcfcd666e218cf547cf84c821d4a58d98d96"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-1.png",
+      "bytes": 175193,
+      "sha256": "c386ed24c2e1685606eabfae4ca961a86ef2424e8179957909ed1963d1b892e6"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-10.json",
+      "bytes": 347,
+      "sha256": "21562278502e17c6bac1f4efcb7410fa8abb253f6c3daa1e995f4cf00cb625ab"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-10.png",
+      "bytes": 82278,
+      "sha256": "d65122c6df5b91718be1e7ebeb137fc5f395d2cba30b3a0a369d32e45b0c7352"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-11.json",
+      "bytes": 348,
+      "sha256": "8a66a5588cd7e4e311fae96e4a499200a5a9250577505fc9149e6a8e61ca707e"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-11.png",
+      "bytes": 81276,
+      "sha256": "a1a549fc2a7183bea9bef25439d6ce00ccefb256903ac66d477c08348886c482"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-12.json",
+      "bytes": 360,
+      "sha256": "1dfd0ecf3ce9b60a15400fd895f75bca7f885bd1abb218d444e04a9c5e44f400"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-12.png",
+      "bytes": 85461,
+      "sha256": "21f76d21461e57d0f3dc23ca303cc38e8bf9751283ee48225192236f439c022e"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-2.json",
+      "bytes": 1244,
+      "sha256": "280fb5bafb4c46f32966c295239b4dff1c4bbfd4567e3bbcbcc353903200de60"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-2.png",
+      "bytes": 102495,
+      "sha256": "42bc61232d8d2e0c8edf0ff457e86a11cc4df8e838983a6292f28b96613ee13f"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-3.json",
+      "bytes": 313,
+      "sha256": "3043ac076ae17facd92a382575f455d2bae6ec4d8a3784caee8a281f9a6a2e6e"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-3.png",
+      "bytes": 72975,
+      "sha256": "92be61d55fafa9e161e0f7420516d685a2cf15ecb991c8a9cda92a575380776b"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-4.json",
+      "bytes": 316,
+      "sha256": "473f271b6b42c90579ff5651c624c8df45d0c07063f8fcb655bc5f532a6af9bf"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-4.png",
+      "bytes": 73256,
+      "sha256": "2b977fd6cb38eccf29c43bf3428805db948816971e04b75f40bb8a88e43dac4a"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-5.json",
+      "bytes": 325,
+      "sha256": "7d99b4b75d9d71a3b0289664e78f46825c03e01b371c32a2a79f96e76a64b849"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-5.png",
+      "bytes": 76170,
+      "sha256": "d28639f16c96da038102e9b6ea319381c5d529a2fe9543f4a037526deae63abb"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-6.json",
+      "bytes": 321,
+      "sha256": "c1515de0cc2523214e6b608f4556780a4b11cb5b54a668217d2906cc1bb2ff81"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-6.png",
+      "bytes": 75316,
+      "sha256": "32aeb0556b4bdbf2cec2092f98edb8e25bd9e524e9ed8ba5fa37afd732658d83"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-7.json",
+      "bytes": 321,
+      "sha256": "282ef93afb027136ec227489b8977709909a9790875ed26708e4a0d07ac829f3"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-7.png",
+      "bytes": 75496,
+      "sha256": "5c34bb3192f2ec742629568050cc27a006a4d997eefba5ceee6a75ce0b37c7cd"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-8.json",
+      "bytes": 317,
+      "sha256": "3fe8f8f17dfba9181581766c4e69f34134d45885cfe47873cbd00a0632656caf"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-8.png",
+      "bytes": 74094,
+      "sha256": "a162550e395a8060358609ddd602ce6b1ff4826414f6de28a81a51e1f0535f76"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-9.json",
+      "bytes": 334,
+      "sha256": "e2b496b589523de706f5b303b1300e6d56520344753856efa449f8f4b713749c"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-keys-9.png",
+      "bytes": 78792,
+      "sha256": "1fe6bc4eb800348a3493e550ed39b4d641ffef350ab8a470748a2851a8eb87a5"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-probe-summary.json",
+      "bytes": 16549,
+      "sha256": "6d15cf4a0596463b39caccc47911f7b9e860a55271550ed396e83f4310634193"
+    },
+    {
+      "path": "M8-ui150-before.evidence/active-probe.mjs",
+      "bytes": 8385,
+      "sha256": "bf753da792375f8d5c2008e135d6dc994adb953e9eb383f92528ade1490257af"
+    },
+    {
+      "path": "M8-ui150-before.evidence/actual-theme-before.png",
+      "bytes": 115520,
+      "sha256": "40272fff6a62fda00bd7cebc59b49e7bea9088486bbc7834aa42902c15c83f0c"
+    },
+    {
+      "path": "M8-ui150-before.evidence/actual-theme-disabled-before.json",
+      "bytes": 1531,
+      "sha256": "23c6cb872c5e9a579dcbf275f51ac864e33a41e98c0c870bca261854312e7540"
+    },
+    {
+      "path": "M8-ui150-before.evidence/attempt5-disabled-field-red.json",
+      "bytes": 1578,
+      "sha256": "a92761f856232f9212cb6c8c6ce77e18e0691426f4384ec281ec2bf20b534600"
+    },
+    {
+      "path": "M8-ui150-before.evidence/cold-app.log",
+      "bytes": 3012,
+      "sha256": "ae36f1e766fbf87d80b19aa83c1d0f971a89a0dd691d1996d58090306d3b887e"
+    },
+    {
+      "path": "M8-ui150-before.evidence/cold-launch.json",
+      "bytes": 1234,
+      "sha256": "9adb88152de64187fb5f68aace276a512bdd3fad48960b0b973b71c92f261a45"
+    },
+    {
+      "path": "M8-ui150-before.evidence/disabled-dom-diagnostic.json",
+      "bytes": 25032,
+      "sha256": "da4d88dac0e79205d7ba99b575b9f0c26143a094ea00a861ee83153c53a2c026"
+    },
+    {
+      "path": "M8-ui150-before.evidence/disabled-dom-diagnostic.png",
+      "bytes": 106191,
+      "sha256": "cdc1d17ed86e6fecb8c835ba1814cc2511375e5c7efea9e556202abbc6612bd2"
+    },
+    {
+      "path": "M8-ui150-before.evidence/identity.json",
+      "bytes": 1777,
+      "sha256": "fa5352d6329f4eb246c229fbb8c6002a5b1b8938a7d78e494833efc6a56df950"
+    },
+    {
+      "path": "M8-ui150-before.evidence/inspect-disabled-dom.mjs",
+      "bytes": 1846,
+      "sha256": "cbb11388dd8697f3bcfef850b91a766658d4d5c09918813d1b600d2f726f5734"
+    },
+    {
+      "path": "M8-ui150-before.evidence/menu-readonly.m",
+      "bytes": 2067,
+      "sha256": "2186db5881a1d5d52e5d4a6e79bfac45917ab9b3e16ef388d08af39ff3dca229"
+    },
+    {
+      "path": "M8-ui150-before.evidence/menu-system-events.js",
+      "bytes": 915,
+      "sha256": "3e181090dc1e02bec0ad3a24145f34e3c7a847089a23455b6d2f7769e06be5c5"
+    },
+    {
+      "path": "M8-ui150-before.evidence/native-permission-latest.json",
+      "bytes": 191,
+      "sha256": "006a4962d07713bdea90e867fc71f1186209b1085d86e28d69e89551e5c1f11a"
+    },
+    {
+      "path": "M8-ui150-before.evidence/preservation-prepared.json",
+      "bytes": 1600,
+      "sha256": "7c1105b14db8e256613ef741a9f3892263015bdabc23f08b8a035e2beedf444d"
+    },
+    {
+      "path": "M8-ui150-before.evidence/theme-before-restart.png",
+      "bytes": 115925,
+      "sha256": "eb4307504375b4f7435d75fca08d11f6ed90ba312bfe6b0234ac4452a348e15b"
+    },
+    {
+      "path": "M8-ui150-before.evidence/verified-theme-disabled-before.json",
+      "bytes": 1625,
+      "sha256": "f0d4b69d12378dcf98c8be76e203ccfd5ff36a7373642988087ddc4bb09f2ee5"
+    },
+    {
+      "path": "M8-ui150-before.evidence/verified-theme-disabled-before.png",
+      "bytes": 106304,
+      "sha256": "fd0836c0949d5384f7346b642a344652f6a63afc929fdf44610d32e01413f806"
+    },
+    {
+      "path": "M8-ui150-before.evidence/verify-theme-disabled-before.mjs",
+      "bytes": 3705,
+      "sha256": "d5612d3582968d790cc235cb7aab16664f37a6e1caa9802c258fac19aaf5d8bc"
+    }
+  ]
+}

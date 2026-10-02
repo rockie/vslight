@@ -1,0 +1,51 @@
+{
+  "at": "2026-10-02 21:59 +1000",
+  "status": "PASS_M2_ALL_CURRENT_EXIT_GATES",
+  "baseline": "dirty@f1961b7546139a6aa722ff0b8a001296d3041e33",
+  "scopeChange": "User explicitly accepts local arm64 only; x64/CI NOT_REQUIRED, not claimed passed",
+  "gates": {
+    "V1_icons_and_associations": "PASS",
+    "V2_codicons_and_ordinary_icons": "PASS",
+    "V4_native_gui_fallback_and_language_pack": "PASS",
+    "V8_resources_full_build_package_helper_failure_idempotence": "PASS",
+    "three_workflows_python_configuration": "PASS_STATIC_CONFIGURATION",
+    "current_input_local_arm64_full_build": "PASS",
+    "adjusted_actual_static_cli_gates": "PASS",
+    "x64_and_CI": "NOT_REQUIRED_BY_USER"
+  },
+  "gaps": [],
+  "references": [
+    {
+      "path": "M8-completion-input-artifact151.json",
+      "sha256": "13af6c9fff08800103c0500c4d1fab1650e8611505e537547dd541d750cf8d82"
+    },
+    {
+      "path": "M8-local-arm64-scope151.md",
+      "sha256": "179e8f6cb12042ef837669a9e7402216f0a6148af57cd48cfc56f2187d92759c"
+    },
+    {
+      "path": "M2-icons150.json",
+      "sha256": "2b498e5b28422f55958f6b79c24fe70490d45e927ad781da840df13565d8ef99"
+    },
+    {
+      "path": "M2-native-gui149-resume.json",
+      "sha256": "da9d975f6a8229661e165a0751898249a4c384409e0e4eceb0570e2811831614"
+    },
+    {
+      "path": "M2-language-cli.json",
+      "sha256": "8f9bef2d034982696986942a050e42b68d5eb86c509bf8c3eb7fa3845ce104fc"
+    },
+    {
+      "path": "M2-language-gui145.json",
+      "sha256": "1152ad5edc9bab19f224e1a9dbe91feb8fe46a3c64c3697e9a1f2a2527d9976d"
+    },
+    {
+      "path": "M8-build151.json",
+      "sha256": "ad2272ab4666e0f89c16f92239dcb3f0a380280c594bb13bd5cba43fd9671a8a"
+    },
+    {
+      "path": "M8-artifact151.json",
+      "sha256": "ef63b49987c9f408343432ee93c313e0acbc178aa21c16d371d69feacf667d9f"
+    }
+  ]
+}

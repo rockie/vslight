@@ -1,0 +1,14 @@
+2026-10-02 20:48:34.062 [info] Extension host with pid 26830 started
+2026-10-02 20:48:34.063 [info] Skipping acquiring lock for /private/tmp/lcfinal-chkarkup/ui/u/User/workspaceStorage/87222462cdda108ffb51174a9c4d8430.
+2026-10-02 20:48:34.080 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2026-10-02 20:48:34.110 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2026-10-02 20:48:34.111 [info] ExtensionService#_doActivateExtension vscode.terminal-suggest, startup: false, activationEvent: 'onTerminalShellIntegration:*'
+2026-10-02 20:48:34.126 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2026-10-02 20:48:34.143 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2026-10-02 20:48:34.179 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:48:34.179 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource.
+2026-10-02 20:48:34.186 [info] Eager extensions activated
+2026-10-02 20:48:34.190 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:48:34.196 [info] ExtensionService#_doActivateExtension zhuangtongfa.material-theme, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:48:34.198 [info] ExtensionService#_doActivateExtension lean-tests.lean-ui-final, startup: false, activationEvent: 'onStartupFinished'
+2026-10-02 20:48:34.199 [info] ExtensionService#_doActivateExtension lean-tests.lean-terminal151, startup: false, activationEvent: 'onStartupFinished'

@@ -1,0 +1,20 @@
+{
+  "terminals": [
+    {
+      "className": "terminal xterm",
+      "canvasCount": 4,
+      "rect": {
+        "width": 0,
+        "height": 0
+      }
+    },
+    {
+      "className": "terminal xterm focus",
+      "canvasCount": 3,
+      "rect": {
+        "width": 972,
+        "height": 252
+      }
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+diff --git a/src/vs/workbench/common/editor/editorGroupModel.ts b/src/vs/workbench/common/editor/editorGroupModel.ts
+--- a/src/vs/workbench/common/editor/editorGroupModel.ts
++++ b/src/vs/workbench/common/editor/editorGroupModel.ts
+@@ -1230,7 +1230,7 @@
+ 			this.locked = true;
+ 		}
+ 
+-		this.editors = coalesce(data.editors.map((e, index) => {
++		const editorsByOriginalIndex = data.editors.map((e, index) => {
+ 			let editor: EditorInput | undefined;
+ 
+ 			const editorSerializer = registry.getEditorSerializer(e.id);
+@@ -1242,23 +1242,20 @@
+ 				}
+ 			}
+ 
+-			if (!editor && typeof data.sticky === 'number' && index <= data.sticky) {
+-				data.sticky--; // if editor cannot be deserialized but was sticky, we need to decrease sticky index
++			if (editor && typeof data.sticky === 'number' && index <= data.sticky) {
++				this.sticky++;
+ 			}
+ 
+ 			return editor;
+-		}));
+-
+-		this.mru = coalesce(data.mru.map(i => this.editors[i]));
++		});
++
++		this.editors = coalesce(editorsByOriginalIndex);
++		this.mru = coalesce(data.mru.map(i => editorsByOriginalIndex[i]));
+ 
+ 		this.selection = this.mru.length > 0 ? [this.mru[0]] : [];
+ 
+ 		if (typeof data.preview === 'number') {
+-			this.preview = this.editors[data.preview];
+-		}
+-
+-		if (typeof data.sticky === 'number') {
+-			this.sticky = data.sticky;
++			this.preview = editorsByOriginalIndex[data.preview] ?? null;
+ 		}
+ 
+ 		return this._id;
+diff --git a/src/vs/workbench/test/browser/parts/editor/editorGroupModel.test.ts b/src/vs/workbench/test/browser/parts/editor/editorGroupModel.test.ts
+--- a/src/vs/workbench/test/browser/parts/editor/editorGroupModel.test.ts
++++ b/src/vs/workbench/test/browser/parts/editor/editorGroupModel.test.ts
+@@ -776,6 +776,94 @@
+ 		assert.strictEqual(deserialized.getEditors(EditorsOrder.MOST_RECENTLY_ACTIVE).length, 0);
+ 	});
+ 
++	suite('group deserialization with missing serializers', () => {
++
++		class UnrestorableEditorInputSerializer extends TestEditorInputSerializer {
++			override deserialize(): undefined {
++				return undefined;
++			}
++		}
++
++		setup(() => {
++			disposables.add(Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).registerEditorSerializer('unrestorableEditorInputForGroups', UnrestorableEditorInputSerializer));
++			inst().invokeFunction(accessor => Registry.as<IEditorFactoryRegistry>(EditorExtensions.EditorFactory).start(accessor));
++		});
++
++		const cases = [
++			{
++				name: 'preserves a surviving active editor and MRU order',
++				editors: ['R', 'A', 'B'], mru: [1, 2, 0],
++				expected: { sequential: ['A', 'B'], mru: ['A', 'B'], active: 'A', preview: null, sticky: [] }
++			},
++			{
++				name: 'selects the first surviving MRU when the active editor is missing',
++				editors: ['R', 'A', 'B'], mru: [0, 2, 1],
++				expected: { sequential: ['A', 'B'], mru: ['B', 'A'], active: 'B', preview: null, sticky: [] }
++			},
++			{
++				name: 'does not transfer a missing preview to its neighbour',
++				editors: ['R', 'A', 'B'], mru: [1, 2, 0], preview: 0,
++				expected: { sequential: ['A', 'B'], mru: ['A', 'B'], active: 'A', preview: null, sticky: [] }
++			},
++			{
++				name: 'preserves a surviving preview by its original index',
++				editors: ['R', 'A', 'B'], mru: [1, 2, 0], preview: 1,
++				expected: { sequential: ['A', 'B'], mru: ['A', 'B'], active: 'A', preview: 'A', sticky: [] }
++			},
++			{
++				name: 'removes consecutive missing sticky editors',
++				editors: ['R1', 'R2', 'A'], mru: [2, 1, 0], sticky: 1,
++				expected: { sequential: ['A'], mru: ['A'], active: 'A', preview: null, sticky: [] }
++			},
++			{
++				name: 'preserves sticky membership using the original boundary',
++				editors: ['R1', 'R2', 'A', 'B'], mru: [3, 2, 1, 0], sticky: 2,
++				expected: { sequential: ['A', 'B'], mru: ['B', 'A'], active: 'B', preview: null, sticky: ['A'] }
++			},
++			{
++				name: 'restores an empty group when every editor is missing',
++				editors: ['R1', 'R2'], mru: [1, 0], preview: 0, sticky: 1,
++				expected: { sequential: [], mru: [], active: null, preview: null, sticky: [] }
++			},
++			{
++				name: 'preserves a group with no missing editors',
++				editors: ['A', 'B'], mru: [1, 0], preview: 1, sticky: 0,
++				expected: { sequential: ['A', 'B'], mru: ['B', 'A'], active: 'B', preview: 'B', sticky: ['A'] }
++			}
++		];
++
++		for (const retiredTypeId of ['unknownEditorInputForGroups', 'unrestorableEditorInputForGroups']) {
++			for (const fixture of cases) {
++				test(`${fixture.name} (${retiredTypeId})`, () => {
++					const data: ISerializedEditorGroupModel = {
++						id: 42,
++						editors: fixture.editors.map(id => ({
++							id: id.startsWith('R') ? retiredTypeId : 'testEditorInputForGroups',
++							value: JSON.stringify({ id })
++						})),
++						mru: fixture.mru.slice(),
++						preview: fixture.preview,
++						sticky: fixture.sticky
++					};
++					const original = { ...data, editors: data.editors.slice(), mru: data.mru.slice() };
++					const group = createEditorGroupModel(data);
++					const ids = (editors: EditorInput[]) => editors.map(editor => (editor as TestEditorInput).id);
++
++					assert.deepStrictEqual({
++						sequential: ids(group.getEditors(EditorsOrder.SEQUENTIAL)),
++						mru: ids(group.getEditors(EditorsOrder.MOST_RECENTLY_ACTIVE)),
++						active: group.activeEditor ? (group.activeEditor as TestEditorInput).id : null,
++						preview: group.previewEditor ? (group.previewEditor as TestEditorInput).id : null,
++						sticky: ids(group.getEditors(EditorsOrder.SEQUENTIAL).filter(editor => group.isSticky(editor)))
++					}, fixture.expected);
++					assert.strictEqual(group.stickyCount, fixture.expected.sticky.length);
++					assert.strictEqual(group.id, data.id);
++					assert.deepStrictEqual(data, original);
++				});
++			}
++		}
++	});
++
+ 	test('group serialization (locked group)', function () {
+ 		const group = createEditorGroupModel();
+ 		const events = groupListener(group);

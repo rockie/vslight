@@ -1,0 +1,30 @@
+
+DevTools listening on ws://127.0.0.1:19560/devtools/browser/01a9e7fa-7fde-4580-bd19-35e3108957e9
+Warning: 'remote-debugging-port' is not in the list of known options, but still passed to Electron/Chromium.
+[90m[main 2026-10-02T10:20:56.814Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:20:56.840Z][0m StorageMainService: creating application shared storage
+[90m[main 2026-10-02T10:20:56.949Z][0m [shared storage] Creating shared storage database at '/private/tmp/lcfinal-chkarkup/ui/s/sharedStorage/state.vscdb' (wasCreated: false)
+[90m[main 2026-10-02T10:20:56.949Z][0m [shared storage] Initializing fallback application storage (path: /private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/state.vscdb)
+[90m[main 2026-10-02T10:20:56.971Z][0m [shared storage] Fallback application storage initialized with 57 items
+[90m[main 2026-10-02T10:20:57.186Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[90m[main 2026-10-02T10:20:57.187Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+[91m[main 2026-10-02T10:20:57.243Z][0m vscode-file: Refused to load resource /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/theme-seti/icons/seti.woff from vscode-file: protocol (original URL: vscode-file://vscode-app/private/tmp/lcfinal-chkarkup/VSLight.app/Contents/Resources/app/extensions/theme-seti/icons/seti.woff)
+[90m[main 2026-10-02T10:20:57.252Z][0m update#setState idle
+[90m[main 2026-10-02T10:20:58.408Z][0m vslight: policy-watcher unavailable, managed OS policies are disabled.
+(node:7097) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+(Use `VSLight --trace-deprecation ...` to show where the warning was created)
+[90m[main 2026-10-02T10:20:59.470Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T10:20:59.470Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T10:20:59.470Z][0m update#isLatestVersion() - releaseAge: 53, minReleaseAge: 1
+[90m[main 2026-10-02T10:21:27.254Z][0m update#setState checking for updates
+[90m[main 2026-10-02T10:21:27.255Z][0m update#doCheckForUpdates {
+  url: 'https://raw.githubusercontent.com/rockie/vslight/refs/heads/versions/stable/darwin/arm64/latest.json',
+  explicit: false,
+  background: true
+}
+[90m[main 2026-10-02T10:21:27.263Z][0m update#isLatestVersion() - found: 1.135.6566, current: 1.135.6566
+[90m[main 2026-10-02T10:21:27.263Z][0m update#isLatestVersion() - releaseDate: Wed Sep 30 2026 15:06:04 GMT+1000 (澳大利亚东部标准时间)
+[90m[main 2026-10-02T10:21:27.263Z][0m update#isLatestVersion() - releaseAge: 53, minReleaseAge: 1
+[90m[main 2026-10-02T10:21:27.263Z][0m update#setState idle
+2026-10-02 20:21:30.238 VSLight[7097:885362] error messaging the mach port for IMKCFRunLoopWakeUpReliable
+[90m[main 2026-10-02T10:21:34.639Z][0m Extension host with pid 7930 exited with code: 0, signal: unknown.

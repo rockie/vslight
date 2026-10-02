@@ -1,0 +1,10 @@
+{
+  "query": "@command:simpleBrowser.show",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "@command:simpleBrowser.show",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

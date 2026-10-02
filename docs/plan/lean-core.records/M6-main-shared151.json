@@ -1,0 +1,1252 @@
+{
+  "recordedAtUTC": "2026-10-02T11:17:28.315076+00:00",
+  "status": "COLD_RELOAD_MAIN_SHARED_REGISTERED_CHANNELS_AND_UTILITY_PASS_WITH_DIRECT_ACTOR_TABLE_BOUNDARY",
+  "scope": "151 signed persistent app, owned new child/new profile, actual Cold and one actual public Reload; existing ChannelServer and IPCServer maps plus live UtilityProcess registry directly captured. Separate static RPC assertion checks and ordinary host runtime activation; no direct runtime actor table captured.",
+  "run": {
+    "startedAt": "2026-10-02T11:13:26.926272+00:00",
+    "status": "CAPTURES_COMPLETE",
+    "launchArgs": [
+      "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight",
+      "--user-data-dir",
+      "/private/tmp/lc151ms-wdn5hck0/u",
+      "--extensions-dir",
+      "/private/tmp/lc151ms-wdn5hck0/e",
+      "--shared-data-dir",
+      "/private/tmp/lc151ms-wdn5hck0/s",
+      "--extensionDevelopmentPath",
+      "/private/tmp/lc151ms-wdn5hck0/ext",
+      "--inspect=19551",
+      "--inspect-sharedprocess=19552",
+      "--remote-debugging-port=19550",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--new-window",
+      "/private/tmp/lc151ms-wdn5hck0/w"
+    ],
+    "guiReleaseAuthorization": "root message GUI已释放 received before launch",
+    "mainPID": 39925,
+    "coldReady": {
+      "hostPID": 41146,
+      "parentPID": 39925,
+      "apiVersion": "1.135.0",
+      "at": "2026-10-02T11:13:28.705Z",
+      "ordinaryReadFile": true,
+      "ordinaryOpenDocument": true,
+      "ordinaryShowTextDocument": true,
+      "textLength": 32
+    },
+    "reloadRequestedAt": "2026-10-02T11:13:30.802977+00:00",
+    "reloadConsumed": {
+      "id": "ab3a9323ceb7436db81bdaa8c9cdf0fe",
+      "action": "reload",
+      "hostPID": 41146,
+      "at": "2026-10-02T11:13:30.826Z"
+    },
+    "reloadReady": {
+      "hostPID": 41471,
+      "parentPID": 39925,
+      "apiVersion": "1.135.0",
+      "at": "2026-10-02T11:13:31.206Z",
+      "ordinaryReadFile": true,
+      "ordinaryOpenDocument": true,
+      "ordinaryShowTextDocument": true,
+      "textLength": 32
+    },
+    "oldHostExited": true,
+    "publicQuitConsumed": {
+      "id": "35d72b15a9a049f5949bb83ad4c4e378",
+      "action": "quit",
+      "hostPID": 41471,
+      "at": "2026-10-02T11:13:33.128Z"
+    },
+    "waitExitCode": 0,
+    "quitCompletedAt": "2026-10-02T11:13:33.451943+00:00",
+    "portsReleased": {
+      "19550": true,
+      "19551": true,
+      "19552": true
+    },
+    "finishedAt": "2026-10-02T11:13:33.506085+00:00"
+  },
+  "preflight": {
+    "taskRoot": "/private/tmp/lc151ms-wdn5hck0",
+    "app": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app",
+    "evidence": "/Users/rockie/Documents/gh-xgent/vscodium/docs/plan/lean-core.records/M6-main-shared151.evidence",
+    "ports": {
+      "renderer": 19550,
+      "main": 19551,
+      "shared": 19552
+    },
+    "loadedHashPreflight": {
+      "main": {
+        "appScript": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/main.js",
+        "frozenScript": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/main.js",
+        "sha256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718"
+      },
+      "shared": {
+        "appScript": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+        "frozenScript": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+        "sha256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79"
+      }
+    },
+    "launchPermitted": false,
+    "waitingFor": "explicit root message GUI已释放",
+    "helperSHA256": "c24aa7b0f12a1d143134579f14745c8e19b0be3d9530e559024aea54bbc392e0"
+  },
+  "helper": {
+    "path": "dev/test-fixtures/lean-core/main-shared-registry.mjs",
+    "sha256": "c24aa7b0f12a1d143134579f14745c8e19b0be3d9530e559024aea54bbc392e0",
+    "unchangedFrom149": true
+  },
+  "retiredExactNames": [
+    "browserView",
+    "browserViewGroup",
+    "playwright",
+    "nativeManagedSettings",
+    "fileManagedSettings",
+    "webContentExtractor",
+    "sharedWebContentExtractor",
+    "sandboxHelper",
+    "NativeMcpDiscoveryHelper",
+    "mcpGateway",
+    "mcpGatewayToolBroker",
+    "mcpManagement",
+    "mcpGalleryManifest",
+    "customEndpointTelemetry",
+    "localTranscription",
+    "agentHost",
+    "agentHostLogger",
+    "agentHostConnectionTracker",
+    "agentHostProtocol",
+    "agentHostManagement",
+    "agentHostProxy",
+    "agentHostClientProxy",
+    "agentHostClientByokLm"
+  ],
+  "retiredProvenance": [
+    "patches/125-light-browser-runtime-closure.patch",
+    "patches/130-light-retired-background-entrypoints.patch",
+    "docs/plan/lean-core.records/M6-main-shared149.md"
+  ],
+  "captures": {
+    "cold-main151": {
+      "checks": {
+        "helperActualExit0": true,
+        "authorityRechecked": true,
+        "loadedDiskSuppliedFrozenHashExact": true,
+        "allOwnPrototypeConstructorIdentitiesValid": true,
+        "retired23NamesAbsent": true,
+        "ordinaryCompleteChannelsExact": true,
+        "pendingChannelsZero": true,
+        "utilityRegistryMatchesLiveInstances": true,
+        "inactiveUtilityInstancesZero": true,
+        "ordinaryUtilityRolesOnly": true,
+        "utilityParentMatchesOwnedMain": true
+      },
+      "status": "PASS",
+      "capturedAt": "2026-10-02T11:13:30.278Z",
+      "role": "main",
+      "pid": 39925,
+      "mainPID": 39925,
+      "channelServerInstances": 2,
+      "ipcServerInstances": 2,
+      "channelNames": [
+        "diagnostics",
+        "encryption",
+        "extensionHostStarter",
+        "extensionhostdebugservice",
+        "externalTerminal",
+        "keyboardLayout",
+        "launch",
+        "localFilesystem",
+        "localPty",
+        "logger",
+        "menubar",
+        "meteredConnection",
+        "nativeHost",
+        "policy",
+        "process",
+        "profileStorageListener",
+        "sign",
+        "storage",
+        "update",
+        "url",
+        "userDataProfiles",
+        "utilityProcessWorker",
+        "webview",
+        "workspaces"
+      ],
+      "utilityInstances": [
+        {
+          "pid": 40135,
+          "type": "shared-process",
+          "name": "shared-process",
+          "entryPoint": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+          "parentPID": 39925
+        },
+        {
+          "pid": 40136,
+          "type": "fileWatcher",
+          "name": "file-watcher",
+          "entryPoint": "vs/platform/files/node/watcher/watcherMain",
+          "parentPID": 39925
+        },
+        {
+          "pid": 41146,
+          "type": "extensionHost",
+          "name": "extension-host",
+          "entryPoint": "vs/workbench/api/node/extensionHostProcess",
+          "parentPID": 39925
+        }
+      ],
+      "retiredMatches": [],
+      "module": {
+        "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/main.js",
+        "scriptId": "141",
+        "diskSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+        "loadedSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+        "callback": "uncaughtException",
+        "bindingNames": {
+          "channelServer": "Vf",
+          "ipcServer": "qf",
+          "utilityProcess": "Ls"
+        }
+      },
+      "identity": {
+        "channelServer": {
+          "binding": "Vf",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "registerChannel",
+            "sendResponse",
+            "send",
+            "sendBuffer",
+            "onRawMessage",
+            "onPromise",
+            "onEventListen",
+            "disposeActiveRequest",
+            "collectPendingRequest",
+            "flushPendingRequests",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 30,
+            "columnNumber": 14302
+          }
+        },
+        "ipcServer": {
+          "binding": "qf",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "getChannel",
+            "getMulticastEvent",
+            "registerChannel",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 32,
+            "columnNumber": 2463
+          }
+        },
+        "utilityProcess": {
+          "binding": "Ls",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "log",
+            "validateCanStart",
+            "start",
+            "doStart",
+            "createEnv",
+            "registerListeners",
+            "once",
+            "postMessage",
+            "connect",
+            "enableInspectPort",
+            "kill",
+            "onDidExitOrCrashOrKill",
+            "waitForExit"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 45,
+            "columnNumber": 12234
+          }
+        }
+      },
+      "snapshotSHA256": "8f7570aa9a1e736c7faaa6dc018f1d2415349e6e772e41c3ac4237429f877f77"
+    },
+    "cold-shared151": {
+      "checks": {
+        "helperActualExit0": true,
+        "authorityRechecked": true,
+        "loadedDiskSuppliedFrozenHashExact": true,
+        "allOwnPrototypeConstructorIdentitiesValid": true,
+        "retired23NamesAbsent": true,
+        "ordinaryCompleteChannelsExact": true,
+        "pendingChannelsZero": true,
+        "existingIPCParentChainExact": true
+      },
+      "status": "PASS",
+      "capturedAt": "2026-10-02T11:13:30.731Z",
+      "role": "shared",
+      "pid": 40135,
+      "mainPID": 39925,
+      "channelServerInstances": 2,
+      "ipcServerInstances": 1,
+      "channelNames": [
+        "IUserDataSyncResourceProviderService",
+        "checksum",
+        "diagnostics",
+        "extensionGalleryManifest",
+        "extensionTipsService",
+        "extensions",
+        "languagePacks",
+        "localGit",
+        "remoteTunnel",
+        "sharedProcessTunnel",
+        "telemetryAppender",
+        "userDataAutoSync",
+        "userDataSync",
+        "userDataSyncAccount",
+        "userDataSyncMachines",
+        "userDataSyncStoreManagement",
+        "v8InspectProfiling"
+      ],
+      "utilityInstances": null,
+      "retiredMatches": [],
+      "module": {
+        "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+        "scriptId": "154",
+        "diskSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+        "loadedSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+        "callback": "uncaughtException",
+        "bindingNames": {
+          "channelServer": "Gw",
+          "ipcServer": "Kw"
+        }
+      },
+      "identity": {
+        "channelServer": {
+          "binding": "Gw",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "registerChannel",
+            "sendResponse",
+            "send",
+            "sendBuffer",
+            "onRawMessage",
+            "onPromise",
+            "onEventListen",
+            "disposeActiveRequest",
+            "collectPendingRequest",
+            "flushPendingRequests",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "154",
+            "lineNumber": 27,
+            "columnNumber": 117498
+          }
+        },
+        "ipcServer": {
+          "binding": "Kw",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "getChannel",
+            "getMulticastEvent",
+            "registerChannel",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "154",
+            "lineNumber": 29,
+            "columnNumber": 2467
+          },
+          "existingSourceChain": {
+            "moduleAnchorBinding": "Yw",
+            "anchorLocation": {
+              "scriptId": "154",
+              "lineNumber": 29,
+              "columnNumber": 7021
+            },
+            "ownPrototypeParentIsExactBase": true
+          }
+        }
+      },
+      "snapshotSHA256": "da61e9a758bafd1991cf09889ad7e7a58403fac2a2e55b4c15d9948189ca5391"
+    },
+    "reload-main151": {
+      "checks": {
+        "helperActualExit0": true,
+        "authorityRechecked": true,
+        "loadedDiskSuppliedFrozenHashExact": true,
+        "allOwnPrototypeConstructorIdentitiesValid": true,
+        "retired23NamesAbsent": true,
+        "ordinaryCompleteChannelsExact": true,
+        "pendingChannelsZero": true,
+        "utilityRegistryMatchesLiveInstances": true,
+        "inactiveUtilityInstancesZero": true,
+        "ordinaryUtilityRolesOnly": true,
+        "utilityParentMatchesOwnedMain": true
+      },
+      "status": "PASS",
+      "capturedAt": "2026-10-02T11:13:32.642Z",
+      "role": "main",
+      "pid": 39925,
+      "mainPID": 39925,
+      "channelServerInstances": 2,
+      "ipcServerInstances": 2,
+      "channelNames": [
+        "diagnostics",
+        "encryption",
+        "extensionHostStarter",
+        "extensionhostdebugservice",
+        "externalTerminal",
+        "keyboardLayout",
+        "launch",
+        "localFilesystem",
+        "localPty",
+        "logger",
+        "menubar",
+        "meteredConnection",
+        "nativeHost",
+        "policy",
+        "process",
+        "profileStorageListener",
+        "sign",
+        "storage",
+        "update",
+        "url",
+        "userDataProfiles",
+        "utilityProcessWorker",
+        "webview",
+        "workspaces"
+      ],
+      "utilityInstances": [
+        {
+          "pid": 41471,
+          "type": "extensionHost",
+          "name": "extension-host",
+          "entryPoint": "vs/workbench/api/node/extensionHostProcess",
+          "parentPID": 39925
+        },
+        {
+          "pid": 40135,
+          "type": "shared-process",
+          "name": "shared-process",
+          "entryPoint": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+          "parentPID": 39925
+        },
+        {
+          "pid": 41470,
+          "type": "fileWatcher",
+          "name": "file-watcher",
+          "entryPoint": "vs/platform/files/node/watcher/watcherMain",
+          "parentPID": 39925
+        }
+      ],
+      "retiredMatches": [],
+      "module": {
+        "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/main.js",
+        "scriptId": "141",
+        "diskSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+        "loadedSHA256": "3c5ab0fabf35928c2ee15650b97fdf5e199603aceaa5d377525e155bcfbe7718",
+        "callback": "uncaughtException",
+        "bindingNames": {
+          "channelServer": "Vf",
+          "ipcServer": "qf",
+          "utilityProcess": "Ls"
+        }
+      },
+      "identity": {
+        "channelServer": {
+          "binding": "Vf",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "registerChannel",
+            "sendResponse",
+            "send",
+            "sendBuffer",
+            "onRawMessage",
+            "onPromise",
+            "onEventListen",
+            "disposeActiveRequest",
+            "collectPendingRequest",
+            "flushPendingRequests",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 30,
+            "columnNumber": 14302
+          }
+        },
+        "ipcServer": {
+          "binding": "qf",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "getChannel",
+            "getMulticastEvent",
+            "registerChannel",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 32,
+            "columnNumber": 2463
+          }
+        },
+        "utilityProcess": {
+          "binding": "Ls",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "log",
+            "validateCanStart",
+            "start",
+            "doStart",
+            "createEnv",
+            "registerListeners",
+            "once",
+            "postMessage",
+            "connect",
+            "enableInspectPort",
+            "kill",
+            "onDidExitOrCrashOrKill",
+            "waitForExit"
+          ],
+          "location": {
+            "scriptId": "141",
+            "lineNumber": 45,
+            "columnNumber": 12234
+          }
+        }
+      },
+      "snapshotSHA256": "bc3a2115ad620cb797678e890c738857766ea8d1df8b48a0a9c80f36d809755f"
+    },
+    "reload-shared151": {
+      "checks": {
+        "helperActualExit0": true,
+        "authorityRechecked": true,
+        "loadedDiskSuppliedFrozenHashExact": true,
+        "allOwnPrototypeConstructorIdentitiesValid": true,
+        "retired23NamesAbsent": true,
+        "ordinaryCompleteChannelsExact": true,
+        "pendingChannelsZero": true,
+        "existingIPCParentChainExact": true
+      },
+      "status": "PASS",
+      "capturedAt": "2026-10-02T11:13:33.003Z",
+      "role": "shared",
+      "pid": 40135,
+      "mainPID": 39925,
+      "channelServerInstances": 2,
+      "ipcServerInstances": 1,
+      "channelNames": [
+        "IUserDataSyncResourceProviderService",
+        "checksum",
+        "diagnostics",
+        "extensionGalleryManifest",
+        "extensionTipsService",
+        "extensions",
+        "languagePacks",
+        "localGit",
+        "remoteTunnel",
+        "sharedProcessTunnel",
+        "telemetryAppender",
+        "userDataAutoSync",
+        "userDataSync",
+        "userDataSyncAccount",
+        "userDataSyncMachines",
+        "userDataSyncStoreManagement",
+        "v8InspectProfiling"
+      ],
+      "utilityInstances": null,
+      "retiredMatches": [],
+      "module": {
+        "script": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+        "scriptId": "154",
+        "diskSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+        "loadedSHA256": "9cd32e165e4ecc37b49889113b7acd38651ac8229920c084481f1211ec160b79",
+        "callback": "uncaughtException",
+        "bindingNames": {
+          "channelServer": "Gw",
+          "ipcServer": "Kw"
+        }
+      },
+      "identity": {
+        "channelServer": {
+          "binding": "Gw",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "registerChannel",
+            "sendResponse",
+            "send",
+            "sendBuffer",
+            "onRawMessage",
+            "onPromise",
+            "onEventListen",
+            "disposeActiveRequest",
+            "collectPendingRequest",
+            "flushPendingRequests",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "154",
+            "lineNumber": 27,
+            "columnNumber": 117498
+          }
+        },
+        "ipcServer": {
+          "binding": "Kw",
+          "constructorMatches": true,
+          "methods": [
+            "constructor",
+            "getChannel",
+            "getMulticastEvent",
+            "registerChannel",
+            "dispose"
+          ],
+          "location": {
+            "scriptId": "154",
+            "lineNumber": 29,
+            "columnNumber": 2467
+          },
+          "existingSourceChain": {
+            "moduleAnchorBinding": "Yw",
+            "anchorLocation": {
+              "scriptId": "154",
+              "lineNumber": 29,
+              "columnNumber": 7021
+            },
+            "ownPrototypeParentIsExactBase": true
+          }
+        }
+      },
+      "snapshotSHA256": "fbeccc1b40e7455ecd97ac972da564302c66ab9484dc98c9931c09d2ba42ce15"
+    }
+  },
+  "staticRpc": {
+    "scope": "Frozen151 retained source facts plus cold/Reload ordinary host activation. No direct runtime actor table enumeration; do not rename static IDs as captured actor tables.",
+    "contexts": {
+      "MainContext": {
+        "ids": [
+          "MainThreadAuthentication",
+          "MainThreadBulkEdits",
+          "MainThreadGitExtension",
+          "MainThreadClipboard",
+          "MainThreadCommands",
+          "MainThreadComments",
+          "MainThreadConfiguration",
+          "MainThreadConsole",
+          "MainThreadDecorations",
+          "MainThreadDiagnostics",
+          "MainThreadDialogs",
+          "MainThreadDocuments",
+          "MainThreadDocumentContentProviders",
+          "MainThreadTextEditors",
+          "MainThreadEditorInsets",
+          "MainThreadEditorTabs",
+          "MainThreadErrors",
+          "MainThreadTreeViews",
+          "MainThreadDownloadService",
+          "MainThreadLanguageFeatures",
+          "MainThreadLanguages",
+          "MainThreadLogger",
+          "MainThreadMessageService",
+          "MainThreadOutputService",
+          "MainThreadProgress",
+          "MainThreadQuickDiff",
+          "MainThreadDocumentDiff",
+          "MainThreadQuickOpen",
+          "MainThreadStatusBar",
+          "MainThreadSecretState",
+          "MainThreadStorage",
+          "MainThreadTelemetry",
+          "MainThreadMeteredConnection",
+          "MainThreadTerminalService",
+          "MainThreadTerminalShellIntegration",
+          "MainThreadWebviews",
+          "MainThreadWebviewPanels",
+          "MainThreadWebviewViews",
+          "MainThreadCustomEditors",
+          "MainThreadUrls",
+          "MainThreadUriOpeners",
+          "MainThreadProfileContentHandlers",
+          "MainThreadWorkspace",
+          "MainThreadFileSystem",
+          "MainThreadFileSystemEventService",
+          "MainThreadExtensionService",
+          "MainThreadSCM",
+          "MainThreadSearch",
+          "MainThreadShare",
+          "MainThreadTask",
+          "MainThreadWindow",
+          "MainThreadPower",
+          "MainThreadLabelService",
+          "MainThreadTheming",
+          "MainThreadTunnelService",
+          "MainThreadManagedSockets",
+          "MainThreadTimeline",
+          "MainThreadTesting",
+          "MainThreadLocalization",
+          "MainThreadDataChannels"
+        ],
+        "count": 60,
+        "retiredMatches": []
+      },
+      "ExtHostContext": {
+        "ids": [
+          "ExtHostCommands",
+          "ExtHostConfiguration",
+          "ExtHostDiagnostics",
+          "ExtHostDecorations",
+          "ExtHostDocumentsAndEditors",
+          "ExtHostDocuments",
+          "ExtHostDocumentContentProviders",
+          "ExtHostDocumentSaveParticipant",
+          "ExtHostEditors",
+          "ExtHostTreeViews",
+          "ExtHostFileSystem",
+          "ExtHostFileSystemInfo",
+          "ExtHostFileSystemEventService",
+          "ExtHostLanguages",
+          "ExtHostLanguageFeatures",
+          "ExtHostQuickOpen",
+          "ExtHostQuickDiff",
+          "ExtHostStatusBar",
+          "ExtHostShare",
+          "ExtHostExtensionService",
+          "ExtHostLogLevelServiceShape",
+          "ExtHostTerminalService",
+          "ExtHostTerminalShellIntegration",
+          "ExtHostSCM",
+          "ExtHostSearch",
+          "ExtHostTask",
+          "ExtHostWorkspace",
+          "ExtHostWindow",
+          "ExtHostPower",
+          "ExtHostWebviews",
+          "ExtHostWebviewPanels",
+          "ExtHostCustomEditors",
+          "ExtHostWebviewViews",
+          "ExtHostEditorInsets",
+          "ExtHostEditorTabs",
+          "ExtHostProgress",
+          "ExtHostComments",
+          "ExtHostSecretState",
+          "ExtHostStorage",
+          "ExtHostUrls",
+          "ExtHostUriOpeners",
+          "ExtHostProfileContentHandlers",
+          "ExtHostOutputService",
+          "ExtHostLabelService",
+          "ExtHostTheming",
+          "ExtHostTunnelService",
+          "ExtHostManagedSockets",
+          "ExtHostAuthentication",
+          "ExtHostTimeline",
+          "ExtHostTesting",
+          "ExtHostTelemetry",
+          "ExtHostMeteredConnection",
+          "ExtHostLocalization",
+          "ExtHostDataChannels",
+          "ExtHostGitExtension"
+        ],
+        "count": 55,
+        "retiredMatches": []
+      }
+    },
+    "sources": [
+      {
+        "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/common/extHost.protocol.ts",
+        "sha256": "cf04ef39108c06b0bff0487787dac08ee5f3088e68ca427e911344fe42419646",
+        "relevantLines": []
+      },
+      {
+        "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/common/extHost.api.impl.ts",
+        "sha256": "9ac1321a0de09626da27ec7815d61fcaa7f83a146e55b6855c300101d13c75d8",
+        "relevantLines": [
+          {
+            "line": 216,
+            "text": "\tconst expected = Object.values<ProxyIdentifier<any>>(ExtHostContext);"
+          },
+          {
+            "line": 217,
+            "text": "\trpcProtocol.assertRegistered(expected);"
+          }
+        ]
+      },
+      {
+        "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/api/browser/mainThreadExtensionService.ts",
+        "sha256": "310760ceb8751d5509fb4b9a210b17321a5e7cdc8eced7b4674bf00e0c2a022c",
+        "relevantLines": [
+          {
+            "line": 58,
+            "text": "\t\tinternalExtHostContext._setAllMainProxyIdentifiers(Object.keys(MainContext).map((key) => (<any>MainContext)[key]));"
+          }
+        ]
+      },
+      {
+        "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/services/extensions/common/extensionHostManager.ts",
+        "sha256": "98b7936a8c536250e909c35a71cdfec1df3458d550b62dfdebf38bb1d6cc0dcd",
+        "relevantLines": [
+          {
+            "line": 268,
+            "text": "\t\t\tassertRegistered: (identifiers: ProxyIdentifier<any>[]): void => this._rpcProtocol!.assertRegistered(identifiers),"
+          },
+          {
+            "line": 276,
+            "text": "\t\t\t_setAllMainProxyIdentifiers: (value: ProxyIdentifier<any>[]): void => {"
+          },
+          {
+            "line": 314,
+            "text": "\t\tthis._rpcProtocol.assertRegistered(mainProxyIdentifiers);"
+          }
+        ]
+      },
+      {
+        "path": "/private/tmp/lean-core-build151-c480juxs/vscodium/vscode/src/vs/workbench/services/extensions/common/rpcProtocol.ts",
+        "sha256": "c4c1717b952fccca234daa463b9953ba23bb98138b484054ce857b746888d94b",
+        "relevantLines": [
+          {
+            "line": 267,
+            "text": "\t\tthis._locals[identifier.nid] = value;"
+          },
+          {
+            "line": 271,
+            "text": "\tpublic assertRegistered(identifiers: ProxyIdentifier<any>[]): void {"
+          },
+          {
+            "line": 274,
+            "text": "\t\t\tif (!this._locals[identifier.nid]) {"
+          },
+          {
+            "line": 275,
+            "text": "\t\t\t\tthrow new Error(`Missing proxy instance ${identifier.sid}`);"
+          }
+        ]
+      }
+    ],
+    "checks": {
+      "allRemainingExtHostContextAssertPreserved": true,
+      "allMainContextPassedToMainAssert": true,
+      "assertActuallyChecksLocalsAndThrows": true,
+      "retiredContextIDsZero": true
+    }
+  },
+  "logs": {
+    "scope": "All text log files in owned new profile copied after public quit; LevelDB not read/copied.",
+    "files": [
+      {
+        "file": "logs/20261002T211327/editSessions.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/main.log",
+        "bytes": 2353,
+        "sha256": "848a1c1c1a6a45f364421d19e39ebc1834b0553bf69d3a0f749142f075581175"
+      },
+      {
+        "file": "logs/20261002T211327/network-shared.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/remoteTunnelService.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/sharedprocess.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/terminal.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/userDataSync.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/extHostTelemetry.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/exthost.log",
+        "bytes": 3534,
+        "sha256": "ae11dadcc71faf836ef3e786356edb6912203a281200c62fe2c45169828c39a4"
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/vscode.git/Git.log",
+        "bytes": 1833,
+        "sha256": "4271b9efb81bdcbefc3657f44476f4a6f64159e20c7fc3b45c7a11f47b4e800d"
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/vscode.github/GitHub.log",
+        "bytes": 94,
+        "sha256": "b2cba0de0e724a47504cc2cbb31d99b52fab6884db404cad740dbd56a7a9e6ed"
+      },
+      {
+        "file": "logs/20261002T211327/window1/network.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/output_20261002T211327/tasks.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/output_20261002T211330/tasks.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/renderer.log",
+        "bytes": 987,
+        "sha256": "619be58a73f07340d03a42f0ad886ffd74230180bbfb8ba1a45c8abb7c129bf6"
+      },
+      {
+        "file": "logs/20261002T211327/window1/textModelChanges.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "file": "logs/20261002T211327/window1/views.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "textLogCount": 17,
+    "warningCount": 4,
+    "errorCount": 0,
+    "warnings": [
+      {
+        "file": "logs/20261002T211327/window1/exthost/exthost.log",
+        "line": 6,
+        "text": "2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource."
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/exthost.log",
+        "line": 7,
+        "text": "2026-10-02 21:13:28.656 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource."
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/exthost.log",
+        "line": 20,
+        "text": "2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.openRepositoryInParentFolders', provide the URI of a resource or 'null' for any resource."
+      },
+      {
+        "file": "logs/20261002T211327/window1/exthost/exthost.log",
+        "line": 21,
+        "text": "2026-10-02 21:13:31.186 [warning] [vscode.git] Accessing a resource scoped configuration without providing a resource is not expected. To get the effective value for 'git.showProgress', provide the URI of a resource or 'null' for any resource."
+      }
+    ],
+    "errors": [],
+    "patterns": {
+      "unknownService": "Unknown service",
+      "missingProxy": "Missing (?:proxy|IExtensionHostProxy)|No proxy",
+      "namedCustomerActorInitialization": "Cannot instantiate named customer|(?:customer|actor).*(?:missing|not found|initialization.*(?:fail|error))",
+      "unknownChannel": "Unknown channel|channel.*not found",
+      "rpcMethod": "Unknown method|(?:RPC|rpc).*(?:method.*not found|protocol.*(?:error|fail))",
+      "retiredBackendDownload": "localTranscription|agentHost|NativeMcp|mcpGateway|playwright|(?:Model|model).*(?:download|prewarm)"
+    },
+    "patternHits": {
+      "unknownService": [],
+      "missingProxy": [],
+      "namedCustomerActorInitialization": [],
+      "unknownChannel": [],
+      "rpcMethod": [],
+      "retiredBackendDownload": []
+    },
+    "reloadIntervalStartsAtLocal": "2026-10-02 21:13:30.826",
+    "reloadWarningCount": 2,
+    "reloadErrorCount": 0,
+    "launchStderr": {
+      "sha256": "93fd50ac45be7f982fc7b9045b75e5098360d31bc0b012fbca00e7733bf92de1",
+      "remoteDebuggingPortOptionWarningCount": 1,
+      "nodeUrlParseDeprecationWarningCount": 1,
+      "mainInspectorAttachedCount": 2,
+      "mainInspectorEndingCount": 2,
+      "scope": "Untimed portions not assigned to reload interval; inspector listener/UUIDs not emitted in report."
+    }
+  },
+  "reloadPromiseCanceled": {
+    "message": "Canceled",
+    "at": "2026-10-02T11:13:30.831Z"
+  },
+  "reloadPromiseClassification": "Expected old extension host command Promise canceled by actual Reload. Not a command response PASS; reload accepted by consumed event, old host exit and new host API readiness.",
+  "cleanup": {
+    "recordedAtUTC": "2026-10-02T11:17:28.314572+00:00",
+    "publicQuitConsumed": {
+      "id": "35d72b15a9a049f5949bb83ad4c4e378",
+      "action": "quit",
+      "hostPID": 41471,
+      "at": "2026-10-02T11:13:33.128Z"
+    },
+    "waitExitCode": 0,
+    "forcedCleanupUsed": false,
+    "capturedMainUtilityPIDsGone": {
+      "39925": true,
+      "40135": true,
+      "40136": true,
+      "41146": true,
+      "41470": true,
+      "41471": true
+    },
+    "portsReleased": {
+      "19550": true,
+      "19551": true,
+      "19552": true
+    }
+  },
+  "checks": {
+    "fourCaptureChecksPass": true,
+    "coldReloadOrdinaryChannelSetsExact": true,
+    "ordinaryColdAndNewReloadHostReady": true,
+    "reloadOldHostExitedNewPID": true,
+    "staticRPCChecksPass": true,
+    "allDI_RPC_RetiredPatternHitsZero": true,
+    "profileErrorsZero": true,
+    "publicQuitWait0WithoutForcedCleanup": true,
+    "allCapturedPIDsAndPortsReleased": true
+  },
+  "limitations": [
+    "No service factories/DI get/channel calls/imports during registry helper capture; complete DI service identifiers not enumerated.",
+    "Direct runtime MainContext/ExtHostContext actor tables were not captured; 60/55 are static retained source IDs, assertion bodies remain, real ordinary host runs cold/Reload with no DI/RPC pattern errors.",
+    "Utility and registered-channel captures prove the observed Cold/Reload interval only, not all future workers/download inactivity.",
+    "No ptyHost utility in this short ordinary document fixture; localPty channel remains. Actual terminal/task execution belongs to root separate151 evidence.",
+    "This is a main/shared registration and ordinary host lifecycle subgate, not full M6/M8 or cross-arch acceptance.",
+    "The new profile uses regular startup update behavior; only local inspector endpoints were connected by this reviewer."
+  ],
+  "evidenceManifest": [
+    {
+      "file": "captures/cold-main151/snapshot.json",
+      "bytes": 6539,
+      "sha256": "8f7570aa9a1e736c7faaa6dc018f1d2415349e6e772e41c3ac4237429f877f77"
+    },
+    {
+      "file": "captures/cold-shared151/snapshot.json",
+      "bytes": 5362,
+      "sha256": "da61e9a758bafd1991cf09889ad7e7a58403fac2a2e55b4c15d9948189ca5391"
+    },
+    {
+      "file": "captures/reload-main151/snapshot.json",
+      "bytes": 6539,
+      "sha256": "bc3a2115ad620cb797678e890c738857766ea8d1df8b48a0a9c80f36d809755f"
+    },
+    {
+      "file": "captures/reload-shared151/snapshot.json",
+      "bytes": 5362,
+      "sha256": "fbeccc1b40e7455ecd97ac972da564302c66ab9484dc98c9931c09d2ba42ce15"
+    },
+    {
+      "file": "cleanup-verification.json",
+      "bytes": 502,
+      "sha256": "fdc9d9fdd427a96a01e238d1a1a189ea5a9163b3a4b0fe9cfc3a9fbb7c70b4f7"
+    },
+    {
+      "file": "cold-main-execution.json",
+      "bytes": 931,
+      "sha256": "9b26fa5700bb6a0e88da7e61d95b9bd96ac24b77ae2f163549655f43967d5f14"
+    },
+    {
+      "file": "cold-ready.json",
+      "bytes": 224,
+      "sha256": "344cd6b215ef57caa0a79c020a684bbb0e9218b592102543fcb4e648bf0ec470"
+    },
+    {
+      "file": "cold-shared-execution.json",
+      "bytes": 970,
+      "sha256": "a9e7def0dea07e207497598cb755f807d9c0a8e61a05f71e1a9976444c75ba12"
+    },
+    {
+      "file": "consumed-35d72b15a9a049f5949bb83ad4c4e378.json",
+      "bytes": 123,
+      "sha256": "2cb4a1ac69883488123dd2811b77820c1cf477494ad86b726a4032e84c546f51"
+    },
+    {
+      "file": "consumed-ab3a9323ceb7436db81bdaa8c9cdf0fe.json",
+      "bytes": 125,
+      "sha256": "a1df7537593119d75f04235e8d58052d6dbb7d4103ce44fda2d30c21fe43dfdd"
+    },
+    {
+      "file": "fixture/extension.js",
+      "bytes": 1688,
+      "sha256": "e3cda43f5a04e64db9b328716e6491f1ad7f4dc0693db8ba31669ea15b1e8d99"
+    },
+    {
+      "file": "fixture/package.json",
+      "bytes": 274,
+      "sha256": "2f3b17dce75d3feb2031ae57dc1d443bcc6146c287651bad18e77c65bd43f61b"
+    },
+    {
+      "file": "fixture-error-41146.json",
+      "bytes": 64,
+      "sha256": "fbcce62461752bc70f1b72f520c7ec70ceef861a5057dea351ecb9f9ea069d4a"
+    },
+    {
+      "file": "launch.json",
+      "bytes": 815,
+      "sha256": "d075ecd258bcd8ad4104b275b5cc4d28d625989f7dcfec7c973217fe097c48d3"
+    },
+    {
+      "file": "launch.log",
+      "bytes": 3554,
+      "sha256": "93fd50ac45be7f982fc7b9045b75e5098360d31bc0b012fbca00e7733bf92de1"
+    },
+    {
+      "file": "log-assessment.json",
+      "bytes": 5971,
+      "sha256": "cf19980e6b8650fe1124f31db1af4fe5cec711477a13bb803956d7d2e1e72884"
+    },
+    {
+      "file": "logs/20261002T211327/editSessions.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/main.log",
+      "bytes": 2353,
+      "sha256": "848a1c1c1a6a45f364421d19e39ebc1834b0553bf69d3a0f749142f075581175"
+    },
+    {
+      "file": "logs/20261002T211327/network-shared.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/remoteTunnelService.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/sharedprocess.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/terminal.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/userDataSync.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/extHostTelemetry.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/exthost.log",
+      "bytes": 3534,
+      "sha256": "ae11dadcc71faf836ef3e786356edb6912203a281200c62fe2c45169828c39a4"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/vscode.git/Git.log",
+      "bytes": 1833,
+      "sha256": "4271b9efb81bdcbefc3657f44476f4a6f64159e20c7fc3b45c7a11f47b4e800d"
+    },
+    {
+      "file": "logs/20261002T211327/window1/exthost/vscode.github/GitHub.log",
+      "bytes": 94,
+      "sha256": "b2cba0de0e724a47504cc2cbb31d99b52fab6884db404cad740dbd56a7a9e6ed"
+    },
+    {
+      "file": "logs/20261002T211327/window1/network.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/output_20261002T211327/tasks.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/output_20261002T211330/tasks.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/renderer.log",
+      "bytes": 987,
+      "sha256": "619be58a73f07340d03a42f0ad886ffd74230180bbfb8ba1a45c8abb7c129bf6"
+    },
+    {
+      "file": "logs/20261002T211327/window1/textModelChanges.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "logs/20261002T211327/window1/views.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "prepare.json",
+      "bytes": 1395,
+      "sha256": "74808b8d0a389e9318142b964c17c55c5741b650ba87c192cc7edacf6f607cfd"
+    },
+    {
+      "file": "ready-41146.json",
+      "bytes": 224,
+      "sha256": "344cd6b215ef57caa0a79c020a684bbb0e9218b592102543fcb4e648bf0ec470"
+    },
+    {
+      "file": "ready-41471.json",
+      "bytes": 224,
+      "sha256": "f15cc97096d3f2745d47084b8434b17f52c414d7f42c55321c028c1d8a371b79"
+    },
+    {
+      "file": "reload-main-execution.json",
+      "bytes": 935,
+      "sha256": "c7b4a5896134da891f5931d9ef64adf786ccb60d23ebecb1c4111f28f5c2a379"
+    },
+    {
+      "file": "reload-ready.json",
+      "bytes": 224,
+      "sha256": "f15cc97096d3f2745d47084b8434b17f52c414d7f42c55321c028c1d8a371b79"
+    },
+    {
+      "file": "reload-shared-execution.json",
+      "bytes": 974,
+      "sha256": "b1d53423b4c01d65ae8c461eac29fde6cc69c4cc7edb205ee25567f87d989f15"
+    },
+    {
+      "file": "run-result.json",
+      "bytes": 1953,
+      "sha256": "0d8931e95be9d847c822583ebd010b520fd14757a646bcab0e436e63a848c9f1"
+    },
+    {
+      "file": "runner.py",
+      "bytes": 5613,
+      "sha256": "b31ff6c31f073c7b7ffd9ee09063ae321dfb6c97c825462ff06a0be15ecf0bb1"
+    },
+    {
+      "file": "static-rpc-source.json",
+      "bytes": 6919,
+      "sha256": "25382adbf95998caef07006608fb3a2e5961c1005d01ade1fcbb0d05bef4b705"
+    }
+  ]
+}

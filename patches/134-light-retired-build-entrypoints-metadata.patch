@@ -1,0 +1,636 @@
+diff --git a/build/buildfile.ts b/build/buildfile.ts
+--- a/build/buildfile.ts
++++ b/build/buildfile.ts
+@@ -21,7 +21,6 @@
+ 
+ export const workbenchDesktop = [
+ 	createModuleDescription('vs/platform/files/node/watcher/watcherMain'),
+-	createModuleDescription('vs/platform/localTranscription/node/localTranscriptionMain'),
+ 	createModuleDescription('vs/platform/terminal/node/ptyHostMain'),
+ 	createModuleDescription('vs/workbench/api/node/extensionHostProcess'),
+ 	createModuleDescription('vs/workbench/workbench.desktop.main')
+@@ -29,7 +28,6 @@
+ 
+ export const workbenchWeb = createModuleDescription('vs/workbench/workbench.web.main.internal');
+ 
+-export const sessionsWeb = createModuleDescription('vs/sessions/sessions.web.main.internal');
+ 
+ export const keyboardMaps = [
+ 	createModuleDescription('vs/workbench/services/keybinding/browser/keyboardLayouts/layout.contribution.linux'),
+@@ -53,8 +51,6 @@
+ 	createModuleDescription('vs/workbench/api/node/extensionHostProcess'),
+ 	createModuleDescription('vs/platform/files/node/watcher/watcherMain'),
+ 	createModuleDescription('vs/platform/terminal/node/ptyHostMain'),
+-	createModuleDescription('vs/platform/agentHost/node/agentHostMain'),
+-	createModuleDescription('vs/platform/agentHost/node/diffWorkerMain'),
+ ];
+ 
+ export const entrypoint = createModuleDescription;
+@@ -69,7 +65,6 @@
+ 	workerBackgroundTokenization,
+ 	workbenchDesktop,
+ 	workbenchWeb,
+-	sessionsWeb,
+ 	keyboardMaps,
+ 	code,
+ 	codeWeb,
+diff --git a/build/filters.ts b/build/filters.ts
+--- a/build/filters.ts
++++ b/build/filters.ts
+@@ -213,7 +213,6 @@
+ 	'!extensions/typescript-language-features/node-maintainer/**',
+ 	'!extensions/html-language-features/server/src/modes/typescript/*',
+ 	'!extensions/*/server/bin/*',
+-	'!src/vs/platform/agentHost/node/codex/protocol/generated/**',
+ 	'!src/vs/workbench/contrib/terminal/common/scripts/psreadline/**',
+ 	'!extensions/mermaid-markdown-features/chat-webview-out/**',
+ 	'!extensions/mermaid-markdown-features/markdown-preview-out/**',
+@@ -244,7 +243,6 @@
+ 	'!extensions/html-language-features/server/lib/jquery.d.ts',
+ 	'!extensions/terminal-suggest/src/shell/zshBuiltinsCache.ts',
+ 	'!extensions/terminal-suggest/src/shell/fishBuiltinsCache.ts',
+-	'!src/vs/platform/agentHost/node/codex/protocol/generated/**',
+ 
+ 	// extensions/copilot has its own code style
+ 	'!extensions/copilot/**',
+@@ -254,7 +252,6 @@
+ 	'**/*.{js,cjs,mjs}',
+ 	'**/*.{ts,tsx,mts,cts}',
+ 	'.eslint-plugin-local/**/*.ts',
+-	'!src/vs/platform/agentHost/node/codex/protocol/generated/**',
+ 	...readFileSync(join(import.meta.dirname, '..', '.eslint-ignore'))
+ 		.toString()
+ 		.split(/\r\n|\n/)
+diff --git a/build/gulpfile.vscode.ts b/build/gulpfile.vscode.ts
+--- a/build/gulpfile.vscode.ts
++++ b/build/gulpfile.vscode.ts
+@@ -85,7 +85,6 @@
+ 
+ 	// Touchbar
+ 	'out-build/vs/workbench/browser/parts/editor/media/*.png',
+-	'out-build/vs/workbench/contrib/debug/browser/media/*.png',
+ 
+ 	// External Terminal
+ 	'out-build/vs/workbench/contrib/externalTerminal/**/*.scpt',
+@@ -103,8 +102,6 @@
+ 
+ 	// Welcome
+ 
+-	// Chat Pet
+-	'out-build/vs/workbench/contrib/chat/browser/widget/media/chatPet/**/*.{gif,png}',
+ 
+ 	// Extensions
+ 	'out-build/vs/workbench/contrib/extensions/browser/media/{theme-icon.png,language-icon.svg}',
+diff --git a/build/gulpfile.vscode.web.ts b/build/gulpfile.vscode.web.ts
+--- a/build/gulpfile.vscode.web.ts
++++ b/build/gulpfile.vscode.web.ts
+@@ -68,14 +68,11 @@
+ 
+ 	// Accessibility Signals
+ 	'out-build/vs/platform/accessibilitySignal/browser/media/*.mp3',
+-	'out-build/vs/workbench/contrib/agentsVoice/browser/media/*.mp3',
+ 
+ 	// Welcome
+ 	'out-build/vs/workbench/contrib/welcomeGettingStarted/common/media/**/*.{svg,png}',
+ 	'out-build/vs/workbench/contrib/welcomeOnboarding/browser/media/*.svg',
+ 
+-	// Chat Pet
+-	'out-build/vs/workbench/contrib/chat/browser/widget/media/chatPet/**/*.{gif,png}',
+ 
+ 	// Extensions
+ 	'out-build/vs/workbench/contrib/extensions/browser/media/{theme-icon.png,language-icon.svg}',
+@@ -116,7 +113,6 @@
+ 	buildfile.workerBackgroundTokenization,
+ 	buildfile.keyboardMaps,
+ 	buildfile.workbenchWeb,
+-	buildfile.sessionsWeb,
+ ].flat();
+ 
+ /**
+diff --git a/build/lib/i18n.resources.json b/build/lib/i18n.resources.json
+--- a/build/lib/i18n.resources.json
++++ b/build/lib/i18n.resources.json
+@@ -67,10 +67,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/debug",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/dialogs",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -123,10 +119,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/interactive",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/languageStatus",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -167,26 +159,10 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/notebook",
+-			"project": "vscode-workbench"
+-		},
+-		{
+-			"name": "vs/workbench/contrib/inlineChat",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/imageCarousel",
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/agentsVoice",
+-			"project": "vscode-workbench"
+-		},
+-		{
+-			"name": "vs/workbench/contrib/chat",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/quickaccess",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -231,10 +207,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/speech",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/modernUI",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -368,10 +340,6 @@
+ 		},
+ 		{
+ 			"name": "vs/workbench/services/actions",
+-			"project": "vscode-workbench"
+-		},
+-		{
+-			"name": "vs/workbench/services/agentHost",
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+@@ -591,10 +559,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/replNotebook",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/list",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -611,10 +575,6 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/mcp",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/meteredConnection",
+ 			"project": "vscode-workbench"
+ 		},
+@@ -623,23 +583,11 @@
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/remoteCodingAgents",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/contrib/telemetry",
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+-			"name": "vs/workbench/contrib/welcomeAgentSessions",
+-			"project": "vscode-workbench"
+-		},
+-		{
+ 			"name": "vs/workbench/services/accounts",
+-			"project": "vscode-workbench"
+-		},
+-		{
+-			"name": "vs/workbench/services/chat",
+ 			"project": "vscode-workbench"
+ 		},
+ 		{
+@@ -647,138 +595,5 @@
+ 			"project": "vscode-workbench"
+ 		}
+ 	],
+-	"sessions": [
+-		{
+-			"name": "vs/sessions",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/automations",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/accountMenu",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/agentFeedback",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/providers",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/providers/agentHost",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/aiCustomizationTreeView",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/applyCommitsToParentRepo",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/changes",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/chat",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/providers/copilotChatSessions",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/configuration",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/codeReview",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/customViewTest",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/fileTreeView",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/files",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/search",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/sideChat",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/policyBlocked",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/git",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/github",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/layout",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/logs",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/providers/remoteAgentHost",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/sessions",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/sessionInputBanners",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/terminal",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/welcome",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/aquarium",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/chatDebug",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/tunnelHost",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/editor",
+-			"project": "vscode-sessions"
+-		},
+-		{
+-			"name": "vs/sessions/contrib/onboardingTours",
+-			"project": "vscode-sessions"
+-		}
+-	]
++	"sessions": []
+ }
+diff --git a/build/lib/i18n.ts b/build/lib/i18n.ts
+--- a/build/lib/i18n.ts
++++ b/build/lib/i18n.ts
+@@ -390,8 +390,7 @@
+ 	workbenchProject: string = 'vscode-workbench',
+ 	extensionsProject: string = 'vscode-extensions',
+ 	setupProject: string = 'vscode-setup',
+-	serverProject: string = 'vscode-server',
+-	sessionsProject: string = 'vscode-sessions';
++	serverProject: string = 'vscode-server';
+ 
+ export function getResource(sourceFile: string): Resource {
+ 	let resource: string;
+@@ -416,11 +415,7 @@
+ 		return { name: resource, project: workbenchProject };
+ 	} else if (/^vs\/workbench/.test(sourceFile)) {
+ 		return { name: 'vs/workbench', project: workbenchProject };
+-	} else if (/^vs\/sessions\/contrib/.test(sourceFile)) {
+-		resource = sourceFile.split('/', 4).join('/');
+-		return { name: resource, project: sessionsProject };
+-	} else if (/^vs\/sessions/.test(sourceFile)) {
+-		return { name: 'vs/sessions', project: sessionsProject };
++
+ 	}
+ 
+ 	throw new Error(`Could not identify the XLF bundle for ${sourceFile}`);
+diff --git a/build/lib/mangle/index.ts b/build/lib/mangle/index.ts
+--- a/build/lib/mangle/index.ts
++++ b/build/lib/mangle/index.ts
+@@ -320,7 +320,6 @@
+ 		buildfile.workerBackgroundTokenization,
+ 		buildfile.workbenchDesktop,
+ 		buildfile.workbenchWeb,
+-		buildfile.sessionsWeb,
+ 		buildfile.code,
+ 		buildfile.codeWeb
+ 	].flat().map(x => x.name),
+diff --git a/build/lib/test/i18n.test.ts b/build/lib/test/i18n.test.ts
+--- a/build/lib/test/i18n.test.ts
++++ b/build/lib/test/i18n.test.ts
+@@ -32,8 +32,7 @@
+ 
+ 	test('JSON file source path to Transifex resource match', () => {
+ 		const editorProject: string = 'vscode-editor',
+-			workbenchProject: string = 'vscode-workbench',
+-			sessionsProject: string = 'vscode-sessions';
++			workbenchProject: string = 'vscode-workbench';
+ 
+ 		const platform: i18n.Resource = { name: 'vs/platform', project: editorProject },
+ 			editorContrib = { name: 'vs/editor/contrib', project: editorProject },
+@@ -42,9 +41,7 @@
+ 			code = { name: 'vs/code', project: workbenchProject },
+ 			workbenchParts = { name: 'vs/workbench/contrib/html', project: workbenchProject },
+ 			workbenchServices = { name: 'vs/workbench/services/textfile', project: workbenchProject },
+-			workbench = { name: 'vs/workbench', project: workbenchProject },
+-			sessionsContrib = { name: 'vs/sessions/contrib/chat', project: sessionsProject },
+-			sessions = { name: 'vs/sessions', project: sessionsProject };
++			workbench = { name: 'vs/workbench', project: workbenchProject };
+ 
+ 		assert.deepStrictEqual(i18n.getResource('vs/platform/actions/browser/menusExtensionPoint'), platform);
+ 		assert.deepStrictEqual(i18n.getResource('vs/editor/contrib/clipboard/browser/clipboard'), editorContrib);
+@@ -54,7 +51,6 @@
+ 		assert.deepStrictEqual(i18n.getResource('vs/workbench/contrib/html/browser/webview'), workbenchParts);
+ 		assert.deepStrictEqual(i18n.getResource('vs/workbench/services/textfile/node/testFileService'), workbenchServices);
+ 		assert.deepStrictEqual(i18n.getResource('vs/workbench/browser/parts/panel/panelActions'), workbench);
+-		assert.deepStrictEqual(i18n.getResource('vs/sessions/contrib/chat/browser/chatWidget'), sessionsContrib);
+-		assert.deepStrictEqual(i18n.getResource('vs/sessions/browser/layoutActions'), sessions);
++		assert.throws(() => i18n.getResource('vs/sessions/browser/layoutActions'), /Could not identify/);
+ 	});
+ });
+diff --git a/build/next/index.ts b/build/next/index.ts
+--- a/build/next/index.ts
++++ b/build/next/index.ts
+@@ -82,7 +82,6 @@
+ const workerEntryPoints = [
+ 	'vs/editor/common/services/editorWebWorkerMain',
+ 	'vs/workbench/api/worker/extensionHostWorkerMain',
+-	'vs/workbench/contrib/notebook/common/services/notebookWebWorkerMain',
+ 	'vs/workbench/services/languageDetection/browser/languageDetectionWebWorkerMain',
+ 	'vs/workbench/services/search/worker/localFileSearchMain',
+ 	'vs/workbench/contrib/output/common/outputLinkComputerMain',
+diff --git a/src/vs/platform/product/common/product.ts b/src/vs/platform/product/common/product.ts
+--- a/src/vs/platform/product/common/product.ts
++++ b/src/vs/platform/product/common/product.ts
+@@ -12,9 +12,6 @@
+ 	readonly dependencies?: Readonly<Record<string, string>>;
+ }
+ 
+-function getDependencyVersion(packageConfiguration: IPackageConfiguration, packageName: string): string | undefined {
+-	return packageConfiguration.dependencies?.[packageName]?.replace(/^[~^]/, '');
+-}
+ 
+ /**
+  * @deprecated It is preferred that you use `IProductService` if you can. This
+@@ -93,14 +90,6 @@
+ 			version: packageConfiguration.version
+ 		});
+ 	}
+-
+-	if (!product.copilotVersions) {
+-		const runtime = getDependencyVersion(packageConfiguration, '@github/copilot');
+-		const sdk = getDependencyVersion(packageConfiguration, '@github/copilot-sdk');
+-		if (runtime && sdk) {
+-			Object.assign(product, { copilotVersions: { runtime, sdk } });
+-		}
+-	}
+ }
+ 
+ // Web environment or unknown
+@@ -122,22 +111,7 @@
+ 			reportIssueUrl: 'https://github.com/microsoft/vscode/issues/new',
+ 			licenseName: 'MIT',
+ 			licenseUrl: 'https://github.com/microsoft/vscode/blob/main/LICENSE.txt',
+-			serverLicenseUrl: 'https://github.com/microsoft/vscode/blob/main/LICENSE.txt',
+-			defaultChatAgent: {
+-				extensionId: 'GitHub.copilot',
+-				chatExtensionId: 'GitHub.copilot-chat',
+-				provider: {
+-					default: {
+-						id: 'github',
+-						name: 'GitHub',
+-					},
+-					enterprise: {
+-						id: 'github-enterprise',
+-						name: 'GitHub Enterprise',
+-					}
+-				},
+-				providerScopes: []
+-			}
++			serverLicenseUrl: 'https://github.com/microsoft/vscode/blob/main/LICENSE.txt'
+ 		});
+ 	}
+ }
+diff --git a/src/vs/workbench/workbench.common.main.ts b/src/vs/workbench/workbench.common.main.ts
+--- a/src/vs/workbench/workbench.common.main.ts
++++ b/src/vs/workbench/workbench.common.main.ts
+@@ -78,7 +78,6 @@
+ import './services/textfile/common/textEditorService.js';
+ import './services/language/common/languageService.js';
+ import './services/model/common/modelService.js';
+-import './services/notebook/common/notebookDocumentService.js';
+ import './services/commands/common/commandService.js';
+ import './services/themes/browser/workbenchThemeService.js';
+ import './services/label/common/labelService.js';
+diff --git a/.github/workflows/pr-node-modules.yml b/.github/workflows/pr-node-modules.yml
+--- a/.github/workflows/pr-node-modules.yml
++++ b/.github/workflows/pr-node-modules.yml
+@@ -135,10 +135,6 @@
+           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+           GITHUB_TOKEN: ${{ secrets.VSCODE_OSS }}
+ 
+-      - name: Verify native optional dependency binaries
+-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+-        run: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-
+       - name: Save node_modules cache
+         if: steps.cache-node-modules.outputs.cache-hit != 'true'
+         uses: ./.github/actions/save-node-modules
+@@ -193,10 +189,6 @@
+           # flipped the default to support legacy linux distros which shouldn't happen
+           # on macOS.
+           GYP_DEFINES: "kerberos_use_rtld=false"
+-
+-      - name: Verify native optional dependency binaries
+-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+-        run: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+ 
+       - name: Save node_modules cache
+         if: steps.cache-node-modules.outputs.cache-hit != 'true'
+@@ -253,10 +245,6 @@
+           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+           GITHUB_TOKEN: ${{ secrets.VSCODE_OSS }}
+ 
+-      - name: Verify native optional dependency binaries
+-        if: steps.node-modules-cache.outputs.cache-hit != 'true'
+-        run: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-
+       - name: Save node_modules cache
+         if: steps.node-modules-cache.outputs.cache-hit != 'true'
+         uses: ./.github/actions/save-node-modules
+diff --git a/.github/workflows/pr-linux-test.yml b/.github/workflows/pr-linux-test.yml
+--- a/.github/workflows/pr-linux-test.yml
++++ b/.github/workflows/pr-linux-test.yml
+@@ -399,22 +399,6 @@
+         working-directory: extensions/copilot
+         run: npm run compile
+ 
+-      # Remove the musl-libc Claude Code native binary so the bundled
+-      # @anthropic-ai/claude-agent-sdk in extensions/copilot falls through to the
+-      # glibc variant (or its bundled ./cli.js fallback). The musl binary is
+-      # pulled in by the root devDependency @anthropic-ai/claude-agent-sdk@0.2.x,
+-      # whose package metadata declares both "linux-x64" and "linux-x64-musl" as
+-      # optionalDependencies with `os: ["linux"]` and no libc filter, so npm
+-      # installs both variants on any Linux. The SDK probes the musl variant
+-      # first; spawning a musl-linked ELF on the glibc-based GitHub Actions
+-      # runner returns ENOENT (missing ELF interpreter), which causes Claude
+-      # session smoke tests to time out. See
+-      # https://github.com/anthropics/claude-agent-sdk-typescript for the SDK
+-      # resolution order.
+-      - name: Remove musl Claude binary on glibc Linux
+-        if: ${{ inputs.smoke_tests }}
+-        run: rm -rf node_modules/@anthropic-ai/claude-agent-sdk-linux-x64-musl node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64-musl
+-
+       - name: Diagnostics before smoke test run (processes, max_user_watches, number of opened file handles)
+         run: |
+           set -e
+diff --git a/.github/workflows/pr.yml b/.github/workflows/pr.yml
+--- a/.github/workflows/pr.yml
++++ b/.github/workflows/pr.yml
+@@ -93,13 +93,6 @@
+         env:
+           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
+-      - name: Check Codex protocol client is in sync
+-        run: |
+-          git fetch --no-tags --depth=1 origin "$CODEX_SYNC_BASE" || true
+-          node build/codex/check-protocol-sync.ts --if-changed --base "$CODEX_SYNC_BASE"
+-        env:
+-          CODEX_SYNC_BASE: ${{ github.event.pull_request.base.sha }}
+-
+       - name: Check cyclic dependencies
+         run: node build/lib/checkCyclicDependencies.ts out-build
+ 
+diff --git a/package.json b/package.json
+--- a/package.json
++++ b/package.json
+@@ -27,8 +27,6 @@
+     "build-fast": "node build/next/index.ts build-fast",
+     "build-fast-extensions": "npm run gulp copy-codicons compile-extensions compile-extension-media",
+     "typecheck-client": "tsc --project ./src/tsconfig.json --noEmit --skipLibCheck",
+-    "codex:gen-protocol": "node build/codex/generate-protocol.mjs",
+-    "codex:check-protocol": "node build/codex/check-protocol-sync.ts",
+     "watch": "npm-run-all2 -lp watch-client-transpile watch-client watch-extensions",
+     "watch-transpile": "npm-run-all2 -lp watch-client-transpile watch-extensions",
+     "watchd": "deemon npm run watch",
+diff --git a/src/vs/code/electron-main/main.ts b/src/vs/code/electron-main/main.ts
+--- a/src/vs/code/electron-main/main.ts
++++ b/src/vs/code/electron-main/main.ts
+@@ -16,7 +16,7 @@
+ import { Event } from '../../base/common/event.js';
+ import { getPathLabel } from '../../base/common/labels.js';
+ import { Schemas } from '../../base/common/network.js';
+-import { basename, join, resolve } from '../../base/common/path.js';
++import { basename, resolve } from '../../base/common/path.js';
+ import { mark } from '../../base/common/performance.js';
+ import { IProcessEnvironment, isLinux, isMacintosh, isWindows, OS } from '../../base/common/platform.js';
+ import { cwd } from '../../base/common/process.js';
+@@ -203,7 +203,7 @@
+ 		services.set(IStateService, stateService);
+ 
+ 		// User Data Profiles
+-		const userDataProfilesMainService = new UserDataProfilesMainService(stateService, uriIdentityService, environmentMainService, fileService, logService, productService);
++		const userDataProfilesMainService = new UserDataProfilesMainService(stateService, uriIdentityService, environmentMainService, fileService, logService);
+ 		services.set(IUserDataProfilesMainService, userDataProfilesMainService);
+ 
+ 		// Use FileUserDataProvider for user data to
+diff --git a/src/vs/workbench/services/extensions/common/extensionHostProtocol.ts b/src/vs/workbench/services/extensions/common/extensionHostProtocol.ts
+--- a/src/vs/workbench/services/extensions/common/extensionHostProtocol.ts
++++ b/src/vs/workbench/services/extensions/common/extensionHostProtocol.ts
+@@ -81,7 +81,6 @@
+ 	useHostProxy?: boolean;
+ 	skipWorkspaceStorageLock?: boolean;
+ 	extensionLogLevel?: [string, LogLevel][];
+-	isSessionsWindow?: boolean;
+ }
+ 
+ export interface IStaticWorkspaceData {

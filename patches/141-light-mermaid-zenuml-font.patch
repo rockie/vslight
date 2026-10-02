@@ -1,0 +1,53 @@
+diff --git a/extensions/mermaid-markdown-features/esbuild.webview.mts b/extensions/mermaid-markdown-features/esbuild.webview.mts
+--- a/extensions/mermaid-markdown-features/esbuild.webview.mts
++++ b/extensions/mermaid-markdown-features/esbuild.webview.mts
+@@ -2,6 +2,7 @@
+  *  Copyright (c) Microsoft Corporation. All rights reserved.
+  *  Licensed under the MIT License. See License.txt in the project root for license information.
+  *--------------------------------------------------------------------------------------------*/
++import { readFile } from 'fs/promises';
+ import path from 'path';
+ import esbuild, { type Plugin } from 'esbuild';
+ import { run } from '../esbuild-webview-common.mts';
+@@ -34,11 +35,32 @@
+ 	},
+ };
+ 
++// ZenUML injects its CSS from JavaScript, so the ordinary font loader cannot see
++// this URL. Keep the existing font inside the bundle for webviews with data-only
++// font CSP, rather than attempting a request to an absolute /fonts path.
++const zenumlFontPlugin: Plugin = {
++	name: 'zenuml-font-data-url',
++	setup(build) {
++		build.onLoad({ filter: /[/\\]@zenuml[/\\]core[/\\]dist[/\\]zenuml\.esm\.mjs$/ }, async args => {
++			const fontName = 'MS%20Sans%20Serif.ttf';
++			const [contents, font] = await Promise.all([
++				readFile(args.path, 'utf8'),
++				readFile(path.join(path.dirname(args.path), 'fonts', decodeURIComponent(fontName))),
++			]);
++			return {
++				contents: contents.replaceAll(`/fonts/${fontName}`, `data:font/ttf;base64,${font.toString('base64')}`),
++				loader: 'js',
++				resolveDir: path.dirname(args.path),
++			};
++		});
++	},
++};
++
+ const mermaidMarkdownBuildOptions: Partial<esbuild.BuildOptions> = {
+ 	loader: {
+ 		'.ttf': 'dataurl',
+ 	},
+-	plugins: [cssTextPlugin],
++	plugins: [cssTextPlugin, zenumlFontPlugin],
+ };
+ 
+ await Promise.all([
+@@ -51,6 +73,7 @@
+ 		srcDir: chatSrcDir,
+ 		outdir: path.join(rootDir, 'chat-webview-out'),
+ 		additionalOptions: {
++			plugins: [zenumlFontPlugin],
+ 			loader: {
+ 				'.ttf': 'dataurl',
+ 			},

@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-02T18:51:47.944249+10:00",
+  "command": [
+    "/opt/homebrew/bin/python3.12",
+    "/Users/rockie/Documents/gh-xgent/vscodium/dev/check-lean-runtime.py",
+    "--app",
+    "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app"
+  ],
+  "exit": 0,
+  "stdoutBytes": 3667,
+  "stderrBytes": 0
+}

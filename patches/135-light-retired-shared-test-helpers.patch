@@ -1,0 +1,53 @@
+diff --git a/src/vs/editor/contrib/inlineCompletions/test/browser/utils.ts b/src/vs/editor/contrib/inlineCompletions/test/browser/utils.ts
+--- a/src/vs/editor/contrib/inlineCompletions/test/browser/utils.ts
++++ b/src/vs/editor/contrib/inlineCompletions/test/browser/utils.ts
+@@ -295,11 +295,6 @@
+ 					currentDefaultAccount: null,
+ 					copilotTokenInfo: null,
+ 					onDidChangeCopilotTokenInfo: Event.None,
+-					managedSettingsFetchStatus: null,
+-					managedSettingsFetchedAt: null,
+-					managedSettingsRawResponse: null,
+-					managedSettingsCompatibilityError: null,
+-					onDidChangeManagedSettingsCompatibilityError: Event.None,
+ 					getDefaultAccount: async () => null,
+ 					setDefaultAccountProvider: () => { },
+ 					getDefaultAccountAuthenticationProvider: () => { return { id: 'mockProvider', name: 'Mock Provider', enterprise: false }; },
+diff --git a/src/vs/workbench/test/browser/componentFixtures/editor/editorTabBar.fixture.ts b/src/vs/workbench/test/browser/componentFixtures/editor/editorTabBar.fixture.ts
+--- a/src/vs/workbench/test/browser/componentFixtures/editor/editorTabBar.fixture.ts
++++ b/src/vs/workbench/test/browser/componentFixtures/editor/editorTabBar.fixture.ts
+@@ -51,7 +51,6 @@
+ import { EditorTitleControl } from '../../../../browser/parts/editor/editorTitleControl.js';
+ import { IDecorationData, IDecorationsProvider, IDecorationsService } from '../../../../services/decorations/common/decorations.js';
+ import { DecorationsService } from '../../../../services/decorations/browser/decorationsService.js';
+-import { INotebookDocumentService, NotebookDocumentWorkbenchService } from '../../../../services/notebook/common/notebookDocumentService.js';
+ import { IOutlineService } from '../../../../services/outline/browser/outline.js';
+ import { LayoutSettings } from '../../../../services/layout/browser/layoutService.js';
+ import { TestContextService } from '../../../common/workbenchTestServices.js';
+@@ -426,7 +425,6 @@
+ 
+ 	// Services the base workbench harness does not stub but the tab bar needs.
+ 	instantiationService.stub(ITreeViewsDnDService, new TreeViewsDnDService());
+-	instantiationService.stub(INotebookDocumentService, new NotebookDocumentWorkbenchService());
+ 
+ 	const contextKeyService = disposableStore.add(instantiationService.createInstance(ContextKeyService));
+ 	instantiationService.stub(IContextKeyService, contextKeyService);
+diff --git a/src/vs/workbench/test/browser/componentFixtures/editor/multiDiffEditor.fixture.ts b/src/vs/workbench/test/browser/componentFixtures/editor/multiDiffEditor.fixture.ts
+--- a/src/vs/workbench/test/browser/componentFixtures/editor/multiDiffEditor.fixture.ts
++++ b/src/vs/workbench/test/browser/componentFixtures/editor/multiDiffEditor.fixture.ts
+@@ -25,7 +25,6 @@
+ import { IWorkspaceContextService, IWorkspace } from '../../../../../platform/workspace/common/workspace.js';
+ import { ResourceLabel } from '../../../../browser/labels.js';
+ import { IDecorationsService } from '../../../../services/decorations/common/decorations.js';
+-import { INotebookDocumentService } from '../../../../services/notebook/common/notebookDocumentService.js';
+ import { ITextFileService } from '../../../../services/textfile/common/textfiles.js';
+ import { ComponentFixtureContext, createEditorServices, createTextModel, defineComponentFixture, defineThemedFixtureGroup, registerWorkbenchServices } from '../fixtureUtils.js';
+ import { TestInstantiationService } from '../../../../../platform/instantiation/test/common/instantiationServiceMock.js';
+@@ -220,7 +219,6 @@
+ 			reg.defineInstance(IDecorationsService, new class extends mock<IDecorationsService>() { override onDidChangeDecorations = Event.None; }());
+ 			reg.defineInstance(ITextFileService, new class extends mock<ITextFileService>() { override readonly untitled = new class extends mock<ITextFileService['untitled']>() { override readonly onDidChangeLabel = Event.None; }(); }());
+ 			reg.defineInstance(IWorkspaceContextService, new class extends mock<IWorkspaceContextService>() { override onDidChangeWorkspaceFolders = Event.None; override getWorkspace(): IWorkspace { return { id: '', folders: [], configuration: undefined }; } }());
+-			reg.definePartialInstance(INotebookDocumentService, { getNotebook: () => undefined });
+ 			registerWorkbenchServices(reg);
+ 		},
+ 	});

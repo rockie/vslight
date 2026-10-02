@@ -1,0 +1,75 @@
+{
+  "at": "2026-10-02T21:34:17.920742+10:00",
+  "root": "/private/tmp/lc-remote151-8w6qwq98",
+  "status": "PASS_PRODUCTION_GRAPH_INSTALL",
+  "inputs": {
+    "package.json": "5cc1d50a5f6ec3d6ae2fa14c86e17dcc1c31476b031d9911adafb09d639a7638",
+    "package-lock.json": "f1f3317d249985009294caae5898dfb391e0251c47713141e2964566aa0af6b7"
+  },
+  "commands": [
+    {
+      "label": "versions",
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "npm-version",
+      "command": [
+        "npm",
+        "--version"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "install",
+      "command": [
+        "npm",
+        "ci",
+        "--omit=dev",
+        "--ignore-scripts",
+        "--legacy-peer-deps",
+        "--offline",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "graph",
+      "command": [
+        "npm",
+        "ls",
+        "--omit=dev",
+        "--all",
+        "--json"
+      ],
+      "exit": 0
+    }
+  ],
+  "graphUnique": 125,
+  "graphVersions": 114,
+  "graphOccurrences": 176,
+  "problems": [],
+  "retired": [],
+  "ordinaryRequiredPresent": [
+    "@vscode/fs-copyfile",
+    "@vscode/ripgrep-universal",
+    "@vscode/sqlite3",
+    "katex",
+    "node-pty",
+    "semver",
+    "tar"
+  ],
+  "regularFiles": 3020,
+  "symlinks": 8,
+  "logicalBytes": 192066255,
+  "allocatedBytes": 199659520,
+  "limit": "ignore-scripts; no REH/native runtime claim",
+  "resolvedGraphUnique": 110,
+  "resolvedGraphOccurrences": 161,
+  "emptyOptionalNodes": 15,
+  "graphCountNote": "125/176 includes 15 empty optional nodes; resolved 110/161, same original remote record; 114 name/version pairs."
+}

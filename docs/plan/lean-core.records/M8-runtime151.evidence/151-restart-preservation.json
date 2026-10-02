@@ -1,0 +1,35 @@
+{
+  "exit": 0,
+  "result": {
+    "status": "PASS",
+    "stage": "afterquit",
+    "dbKeysChecked": 12,
+    "filesChecked": 6,
+    "retiredSettingsRetained": true,
+    "disabledNeverActivated": true,
+    "syntheticOnly": true,
+    "checks": [
+      "globalDB:lean-tests.lean-ui-final",
+      "globalDB:extensionsIdentifiers/disabled",
+      "globalDB:lean-tests.lean-ui-final-lean-final-synthetic-auth",
+      "globalDB:lean-tests.lean-ui-final-lean-final-synthetic-auth-lean-profile.read lean-profile.write",
+      "globalDB:chat.sessions",
+      "globalDB:mcp.synthetic.legacyState",
+      "globalDB:secret://{\"extensionId\":\"lean-tests.legacy-synthetic\",\"key\":\"MCP_CREDENTIAL_FIXTURE\"}",
+      "globalDB:lean-final-synthetic-auth-Synthetic Alpha 150",
+      "globalDB:lean-final-synthetic-auth-Synthetic Beta 150",
+      "workspaceDB:lean-tests.lean-ui-final-lean-final-synthetic-auth",
+      "workspaceDB:lean-tests.lean-ui-final-lean-final-synthetic-auth-lean-profile.read lean-profile.write",
+      "workspaceDB:chat.synthetic.history",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/mcp.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/chatSessions/synthetic-legacy-session.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/u/User/globalStorage/lean-tests.legacy-synthetic/fake-credential.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/lean-tests.lean-disabled-final-0.0.1/package.json",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/lean-tests.lean-disabled-final-0.0.1/extension.js",
+      "file:/private/tmp/lcfinal-chkarkup/ui/e/zhuangtongfa.material-theme-3.20.2-universal/package.json"
+    ],
+    "tokenValuesPrinted": false
+  },
+  "stderr": "",
+  "readOnlyProfile": true
+}

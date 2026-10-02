@@ -1,0 +1,10 @@
+{
+  "mainPID": 25607,
+  "parentPID": 25590,
+  "command": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/terminal151-ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w",
+  "expectedExecutable": "/Users/rockie/Documents/gh-xgent/lean-core151-local-7_g5sxxp/VSLight.app/Contents/MacOS/VSLight",
+  "profileRoot": "/private/tmp/lcfinal-chkarkup/ui/u",
+  "expectedPort": 19560,
+  "endpoint": "http://127.0.0.1:19560/json/list",
+  "listener": "p25607\nf32\nn127.0.0.1:19560\n"
+}

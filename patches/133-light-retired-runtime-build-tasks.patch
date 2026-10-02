@@ -1,0 +1,1041 @@
+diff --git a/build/azure-pipelines/alpine/product-build-alpine-node-modules.yml b/build/azure-pipelines/alpine/product-build-alpine-node-modules.yml
+index a7cc0ab..0f0e2d4 100644
+--- a/build/azure-pipelines/alpine/product-build-alpine-node-modules.yml
++++ b/build/azure-pipelines/alpine/product-build-alpine-node-modules.yml
+@@ -33,8 +33,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Registry
+ 
+-      - template: ../common/apply-sdk-canary.yml@self
+-
+       - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts alpine $VSCODE_ARCH $(node -p process.arch) > .build/packagelockhash
+         displayName: Prepare node_modules cache key
+ 
+@@ -61,11 +59,6 @@ jobs:
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-          onlyOnNodeModulesCacheMiss: true
+-
+       - task: Docker@1
+         inputs:
+           azureSubscriptionEndpoint: vscode
+@@ -133,15 +126,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-          onlyOnNodeModulesCacheMiss: true
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         displayName: Mixin distro node modules
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+diff --git a/build/azure-pipelines/alpine/product-build-alpine.yml b/build/azure-pipelines/alpine/product-build-alpine.yml
+index 435fb9a..23812d9 100644
+--- a/build/azure-pipelines/alpine/product-build-alpine.yml
++++ b/build/azure-pipelines/alpine/product-build-alpine.yml
+@@ -49,12 +49,6 @@ jobs:
+             sbomBuildDropPath: $(WEB_DIR_PATH)
+             sbomPackageName: "VS Code Alpine $(VSCODE_ARCH) Web"
+             sbomPackageVersion: $(Build.SourceVersion)
+-        - output: pipelineArtifact
+-          targetPath: $(Build.SourcesDirectory)/.build/agent-sdk/tarballs
+-          artifactName: agent_sdk_alpine_$(VSCODE_ARCH)_tarballs
+-          displayName: Publish agent SDK tarballs
+-          sbomEnabled: false
+-          condition: and(succeededOrFailed(), eq(variables['AGENT_SDK_TARBALLS_PRODUCED'], 'true'))
+     steps:
+       - template: ../common/checkout.yml@self
+ 
+@@ -106,10 +100,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-
+       - task: Docker@1
+         inputs:
+           azureSubscriptionEndpoint: vscode
+@@ -177,13 +167,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         displayName: Mixin distro node modules
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+@@ -201,27 +184,11 @@ jobs:
+ 
+       - template: ../common/install-builtin-extensions.yml@self
+ 
+-      - template: ../common/agent-sdk-produce.yml@self
+-        parameters:
+-          vscodePlatform: alpine
+-
+-      - script: npx deemon --detach --wait -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-        env:
+-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-        displayName: Download Copilot VSIX (background)
+-
+-      - template: ../common/mixin-vscode-capi.yml@self
+-
+       - script: npm run gulp core-ci
+         env:
+           GITHUB_TOKEN: "$(github-token-code-oss)"
+         displayName: Compile
+ 
+-      - script: npx deemon --attach -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-        env:
+-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-        displayName: Download Copilot VSIX
+-
+       - script: |
+           set -e
+           TARGET=$([ "$VSCODE_ARCH" == "x64" ] && echo "linux-alpine" || echo "alpine-arm64") # TODO@joaomoreno
+diff --git a/build/azure-pipelines/darwin/product-build-darwin-node-modules.yml b/build/azure-pipelines/darwin/product-build-darwin-node-modules.yml
+index 3317e43..78240e5 100644
+--- a/build/azure-pipelines/darwin/product-build-darwin-node-modules.yml
++++ b/build/azure-pipelines/darwin/product-build-darwin-node-modules.yml
+@@ -41,8 +41,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Registry
+ 
+-      - template: ../common/apply-sdk-canary.yml@self
+-
+       - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts darwin $VSCODE_ARCH $(node -p process.arch) > .build/packagelockhash
+         displayName: Prepare node_modules cache key
+ 
+@@ -75,11 +73,6 @@ jobs:
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Setup PyPI Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-          onlyOnNodeModulesCacheMiss: true
+-
+       - script: |
+           set -e
+           c++ --version
+@@ -107,15 +100,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-          onlyOnNodeModulesCacheMiss: true
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+diff --git a/build/azure-pipelines/darwin/product-build-darwin.yml b/build/azure-pipelines/darwin/product-build-darwin.yml
+index 005c6bb..3484001 100644
+--- a/build/azure-pipelines/darwin/product-build-darwin.yml
++++ b/build/azure-pipelines/darwin/product-build-darwin.yml
+@@ -76,12 +76,6 @@ jobs:
+           sbomBuildDropPath: $(Build.ArtifactStagingDirectory)/VSCode-darwin-$(VSCODE_ARCH)
+           sbomPackageName: "VS Code macOS $(VSCODE_ARCH)"
+           sbomPackageVersion: $(Build.SourceVersion)
+-        - output: pipelineArtifact
+-          targetPath: $(Build.SourcesDirectory)/.build/agent-sdk/tarballs
+-          artifactName: agent_sdk_darwin_$(VSCODE_ARCH)_tarballs
+-          displayName: Publish agent SDK tarballs
+-          sbomEnabled: false
+-          condition: and(succeededOrFailed(), eq(variables['AGENT_SDK_TARBALLS_PRODUCED'], 'true'))
+     steps:
+       - template: ./steps/product-build-darwin-compile.yml@self
+         parameters:
+diff --git a/build/azure-pipelines/darwin/product-smoke-flaky-darwin.yml b/build/azure-pipelines/darwin/product-smoke-flaky-darwin.yml
+index bc0b2bb..b04c376 100644
+--- a/build/azure-pipelines/darwin/product-smoke-flaky-darwin.yml
++++ b/build/azure-pipelines/darwin/product-smoke-flaky-darwin.yml
+@@ -24,7 +24,6 @@ jobs:
+           parameters:
+             VSCODE_ARCH: arm64
+             VSCODE_CIBUILD: true
+-            VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL: true
+       archiveWorkspaceSteps:
+         - script: |
+             set -e
+diff --git a/build/azure-pipelines/darwin/steps/product-build-darwin-compile.yml b/build/azure-pipelines/darwin/steps/product-build-darwin-compile.yml
+index 1563025..26a45fa 100644
+--- a/build/azure-pipelines/darwin/steps/product-build-darwin-compile.yml
++++ b/build/azure-pipelines/darwin/steps/product-build-darwin-compile.yml
+@@ -3,9 +3,6 @@ parameters:
+     type: string
+   - name: VSCODE_CIBUILD
+     type: boolean
+-  - name: VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL
+-    type: boolean
+-    default: false
+   - name: VSCODE_RUN_ELECTRON_TESTS
+     type: boolean
+     default: false
+@@ -24,10 +21,6 @@ steps:
+       versionSource: fromFile
+       versionFilePath: .nvmrc
+ 
+-  - ${{ if or(eq(parameters.VSCODE_CIBUILD, true), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, true)) }}:
+-    - script: node build/azure-pipelines/common/disableFoundryLocalInstall.ts
+-      displayName: Disable Foundry Local Native Install
+-
+   - template: ../../distro/download-distro.yml@self
+ 
+   - task: AzureKeyVault@2
+@@ -48,8 +41,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Registry
+ 
+-  - template: ../../common/apply-sdk-canary.yml@self
+-
+   - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts darwin $VSCODE_ARCH $(node -p process.arch) > .build/packagelockhash
+     displayName: Prepare node_modules cache key
+ 
+@@ -80,11 +71,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Authentication
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: prepare
+-
+   - task: PipAuthenticate@1
+     inputs:
+       artifactFeeds: Monaco/vscode
+@@ -117,14 +103,6 @@ steps:
+     displayName: Install dependencies
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: install
+-
+-  - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-    displayName: Verify native optional dependency binaries
+-
+   - script: node build/azure-pipelines/distro/mixin-npm.ts
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+     displayName: Mixin distro node modules
+@@ -158,21 +136,6 @@ steps:
+ 
+   - template: ../../common/install-builtin-extensions.yml@self
+ 
+-  - template: ../../common/agent-sdk-produce.yml@self
+-    parameters:
+-      vscodePlatform: darwin
+-
+-  - template: ../../common/dictation-runtime-produce.yml@self
+-    parameters:
+-      vscodePlatform: darwin
+-
+-  - script: npx deemon --detach --wait -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX (background)
+-
+-  - template: ../../common/mixin-vscode-capi.yml@self
+-
+   - script: npm run gulp core-ci
+     env:
+       GITHUB_TOKEN: "$(github-token-code-oss)"
+@@ -194,11 +157,6 @@ steps:
+       displayName: Generate policy definitions
+       retryCountOnTaskFailure: 3
+ 
+-  - script: npx deemon --attach -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX
+-
+   # Block on the CG NOTICE download and overwrite ThirdPartyNotices.txt
+   # before gulp packages it (and before any later signing/notarization).
+   # Non-fatal: falls back to legacy on any problem.
+diff --git a/build/azure-pipelines/darwin/steps/product-build-darwin-test.yml b/build/azure-pipelines/darwin/steps/product-build-darwin-test.yml
+index f5debbc..cbca73d 100644
+--- a/build/azure-pipelines/darwin/steps/product-build-darwin-test.yml
++++ b/build/azure-pipelines/darwin/steps/product-build-darwin-test.yml
+@@ -155,11 +155,6 @@ steps:
+     continueOnError: true
+     condition: succeededOrFailed()
+ 
+-  - ${{ if eq(parameters.VSCODE_RUN_ELECTRON_TESTS, true) }}:
+-    - template: ../../copilot/test-integration-steps.yml@self
+-      parameters:
+-        OS: darwin
+-
+   - task: PublishTestResults@2
+     displayName: Publish Tests Results
+     inputs:
+diff --git a/build/azure-pipelines/linux/product-build-linux-node-modules.yml b/build/azure-pipelines/linux/product-build-linux-node-modules.yml
+index ea09134..5c039c9 100644
+--- a/build/azure-pipelines/linux/product-build-linux-node-modules.yml
++++ b/build/azure-pipelines/linux/product-build-linux-node-modules.yml
+@@ -54,8 +54,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Registry
+ 
+-      - template: ../common/apply-sdk-canary.yml@self
+-
+       - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts linux $VSCODE_ARCH $(node -p process.arch) > .build/packagelockhash
+         displayName: Prepare node_modules cache key
+ 
+@@ -82,11 +80,6 @@ jobs:
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-          onlyOnNodeModulesCacheMiss: true
+-
+       - script: |
+           set -e
+ 
+@@ -147,15 +140,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-          onlyOnNodeModulesCacheMiss: true
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+diff --git a/build/azure-pipelines/linux/product-build-linux.yml b/build/azure-pipelines/linux/product-build-linux.yml
+index bf3d419..4c6c683 100644
+--- a/build/azure-pipelines/linux/product-build-linux.yml
++++ b/build/azure-pipelines/linux/product-build-linux.yml
+@@ -108,12 +108,6 @@ jobs:
+             sbomBuildDropPath: $(SNAP_EXTRACTED_PATH)
+             sbomPackageName: "VS Code Linux $(VSCODE_ARCH) SNAP"
+             sbomPackageVersion: $(Build.SourceVersion)
+-        - output: pipelineArtifact
+-          targetPath: $(Build.SourcesDirectory)/.build/agent-sdk/tarballs
+-          artifactName: agent_sdk_linux_$(VSCODE_ARCH)_tarballs
+-          displayName: Publish agent SDK tarballs
+-          sbomEnabled: false
+-          condition: and(succeededOrFailed(), eq(variables['AGENT_SDK_TARBALLS_PRODUCED'], 'true'))
+     steps:
+       - template: ./steps/product-build-linux-compile.yml@self
+         parameters:
+diff --git a/build/azure-pipelines/linux/product-smoke-flaky-linux.yml b/build/azure-pipelines/linux/product-smoke-flaky-linux.yml
+index 5c2a253..ee6ee07 100644
+--- a/build/azure-pipelines/linux/product-smoke-flaky-linux.yml
++++ b/build/azure-pipelines/linux/product-smoke-flaky-linux.yml
+@@ -32,7 +32,6 @@ jobs:
+             VSCODE_ARCH: x64
+             VSCODE_CIBUILD: true
+             VSCODE_QUALITY: ${{ parameters.VSCODE_QUALITY }}
+-            VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL: true
+       archiveWorkspaceSteps:
+         - script: |
+             set -e
+diff --git a/build/azure-pipelines/linux/steps/product-build-linux-compile.yml b/build/azure-pipelines/linux/steps/product-build-linux-compile.yml
+index e5b93a1..f516b86 100644
+--- a/build/azure-pipelines/linux/steps/product-build-linux-compile.yml
++++ b/build/azure-pipelines/linux/steps/product-build-linux-compile.yml
+@@ -5,9 +5,6 @@ parameters:
+     type: boolean
+   - name: VSCODE_QUALITY
+     type: string
+-  - name: VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL
+-    type: boolean
+-    default: false
+   - name: VSCODE_BUILD_LINUX_SNAP
+     type: boolean
+     default: false
+@@ -32,10 +29,6 @@ steps:
+       versionSource: fromFile
+       versionFilePath: .nvmrc
+ 
+-  - ${{ if or(eq(parameters.VSCODE_CIBUILD, true), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, true)) }}:
+-    - script: node build/azure-pipelines/common/disableFoundryLocalInstall.ts
+-      displayName: Disable Foundry Local Native Install
+-
+   - template: ../../distro/download-distro.yml@self
+ 
+   - task: AzureKeyVault@2
+@@ -68,8 +61,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Registry
+ 
+-  - template: ../../common/apply-sdk-canary.yml@self
+-
+   - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts linux $VSCODE_ARCH $(node -p process.arch) > .build/packagelockhash
+     displayName: Prepare node_modules cache key
+ 
+@@ -100,11 +91,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Authentication
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: prepare
+-
+   - script: |
+       set -e
+ 
+@@ -164,14 +150,6 @@ steps:
+     displayName: Install dependencies
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: install
+-
+-  - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-    displayName: Verify native optional dependency binaries
+-
+   - script: node build/azure-pipelines/distro/mixin-npm.ts
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+     displayName: Mixin distro node modules
+@@ -205,22 +183,6 @@ steps:
+ 
+   - template: ../../common/install-builtin-extensions.yml@self
+ 
+-  - ${{ if ne(parameters.VSCODE_ARCH, 'armhf') }}:
+-    - template: ../../common/agent-sdk-produce.yml@self
+-      parameters:
+-        vscodePlatform: linux
+-
+-    - template: ../../common/dictation-runtime-produce.yml@self
+-      parameters:
+-        vscodePlatform: linux
+-
+-  - script: npx deemon --detach --wait -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX (background)
+-
+-  - template: ../../common/mixin-vscode-capi.yml@self
+-
+   - script: npm run gulp core-ci
+     env:
+       GITHUB_TOKEN: "$(github-token-code-oss)"
+@@ -243,11 +205,6 @@ steps:
+       displayName: Generate policy definitions
+       retryCountOnTaskFailure: 3
+ 
+-  - script: npx deemon --attach -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX
+-
+   # Block on the CG NOTICE download and overwrite ThirdPartyNotices.txt
+   # right before gulp packages it. Non-fatal: falls back to legacy on any problem.
+   - ${{ if ne(parameters.VSCODE_CIBUILD, true) }}:
+diff --git a/build/azure-pipelines/linux/steps/product-build-linux-test.yml b/build/azure-pipelines/linux/steps/product-build-linux-test.yml
+index 57b712f..cef6100 100644
+--- a/build/azure-pipelines/linux/steps/product-build-linux-test.yml
++++ b/build/azure-pipelines/linux/steps/product-build-linux-test.yml
+@@ -180,11 +180,6 @@ steps:
+     continueOnError: true
+     condition: succeededOrFailed()
+ 
+-  - ${{ if eq(parameters.VSCODE_RUN_ELECTRON_TESTS, true) }}:
+-    - template: ../../copilot/test-integration-steps.yml@self
+-      parameters:
+-        OS: linux
+-
+   - task: PublishTestResults@2
+     displayName: Publish Tests Results
+     inputs:
+diff --git a/build/azure-pipelines/oss/scan-licenses.ts b/build/azure-pipelines/oss/scan-licenses.ts
+index 9997a8c..efc92ec 100644
+--- a/build/azure-pipelines/oss/scan-licenses.ts
++++ b/build/azure-pipelines/oss/scan-licenses.ts
+@@ -567,8 +567,7 @@ export function isArchPackageName(name: string): boolean {
+  * Platforms and architectures VS Code actually ships. Used by Section 5 to
+  * skip arch packages for platforms we don't target (android, freebsd, etc.).
+  *
+- * Source of truth: build/azure-pipelines/product-build.yml build matrix +
+- * build/agent-sdk/common.ts (KNOWN_VSCODE_PLATFORMS / VscodeBuildArch).
++ * Source of truth: build/azure-pipelines/product-build.yml build matrix.
+  * "alpine" in build config = "linuxmusl" in npm package names.
+  */
+ const VSCODE_SHIPPED_PLATFORMS = new Set(['darwin', 'linux', 'linuxmusl', 'win32']);
+diff --git a/build/azure-pipelines/product-build-template.yml b/build/azure-pipelines/product-build-template.yml
+index 4107898..0be77a6 100644
+--- a/build/azure-pipelines/product-build-template.yml
++++ b/build/azure-pipelines/product-build-template.yml
+@@ -100,17 +100,6 @@ stages:
+         jobs:
+           - template: product-quality-checks.yml@self
+ 
+-      - stage: Copilot
+-        dependsOn: []
+-        pool:
+-          name: 1es-ubuntu-22.04-x64
+-          os: linux
+-        jobs:
+-          - template: product-copilot.yml@self
+-            parameters:
+-              VSCODE_PUBLISH: ${{ parameters.VSCODE_PUBLISH }}
+-              VSCODE_RELEASE: ${{ parameters.VSCODE_RELEASE }}
+-
+       - ${{ if eq(variables['VSCODE_BUILD_STAGE_WINDOWS'], true) }}:
+         - stage: Windows
+           dependsOn: []
+diff --git a/build/azure-pipelines/product-build.yml b/build/azure-pipelines/product-build.yml
+index 18a4399..4044c5e 100644
+--- a/build/azure-pipelines/product-build.yml
++++ b/build/azure-pipelines/product-build.yml
+@@ -115,43 +115,19 @@ parameters:
+     displayName: "Use legacy OSS Notice"
+     type: boolean
+     default: false
+-  # Opt-in for validation builds that never publish (SDK canary runs, SDK bump PR
+-  # validation): runs the sanity suite against this build's own pipeline artifacts
++  # Opt-in for validation builds that never publish: runs the sanity suite
++  # against this build's own pipeline artifacts
+   # rather than the update service, which only serves published builds.
+   - name: VSCODE_RUN_ARTIFACT_SANITY_TESTS
+     displayName: "Run sanity tests against this build's artifacts (for unpublished builds)"
+     type: boolean
+     default: false
+-  # SDK -> VS Code integration: override the Copilot dependencies to a version
+-  # already published to the private feed. 'none'/'auto' = normal build.
+-  # See microsoft/vscode-engineering specs/sdk-vscode-integration.spec.md.
+-  - name: VSCODE_SDK_CANARY_VERSION
+-    displayName: "SDK canary: @github/copilot-sdk version ('none' = normal build)"
+-    type: string
+-    default: none
+-  - name: VSCODE_CLI_CANARY_VERSION
+-    displayName: "SDK canary: @github/copilot version ('auto' = infer from the SDK)"
+-    type: string
+-    default: auto
+ 
+ variables:
+   - name: VSCODE_PRIVATE_BUILD
+     value: ${{ ne(variables['Build.Repository.Uri'], 'https://github.com/microsoft/vscode.git') }}
+   - name: NPM_REGISTRY
+     value: ${{ parameters.NPM_REGISTRY }}
+-  # Normalize the canary sentinels ('none'/'auto') back to empty so the gated
+-  # node-modules steps (condition: ne(..., '')) stay a no-op for normal builds
+-  # and the override script infers the CLI when it is empty.
+-  - name: VSCODE_SDK_CANARY_VERSION
+-    ${{ if eq(parameters.VSCODE_SDK_CANARY_VERSION, 'none') }}:
+-      value: ""
+-    ${{ else }}:
+-      value: ${{ parameters.VSCODE_SDK_CANARY_VERSION }}
+-  - name: VSCODE_CLI_CANARY_VERSION
+-    ${{ if eq(parameters.VSCODE_CLI_CANARY_VERSION, 'auto') }}:
+-      value: ""
+-    ${{ else }}:
+-      value: ${{ parameters.VSCODE_CLI_CANARY_VERSION }}
+   - name: CARGO_REGISTRY
+     value: ${{ parameters.CARGO_REGISTRY }}
+   - name: VSCODE_QUALITY
+@@ -230,11 +206,6 @@ resources:
+       name: microsoft/vscode-distro
+       endpoint: Monaco
+       ref: main
+-    - repository: capi
+-      type: github
+-      name: microsoft/vscode-capi
+-      endpoint: Monaco
+-      ref: main
+     - repository: encrypt
+       type: github
+       name: microsoft/vscode-encrypt
+@@ -263,7 +234,6 @@ extends:
+       sourceRepositoriesToScan:
+         exclude:
+           - repository: distro
+-          - repository: capi
+           - repository: encrypt
+           - repository: vsda
+           - repository: regexp
+@@ -301,17 +271,6 @@ extends:
+         jobs:
+           - template: build/azure-pipelines/product-quality-checks.yml@self
+ 
+-      - stage: Copilot
+-        dependsOn: []
+-        pool:
+-          name: 1es-ubuntu-22.04-x64
+-          os: linux
+-        jobs:
+-          - template: build/azure-pipelines/product-copilot.yml@self
+-            parameters:
+-              VSCODE_PUBLISH: ${{ variables.VSCODE_PUBLISH }}
+-              VSCODE_RELEASE: ${{ parameters.VSCODE_RELEASE }}
+-
+       - ${{ if eq(variables['VSCODE_BUILD_STAGE_WINDOWS'], true) }}:
+         - stage: Windows
+           dependsOn: []
+diff --git a/build/azure-pipelines/product-quality-checks.yml b/build/azure-pipelines/product-quality-checks.yml
+index 2282b69..3826a6d 100644
+--- a/build/azure-pipelines/product-quality-checks.yml
++++ b/build/azure-pipelines/product-quality-checks.yml
+@@ -56,10 +56,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ./common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-
+       - script: |
+           set -e
+ 
+@@ -109,13 +105,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ./common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+@@ -138,8 +127,6 @@ jobs:
+         continueOnError: true
+         condition: and(succeeded(), eq(lower(variables['VSCODE_PUBLISH']), 'true'))
+ 
+-      - template: ./common/mixin-vscode-capi.yml@self
+-
+       - script: npm exec -- npm-run-all2 -lp core-ci hygiene eslint valid-layers-check define-class-fields-check vscode-dts-compile-check tsec-compile-check test-build-scripts
+         env:
+           GITHUB_TOKEN: "$(github-token-code-oss)"
+diff --git a/build/azure-pipelines/product-smoke-flaky.yml b/build/azure-pipelines/product-smoke-flaky.yml
+index ce6473e..75db31a 100644
+--- a/build/azure-pipelines/product-smoke-flaky.yml
++++ b/build/azure-pipelines/product-smoke-flaky.yml
+@@ -96,10 +96,7 @@ variables:
+     value: microsoft/vscode-distro
+   - name: VSCODE_OVERWRITE_TPN
+     value: "true"
+-  # The Copilot extension build patches its package.json version for pre-release
+-  # (non-stable) quality and requires a per-build counter (0-99, reset daily) to
+-  # keep versions unique. Mirrors product-build.yml. The counter resets each day
+-  # per quality+branch, so this scheduled pipeline stays at a low value.
++  # Retain daily counter variables for compatibility with shared build tooling.
+   - name: VSCODE_PUBLISH_COUNTER_PREFIX
+     value: $[format('{0:yyyyMMdd}-{1}-{2}', pipeline.startTime, variables['VSCODE_QUALITY'], variables['Build.SourceBranch'])]
+   - name: VSCODE_PUBLISH_COUNTER
+@@ -122,11 +119,6 @@ resources:
+       name: microsoft/vscode-distro
+       endpoint: Monaco
+       ref: main
+-    - repository: capi
+-      type: github
+-      name: microsoft/vscode-capi
+-      endpoint: Monaco
+-      ref: main
+     - repository: encrypt
+       type: github
+       name: microsoft/vscode-encrypt
+@@ -155,7 +147,6 @@ extends:
+       sourceRepositoriesToScan:
+         exclude:
+           - repository: distro
+-          - repository: capi
+           - repository: encrypt
+           - repository: vsda
+           - repository: regexp
+@@ -177,30 +168,11 @@ extends:
+     settings:
+       networkIsolationPolicy: Permissive,CFSClean,CFSClean2,CFSClean3
+     stages:
+-      # The per-OS compile template unconditionally waits (up to 30 min) for a
+-      # `Copilot` job to publish the `copilot_vsix` artifact, which is mixed into
+-      # the build. This stage produces it — mirroring product-build.yml. The
+-      # platform stages depend on its artifact-published output so they are
+-      # skipped when the artifact cannot be produced, but still run if later
+-      # Copilot validation fails.
+-      - stage: Copilot
+-        dependsOn: []
+-        pool:
+-          name: 1es-ubuntu-22.04-x64
+-          os: linux
+-        jobs:
+-          - template: build/azure-pipelines/product-copilot.yml@self
+-            parameters:
+-              VSCODE_PUBLISH: false
+-              VSCODE_RELEASE: false
+-              # This is a test-only run; don't push the Copilot extension's source
+-              # maps to the CDN.
+-              VSCODE_UPLOAD_SOURCEMAPS: false
+ 
+       - ${{ if eq(parameters.VSCODE_BUILD_LINUX, true) }}:
+         - stage: Linux
+-          dependsOn: Copilot
+-          condition: and(not(canceled()), eq(dependencies.Copilot.outputs['Copilot.copilotVsix.published'], 'true'))
++          dependsOn: []
++          condition: not(canceled())
+           pool:
+             name: 1es-ubuntu-22.04-x64
+             os: linux
+@@ -215,8 +187,8 @@ extends:
+ 
+       - ${{ if eq(parameters.VSCODE_BUILD_WIN32, true) }}:
+         - stage: Windows
+-          dependsOn: Copilot
+-          condition: and(not(canceled()), eq(dependencies.Copilot.outputs['Copilot.copilotVsix.published'], 'true'))
++          dependsOn: []
++          condition: not(canceled())
+           pool:
+             name: 1es-windows-2022-x64
+             os: windows
+@@ -231,8 +203,8 @@ extends:
+ 
+       - ${{ if eq(parameters.VSCODE_BUILD_MACOS, true) }}:
+         - stage: macOS
+-          dependsOn: Copilot
+-          condition: and(not(canceled()), eq(dependencies.Copilot.outputs['Copilot.copilotVsix.published'], 'true'))
++          dependsOn: []
++          condition: not(canceled())
+           pool:
+             name: AcesShared
+             os: macOS
+diff --git a/build/azure-pipelines/web/product-build-web-node-modules.yml b/build/azure-pipelines/web/product-build-web-node-modules.yml
+index 4f935de..fdd15d5 100644
+--- a/build/azure-pipelines/web/product-build-web-node-modules.yml
++++ b/build/azure-pipelines/web/product-build-web-node-modules.yml
+@@ -26,8 +26,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Registry
+ 
+-      - template: ../common/apply-sdk-canary.yml@self
+-
+       - script: mkdir -p .build && node build/azure-pipelines/common/computeNodeModulesCacheKey.ts web $(node -p process.arch) > .build/packagelockhash
+         displayName: Prepare node_modules cache key
+ 
+@@ -54,11 +52,6 @@ jobs:
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-          onlyOnNodeModulesCacheMiss: true
+-
+       - script: |
+           set -e
+           ./build/azure-pipelines/linux/apt-retry.sh sudo apt-get update
+@@ -84,15 +77,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-          onlyOnNodeModulesCacheMiss: true
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+diff --git a/build/azure-pipelines/web/product-build-web.yml b/build/azure-pipelines/web/product-build-web.yml
+index 131f250..10e3ecd 100644
+--- a/build/azure-pipelines/web/product-build-web.yml
++++ b/build/azure-pipelines/web/product-build-web.yml
+@@ -68,10 +68,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-
+       - script: |
+           set -e
+           ./build/azure-pipelines/linux/apt-retry.sh sudo apt-get update
+@@ -97,13 +93,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-
+-      - script: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        displayName: Verify native optional dependency binaries
+-
+       - script: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+@@ -121,23 +110,11 @@ jobs:
+ 
+       - template: ../common/install-builtin-extensions.yml@self
+ 
+-      - script: npx deemon --detach --wait -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-        env:
+-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-        displayName: Download Copilot VSIX (background)
+-
+-      - template: ../common/mixin-vscode-capi.yml@self
+-
+       - script: npm run gulp core-ci
+         env:
+           GITHUB_TOKEN: "$(github-token-code-oss)"
+         displayName: Compile
+ 
+-      - script: npx deemon --attach -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-        env:
+-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-        displayName: Download Copilot VSIX
+-
+       - script: |
+           set -e
+           npm run gulp vscode-web-min-ci
+diff --git a/build/azure-pipelines/win32/product-build-win32-node-modules.yml b/build/azure-pipelines/win32/product-build-win32-node-modules.yml
+index 528a580..9167e5b 100644
+--- a/build/azure-pipelines/win32/product-build-win32-node-modules.yml
++++ b/build/azure-pipelines/win32/product-build-win32-node-modules.yml
+@@ -37,10 +37,6 @@ jobs:
+         condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Registry
+ 
+-      - template: ../common/apply-sdk-canary.yml@self
+-        parameters:
+-          windows: true
+-
+       - pwsh: |
+           mkdir .build -ea 0
+           node build/azure-pipelines/common/computeNodeModulesCacheKey.ts win32 $(VSCODE_ARCH) $(node -p process.arch) > .build/packagelockhash
+@@ -71,11 +67,6 @@ jobs:
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'), ne(variables['NPM_REGISTRY'], 'none'))
+         displayName: Setup NPM Authentication
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: prepare
+-          onlyOnNodeModulesCacheMiss: true
+-
+       - powershell: |
+           . build/azure-pipelines/win32/exec.ps1
+           $ErrorActionPreference = "Stop"
+@@ -90,15 +81,6 @@ jobs:
+         displayName: Install dependencies
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-      - template: ../common/foundry-local.yml@self
+-        parameters:
+-          phase: install
+-          onlyOnNodeModulesCacheMiss: true
+-
+-      - powershell: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-        condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+-        displayName: Verify native optional dependency binaries
+-
+       - powershell: node build/azure-pipelines/distro/mixin-npm.ts
+         condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+         displayName: Mixin distro node modules
+diff --git a/build/azure-pipelines/win32/product-build-win32.yml b/build/azure-pipelines/win32/product-build-win32.yml
+index d5dc4e2..188595d 100644
+--- a/build/azure-pipelines/win32/product-build-win32.yml
++++ b/build/azure-pipelines/win32/product-build-win32.yml
+@@ -82,12 +82,6 @@ jobs:
+           sbomBuildDropPath: $(Agent.BuildDirectory)/vscode-server-win32-$(VSCODE_ARCH)-web
+           sbomPackageName: "VS Code Windows $(VSCODE_ARCH) Web"
+           sbomPackageVersion: $(Build.SourceVersion)
+-        - output: pipelineArtifact
+-          targetPath: $(Build.SourcesDirectory)/.build/agent-sdk/tarballs
+-          artifactName: agent_sdk_win32_$(VSCODE_ARCH)_tarballs
+-          displayName: Publish agent SDK tarballs
+-          sbomEnabled: false
+-          condition: and(succeededOrFailed(), eq(variables['AGENT_SDK_TARBALLS_PRODUCED'], 'true'))
+       sdl:
+         suppression:
+           suppressionFile: $(Build.SourcesDirectory)\.config\guardian\.gdnsuppress
+diff --git a/build/azure-pipelines/win32/product-smoke-flaky-win32.yml b/build/azure-pipelines/win32/product-smoke-flaky-win32.yml
+index 3cc43c3..4fd44be 100644
+--- a/build/azure-pipelines/win32/product-smoke-flaky-win32.yml
++++ b/build/azure-pipelines/win32/product-smoke-flaky-win32.yml
+@@ -27,7 +27,6 @@ jobs:
+             VSCODE_ARCH: x64
+             VSCODE_CIBUILD: true
+             VSCODE_QUALITY: ${{ parameters.VSCODE_QUALITY }}
+-            VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL: true
+       archiveWorkspaceSteps:
+         - powershell: |
+             . build/azure-pipelines/win32/exec.ps1
+diff --git a/build/azure-pipelines/win32/sdl-scan-win32.yml b/build/azure-pipelines/win32/sdl-scan-win32.yml
+index 9d49b70..5a9a885 100644
+--- a/build/azure-pipelines/win32/sdl-scan-win32.yml
++++ b/build/azure-pipelines/win32/sdl-scan-win32.yml
+@@ -48,10 +48,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Authentication
+ 
+-  - template: ../common/foundry-local.yml@self
+-    parameters:
+-      phase: prepare
+-
+   - pwsh: |
+       $includes = @'
+         {
+@@ -96,10 +92,6 @@ steps:
+     retryCountOnTaskFailure: 5
+     displayName: Install dependencies
+ 
+-  - template: ../common/foundry-local.yml@self
+-    parameters:
+-      phase: install
+-
+   - script: node build/azure-pipelines/distro/mixin-npm.ts
+     displayName: Mixin distro node modules
+ 
+@@ -110,8 +102,6 @@ steps:
+ 
+   - template: ../common/install-builtin-extensions.yml@self
+ 
+-  - template: ../common/mixin-vscode-capi.yml@self
+-
+   - powershell: npm run gulp core-ci
+     env:
+       GITHUB_TOKEN: "$(github-token-code-oss)"
+diff --git a/build/azure-pipelines/win32/steps/product-build-win32-compile.yml b/build/azure-pipelines/win32/steps/product-build-win32-compile.yml
+index 721c94a..dbf9492 100644
+--- a/build/azure-pipelines/win32/steps/product-build-win32-compile.yml
++++ b/build/azure-pipelines/win32/steps/product-build-win32-compile.yml
+@@ -5,9 +5,6 @@ parameters:
+     type: boolean
+   - name: VSCODE_QUALITY
+     type: string
+-  - name: VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL
+-    type: boolean
+-    default: false
+   - name: VSCODE_RUN_ELECTRON_TESTS
+     type: boolean
+     default: false
+@@ -26,10 +23,6 @@ steps:
+       versionSource: fromFile
+       versionFilePath: .nvmrc
+ 
+-  - ${{ if or(eq(parameters.VSCODE_CIBUILD, true), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, true)) }}:
+-    - script: node build/azure-pipelines/common/disableFoundryLocalInstall.ts
+-      displayName: Disable Foundry Local Native Install
+-
+   - task: UsePythonVersion@0
+     inputs:
+       versionSpec: "3.x"
+@@ -48,10 +41,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Registry
+ 
+-  - template: ../../common/apply-sdk-canary.yml@self
+-    parameters:
+-      windows: true
+-
+   - pwsh: |
+       mkdir .build -ea 0
+       node build/azure-pipelines/common/computeNodeModulesCacheKey.ts win32 $(VSCODE_ARCH) $(node -p process.arch) > .build/packagelockhash
+@@ -86,11 +75,6 @@ steps:
+     condition: and(succeeded(), ne(variables['NPM_REGISTRY'], 'none'))
+     displayName: Setup NPM Authentication
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: prepare
+-
+   - powershell: |
+       . build/azure-pipelines/win32/exec.ps1
+       $ErrorActionPreference = "Stop"
+@@ -105,14 +89,6 @@ steps:
+     displayName: Install dependencies
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+ 
+-  - ${{ if and(eq(parameters.VSCODE_CIBUILD, false), eq(parameters.VSCODE_SKIP_FOUNDRY_LOCAL_INSTALL, false)) }}:
+-    - template: ../../common/foundry-local.yml@self
+-      parameters:
+-        phase: install
+-
+-  - powershell: node build/azure-pipelines/common/checkNativeOptionalDeps.ts
+-    displayName: Verify native optional dependency binaries
+-
+   - powershell: node build/azure-pipelines/distro/mixin-npm.ts
+     condition: and(succeeded(), ne(variables.NODE_MODULES_RESTORED, 'true'))
+     displayName: Mixin distro node modules
+@@ -147,21 +123,6 @@ steps:
+ 
+   - template: ../../common/install-builtin-extensions.yml@self
+ 
+-  - template: ../../common/agent-sdk-produce.yml@self
+-    parameters:
+-      vscodePlatform: win32
+-
+-  - template: ../../common/dictation-runtime-produce.yml@self
+-    parameters:
+-      vscodePlatform: win32
+-
+-  - pwsh: npx deemon --detach --wait -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX (background)
+-
+-  - template: ../../common/mixin-vscode-capi.yml@self
+-
+   - powershell: npm run gulp core-ci
+     env:
+       GITHUB_TOKEN: "$(github-token-code-oss)"
+@@ -190,11 +151,6 @@ steps:
+     - powershell: node build/win32/explorer-dll-fetcher.ts .build/win32/appx
+       displayName: Download Explorer dll
+ 
+-  - pwsh: npx deemon --attach -- node build/azure-pipelines/common/downloadCopilotVsix.ts
+-    env:
+-      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+-    displayName: Download Copilot VSIX
+-
+   # Block on the CG NOTICE download and overwrite ThirdPartyNotices.txt
+   # right before gulp packages it. Non-fatal: falls back to legacy on any problem.
+   - ${{ if ne(parameters.VSCODE_CIBUILD, true) }}:
+diff --git a/build/azure-pipelines/win32/steps/product-build-win32-test.yml b/build/azure-pipelines/win32/steps/product-build-win32-test.yml
+index 128ff56..6aa353c 100644
+--- a/build/azure-pipelines/win32/steps/product-build-win32-test.yml
++++ b/build/azure-pipelines/win32/steps/product-build-win32-test.yml
+@@ -154,11 +154,6 @@ steps:
+     continueOnError: true
+     condition: succeededOrFailed()
+ 
+-  - ${{ if eq(parameters.VSCODE_RUN_ELECTRON_TESTS, true) }}:
+-    - template: ../../copilot/test-integration-steps.yml@self
+-      parameters:
+-        OS: win32
+-
+   - task: PublishTestResults@2
+     displayName: Publish Tests Results
+     inputs:

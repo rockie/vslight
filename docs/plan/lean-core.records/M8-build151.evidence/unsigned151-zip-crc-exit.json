@@ -1,0 +1,15 @@
+{
+  "startedAt": "2026-10-02T19:18:25.932977+10:00",
+  "endedAt": "2026-10-02T19:18:26.434002+10:00",
+  "durationSeconds": 0.501056332999724,
+  "command": [
+    "/opt/homebrew/bin/python3.12",
+    "-c",
+    "import sys,zipfile; z=zipfile.ZipFile(sys.argv[1]); bad=z.testzip(); print(\"entries=\"+str(len(z.infolist()))+\" firstBad=\"+repr(bad)); sys.exit(1 if bad else 0)",
+    "/private/tmp/lean-core-build151-c480juxs/VSLight-151-unsigned.zip"
+  ],
+  "cwd": "/Users/rockie/Documents/gh-xgent/vscodium",
+  "exit": 0,
+  "stdout": "entries=3811 firstBad=None\n",
+  "stderr": ""
+}

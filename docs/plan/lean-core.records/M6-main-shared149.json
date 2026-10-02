@@ -1,0 +1,489 @@
+{
+  "atUTC": "2026-10-01T18:44:14.318546+00:00",
+  "status": "COLD_RELOAD_MAIN_SHARED_REGISTERED_ENTITIES_PASS_DI_RPC_ZERO",
+  "sourceArtifact": "Actual final149 (147+148+149), new valid ordinary profile",
+  "root": "/private/tmp/lc149-my6ky2od",
+  "mainPID": 91720,
+  "sharedPID": 91890,
+  "helper": {
+    "path": "dev/test-fixtures/lean-core/main-shared-registry.mjs",
+    "sha256": "c24aa7b0f12a1d143134579f14745c8e19b0be3d9530e559024aea54bbc392e0",
+    "frozenAndNotModified": true
+  },
+  "cold": {
+    "atUTC": "2026-10-01T18:32:22.918889+00:00",
+    "status": "COLD_MAIN_SHARED_REGISTERED_ENTITIES_PASS_RELOAD_PENDING",
+    "sourceArtifact": "149 (147+148+149), actual independently launched valid ordinary profile",
+    "root": "/private/tmp/lc149-my6ky2od",
+    "sourceStartUTC": "2026-10-01T18:27:59.890990+00:00",
+    "mainPID": 91720,
+    "sharedPID": 91890,
+    "actualExtensionHostPID": 92930,
+    "helper": {
+      "path": "dev/test-fixtures/lean-core/main-shared-registry.mjs",
+      "sha256": "c24aa7b0f12a1d143134579f14745c8e19b0be3d9530e559024aea54bbc392e0",
+      "frozenAndNotModified": true
+    },
+    "snapshots": {
+      "main": {
+        "path": "/private/tmp/lc149-my6ky2od/cold-main149/snapshot.json",
+        "sha256": "f73ebc398ab49c2896cab5959851a3028b7a00ad614bc78ae7f02c1682fa677d",
+        "capturedAt": "2026-10-01T18:29:55.994Z",
+        "module": {
+          "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/main.js",
+          "scriptId": "141",
+          "diskSHA256": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+          "loadedSHA256": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+          "callback": "uncaughtException",
+          "bindingNames": {
+            "channelServer": "Vf",
+            "ipcServer": "qf",
+            "utilityProcess": "Ls"
+          }
+        },
+        "authority": {
+          "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "profile": "/private/tmp/lc149-my6ky2od/u",
+          "pid": 91720,
+          "parentPID": 1,
+          "mainPID": 91720,
+          "port": 19501,
+          "listener": "127.0.0.1:19501",
+          "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight"
+        },
+        "authorityRecheckedAfterCapture": true
+      },
+      "shared": {
+        "path": "/private/tmp/lc149-my6ky2od/cold-shared149/snapshot.json",
+        "sha256": "dc6023744c6cc5d3d2ee541ccf2583006444dfda2c4426bce7d194e14057e179",
+        "capturedAt": "2026-10-01T18:30:19.413Z",
+        "module": {
+          "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+          "scriptId": "154",
+          "diskSHA256": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+          "loadedSHA256": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+          "callback": "uncaughtException",
+          "bindingNames": {
+            "channelServer": "Gw",
+            "ipcServer": "Kw"
+          }
+        },
+        "authority": {
+          "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "profile": "/private/tmp/lc149-my6ky2od/u",
+          "pid": 91890,
+          "parentPID": 91720,
+          "mainPID": 91720,
+          "port": 19502,
+          "listener": "127.0.0.1:19502",
+          "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper"
+        },
+        "authorityRecheckedAfterCapture": true
+      }
+    },
+    "checks": {
+      "main": {
+        "channelCount": 24,
+        "channelNames": [
+          "diagnostics",
+          "encryption",
+          "extensionHostStarter",
+          "extensionhostdebugservice",
+          "externalTerminal",
+          "keyboardLayout",
+          "launch",
+          "localFilesystem",
+          "localPty",
+          "logger",
+          "menubar",
+          "meteredConnection",
+          "nativeHost",
+          "policy",
+          "process",
+          "profileStorageListener",
+          "sign",
+          "storage",
+          "update",
+          "url",
+          "userDataProfiles",
+          "utilityProcessWorker",
+          "webview",
+          "workspaces"
+        ],
+        "requiredRetainedNamesEqualActual": true,
+        "retiredChannelHits": [],
+        "channelServerInstances": 2,
+        "ipcServerInstances": 2,
+        "pendingChannelCounts": [
+          0,
+          0
+        ]
+      },
+      "shared": {
+        "channelCount": 17,
+        "channelNames": [
+          "IUserDataSyncResourceProviderService",
+          "checksum",
+          "diagnostics",
+          "extensionGalleryManifest",
+          "extensionTipsService",
+          "extensions",
+          "languagePacks",
+          "localGit",
+          "remoteTunnel",
+          "sharedProcessTunnel",
+          "telemetryAppender",
+          "userDataAutoSync",
+          "userDataSync",
+          "userDataSyncAccount",
+          "userDataSyncMachines",
+          "userDataSyncStoreManagement",
+          "v8InspectProfiling"
+        ],
+        "requiredRetainedNamesEqualActual": true,
+        "retiredChannelHits": [],
+        "channelServerInstances": 2,
+        "ipcServerInstances": 1,
+        "pendingChannelCounts": [
+          0,
+          0
+        ]
+      }
+    },
+    "retiredChannelNames": [
+      "browserView",
+      "browserViewGroup",
+      "playwright",
+      "nativeManagedSettings",
+      "fileManagedSettings",
+      "webContentExtractor",
+      "sharedWebContentExtractor",
+      "sandboxHelper",
+      "NativeMcpDiscoveryHelper",
+      "mcpGateway",
+      "mcpGatewayToolBroker",
+      "mcpManagement",
+      "mcpGalleryManifest",
+      "customEndpointTelemetry",
+      "localTranscription",
+      "agentHost",
+      "agentHostLogger",
+      "agentHostConnectionTracker",
+      "agentHostProtocol",
+      "agentHostManagement",
+      "agentHostProxy",
+      "agentHostClientProxy",
+      "agentHostClientByokLm"
+    ],
+    "utilityChecks": {
+      "actualRoles": [
+        {
+          "pid": 91892,
+          "type": "fileWatcher",
+          "name": "file-watcher",
+          "entryPoint": "vs/platform/files/node/watcher/watcherMain",
+          "parentPID": 91720
+        },
+        {
+          "pid": 91890,
+          "type": "shared-process",
+          "name": "shared-process",
+          "entryPoint": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+          "parentPID": 91720
+        },
+        {
+          "pid": 92930,
+          "type": "extensionHost",
+          "name": "extension-host",
+          "entryPoint": "vs/workbench/api/node/extensionHostProcess",
+          "parentPID": 91720
+        }
+      ],
+      "allowedExactEntryPoints": {
+        "shared-process": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+        "fileWatcher": "vs/platform/files/node/watcher/watcherMain",
+        "extensionHost": "vs/workbench/api/node/extensionHostProcess",
+        "ptyHost": "vs/platform/terminal/node/ptyHostMain"
+      },
+      "unknownRoles": [],
+      "staticRegistryPIDSetEqualsInstances": true,
+      "currentExtensionHostMatchesReady": true,
+      "retiredUtilityCount": 0,
+      "ptyNotSpawnedAtCold": true
+    },
+    "logs": {
+      "path": "/private/tmp/lc149-my6ky2od/main-shared149-cold-log-counts.json",
+      "sha256": "c0835808f94daf7b601d2f901614408027541745e4e8eb7be768ac8be9f070e7",
+      "DI_RPC_allZero": true,
+      "warningErrorCount": 2,
+      "warningErrorCategories": {
+        "vscode.git resource-scoped configuration without resource": 2
+      },
+      "errorCount": 0
+    },
+    "boundaries": [
+      "Only existing main/shared registered objects; no future worker/download guarantee.",
+      "No GUI/app launch/request mutation/DI/service/channel call.",
+      "Only inspect19501 and19502, no renderer19500/auth19480.",
+      "First invalid fixture engines=* profile excluded.",
+      "Reload not yet performed; no overall V5/V6/M6/M8 acceptance."
+    ]
+  },
+  "reload": {
+    "snapshots": {
+      "main": {
+        "path": "/private/tmp/lc149-my6ky2od/reload-main149/snapshot.json",
+        "sha256": "93949c49885fa9bbad20d1e803562600c9d56c31ef9a439a41f129a90d9f1da9",
+        "capturedAt": "2026-10-01T18:40:38.673Z",
+        "module": {
+          "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/main.js",
+          "scriptId": "141",
+          "diskSHA256": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+          "loadedSHA256": "2a407501836d01512c561f90950fbfc3f1d6730fe8ac52bb0f519331d889215c",
+          "callback": "uncaughtException",
+          "bindingNames": {
+            "channelServer": "Vf",
+            "ipcServer": "qf",
+            "utilityProcess": "Ls"
+          }
+        },
+        "authority": {
+          "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "profile": "/private/tmp/lc149-my6ky2od/u",
+          "pid": 91720,
+          "parentPID": 1,
+          "mainPID": 91720,
+          "port": 19501,
+          "listener": "127.0.0.1:19501",
+          "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/MacOS/VSLight"
+        },
+        "authorityRecheckedAfterCapture": true
+      },
+      "shared": {
+        "path": "/private/tmp/lc149-my6ky2od/reload-shared149/snapshot.json",
+        "sha256": "b0e8d1ae44fe1fd4cf963a4886b33360474ad445046c9c17ff17be74be6c4396",
+        "capturedAt": "2026-10-01T18:40:52.850Z",
+        "module": {
+          "script": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/out/vs/code/electron-utility/sharedProcess/sharedProcessMain.js",
+          "scriptId": "154",
+          "diskSHA256": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+          "loadedSHA256": "87b88f7e8393b86e2396d40728990ab95e99ab9ed2f5b498c351ba8ecc3e3048",
+          "callback": "uncaughtException",
+          "bindingNames": {
+            "channelServer": "Gw",
+            "ipcServer": "Kw"
+          }
+        },
+        "authority": {
+          "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "profile": "/private/tmp/lc149-my6ky2od/u",
+          "pid": 91890,
+          "parentPID": 91720,
+          "mainPID": 91720,
+          "port": 19502,
+          "listener": "127.0.0.1:19502",
+          "executable": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper"
+        },
+        "authorityRecheckedAfterCapture": true
+      }
+    },
+    "checks": {
+      "main": {
+        "channelCount": 24,
+        "channelNames": [
+          "diagnostics",
+          "encryption",
+          "extensionHostStarter",
+          "extensionhostdebugservice",
+          "externalTerminal",
+          "keyboardLayout",
+          "launch",
+          "localFilesystem",
+          "localPty",
+          "logger",
+          "menubar",
+          "meteredConnection",
+          "nativeHost",
+          "policy",
+          "process",
+          "profileStorageListener",
+          "sign",
+          "storage",
+          "update",
+          "url",
+          "userDataProfiles",
+          "utilityProcessWorker",
+          "webview",
+          "workspaces"
+        ],
+        "sameFullRetainedNamesAsCold": true,
+        "retiredChannelHits": [],
+        "channelServerInstances": 3,
+        "ipcServerInstances": 2,
+        "pendingChannelCounts": [
+          0,
+          0,
+          0
+        ]
+      },
+      "shared": {
+        "channelCount": 17,
+        "channelNames": [
+          "IUserDataSyncResourceProviderService",
+          "checksum",
+          "diagnostics",
+          "extensionGalleryManifest",
+          "extensionTipsService",
+          "extensions",
+          "languagePacks",
+          "localGit",
+          "remoteTunnel",
+          "sharedProcessTunnel",
+          "telemetryAppender",
+          "userDataAutoSync",
+          "userDataSync",
+          "userDataSyncAccount",
+          "userDataSyncMachines",
+          "userDataSyncStoreManagement",
+          "v8InspectProfiling"
+        ],
+        "sameFullRetainedNamesAsCold": true,
+        "retiredChannelHits": [],
+        "channelServerInstances": 2,
+        "ipcServerInstances": 1,
+        "pendingChannelCounts": [
+          0,
+          0
+        ]
+      }
+    },
+    "utilityChecks": {
+      "actualRoles": [
+        {
+          "pid": 91890,
+          "type": "shared-process",
+          "name": "shared-process",
+          "entryPoint": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+          "parentPID": 91720
+        },
+        {
+          "pid": 1348,
+          "type": "ptyHost",
+          "name": "pty-host",
+          "entryPoint": "vs/platform/terminal/node/ptyHostMain",
+          "parentPID": 91720
+        },
+        {
+          "pid": 2142,
+          "type": "extensionHost",
+          "name": "extension-host",
+          "entryPoint": "vs/workbench/api/node/extensionHostProcess",
+          "parentPID": 91720
+        },
+        {
+          "pid": 2143,
+          "type": "fileWatcher",
+          "name": "file-watcher",
+          "entryPoint": "vs/platform/files/node/watcher/watcherMain",
+          "parentPID": 91720
+        }
+      ],
+      "allowedExactEntryPoints": {
+        "shared-process": "vs/code/electron-utility/sharedProcess/sharedProcessMain",
+        "fileWatcher": "vs/platform/files/node/watcher/watcherMain",
+        "extensionHost": "vs/workbench/api/node/extensionHostProcess",
+        "ptyHost": "vs/platform/terminal/node/ptyHostMain"
+      },
+      "unknownRoles": [],
+      "retiredUtilityCount": 0,
+      "staticRegistryPIDSetEqualsInstances": true,
+      "actualNewExtensionHostMatchesWitness": true
+    },
+    "witness": {
+      "path": "/private/tmp/lc149-my6ky2od/reload149-after.json",
+      "sha256": "be8ab68fc6711190c73aff751b3f5bc6ad500dbda5cf531af9a8d137011acaf5",
+      "data": {
+        "before": {
+          "pid": 92930,
+          "version": "1.135.0"
+        },
+        "after": {
+          "pid": 2142,
+          "version": "1.135.0"
+        },
+        "mainPID": 91720,
+        "at": "2026-10-01T18:40:03.841685+00:00",
+        "response": null,
+        "requestConsumedBeforeReload": true,
+        "oldHostExited": true
+      }
+    },
+    "logs": {
+      "path": "/private/tmp/lc149-my6ky2od/main-shared149-reload-log-counts.json",
+      "sha256": "4da90e481e68270806734cbbabccadfe7ebc80f890e772dcf9b159be44edef05",
+      "fullProfileDI_RPC_allZero": true,
+      "reloadWindowDI_RPC_allZero": true,
+      "fullProfileLevelCounts": {
+        "info": 173,
+        "warning": 19,
+        "error": 5
+      },
+      "reloadWindowLevelCounts": {
+        "info": 49,
+        "warning": 4
+      },
+      "fullProfileWarningErrorCategories": {
+        "resourceScopedConfigurationWithoutResource": 12,
+        "GitConfigurationQueryNonzero": 3,
+        "SyntheticGitUnbornMainBranch": 4,
+        "SyntheticGitUnbornMainMergeBase": 1,
+        "LanguageServerInspectorStderrInformational": 4
+      },
+      "reloadWindowWarningErrorCategories": {
+        "resourceScopedConfigurationWithoutResource": 2,
+        "GitConfigurationQueryNonzero": 2
+      },
+      "launchStderrClassification": {
+        "MainInspectorListening": 1,
+        "DevToolsListening": 1,
+        "RemoteDebuggingPortForwardedToElectronWarning": 1,
+        "NodeDEP0169UrlParseDeprecationWarning": 1,
+        "DebuggerAttached": 2,
+        "DebuggerEnding": 2
+      }
+    }
+  },
+  "retiredChannelNames": [
+    "browserView",
+    "browserViewGroup",
+    "playwright",
+    "nativeManagedSettings",
+    "fileManagedSettings",
+    "webContentExtractor",
+    "sharedWebContentExtractor",
+    "sandboxHelper",
+    "NativeMcpDiscoveryHelper",
+    "mcpGateway",
+    "mcpGatewayToolBroker",
+    "mcpManagement",
+    "mcpGalleryManifest",
+    "customEndpointTelemetry",
+    "localTranscription",
+    "agentHost",
+    "agentHostLogger",
+    "agentHostConnectionTracker",
+    "agentHostProtocol",
+    "agentHostManagement",
+    "agentHostProxy",
+    "agentHostClientProxy",
+    "agentHostClientByokLm"
+  ],
+  "boundaries": [
+    "149 runtime direct existing object cold + unique actual Reload, only this clean valid profile.",
+    "Main/shared channel and live utility subset only; not whole V5/V6/M6/M8 completion.",
+    "No GUI focus/global input, app launch/quit, request/source/helper/profile mutation.",
+    "Only inspector19501/19502; no renderer19500/auth19480 connection.",
+    "Response=null on actual Reload is not faked response PASS.",
+    "Profile has known retained warnings and five auxiliary error-level lines; not globally zero-error logs."
+  ]
+}

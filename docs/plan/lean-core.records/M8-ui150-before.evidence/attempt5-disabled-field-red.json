@@ -1,0 +1,28 @@
+{
+  "generation": "150",
+  "status": "FAIL",
+  "pid": 46653,
+  "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+  "theme": {
+    "classes": "file-icons-enabled monaco-enable-motion monaco-workbench mac chromium nopanel noauxiliarybar panel-position-bottom panel-alignment-center macos-tahoe vs-dark zhuangtongfa-material-theme-themes-OneDark-Pro-json",
+    "editorBackground": "rgb(40, 44, 52)",
+    "colors": {
+      "editor.background": "#282c34",
+      "editor.foreground": "#abb2bf",
+      "sideBar.background": "#21252b",
+      "activityBar.background": "#282c34",
+      "statusBar.background": "#21252b"
+    }
+  },
+  "disabled": {
+    "query": "@disabled lean-disabled-final",
+    "rows": [
+      {
+        "id": "lean-tests.lean-disabled-final",
+        "label": "Synthetic disabled extension persistence sentinel, 0.0.1, Publisher lean-tests,  ",
+        "text": "Synthetic disabled extension persistence sentinel\nlean-tests"
+      }
+    ]
+  },
+  "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ undefined\n- false\n\n    at file:///private/tmp/lcfinal-chkarkup/ui/verify-theme-disabled-before.mjs:28:9"
+}

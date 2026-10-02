@@ -1,0 +1,331 @@
+diff --git a/src/vs/workbench/browser/workbench.contribution.ts b/src/vs/workbench/browser/workbench.contribution.ts
+--- a/src/vs/workbench/browser/workbench.contribution.ts
++++ b/src/vs/workbench/browser/workbench.contribution.ts
+@@ -519,29 +519,6 @@
+ 				'description': localize('suggestCommands', "Controls whether the command palette should have a list of commonly used commands."),
+ 				'default': false
+ 			},
+-			'workbench.commandPalette.experimental.askChatLocation': {
+-				'type': 'string',
+-				tags: ['experimental'],
+-				'description': localize('askChatLocation', "Controls where the command palette should ask chat questions."),
+-				'default': 'chatView',
+-				enum: ['chatView', 'quickChat'],
+-				enumDescriptions: [
+-					localize('askChatLocation.chatView', "Ask chat questions in the Chat view."),
+-					localize('askChatLocation.quickChat', "Ask chat questions in Quick Chat.")
+-				]
+-			},
+-			'workbench.commandPalette.showAskInChat': {
+-				'type': 'boolean',
+-				tags: ['experimental'],
+-				'description': localize('showAskInChat', "Controls whether the command palette shows 'Ask in Chat' option at the bottom."),
+-				'default': true
+-			},
+-			'workbench.commandPalette.experimental.enableNaturalLanguageSearch': {
+-				'type': 'boolean',
+-				tags: ['experimental'],
+-				'description': localize('enableNaturalLanguageSearch', "Controls whether the command palette should include similar commands. You must have an extension installed that provides Natural Language support."),
+-				'default': false
+-			},
+ 			'workbench.quickOpen.closeOnFocusLost': {
+ 				'type': 'boolean',
+ 				'description': localize('closeOnFocusLost', "Controls whether Quick Open should close automatically once it loses focus."),
+@@ -821,11 +798,6 @@
+ 				'description': localize('settings.editor.desc', "Determines which Settings editor to use by default."),
+ 				'default': 'ui',
+ 				'scope': ConfigurationScope.WINDOW
+-			},
+-			'workbench.settings.showAISearchToggle': {
+-				'type': 'boolean',
+-				'default': true,
+-				'description': localize('settings.showAISearchToggle', "Controls whether the AI search results toggle is shown in the search bar in the Settings editor after doing a search and once AI search results are available."),
+ 			},
+ 			'workbench.hover.delay': {
+ 				'type': 'number',
+diff --git a/src/vs/workbench/browser/quickaccess.ts b/src/vs/workbench/browser/quickaccess.ts
+--- a/src/vs/workbench/browser/quickaccess.ts
++++ b/src/vs/workbench/browser/quickaccess.ts
+@@ -29,11 +29,8 @@
+ 		readonly commandPalette: {
+ 			readonly history: number;
+ 			readonly preserveInput: boolean;
+-			readonly showAskInChat: boolean;
+ 			readonly experimental: {
+ 				readonly suggestCommands: boolean;
+-				readonly enableNaturalLanguageSearch: boolean;
+-				readonly askChatLocation: 'quickChat' | 'chatView';
+ 			};
+ 		};
+ 		readonly quickOpen: {
+diff --git a/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts b/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
+--- a/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
++++ b/src/vs/platform/accessibilitySignal/browser/accessibilitySignalService.ts
+@@ -326,23 +326,12 @@
+ 	public static readonly diffLineInserted = Sound.register({ fileName: 'diffLineInserted.mp3' });
+ 	public static readonly diffLineDeleted = Sound.register({ fileName: 'diffLineDeleted.mp3' });
+ 	public static readonly diffLineModified = Sound.register({ fileName: 'diffLineModified.mp3' });
+-	public static readonly requestSent = Sound.register({ fileName: 'requestSent.mp3' });
+-	public static readonly responseReceived1 = Sound.register({ fileName: 'responseReceived1.mp3' });
+-	public static readonly responseReceived2 = Sound.register({ fileName: 'responseReceived2.mp3' });
+-	public static readonly responseReceived3 = Sound.register({ fileName: 'responseReceived3.mp3' });
+-	public static readonly responseReceived4 = Sound.register({ fileName: 'responseReceived4.mp3' });
+ 	public static readonly clear = Sound.register({ fileName: 'clear.mp3' });
+ 	public static readonly save = Sound.register({ fileName: 'save.mp3' });
+ 	public static readonly format = Sound.register({ fileName: 'format.mp3' });
+-	public static readonly voiceRecordingStarted = Sound.register({ fileName: 'voiceRecordingStarted.mp3' });
+-	public static readonly voiceRecordingStopped = Sound.register({ fileName: 'voiceRecordingStopped.mp3' });
+ 	public static readonly progress = Sound.register({ fileName: 'progress.mp3' });
+-	public static readonly chatEditModifiedFile = Sound.register({ fileName: 'chatEditModifiedFile.mp3' });
+-	public static readonly editsKept = Sound.register({ fileName: 'editsKept.mp3' });
+-	public static readonly editsUndone = Sound.register({ fileName: 'editsUndone.mp3' });
+ 	public static readonly nextEditSuggestion = Sound.register({ fileName: 'nextEditSuggestion.mp3' });
+ 	public static readonly terminalCommandSucceeded = Sound.register({ fileName: 'terminalCommandSucceeded.mp3' });
+-	public static readonly chatUserActionRequired = Sound.register({ fileName: 'chatUserActionRequired.mp3' });
+ 	public static readonly codeActionTriggered = Sound.register({ fileName: 'codeActionTriggered.mp3' });
+ 	public static readonly codeActionApplied = Sound.register({ fileName: 'codeActionApplied.mp3' });
+ 
+@@ -580,36 +569,6 @@
+ 		settingsKey: 'accessibility.signals.diffLineModified',
+ 	});
+ 
+-	public static readonly chatEditModifiedFile = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.chatEditModifiedFile', 'Chat Edit Modified File'),
+-		sound: Sound.chatEditModifiedFile,
+-		announcementMessage: localize('accessibility.signals.chatEditModifiedFile', 'File Modified from Chat Edits'),
+-		settingsKey: 'accessibility.signals.chatEditModifiedFile',
+-	});
+-
+-	public static readonly chatRequestSent = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.chatRequestSent', 'Chat Request Sent'),
+-		sound: Sound.requestSent,
+-		legacySoundSettingsKey: 'audioCues.chatRequestSent',
+-		legacyAnnouncementSettingsKey: 'accessibility.alert.chatRequestSent',
+-		announcementMessage: localize('accessibility.signals.chatRequestSent', 'Chat Request Sent'),
+-		settingsKey: 'accessibility.signals.chatRequestSent',
+-	});
+-
+-	public static readonly chatResponseReceived = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.chatResponseReceived', 'Chat Response Received'),
+-		legacySoundSettingsKey: 'audioCues.chatResponseReceived',
+-		sound: {
+-			randomOneOf: [
+-				Sound.responseReceived1,
+-				Sound.responseReceived2,
+-				Sound.responseReceived3,
+-				Sound.responseReceived4
+-			]
+-		},
+-		settingsKey: 'accessibility.signals.chatResponseReceived'
+-	});
+-
+ 	public static readonly codeActionTriggered = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.codeActionRequestTriggered', 'Code Action Request Triggered'),
+ 		sound: Sound.codeActionTriggered,
+@@ -630,7 +589,6 @@
+ 	public static readonly progress = AccessibilitySignal.register({
+ 		name: localize('accessibilitySignals.progress', 'Progress'),
+ 		sound: Sound.progress,
+-		legacySoundSettingsKey: 'audioCues.chatResponsePending',
+ 		legacyAnnouncementSettingsKey: 'accessibility.alert.progress',
+ 		announcementMessage: localize('accessibility.signals.progress', 'Progress'),
+ 		settingsKey: 'accessibility.signals.progress'
+@@ -663,52 +621,4 @@
+ 		settingsKey: 'accessibility.signals.format'
+ 	});
+ 
+-	public static readonly voiceRecordingStarted = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.voiceRecordingStarted', 'Voice Recording Started'),
+-		sound: Sound.voiceRecordingStarted,
+-		legacySoundSettingsKey: 'audioCues.voiceRecordingStarted',
+-		settingsKey: 'accessibility.signals.voiceRecordingStarted'
+-	});
+-
+-	public static readonly voiceModeStarted = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.voiceModeStarted', 'Voice Mode Started'),
+-		sound: Sound.voiceRecordingStarted,
+-		announcementMessage: localize('accessibility.signals.voiceModeStarted', 'Voice Mode Started'),
+-		settingsKey: 'accessibility.signals.voiceModeStarted'
+-	});
+-
+-	public static readonly voiceRecordingStopped = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.voiceRecordingStopped', 'Voice Recording Stopped'),
+-		sound: Sound.voiceRecordingStopped,
+-		legacySoundSettingsKey: 'audioCues.voiceRecordingStopped',
+-		settingsKey: 'accessibility.signals.voiceRecordingStopped'
+-	});
+-
+-	public static readonly voiceModeStopped = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.voiceModeStopped', 'Voice Mode Stopped'),
+-		sound: Sound.voiceRecordingStopped,
+-		announcementMessage: localize('accessibility.signals.voiceModeStopped', 'Voice Mode Stopped'),
+-		settingsKey: 'accessibility.signals.voiceModeStopped'
+-	});
+-
+-	public static readonly editsKept = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.editsKept', 'Edits Kept'),
+-		sound: Sound.editsKept,
+-		announcementMessage: localize('accessibility.signals.editsKept', 'Edits Kept'),
+-		settingsKey: 'accessibility.signals.editsKept',
+-	});
+-
+-	public static readonly editsUndone = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.editsUndone', 'Undo Edits'),
+-		sound: Sound.editsUndone,
+-		announcementMessage: localize('accessibility.signals.editsUndone', 'Edits Undone'),
+-		settingsKey: 'accessibility.signals.editsUndone',
+-	});
+-
+-	public static readonly chatUserActionRequired = AccessibilitySignal.register({
+-		name: localize('accessibilitySignals.chatUserActionRequired', 'Chat User Action Required'),
+-		sound: Sound.chatUserActionRequired,
+-		announcementMessage: localize('accessibility.signals.chatUserActionRequired', 'Chat User Action Required'),
+-		settingsKey: 'accessibility.signals.chatUserActionRequired'
+-	});
+-}
++}
+diff --git a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+--- a/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
++++ b/src/vs/workbench/contrib/accessibility/browser/accessibilityConfiguration.ts
+@@ -590,68 +590,6 @@
+ 				},
+ 			}
+ 		},
+-		'accessibility.signals.voiceRecordingStarted': {
+-			...defaultNoAnnouncement,
+-			'description': localize('accessibility.signals.voiceRecordingStarted', "Plays a sound / audio cue when the voice recording has started."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.voiceRecordingStarted.sound', "Plays a sound when the voice recording has started."),
+-					...soundFeatureBase,
+-				},
+-			},
+-			'default': {
+-				'sound': 'on'
+-			}
+-		},
+-		'accessibility.signals.voiceModeStarted': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.voiceModeStarted', "Plays a signal - sound (audio cue) and/or announcement (alert) - when voice mode has started."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.voiceModeStarted.sound', "Plays a sound when voice mode has started."),
+-					...soundFeatureBase,
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.voiceModeStarted.announcement', "Announces when voice mode has started."),
+-					...announcementFeatureBase,
+-				}
+-			},
+-			'default': {
+-				'sound': 'on',
+-				'announcement': 'auto'
+-			}
+-		},
+-		'accessibility.signals.voiceRecordingStopped': {
+-			...defaultNoAnnouncement,
+-			'description': localize('accessibility.signals.voiceRecordingStopped', "Plays a sound / audio cue when the voice recording has stopped."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.voiceRecordingStopped.sound', "Plays a sound when the voice recording has stopped."),
+-					...soundFeatureBase,
+-				},
+-			},
+-			'default': {
+-				'sound': 'on'
+-			}
+-		},
+-		'accessibility.signals.voiceModeStopped': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.voiceModeStopped', "Plays a signal - sound (audio cue) and/or announcement (alert) - when voice mode has stopped."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.voiceModeStopped.sound', "Plays a sound when voice mode has stopped."),
+-					...soundFeatureBase,
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.voiceModeStopped.announcement', "Announces when voice mode has stopped."),
+-					...announcementFeatureBase,
+-				}
+-			},
+-			'default': {
+-				'sound': 'on',
+-				'announcement': 'auto'
+-			}
+-		},
+ 		'accessibility.signals.clear': {
+ 			...signalFeatureBase,
+ 			'description': localize('accessibility.signals.clear', "Plays a signal - sound (audio cue) and/or announcement (alert) - when a feature is cleared (for example, the terminal, Debug Console, or Output channel)."),
+@@ -662,34 +600,6 @@
+ 				},
+ 				'announcement': {
+ 					'description': localize('accessibility.signals.clear.announcement', "Announces when a feature is cleared."),
+-					...announcementFeatureBase
+-				},
+-			},
+-		},
+-		'accessibility.signals.editsUndone': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.editsUndone', "Plays a signal - sound (audio cue) and/or announcement (alert) - when edits have been undone."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.editsUndone.sound', "Plays a sound when edits have been undone."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.editsUndone.announcement', "Announces when edits have been undone."),
+-					...announcementFeatureBase
+-				},
+-			},
+-		},
+-		'accessibility.signals.editsKept': {
+-			...signalFeatureBase,
+-			'description': localize('accessibility.signals.editsKept', "Plays a signal - sound (audio cue) and/or announcement (alert) - when edits are kept."),
+-			'properties': {
+-				'sound': {
+-					'description': localize('accessibility.signals.editsKept.sound', "Plays a sound when edits are kept."),
+-					...soundFeatureBase
+-				},
+-				'announcement': {
+-					'description': localize('accessibility.signals.editsKept.announcement', "Announces when edits are kept."),
+ 					...announcementFeatureBase
+ 				},
+ 			},
+diff --git a/src/vs/workbench/contrib/comments/browser/simpleCommentEditor.ts b/src/vs/workbench/contrib/comments/browser/simpleCommentEditor.ts
+--- a/src/vs/workbench/contrib/comments/browser/simpleCommentEditor.ts
++++ b/src/vs/workbench/contrib/comments/browser/simpleCommentEditor.ts
+@@ -13,7 +13,6 @@
+ 
+ // Allowed Editor Contributions:
+ import { MenuPreventer } from '../../codeEditor/browser/menuPreventer.js';
+-import { EditorDictation } from '../../codeEditor/browser/dictation/editorDictation.js';
+ import { ContextMenuController } from '../../../../editor/contrib/contextmenu/browser/contextmenu.js';
+ import { SuggestController } from '../../../../editor/contrib/suggest/browser/suggestController.js';
+ import { SnippetController2 } from '../../../../editor/contrib/snippet/browser/snippetController2.js';
+@@ -76,7 +75,6 @@
+ 				{ id: SuggestController.ID, ctor: SuggestController, instantiation: EditorContributionInstantiation.Eager },
+ 				{ id: SnippetController2.ID, ctor: SnippetController2, instantiation: EditorContributionInstantiation.Lazy },
+ 				{ id: TabCompletionController.ID, ctor: TabCompletionController, instantiation: EditorContributionInstantiation.Eager }, // eager because it needs to define a context key
+-				{ id: EditorDictation.ID, ctor: EditorDictation, instantiation: EditorContributionInstantiation.Lazy },
+ 				...EditorExtensionsRegistry.getSomeEditorContributions([
+ 					CopyPasteController.ID,
+ 					DropIntoEditorController.ID,
+diff --git a/src/vs/workbench/contrib/scm/browser/scmInput.ts b/src/vs/workbench/contrib/scm/browser/scmInput.ts
+--- a/src/vs/workbench/contrib/scm/browser/scmInput.ts
++++ b/src/vs/workbench/contrib/scm/browser/scmInput.ts
+@@ -27,7 +27,6 @@
+ import { EditorExtensionsRegistry } from '../../../../editor/browser/editorExtensions.js';
+ import { MenuPreventer } from '../../codeEditor/browser/menuPreventer.js';
+ import { SelectionClipboardContributionID } from '../../codeEditor/browser/selectionClipboard.js';
+-import { EditorDictation } from '../../codeEditor/browser/dictation/editorDictation.js';
+ import { ContextMenuController } from '../../../../editor/contrib/contextmenu/browser/contextmenu.js';
+ import * as platform from '../../../../base/common/platform.js';
+ import { format } from '../../../../base/common/strings.js';
+@@ -591,7 +590,6 @@
+ 				CopyPasteController.ID,
+ 				DragAndDropController.ID,
+ 				DropIntoEditorController.ID,
+-				EditorDictation.ID,
+ 				FormatOnType.ID,
+ 				ContentHoverController.ID,
+ 				GlyphHoverController.ID,

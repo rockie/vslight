@@ -1,0 +1,10 @@
+{
+  "query": "@command:workbench.action.browser.goBack",
+  "ids": [],
+  "dom": {
+    "present": true,
+    "search": "@command:workbench.action.browser.goBack",
+    "rows": []
+  },
+  "retiredMatches": 0
+}

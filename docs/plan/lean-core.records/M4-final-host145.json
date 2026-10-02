@@ -1,0 +1,50 @@
+{
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "generation": "145+146",
+  "runs": [
+    {
+      "mode": "unauthorized",
+      "pid": 35582,
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "runId": "final-host145-unauthorized-1790874888582208000",
+        "started": "2026-10-01T17:14:50.341Z",
+        "status": "passed",
+        "checks": [
+          "stable local APIs, pure constructors, inert registrations and never events",
+          "unauthorized permission failure: 89 proposed paths",
+          "ordinary findFiles2 proposal retains permission check",
+          "ordinary inline provider produces accepted text; additions proposal retains permission and callback",
+          "ordinary command, document and status bar",
+          "retired API commands absent",
+          "ordinary Webview ping/pong"
+        ],
+        "finished": "2026-10-01T17:14:50.550Z"
+      },
+      "launch": "/private/tmp/lh145-1k5rdk1_/unauthorized/launch.json"
+    },
+    {
+      "mode": "authorized",
+      "pid": 37038,
+      "exitCode": 0,
+      "timedOut": false,
+      "result": {
+        "runId": "final-host145-authorized-1790874890837196000",
+        "started": "2026-10-01T17:14:52.710Z",
+        "status": "passed",
+        "checks": [
+          "stable local APIs, pure constructors, inert registrations and never events",
+          "authorized unavailable: 89 proposed paths",
+          "authorized ordinary findFiles2 proposal retains behavior",
+          "ordinary inline provider produces accepted text; additions proposal retains permission and callback",
+          "ordinary command, document and status bar",
+          "retired API commands absent",
+          "ordinary Webview ping/pong"
+        ],
+        "finished": "2026-10-01T17:14:52.937Z"
+      },
+      "launch": "/private/tmp/lh145-1k5rdk1_/authorized/launch.json"
+    }
+  ]
+}

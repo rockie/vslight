@@ -1,0 +1,11 @@
+--- a/build/.moduleignore
++++ b/build/.moduleignore
+@@ -280,3 +280,8 @@
+ # in websocket's browser.js inside a try/catch with a globalThis fallback,
+ # so it is unnecessary in the browsers/runtimes VS Code supports.
+ es5-ext/**
++
++# Codicons documentation/demo assets; retain runtime CSS/font and licenses.
++@vscode/codicons/dist/codicon.html
++@vscode/codicons/dist/codicon.svg
++@vscode/codicons/preview.png

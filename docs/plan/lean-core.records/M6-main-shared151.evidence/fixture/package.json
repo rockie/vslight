@@ -1,0 +1,14 @@
+{
+  "name": "lc151ms-fixture",
+  "displayName": "LC151 Main Shared Fixture",
+  "publisher": "lean-tests",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "vscode": "^1.135.0"
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ]
+}

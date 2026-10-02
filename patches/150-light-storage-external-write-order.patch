@@ -1,0 +1,220 @@
+--- a/src/vs/base/parts/storage/common/storage.ts
++++ b/src/vs/base/parts/storage/common/storage.ts
+@@ -128,6 +128,8 @@
+ 	private pendingDeletes = new Set<string>();
+ 	private pendingInserts = new Map<string, string>();
+ 
++	private readonly inFlightUpdates = new Set<IUpdateRequest>();
++
+ 	private pendingClose: Promise<void> | undefined = undefined;
+ 
+ 	private readonly whenFlushedCallbacks: Function[] = [];
+@@ -164,6 +166,17 @@
+ 	private acceptExternal(key: string, value: string | undefined): void {
+ 		if (this.state === StorageState.Closed) {
+ 			return; // Return early if we are already closed
++		}
++
++		// Delayed database echoes must not overwrite newer local changes.
++		if (this.pendingInserts.has(key) || this.pendingDeletes.has(key)) {
++			return;
++		}
++
++		for (const update of this.inFlightUpdates) {
++			if (update.insert?.has(key) || update.delete?.has(key)) {
++				return;
++			}
+ 		}
+ 
+ 		let changed = false;
+@@ -367,6 +380,7 @@
+ 
+ 		// Get pending data
+ 		const updateRequest: IUpdateRequest = { insert: this.pendingInserts, delete: this.pendingDeletes };
++		this.inFlightUpdates.add(updateRequest);
+ 
+ 		// Reset pending data for next run
+ 		this.pendingDeletes = new Set<string>();
+@@ -375,6 +389,7 @@
+ 		// Update in storage and release any
+ 		// waiters we have once done
+ 		return this.database.updateItems(updateRequest).finally(() => {
++			this.inFlightUpdates.delete(updateRequest);
+ 			if (!this.hasPending) {
+ 				while (this.whenFlushedCallbacks.length) {
+ 					this.whenFlushedCallbacks.pop()?.();
+--- /dev/null
++++ b/src/vs/base/parts/storage/test/common/storage.test.ts
+@@ -0,0 +1,172 @@
++/*---------------------------------------------------------------------------------------------
++ *  Copyright (c) Microsoft Corporation. All rights reserved.
++ *  Licensed under the MIT License. See License.txt in the project root for license information.
++ *--------------------------------------------------------------------------------------------*/
++
++import { rejects, strictEqual } from 'assert';
++import { DeferredPromise } from '../../../../common/async.js';
++import { Emitter } from '../../../../common/event.js';
++import { InMemoryStorageDatabase, IStorageItemsChangeEvent, IUpdateRequest, Storage, StorageHint } from '../../common/storage.js';
++
++class ControlledStorageDatabase extends InMemoryStorageDatabase {
++	private readonly changes = new Emitter<IStorageItemsChangeEvent>();
++	override readonly onDidChangeItemsExternal = this.changes.event;
++	readonly updateStarted = new DeferredPromise<void>();
++	readonly releaseUpdate = new DeferredPromise<void>();
++	readonly updateGates: DeferredPromise<void>[] = [];
++	blockUpdates = false;
++
++	override async getItems(): Promise<Map<string, string>> {
++		return new Map(await super.getItems());
++	}
++
++	override async updateItems(request: IUpdateRequest): Promise<void> {
++		if (this.blockUpdates) {
++			const gate = new DeferredPromise<void>();
++			this.updateGates.push(gate);
++			this.updateStarted.complete();
++			await Promise.race([gate.p, this.releaseUpdate.p]);
++		}
++		await super.updateItems(request);
++	}
++
++	fireExternal(event: IStorageItemsChangeEvent): void {
++		this.changes.fire(event);
++	}
++
++	dispose(): void {
++		this.changes.dispose();
++	}
++}
++
++suite('Storage external changes during local writes', () => {
++	test('accepts external changes after local writes finish', async () => {
++		const database = new ControlledStorageDatabase();
++		const storage = new Storage(database);
++		await storage.init();
++		let changes = 0;
++		const listener = storage.onDidChangeStorage(() => changes++);
++		try {
++			await storage.set('secret', 'v2');
++			changes = 0;
++			database.fireExternal({ changed: new Map([['secret', 'v2']]) });
++			strictEqual(changes, 0);
++			database.fireExternal({ changed: new Map([['secret', 'remote']]) });
++			strictEqual(storage.get('secret'), 'remote');
++			strictEqual(changes, 1);
++			database.fireExternal({ deleted: new Set(['secret']) });
++			strictEqual(storage.get('secret'), undefined);
++			strictEqual(changes, 2);
++			database.fireExternal({ deleted: new Set(['secret']) });
++			strictEqual(changes, 2);
++		} finally {
++			listener.dispose();
++			await storage.close();
++			database.dispose();
++		}
++	});
++
++	test('completion of one in-memory write does not release another write', async () => {
++		const database = new ControlledStorageDatabase();
++		const storage = new Storage(database, { hint: StorageHint.STORAGE_IN_MEMORY });
++		await storage.init();
++		database.blockUpdates = true;
++		const first = storage.set('first', 'local-first');
++		const second = storage.set('second', 'local-second');
++		try {
++			strictEqual(database.updateGates.length, 2);
++			await database.updateGates[0].complete();
++			await first;
++			database.fireExternal({ deleted: new Set(['second']) });
++			strictEqual(storage.get('second'), 'local-second');
++			database.fireExternal({ changed: new Map([['second', 'stale']]) });
++			strictEqual(storage.get('second'), 'local-second');
++			await database.updateGates[1].complete();
++			await second;
++			database.fireExternal({ changed: new Map([['second', 'remote']]) });
++			strictEqual(storage.get('second'), 'remote');
++		} finally {
++			await database.releaseUpdate.complete();
++			await Promise.allSettled([first, second]);
++			await storage.close();
++			database.dispose();
++		}
++	});
++
++	test('failed database write releases its external change guard', async () => {
++		const database = new ControlledStorageDatabase();
++		const storage = new Storage(database, { hint: StorageHint.STORAGE_IN_MEMORY });
++		await storage.init();
++		database.blockUpdates = true;
++		const stored = storage.set('secret', 'local');
++		const failed = rejects(stored, /write failed/);
++		try {
++			await database.updateGates[0].error(new Error('write failed'));
++			await failed;
++			database.fireExternal({ changed: new Map([['secret', 'remote']]) });
++			strictEqual(storage.get('secret'), 'remote');
++			database.fireExternal({ deleted: new Set(['secret']) });
++			strictEqual(storage.get('secret'), undefined);
++		} finally {
++			await database.releaseUpdate.complete();
++			await Promise.allSettled([stored]);
++			await storage.close();
++			database.dispose();
++		}
++	});
++
++	for (const inFlight of [false, true]) {
++		test(`external update does not resurrect a ${inFlight ? 'flushing' : 'pending'} deletion`, async () => {
++			const database = new ControlledStorageDatabase();
++			await database.updateItems({ insert: new Map([['secret', 'v2']]) });
++			const storage = new Storage(database);
++			await storage.init();
++			database.blockUpdates = true;
++			const deleted = storage.delete('secret');
++			try {
++				if (inFlight) {
++					storage.flush(0);
++					await database.updateStarted.p;
++				}
++				database.fireExternal({ changed: new Map([['secret', 'v2']]) });
++				strictEqual(storage.get('secret'), undefined);
++				await database.releaseUpdate.complete();
++				await deleted;
++				strictEqual(storage.get('secret'), undefined);
++				database.fireExternal({ changed: new Map([['secret', 'remote']]) });
++				strictEqual(storage.get('secret'), 'remote');
++			} finally {
++				await database.releaseUpdate.complete();
++				await storage.close();
++				database.dispose();
++			}
++		});
++
++		test(`external deletion does not replace a ${inFlight ? 'flushing' : 'pending'} update`, async () => {
++			const database = new ControlledStorageDatabase();
++			const storage = new Storage(database);
++			await storage.init();
++			database.blockUpdates = true;
++			const stored = storage.set('secret', 'v2');
++			try {
++				if (inFlight) {
++					storage.flush(0);
++					await database.updateStarted.p;
++				}
++				database.fireExternal({ deleted: new Set(['secret']) });
++				strictEqual(storage.get('secret'), 'v2');
++				database.fireExternal({ changed: new Map([['secret', 'v1'], ['other', 'remote']]) });
++				strictEqual(storage.get('secret'), 'v2');
++				strictEqual(storage.get('other'), 'remote');
++				await database.releaseUpdate.complete();
++				await stored;
++				database.fireExternal({ deleted: new Set(['secret']) });
++				strictEqual(storage.get('secret'), undefined);
++			} finally {
++				await database.releaseUpdate.complete();
++				await storage.close();
++				database.dispose();
++			}
++		});
++	}
++});

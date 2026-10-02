@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-01T18:31:42.787140+00:00",
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "files": 1199,
+  "bytes": 422445837,
+  "docTypesUnchanged": true,
+  "docTypesCount": 65,
+  "URLTypesUnchanged": true,
+  "macosFloor": "12.0",
+  "mermaid": {
+    "markdown-preview-out/index.js": {
+      "bytes": 18642002,
+      "sha256": "0d09676583cd95a5892f74c67cdbb7e2567e0a14cc1461373847c42c9854097e"
+    },
+    "chat-webview-out/index-editor.js": {
+      "bytes": 18502766,
+      "sha256": "6b6b69f0dc77ab29293edd4a5b45eec226a53c823549c91362efe435d250b776"
+    },
+    "chat-webview-out/codicon.css": {
+      "bytes": 133000,
+      "sha256": "36b3e52baa002edf1502580acd7a778347ff4b455473d96a64a28bd57e81f641"
+    }
+  },
+  "unsigned": true,
+  "generation": "147+148+149",
+  "zip": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/VSLight-149-unsigned.zip",
+  "zipBytes": 157531058,
+  "zipSha256": "efbfd27247170d6e6a0d07e26a3981c3369de6ad217a08caaec4797a987e6e5e",
+  "zipCRCExit": 0,
+  "baselineAppBytes": 528142131,
+  "baselineZipBytes": 192738926,
+  "inputManifest": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/inputs149.json",
+  "buildLog": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/build149.log",
+  "measurement": "Regular files summed once; symlinks excluded. asar/unpacked not double counted. Same Node24.18.0/Electron43.7.5/CI=true/arm64/ditto unsigned baseline.",
+  "savedAppBytes": 105696294,
+  "appReductionPercent": 20.01,
+  "savedZipBytes": 35207868,
+  "zipReductionPercent": 18.27
+}

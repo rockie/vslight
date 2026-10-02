@@ -1,0 +1,251 @@
+diff --git a/src/vs/workbench/api/browser/mainThreadLanguageFeatures.ts b/src/vs/workbench/api/browser/mainThreadLanguageFeatures.ts
+--- a/src/vs/workbench/api/browser/mainThreadLanguageFeatures.ts
++++ b/src/vs/workbench/api/browser/mainThreadLanguageFeatures.ts
+@@ -39,7 +39,6 @@
+ import { DataChannelForwardingTelemetryService, forwardToChannelIf, isCopilotLikeExtension } from '../../../platform/dataChannel/browser/forwardingTelemetryService.js';
+ import { IAiEditTelemetryService } from '../../contrib/editTelemetry/browser/telemetry/aiEditTelemetry/aiEditTelemetryService.js';
+ import { EditDeltaInfo } from '../../../editor/common/textModelEditSource.js';
+-import { IInlineCompletionsUnificationService } from '../../services/inlineCompletions/common/inlineCompletionsUnification.js';
+ import { InlineCompletionEndOfLifeEvent, sendInlineCompletionsEndOfLifeTelemetry } from '../../../editor/contrib/inlineCompletions/browser/telemetry.js';
+ 
+ @extHostNamedCustomer(MainContext.MainThreadLanguageFeatures)
+@@ -55,7 +54,6 @@
+ 		@ILanguageFeaturesService private readonly _languageFeaturesService: ILanguageFeaturesService,
+ 		@IUriIdentityService private readonly _uriIdentService: IUriIdentityService,
+ 		@IInstantiationService private readonly _instantiationService: IInstantiationService,
+-		@IInlineCompletionsUnificationService private readonly _inlineCompletionsUnificationService: IInlineCompletionsUnificationService,
+ 	) {
+ 		super();
+ 
+@@ -89,12 +87,6 @@
+ 			updateAllWordDefinitions();
+ 		}
+ 
+-		if (this._inlineCompletionsUnificationService) {
+-			this._register(this._inlineCompletionsUnificationService.onDidStateChange(() => {
+-				this._proxy.$acceptInlineCompletionsUnificationState(this._inlineCompletionsUnificationService.state);
+-			}));
+-			this._proxy.$acceptInlineCompletionsUnificationState(this._inlineCompletionsUnificationService.state);
+-		}
+ 	}
+ 
+ 	$unregister(handle: number): void {
+diff --git a/src/vs/workbench/api/common/extHostLanguageFeatures.ts b/src/vs/workbench/api/common/extHostLanguageFeatures.ts
+--- a/src/vs/workbench/api/common/extHostLanguageFeatures.ts
++++ b/src/vs/workbench/api/common/extHostLanguageFeatures.ts
+@@ -37,8 +37,6 @@
+ import { ExtHostTelemetry, IExtHostTelemetry } from './extHostTelemetry.js';
+ import * as typeConvert from './extHostTypeConverters.js';
+ import { CodeAction, CodeActionKind, CompletionList, DataTransfer, Disposable, DocumentDropOrPasteEditKind, DocumentSymbol, InlineCompletionsDisposeReasonKind, InlineCompletionTriggerKind, InternalDataTransferItem, Location, NewSymbolNameTriggerKind, Range, SemanticTokens, SemanticTokensEdit, SemanticTokensEdits, SnippetString, SymbolInformation, SyntaxTokenType } from './extHostTypes.js';
+-import { Emitter } from '../../../base/common/event.js';
+-import { IInlineCompletionsUnificationState } from '../../services/inlineCompletions/common/inlineCompletionsUnification.js';
+ 
+ // --- adapter
+ 
+@@ -2164,14 +2162,6 @@
+ 	private readonly _proxy: extHostProtocol.MainThreadLanguageFeaturesShape;
+ 	private readonly _adapter = new Map<number, AdapterData>();
+ 
+-	private _inlineCompletionsUnificationState: vscode.InlineCompletionsUnificationState;
+-	public get inlineCompletionsUnificationState(): vscode.InlineCompletionsUnificationState {
+-		return this._inlineCompletionsUnificationState;
+-	}
+-
+-	private readonly _onDidChangeInlineCompletionsUnificationState = this._register(new Emitter<void>());
+-	readonly onDidChangeInlineCompletionsUnificationState = this._onDidChangeInlineCompletionsUnificationState.event;
+-
+ 	constructor(
+ 		mainContext: extHostProtocol.IMainContext,
+ 		private readonly _uriTransformer: IURITransformer,
+@@ -2184,12 +2174,6 @@
+ 	) {
+ 		super();
+ 		this._proxy = mainContext.getProxy(extHostProtocol.MainContext.MainThreadLanguageFeatures);
+-		this._inlineCompletionsUnificationState = {
+-			codeUnification: false,
+-			modelUnification: false,
+-			extensionUnification: false,
+-			expAssignments: []
+-		};
+ 	}
+ 
+ 	private _transformDocumentSelector(selector: vscode.DocumentSelector, extension: IExtensionDescription): Array<extHostProtocol.IDocumentFilterDto> {
+@@ -2714,11 +2698,6 @@
+ 		this._withAdapter(handle, InlineCompletionAdapter, async adapter => { adapter.disposeCompletions(pid, reason); }, undefined, undefined);
+ 	}
+ 
+-	$acceptInlineCompletionsUnificationState(state: IInlineCompletionsUnificationState): void {
+-		this._inlineCompletionsUnificationState = state;
+-		this._onDidChangeInlineCompletionsUnificationState.fire();
+-	}
+-
+ 	$handleInlineCompletionSetCurrentModelId(handle: number, modelId: string): void {
+ 		this._withAdapter(handle, InlineCompletionAdapter, async adapter => {
+ 			adapter.setCurrentModelId(modelId);
+diff --git a/src/vs/workbench/api/common/extHost.protocol.ts b/src/vs/workbench/api/common/extHost.protocol.ts
+--- a/src/vs/workbench/api/common/extHost.protocol.ts
++++ b/src/vs/workbench/api/common/extHost.protocol.ts
+@@ -68,7 +68,6 @@
+ import { IResolveAuthorityResult } from '../../services/extensions/common/extensionHostProxy.js';
+ import { ActivationKind, ExtensionActivationReason, MissingExtensionDependency } from '../../services/extensions/common/extensions.js';
+ import { Dto, IRPCProtocol, SerializableObjectWithBuffers, createProxyIdentifier } from '../../services/extensions/common/proxyIdentifier.js';
+-import { IInlineCompletionsUnificationState } from '../../services/inlineCompletions/common/inlineCompletionsUnification.js';
+ import { ILanguageStatus } from '../../services/languageStatus/common/languageStatusService.js';
+ import { OutputChannelUpdateMode } from '../../services/output/common/output.js';
+ import { CandidatePort } from '../../services/remote/common/tunnelModel.js';
+@@ -2121,7 +2120,6 @@
+ 	$handleInlineCompletionEndOfLifetime(handle: number, pid: number, idx: number, reason: languages.InlineCompletionEndOfLifeReason<{ pid: number; idx: number }>): void;
+ 	$handleInlineCompletionRejection(handle: number, pid: number, idx: number): void;
+ 	$freeInlineCompletionsList(handle: number, pid: number, reason: languages.InlineCompletionsDisposeReason): void;
+-	$acceptInlineCompletionsUnificationState(state: IInlineCompletionsUnificationState): void;
+ 	$handleInlineCompletionSetCurrentModelId(handle: number, modelId: string): void;
+ 	$handleInlineCompletionSetProviderOption(handle: number, optionId: string, valueId: string): void;
+ 	$provideSignatureHelp(handle: number, resource: UriComponents, position: IPosition, context: languages.SignatureHelpContext, token: CancellationToken): Promise<ISignatureHelpDto | undefined>;
+diff --git a/src/vs/workbench/api/common/extHost.api.impl.ts b/src/vs/workbench/api/common/extHost.api.impl.ts
+--- a/src/vs/workbench/api/common/extHost.api.impl.ts
++++ b/src/vs/workbench/api/common/extHost.api.impl.ts
+@@ -699,11 +699,11 @@
+ 			},
+ 			get inlineCompletionsUnificationState() {
+ 				checkProposedApiEnabled(extension, 'inlineCompletionsAdditions');
+-				return extHostLanguageFeatures.inlineCompletionsUnificationState;
+-			},
+-			onDidChangeCompletionsUnificationState(listener, thisArg?, disposables?) {
++				return disabledAi.unavailable('languages.inlineCompletionsUnificationState');
++			},
++			onDidChangeCompletionsUnificationState(_listener, _thisArg?, _disposables?) {
+ 				checkProposedApiEnabled(extension, 'inlineCompletionsAdditions');
+-				return _asExtensionEvent(extHostLanguageFeatures.onDidChangeInlineCompletionsUnificationState)(listener, thisArg, disposables);
++				return disabledAi.unavailable('languages.onDidChangeCompletionsUnificationState');
+ 			},
+ 			registerDocumentLinkProvider(selector: vscode.DocumentSelector, provider: vscode.DocumentLinkProvider): vscode.Disposable {
+ 				return extHostLanguageFeatures.registerDocumentLinkProvider(extension, checkSelector(selector), provider);
+diff --git a/src/vs/workbench/workbench.common.main.ts b/src/vs/workbench/workbench.common.main.ts
+--- a/src/vs/workbench/workbench.common.main.ts
++++ b/src/vs/workbench/workbench.common.main.ts
+@@ -126,7 +126,6 @@
+ import './services/editor/browser/editorPaneService.js';
+ import './services/editor/common/customEditorLabelService.js';
+ import './services/dataChannel/browser/dataChannelService.js';
+-import './services/inlineCompletions/common/inlineCompletionsUnification.js';
+ import './services/log/common/defaultLogLevels.js';
+ 
+ import { InstantiationType, registerSingleton } from '../platform/instantiation/common/extensions.js';
+diff --git a/src/vs/editor/contrib/inlineCompletions/browser/model/inlineCompletionsSource.ts b/src/vs/editor/contrib/inlineCompletions/browser/model/inlineCompletionsSource.ts
+--- a/src/vs/editor/contrib/inlineCompletions/browser/model/inlineCompletionsSource.ts
++++ b/src/vs/editor/contrib/inlineCompletions/browser/model/inlineCompletionsSource.ts
+@@ -481,7 +481,7 @@
+ 	private _sendInlineCompletionsRequestTelemetry(
+ 		requestResponseInfo: RequestResponseData
+ 	): void {
+-		if (!this._sendRequestData.get() && !this._contextKeyService.getContextKeyValue<boolean>('isRunningUnificationExperiment')) {
++		if (!this._sendRequestData.get()) {
+ 			return;
+ 		}
+ 
+diff --git a/src/vs/workbench/contrib/relauncher/browser/relauncher.contribution.ts b/src/vs/workbench/contrib/relauncher/browser/relauncher.contribution.ts
+--- a/src/vs/workbench/contrib/relauncher/browser/relauncher.contribution.ts
++++ b/src/vs/workbench/contrib/relauncher/browser/relauncher.contribution.ts
+@@ -24,31 +24,12 @@
+ import { IUserDataSyncWorkbenchService } from '../../../services/userDataSync/common/userDataSync.js';
+ 
+ interface IConfiguration extends IWindowsConfiguration {
+-	debug?: { console?: { wordWrap?: boolean } };
+ 	editor?: { accessibilitySupport?: 'on' | 'off' | 'auto' };
+ 	security?: { workspace?: { trust?: { enabled?: boolean } }; restrictUNCAccess?: boolean };
+ 	window: IWindowSettings;
+ 	workbench?: { enableExperiments?: boolean };
+ 	telemetry?: { feedback?: { enabled?: boolean } };
+-	chat?: {
+-		extensionUnification?: { enabled?: boolean };
+-		agentHost?: {
+-			enabled?: boolean;
+-			claudeAgent?: { enabled?: boolean };
+-			codexAgent?: { enabled?: boolean };
+-			otel?: {
+-				enabled?: boolean;
+-				exporterType?: string;
+-				otlpEndpoint?: string;
+-				captureContent?: boolean;
+-				outfile?: string;
+-				dbSpanExporter?: { enabled?: boolean };
+-			};
+-		};
+-		editor?: { codex?: { preferAgentHost?: boolean } };
+-	};
+ 	_extensionsGallery?: { enablePPE?: boolean };
+-	accessibility?: { verbosity?: { debug?: boolean } };
+ }
+ 
+ export class SettingsChangeRelauncher extends Disposable implements IWorkbenchContribution {
+@@ -65,17 +46,7 @@
+ 		'workbench.enableExperiments',
+ 		'_extensionsGallery.enablePPE',
+ 		'security.restrictUNCAccess',
+-		'accessibility.verbosity.debug',
+ 		'telemetry.feedback.enabled',
+-		'chat.extensionUnification.enabled',
+-		'chat.agentHost.claudeAgent.enabled',
+-		'chat.editor.codex.preferAgentHost',
+-		'chat.agentHost.otel.enabled',
+-		'chat.agentHost.otel.exporterType',
+-		'chat.agentHost.otel.otlpEndpoint',
+-		'chat.agentHost.otel.captureContent',
+-		'chat.agentHost.otel.outfile',
+-		'chat.agentHost.otel.dbSpanExporter.enabled'
+ 	];
+ 
+ 	private readonly titleBarStyle = new ChangeObserver<TitlebarStyle>('string');
+@@ -89,17 +60,7 @@
+ 	private readonly experimentsEnabled = new ChangeObserver('boolean');
+ 	private readonly enablePPEExtensionsGallery = new ChangeObserver('boolean');
+ 	private readonly restrictUNCAccess = new ChangeObserver('boolean');
+-	private readonly accessibilityVerbosityDebug = new ChangeObserver('boolean');
+ 	private readonly telemetryFeedbackEnabled = new ChangeObserver('boolean');
+-	private readonly extensionUnificationEnabled = new ChangeObserver('boolean');
+-	private readonly agentHostClaudeAgentEnabled = new ChangeObserver('boolean');
+-	private readonly editorCodexPreferAgentHost = new ChangeObserver('boolean');
+-	private readonly agentHostOTelEnabled = new ChangeObserver('boolean');
+-	private readonly agentHostOTelExporterType = new ChangeObserver('string');
+-	private readonly agentHostOTelOtlpEndpoint = new ChangeObserver('string');
+-	private readonly agentHostOTelCaptureContent = new ChangeObserver('boolean');
+-	private readonly agentHostOTelOutfile = new ChangeObserver('string');
+-	private readonly agentHostOTelDbSpanExporterEnabled = new ChangeObserver('boolean');
+ 
+ 	constructor(
+ 		@IHostService private readonly hostService: IHostService,
+@@ -175,9 +136,6 @@
+ 
+ 			// UNC host access restrictions
+ 			processChanged(this.restrictUNCAccess.handleChange(config?.security?.restrictUNCAccess));
+-
+-			// Debug accessibility verbosity
+-			processChanged(this.accessibilityVerbosityDebug.handleChange(config?.accessibility?.verbosity?.debug));
+ 		}
+ 
+ 		// Experiments
+@@ -188,24 +146,6 @@
+ 
+ 		// Enable Feedback
+ 		processChanged(this.telemetryFeedbackEnabled.handleChange(config.telemetry?.feedback?.enabled));
+-
+-		// Extension Unification (only when turning on)
+-		processChanged(this.extensionUnificationEnabled.handleChange(config.chat?.extensionUnification?.enabled) && config.chat?.extensionUnification?.enabled === true);
+-
+-		// Agent provider registration and implementation preferences are read at spawn.
+-		processChanged(this.agentHostClaudeAgentEnabled.handleChange(config.chat?.agentHost?.claudeAgent?.enabled));
+-		processChanged(this.editorCodexPreferAgentHost.handleChange(config.chat?.editor?.codex?.preferAgentHost));
+-
+-		// Agent Host OTel: settings are forwarded as env vars when the agent host
+-		// child process is spawned (see `electronAgentHostStarter.ts`). The child
+-		// is owned by the main process and is not respawned on window reload, so
+-		// changes only take effect after a full app restart.
+-		processChanged(this.agentHostOTelEnabled.handleChange(config.chat?.agentHost?.otel?.enabled));
+-		processChanged(this.agentHostOTelExporterType.handleChange(config.chat?.agentHost?.otel?.exporterType));
+-		processChanged(this.agentHostOTelOtlpEndpoint.handleChange(config.chat?.agentHost?.otel?.otlpEndpoint));
+-		processChanged(this.agentHostOTelCaptureContent.handleChange(config.chat?.agentHost?.otel?.captureContent));
+-		processChanged(this.agentHostOTelOutfile.handleChange(config.chat?.agentHost?.otel?.outfile));
+-		processChanged(this.agentHostOTelDbSpanExporterEnabled.handleChange(config.chat?.agentHost?.otel?.dbSpanExporter?.enabled));
+ 
+ 		if (askToRelaunch && changed && this.hostService.hasFocus) {
+ 			this.doConfirm(

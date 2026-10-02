@@ -1,0 +1,9 @@
+2026-10-02 21:13:27.593 [info] Started initializing default profile extensions in extensions installation folder. file:///private/tmp/lc151ms-wdn5hck0/e
+2026-10-02 21:13:27.631 [info] Completed initializing default profile extensions in extensions installation folder. file:///private/tmp/lc151ms-wdn5hck0/e
+2026-10-02 21:13:27.644 [info] Loading development extension at /private/tmp/lc151ms-wdn5hck0/ext
+2026-10-02 21:13:27.687 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 21:13:28.464 [info] Started local extension host with pid 41146.
+2026-10-02 21:13:30.287 [info] [perf] Render performance baseline is 7ms
+2026-10-02 21:13:30.969 [info] Started local extension host with pid 41471.
+2026-10-02 21:13:30.997 [info] Loading development extension at /private/tmp/lc151ms-wdn5hck0/ext
+2026-10-02 21:13:31.032 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}

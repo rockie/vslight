@@ -1,0 +1,8 @@
+const fs=require('fs');const path=require('path');const vscode=require('vscode');
+const root=path.dirname(__dirname);const write=(name,data)=>fs.writeFileSync(path.join(root,name),JSON.stringify(data,null,2)+'\n');
+exports.activate=async function(context){
+ const uri=vscode.Uri.file(path.join(root,'w','ordinary.txt'));const bytes=await vscode.workspace.fs.readFile(uri);const doc=await vscode.workspace.openTextDocument(uri);const editor=await vscode.window.showTextDocument(doc);
+ if(Buffer.from(bytes).toString()!=='LC151 MAIN SHARED ORDINARY HOST\n'||doc.getText()!=='LC151 MAIN SHARED ORDINARY HOST\n')throw Error('Ordinary file mismatch');
+ write('ready-'+process.pid+'.json',{hostPID:process.pid,parentPID:process.ppid,apiVersion:vscode.version,at:new Date().toISOString(),ordinaryReadFile:true,ordinaryOpenDocument:true,ordinaryShowTextDocument:editor.document===doc,textLength:doc.getText().length});
+ let busy=false;const timer=setInterval(async()=>{if(busy)return;const p=path.join(root,'request.json');if(!fs.existsSync(p))return;busy=true;try{const request=JSON.parse(fs.readFileSync(p,'utf8'));if(!['reload','quit'].includes(request.action))throw Error('Unexpected request');fs.unlinkSync(p);write('consumed-'+request.id+'.json',{id:request.id,action:request.action,hostPID:process.pid,at:new Date().toISOString()});await vscode.commands.executeCommand(request.action==='reload'?'workbench.action.reloadWindow':'workbench.action.quit');}catch(error){write('fixture-error-'+process.pid+'.json',{message:error.message,at:new Date().toISOString()});}finally{busy=false;}},100);context.subscriptions.push({dispose(){clearInterval(timer);}});
+};exports.deactivate=function(){};

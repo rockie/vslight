@@ -1,0 +1,874 @@
+{
+  "status": "FOUR_REAL_DOM_AX_CONTENT_SUBSETS_PASS_FULL_NATIVE_FOCUS_BLOCKED",
+  "sourceArtifact": "Actual final149 (147+148+149), independent new A11Y profile",
+  "collectedAtUTC": "2026-10-01T18:58:35.183811+00:00",
+  "root": "/private/tmp/av149-ir9ah1br",
+  "pointer": "/tmp/lean-accessibility149-path",
+  "launch": {
+    "root": "/private/tmp/av149-ir9ah1br",
+    "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "pid": 3740,
+    "hostPID": 5123,
+    "profile": "/private/tmp/av149-ir9ah1br/u",
+    "port": 19540,
+    "fixtureSHA256": "e76a854510114d61385ff6e648c63075730a11e87ca89b7f39a7f6268c3c9842",
+    "expectedWorkbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97",
+    "manifest": {
+      "name": "lean-accessibility149",
+      "publisher": "lean-private",
+      "version": "0.0.1",
+      "engines": {
+        "vscode": "^1.130.0"
+      },
+      "activationEvents": [
+        "*"
+      ],
+      "main": "./accessibility.js"
+    },
+    "startedAtUTC": "2026-10-01T18:48:28.929483+00:00",
+    "launchMode": "open -g -n background; no focus activation",
+    "settings": {
+      "telemetry.telemetryLevel": "off",
+      "workbench.startupEditor": "none",
+      "window.restoreWindows": "none",
+      "security.workspace.trust.enabled": false,
+      "terminal.integrated.enablePersistentSessions": false,
+      "terminal.integrated.gpuAcceleration": "off",
+      "terminal.integrated.defaultProfile.osx": "Lean Private Shell",
+      "terminal.integrated.profiles.osx": {
+        "Lean Private Shell": {
+          "path": "/bin/sh",
+          "args": [
+            "-f"
+          ]
+        }
+      },
+      "extensions.autoCheckUpdates": false,
+      "extensions.autoUpdate": false
+    },
+    "sourceGeneration": "149 (147+148+149)"
+  },
+  "sourceFixture": {
+    "path": "dev/test-fixtures/lean-core/accessibility.js",
+    "SHA256": "e76a854510114d61385ff6e648c63075730a11e87ca89b7f39a7f6268c3c9842",
+    "unchangedFromFrozen": true
+  },
+  "privateController": {
+    "path": "/private/tmp/av149-ir9ah1br/capture-driver.mjs",
+    "SHA256": "7bbba0d59aafeffebde64e974d66c3d15aa24a4072dd080a0e45824718dca6e8",
+    "noFocusEmulationOrActivationOrGlobalKeyboard": true,
+    "runtimeWindowStateHelper": "/private/tmp/av149-ir9ah1br/window-state.swift",
+    "runtimeWindowStateSHA256": "68c5e57cfebcd9a730d00bd7e3cd855036af8f59ac499f99d9660e96924b070f"
+  },
+  "initialBeforeAnyTargetInput": {
+    "authority": {
+      "pid": 3740,
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "profile": "/private/tmp/av149-ir9ah1br/u",
+      "port": 19540,
+      "hostPID": 5123,
+      "fixtureSHA256": "e76a854510114d61385ff6e648c63075730a11e87ca89b7f39a7f6268c3c9842",
+      "workbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "loadedScriptId": "9",
+    "context": {
+      "key": "7E18D3A2AA1273DD14BEB9A7BC224933:1",
+      "id": 1,
+      "uniqueId": "-2030152304616909676.7243747914078626344",
+      "origin": "vscode-file://vscode-app",
+      "name": "",
+      "frameId": "63C406A5364A930CD1A22628A4643BC1",
+      "sessionId": "7E18D3A2AA1273DD14BEB9A7BC224933",
+      "targetId": "63C406A5364A930CD1A22628A4643BC1",
+      "targetType": "page",
+      "rootTargetId": "63C406A5364A930CD1A22628A4643BC1"
+    },
+    "native": {
+      "appActive": false,
+      "AXWindowCount": 1,
+      "AXWindowsStatus": 0,
+      "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "locked": true,
+      "onConsole": false,
+      "pid": 3740,
+      "running": true
+    },
+    "initial": {
+      "documentHasFocus": false,
+      "visibility": "visible",
+      "active": {
+        "tag": "BODY",
+        "classes": "",
+        "role": null,
+        "ariaLabel": "",
+        "text": "\n\t\n\n\t\n\t\n\n[Extension Development Host] w1ExplorerDrag a view here to display.w.monaco-list.list_id_1 .monaco-list-rows { background: var(--vscode-sideBar-background); }\n.monaco-list.list_id_1:focus .monaco-list-row.focused { background-color: var(--vscode-list-focusBackground); }\n.monaco-list.list_id_1:focus .monaco-list-row.focused:hover { background-color: var(--vscode-list-focusBackground); }\n.monaco-list.list_id_1:focus .monaco-list-row.focused { color: var(--vscode-list-focusForeground); }\n.monaco-list.list_id_1:focus .monaco-list-row.selected { background-color: var(--vscode-list-activeSelectionBackground); }\n.monaco-list.list_id_1:focus .monaco-list-row.selected:hover { background-color: var(--vscode-list-activeSelectionBackground); }\n.monaco-list.list_id_1:focus .monaco-list-row.selected { color: var(--vscode-list-activeSelectionForeground); }\n.monaco-list.list_id_1:focus .monaco-list-row.selected .codicon { color: var(--vscode-list-activeSelectionIconForeground); }\n\n\t\t\t\t.monaco-drag-image.list_id_1,\n\t\t\t\t.monaco-list.list_id_1:focus .monaco-list-row.selected.focused { background-color: var(--vscode-list-activeSelectionBackground); }\n\t\t\t\n\n\t\t\t\t.monaco-drag-image.list_id_1,\n\t\t\t\t.monaco-list.list_id_1:focus .monaco-list-row.selected.focused { color: var(--vscode-list-activeSelectionForeground); }\n\t\t\t\n.monaco-list.list_id_1 .monaco-list-row.focused .codicon { color:  var(--vscode-list-inactiveSelectionIconForeground); }\n.monaco-list.list_id_1 .monaco-list-row.focused { background-color:  var(--vscode-list-inactiveFocusBackground); }\n.monaco-list.list_id_1 .monaco-list-row.focused:hover { background-color:  var(--vscode-list-inactiveFocusBackground); }\n.monaco-list.list_id_1 .monaco-list-row.selected { background-color:  var(--vscode-list-inactiveSelectionBackground); }\n.monaco-list.list_id_1 .monaco-list-row.selected:hover { background-color:  var(--vscode-list-inactiveSelectionBackground); }\n.monaco-list.list_id_1 .monaco-list-row.selected { color: var(--vscode-list-inactiveSelectionForeground); }\n.monaco-list.list_id_1:not(.drop-target):not(.dragging) .monaco-list-row:hover:not(.selected):not(.focused) { background-color: var(--vscode-list-hoverBackground); }\n.monaco-list.list_id_1:not(.drop-target):not(.dragging) .monaco-list-row:hover:not(.selected):not(.focused) { color:  var(--vscode-list-hoverForeground); }\n.monaco-list.list_id_1:focus .monaco-list-row.focused.selected { outline: 1px solid var(--vscode-list-focusAndSelectionOutline, var(--vscode-contrastActiveBorder, var(--vscode-list-focusOutline))); outline-offset: -1px;}\n\n\t\t\t\t.monaco-drag-image.list_id_1,\n\t\t\t\t.monaco-list.list_id_1:focus .monaco-list-row.focused,\n\t\t\t\t.context-menu-visible .monaco-list.list_id_1.last-focused .monaco-list-row.focused { outline: 1px solid var(--vscode-list-focusOutline); outline-offset: -1px; }\n\t\t\t\n.monaco-list.list_id_1 .monaco-list-row.focused.selected { outline: 1px dotted var(--vscode-contrastActiveBorder, var(--vscode-list-inactiveFocusOutline)); outline-offset: -1px; }\n.monaco-list.list_id_1 .monaco-list-row.selected { outline: 1px dotted var(--vscode-contrastActiveBorder); outline-offset: -1px; }\n.monaco-list.list_id_1 .monaco-list-row.focused { outline: 1px dotted var(--vscode-list-inactiveFocusOutline); outline-offset: -1px; }\n.monaco-list.list_id_1 .monaco-list-row:hover { outline: 1px dashed var(--vscode-contrastActiveBorder); outline-offset: -1px; }\n\n\t\t\t\t.monaco-list.list_id_1.drop-target,\n\t\t\t\t.monaco-list.list_id_1 .monaco-list-rows.drop-target,\n\t\t\t\t.monaco-list.list_id_1 .monaco-list-row.drop-target { background-color: var(--vscode-list-dropBackground) !important; color: inherit !important; }\n\t\t\t\n\n\t\t\t.monaco-list.list_id_1 .monaco-list-rows.drop-target-before .monaco-list-row:first-child::before,\n\t\t\t.monaco-list.list_id_1 .monaco-list-row.drop-target-before::before {\n\t\t\t\tcontent: \"\"; position: absolute; top: 0px; left: 0px; width: 100%; height: 1px;\n\t\t\t\tbackground-color: var(--vscode-list-dropBetweenBackground);\n\t\t\t}\n\n\t\t\t.monaco-list.list_id_1 .monaco-list-rows.drop-target-after .monaco-list-row:last-child::after,\n\t\t\t.monaco-list.list_id_1 .monaco-list-row.drop-target-after::after {\n\t\t\t\tcontent: \"\"; position: absolute; bottom: 0px; left: 0px; width: 100%; height: 1px;\n\t\t\t\tbackground-color: var(--vscode-list-dropBetweenBackground);\n\t\t\t}\n\n\t\t\t\t.monaco-table > .monaco-split-view2,\n\t\t\t\t.monaco-table > .monaco-split-view2 .monaco-sash.vertical::before,\n\t\t\t\t.monaco-enable-motion .monaco-table:hover > .monaco-split-view2,\n\t\t\t\t.monaco-enable-motion .monaco-table:hover > .monaco-split-view2 .monaco-sash.vertical::before {\n\t\t\t\t\tborder-color: var(--vscode-tree-tableColumnsBorder);\n\t\t\t\t}\n\n\t\t\t\t.monaco-enable-motion .monaco-table > .monaco-split-view2,\n\t\t\t\t.monaco-enable-motion .monaco-table > .monaco-split-view2 .monaco-sash.vertical::before {\n\t\t\t\t\tborder-color: transparent;\n\t\t\t\t}\n\t\t\t\n\n\t\t\t\t.monaco-table .monaco-list-row[data-parity=odd]:not(.focused):not(.selected):not(:hover) .monaco-table-tr,\n\t\t\t\t.monaco-table .monaco-list:not(:focus) .monaco-list-row[data-parity=odd].focused:not(.selected):not(:hover) .monaco-table-tr,\n\t\t\t\t.monaco-table .monaco-list:not(.focused) .monaco-list-row[data-parity=odd].focused:not(.selected):not(:hover) .monaco-table-tr {\n\t\t\t\t\tbackground-color: var(--vscode-tree-tableOddRowsBackground);\n\t\t\t\t}\n\t\t\t.monaco-list.list_id_1:hover .monaco-tl-indent > .indent-guide, .monaco-list.list_id_1.always .monaco-tl-indent > .indent-guide  { opacity: 1; border-color: var(--vscode-tree-inactiveIndentGuidesStroke); }\n.monaco-list.list_id_1 .monaco-tl-indent > .indent-guide.active { opacity: 1; border-color: var(--vscode-tree-indentGuidesStroke); }\n.monaco-list.list_id_1 .monaco-scrollable-element .monaco-tree-sticky-container { background-color: var(--vscode-sideBarStickyScroll-background); }\n.monaco-list.list_id_1 .monaco-scrollable-element .monaco-tree-sticky-container .monaco-tree-sticky-row { background-color: var(--vscode-sideBarStickyScroll-background); }\n.monaco-list.list_id_1 .monaco-scrollable-element .monaco-tree-sticky-container { border-bottom: 1px solid var(--vscode-sideBarStickyScroll-border); }\n.monaco-list.list_id_1 .monaco-scrollable-element .monaco-tree-sticky-container .monaco-tree-sticky-container-shadow { box-shadow: var(--vscode-sideBarStickyScroll-shadow) 0 6px 6px -6px inset; height: 3px; }\n.monaco-list.list_id_1.sticky-scroll-focused .monaco-scrollable-element .monaco-tree-sticky-container:focus .monaco-list-row.focused { color: var(--vscode-list-focusForeground); }\n.monaco-list.list_id_1:not(.sticky-scroll-focused) .monaco-scrollable-element .monaco-tree-sticky-container .monaco-list-row.focused { color: inherit; }\n.monaco-list.list_id_1.sticky-scroll-focused .monaco-scrollable-element .monaco-tree-sticky-container:focus .monaco-list-row.focused.selected { outline: 1px solid var(--vscode-list-focusAndSelectionOutline, var(--vscode-contrastActiveBorder, var(--vscode-list-focusOutline))); outline-offset: -1px;}\n.monaco-list.list_id_1:not(.sticky-scroll-focused) .monaco-scrollable-element .monaco-tree-sticky-container .monaco-list-row.focused.selected { outline: inherit;}\n.monaco-list.list_id_1.sticky-scroll-focused .monaco-scrollable-element .monaco-tree-sticky-container:focus .monaco-list-row.focused { outline: 1px solid var(--vscode-list-focusOutline); outline-offset: -1px; }\n.monaco-list.list_id_1:not(.sticky-scroll-focused) .monaco-scrollable-element .monaco-tree-sticky-container .monaco-list-row.focused { outline: inherit; }\n.context-menu-visible .monaco-list.list_id_1.last-focused.sticky-scroll-focused .monaco-scrollable-element .monaco-tree-sticky-container .monaco-list-row.passive-focused { outline: 1px solid var(--vscode-list-focusOutline); outline-offset: -1px; }\n.context-menu-visible .monaco-list.list_id_1.last-focused.sticky-scroll-focused .monaco-list-rows .monaco-list-row.focused { outline: inherit; }\n.context-menu-visible .monaco-list.list_id_1.last-focused:not(.sticky-scroll-focused) .monaco-tree-sticky-container .monaco-list-rows .monaco-list-row.focused { outline: inherit; }OutlineTimelineShow All Commands⇧⌘POpen Settings⌘,Go to File⌘Phover_targetUntitled-1.monaco-breadcrumbs { background-color: var(--vscode-breadcrumb-background)}\n.monaco-breadcrumbs .monaco-breadcrumb-item { color: var(--vscode-breadcrumb-foreground)}\n.monaco-breadcrumbs .monaco-breadcrumb-item.focused { color: var(--vscode-breadcrumb-focusForeground)}\n.monaco-breadcrumbs .monaco-breadcrumb-item.focused.selected { color: var(--vscode-breadcrumb-activeSelectionForeground)}\n.monaco-breadcrumbs:not(.disabled) .monaco-breadcrumb-item:hover:not(.focused):not(.selected) { color: var(--vscode-breadcrumb-focusForeground)}\n123hover_targetordinary editorPress desired key combination and then press ENTER.Drag a view here to display.Drag a view here to display. 0  0Plain TextLFUTF-8Spaces: 4Ln 1, Col 1\n\n\t\t\t\t/* Status bar focus outline */\n\t\t\t\t.monaco-workbench .part.statusbar:focus {\n\t\t\t\t\toutline-color: rgba(57, 148, 188, 0.7);\n\t\t\t\t}\n\n\t\t\t\t/* Status bar item focus outline */\n\t\t\t\t.monaco-workbench .part.statusbar > .items-container > .statusbar-item a:focus-visible {\n\t\t\t\t\toutline: 1px solid rgba(57, 148, 188, 0.7);\n\t\t\t\t\toutline-offset: -2px;\n\t\t\t\t}\n\n\t\t\t\t/* Notification Beak */\n\t\t\t\t.monaco-workbench .part.statusbar > .items-container > .statusbar-item.has-beak > .status-bar-item-beak-container:before {\n\t\t\t\t\tborder-bottom-color: #2a2b2c;\n\t\t\t\t}\n\t\t\t"
+      },
+      "view": {
+        "present": false,
+        "width": 0,
+        "height": 0,
+        "visible": false,
+        "text": ""
+      },
+      "terminal": false,
+      "editor": false,
+      "hover": false
+    }
+  },
+  "actualFinalProfileScreenReaderChange": {
+    "scope": "own149 private profile only",
+    "setting": "editor.accessibilitySupport",
+    "value": "on",
+    "providerAndFixtureUnchanged": true,
+    "globalPreferencesUnchanged": true,
+    "firstRoundPreserved": "/private/tmp/av149-ir9ah1br/first-round"
+  },
+  "lastCapture": {
+    "status": "PARTIAL_CONTENT_SUBSETS_FULL_FOCUS_BLOCKED",
+    "sourceGeneration": "149 (147+148+149)",
+    "authority": {
+      "pid": 3740,
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "profile": "/private/tmp/av149-ir9ah1br/u",
+      "port": 19540,
+      "hostPID": 5123,
+      "fixtureSHA256": "e76a854510114d61385ff6e648c63075730a11e87ca89b7f39a7f6268c3c9842",
+      "workbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "authorityAfter": {
+      "pid": 3740,
+      "app": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "profile": "/private/tmp/av149-ir9ah1br/u",
+      "port": 19540,
+      "hostPID": 5123,
+      "fixtureSHA256": "e76a854510114d61385ff6e648c63075730a11e87ca89b7f39a7f6268c3c9842",
+      "workbenchSHA256": "ca30c3f30a81950153d7d9b433d32c4c78f3099bbfbef254b386088ed6786e97"
+    },
+    "native": {
+      "appActive": false,
+      "AXWindowCount": 1,
+      "AXWindowsStatus": 0,
+      "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+      "locked": true,
+      "onConsole": false,
+      "pid": 3740,
+      "running": true
+    },
+    "initial": {
+      "documentHasFocus": true,
+      "visibility": "visible",
+      "active": {
+        "tag": "DIV",
+        "classes": "hover-row hover-row-with-copy",
+        "role": null,
+        "ariaLabel": null,
+        "text": "A11Y_HOVER_MARKER: ordinary hover documentation"
+      },
+      "view": {
+        "present": true,
+        "width": 0,
+        "height": 0,
+        "visible": false,
+        "text": "Accessible ViewA11Y_HOVER_MARKER: ordinary hover documentationA11Y_HOVER_MARKER: ordinary hover documentationPress desired key combination and then press ENTER."
+      },
+      "terminal": false,
+      "editor": true,
+      "hover": true
+    },
+    "results": [
+      {
+        "action": "terminal-view",
+        "expected": "A11Y_TERMINAL_MARKER",
+        "fixtureResponse": {
+          "id": "258f1f9d-5d12-4298-ae20-c6ffdb9745b5",
+          "action": "terminal-view",
+          "status": "PASS"
+        },
+        "before": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "native-edit-context",
+            "role": "textbox",
+            "ariaLabel": "Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.",
+            "text": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ "
+          },
+          "view": {
+            "present": true,
+            "width": 904,
+            "height": 122,
+            "visible": true,
+            "text": "Accessible View\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ \nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ \nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'"
+          },
+          "terminal": false,
+          "editor": false,
+          "hover": false
+        },
+        "ax": [
+          {
+            "nodeId": "2458",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Accessible View, Explore actions such as disabling this hint (Shift+Tab), use Escape to exit this dialog.",
+            "value": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ ",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "1899",
+            "ignored": false,
+            "role": "textbox",
+            "name": "hover_target • Untitled-1",
+            "value": "hover_target\nordinary editor\n",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "22",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Terminal 1, Accessibility fixture Run the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience Use ⌥F1 for terminal accessibility help",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              }
+            ]
+          }
+        ],
+        "accessibleContent": "sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ ",
+        "contentCheck": "REAL_DOM_AX_CONTENT_SUBSET_PASS",
+        "retiredTextCheck": {
+          "patterns": "debug/debugger/debugging/chat/copilot/notebook/jupyter/mcp/agent",
+          "matches": [],
+          "status": "CONTENT_SUBSET_ZERO_RETIRED_TEXT"
+        },
+        "escapeInput": {
+          "mode": "trusted key event only to verified own renderer target",
+          "targetId": "63C406A5364A930CD1A22628A4643BC1",
+          "sessionId": "7ABD9073E49BB28303CA18C0C67D5B7A"
+        },
+        "after": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "TEXTAREA",
+            "classes": "xterm-helper-textarea",
+            "role": null,
+            "ariaLabel": "Terminal 1, Accessibility fixture\nRun the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience\nUse ⌥F1 for terminal accessibility help",
+            "text": ""
+          },
+          "view": {
+            "present": true,
+            "width": 0,
+            "height": 0,
+            "visible": false,
+            "text": "Accessible Viewsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'\nA11Y_TERMINAL_MARKER\nprintfsh-3.2$ A11Y_TERMINAL_MARKERprintfsh-3.2$ sh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'A11Y_TERMINAL_MARKERsh-3.2$ printf 'A11Y_TERMINAL_MARKER\\n'printf 'A11Y_TERMINAL_MARKER\\n'Press desired key combination and then press ENTER."
+          },
+          "terminal": true,
+          "editor": false,
+          "hover": false
+        },
+        "afterNative": {
+          "appActive": false,
+          "AXWindowCount": 1,
+          "AXWindowsStatus": 0,
+          "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "locked": true,
+          "onConsole": false,
+          "pid": 3740,
+          "running": true
+        },
+        "fullFocusGate": false,
+        "status": "BLOCKED_FULL_FOCUS_OR_BEHAVIOR_GATE",
+        "evidenceFile": "/private/tmp/av149-ir9ah1br/evidence/terminal-view.json",
+        "evidenceSHA256": "6c77a81c9926cf93e157532df79d5d6e596431c7620dc2f0511777551c6252ed",
+        "evidenceFileWriteUTC": "2026-10-01T18:54:13.056620+00:00"
+      },
+      {
+        "action": "terminal-help",
+        "expected": "Focus Accessible Terminal View",
+        "fixtureResponse": {
+          "id": "edd23b85-d21d-48da-b148-23937ebe5cf3",
+          "action": "terminal-help",
+          "status": "PASS"
+        },
+        "before": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "native-edit-context",
+            "role": "textbox",
+            "ariaLabel": "Accessibility Help, Explore actions such as disabling this hint (Shift+Tab).",
+            "text": "The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A)."
+          },
+          "view": {
+            "present": true,
+            "width": 904,
+            "height": 356,
+            "visible": true,
+            "text": "Accessibility Help\nThe Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).\nThe Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A)."
+          },
+          "terminal": false,
+          "editor": false,
+          "hover": false
+        },
+        "ax": [
+          {
+            "nodeId": "2600",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Accessibility Help, Explore actions such as disabling this hint (Shift+Tab).",
+            "value": "The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "1899",
+            "ignored": false,
+            "role": "textbox",
+            "name": "hover_target • Untitled-1",
+            "value": "hover_target\nordinary editor\n",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "22",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Terminal 1, Accessibility fixture Run the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience Use ⌥F1 for terminal accessibility help",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              }
+            ]
+          }
+        ],
+        "accessibleContent": "The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+        "contentCheck": "REAL_DOM_AX_CONTENT_SUBSET_PASS",
+        "retiredTextCheck": {
+          "patterns": "debug/debugger/debugging/chat/copilot/notebook/jupyter/mcp/agent",
+          "matches": [],
+          "status": "CONTENT_SUBSET_ZERO_RETIRED_TEXT"
+        },
+        "escapeInput": {
+          "mode": "trusted key event only to verified own renderer target",
+          "targetId": "63C406A5364A930CD1A22628A4643BC1",
+          "sessionId": "7ABD9073E49BB28303CA18C0C67D5B7A"
+        },
+        "after": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "TEXTAREA",
+            "classes": "xterm-helper-textarea",
+            "role": null,
+            "ariaLabel": "Terminal 1, Accessibility fixture\nRun the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience\nUse ⌥F1 for terminal accessibility help",
+            "text": ""
+          },
+          "view": {
+            "present": true,
+            "width": 0,
+            "height": 0,
+            "visible": false,
+            "text": "Accessibility HelpThe Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.\nCustomize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`\nThe Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.\nThe Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.\nConfigure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.\nEnable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.\nThe terminal request completions command can be invoked manually (Control+Space), but also appears while typing.\nWhen the terminal suggest widget is focused:\n- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).\n- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.\n- Learn more about the suggestion (unassigned keybinding).\n-Configure suggest settings (unassigned keybinding) \nShell integration is not enabled. Some accessibility features may not be available.\nOpen a browser window with more information related to accessibility (Option+H).\nDisable accessibility verbosity for this feature (Option+F6).\nExit this dialog (Escape).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).The Focus Accessible Terminal View command (Option+F2) enables screen readers to read terminal contents.Customize the behavior of the cursor when toggling between the terminal and accessible view with `terminal.integrated.accessibleViewPreserveCursorPosition.`The Open Detected Link command (Shift+Command+G) enables screen readers to easily open links found in the terminal.The Create New Terminal (With Profile) command (unassigned keybinding) allows for easy terminal creation using a specific profile.Configure what gets focused after running selected text in the terminal with `terminal.integrated.focusAfterRun`.Enable `terminal.integrated.accessibleViewFocusOnCommandExecution` to automatically focus the terminal accessible view when a command is executed in the terminal.The terminal request completions command can be invoked manually (Control+Space), but also appears while typing.When the terminal suggest widget is focused:- Accept the suggestion (Tab) and configure suggest settings (unassigned keybinding).- Toggle between the widget and terminal (Control+Space) and toggle details focus (Control+Option+Space) to learn more about the suggestion.- Learn more about the suggestion (unassigned keybinding).-Configure suggest settings (unassigned keybinding) Shell integration is not enabled. Some accessibility features may not be available.Open a browser window with more information related to accessibility (Option+H).Disable accessibility verbosity for this feature (Option+F6).Exit this dialog (Escape).Configure keybindings for commands that lack them (Option+K).Configure keybindings for commands that already have assignments (Option+A).Press desired key combination and then press ENTER."
+          },
+          "terminal": true,
+          "editor": false,
+          "hover": false
+        },
+        "afterNative": {
+          "appActive": false,
+          "AXWindowCount": 1,
+          "AXWindowsStatus": 0,
+          "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "locked": true,
+          "onConsole": false,
+          "pid": 3740,
+          "running": true
+        },
+        "fullFocusGate": false,
+        "status": "BLOCKED_FULL_FOCUS_OR_BEHAVIOR_GATE",
+        "evidenceFile": "/private/tmp/av149-ir9ah1br/evidence/terminal-help.json",
+        "evidenceSHA256": "18ea8bb849af1ce124c410d90a259cacec5120aeeb5ac4c41b398ea881536c94",
+        "evidenceFileWriteUTC": "2026-10-01T18:54:14.264605+00:00"
+      },
+      {
+        "action": "editor-help",
+        "expected": "You are in a code editor",
+        "fixtureResponse": {
+          "id": "ba9c6b7f-8f61-4289-8b43-cd6de97dae6b",
+          "action": "editor-help",
+          "status": "PASS"
+        },
+        "before": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "native-edit-context",
+            "role": "textbox",
+            "ariaLabel": "Accessibility Help",
+            "text": "The application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A)."
+          },
+          "view": {
+            "present": true,
+            "width": 904,
+            "height": 392,
+            "visible": true,
+            "text": "Accessibility Help\nThe application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).\nThe application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A)."
+          },
+          "terminal": false,
+          "editor": false,
+          "hover": false
+        },
+        "ax": [
+          {
+            "nodeId": "2868",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Accessibility Help",
+            "value": "The application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "1899",
+            "ignored": false,
+            "role": "textbox",
+            "name": "hover_target • Untitled-1",
+            "value": "hover_target\nordinary editor\n",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "22",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Terminal 1, Accessibility fixture Run the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience Use ⌥F1 for terminal accessibility help",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              }
+            ]
+          }
+        ],
+        "accessibleContent": "The application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).",
+        "contentCheck": "REAL_DOM_AX_CONTENT_SUBSET_PASS",
+        "retiredTextCheck": {
+          "patterns": "debug/debugger/debugging/chat/copilot/notebook/jupyter/mcp/agent",
+          "matches": [],
+          "status": "CONTENT_SUBSET_ZERO_RETIRED_TEXT"
+        },
+        "escapeInput": {
+          "mode": "trusted key event only to verified own renderer target",
+          "targetId": "63C406A5364A930CD1A22628A4643BC1",
+          "sessionId": "7ABD9073E49BB28303CA18C0C67D5B7A"
+        },
+        "after": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "native-edit-context",
+            "role": "textbox",
+            "ariaLabel": "hover_target • Untitled-1",
+            "text": "hover_target\nordinary editor\n"
+          },
+          "view": {
+            "present": true,
+            "width": 0,
+            "height": 0,
+            "visible": false,
+            "text": "Accessibility HelpThe application is configured to be optimized for usage with a Screen Reader.\nYou are in a code editor.\nactiveEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.\nAround the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.\nRun the command: List Signal Sounds for an overview of all sounds and their current status.\nRun the command: List Signal Announcements for an overview of announcements and their current status.\nRun the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.\nFocus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).\nTrigger the suggest widget (Control+Space) to show possible inline suggestions.\nAccept suggestion (Enter) to accept the currently selected suggestion.\nToggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.\nFocus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.\nPressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).\nUse code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).\nUse Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).\nShow or focus the hover (Command+K Command+I) to read information about the current symbol.\nGo to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.\nOpen a browser window with more information related to accessibility (Option+H).\nConfigure keybindings for commands that lack them (Option+K).\nConfigure keybindings for commands that already have assignments (Option+A).The application is configured to be optimized for usage with a Screen Reader.You are in a code editor.activeEditorState - such as modified, problems, and more, is included as a part of the window.title setting by default. Disable it with accessibility.windowTitleOptimized.Around the workbench, when the screen reader announces you've landed in a toolbar, use narrow keys to navigate between the toolbar's actions.Run the command: List Signal Sounds for an overview of all sounds and their current status.Run the command: List Signal Announcements for an overview of announcements and their current status.Run the command: Announce Cursor Position (Shift+Option+Command+G) to hear the current line and column.Focus notification toasts (unassigned keybinding) to navigate them with the keyboard. Accept the primary action of a focused notification (Shift+Command+A).Trigger the suggest widget (Control+Space) to show possible inline suggestions.Accept suggestion (Enter) to accept the currently selected suggestion.Toggle focus between the suggest widget and the editor (Control+Space) and toggle details focus with (Control+Option+Space) to learn more about the suggestion.Focus Sticky Scroll (unassigned keybinding) to focus the currently nested scopes.Pressing Tab in the current editor will insert the tab character. Toggle this behavior (Control+Shift+M).Use code folding to collapse blocks of code and focus on the code you're interested in via the Toggle Folding Command (Command+K Command+L).Use Intellisense to improve coding efficiency and reduce errors. Trigger suggestions (Control+Space).Show or focus the hover (Command+K Command+I) to read information about the current symbol.Go to Symbol (Shift+Command+O) to quickly navigate between symbols in the current file.Open a browser window with more information related to accessibility (Option+H).Configure keybindings for commands that lack them (Option+K).Configure keybindings for commands that already have assignments (Option+A).Press desired key combination and then press ENTER."
+          },
+          "terminal": false,
+          "editor": true,
+          "hover": false
+        },
+        "afterNative": {
+          "appActive": false,
+          "AXWindowCount": 1,
+          "AXWindowsStatus": 0,
+          "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "locked": true,
+          "onConsole": false,
+          "pid": 3740,
+          "running": true
+        },
+        "fullFocusGate": false,
+        "status": "BLOCKED_FULL_FOCUS_OR_BEHAVIOR_GATE",
+        "evidenceFile": "/private/tmp/av149-ir9ah1br/evidence/editor-help.json",
+        "evidenceSHA256": "2a2534cc25d318c0942884557f555cdee096f6d8e311ef9341bedff466545f03",
+        "evidenceFileWriteUTC": "2026-10-01T18:54:15.518709+00:00"
+      },
+      {
+        "action": "hover-view",
+        "expected": "A11Y_HOVER_MARKER",
+        "fixtureResponse": {
+          "id": "c88bffad-53f6-4851-ae1c-9c77eb9a0e42",
+          "action": "hover-view",
+          "status": "PASS"
+        },
+        "before": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "native-edit-context",
+            "role": "textbox",
+            "ariaLabel": "Accessible View, Explore actions such as disabling this hint (Shift+Tab).",
+            "text": "A11Y_HOVER_MARKER: ordinary hover documentation"
+          },
+          "view": {
+            "present": true,
+            "width": 904,
+            "height": 50,
+            "visible": true,
+            "text": "Accessible View\nA11Y_HOVER_MARKER: ordinary hover documentation\nA11Y_HOVER_MARKER: ordinary hover documentation"
+          },
+          "terminal": false,
+          "editor": false,
+          "hover": false
+        },
+        "ax": [
+          {
+            "nodeId": "3142",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Accessible View, Explore actions such as disabling this hint (Shift+Tab).",
+            "value": "A11Y_HOVER_MARKER: ordinary hover documentation",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "focused",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "1899",
+            "ignored": false,
+            "role": "textbox",
+            "name": "hover_target • Untitled-1",
+            "value": "hover_target\nordinary editor\n",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "richtext"
+                }
+              }
+            ]
+          },
+          {
+            "nodeId": "22",
+            "ignored": false,
+            "role": "textbox",
+            "name": "Terminal 1, Accessibility fixture Run the command: Toggle Screen Reader Accessibility Mode for an optimized screen reader experience Use ⌥F1 for terminal accessibility help",
+            "properties": [
+              {
+                "name": "focusable",
+                "value": {
+                  "type": "booleanOrUndefined",
+                  "value": true
+                }
+              },
+              {
+                "name": "editable",
+                "value": {
+                  "type": "token",
+                  "value": "plaintext"
+                }
+              }
+            ]
+          }
+        ],
+        "accessibleContent": "A11Y_HOVER_MARKER: ordinary hover documentation",
+        "contentCheck": "REAL_DOM_AX_CONTENT_SUBSET_PASS",
+        "retiredTextCheck": {
+          "patterns": "debug/debugger/debugging/chat/copilot/notebook/jupyter/mcp/agent",
+          "matches": [],
+          "status": "CONTENT_SUBSET_ZERO_RETIRED_TEXT"
+        },
+        "escapeInput": {
+          "mode": "trusted key event only to verified own renderer target",
+          "targetId": "63C406A5364A930CD1A22628A4643BC1",
+          "sessionId": "7ABD9073E49BB28303CA18C0C67D5B7A"
+        },
+        "after": {
+          "documentHasFocus": true,
+          "visibility": "visible",
+          "active": {
+            "tag": "DIV",
+            "classes": "hover-row hover-row-with-copy",
+            "role": null,
+            "ariaLabel": null,
+            "text": "A11Y_HOVER_MARKER: ordinary hover documentation"
+          },
+          "view": {
+            "present": true,
+            "width": 0,
+            "height": 0,
+            "visible": false,
+            "text": "Accessible ViewA11Y_HOVER_MARKER: ordinary hover documentationA11Y_HOVER_MARKER: ordinary hover documentationPress desired key combination and then press ENTER."
+          },
+          "terminal": false,
+          "editor": true,
+          "hover": true
+        },
+        "afterNative": {
+          "appActive": false,
+          "AXWindowCount": 1,
+          "AXWindowsStatus": 0,
+          "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+          "locked": true,
+          "onConsole": false,
+          "pid": 3740,
+          "running": true
+        },
+        "fullFocusGate": false,
+        "status": "BLOCKED_FULL_FOCUS_OR_BEHAVIOR_GATE",
+        "evidenceFile": "/private/tmp/av149-ir9ah1br/evidence/hover-view.json",
+        "evidenceSHA256": "4cadfd8c74b7ef9497b8099c73e722118287efc23c7295367d112cd7d0022c2d",
+        "evidenceFileWriteUTC": "2026-10-01T18:54:17.296196+00:00"
+      }
+    ],
+    "boundaries": {
+      "frozenFixture": true,
+      "noFocusEmulation": true,
+      "noAppActivation": true,
+      "noGlobalInput": true,
+      "noProviderOrSourceChanges": true,
+      "CDP19540Only": true,
+      "noAuthTouch": true
+    }
+  },
+  "nativeAfter": {
+    "appActive": false,
+    "AXWindowCount": 1,
+    "AXWindowsStatus": 0,
+    "bundleURL": "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+    "locked": true,
+    "onConsole": false,
+    "pid": 3740,
+    "running": true
+  },
+  "preservedAttempts": [
+    {
+      "path": "/private/tmp/av149-ir9ah1br/first-round/summary.json",
+      "reason": "ScreenReader optimized mode disabled: no AX accessible textbox content; terminal view not visible before any target Input. No content acceptance."
+    },
+    {
+      "path": "/private/tmp/av149-ir9ah1br/second-round/editor-help.json",
+      "reason": "Earlier hover-view Escape correctly returned focus to hover; hover remained open. Next editor-help selected hover Help. Expected code editor text missing; not accepted."
+    }
+  ],
+  "realContextReset": {
+    "path": "/private/tmp/av149-ir9ah1br/evidence/context-reset.json",
+    "mode": "Additional real own-target Escape to close previous hover before final matrix",
+    "providerUnchanged": true
+  },
+  "checks": {
+    "fourDOMAXExpectedContentAndVisible": true,
+    "fourRetiredContentWordsZero": true,
+    "fourRealTargetEscapeClosed": true,
+    "fourLogicalControlRestorations": true,
+    "fourFullNativeFocusGate": false,
+    "nativeLockedDuringEveryCase": true,
+    "nativeAppNeverActive": true,
+    "noActivationNoGlobalInputNoFocusEmulation": true,
+    "fixtureProviderAndSourceUnchanged": true,
+    "noFakeGlobalAcceptance": true
+  },
+  "logs": {
+    "path": "/private/tmp/av149-ir9ah1br/evidence/log-counts.json",
+    "SHA256": "b1b4670fe194588649ae8bb1cd6f64df766f8f45b4b1195a0c7019efb0106b25",
+    "DI_RPC_allZero": true,
+    "errorCount": 0,
+    "warningCount": 5,
+    "warningCategories": {
+      "resourceScopedConfigurationWithoutResource": 3,
+      "ShellIntegrationUnsupportedPrivateBinShArgs": 1,
+      "PrivateExtensionsManifestCreateFileAlreadyExists": 1
+    }
+  },
+  "cleanup": {
+    "mainPID": 3740,
+    "hostPID": 5123,
+    "normalFixtureQuitRequested": true,
+    "mainExited": true,
+    "listener19540Released": true,
+    "atUTC": "2026-10-01T18:55:43.193754+00:00"
+  },
+  "boundaries": [
+    "Fixture response PASS means command completion only, not A11Y behavioral PASS.",
+    "Initial document.hasFocus=false; trusted target keyboard input later yielded true while native appActive=false, locked=true and onConsole=false. It is not actual foreground focus.",
+    "Real DOM/Chromium AX content, visibility, Escape closure and logical return are accepted subsets only.",
+    "No original profiles, auth19480, root19500, global prefs, source/providers/fixture or system keyboard touched.",
+    "Followup requires an unlocked console with actual own-app foreground focus and the same full visibility/AX/Escape/return assertions."
+  ]
+}

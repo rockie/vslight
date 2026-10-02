@@ -1,0 +1,24 @@
+{
+  "present": true,
+  "search": "@command:editor.action.clipboardCopyAction",
+  "bodyText": "Showing 1 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource\nCopy\n⌘\nC\n-\nSystem",
+  "lists": [
+    {
+      "role": "list",
+      "count": null,
+      "label": "Keybindings"
+    }
+  ],
+  "rows": [
+    {
+      "text": "Copy\n⌘\nC\n-\nSystem",
+      "aria": "Copy (editor.action.clipboardCopyAction)",
+      "id": "",
+      "labels": [
+        "Change Keybinding (Enter)",
+        "Copy (editor.action.clipboardCopyAction)",
+        "Command+C"
+      ]
+    }
+  ]
+}

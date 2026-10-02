@@ -1,0 +1,268 @@
+{
+  "status": "PASS",
+  "rawApp": "/private/tmp/lean-core-build151-c480juxs/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "signedApp": "/private/tmp/sign151-8n2nwj4c/VSCode-darwin-arm64/VSLight.app",
+  "changes": [
+    {
+      "path": "Contents/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2325
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 195322960,
+      "afterBytes": 194205696
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 1210848,
+      "afterBytes": 1222896
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libEGL.dylib",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 91952,
+      "afterBytes": 109664
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libGLESv2.dylib",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 6278400,
+      "afterBytes": 6260192
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 2230784,
+      "afterBytes": 2236096
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 16574256,
+      "afterBytes": 16496144
+    },
+    {
+      "path": "Contents/Frameworks/Electron Framework.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 10992
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/Mantle",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 126544,
+      "afterBytes": 144128
+    },
+    {
+      "path": "Contents/Frameworks/Mantle.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2442
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 352864,
+      "afterBytes": 369136
+    },
+    {
+      "path": "Contents/Frameworks/ReactiveObjC.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2442
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 125696,
+      "afterBytes": 144032
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 145408,
+      "afterBytes": 162864
+    },
+    {
+      "path": "Contents/Frameworks/Squirrel.framework/Versions/A/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2660
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/MacOS/VSLight Helper (GPU)",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 203600,
+      "afterBytes": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (GPU).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/MacOS/VSLight Helper (Plugin)",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 203600,
+      "afterBytes": 221424
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Plugin).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/MacOS/VSLight Helper (Renderer)",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 203600,
+      "afterBytes": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper (Renderer).app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2200
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/MacOS/VSLight Helper",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 203584,
+      "afterBytes": 221168
+    },
+    {
+      "path": "Contents/Frameworks/VSLight Helper.app/Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 2200
+    },
+    {
+      "path": "Contents/Info.plist",
+      "kind": "signer usage descriptions",
+      "beforeBytes": 35380,
+      "afterBytes": 35737
+    },
+    {
+      "path": "Contents/MacOS/VSLight",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 33968,
+      "afterBytes": 52864
+    },
+    {
+      "path": "Contents/Resources/app/extensions/git/node_modules/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 80416,
+      "afterBytes": 98208
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/libmsalruntime.dylib",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 6603872,
+      "afterBytes": 6550864
+    },
+    {
+      "path": "Contents/Resources/app/extensions/microsoft-authentication/dist/msal-node-runtime.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 359456,
+      "afterBytes": 342736
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 466096,
+      "afterBytes": 481664
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 16704,
+      "afterBytes": 34864
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/fs-copyfile/build/Release/vscode_fs.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 80384,
+      "afterBytes": 98176
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 52208,
+      "afterBytes": 70176
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/os-proxy-resolver-darwin-arm64/os_proxy_resolver.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 6632912,
+      "afterBytes": 6612624
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/darwin-arm64/rg",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 4528512,
+      "afterBytes": 4521264
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 501288,
+      "afterBytes": 516640
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 1886784,
+      "afterBytes": 1894080
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 60064,
+      "afterBytes": 77984
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 540896,
+      "afterBytes": 590288
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 50960,
+      "afterBytes": 68944
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 91608,
+      "afterBytes": 109328
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/node-pty/build/Release/spawn-helper",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 50592,
+      "afterBytes": 69392
+    },
+    {
+      "path": "Contents/Resources/app/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+      "kind": "Mach-O signing; all non-LINKEDIT section payloads unchanged",
+      "beforeBytes": 51400,
+      "afterBytes": 69376
+    },
+    {
+      "path": "Contents/_CodeSignature/CodeResources",
+      "kind": "signature metadata or stapled ticket",
+      "beforeBytes": null,
+      "afterBytes": 378428
+    }
+  ],
+  "unexpected": [],
+  "removed": [],
+  "unchangedRegularFiles": 1166
+}

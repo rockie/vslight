@@ -1,0 +1,151 @@
+{
+  "app": "/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "errors": [],
+  "exit_code": 0,
+  "missing_out": [],
+  "required_packages": {
+    "CRI": {
+      "locations": [
+        {
+          "package": "chrome-remote-interface",
+          "paths": [
+            "chrome-remote-interface"
+          ],
+          "store": "asar"
+        }
+      ],
+      "present": true
+    },
+    "katex": {
+      "locations": [
+        {
+          "package": "katex",
+          "paths": [
+            "katex"
+          ],
+          "store": "asar"
+        }
+      ],
+      "present": true
+    },
+    "node-pty": {
+      "locations": [
+        {
+          "package": "node-pty",
+          "paths": [
+            "node-pty"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "node-pty",
+          "paths": [
+            "node-pty"
+          ],
+          "real_paths": [
+            "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/node-pty"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    },
+    "ripgrep": {
+      "locations": [
+        {
+          "package": "@vscode/ripgrep-universal",
+          "paths": [
+            "@vscode/ripgrep-universal"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "@vscode/ripgrep-universal",
+          "paths": [
+            "@vscode/ripgrep-universal"
+          ],
+          "real_paths": [
+            "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/ripgrep-universal"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    },
+    "semver": {
+      "locations": [
+        {
+          "package": "semver",
+          "paths": [
+            "semver"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "semver",
+          "paths": [
+            "semver"
+          ],
+          "real_paths": [
+            "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules/semver"
+          ],
+          "store": "node_modules"
+        }
+      ],
+      "present": true
+    },
+    "sqlite": {
+      "locations": [
+        {
+          "package": "@vscode/sqlite3",
+          "paths": [
+            "@vscode/sqlite3"
+          ],
+          "store": "asar"
+        },
+        {
+          "package": "@vscode/sqlite3",
+          "paths": [
+            "@vscode/sqlite3"
+          ],
+          "real_paths": [
+            "/private/var/folders/cv/pn7p1v7s737cqlt605jyl7lm0000gn/T/lean-core-build144-lcib7zyk/vscodium/VSCode-darwin-arm64/VSLight.app/Contents/Resources/app/node_modules.asar.unpacked/@vscode/sqlite3"
+          ],
+          "store": "node_modules.asar.unpacked"
+        }
+      ],
+      "present": true
+    }
+  },
+  "retired_extensions": [],
+  "retired_out": [],
+  "retired_packages": [],
+  "schema_version": 1,
+  "status": "pass",
+  "stores": {
+    "asar": {
+      "header_bytes": 97852,
+      "json_bytes": 97842,
+      "nodes": 2134,
+      "unpacked_files": 26
+    },
+    "node_modules": {
+      "exists": true,
+      "nodes": 58
+    },
+    "node_modules.asar.unpacked": {
+      "exists": true,
+      "nodes": 75
+    },
+    "out": {
+      "nodes": 175
+    }
+  },
+  "summary": {
+    "missing_required_out": 0,
+    "retired_extensions": 0,
+    "retired_out_groups": 0,
+    "retired_package_instances": 0,
+    "structure_or_missing_package_errors": 0
+  }
+}

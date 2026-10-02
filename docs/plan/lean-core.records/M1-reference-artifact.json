@@ -1,0 +1,16 @@
+{
+  "kind": "old artifact; source provenance not proven",
+  "path": "/Users/rockie/Documents/gh-xgent/vscodium/VSCode-darwin-arm64/VSLight.app",
+  "file_bytes": 528122484,
+  "files": 2199,
+  "version": "1.135.06566",
+  "minimum_macos": "12.0",
+  "electron": "43.7.5",
+  "icons": 29,
+  "icon_hashes": [
+    "61d819bc17d1cda2d9a4377d765e1518c42df080621a07318d70636bbc8d6be2"
+  ],
+  "locales": 220,
+  "locales_bytes": 48655461,
+  "smoke_skip_ui_exit": 0
+}

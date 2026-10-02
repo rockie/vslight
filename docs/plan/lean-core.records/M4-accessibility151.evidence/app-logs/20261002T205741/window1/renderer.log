@@ -1,0 +1,6 @@
+2026-10-02 20:57:42.343 [info] Started initializing default profile extensions in extensions installation folder. file:///private/tmp/av151-4dvltjmt/e
+2026-10-02 20:57:42.385 [info] Completed initializing default profile extensions in extensions installation folder. file:///private/tmp/av151-4dvltjmt/e
+2026-10-02 20:57:42.405 [info] Loading development extension at /private/tmp/av151-4dvltjmt/ext
+2026-10-02 20:57:42.446 [info] [DefaultAccount] Authentication provider is not available. {"id":"","name":"","enterprise":false}
+2026-10-02 20:57:43.232 [info] Started local extension host with pid 30589.
+2026-10-02 20:57:45.701 [info] [perf] Render performance baseline is 9ms

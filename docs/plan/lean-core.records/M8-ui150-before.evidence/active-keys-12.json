@@ -1,0 +1,13 @@
+{
+  "present": true,
+  "search": "@command:workbench.action.agentSessions.newBrowserTab",
+  "bodyText": "Showing 0 Keybindings in alphabetical order. Use Command+DownArrow to navigate to the results table.\nCommand\nKeybinding\nWhen\nSource",
+  "lists": [
+    {
+      "role": "list",
+      "count": null,
+      "label": "Keybindings"
+    }
+  ],
+  "rows": []
+}

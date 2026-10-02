@@ -1,0 +1,141 @@
+{
+  "at": "2026-10-02T20:05:51.935529+10:00",
+  "generation": "150",
+  "status": "NATIVE_MENUS_WELCOME_TITLEBAR_PASS",
+  "permissionUserGrantedTo": "Ghostty",
+  "previousTrusted": false,
+  "nowTrusted": true,
+  "mainPID": 46653,
+  "hostPID": 47396,
+  "native": {
+    "at": "2026-10-02T19:57:58.134232+10:00",
+    "pid": 46653,
+    "exit": 0,
+    "trusted": true,
+    "menuBarError": 0,
+    "nodeCount": 421,
+    "positiveTopMenus": [
+      "Apple",
+      "VSLight",
+      "File",
+      "Edit",
+      "Selection",
+      "View",
+      "Go",
+      "Terminal",
+      "Window",
+      "Help"
+    ],
+    "retiredTitleMatches": [],
+    "retiredTitleMatchCount": 0,
+    "rawFile": "/private/tmp/lcfinal-chkarkup/ui/evidence/native-menu-allowed150.json"
+  },
+  "welcomeTitlebar": {
+    "pid": 46653,
+    "authority": "46653 46652 /private/tmp/lcfinal-chkarkup/VSLight.app/Contents/MacOS/VSLight --user-data-dir /private/tmp/lcfinal-chkarkup/ui/u --extensions-dir /private/tmp/lcfinal-chkarkup/ui/e --shared-data-dir /private/tmp/lcfinal-chkarkup/ui/s --extensionDevelopmentPath /private/tmp/lcfinal-chkarkup/ui/ext --remote-debugging-port=19560 --skip-welcome --skip-release-notes --disable-workspace-trust --new-window /private/tmp/lcfinal-chkarkup/ui/w\n",
+    "response": {
+      "id": "8022e5b5-84f5-4dce-8ab1-2a7a6e4a5f6a",
+      "action": "command",
+      "status": "PASS"
+    },
+    "dom": {
+      "titlebar": {
+        "text": "[Extension Development Host] w",
+        "labels": [
+          {
+            "aria": "Go Back (\u2303-)",
+            "title": null,
+            "class": "action-label codicon codicon-arrow-left"
+          },
+          {
+            "aria": "Go Forward (\u2303\u21e7-)",
+            "title": null,
+            "class": "action-label disabled codicon codicon-arrow-right"
+          },
+          {
+            "aria": "Title actions",
+            "title": null,
+            "class": "actions-container"
+          },
+          {
+            "aria": "Customize Layout...",
+            "title": null,
+            "class": "action-label codicon codicon-configure-layout-icon"
+          },
+          {
+            "aria": "Toggle Primary Side Bar (\u2318B)",
+            "title": null,
+            "class": "action-label checked codicon codicon-panel-left"
+          },
+          {
+            "aria": "Toggle Panel (\u2318J)",
+            "title": null,
+            "class": "action-label codicon codicon-panel-layout-icon-off"
+          },
+          {
+            "aria": "Toggle Secondary Side Bar (\u2325\u2318B)",
+            "title": null,
+            "class": "action-label codicon codicon-auxiliarybar-right-off-layout-icon"
+          }
+        ],
+        "rect": {
+          "width": 1440,
+          "height": 35
+        }
+      },
+      "welcome": {
+        "present": true,
+        "text": "VSLight\n\nEditing evolved\n\nStart\nNew File...\nOpen...\nClone Git Repository...\nRecent\nYou have no recent folders,open a folderto start.\nWalkthroughs\nGet started with VSLight\nCustomize your editor, learn the basics, and start coding\nLearn the Fundamentals\nVSLight Announcements\nThere are no current announcements.\n\nShow welcome page on startup",
+        "rect": {
+          "width": 1092,
+          "height": 794
+        }
+      },
+      "tabs": [
+        {
+          "text": "Keyboard Shortcuts",
+          "title": "Keyboard Shortcuts"
+        },
+        {
+          "text": "Welcome",
+          "title": "Welcome, preview"
+        }
+      ]
+    }
+  },
+  "viewportScreenshotInspected": true,
+  "applicationStillRunning": true,
+  "files": [
+    {
+      "path": "M8-native150-actual.evidence/native-menu-allowed150.json",
+      "bytes": 252875,
+      "sha256": "df7b96d339e9a95ec161e9ab7638953a4f6ea5281ec636a7ffb36284209e0490"
+    },
+    {
+      "path": "M8-native150-actual.evidence/native-menu-allowed150-summary.json",
+      "bytes": 443,
+      "sha256": "2e9beceebb4194e266f286bf9e601e3a34507abe00582f12d8f77f0c5e02a778"
+    },
+    {
+      "path": "M8-native150-actual.evidence/native-menu-confirmed150.json",
+      "bytes": 260345,
+      "sha256": "cea343555beff8099b7169ec5c635934c6913940bc3d79452a275605b57fff43"
+    },
+    {
+      "path": "M8-native150-actual.evidence/welcome-titlebar150-actual.json",
+      "bytes": 2553,
+      "sha256": "5c88d8835e82e069720449d48920b0caba57d8c53f6d994030c260e010834302"
+    },
+    {
+      "path": "M8-native150-actual.evidence/welcome-titlebar150-actual.png",
+      "bytes": 170845,
+      "sha256": "9df9e92c097695c3d198f786ec2bf1e9914123dc766101c860ff1c80da1749ca"
+    }
+  ],
+  "notProven": [
+    "new151 runtime registry",
+    "normal quit/fresh host restart",
+    "profile/account/theme/enablement persistence after restart",
+    "current two-arch CI"
+  ]
+}
